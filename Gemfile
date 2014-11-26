@@ -28,6 +28,7 @@ gem 'rest-client'
 # weixin
 gem 'weixin_rails_middleware'
 gem 'weixin_authorize'
+gem "omniauth-wechat-oauth2"
 
 # omniauth
 gem 'omniauth'
