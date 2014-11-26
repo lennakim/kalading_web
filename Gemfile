@@ -20,10 +20,17 @@ gem 'settingslogic'
 
 # upload photos
 gem "carrierwave"
-gem "mini_magick"
+gem "mini_magick", '~> 3.7.0'
 
 # API
 gem 'rest-client'
+
+# weixin
+gem 'weixin_rails_middleware'
+gem 'weixin_authorize'
+
+# omniauth
+gem 'omniauth'
 
 # clean code
 gem 'inherited_resources'
