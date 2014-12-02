@@ -1,0 +1,13 @@
+# config/settings.yml
+defaults: &defaults
+  server_uri: "http://115.28.132.220:81"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  server_uri: "http://intranet.kalading.com"
