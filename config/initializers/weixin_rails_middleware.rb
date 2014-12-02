@@ -14,7 +14,7 @@ WeixinRailsMiddleware.configure do |config|
   # If you config `weixin_token_string`, so it will directly use it
   config.weixin_token_string = 'abcdefg'
   # using to weixin server url to validate the token can be trusted.
-  config.weixin_secret_string = 'sH_vZ0YnMD8ArzB2gHj-yLJHu1XJjPCA'
+  config.weixin_secret_string = 'Mn8HHt0phlqnoCq7dMaJuvPbUi_sAajJ'
 
   ## You can custom your adapter to validate your weixin account ##
   # Wiki https://github.com/lanrion/weixin_rails_middleware/wiki/Custom-Adapter
