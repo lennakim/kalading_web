@@ -11,6 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141202142959) do
+
+  create_table "users", force: true do |t|
+    t.integer  "subscribe"
+    t.integer  "openid"
+    t.string   "nickname"
+    t.string   "sex"
+    t.string   "city"
+    t.string   "country"
+    t.string   "province"
+    t.string   "language"
+    t.string   "headimgurl"
+    t.datetime "subscribe_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
