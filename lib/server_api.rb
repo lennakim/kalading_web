@@ -21,18 +21,17 @@ module ServerApi
   def call method, api_name, args = {}, &fail
 
     begin
+      base_url = args[:entry_id] ? \
+        "#{Settings.server_uri}/#{api_name}/#{args.delete(:entry_id)}.json" :
+        "#{Settings.server_uri}/#{api_name}.json"
+      url = append_query_string base_url, args.except(:body)
 
-      base_url = "#{Settings.server_uri}/#{api_name}/#{args.delete(:entry_id)}.json"
+      Rails.logger.info '--- send api to url:'
+      Rails.logger.info url
 
-      url = append_query_string base_url, args
-
-      pp url
-
-      if method == "get"
-        result = RestClient.get url, content_type: 'json'
-      else
-        result = RestClient.send method, url, args[:body], content_type: 'json'
-      end
+      result = method == "get" ? \
+        RestClient.get(url, content_type: 'json') :
+        RestClient.send(method, url, args[:body].to_json, content_type: 'json')
 
       JSON.parse result
     rescue Exception => e

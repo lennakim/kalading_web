@@ -10,6 +10,10 @@ defaults: &defaults
   weixin_token: "abcdefg"
   weixin_secret: "Mn8HHt0phlqnoCq7dMaJuvPbUi_sAajJ"
 
+  default_title: "卡拉丁 | 上门汽车保养"
+  meta_keywords: "卡拉丁, 上门汽车养护服务, 汽车保养, 汽车"
+  meta_description: "卡拉丁为广大车主提供优质、便捷、安全的上门汽车养护服务。服务热线：400-006-8181"
+
 development:
   <<: *defaults
 
