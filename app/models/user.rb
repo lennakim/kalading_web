@@ -1,31 +1,20 @@
 class User < ActiveRecord::Base
 
-  def self.get_access_token
-
-    if Settings[:weixin_access_token] == nil ||
-      (Settings[:weixin_token_expire] &&
-       Settings[:weixin_token_expire] < Time.now)
-
-      url = "#{Settings.weixin_api}token?grant_type=client_credential&appid="\
-            "#{Settings.weixin_appid}&secret=#{Settings.weixin_appsecret}"
-
-      result = RestClient.get url
-
-      access_token = JSON.parse result
-
-      Settings[:weixin_token_expire] = Time.now + 60*30
-
-      if access_token['access_token']
-        Settings[:weixin_access_token] = access_token['access_token']
-        access_token['access_token']
-      else
-        access_token['errmsg']
-      end
+  def self.get_client
+    if $client == nil || User.token_expire?
+      $client = WeixinAuthorize::Client.new(Settings.weixin_appid, Settings.weixin_appsecret)
     end
 
-    Settings[:weixin_access_token]
-
+    $client.is_valid? ? $client : "invalid appid or appsecret"
   end
 
+  def self.token_expire?
+    if Settings[:weixin_token_expire] == nil || Settings[:weixin_token_expire] < Time.now
+      Settings[:weixin_token_expire] = Time.now + 60*30
+      true
+    else
+      false
+    end
+  end
 
 end
