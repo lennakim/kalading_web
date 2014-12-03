@@ -1,4 +1,35 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
-<%= title "创建订单" %>
+
+<input type="hidden" data-items="<%= @result %>" class='items-select-page'>
+
+<div class="main">
+  <% @result["parts"].each do |part| %>
+
+    <div class="item">
+
+      <% item_name = part.keys[0] %>
+      <% item = part.values[0][0] %>
+      <% item_brand = item["brand"] %>
+      <% item_number = item["number"] %>
+      <% item_quantity = item["quantity"] %>
+
+      <label><%= item_name %></label>
+      <select>
+
+        <%= render "item", name: item_name, brand: item_brand, number: item_number %>
+
+        <% related_applicable_parts(@result, item_name).each do |apart_items| %>
+
+          <% applicable_items(apart_items, item_name, except: item_brand).each do |apart_item| %>
+            <% apart_brand = apart_item["brand"] %>
+            <% apart_number = apart_item["number"] %>
+            <%= render "item", name: item_name, brand: apart_brand, number: apart_number %>
+          <% end %>
+
+        <% end %>
+      </select>
+    </div>
+  <% end %>
+</div>
