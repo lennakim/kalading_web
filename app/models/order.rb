@@ -1,6 +1,6 @@
 require "#{Rails.root}/lib/server_api.rb"
 
-class Order < ActiveRecord::Base
+class Order
 
   class << self
     def cars_data
