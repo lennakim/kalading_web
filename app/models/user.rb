@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 
   def self.get_client
-    if $client == nil || User.token_expire?
-      $client = WeixinAuthorize::Client.new(Settings.weixin_appid, Settings.weixin_appsecret)
+    if @client == nil || User.token_expire?
+      @client = WeixinAuthorize::Client.new(Settings.weixin_appid, Settings.weixin_appsecret)
     end
 
-    $client.is_valid? ? $client : "invalid appid or appsecret"
+    @client.is_valid? ? @client : "invalid appid or appsecret"
   end
 
   def self.token_expire?
