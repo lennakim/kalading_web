@@ -2,6 +2,12 @@
 defaults: &defaults
   server_uri: "http://115.28.132.220:81"
 
+  default_title: "卡拉丁 | 上门汽车保养"
+  meta_keywords: "卡拉丁, 上门汽车养护服务, 汽车保养, 汽车"
+  meta_description: "卡拉丁为广大车主提供优质、便捷、安全的上门汽车养护服务。服务热线：400-006-8181"
+
+
+
 development:
   <<: *defaults
 
