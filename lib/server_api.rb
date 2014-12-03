@@ -21,7 +21,9 @@ module ServerApi
   def call method, api_name, args = {}, &fail
 
     begin
-      base_url = "#{Settings.server_uri}/#{api_name}/#{args.delete(:entry_id)}.json"
+      base_url = args[:entry_id] ? \
+        "#{Settings.server_uri}/#{api_name}/#{args.delete(:entry_id)}.json" :
+        "#{Settings.server_uri}/#{api_name}.json"
       url = append_query_string base_url, args.except(:body)
 
       Rails.logger.info '--- send api to url:'
