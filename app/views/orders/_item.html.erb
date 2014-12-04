@@ -1,5 +1,4 @@
-<% if name == "机油" %>
-  <option data-item-name="<%= name %>" data-brand="<%= brand %>" data-number="<%= number %>"><%= brand %> <%= number %></option>
-<% else %>
-  <option data-item-name="<%= name %>" data-brand="<%= brand %>" data-number="<%= number %>"><%= brand %></option>
-<% end %>
+<% brand = item["brand"] %>
+<% number = item["number"] %>
+<option data-item-name="<%= name %>" data-brand="<%= brand %>" data-number="<%= number %>" <%= selected_attr(selected) %>><%= display_item_name name, brand, number %> -- <%= item["quantity"] %></option>
+

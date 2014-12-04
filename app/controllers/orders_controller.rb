@@ -5,6 +5,17 @@ class OrdersController < ApplicationController
   def select_car
   end
 
+  def refresh_price
+    car_id = params["order"]["car_id"]
+    parts = params["order"]["parts"].values
+    payload = {
+      "parts" => parts
+    }
+    pp payload
+    result = Order.refresh_price car_id, payload
+    render json: { result: result }
+  end
+
   def select_item
     # @result = Order.items_for params[:car_id]
 

@@ -3,7 +3,11 @@
 #= require backbone_rails_sync
 #= require backbone_datalink
 #= require_self
+#= require ./backbone/models/order.js
+#= require ./backbone/views/items.js
 
 $ ->
+
   if $(".items-select-page")
-    console.log 1
+
+    items_view = new Kalading.Views.Items
