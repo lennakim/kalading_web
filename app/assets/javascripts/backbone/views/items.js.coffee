@@ -8,11 +8,10 @@ class Kalading.Views.Items extends Backbone.View
   initialize: ->
     @order = new Kalading.Models.Order
     @resetSelectItems()
-    @order.set 'price', $(".price").data('price')
+    @order.set 'price', @$(".price").data('price')
     @order.set 'car_id', $("#main").data('car')
 
-    @listenTo(@order, 'change:parts', @refreshPrice)
-    @listenTo(@order, 'change:price', @changePrice)
+    @listenTo(@order, 'change', @render)
 
   resetSelectItems: (parts, price) =>
     parts = _.map @$(".part option:selected"), (el, index) ->
@@ -21,8 +20,5 @@ class Kalading.Views.Items extends Backbone.View
 
     @order.set 'parts', parts
 
-  refreshPrice: ->
-    @order.loadNewPrice()
-
-  changePrice: ->
+  render: ->
     @$(".price").text(@order.get('price'))

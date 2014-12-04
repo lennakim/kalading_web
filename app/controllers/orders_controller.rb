@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     payload = {
       "parts" => parts
     }
+    pp payload
     result = Order.refresh_price car_id, payload
     render json: { result: result }
   end
