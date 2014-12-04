@@ -1,7 +1,7 @@
 class Kalading.Models.Order extends Backbone.Model
 
   initialize: ->
-    @on("change:parts", @loadNewPrice)
+    @on("change:parts", @loadPrice)
 
   validate: (attrs, options) ->
     unless attrs.price
@@ -9,13 +9,12 @@ class Kalading.Models.Order extends Backbone.Model
     unless attrs.car_id
       return "car_id should not be blank"
 
-  loadNewPrice: ->
-
+  loadPrice: ->
     data = {order: @attributes}
     order = @
 
     if @isValid()
-
+      console.log 'load price'
       $.ajax
         type: 'post',
         url: '/orders/refresh_price',
