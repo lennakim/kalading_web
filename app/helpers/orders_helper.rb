@@ -1,11 +1,35 @@
 module OrdersHelper
 
-  def related_applicable_parts result, item_name
-    result["applicable_parts"].select{|apart| apart.keys[0] == item_name }
+  def default_parts result
+    result["parts"].map{ |part| part.values[0][0]["number"] }
   end
 
-  def applicable_items apart_items, item_name, except: item_brand
-    apart_items[item_name].reject{|apart_item| apart_item["brand"] == except }
+  def selected_item_index defaults, part_items
+
+    conditions = [
+      lambda {|part_item| part_item["brand"].match("卡拉丁")},
+      lambda {|part_item| defaults.include?(part_item["number"])}
+    ]
+
+    item = nil
+    conditions.each do |cond|
+      item = part_items.select(&cond).first
+      break if item
+    end
+
+    part_items.index item
+  end
+
+  def selected_attr selected
+    selected ? "selected" : ""
+  end
+
+  def display_item_name name, brand, number
+    if name == "机油"
+      "#{brand} #{number}"
+    else
+      brand
+    end
   end
 
 end
