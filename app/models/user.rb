@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     user = User.find_by_openid openid
     if user != nil
       user = user.set_weixin_user_info(openid)
-      user.update_all
+      user.save!
     else
       User.save_weixin_user(openid)
     end
