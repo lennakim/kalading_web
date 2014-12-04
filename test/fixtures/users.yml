@@ -2,24 +2,24 @@
 
 one:
   subscribe: 1
-  openid: 1
+  openid: MyString
   nickname: MyString
-  sex: MyString
+  sex: 1
   city: MyString
   country: MyString
   province: MyString
   language: MyString
   headimgurl: MyString
-  subscribe_time: 
+  subscribe_time: 2014-12-04 14:42:17
 
 two:
   subscribe: 1
-  openid: 1
+  openid: MyString
   nickname: MyString
-  sex: MyString
+  sex: 1
   city: MyString
   country: MyString
   province: MyString
   language: MyString
   headimgurl: MyString
-  subscribe_time: 
+  subscribe_time: 2014-12-04 14:42:17
