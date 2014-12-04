@@ -3,7 +3,8 @@
 #= require backbone_rails_sync
 #= require backbone_datalink
 #= require_self
-#= require_tree ./backbone
+#= require ./backbone/models/order.js
+#= require ./backbone/views/items.js
 
 $ ->
 
