@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :publicaccount, class_name:"PublicAccount"
+  has_many :messages, class_name:"Message"
 
   # return value is an Array type
   def self.get_followers_openid(weixin_id)

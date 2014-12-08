@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208160657) do
+ActiveRecord::Schema.define(version: 20141208170232) do
+
+  create_table "messages", force: true do |t|
+    t.string   "to_user_name"
+    t.string   "from_user_name"
+    t.string   "create_time"
+    t.string   "msg_type"
+    t.text     "contnet"
+    t.string   "msg_id"
+    t.string   "pic_url"
+    t.string   "media_id"
+    t.string   "format"
+    t.string   "thumb_media_id"
+    t.string   "location_x"
+    t.string   "location_y"
+    t.string   "scale"
+    t.string   "label"
+    t.string   "title"
+    t.text     "description"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
