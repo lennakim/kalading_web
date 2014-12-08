@@ -12,4 +12,4 @@ $ ->
 
     items_view = new Kalading.Views.Items
 
-    items_view.recover_all()
+    items_view.recoverSelectors()

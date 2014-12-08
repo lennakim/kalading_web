@@ -5,20 +5,24 @@ class Kalading.Views.Items extends Backbone.View
   events:
     "change .part": "resetSelectItems"
     "click .item-selector": "chooseParts"
+    "click #order_button": "submitOrder"
 
   initialize: ->
     @order = new Kalading.Models.Order
 
     @$parts = @$(".part")
     @$price = @$(".price")
+    @$service_price = @$(".service-price")
     @$checkboxes = @$(".item-selector")
+    @$order_button = @$("#order_button")
 
     @resetSelectItems()
 
     @order.set 'price', @$price.data('price')
     @order.set 'car_id', $("#main").data('car')
+    @order.set 'service_price', @$service_price.data('price')
 
-    @listenTo(@order, 'change:price', @renderPrice)
+    @listenTo(@order, 'change', @renderPrice)
 
   resetSelectItems: =>
     console.log 'reset select item'
@@ -30,27 +34,31 @@ class Kalading.Views.Items extends Backbone.View
 
     @order.set 'parts', parts
 
-    @disable_all()
+    @disableSelectors()
 
   chooseParts: (e)=>
     $checkbox = $(e.target)
+    checked = $checkbox.prop('checked')
 
-    if $checkbox.prop('checked')
-      $checkbox.siblings('.part').attr('disabled', false)
-    else
-      $checkbox.siblings('.part').attr('disabled', true)
+    $checkbox.siblings('.part').attr('disabled', !checked)
 
     @resetSelectItems()
 
   renderPrice: ->
     console.log 'render price'
-    @recover_all()
     @$price.text(@order.get('price'))
+    @$service_price.text(@order.get('service_price'))
+    @recoverSelectors()
 
-  disable_all: ->
+  submitOrder: ->
+    console.log @order.attributes
+
+  disableSelectors: ->
     @$price.addClass "disabled"
     @$checkboxes.attr('disabled', true)
+    @$order_button.attr('disabled', true)
 
-  recover_all: ->
+  recoverSelectors: ->
     @$price.removeClass "disabled"
     @$checkboxes.attr('disabled', false)
+    @$order_button.attr('disabled', false)

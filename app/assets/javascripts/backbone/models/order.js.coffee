@@ -21,3 +21,4 @@ class Kalading.Models.Order extends Backbone.Model
         data: data,
         success: (data) ->
           order.set 'price', data['result']['price']
+          order.set 'service_price', data['result']['service_price']
