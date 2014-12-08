@@ -4,7 +4,7 @@ class Kalading.Views.Items extends Backbone.View
 
   events:
     "change .part": "resetSelectItems"
-    "click .item-selector": "chooseParts"
+    "click .part-selector": "chooseParts"
     "click #order_button": "submitOrder"
 
   initialize: ->
@@ -13,7 +13,7 @@ class Kalading.Views.Items extends Backbone.View
     @$parts = @$(".part")
     @$price = @$(".price")
     @$service_price = @$(".service-price")
-    @$checkboxes = @$(".item-selector")
+    @$checkboxes = @$(".part-selector")
     @$order_button = @$("#order_button")
 
     @resetSelectItems()
@@ -23,14 +23,13 @@ class Kalading.Views.Items extends Backbone.View
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
+    @listenTo(@order, 'error', @errorHandler)
 
   resetSelectItems: =>
     console.log 'reset select item'
     parts = _.map @$(".part:enabled option:selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
-
-    console.log parts
 
     @order.set 'parts', parts
 
@@ -62,3 +61,7 @@ class Kalading.Views.Items extends Backbone.View
     @$price.removeClass "disabled"
     @$checkboxes.attr('disabled', false)
     @$order_button.attr('disabled', false)
+
+  errorHandler: ->
+    alert '服务器错误...请稍后再试'
+    @recoverSelectors()
