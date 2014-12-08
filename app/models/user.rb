@@ -1,64 +1,47 @@
 class User < ActiveRecord::Base
+  belongs_to :publicaccount, class_name:"PublicAccount"
 
-  def self.get_client
-    if $client == nil || User.token_expire?
-      $client = WeixinAuthorize::Client.new(Settings.weixin_appid, Settings.weixin_appsecret)
-    end
-
-    $client.is_valid? ? $client : "invalid appid or appsecret"
+  # return value is an Array type
+  def self.get_followers_openid(weixin_id)
+    client ||= PublicAccount.get_client(weixin_id)
+    client.followers.result["data"]["openid"]
   end
 
-  # return value is a Array type
-  def self.get_all_followers_openid
-    $client ||= User.get_client
-    $client.followers.result["data"]["openid"]
-  end
-
-  def self.get_follower_nickname(openid)
+  def self.get_follower_nickname(weixin_id, openid)
     user = User.find_by_openid openid
     if user == nil
       User.save_weixin_user openid
-      $client ||= User.get_client
-      user_info = $client.user(openid)
+      client ||= PublicAccount.get_client(weixin_id)
+      user_info = client.user(openid)
       user_info.result["nickname"]
     else
       user.nickname
     end
   end
 
-
-  def self.token_expire?
-    if Settings[:weixin_token_expire] == nil || Settings[:weixin_token_expire] < Time.now
-      Settings[:weixin_token_expire] = Time.now + 60*30
-      true
-    else
-      false
-    end
-  end
-
-  def self.update_weixin_user(openid)
+  def self.update_weixin_user(weixin_id, openid)
     user = User.find_by_openid openid
     if user != nil
-      user = user.set_weixin_user_info(openid)
+      user = user.set_weixin_user_info(weixin_id, openid)
       user.save!
     else
-      User.save_weixin_user(openid)
+      User.save_weixin_user(weixin_id, openid)
     end
   end
 
-  def self.save_weixin_user(openid)
+  def self.save_weixin_user(weixin_id, openid)
     unless User.find_by_openid openid
       user = User.new
-      user = user.set_weixin_user_info(openid)
+      user = user.set_weixin_user_info(weixin_id, openid)
       user.save!
     end
   end
 
 
-  def set_weixin_user_info(openid)
+  def set_weixin_user_info(weixin_id, openid)
     user = User.new
-    $client ||= User.get_client
-    user_info = $client.user(openid)
+    client ||= PublicAccount.get_client(weixin_id)
+    user_info = client.user(openid)
     user.subscribe = user_info.result["subscribe"]
     user.openid = user_info.result["openid"]
     user.nickname = user_info.result["nickname"]
