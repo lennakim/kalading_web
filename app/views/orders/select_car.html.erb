@@ -2,60 +2,34 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 <%= title "创建订单" %>
+<div id="select-car">
+	<select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
+		<% @cars_info.each do |car| %>
+			<option value="<%= car['name'] %>"><%= car['name'] %></option>
+		<% end %>
+	</select>
+	<select name="car_type" id="car_type">
+		<% @cars_info.each do |car| %>
+			<% car['ams'].each do |type| %>
+				<option value="<%= type['name'] %>" class="<%= car['name'] %>"><%= type['name'] %></option>
+			<% end %>
+		<% end %>
+	</select>
+	<select name="car_style" id="car_style">
+		<% @cars_info.each do |car| %>
+			<% car['ams'].each do |type| %>
+				<% type['asms'].each do |style| %>
+					<option value="<%= style['name'] %>" class="<%= car['name'] %>\<%= type['name'] %>"><%= style['name'] %></option>
+				<% end %>
+			<% end %>
+		<% end %>
+	</select>
+</div>
 
-<select data-cars = "<%= @cars_info %>" name="" id="car_name">
-	<% @cars_info.each do |car| %>
-		<option value=""><%= car['name'] %></option>
-	<% end %>
-</select>
-<select name="" id="car_type">
-	<% @cars_info[0]['ams'].each do |type| %>
-		<option value=""><%= type['name'] %></option>
-	<% end %>
-</select>
-<select name="" id="car_style">
-	<% @cars_info[0]['ams'][0]['asms'].each do |style| %>
-		<option value=""><%= style['name'] %></option>
-	<% end %>
-</select>
 
 <script>
-
-	var car_info = JSON.parse($("#car_name").data('cars').replace(/=\>/g,':'));
-	$('#car_name').change(function(){
-		$('#car_type').children().remove();
-		$('#car_style').children().remove();
-
-		var name_index = $('#car_name').get(0).selectedIndex;
-		var car_type = car_info[name_index]['ams'];
-		
-		for(var i=0;i<car_type.length;i++){
-			var car_type_name = car_type[i]['name'];
-			$('#car_type').append('<option>'+car_type_name+'</option>');
-		}
-
-		var car_style = car_info[name_index]['ams'][0]?car_info[name_index]['ams'][0]['asms']:'';
-		append_style(car_style);
-
-		$('#car_type').change(function(){
-			change_style(name_index);
-		});
-	});
-
-	function change_style(name_index){
-		$('#car_style').children().remove();
-		var type_index = $('#car_type').get(0).selectedIndex;
-		
-		var car_style = car_info[name_index]['ams'][type_index]?car_info[name_index]['ams'][type_index]['asms']:'';
-
-		append_style(car_style);
-	}
-
-	function append_style(car_style){
-		for(var i=0;i<car_style.length;i++){
-			var car_style_name = car_style[i]['name'];
-			$('#car_style').append('<option>'+car_style_name+'</option>');
-		}
-	}
+	//chained
+	$('#car_type').chained('#car_name');
+	$('#car_style').chained('#car_type,#car_name');
 </script>
 
