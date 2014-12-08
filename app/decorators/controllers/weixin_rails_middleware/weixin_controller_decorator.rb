@@ -12,8 +12,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       # reply_text_message("Your Message: #{@keyword}")
-      nickname = User.get_follower_nickname(@weixin_message.FromUserName)
-      reply_text_message("Hello, #{nickname}")
+      Message.save_txt_message(@weixin_message)
+      reply_text_message("Hello, #{@weixin_message}")
     end
 
     # <Location_X>23.134521</Location_X>

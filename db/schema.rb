@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208170232) do
+ActiveRecord::Schema.define(version: 20141208180142) do
 
   create_table "messages", force: true do |t|
     t.string   "to_user_name"
     t.string   "from_user_name"
     t.string   "create_time"
     t.string   "msg_type"
-    t.text     "contnet"
+    t.text     "content"
     t.string   "msg_id"
     t.string   "pic_url"
     t.string   "media_id"
