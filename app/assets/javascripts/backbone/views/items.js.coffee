@@ -4,12 +4,14 @@ class Kalading.Views.Items extends Backbone.View
 
   events:
     "change .part": "resetSelectItems"
+    "click .item-selector": "chooseParts"
 
   initialize: ->
     @order = new Kalading.Models.Order
 
     @$parts = @$(".part")
     @$price = @$(".price")
+    @$checkboxes = @$(".item-selector")
 
     @resetSelectItems()
 
@@ -18,15 +20,27 @@ class Kalading.Views.Items extends Backbone.View
 
     @listenTo(@order, 'change:price', @renderPrice)
 
-  resetSelectItems: (parts, price) =>
+  resetSelectItems: =>
     console.log 'reset select item'
-    parts = _.map @$(".part option:selected"), (el, index) ->
+    parts = _.map @$(".part:enabled option:selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
+
+    console.log parts
 
     @order.set 'parts', parts
 
     @disable_all()
+
+  chooseParts: (e)=>
+    $checkbox = $(e.target)
+
+    if $checkbox.prop('checked')
+      $checkbox.siblings('.part').attr('disabled', false)
+    else
+      $checkbox.siblings('.part').attr('disabled', true)
+
+    @resetSelectItems()
 
   renderPrice: ->
     console.log 'render price'
@@ -35,8 +49,8 @@ class Kalading.Views.Items extends Backbone.View
 
   disable_all: ->
     @$price.addClass "disabled"
-    @$parts.attr('disabled', true)
+    @$checkboxes.attr('disabled', true)
 
   recover_all: ->
-    @$parts.attr('disabled', false)
     @$price.removeClass "disabled"
+    @$checkboxes.attr('disabled', false)

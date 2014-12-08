@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def refresh_price
     car_id = params["order"]["car_id"]
-    parts = params["order"]["parts"].values
+    parts = params["order"]["parts"].try :values
     payload = {
       "parts" => parts
     }

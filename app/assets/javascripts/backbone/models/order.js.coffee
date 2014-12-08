@@ -4,8 +4,8 @@ class Kalading.Models.Order extends Backbone.Model
     @on("change:parts", @loadPrice)
 
   validate: (attrs, options) ->
-    unless attrs.price
-      return "price should not be blank"
+    # unless attrs.price
+    #   return "price should not be blank"
     unless attrs.car_id
       return "car_id should not be blank"
 
