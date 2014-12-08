@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202142959) do
+ActiveRecord::Schema.define(version: 20141204064217) do
 
   create_table "users", force: true do |t|
     t.integer  "subscribe"
-    t.integer  "openid"
+    t.string   "openid"
     t.string   "nickname"
-    t.string   "sex"
+    t.integer  "sex"
     t.string   "city"
     t.string   "country"
     t.string   "province"

@@ -11,7 +11,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message("Your Message: #{@keyword}")
+      # reply_text_message("Your Message: #{@keyword}")
+      nickname = User.get_follower_nickname(@weixin_message.FromUserName)
+      reply_text_message("Hello, #{nickname}")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -76,11 +78,15 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
-        reply_text_message("关注公众账号")
+        # reply_text_message("关注公众账号")
+        nickname = User.get_follower_nickname @weixin_message.FromUserName
+        reply_text_message("Hello #{nickname}，欢迎关注卡拉丁！")
       end
 
       # 取消关注
       def handle_unsubscribe_event
+        nickname = User.get_follower_nickname @weixin_message.FromUserName
+        Rails.logger.info("Bye, #{nickname}")
         Rails.logger.info("取消关注")
       end
 

@@ -2,9 +2,9 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.integer :subscribe
-      t.integer :openid
+      t.string :openid
       t.string :nickname
-      t.string :sex
+      t.integer :sex
       t.string :city
       t.string :country
       t.string :province
