@@ -22,7 +22,7 @@ class Kalading.Views.Items extends Backbone.View
     @order.set 'car_id', $("#main").data('car')
     @order.set 'service_price', @$service_price.data('price')
 
-    @listenTo(@order, 'change', @renderPrice)
+    @listenTo(@order, 'sync', @render)
 
   resetSelectItems: =>
     console.log 'reset select item'
@@ -44,7 +44,7 @@ class Kalading.Views.Items extends Backbone.View
 
     @resetSelectItems()
 
-  renderPrice: ->
+  render: ->
     console.log 'render price'
     @$price.text(@order.get('price'))
     @$service_price.text(@order.get('service_price'))
