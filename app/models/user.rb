@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
       User.create_weixin_user(account_name, openid)
     else
       user.update_attributes(user.set_weixin_user_info(account_name, openid))
-      puts "update!!"
       user
     end
   end
