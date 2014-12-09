@@ -24,12 +24,13 @@
     <% @cars_info.each do |car| %>
       <% car['ams'].each do |type| %>
         <% type['asms'].each do |style| %>
-          <option value="<%= style['name'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-          <%= style['name'] %>
+          <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
+            <%= style['name'] %>
           </option>
         <% end %>
       <% end %>
     <% end %>
   </select>
+  <%= link_to "查询", '', class: "search_car" %>
 </div>
 

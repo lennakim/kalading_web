@@ -7,6 +7,14 @@
 #= require_self
 
 $ ->
+  changeUrl= ->
+    url = '/orders/select_item?car_id='+$('#car_style option:selected').data 'id'
+    $('.search_car').attr href: url
+
+  changeUrl()
+
+  $('#car_name,#car_type,#car_style').change ->
+    changeUrl()
 
   if $(".items-select-page")
     items_view = new Kalading.Views.Items
@@ -15,3 +23,8 @@ $ ->
   if $(".select-car-page")
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
+
+    
+    
+    
+
