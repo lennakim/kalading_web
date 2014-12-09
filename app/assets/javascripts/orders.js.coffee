@@ -9,7 +9,7 @@
 $ ->
   changeUrl= ->
     url = '/orders/select_item?car_id='+$('#car_style option:selected').data 'id'
-    $('.search-car').attr href: url
+    $('.search_car').attr href: url
 
   changeUrl()
 
