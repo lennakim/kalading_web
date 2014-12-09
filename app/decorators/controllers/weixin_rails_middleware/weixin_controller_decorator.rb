@@ -12,7 +12,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       # reply_text_message("Your Message: #{@keyword}")
-      Message.save_txt_message(@weixin_message)
+      Message.save_txt_message("kalading1", @weixin_message)
+      puts "---------------------"
       reply_text_message("Hello, #{@weixin_message}")
     end
 

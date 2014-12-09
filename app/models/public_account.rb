@@ -1,46 +1,20 @@
 class PublicAccount < ActiveRecord::Base
   # It will auto generate weixin token and secret
   include WeixinRailsMiddleware::AutoGenerateWeixinTokenSecretKey
-  has_many :users, class_name: "User"
+  has_many :users
 
-  def self.get_client(weixin_id)
-    account = PublicAccount.find_by_weixin_id weixin_id
-    if account == nil
-      puts "account is nil! Please create one first!"
-      return
-    end
+  def self.get_account(name)
+    account = PublicAccount.find_by(name: name)
+    puts "account is nil! Please create one first!"; return unless account
 
-    if $account_info == nil || PublicAccount.token_expire?
-      $account_info = WeixinAuthorize::Client.new(PublicAccount.get_appid(weixin_id),
-                                            PublicAccount.get_appsecret(weixin_id))
-      # You have to call this method to get the final account_info!
-      $account_info.is_valid? ? $account_info : "invalid appid or appsecret"
-    else
-      $account_info
-    end
+    account = WeixinAuthorize::Client.new(PublicAccount.account_info(name).appid,
+                                            PublicAccount.account_info(name).appsecret)
+    # You have to call this method to get the final account!
+    account.is_valid? ? account : "invalid appid or appsecret"
   end
 
-  def self.get_weixin_id
-    PublicAccount.pluck(:weixin_id)
+  def self.account_info(name)
+    account_info = PublicAccount.find_by(name: name)
+    account_info
   end
-
-  def self.get_appid(weixin_id)
-    account = PublicAccount.find_by_weixin_id weixin_id
-    account.appid
-  end
-
-  def self.get_appsecret(weixin_id)
-    account = PublicAccount.find_by_weixin_id weixin_id
-    account.appsecret
-  end
-
-  def self.token_expire?
-    if Settings[:weixin_token_expire] == nil || Settings[:weixin_token_expire] < Time.now
-      Settings[:weixin_token_expire] = Time.now + 60*30
-      true
-    else
-      false
-    end
-  end
-
 end

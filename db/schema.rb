@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208180142) do
+ActiveRecord::Schema.define(version: 20141209033139) do
 
   create_table "messages", force: true do |t|
     t.string   "to_user_name"
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20141208180142) do
     t.string   "weixin_id"
     t.string   "appid"
     t.string   "appsecret"
+    t.string   "name"
   end
 
+  add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
   add_index "public_accounts", ["weixin_id"], name: "index_public_accounts_on_weixin_id", unique: true, using: :btree
   add_index "public_accounts", ["weixin_secret_key"], name: "index_public_accounts_on_weixin_secret_key", using: :btree
   add_index "public_accounts", ["weixin_token"], name: "index_public_accounts_on_weixin_token", using: :btree
@@ -65,7 +67,7 @@ ActiveRecord::Schema.define(version: 20141208180142) do
     t.datetime "subscribe_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "publicaccount_id"
+    t.integer  "public_account_id"
   end
 
 end
