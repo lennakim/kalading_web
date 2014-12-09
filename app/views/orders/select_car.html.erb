@@ -2,7 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 <%= title "创建订单" %>
-<div id="select-car">
+<div class="select-car-page">
 	<select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
 		<% @cars_info.each do |car| %>
 			<option value="<%= car['name'] %>"><%= car['name'] %></option>
@@ -25,11 +25,4 @@
 		<% end %>
 	</select>
 </div>
-
-
-<script>
-	//chained
-	$('#car_type').chained('#car_name');
-	$('#car_style').chained('#car_type,#car_name');
-</script>
 

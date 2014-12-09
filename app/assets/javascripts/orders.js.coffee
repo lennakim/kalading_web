@@ -14,6 +14,15 @@ $ ->
 
     items_view.recover_all()
 
+  if $(".select-car-page")
+    $('#car_style').chained('#car_type,#car_name')
+    $('#car_type').chained('#car_name')
+
+	
+
+	
+
+
 
   
 
