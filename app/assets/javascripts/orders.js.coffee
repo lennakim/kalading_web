@@ -9,7 +9,10 @@
 $ ->
 
   if $(".items-select-page")
-
     items_view = new Kalading.Views.Items
-
     items_view.recoverSelectors()
+
+  if $(".select-car-page")
+    $('#car_style').chained('#car_type,#car_name')
+    $('#car_type').chained('#car_name')
+

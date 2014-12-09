@@ -3,6 +3,8 @@ require "#{Rails.root}/lib/server_api.rb"
 class OrdersController < ApplicationController
 
   def select_car
+  	@cars_info = Order.cars_data
+  	pp @cars_info
   end
 
   def refresh_price
