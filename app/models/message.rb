@@ -1,9 +1,10 @@
 class Message < ActiveRecord::Base
+  validates :msg_id, presence: true
   belongs_to :user
 
-  def self.save_txt_message(name, message)
+  def self.save_txt_message(account_name, message)
     user = User.find_by(openid: message.FromUserName)
-    user = User.save_weixin_user name, message.FromUserName unless user
+    user = User.create_weixin_user account_name, message.FromUserName unless user
 
     new_message = user.messages.new
     new_message.to_user_name   = message.ToUserName
@@ -14,9 +15,9 @@ class Message < ActiveRecord::Base
     new_message.save!
   end
 
-  def self.save_img_message(name, message)
+  def self.save_img_message(account_name, message)
     user = User.find_by(openid: message.FromUserName)
-    user = User.save_weixin_user name, message.FromUserName unless user
+    user = User.create_weixin_user account_name, message.FromUserName unless user
 
     new_message = user.messages.new
     new_message.to_user_name   = message.ToUserName

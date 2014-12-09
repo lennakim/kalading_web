@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209033139) do
+ActiveRecord::Schema.define(version: 20141209150906) do
 
   create_table "messages", force: true do |t|
     t.string   "to_user_name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141209033139) do
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["msg_id"], name: "index_messages_on_msg_id", unique: true, using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "public_accounts", force: true do |t|
@@ -69,5 +70,7 @@ ActiveRecord::Schema.define(version: 20141209033139) do
     t.datetime "updated_at"
     t.integer  "public_account_id"
   end
+
+  add_index "users", ["openid"], name: "index_users_on_openid", unique: true, using: :btree
 
 end
