@@ -6,15 +6,11 @@
 #= require ./backbone/views/items.js
 #= require_self
 
-$ ->
-  changeUrl= ->
-    url = '/orders/select_item?car_id='+$('#car_style option:selected').data 'id'
-    $('.search_car').attr href: url
+$ ->    
 
-  changeUrl()
-
-  $('#car_name,#car_type,#car_style').change ->
-    changeUrl()
+  $('#search_button').click ->
+    id = $('#car_style option:selected').data 'id'
+    window.location.href = "/orders/select_item?car_id=#{id}"
 
   if $(".items-select-page")
     items_view = new Kalading.Views.Items
