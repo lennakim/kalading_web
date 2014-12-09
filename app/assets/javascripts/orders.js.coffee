@@ -6,7 +6,11 @@
 #= require ./backbone/views/items.js
 #= require_self
 
-$ ->
+$ ->    
+
+  $('#search_button').click ->
+    id = $('#car_style option:selected').data 'id'
+    window.location.href = "/orders/select_item?car_id=#{id}"
 
   if $(".items-select-page")
     items_view = new Kalading.Views.Items
@@ -15,3 +19,8 @@ $ ->
   if $(".select-car-page")
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
+
+    
+    
+    
+
