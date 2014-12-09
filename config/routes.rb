@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'select_car', on: :collection
     get 'select_item', on: :collection
     post 'refresh_price', on: :collection
-    post 'place_order', on: :collection
+    get 'place_order', on: :collection
   end
 
   root to: 'home#index'

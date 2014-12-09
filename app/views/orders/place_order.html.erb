@@ -1,1 +1,113 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
 <%= title "创建订单" %>
+
+<div class="place_order">
+	<form class="cmxform" id="commentForm" method="get" action="">
+	  <fieldset>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="name">姓名:</label>
+	      <input id="uname" name="name" minlength="2" type="text" required/>
+	    </p>
+	    <p>
+	      <label for="address">所在地区:</label>
+	      <select name="address" id="city">
+	      	<option value="">北京市</option>
+	      </select>
+	      <select name="address" id="area">
+	      	<option value="">朝阳区</option>
+	      </select>
+	    </p>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="address_detail">详细地址:</label>
+	      <input id="address_detail" name="address_detail" type="text" required/>
+	    </p>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="phone_num">手机号码:</label>
+	      <input id="phone_num" name="phone_num" minlength="11" type="text" required/>
+	    </p>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="car_num">车牌号:</label>
+	      <select name="car_num">
+	      	<option value="">京</option>
+	      </select>
+	      <input id="car_num" name="car_num" minlength="6" value="车牌后六位" type="text" required/>
+	    </p>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="service_time">服务时间:</label>
+	      <input id="service_time" name="service_time" type="text" required/>
+	      <select name="car_num">
+	      	<option value="">8:00 - 12:00</option>
+	      </select>
+	    </p>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="pay">付款方式:</label>
+	      <select name="pay" required>
+	      	<option value="">现金</option>
+	      	<option value="">刷卡</option>
+	      </select>
+	    </p>
+	    <p>
+	      <label for="fr_phone_num">朋友手机:</label>
+	      <input id="fr_phone_num" name="fr_phone_num" minlength="11" type="text" required/>
+	    </p>
+	    <p>
+	      <var class="star">*</var>
+	      <label for="sign_time">车辆注册时间:</label>
+	      <input id="sign_time" name="sign_time" type="text" required/>
+	    </p>
+	    <p>
+	      <label for="engine_num">发动机号码:</label>
+	      <input id="engine_num" name="engine_num" type="text"/>
+	    </p>
+	    <p>
+	      <label for="vin">VIN:</label>
+	      <input id="vin" name="vin" type="text"/>
+	    </p>
+	    <p>
+	    	<input type="checkbox" name="no_invoice" checked="">
+	    	<label for="no_invoice">不要发票</label>
+	    	<input type="checkbox" name="invoice">
+	    	<label for="invoice">发票</label>
+	    </p>
+	    <p>
+	    	<input type="checkbox" name="no_electron" checked="">
+	    	<label for="no_electron">无电子优惠券</label>
+	    	<input type="checkbox" name="electron">
+	    	<label for="electron">有电子优惠券</label>
+	    </p>
+	    <p>
+	      <label for="annotation">备注:</label>
+	      <input id="annotation" name="annotation" value="填写备注" type="text"/>
+	    </p>
+	    <table>
+	    	<thead>商品详情</thead>
+	    	<tbody>
+	    		<tr>
+	    			<td>商品名称</td>
+	    			<td>保养项目</td>
+	    			<td>价格</td>
+	    			<td>总价</td>
+	    		</tr>
+	    	</tbody>
+	    	<tfoot></tfoot>
+	    </table>
+	    <p>
+	      <label for="">应付总额：￥</label>
+	      <label for=""></label>
+	      <label for="">元</label>
+	      <input class="submit" type="submit" value="提交订单"/>
+	    </p>
+	  </fieldset>
+	</form>
+</div>
+<script type="text/javascript">
+	$("#commentForm").validate();
+</script>
