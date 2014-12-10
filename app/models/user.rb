@@ -9,39 +9,25 @@ class User < ActiveRecord::Base
   class << self
     def from_auth(auth)
       # locate_auth(auth) || create_auth(auth)
-      locate_auth(auth) || locate_phone_num(auth) || create_auth(auth)
+      locate_auth(auth) || create_auth(auth)
     end
 
     def locate_auth(auth)
       Authentication.locate(auth).try(:user)
     end
 
-    def locate_phone_num(auth)
-      user = find_by phone_num: (auth[:info][:phone_num])
-      return unless user
-      user.add_auth(auth)
-      user
-    end
-
     def create_auth(auth)
       create!(
-        nickname:    auth[:nickname],
-        image:       auth[:image],
-        description: auth[:description],
+        nickname:    auth["nickname"],
+        headimgurl:       auth["image"],
         authentications_attributes: [
           {
-            provider:      auth[:provider],
-            uid:           auth[:uid],
-            token:         auth[:token],
-            expires_at:    auth[:expires_at]
+            provider:      auth["provider"],
+            uid:           auth["uid"],
+            token:         auth["token"],
+            expires_at:    auth["expires_at"]
           }])
     end
-  end
-
-  def add_auth(auth)
-    authentications.create \
-      :provider => auth['provider'],
-      :uid => auth['uid']
   end
 
   def update_user

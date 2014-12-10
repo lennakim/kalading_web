@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#index'
+
+  resources :sessions
+
 end
