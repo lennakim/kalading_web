@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
 
   def sign_in user
-    cookies[:lg_token] = { value: user.update_user, expires: 30.days.from_now }
+    cookies[:LGT] = { value: user.update_user, expires: 30.days.from_now }
   end
 
   def signed_in?
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(token: cookies[:lg_token]) if cookies[:lg_token]
+    @current_user ||= User.find_by(token: cookies[:LGT]) if cookies[:LGT]
   end
 
 end

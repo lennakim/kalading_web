@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   def update_user
     generate_token!
-    self.token
+    token
   end
 
   def generate_token!
