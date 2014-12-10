@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210134506) do
+ActiveRecord::Schema.define(version: 20141210135141) do
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "expires_at"
+  end
+
+  add_index "authentications", ["uid"], name: "index_authentications_on_uid", using: :btree
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "subscribe"
@@ -28,5 +39,7 @@ ActiveRecord::Schema.define(version: 20141210134506) do
     t.datetime "updated_at"
     t.string   "token"
   end
+
+  add_index "users", ["token"], name: "index_users_on_token", using: :btree
 
 end

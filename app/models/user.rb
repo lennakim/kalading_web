@@ -1,5 +1,67 @@
 class User < ActiveRecord::Base
 
+  #####  for login  #####
+
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
+  before_create :generate_token
+
+  class << self
+    def from_auth(auth)
+      # locate_auth(auth) || create_auth(auth)
+      locate_auth(auth) || locate_phone_num(auth) || create_auth(auth)
+    end
+
+    def locate_auth(auth)
+      Authentication.locate(auth).try(:user)
+    end
+
+    def locate_phone_num(auth)
+      user = find_by phone_num: (auth[:info][:phone_num])
+      return unless user
+      user.add_auth(auth)
+      user
+    end
+
+    def create_auth(auth)
+      create!(
+        nickname:    auth[:nickname],
+        image:       auth[:image],
+        description: auth[:description],
+        authentications_attributes: [
+          {
+            provider:      auth[:provider],
+            uid:           auth[:uid],
+            token:         auth[:token],
+            expires_at:    auth[:expires_at]
+          }])
+    end
+  end
+
+  def add_auth(auth)
+    authentications.create \
+      :provider => auth['provider'],
+      :uid => auth['uid']
+  end
+
+  def update_user
+    generate_token!
+    self.token
+  end
+
+  def generate_token!
+    generate_token
+    save
+  end
+
+  def generate_token
+    begin
+      self.token = (Digest::MD5.hexdigest "#{SecureRandom.urlsafe_base64(nil, false)}-#{Time.now.to_i}")
+    end while User.where(token: self.token).exists?
+  end
+
+  ####
+
   def self.get_client
     if $client == nil || User.token_expire?
       $client = WeixinAuthorize::Client.new(Settings.weixin_appid, Settings.weixin_appsecret)
@@ -71,9 +133,5 @@ class User < ActiveRecord::Base
     user.subscribe_time = user_info.result["subscribe_time"]
     user
   end
-
-
-  #
-
 
 end
