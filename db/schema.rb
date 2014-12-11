@@ -11,8 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141209150906) do
+ActiveRecord::Schema.define(version: 20141211061821) do
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "expires_at"
+  end
+
+  add_index "authentications", ["uid"], name: "index_authentications_on_uid", using: :btree
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
+
+  create_table "diymenus", force: true do |t|
+    t.integer  "public_account_id"
+    t.integer  "parent_id"
+    t.string   "name"
+    t.string   "key"
+    t.string   "url"
+    t.boolean  "is_show"
+    t.integer  "sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diymenus", ["key"], name: "index_diymenus_on_key", using: :btree
+  add_index "diymenus", ["parent_id"], name: "index_diymenus_on_parent_id", using: :btree
+  add_index "diymenus", ["public_account_id"], name: "index_diymenus_on_public_account_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.string   "to_user_name"
@@ -55,20 +81,6 @@ ActiveRecord::Schema.define(version: 20141209150906) do
   add_index "public_accounts", ["weixin_id"], name: "index_public_accounts_on_weixin_id", unique: true, using: :btree
   add_index "public_accounts", ["weixin_secret_key"], name: "index_public_accounts_on_weixin_secret_key", using: :btree
   add_index "public_accounts", ["weixin_token"], name: "index_public_accounts_on_weixin_token", using: :btree
-=======
-ActiveRecord::Schema.define(version: 20141210135141) do
-
-  create_table "authentications", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-    t.datetime "expires_at"
-  end
-
-  add_index "authentications", ["uid"], name: "index_authentications_on_uid", using: :btree
-  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
->>>>>>> new
 
   create_table "users", force: true do |t|
     t.integer  "subscribe"
@@ -83,16 +95,11 @@ ActiveRecord::Schema.define(version: 20141210135141) do
     t.datetime "subscribe_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.integer  "public_account_id"
-  end
-
-  add_index "users", ["openid"], name: "index_users_on_openid", unique: true, using: :btree
-=======
     t.string   "token"
   end
 
+  add_index "users", ["openid"], name: "index_users_on_openid", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
->>>>>>> new
 
 end
