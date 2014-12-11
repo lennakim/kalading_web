@@ -2,13 +2,34 @@ Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
 
   resources :orders do
-    get 'select_car',     on: :collection
-    get 'select_item',    on: :collection
+    collection do
+      get 'select_car'
+      get 'select_item'
 
-    post 'refresh_price', on: :collection
-    post 'place_order',   on: :collection
-    post 'submit_order',  on: :collection
+      post 'refresh_price'
+      post 'place_order'
+      post 'submit'
+    end
+  end
+
+  resources :users do
+    collection do
+      get 'orders'
+      get 'maintain_histories'
+      get 'cars'
+      get 'balance'
+    end
   end
 
   root to: 'home#index'
+
+  resources :sessions do
+    post 'callback', on: :collection
+    post 'by_phone', on: :collection
+  end
+
+  namespace :admin do
+    resources :home
+  end
+
 end
