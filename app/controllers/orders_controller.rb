@@ -32,4 +32,7 @@ class OrdersController < ApplicationController
     @result = Order.refresh_price car_id, payload
   end
 
+  def show
+  end
+
 end

@@ -20,3 +20,5 @@ $ ->
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
 
+  if $(".place-order-page")
+    $("#commentForm").validate()
