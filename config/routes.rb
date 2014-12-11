@@ -12,6 +12,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    collection do
+      get 'orders'
+      get 'maintain_histories'
+      get 'cars'
+      get 'balance'
+    end
+  end
+
   root to: 'home#index'
 
   resources :sessions do
