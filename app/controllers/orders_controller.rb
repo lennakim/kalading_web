@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/server_api.rb"
-
 class OrdersController < ApplicationController
 
   def select_car
@@ -30,6 +28,10 @@ class OrdersController < ApplicationController
     }
 
     @result = Order.refresh_price car_id, payload
+  end
+
+  def submit_order
+
   end
 
   def show

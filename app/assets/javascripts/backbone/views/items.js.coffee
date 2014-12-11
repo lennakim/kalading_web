@@ -50,7 +50,6 @@ class Kalading.Views.Items extends Backbone.View
     @recoverSelectors()
 
   submitOrder: ->
-    console.log @order.attributes
     @order.submit()
 
   disableSelectors: ->
