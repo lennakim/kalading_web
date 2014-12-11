@@ -9,6 +9,12 @@ class Kalading.Models.Order extends Backbone.Model
     unless attrs.car_id
       return "car_id should not be blank"
 
+  submit: ->
+    csrf_token = $("meta[name='csrf-token']").attr('content')
+    data = {order: @attributes, authenticity_token: csrf_token}
+    if @isValid()
+      $.form('/orders/place_order', data).submit()
+
   loadPrice: ->
     data = {order: @attributes}
     order = @
@@ -25,4 +31,3 @@ class Kalading.Models.Order extends Backbone.Model
           order.trigger 'sync'
         error: (data) ->
           order.trigger 'error'
-

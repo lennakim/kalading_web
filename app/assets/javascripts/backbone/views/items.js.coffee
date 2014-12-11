@@ -51,6 +51,7 @@ class Kalading.Views.Items extends Backbone.View
 
   submitOrder: ->
     console.log @order.attributes
+    @order.submit()
 
   disableSelectors: ->
     @$price.addClass "disabled"

@@ -6,7 +6,7 @@
 #= require ./backbone/views/items.js
 #= require_self
 
-$ ->    
+$ ->
 
   $('#search_button').click ->
     id = $('#car_style option:selected').data 'id'
@@ -19,8 +19,4 @@ $ ->
   if $(".select-car-page")
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
-
-    
-    
-    
 
