@@ -17,6 +17,19 @@ class User < ActiveRecord::Base
     user
   end
 
+  def set_user_info user_info
+    self.subscribe      = user_info.result["subscribe"],
+    self.openid         = user_info.result["openid"],
+    self.nickname       = user_info.result["nickname"],
+    self.sex            = user_info.result["sex"],
+    self.language       = user_info.result["language"],
+    self.city           = user_info.result["city"],
+    self.province       = user_info.result["province"],
+    self.country        = user_info.result["country"],
+    self.headimgurl     = user_info.result["headimgurl"],
+    self.subscribe_time = user_info.result["subscribe_time"]
+  end
+
   #####  for login  #####
 
   has_many :authentications, dependent: :destroy
@@ -61,31 +74,6 @@ class User < ActiveRecord::Base
     begin
       self.token = (Digest::MD5.hexdigest "#{SecureRandom.urlsafe_base64(nil, false)}-#{Time.now.to_i}")
     end while User.where(token: self.token).exists?
-  end
-
-  ####
-
-  def self.token_expire?
-    if Settings[:weixin_token_expire] == nil || Settings[:weixin_token_expire] < Time.now
-      Settings[:weixin_token_expire] = Time.now + 60*30
-      true
-    else
-      false
-    end
-  end
-
-
-  def set_user_info user_info
-      self.subscribe      = user_info.result["subscribe"],
-      self.openid         = user_info.result["openid"],
-      self.nickname       = user_info.result["nickname"],
-      self.sex            = user_info.result["sex"],
-      self.language       = user_info.result["language"],
-      self.city           = user_info.result["city"],
-      self.province       = user_info.result["province"],
-      self.country        = user_info.result["country"],
-      self.headimgurl     = user_info.result["headimgurl"],
-      self.subscribe_time = user_info.result["subscribe_time"]
   end
 
 end
