@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     post 'by_phone', on: :collection
   end
 
+  namespace :admin do
+    resources :home
+  end
+
 end
