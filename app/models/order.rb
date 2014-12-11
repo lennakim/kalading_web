@@ -14,6 +14,10 @@ class Order
     def refresh_price car_id, payload
       ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, body: payload }
     end
+
+    def submit car_id, payload
+      ServerApi.call "post", "auto_maintain_order", { entry_id: car_id, body: payload }
+    end
   end
 
 end
