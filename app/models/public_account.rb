@@ -1,7 +1,7 @@
 class PublicAccount < ActiveRecord::Base
   # It will auto generate weixin token and secret
   include WeixinRailsMiddleware::AutoGenerateWeixinTokenSecretKey
-  has_many :users
+  has_many :users, dependent: :destroy
   has_many :diymenus, dependent: :destroy
   has_many :parent_menus, ->{includes(:sub_menus).where(parent_id: nil, is_show: true).order("sort").limit(3)}, class_name: "Diymenu", foreign_key: :public_account_id
 

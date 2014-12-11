@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
   validates :openid, :uniqueness => true
   belongs_to :public_account
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
-  def self.find_or_create_by weixin_name, openid
+  def self.check_or_create weixin_id, openid
     user = User.find_by openid: openid
     unless user
-      account = PublicAccount.find_by name: weixin_name
+      account = PublicAccount.find_by weixin_id: weixin_id
       weixin_client = account.weixin_client
       user_info = weixin_client.user openid
       user = account.users.new

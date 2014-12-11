@@ -12,9 +12,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       # reply_text_message("Your Message: #{@keyword}")
-      user = User.find_or_create_by "kalading1", @weixin_message.FromUserName
+      user = User.check_or_create @weixin_message.ToUserName, @weixin_message.FromUserName
       msg = user.messages.new
-      msg.set_message @weixin_message
+      msg.set_info @weixin_message
       msg.save
       puts "---------------------"
       reply_text_message("Hello, #{@weixin_message}")
@@ -82,7 +82,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
-        account = PublicAccount.find_by name:"kalading1"
+        account = PublicAccount.find_by weixin_id: @weixin_message.ToUserName
         client = account.weixin_client
         user_info = client.user @weixin_message.FromUserName
         user = account.users.new
