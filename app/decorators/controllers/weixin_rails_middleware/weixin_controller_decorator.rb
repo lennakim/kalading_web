@@ -12,7 +12,10 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       # reply_text_message("Your Message: #{@keyword}")
-      Message.save_txt_message("kalading1", @weixin_message)
+      user = User.find_or_create_by "kalading1", @weixin_message.FromUserName
+      msg = user.messages.new
+      msg.set_message @weixin_message
+      msg.save
       puts "---------------------"
       reply_text_message("Hello, #{@weixin_message}")
     end
@@ -79,20 +82,23 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
-        # reply_text_message("关注公众账号")
-        nickname = User.get_follower_nickname @weixin_message.FromUserName
-        reply_text_message("Hello #{nickname}，欢迎关注卡拉丁！")
+        account = PublicAccount.find_by name:"kalading1"
+        client = account.weixin_client
+        user_info = client.user @weixin_message.FromUserName
+        user = account.users.new
+        user.set_user_info user_info
+        user.save
+        reply_text_message("Hello，欢迎关注卡拉丁！")
       end
 
       # 取消关注
       def handle_unsubscribe_event
-        nickname = User.get_follower_nickname @weixin_message.FromUserName
-        Rails.logger.info("Bye, #{nickname}")
-        Rails.logger.info("取消关注")
+        Rails.logger.info("取消关注").to_s
       end
 
       # 扫描带参数二维码事件: 2. 用户已关注时的事件推送
       def handle_scan_event
+        puts "扫描二维码事件"
         reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
       end
 
@@ -110,7 +116,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 点击菜单跳转链接时的事件推送
       def handle_view_event
-        Rails.logger.info("你点击了: #{@keyword}")
+        # reply_text_message("你点击了: #{@keyword}")
+        Rails.logger.info("#{@weixin_message.FromUserName}点击了: #{@keyword}").to_s
       end
 
       # 帮助文档: https://github.com/lanrion/weixin_authorize/issues/22
