@@ -4,7 +4,10 @@
 #= require jquery.chained.remote.min
 #= require jquery.form
 #= require jquery.validate.min
-#= require moment
+#= require picker
+#= require legacy
+#= require picker.date
+#= require picker.time
 #= require_self
 
 window.Kalading =
