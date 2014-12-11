@@ -8,8 +8,17 @@
 
 $ ->
 
-  if $(".items-select-page")
+  $('#search_button').click ->
+    id = $('#car_style option:selected').data 'id'
+    window.location.href = "/orders/select_item?car_id=#{id}"
 
+  if $(".items-select-page").length > 0
     items_view = new Kalading.Views.Items
+    items_view.recoverSelectors()
 
-    items_view.recover_all()
+  if $(".select-car-page").length > 0
+    $('#car_style').chained('#car_type,#car_name')
+    $('#car_type').chained('#car_name')
+
+  if $(".place-order-page").length > 0
+    $("#commentForm").validate()

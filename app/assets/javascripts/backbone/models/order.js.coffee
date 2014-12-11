@@ -4,10 +4,16 @@ class Kalading.Models.Order extends Backbone.Model
     @on("change:parts", @loadPrice)
 
   validate: (attrs, options) ->
-    unless attrs.price
-      return "price should not be blank"
+    # unless attrs.price
+    #   return "price should not be blank"
     unless attrs.car_id
       return "car_id should not be blank"
+
+  submit: ->
+    csrf_token = $("meta[name='csrf-token']").attr('content')
+    data = {order: @attributes, authenticity_token: csrf_token}
+    if @isValid()
+      $.form('/orders/place_order', data).submit()
 
   loadPrice: ->
     data = {order: @attributes}
@@ -21,3 +27,7 @@ class Kalading.Models.Order extends Backbone.Model
         data: data,
         success: (data) ->
           order.set 'price', data['result']['price']
+          order.set 'service_price', data['result']['service_price']
+          order.trigger 'sync'
+        error: (data) ->
+          order.trigger 'error'

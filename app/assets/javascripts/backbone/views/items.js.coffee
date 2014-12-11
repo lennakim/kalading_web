@@ -4,39 +4,64 @@ class Kalading.Views.Items extends Backbone.View
 
   events:
     "change .part": "resetSelectItems"
+    "click .part-selector": "chooseParts"
+    "click #order_button": "submitOrder"
 
   initialize: ->
     @order = new Kalading.Models.Order
 
     @$parts = @$(".part")
     @$price = @$(".price")
+    @$service_price = @$(".service-price")
+    @$checkboxes = @$(".part-selector")
+    @$order_button = @$("#order_button")
 
     @resetSelectItems()
 
     @order.set 'price', @$price.data('price')
     @order.set 'car_id', $("#main").data('car')
+    @order.set 'service_price', @$service_price.data('price')
 
-    @listenTo(@order, 'change:price', @renderPrice)
+    @listenTo(@order, 'sync', @render)
+    @listenTo(@order, 'error', @errorHandler)
 
-  resetSelectItems: (parts, price) =>
+  resetSelectItems: =>
     console.log 'reset select item'
-    parts = _.map @$(".part option:selected"), (el, index) ->
+    parts = _.map @$(".part:enabled option:selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
 
     @order.set 'parts', parts
 
-    @disable_all()
+    @disableSelectors()
 
-  renderPrice: ->
+  chooseParts: (e)=>
+    $checkbox = $(e.target)
+    checked = $checkbox.prop('checked')
+
+    $checkbox.siblings('.part').attr('disabled', !checked)
+
+    @resetSelectItems()
+
+  render: ->
     console.log 'render price'
-    @recover_all()
     @$price.text(@order.get('price'))
+    @$service_price.text(@order.get('service_price'))
+    @recoverSelectors()
 
-  disable_all: ->
+  submitOrder: ->
+    @order.submit()
+
+  disableSelectors: ->
     @$price.addClass "disabled"
-    @$parts.attr('disabled', true)
+    @$checkboxes.attr('disabled', true)
+    @$order_button.attr('disabled', true)
 
-  recover_all: ->
-    @$parts.attr('disabled', false)
+  recoverSelectors: ->
     @$price.removeClass "disabled"
+    @$checkboxes.attr('disabled', false)
+    @$order_button.attr('disabled', false)
+
+  errorHandler: ->
+    alert '服务器错误...请稍后再试'
+    @recoverSelectors()

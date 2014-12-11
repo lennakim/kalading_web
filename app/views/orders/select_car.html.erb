@@ -2,3 +2,35 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 <%= title "创建订单" %>
+
+<div class="select-car-page">
+  <select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
+    <% @cars_info.each do |car| %>
+      <option value="<%= car['name'] %>">
+        <%= car['name'] %>
+      </option>
+    <% end %>
+  </select>
+  <select name="car_type" id="car_type">
+    <% @cars_info.each do |car| %>
+      <% car['ams'].each do |type| %>
+        <option value="<%= type['name'] %>" class="<%= car['name'] %>">
+          <%= type['name'] %>
+        </option>
+      <% end %>
+    <% end %>
+  </select>
+  <select name="car_style" id="car_style">
+    <% @cars_info.each do |car| %>
+      <% car['ams'].each do |type| %>
+        <% type['asms'].each do |style| %>
+          <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
+            <%= style['name'] %><%= style['_id'] %>
+          </option>
+        <% end %>
+      <% end %>
+    <% end %>
+  </select>
+  <button id="search_button">查询</button>
+</div>
+
