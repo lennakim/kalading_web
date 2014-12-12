@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def maintain_histories
+  	
   end
 
   def cars
