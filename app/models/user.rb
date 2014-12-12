@@ -1,4 +1,34 @@
 class User < ActiveRecord::Base
+  validates :openid, :uniqueness => true
+  belongs_to :public_account
+  has_many :messages, dependent: :destroy
+
+  def self.check_or_create weixin_id, openid
+    user = User.find_by openid: openid
+    unless user
+      account = PublicAccount.find_by weixin_id: weixin_id
+      weixin_client = account.weixin_client
+      user_info = weixin_client.user openid
+      user = account.users.new
+      user.set_user_info user_info
+      user.save
+      return user
+    end
+    user
+  end
+
+  def set_user_info user_info
+    self.subscribe      = user_info.result["subscribe"],
+    self.openid         = user_info.result["openid"],
+    self.nickname       = user_info.result["nickname"],
+    self.sex            = user_info.result["sex"],
+    self.language       = user_info.result["language"],
+    self.city           = user_info.result["city"],
+    self.province       = user_info.result["province"],
+    self.country        = user_info.result["country"],
+    self.headimgurl     = user_info.result["headimgurl"],
+    self.subscribe_time = user_info.result["subscribe_time"]
+  end
 
   #####  for login  #####
 
@@ -44,80 +74,6 @@ class User < ActiveRecord::Base
     begin
       self.token = (Digest::MD5.hexdigest "#{SecureRandom.urlsafe_base64(nil, false)}-#{Time.now.to_i}")
     end while User.where(token: self.token).exists?
-  end
-
-  ####
-
-  def self.get_client
-    if $client == nil || User.token_expire?
-      $client = WeixinAuthorize::Client.new(Settings.weixin_appid, Settings.weixin_appsecret)
-    end
-
-    $client.is_valid? ? $client : "invalid appid or appsecret"
-  end
-
-  # return value is a Array type
-  def self.get_all_followers_openid
-    $client ||= User.get_client
-    $client.followers.result["data"]["openid"]
-  end
-
-  def self.get_follower_nickname(openid)
-    user = User.find_by_openid openid
-    if user == nil
-      User.save_weixin_user openid
-      $client ||= User.get_client
-      user_info = $client.user(openid)
-      user_info.result["nickname"]
-    else
-      user.nickname
-    end
-  end
-
-
-  def self.token_expire?
-    if Settings[:weixin_token_expire] == nil || Settings[:weixin_token_expire] < Time.now
-      Settings[:weixin_token_expire] = Time.now + 60*30
-      true
-    else
-      false
-    end
-  end
-
-  def self.update_weixin_user(openid)
-    user = User.find_by_openid openid
-    if user != nil
-      user = user.set_weixin_user_info(openid)
-      user.save!
-    else
-      User.save_weixin_user(openid)
-    end
-  end
-
-  def self.save_weixin_user(openid)
-    unless User.find_by_openid openid
-      user = User.new
-      user = user.set_weixin_user_info(openid)
-      user.save!
-    end
-  end
-
-
-  def set_weixin_user_info(openid)
-    user = User.new
-    $client ||= User.get_client
-    user_info = $client.user(openid)
-    user.subscribe = user_info.result["subscribe"]
-    user.openid = user_info.result["openid"]
-    user.nickname = user_info.result["nickname"]
-    user.sex = user_info.result["sex"]
-    user.language = user_info.result["language"]
-    user.city = user_info.result["city"]
-    user.province = user_info.result["province"]
-    user.country = user_info.result["country"]
-    user.headimgurl = user_info.result["headimgurl"]
-    user.subscribe_time = user_info.result["subscribe_time"]
-    user
   end
 
 end
