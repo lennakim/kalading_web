@@ -4,6 +4,10 @@
 #= require jquery.chained.remote.min
 #= require jquery.form
 #= require jquery.validate.min
+#= require picker
+#= require legacy
+#= require picker.date
+#= require picker.time
 #= require bootstrap-sprockets
 #= require_self
 
