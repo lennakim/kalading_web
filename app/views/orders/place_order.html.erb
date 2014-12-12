@@ -10,7 +10,7 @@
 		    <p>
 		      <var class="star">*</var>
 		      <%= label_tag(:name, "姓名:") %>
-		      <%= text_field_tag(:name,'', :minlength => 2, :required => true) %>
+		      <%= text_field_tag(:name,'', :required => true) %>
 		    </p>
 		    <p>
 		      <%= label_tag(:city_name, "所在地区:") %>
@@ -102,26 +102,46 @@
 		    			<%= @result['name'] %>
 		    		</td>
 			        <td>
-			        	<% @result['parts'][0]['机滤'].each do |part| %>
+						<% @result['parts'].each_index do |index| %>
+							<% part = @result['parts'][index]%>
 							<p>
-								<%= part['brand'] %>
-							</p> 
-						<% end %>
-						<% @result['parts'][1]['机油'].each do |part| %>
-							<p>
-								<%= part['brand'] %>
+								<% if part['空气滤清器'] %>
+									[空气滤清器]<%= part['空气滤清器'][0]['brand'] %>
+								<% end %>
+								<% if part['空调滤清器'] %>
+									[空调滤清器]<%= part['空调滤清器'][0]['brand'] %>
+								<% end %>
+								<% if part['机滤'] %>
+									[机滤]<%= part['机滤'][0]['brand'] %>
+								<% end %>
+								<% if part['机油'] %>
+									[机油]<%= part['机油'][0]['brand'] %>
+								<% end %>
+								<% if part['PM2.5特效滤芯'] %>
+									[PM2.5特效滤芯]<%= part['PM2.5特效滤芯'][0]['brand'] %>
+								<% end %>
 							</p> 
 						<% end %>
 			        </td>
 					<td>
-						<% @result['parts'][0]['机滤'].each do |part| %>
+						<% @result['parts'].each_index do |index| %>
+							<% part = @result['parts'][index]%>
 							<p>
-								<%= part['price'] %>
-							</p> 
-						<% end %>
-						<% @result['parts'][1]['机油'].each do |part| %>
-							<p>
-								<%= part['price'] %>
+								<% if part['空气滤清器'] %>
+									<%= part['空气滤清器'][0]['price'] %>
+								<% end %>
+								<% if part['空调滤清器'] %>
+									<%= part['空调滤清器'][0]['price'] %>
+								<% end %>
+								<% if part['机滤'] %>
+									<%= part['机滤'][0]['price'] %>
+								<% end %>
+								<% if part['机油'] %>
+									<%= part['机油'][0]['price'] %>
+								<% end %>
+								<% if part['PM2.5特效滤芯'] %>
+									<%= part['PM2.5特效滤芯'][0]['price'] %>
+								<% end %>
 							</p> 
 						<% end %>
 			        </td>	

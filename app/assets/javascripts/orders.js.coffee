@@ -58,10 +58,7 @@ $ ->
         }
       }
       messages: {
-        name: {
-          required: "请输入姓名",
-          minlength: "最少两位字符"
-        },
+        name: "请输入姓名",
         address: "请输入详细地址",
         phone_num: {
           required: "请输入手机号码",
