@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211090710) do
+ActiveRecord::Schema.define(version: 20141213065850) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -95,11 +95,22 @@ ActiveRecord::Schema.define(version: 20141211090710) do
     t.datetime "subscribe_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "public_account_id"
     t.string   "token"
+    t.integer  "public_account_id"
   end
 
   add_index "users", ["openid"], name: "index_users_on_openid", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
+
+  create_table "verification_codes", force: true do |t|
+    t.string   "phone_num"
+    t.string   "code"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "verification_codes", ["code"], name: "index_verification_codes_on_code", using: :btree
+  add_index "verification_codes", ["phone_num"], name: "index_verification_codes_on_phone_num", using: :btree
 
 end
