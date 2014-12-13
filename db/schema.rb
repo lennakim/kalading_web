@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213065850) do
+ActiveRecord::Schema.define(version: 20141213132826) do
+
+  create_table "activities", force: true do |t|
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -23,6 +31,13 @@ ActiveRecord::Schema.define(version: 20141213065850) do
 
   add_index "authentications", ["uid"], name: "index_authentications_on_uid", using: :btree
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
+
+  create_table "channels", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "diymenus", force: true do |t|
     t.integer  "public_account_id"
@@ -81,6 +96,16 @@ ActiveRecord::Schema.define(version: 20141213065850) do
   add_index "public_accounts", ["weixin_id"], name: "index_public_accounts_on_weixin_id", unique: true, using: :btree
   add_index "public_accounts", ["weixin_secret_key"], name: "index_public_accounts_on_weixin_secret_key", using: :btree
   add_index "public_accounts", ["weixin_token"], name: "index_public_accounts_on_weixin_token", using: :btree
+
+  create_table "traffics", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "channel_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "traffics", ["activity_id"], name: "index_traffics_on_activity_id", using: :btree
+  add_index "traffics", ["channel_id"], name: "index_traffics_on_channel_id", using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "subscribe"
