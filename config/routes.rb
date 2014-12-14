@@ -33,8 +33,8 @@ Rails.application.routes.draw do
     root to: 'home#index'
     resources :home
     resources :activities
+    resources :channels
   end
 
   get 'activities/9.9' => "activity/home#activity_99"
-
 end

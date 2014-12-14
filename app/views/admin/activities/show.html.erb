@@ -17,6 +17,13 @@
       <td><%= resource.end_date %></td>
     </tr>
 
+    <% Channel.all.each do |channel| %>
+      <tr>
+        <td><%= channel.name %>推广链接</td>
+        <td><%= link_to "http://hd.kalading.com/activites/9.9?from=#{channel.key}", admin_channel_path(channel) %></td>
+      </tr>
+    <% end %>
+
   </table>
 
   <%= link_to 'Edit', edit_admin_activity_path(resource) %> |
