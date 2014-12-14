@@ -1,7 +1,7 @@
 class PhonesController < ApplicationController
 
   def create
-    if vcode = VerificationCode.find_by phone_num: params[:phone_num], code: params[:code]
+    if vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
 
       # create a order to backend
       car_license = params[:car_license]
