@@ -40,5 +40,9 @@ Rails.application.routes.draw do
     resources :home
   end
 
+  resources :phones do
+    post :send_verification_code, on: :collection
+  end
+
   get 'activities/:name' => 'activity/home#show', as: 'activity'
 end

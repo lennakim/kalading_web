@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
     def create_auth(auth)
       create!(
-        nickname:    auth["nickname"],
+        nickname:         auth["nickname"],
         headimgurl:       auth["image"],
         authentications_attributes: [
           {
