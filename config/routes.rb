@@ -29,7 +29,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :home
+    resource :home
   end
+
+
+  get 'activities/9.9' => "activity/home#activity_99"
 
 end

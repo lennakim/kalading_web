@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <meta name="description" content="<%= meta_description %>">
+  <meta name="keywords" content="<%= meta_keywords %>">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <%= favicon_link_tag 'favicon.ico' %>
+
+  <%= stylesheet_link_tag    'activity/activity', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'activity/activity', 'data-turbolinks-track' => true %>
+
+  <%= yield :javascripts %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= yield %>
+
+  <% if Rails.env.production? %>
+    <script src="http://s19.cnzz.com/z_stat.php?id=1252972288&web_id=1252972288" language="JavaScript"></script>
+  <% end %>
+
+</body>
+</html>
