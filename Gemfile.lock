@@ -73,7 +73,11 @@ GEM
       activesupport (>= 3.2, < 5)
     hashie (3.3.1)
     hike (1.2.3)
+    httpclient (2.4.0)
     i18n (0.6.11)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     inherited_resources (1.5.1)
       actionpack (>= 3.2, < 4.2)
       has_scope (~> 0.6.0.rc)
@@ -220,6 +224,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.1)
   carrierwave
   coffee-rails (~> 4.0.0)
+  impressionist
   inherited_resources
   jbuilder (~> 2.0)
   jquery-rails

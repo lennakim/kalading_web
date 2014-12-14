@@ -43,6 +43,9 @@ gem 'inherited_resources'
 # phone
 gem 'phonelib'
 
+# traffic data
+gem 'impressionist'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'

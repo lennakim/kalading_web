@@ -1,9 +1,8 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
   <table class='table'>
-
     <tr>
-      <td>名称</td>
+      <td>UI（*英语）</td>
       <td><%= resource.name %></td>
     </tr>
 
@@ -17,13 +16,30 @@
       <td><%= resource.end_date %></td>
     </tr>
 
+    <tr>
+      <td>活动链接</td>
+      <td><%= link_to "#{activity_url(resource.name)}", activity_path(resource.name), target: '_blank' %></td>
+    </tr>
+
     <% Channel.all.each do |channel| %>
       <tr>
         <td><%= channel.name %>推广链接</td>
-        <td><%= link_to "http://hd.kalading.com/activites/9.9?from=#{channel.key}", admin_channel_path(channel) %></td>
+        <td><%= link_to "#{activity_url(resource.name, from: channel.key)}", activity_url(resource.name, from: channel.key), target: "_blank" %></td>
       </tr>
     <% end %>
+  </table>
 
+  <hr>
+
+  渠道流量统计
+  <table class="table">
+
+    <% Channel.all.each do |channel| %>
+      <tr>
+        <td><%= channel.name %></td>
+        <td><%= resource.impressions.where(message: channel.key).count %></td>
+      </tr>
+    <% end %>
   </table>
 
   <%= link_to 'Edit', edit_admin_activity_path(resource) %> |

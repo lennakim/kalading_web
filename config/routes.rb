@@ -36,5 +36,9 @@ Rails.application.routes.draw do
     resources :channels
   end
 
-  get 'activities/9.9' => "activity/home#activity_99"
+  namespace :activity do
+    resources :home
+  end
+
+  get 'activities/:name' => 'activity/home#show', as: 'activity'
 end

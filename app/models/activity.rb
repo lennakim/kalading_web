@@ -1,6 +1,5 @@
 class Activity < ActiveRecord::Base
   validates :name, presence: true
 
-  has_many :traffics
-  has_many :channels, through: :traffics
+  is_impressionable counter_cache: true
 end

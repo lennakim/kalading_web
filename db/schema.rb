@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213132826) do
+ActiveRecord::Schema.define(version: 20141214160658) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141213132826) do
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "impressions_count", default: 0
   end
 
   create_table "authentications", force: true do |t|
@@ -54,6 +55,31 @@ ActiveRecord::Schema.define(version: 20141213132826) do
   add_index "diymenus", ["key"], name: "index_diymenus_on_key", using: :btree
   add_index "diymenus", ["parent_id"], name: "index_diymenus_on_parent_id", using: :btree
   add_index "diymenus", ["public_account_id"], name: "index_diymenus_on_public_account_id", using: :btree
+
+  create_table "impressions", force: true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}, using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.string   "to_user_name"
@@ -96,16 +122,6 @@ ActiveRecord::Schema.define(version: 20141213132826) do
   add_index "public_accounts", ["weixin_id"], name: "index_public_accounts_on_weixin_id", unique: true, using: :btree
   add_index "public_accounts", ["weixin_secret_key"], name: "index_public_accounts_on_weixin_secret_key", using: :btree
   add_index "public_accounts", ["weixin_token"], name: "index_public_accounts_on_weixin_token", using: :btree
-
-  create_table "traffics", force: true do |t|
-    t.integer  "activity_id"
-    t.integer  "channel_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "traffics", ["activity_id"], name: "index_traffics_on_activity_id", using: :btree
-  add_index "traffics", ["channel_id"], name: "index_traffics_on_channel_id", using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "subscribe"

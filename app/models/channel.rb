@@ -3,9 +3,6 @@ class Channel < ActiveRecord::Base
 
   before_create :generate_key
 
-  has_many :traffics
-  has_many :activities, through: :traffics
-
   def generate_key
     self.key = Digest::MD5.hexdigest "#{SecureRandom.urlsafe_base64(nil, false)}-#{Time.now.to_i}"
   end
