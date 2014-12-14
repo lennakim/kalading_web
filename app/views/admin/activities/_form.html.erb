@@ -1,0 +1,40 @@
+<div class="container">
+  <%= form_for [:admin, resource] do |f| %>
+    <% if resource.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(resource.errors.count, "error") %> prohibited this admin_activity from being saved:</h2>
+
+        <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <table class="table">
+
+        <tr>
+          <td>名字</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr>
+          <td>开始日期</td>
+          <td><%= f.date_field :start_date %></td>
+        </tr>
+
+        <tr>
+          <td>结束日期</td>
+          <td><%= f.date_field :end_date %></td>
+        </tr>
+
+        <tr>
+          <td colspan=2><%= f.submit %></td>
+        </tr>
+
+      </table>
+    </div>
+  <% end %>
+</div>

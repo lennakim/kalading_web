@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount WeixinRailsMiddleware::Engine, at: "/"
 
   resources :orders do
@@ -29,9 +30,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resource :home
+    root to: 'home#index'
+    resources :home
+    resources :activities
   end
-
 
   get 'activities/9.9' => "activity/home#activity_99"
 
