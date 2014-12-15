@@ -1,20 +1,30 @@
 @keyframes rotate-animate{
 	0%{transform:rotate(0);}
-	100%{transform:rotate(360deg);}
+	100%{transform:rotate(-360deg);}
 }
 @-webkit-keyframes rotate-animate{
 	0%{-webkit-transform:rotate(0);}
-	100%{-webkit-transform:rotate(360deg);}
+	100%{-webkit-transform:rotate(-360deg);}
 }
-@keyframes translate-animate{
+@keyframes translate-cloud-animate{
 	0%{transform:translateX(-10px);}
 	50%{transform:translateX(10px);}
 	100%{transform:translateX(-10px);}
 }
-@-webkit-keyframes translate-animate{
+@-webkit-keyframes translate-cloud-animate{
 	0%{-webkit-transform:translateX(-10px);}
 	50%{-webkit-transform:translateX(10px);}
 	100%{-webkit-transform:translateX(-10px);}
+}
+@keyframes translate-car-animate{
+	0%{transform:translateY(-2px);}
+	50%{transform:translateY(2px);}
+	100%{transform:translateY(-2px);}
+}
+@-webkit-keyframes translate-car-animate{
+	0%{-webkit-transform:translateY(-2px);}
+	50%{-webkit-transform:translateY(2px);}
+	100%{-webkit-transform:translateY(-2px);}
 }
 $sky: #3acaff;
 $land: #ee7833;
@@ -26,15 +36,19 @@ $orange-btn: #ee9d34;
 	background: $sky;
 	position: relative;
 	z-index: 0;
-	.translate{
-		animation:translate-animate 3s linear infinite;
-		-webkit-animation:translate-animate 3s linear infinite;
+	.translate-cloud{
+		animation:translate-cloud-animate 3s linear infinite;
+		-webkit-animation:translate-cloud-animate 3s linear infinite;
+	}
+	.translate-car{
+		animation:translate-car-animate 1s linear infinite;
+		-webkit-animation:translate-car-animate 1s linear infinite;
 	}
 	.rotate{
-		animation:rotate-animate 10s linear infinite;
-		-webkit-animation:rotate-animate 10s linear infinite;
-		-webkit-transform-origin: center center;
-		transform-origin: center center;
+		animation:rotate-animate 20s linear infinite;
+		-webkit-animation:rotate-animate 20s linear infinite;
+		transform-origin: 50% 54%;
+		-webkit-transform-origin: 50% 54%;
 	}
 	.cloud,.build,.car,.land{
 		position: absolute;
@@ -44,13 +58,13 @@ $orange-btn: #ee9d34;
 		z-index: 1;
 	}
 	.build{
-		width: 200%;
-		margin-left: -50%;
-		top: 230px;
+		width: 300%;
+		margin-left: -100%;
+		top: 60px;
 		z-index: 1;
 	}
 	.car{
-		top: 170px;
+		top: 160px;
 		left: 18%;
 		z-index: 3;
 	}
@@ -58,23 +72,37 @@ $orange-btn: #ee9d34;
 		width: 100%;
 		height: 400px;
 		overflow: hidden;
-		top: 230px;
-		z-index: 2;
-		background: $land;
+		top: 220px;
+		z-index: 3;
 		color: #fff;
-		.land-box{
-			width: 200%;
-			margin-left: -165px;
-			padding-top: 50px;
-			border-radius: 320px 320px 0 0;
+		.form-box{
+			width: 100%;
+			padding-top: 100px;
+		}
+		.hidden{
+			display: none;
 		}
 		.description{
-			height: 140px;
 			padding: 0 10px;
+			margin: 20px 10px;
+			padding-top: 10px;
+			p{
+				width: 90%;
+				margin-left: 6%;
+			}
+			.order-btn{
+				width: 65%;
+				margin: 0 auto;
+				text-align: center;
+				background: #f5b333;
+				height: 40px;
+				line-height: 40px;
+				border-radius: 5px;
+			}
 		}
 	}
 	form{
-		width: 50%;
+		width: 100%;
 		margin: 0 auto;
 		.field,.code{
 			overflow: hidden;
@@ -88,18 +116,18 @@ $orange-btn: #ee9d34;
 			}
 		}
 		.field{
-			width: 80%;
+			width: 93%;
 			label,input{
 				margin: 0 5px;
 			}
 			input{
-				width: 70%;
+				width: 75%;
 				padding: 0 10px;
 			}
 		}
 		.code{
-			width: 70%;
-			padding-left: 45px;
+			width: 85%;
+			padding-left: 47px;
 			input{
 				width: 48%;
 				text-align: center;
@@ -107,6 +135,9 @@ $orange-btn: #ee9d34;
 			.get_code{
 				margin-left: 7px;
 				background: $orange-btn;
+			}
+			.disable{
+				background: #ccc;
 			}
 		}
 		.submit_button{
