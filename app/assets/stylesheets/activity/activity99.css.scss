@@ -1,0 +1,122 @@
+@keyframes rotate-animate{
+	0%{transform:rotate(0);}
+	100%{transform:rotate(360deg);}
+}
+@-webkit-keyframes rotate-animate{
+	0%{-webkit-transform:rotate(0);}
+	100%{-webkit-transform:rotate(360deg);}
+}
+@keyframes translate-animate{
+	0%{transform:translateX(-10px);}
+	50%{transform:translateX(10px);}
+	100%{transform:translateX(-10px);}
+}
+@-webkit-keyframes translate-animate{
+	0%{-webkit-transform:translateX(-10px);}
+	50%{-webkit-transform:translateX(10px);}
+	100%{-webkit-transform:translateX(-10px);}
+}
+$sky: #3acaff;
+$land: #ee7833;
+$orange-btn: #ee9d34;
+.activity99{
+	width: 100%;
+	height: 568px;
+	overflow: hidden;
+	background: $sky;
+	position: relative;
+	z-index: 0;
+	.translate{
+		animation:translate-animate 3s linear infinite;
+		-webkit-animation:translate-animate 3s linear infinite;
+	}
+	.rotate{
+		animation:rotate-animate 10s linear infinite;
+		-webkit-animation:rotate-animate 10s linear infinite;
+		-webkit-transform-origin: center center;
+		transform-origin: center center;
+	}
+	.cloud,.build,.car,.land{
+		position: absolute;
+	}
+	.cloud{
+		top: 0;
+		z-index: 1;
+	}
+	.build{
+		width: 200%;
+		margin-left: -50%;
+		top: 230px;
+		z-index: 1;
+	}
+	.car{
+		top: 170px;
+		left: 18%;
+		z-index: 3;
+	}
+	.land{
+		width: 100%;
+		height: 400px;
+		overflow: hidden;
+		top: 230px;
+		z-index: 2;
+		background: $land;
+		color: #fff;
+		.land-box{
+			width: 200%;
+			margin-left: -165px;
+			padding-top: 50px;
+			border-radius: 320px 320px 0 0;
+		}
+		.description{
+			height: 140px;
+			padding: 0 10px;
+		}
+	}
+	form{
+		width: 50%;
+		margin: 0 auto;
+		.field,.code{
+			overflow: hidden;
+			margin: 5px auto;
+			label,input{
+				float: left;
+				height: 35px;
+				line-height: 35px;
+				border-radius: 5px;
+				border: 0;
+			}
+		}
+		.field{
+			width: 80%;
+			label,input{
+				margin: 0 5px;
+			}
+			input{
+				width: 70%;
+				padding: 0 10px;
+			}
+		}
+		.code{
+			width: 70%;
+			padding-left: 45px;
+			input{
+				width: 48%;
+				text-align: center;
+			}
+			.get_code{
+				margin-left: 7px;
+				background: $orange-btn;
+			}
+		}
+		.submit_button{
+			width: 100%;
+			height: 35px;
+			line-height: 35px;
+			border: 0;
+			border-radius: 5px;
+			color: #fff;
+			background: $orange-btn;
+		}
+	}
+}

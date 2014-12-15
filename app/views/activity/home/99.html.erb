@@ -1,13 +1,36 @@
 <%= title '9.9元' %>
 
 <div class="activity99">
-  <%= form_tag send_verification_code_phones_path, remote: :true do %>
-    <%= text_field_tag('phone_num', "", class: 'form-control', id: 'phone_num') %>
-    <%= submit_tag("发送验证码") %>
-  <% end %>
-
-  <input type="text" class="form-control" id="verification_code"></input>
-  <input type="text" class="form-control" id="car_license_num"></input>
-
-  <button id="submit_button">提交</button>
+  <%#= image_tag("title.png",width:"100%", class: "title ") %>
+  <%= image_tag("cloud.png",width:"100%", class: "cloud translate") %>
+  <%= image_tag("build.png",width:"100%", class: "build rotate") %>
+  <%= image_tag("car.gif",width:"50%", class: "car") %>
+  <div class="land">
+  	<div class="land-box">
+  	  <%= form_tag send_verification_code_phones_path, remote: :true do %>
+  	  	<div class="field">
+  	  		<%= label_tag(:phone_num, "手机号:") %>
+	    	<%= text_field_tag('phone_num', "", class: '', id: 'phone_num') %>
+  	  	</div>
+  	    <div class="field">
+		    <%= label_tag(:car_num, "车牌号:") %>
+		    <input type="text" class="" placeholder="例：京A12345" id="car_license_num"/>
+		</div>
+		<div class="code">
+			<input type="text" class="verification_code" placeholder="验证码" id="verification_code"/>
+	    	<%= submit_tag("点击获取",:class=>'get_code') %>
+		</div>
+		<div class="code">
+			<button id="submit_button" class="submit_button">立即预定</button>
+		</div>
+	  <% end %>
+	</div>
+	<div class="description">
+  	  <h4>活动说明：</h4>
+  	  <p>1</p>
+  	  <p>2</p>
+  	  <p>3</p>
+  	</div>
+  </div>
 </div>
+ 
