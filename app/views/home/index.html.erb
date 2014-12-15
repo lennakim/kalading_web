@@ -2,6 +2,7 @@
 
 <%= link_to "创建订单", select_car_orders_path %>
 <%= link_to "我的订单", orders_users_path %>
+<%= link_to "我的保养记录", maintain_histories_users_path %>
 <% if signed_in? %>
   你已经使用<%= current_user.nickname %>的账户登陆
 <% else %>

@@ -22,6 +22,10 @@ class Order
     def get_orders_of phone_num = nil, client_id = nil, page = 1, per = 1000
       ServerApi.call "get", "orders", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
     end
+
+    def maintain_histories_of phone_num = nil, client_id = nil, page = 1, per = 1000
+      ServerApi.call "get", "auto_inspection_report", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
+    end
   end
 
 end
