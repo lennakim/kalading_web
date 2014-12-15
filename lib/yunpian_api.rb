@@ -7,14 +7,11 @@ module YunpianApi
     data = {
       apikey: 'b898453f2ea218bbbe953ae0208d11dc',
       mobile: mobile,
-      tpl_id: '1',
-      tpl_value: content
+      text: content
     }
 
     RestClient.post \
       "http://yunpian.com/v1/sms/tpl_send.json",
-      data.to_json,
-      content_type: 'json',
-      accept: 'json'
+      data.to_json
   end
 end

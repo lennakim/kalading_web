@@ -10,7 +10,7 @@ class VerificationCode < ActiveRecord::Base
   after_create :send_sms
 
   def send_sms
-    YunpianApi.send_to self.phone_num, "#code#=#{self.code}&#company#=卡拉丁"
+    YunpianApi.send_to self.phone_num, "您的验证码是#{self.code}【卡拉丁】"
   end
 
   def generate_code
