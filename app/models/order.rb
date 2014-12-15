@@ -18,6 +18,10 @@ class Order
     def submit car_id, payload
       ServerApi.call "post", "auto_maintain_order", { entry_id: car_id, body: payload }
     end
+
+    def submit_special_order payload
+      ServerApi.call 'post', 'auto_special_order', { body: payload }
+    end
   end
 
 end
