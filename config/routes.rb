@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount WeixinRailsMiddleware::Engine, at: "/"
 
   resources :orders do
@@ -29,7 +30,19 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'home#index'
+    resources :home
+    resources :activities
+    resources :channels
+  end
+
+  namespace :activity do
     resources :home
   end
 
+  resources :phones do
+    post :send_verification_code, on: :collection
+  end
+
+  get 'activities/:name' => 'activity/home#show', as: 'activity'
 end

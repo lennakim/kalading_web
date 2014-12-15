@@ -1,0 +1,56 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <table class='table'>
+    <tr>
+      <td>UI（*英语）</td>
+      <td><%= resource.name %></td>
+    </tr>
+
+    <tr>
+      <td>开始日期</td>
+      <td><%= resource.start_date %></td>
+    </tr>
+
+    <tr>
+      <td>结束日期</td>
+      <td><%= resource.end_date %></td>
+    </tr>
+
+    <tr>
+      <td>活动链接</td>
+      <td><%= link_to "#{activity_url(resource.name)}", activity_path(resource.name), target: '_blank' %></td>
+    </tr>
+
+    <% Channel.all.each do |channel| %>
+      <tr>
+        <td><%= channel.name %>推广链接</td>
+        <td><%= link_to "#{activity_url(resource.name, from: channel.key)}", activity_url(resource.name, from: channel.key), target: "_blank" %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <hr>
+
+  渠道流量统计
+  <table class="table">
+
+    <tr>
+      <td>渠道</td>
+      <td>PV</td>
+      <td>UV</td>
+      <td>IP</td>
+    </tr>
+
+    <% Channel.all.each do |channel| %>
+      <tr>
+        <td><%= channel.name %></td>
+        <td><%= resource.impressionist_count(message: channel.key) %></td>
+        <td><%= resource.impressionist_count(message: channel.key, filter: :session_hash) %></td>
+        <td><%= resource.impressionist_count(message: channel.key, filter: :ip_address) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'Edit', edit_admin_activity_path(resource) %> |
+  <%= link_to 'Back', admin_activities_path %>
+</div>
