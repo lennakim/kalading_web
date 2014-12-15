@@ -1,2 +1,13 @@
 <%= title '9.9元' %>
-99 asdfasdfa
+
+<div class="activity99">
+  <%= form_tag send_verification_code_phones_path, remote: :true do %>
+    <%= text_field_tag('phone_num', "", class: 'form-control', id: 'phone_num') %>
+    <%= submit_tag("发送验证码") %>
+  <% end %>
+
+  <input type="text" class="form-control" id="verification_code"></input>
+  <input type="text" class="form-control" id="car_license_num"></input>
+
+  <button id="submit_button">提交</button>
+</div>
