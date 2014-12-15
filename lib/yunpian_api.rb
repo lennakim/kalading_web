@@ -13,7 +13,7 @@ module YunpianApi
 
     RestClient.post \
       "http://yunpian.com/v1/sms/tpl_send.json",
-      data,
+      data.to_json,
       content_type: 'json',
       accept: 'json'
   end
