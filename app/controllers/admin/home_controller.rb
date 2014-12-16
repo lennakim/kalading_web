@@ -1,5 +1,6 @@
-class Admin::HomeController < ApplicationController
+class Admin::HomeController < ActionController::Base
   layout "admin"
+  http_basic_authenticate_with name: 'admin', password: 'KaLaDing'
 
   def index
   end
