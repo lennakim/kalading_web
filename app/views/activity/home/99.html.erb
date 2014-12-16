@@ -2,11 +2,11 @@
 
 <div class="activity99">
   <%#= image_tag("title.png",width:"100%", class: "title ") %>
-  <%= image_tag("cloud.png",width:"100%", class: "cloud translate") %>
-  <%= image_tag("build.png",width:"100%", class: "build rotate") %>
-  <%= image_tag("car.gif",width:"50%", class: "car") %>
+  <%= image_tag("activity/cloud.png",width:"100%", class: "cloud translate-cloud") %>
+  <%= image_tag("activity/build.png",width:"100%", class: "build rotate") %>
+  <%= image_tag("activity/car.png",width:"50%", class: "car translate-car") %>
   <div class="land">
-  	<div class="land-box">
+  	<div class="form-box hidden">
   	  <%= form_tag send_verification_code_phones_path, remote: :true do %>
   	  	<div class="field">
   	  		<%= label_tag(:phone_num, "手机号:") %>
@@ -26,11 +26,45 @@
 	  <% end %>
 	</div>
 	<div class="description">
-  	  <h4>活动说明：</h4>
-  	  <p>1</p>
-  	  <p>2</p>
-  	  <p>3</p>
+  	  <h4>* 活动时间：</h4>
+  	  <p>2014年12月15日起</p>
+  	  <h4>* 活动规则</h4>
+  	  <p>
+  	  	<strong>·</strong>
+  	  	<span>新用户预约更换防雾霾空调滤芯，只需支付9块9，我们将为您贴上No霾in car车贴。凭车贴将享受一年三次免费更换空调滤芯！</span>	
+  	  </p>
+  	  <p>
+  	  	<strong>·</strong>
+		<span>已经贴有No霾in car车贴的用户，也将同时享一年三次免费更换空调滤芯的特权</span>
+  	  </p>
+  	  <p>
+  	  	<strong>·</strong>
+  	  	<span>服务后发送朋友圈晒单免费即生效</span>
+  	  </p>
+  	  <p class="order-btn">立即约起来</p>
   	</div>
   </div>
 </div>
+<script>
+	$('.order-btn').click(function(){
+		$('.description').addClass('hidden');
+		$('.form-box').removeClass('hidden');
+	});
+
+	$('.get_code').click(function(){
+		$(this).addClass('disable').attr('disabled','disabled');
+		var time = 60;
+		setInterval(function(){
+			if(time > 0){
+				time -= 1;
+				$('.get_code').val(time+'秒后重新获取');
+			}
+			if(time == 0){
+				$('.get_code').removeClass('disable')
+					.removeAttr('disabled')
+					.val('重新获取');
+			}
+		},1000);
+	});
+</script>
  
