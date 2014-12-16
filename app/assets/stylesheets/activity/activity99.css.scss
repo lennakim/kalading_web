@@ -157,6 +157,20 @@ $orange-btn: #ee9d34;
 				width: 90%;
 				margin-left: 6%;
 			}
+			strong{
+				font-size: 22px;
+			}
+			h4{
+				overflow: hidden;
+				line-height: 14px;
+				.star{
+					width: 5%;
+					float: left;
+				}
+				span{
+					float: left;
+				}
+			}
 			.order-btn{
 				width: 60%;
 				margin: 0 auto;

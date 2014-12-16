@@ -1,6 +1,7 @@
 $ ->
   if $('.activity99').length > 0
     $("#submit_button").on "click", ->
+      $('this').addClass('disable').attr('disabled','disabled');
       phone_num = $("#phone_num").val()
       verification_code = $("#verification_code").val()
       car_license_num = $("#car_license_num").val()
