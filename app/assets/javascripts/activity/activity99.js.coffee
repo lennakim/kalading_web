@@ -14,7 +14,7 @@ $ ->
             $('.share').animate({'top':'-150'},200);
             $('.bac').addClass('hidden');
         else
-          alert('预约失败');
+          alert('一定是姿势不对，请再约一次！');
 
 
 
