@@ -1,7 +1,7 @@
 <%= title '9.9元' %>
 
 <div class="activity99">
-  <%#= image_tag("title.png",width:"100%", class: "title ") %>
+  <%= image_tag("activity/title.png",width:"100%", class: "title ") %>
   <%= image_tag("activity/cloud.png",width:"100%", class: "cloud translate-cloud") %>
   <%= image_tag("activity/build.png",width:"100%", class: "build rotate") %>
   <%= image_tag("activity/car.png",width:"50%", class: "car translate-car") %>
@@ -9,7 +9,7 @@
   <div class="form-box">
   	  <div class="field">
   	  	<%= label_tag(:phone_num, "手机号:") %>
-	    <%= text_field_tag('phone_num', "", class: 'right', id: 'phone_num') %>
+	    <input type="number" class="right" id="phone_num" >
   	  </div>
   	  <div class="field">
 		<%= label_tag(:car_num, "车牌号:") %>
@@ -17,15 +17,15 @@
       </div>
 	  <div class="field">
 		<button class='get_code' id="get_code">点击获取</button> 
-		<input type="text" class="verification_code" placeholder="验证码" id="verification_code"/>
+		<input type="number" class="verification_code" placeholder="验证码" id="verification_code"/>
 	  </div>
 	  <div class="field">
 		<button id="submit_button" class="submit_button right">立即预定</button>
 	  </div>
   </div>
   <div class="land">
-  	
 	<div class="description">
+	  <p class="order-btn">立即约起来</p>
   	  <h4>* 活动时间：</h4>
   	  <p>2014年12月15日起</p>
   	  <h4>* 活动规则</h4>
@@ -41,8 +41,12 @@
   	  	<strong>·</strong>
   	  	<span>服务后发送朋友圈晒单免费即生效</span>
   	  </p>
-  	  <p class="order-btn">立即约起来</p>
   	</div>
+  </div>
+  <div class="share">
+  	<p>提交成功</p>
+  	<p>点击右上角的按钮，即可：</p>
+  	<p>分享给朋友-> 分享到朋友圈o</p>
   </div>
 </div>
 <script>
