@@ -76,7 +76,7 @@ $orange-btn: #ee9d34;
 	}
 	.bac{
 		width: 100%;
-		min-height: 600px;
+		min-height: 700px;
 		background: #000;
 		opacity: 0.6;
 		position: absolute;
@@ -155,7 +155,7 @@ $orange-btn: #ee9d34;
 			margin: 20px 10px;
 			p{
 				width: 90%;
-				margin-left: 6%;
+				margin: 0 0 0 6%;
 			}
 			strong{
 				font-size: 22px;
@@ -186,12 +186,17 @@ $orange-btn: #ee9d34;
 	}
 	.share{
 		width: 100%;
-		padding: 10px;
+		padding: 30px 15px 5px;
 		position: absolute;
 		top: -150px;
 		z-index: 5;
-		color: #000;
-		background: #ccc;
+		color: #1b4772;
+		background: url('/assets/activity/sharebac.png') no-repeat;
+		background-size: 100% 100%; 
+		.share-title{
+			color: #ee7833;
+			font-size: 22px;
+		}
 	}
 }
 @media screen and (min-device-width: 480px){
@@ -299,7 +304,7 @@ $orange-btn: #ee9d34;
 	.activity99{
 		min-height: 1000px;
 		.bac{
-			min-height: 920px;
+			min-height: 1000px;
 		}
 		.land {
 			top: 58%;

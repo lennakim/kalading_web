@@ -44,7 +44,7 @@
   	  </p>
   	  <p>
   	  	<strong>·</strong>
-  	  	<span>服务后发送朋友圈晒单免费即生效</span>
+  	  	<span>只要有车贴，每次服务后发送朋友圈晒单免费即生效</span>
   	  </p>
   	  <p>
   	  	<strong>·</strong>
@@ -53,9 +53,14 @@
   	</div>
   </div>
   <div class="share">
-  	<p>提交成功</p>
+  	<p class="share-title">提交成功</p>
   	<p>点击右上角的按钮，即可：</p>
-  	<p>分享给朋友-> 分享到朋友圈o</p>
+  	<p>
+  		<span>分享给朋友</span>
+  		<%= image_tag("activity/share.png",width:"5%", class: "star ") %>
+  		<span>分享到朋友圈</span>
+  		<%= image_tag("activity/group.png",width:"5%", class: "star ") %>
+  	</p>
   </div>
 </div>
 <script>
@@ -64,7 +69,7 @@
 	
 	$('.order-btn').click(function(){
 		$('.bac').removeClass('hidden');
-		$('.form-box').animate({'bottom':'200px'},200);
+		$('.form-box').animate({'bottom':'300px'},200);
 	});
 
 	$('.get_code').click(function(){
@@ -87,11 +92,16 @@
 		$.ajax({
 		    type: 'POST',
 		    url: '/phones/send_verification_code' ,
-		    data: {phone_num: phone_num} ,
-		    success: function(){
+		    data: {phone_num: phone_num} 
+		}).done(function(){
 
-		    }
+		}).fail(function(){
+			alert('预约失败！');
 		});
+	});
+
+	$('.form-box input').focus(function(){
+		$("#submit_button").removeClass('disable').removeAttr('disabled');
 	});
 </script>
  
