@@ -80,6 +80,7 @@ $('.order-btn').click(function(){
 
 		if(phone_num == ''){
 			alert('请输入手机号');
+			$('.get_code').removeClass('disable').removeAttr('disabled');
 		}else{
 			$.ajax({
 			    type: 'POST',
