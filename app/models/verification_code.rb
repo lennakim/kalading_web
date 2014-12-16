@@ -37,7 +37,7 @@ class VerificationCode < ActiveRecord::Base
   end
 
   def set_expires_at
-    self.expires_at = 5.minutes.from_now.utc
+    self.expires_at = 50.seconds.from_now.utc
   end
 
 end
