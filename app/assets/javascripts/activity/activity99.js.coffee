@@ -11,10 +11,10 @@ $ ->
           $('.share').animate({'top':'0'},200)
           $("html,body").animate({scrollTop:0},1000);
           $('.form-box').animate({'bottom':'-250px'},50).hide()
+          $('.order-btn').text('约好了，等电话吧~')
           $('body').on "click", ->
             $('.share').animate({'top':'-150'},200)
             $('.bac').addClass('hidden')
-            $('.order-btn').text('约好了，等电话吧~')
         else
           alert('一定是姿势不对，请再约一次！')
 
