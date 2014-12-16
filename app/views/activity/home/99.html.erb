@@ -5,26 +5,26 @@
   <%= image_tag("activity/cloud.png",width:"100%", class: "cloud translate-cloud") %>
   <%= image_tag("activity/build.png",width:"100%", class: "build rotate") %>
   <%= image_tag("activity/car.png",width:"50%", class: "car translate-car") %>
+  <div class="bac hidden"></div>
+  <div class="form-box">
+  	  <div class="field">
+  	  	<%= label_tag(:phone_num, "手机号:") %>
+	    <%= text_field_tag('phone_num', "", class: 'right', id: 'phone_num') %>
+  	  </div>
+  	  <div class="field">
+		<%= label_tag(:car_num, "车牌号:") %>
+		<input type="text" class="right" placeholder="例：京A12345" id="car_license_num"/>
+      </div>
+	  <div class="field">
+		<button class='get_code' id="get_code">点击获取</button> 
+		<input type="text" class="verification_code" placeholder="验证码" id="verification_code"/>
+	  </div>
+	  <div class="field">
+		<button id="submit_button" class="submit_button right">立即预定</button>
+	  </div>
+  </div>
   <div class="land">
-  	<div class="form-box hidden">
-  	  <%= form_tag send_verification_code_phones_path, remote: :true do %>
-  	  	<div class="field">
-  	  		<%= label_tag(:phone_num, "手机号:") %>
-	    	<%= text_field_tag('phone_num', "", class: '', id: 'phone_num') %>
-  	  	</div>
-  	    <div class="field">
-		    <%= label_tag(:car_num, "车牌号:") %>
-		    <input type="text" class="" placeholder="例：京A12345" id="car_license_num"/>
-		</div>
-		<div class="code">
-			<input type="text" class="verification_code" placeholder="验证码" id="verification_code"/>
-	    	<%= submit_tag("点击获取",:class=>'get_code') %>
-		</div>
-		<div class="code">
-			<button id="submit_button" class="submit_button">立即预定</button>
-		</div>
-	  <% end %>
-	</div>
+  	
 	<div class="description">
   	  <h4>* 活动时间：</h4>
   	  <p>2014年12月15日起</p>
@@ -46,25 +46,39 @@
   </div>
 </div>
 <script>
+	
+	$('.activity99,.bac').height($(window).height());
+	
 	$('.order-btn').click(function(){
-		$('.description').addClass('hidden');
-		$('.form-box').removeClass('hidden');
+		$('.bac').removeClass('hidden');
+		$('.form-box').animate({'bottom':'200px'},200);
 	});
 
 	$('.get_code').click(function(){
 		$(this).addClass('disable').attr('disabled','disabled');
-		var time = 60;
-		setInterval(function(){
-			if(time > 0){
-				time -= 1;
-				$('.get_code').val(time+'秒后重新获取');
+		var seconds = 60;
+		var time = setInterval(function(){
+			if(seconds > 0){
+				seconds -= 1;
+				$('.get_code').text(seconds+'秒后重新获取');
 			}
-			if(time == 0){
+			if(seconds == 0){
 				$('.get_code').removeClass('disable')
 					.removeAttr('disabled')
-					.val('重新获取');
+					.text('重新获取');
+				clearInterval(time);
 			}
 		},1000);
+
+		var phone_num = $('#phone_num').val();
+		$.ajax({
+		    type: 'POST',
+		    url: '/phones/send_verification_code' ,
+		    data: {phone_num: phone_num} ,
+		    success: function(){
+
+		    }
+		});
 	});
 </script>
  

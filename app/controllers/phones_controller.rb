@@ -15,7 +15,8 @@ class PhonesController < ApplicationController
   end
 
   def send_verification_code
-    @vcode = VerificationCode.find_valid_one params[:phone_num]
+    vcode = VerificationCode.find_valid_one(params[:phone_num])
+    render json: { success: vcode }
   end
 
 end
