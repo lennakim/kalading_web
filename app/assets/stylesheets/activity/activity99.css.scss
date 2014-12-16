@@ -31,7 +31,7 @@ $land: #ee7833;
 $orange-btn: #ee9d34;
 .activity99{
 	width: 100%;
-	min-height: 600px;
+	min-height: 700px;
 	overflow: hidden;
 	background: $sky;
 	position: relative;
@@ -127,9 +127,6 @@ $orange-btn: #ee9d34;
 				border-radius: 5px;
 				background: $orange-btn;
 			}
-			.disable{
-				background: #aaa;
-			}
 			.verification_code{
 				margin-right: 4%;
 			}
@@ -142,6 +139,9 @@ $orange-btn: #ee9d34;
 				border-radius: 5px;
 				color: #fff;
 				background: $orange-btn;
+			}
+			.disable{
+				background: #aaa;
 			}
 		}
 	}
@@ -162,9 +162,10 @@ $orange-btn: #ee9d34;
 			}
 			h4{
 				overflow: hidden;
-				line-height: 14px;
+				line-height: 18px;
 				.star{
-					width: 5%;
+					width: 4%;
+					margin-right: 8px;
 					float: left;
 				}
 				span{
@@ -195,9 +196,9 @@ $orange-btn: #ee9d34;
 }
 @media screen and (min-device-width: 480px){
 	.activity99{
-		min-height: 650px;
+		min-height: 670px;
 		.bac{
-			min-height: 650px;
+			min-height: 670px;
 		}
 		.car{
 			top: 30%;
@@ -209,15 +210,15 @@ $orange-btn: #ee9d34;
 }
 @media screen and (min-device-width: 533px){
 	.activity99{
-		min-height: 680px;
+		min-height: 800px;
 		.bac{
-			min-height: 680px;
+			min-height: 800px;
 		}
 		.car{
-			top: 36%;
+			top: 30%;
 		}
 		.land {
-			top: 58%;
+			top: 48%;
 			.description{
 				.order-btn{
 					width: 35%;
@@ -228,20 +229,23 @@ $orange-btn: #ee9d34;
 }
 @media screen and (min-device-width: 604px){
 	.activity99{
-		min-height: 740px;
+		min-height: 760px;
 		.bac{
-			min-height: 740px;
+			min-height: 760px;
 		}
 		.car{
 			top: 35%;
 		}
 		.land {
-			top: 58%;
+			top: 54%;
 			width: 70%;
 			left: 14%;
 			.description{
 				.order-btn{
 					width: 35%;
+				}
+				h4{
+					line-height: 26px;
 				}
 			}
 		}
@@ -249,23 +253,23 @@ $orange-btn: #ee9d34;
 }
 @media screen and (min-device-width: 640px){
 	.activity99{
-		min-height: 820px;
+		min-height: 840px;
 		.bac{
-			min-height: 820px;
+			min-height: 840px;
 		}
 		.car{
-			top: 36%;
+			top: 32%;
 		}
 		.land{
-			top: 58%;
+			top: 50%;
 		}
 	}
 }
 @media screen and (min-device-width: 960px){
 	.activity99{
-		min-height: 780px;
+		min-height: 940px;
 		.bac{
-			min-height: 780px;
+			min-height: 940px;
 		}
 		.title{
 			width: 45%;
@@ -282,23 +286,23 @@ $orange-btn: #ee9d34;
 		}
 		.car {
 			width: 33%;
-			top: 40%;
+			top: 36%;
 			left: 30%;
 		}
 		.land {
-			top: 62%;
+			top: 56%;
 			left: 16%;
 		}
 	}
 }
 @media screen and (min-device-width: 1280px){
 	.activity99{
-		min-height: 900px;
+		min-height: 1000px;
 		.bac{
-			min-height: 900px;
+			min-height: 920px;
 		}
 		.land {
-			top: 66%;
+			top: 58%;
 		}
 	}
 }
