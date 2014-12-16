@@ -7,7 +7,7 @@ class PhonesController < ApplicationController
         info: {
           "phone_num" => params[:phone_num],
           "car_num" => params[:car_license_num],
-          "client_comment" => "三万卡粉活动"
+          "client_comment" => "【活动】9块9可以约好多次哟"
         }
       }
 
