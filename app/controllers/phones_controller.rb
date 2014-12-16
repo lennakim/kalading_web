@@ -11,7 +11,7 @@ class PhonesController < ApplicationController
         }
       }
 
-      result = Order.submit_special_order payload
+      result = Order.submit_special_order(payload)
       if result["result"] == "succeeded"
         render json: { success: true }
       else

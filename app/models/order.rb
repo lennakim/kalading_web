@@ -28,7 +28,7 @@ class Order
     end
 
     def submit_special_order payload
-      ServerApi.call 'post', 'auto_special_order', { body: payload }
+      ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
     end
   end
 
