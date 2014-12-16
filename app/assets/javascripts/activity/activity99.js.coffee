@@ -18,10 +18,8 @@ $ ->
   data = {
     'img': $('.activity99').data('thumbnail'),
     'link': $('.activity99').data('link'),
-    'desc': '他们都贴了No 霾 in Car——万名卡粉邀你入伙！
-9块9，可以约很多次哦！',
-    'title': '他们都贴了No 霾 in Car——万名卡粉邀你入伙！
-9块9，可以约很多次哦！'
+    'desc': '他们都贴了No 霾 in Car——万名卡粉邀你入伙！9块9，可以约很多次哦！',
+    'title': '他们都贴了No 霾 in Car——万名卡粉邀你入伙！9块9，可以约很多次哦！'
   }
 
   wechat('timeline', data)
