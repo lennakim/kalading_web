@@ -6,7 +6,7 @@ class PhonesController < ApplicationController
       payload = {
         info: {
           "phone_num" => params[:phone_num],
-          "car_num" => params[:code],
+          "car_num" => params[:car_license_num],
           "client_comment" => "三万卡粉活动"
         }
       }
