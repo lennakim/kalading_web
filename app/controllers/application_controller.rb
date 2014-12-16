@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :signed_in?
 
-  http_basic_authenticate_with name: 'admin', password: 'KaLaDing'
-
   def sign_in user
     cookies[:LGT] = { value: user.update_user, expires: 30.days.from_now }
   end
