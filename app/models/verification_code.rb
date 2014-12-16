@@ -7,8 +7,6 @@ class VerificationCode < ActiveRecord::Base
   before_create :generate_code
   before_create :set_expires_at
 
-  after_create :send_sms
-
   class << self
 
     def find_valid_one phone_num
@@ -29,7 +27,9 @@ class VerificationCode < ActiveRecord::Base
   end
 
   def send_sms
-    YunpianApi.send_to self.phone_num, "您的验证码是#{self.code}【卡拉丁】"
+    result = YunpianApi.send_to self.phone_num, "您的验证码是#{self.code}【卡拉丁】"
+
+    JSON.parse(result)["code"] == 0
   end
 
   def generate_code

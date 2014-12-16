@@ -1,0 +1,48 @@
+<%= title "我的订单" %>
+
+<table>
+  <thead></thead>
+  <tbody>
+	<tr>
+	  <td>订单信息</td>
+	  <td>车主</td>
+	  <td>电话</td>
+	  <td>金额</td>
+	  <td>服务时间</td>
+	  <td>订单状态</td>
+	  <td>操作</td>
+	</tr>
+	<tr>
+	  <td>
+		  <p>
+			<%= @orders[0]['auto_model'] %>
+		  </p>
+		  <% @orders[0]['parts'].each_index do |index| %>
+			<% order = @orders[0]['parts'][index] %>
+			<p>
+				[<%= order['type']  %>]<%= order['brand']  %><%= order['number']  %>
+			</p>
+		  <% end %>
+	  </td>
+	  <td>
+		<%= @orders[0]['name'] %>
+	  </td>
+	  <td>
+		<%= @orders[0]['phone_num'] %>
+	  </td>
+	  <td>
+		<%= @orders[0]['price'] %>
+	  </td>
+	  <td>
+		<%= @orders[0]['serve_datetime'] %>
+	  </td>
+	  <td>
+		<%= @orders[0]['part_deliver_state'] %>
+	  </td>
+	  <td>
+		<%= @orders[0]['state'] %>
+	  </td>
+	</tr>
+  </tbody>
+  <tfoot></tfoot>
+</table>
