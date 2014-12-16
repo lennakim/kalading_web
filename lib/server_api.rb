@@ -28,6 +28,7 @@ module ServerApi
 
       Rails.logger.info '--- send api to url:'
       Rails.logger.info url
+      Rails.logger.info args[:body].to_json
 
       result = method == "get" ? \
         RestClient.get(url, content_type: 'json') :

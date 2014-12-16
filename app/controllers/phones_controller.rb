@@ -3,12 +3,20 @@ class PhonesController < ApplicationController
   def create
     if vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
 
-      # # create a order to backend
-      # car_license = params[:car_license]
-      #
-      # ServerApi.call 'orders', {}
+      payload = {
+        info: {
+          "phone_num" => params[:phone_num],
+          "car_num" => params[:code],
+          "client_comment" => "三万卡粉活动"
+        }
+      }
 
-      render json: { success: true }
+      result = Order.submit_special_order payload
+      if result["result"] == "succeeded"
+        render json: { success: true }
+      else
+        render json: { success: false }
+      end
     else
       render json: { success: false }
     end

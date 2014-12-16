@@ -26,6 +26,10 @@ class Order
     def maintain_histories_of phone_num = nil, client_id = nil, page = 1, per = 1000
       ServerApi.call "get", "auto_inspection_report", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
     end
+
+    def submit_special_order payload
+      ServerApi.call 'post', 'auto_special_order', { body: payload }
+    end
   end
 
 end
