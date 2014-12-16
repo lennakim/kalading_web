@@ -21,61 +21,69 @@
       <input type="number" class="verification_code" placeholder="验证码" id="verification_code"/>
     </div>
     <div class="field">
-      <button id="submit_button" class="submit_button right">立即预定</button>
+      <button id="submit_button" class="submit_button right disable" disabled="disabled">立即预定</button>
     </div>
   </div>
   <div class="land">
-	<div class="description">
-	  <p class="order-btn">立即约起来</p>
-  	  <h4>
-  	  	<%= image_tag("activity/star.png",width:"100%", class: "star ") %>
-  	  	<span>活动时间：</span>
-  	  </h4>
-  	  <p>2014年12月15日 —— 2014年12月31日</p>
-  	  <h4><%= image_tag("activity/star.png",width:"100%", class: "star ") %>
-  	  	<span>活动规则：</span>
-  	  </h4>
-  	  <p>
-  	  	<strong>·</strong>
-  	  	<span>新用户预约更换防雾霾空调滤芯，只需支付9块9，我们将为您贴上No霾in car车贴。凭车贴将享受一年三次免费更换空调滤芯！</span>
-  	  </p>
-  	  <p>
-  	  	<strong>·</strong>
-		<span>已经贴有No霾in car车贴的用户，也将同时享一年三次免费更换空调滤芯的特权</span>
-  	  </p>
-  	  <p>
-  	  	<strong>·</strong>
-  	  	<span>只要有车贴，每次服务后发送朋友圈晒单免费即生效</span>
-  	  </p>
-  	  <p>
-  	  	<strong>·</strong>
-  	  	<span>仅限北京天津上海用户参加</span>
-  	  </p>
-  	</div>
+    <div class="description">
+      <p class="order-btn">立即约起来</p>
+      <h4>
+        <%= image_tag("activity/star.png",width:"100%", class: "star ") %>
+        <span>活动时间：</span>
+      </h4>
+      <p>2014年12月15日 —— 2014年12月31日</p>
+      <h4><%= image_tag("activity/star.png",width:"100%", class: "star ") %>
+      <span>活动规则：</span>
+      </h4>
+      <p>
+      <strong>·</strong>
+      <span>新用户预约更换防雾霾空调滤芯，只需支付9块9，我们将为您贴上No霾in car车贴。凭车贴将享受一年三次免费更换空调滤芯！</span>
+      </p>
+      <p>
+      <strong>·</strong>
+      <span>已经贴有No霾in car车贴的用户，也将同时享一年三次免费更换空调滤芯的特权</span>
+      </p>
+      <p>
+      <strong>·</strong>
+      <span>只要有车贴，每次服务后发送朋友圈晒单免费即生效</span>
+      </p>
+      <p>
+      <strong>·</strong>
+      <span>仅限北京天津上海用户参加</span>
+      </p>
+    </div>
   </div>
   <div class="share">
-  	<p class="share-title">提交成功</p>
-  	<p>点击右上角的按钮，即可：</p>
-  	<p>
-  		<span>分享给朋友</span>
-  		<%= image_tag("activity/share.png",width:"5%", class: "star ") %>
-  		<span>分享到朋友圈</span>
-  		<%= image_tag("activity/group.png",width:"5%", class: "star ") %>
-  	</p>
+    <p class="share-title">提交成功</p>
+    <p>点击右上角的按钮，即可：</p>
+    <p>
+    <span>分享给朋友</span>
+    <%= image_tag("activity/share.png",width:"5%", class: "star ") %>
+    <span>分享到朋友圈</span>
+    <%= image_tag("activity/group.png",width:"5%", class: "star ") %>
+    </p>
   </div>
 </div>
 <script>
 
-	$('.activity99,.bac').height($(window).height());
+$('.activity99,.bac').height($(window).height());
 
-	$('.order-btn').click(function(){
-		$('.bac').removeClass('hidden');
-		$('.form-box').animate({'bottom':'300px'},200);
-	});
+$('.order-btn').click(function(){
+    $('.bac').removeClass('hidden');
+    $('.form-box').animate({'bottom':'300px'},200);
+    });
 
+$('#phone_num').focus(function(){
+    $('.get_code').removeClass('disable').removeAttr('disabled');
+    });
 $('.get_code').click(function(){
+    var phone_num = $('#phone_num').val();
     $(this).addClass('disable').attr('disabled','disabled');
     var seconds = 60;
+
+    if(phone_num == ''){
+    alert('请输入手机号');
+    }else{
     var time = setInterval(function(){
       if(seconds > 0){
       seconds -= 1;
@@ -88,17 +96,15 @@ $('.get_code').click(function(){
       clearInterval(time);
       }
       },1000);
+    $.ajax({
+      type: 'POST',
+      url: '/phones/send_verification_code' ,
+      data: {phone_num: phone_num}
+      });
+    }
+});
 
-		var phone_num = $('#phone_num').val();
-		$.ajax({
-		    type: 'POST',
-		    url: '/phones/send_verification_code' ,
-		    data: {phone_num: phone_num}
-		});
-	});
-
-	$('.form-box input').focus(function(){
-		$("#submit_button").removeClass('disable').removeAttr('disabled');
-	});
+  $('.form-box input').focus(function(){
+    $("#submit_button").removeClass('disable').removeAttr('disabled');
+  });
 </script>
-
