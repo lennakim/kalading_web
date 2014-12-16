@@ -8,13 +8,14 @@ $ ->
 
       $.post "/phones", { phone_num: phone_num, code: verification_code, car_license_num: car_license_num }, (data) ->
         if data.success == true
-          $('.share').animate({'top':'0'},200);
-          $('.form-box').animate({'bottom':'-250px'},50);
+          $('.share').animate({'top':'0'},200)
+          $('.form-box').animate({'bottom':'-250px'},50).hide()
           $('body').on "click", ->
-            $('.share').animate({'top':'-150'},200);
-            $('.bac').addClass('hidden');
+            $('.share').animate({'top':'-150'},200)
+            $('.bac').addClass('hidden')
+            $('.order-btn').text('约好了，等电话吧~')
         else
-          alert('一定是姿势不对，请再约一次！');
+          alert('一定是姿势不对，请再约一次！')
 
 
 
