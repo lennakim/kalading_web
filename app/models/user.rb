@@ -62,8 +62,6 @@ class User < ActiveRecord::Base
   end
 
   def set_user_info user_info
-    self.subscribe      = user_info.result["subscribe"]
-    self.openid         = user_info.result["openid"]
     self.nickname       = user_info.result["nickname"]
     self.sex            = user_info.result["sex"]
     self.language       = user_info.result["language"]
@@ -71,7 +69,6 @@ class User < ActiveRecord::Base
     self.province       = user_info.result["province"]
     self.country        = user_info.result["country"]
     self.headimgurl     = user_info.result["headimgurl"]
-    self.subscribe_time = user_info.result["subscribe_time"]
   end
 
 end
