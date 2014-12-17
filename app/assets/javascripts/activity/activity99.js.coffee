@@ -22,7 +22,40 @@ $ ->
         else
           alert('一定是姿势不对，请再约一次！')
 
+    $('.activity99,.bac').height($(window).height())
 
+    $('.order-btn').click -> 
+      $('.bac').removeClass('hidden')
+      $('.form-box').animate({'bottom':'300px'},200)
 
+    $('.form-box input').focus ->
+      $("#submit_button").removeClass('disable').removeAttr('disabled')
+	
+    $('.get_code').click ->
+      phone_num = $('#phone_num').val()
+      $(this).addClass('disable').attr('disabled','disabled')
+      seconds = 60
 
+      if phone_num == ''
+        alert('请输入手机号')
+        $('.get_code').removeClass('disable').removeAttr('disabled')
+      else
+        $.ajax
+          type: 'POST',
+          url: '/phones/send_verification_code',
+          data: {phone_num: phone_num},
+          success: (data) ->
+            if data.success
+              timer = setInterval ->
+                if seconds > 0
+                  seconds -= 1
+                  $('.get_code').text(seconds+'秒后重新获取')
+                if seconds == 0
+                  $('.get_code').removeClass('disable').removeAttr('disabled').text('重新获取')
+                  clearInterval(timer)
+              , 1000
+
+            else
+              alert('请输入正确手机号')
+              $('.get_code').removeClass('disable').removeAttr('disabled')
 
