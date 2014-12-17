@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214160658) do
+ActiveRecord::Schema.define(version: 20141217141448) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -124,23 +124,19 @@ ActiveRecord::Schema.define(version: 20141214160658) do
   add_index "public_accounts", ["weixin_token"], name: "index_public_accounts_on_weixin_token", using: :btree
 
   create_table "users", force: true do |t|
-    t.integer  "subscribe"
-    t.string   "openid"
     t.string   "nickname"
-    t.integer  "sex"
+    t.string   "sex"
     t.string   "city"
     t.string   "country"
     t.string   "province"
     t.string   "language"
     t.string   "headimgurl"
-    t.datetime "subscribe_time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
-    t.integer  "public_account_id"
+    t.string   "phone_number"
   end
 
-  add_index "users", ["openid"], name: "index_users_on_openid", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
 
   create_table "verification_codes", force: true do |t|
