@@ -1,0 +1,332 @@
+@keyframes rotate-animate{
+	0%{transform:rotate(0);}
+	100%{transform:rotate(-360deg);}
+}
+@-webkit-keyframes rotate-animate{
+	0%{-webkit-transform:rotate(0);}
+	100%{-webkit-transform:rotate(-360deg);}
+}
+@keyframes translate-cloud-animate{
+	0%{transform:translateX(-10px);}
+	50%{transform:translateX(10px);}
+	100%{transform:translateX(-10px);}
+}
+@-webkit-keyframes translate-cloud-animate{
+	0%{-webkit-transform:translateX(-10px);}
+	50%{-webkit-transform:translateX(10px);}
+	100%{-webkit-transform:translateX(-10px);}
+}
+@keyframes translate-car-animate{
+	0%{transform:translateY(-2px);}
+	50%{transform:translateY(2px);}
+	100%{transform:translateY(-2px);}
+}
+@-webkit-keyframes translate-car-animate{
+	0%{-webkit-transform:translateY(-2px);}
+	50%{-webkit-transform:translateY(2px);}
+	100%{-webkit-transform:translateY(-2px);}
+}
+$sky: #3acaff;
+$land: #ee7833;
+$orange-btn: #ee9d34;
+.activity99{
+	width: 100%;
+	min-height: 700px;
+	overflow: hidden;
+	background: $sky;
+	position: relative;
+	z-index: 0;
+	.translate-cloud{
+		animation:translate-cloud-animate 3s linear infinite;
+		-webkit-animation:translate-cloud-animate 3s linear infinite;
+	}
+	.translate-car{
+		animation:translate-car-animate 1s linear infinite;
+		-webkit-animation:translate-car-animate 1s linear infinite;
+	}
+	.rotate{
+		animation:rotate-animate 20s linear infinite;
+		-webkit-animation:rotate-animate 20s linear infinite;
+		transform-origin: 50% 54%;
+		-webkit-transform-origin: 50% 54%;
+	}
+	.title,.cloud,.build,.car,.land{
+		position: absolute;
+	}
+	.title{
+		top: 36px;
+		left: 20%;
+		z-index: 2;
+		width: 60%;
+	}
+	.cloud{
+		top: 0;
+		z-index: 1;
+	}
+	.build{
+		width: 300%;
+		margin-left: -100%;
+		top: 60px;
+		z-index: 1;
+	}
+	.car{
+		top: 28%;
+		left: 18%;
+		z-index: 3;
+	}
+	.bac{
+		width: 100%;
+		min-height: 700px;
+		background: #000;
+		opacity: 0.6;
+		position: absolute;
+		top: 0;
+		z-index: 4;
+	}
+	.hidden{
+		display: none;
+	}
+	.form-box{
+		width: 100%;
+		padding: 30px 0;
+		position: absolute;
+		bottom: -250px;
+		z-index: 5;
+		color: #fff;
+		background: #ccc;
+		#phone_num,#car_license_num,#verification_code{
+			color: #000;
+		}
+		.field{
+			width: 90%;
+			overflow: hidden;
+			margin: 5px auto;
+			label,input{
+				float: left;
+				height: 35px;
+				line-height: 35px;
+				border-radius: 5px;
+				border: 0;
+			}
+			input{
+				width: 80%;
+				padding: 0 10px;
+			}
+			.right{
+				float: right;
+			}
+			.verification_code,.get_code{
+				width: 38%;
+				float: right;
+			}
+			.get_code{
+				padding: 0;
+				border: 0;
+				height: 35px;
+				line-height: 35px;
+				border-radius: 5px;
+				background: $orange-btn;
+			}
+			.verification_code{
+				margin-right: 4%;
+			}
+			.submit_button{
+				width: 80%;
+				height: 35px;
+				margin: 5px 0;
+				line-height: 35px;
+				border: 0;
+				border-radius: 5px;
+				color: #fff;
+				background: $orange-btn;
+			}
+			.disable{
+				background: #aaa;
+			}
+		}
+	}
+	.land{
+		width: 100%;
+		top: 42%;
+		z-index: 3;
+		color: #fff;
+		.description{
+			padding-top: 10px;
+			margin: 20px 10px;
+			p{
+				width: 90%;
+				margin: 0 0 0 6%;
+			}
+			strong{
+				font-size: 22px;
+			}
+			h4{
+				overflow: hidden;
+				line-height: 18px;
+				.star{
+					width: 4%;
+					margin: 5px 8px 0 0;
+					float: left;
+				}
+				span{
+					float: left;
+				}
+			}
+			.order-btn{
+				width: 60%;
+				margin: 0 auto;
+				margin-bottom: 30px;
+				text-align: center;
+				background: #f5b333;
+				height: 40px;
+				line-height: 40px;
+				border-radius: 5px;
+			}
+		}
+	}
+	.share{
+		width: 100%;
+		padding: 30px 15px 5px;
+		position: absolute;
+		top: -150px;
+		z-index: 5;
+		color: #1b4772;
+		background: image-url('activity/sharebac.png') no-repeat;
+		background-size: 100% 100%; 
+		.share-title{
+			color: #ee7833;
+			font-size: 22px;
+		}
+	}
+}
+@media screen and (min-device-width: 480px){
+	.activity99{
+		min-height: 670px;
+		.bac{
+			min-height: 670px;
+		}
+		.car{
+			top: 30%;
+		}
+		.land {
+			top: 48%;
+		}
+	}
+}
+@media screen and (min-device-width: 533px){
+	.activity99{
+		min-height: 800px;
+		.bac{
+			min-height: 800px;
+		}
+		.car{
+			top: 30%;
+		}
+		.land {
+			top: 48%;
+			.description{
+				.order-btn{
+					width: 35%;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-device-width: 604px){
+	.activity99{
+		min-height: 760px;
+		.bac{
+			min-height: 760px;
+		}
+		.car{
+			top: 35%;
+		}
+		.land {
+			top: 54%;
+			width: 70%;
+			left: 14%;
+			.description{
+				.order-btn{
+					width: 35%;
+				}
+				h4{
+					line-height: 26px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-device-width: 640px){
+	.activity99{
+		min-height: 840px;
+		.bac{
+			min-height: 840px;
+		}
+		.car{
+			top: 32%;
+		}
+		.land{
+			top: 50%;
+		}
+	}
+}
+@media screen and (min-device-width: 960px){
+	.activity99{
+		min-height: 940px;
+		.bac{
+			min-height: 940px;
+		}
+		.title{
+			width: 45%;
+			left: 28%;
+		}
+		.cloud{
+			width: 100%;
+			height: 25%;
+		}
+		.build {
+			width: 200%;
+			margin-left: -50%;
+			top: 100px;
+		}
+		.car {
+			width: 33%;
+			top: 36%;
+			left: 30%;
+		}
+		.land {
+			top: 56%;
+			left: 16%;
+		}
+	}
+}
+@media screen and (min-device-width: 1280px){
+	.activity99{
+		min-height: 1000px;
+		.bac{
+			min-height: 1000px;
+		}
+		.land {
+			top: 58%;
+		}
+	}
+}
+@media screen and (min-device-width: 1440px){
+	.activity99{
+		min-height: 1000px;
+		.bac{
+			min-height: 1000px;
+		}
+	}
+}
+@media screen and (min-device-width: 1920px){
+	.activity99{
+		min-height: 1300px;
+		.bac{
+			min-height: 1300px;
+		}
+		.land {
+			top: 70%;
+		}
+	}
+}

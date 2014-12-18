@@ -34,10 +34,19 @@
   渠道流量统计
   <table class="table">
 
+    <tr>
+      <td>渠道</td>
+      <td>PV</td>
+      <td>UV</td>
+      <td>IP</td>
+    </tr>
+
     <% Channel.all.each do |channel| %>
       <tr>
         <td><%= channel.name %></td>
-        <td><%= resource.impressions.where(message: channel.key).count %></td>
+        <td><%= resource.impressionist_count(message: channel.key) %></td>
+        <td><%= resource.impressionist_count(message: channel.key, filter: :session_hash) %></td>
+        <td><%= resource.impressionist_count(message: channel.key, filter: :ip_address) %></td>
       </tr>
     <% end %>
   </table>

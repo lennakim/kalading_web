@@ -5,162 +5,162 @@
 <%= title "提交订单" %>
 
 <div class="place-order-page">
-	<%= form_tag '',:id => 'commentForm' do %>
-	    <fieldset>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:name, "姓名:") %>
-		      <%= text_field_tag(:name,'', :required => true) %>
-		    </p>
-		    <p>
-		      <%= label_tag(:city_name, "所在地区:") %>
-		      <select name="city_name" id="city_name">
-		        <option value="">北京市</option>
-		      </select>	
-		      <select name="town_name" id="town_name">
-		        <option value="">朝阳区</option>
-		      </select>
-		    </p>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:address, "详细地址:") %>
-		      <%= text_field_tag(:address,'', :required => true) %>
-		    </p>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:phone_num, "手机号码:") %>
-		      <%= text_field_tag(:phone_num,'', :minlength => 11, :maxlength => 11, :required => true) %>
-		    </p>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:car_num, "车牌号:") %>
-		      <select name="car_num">
-		        <option value="">京</option>
-		      </select>
-		      <%= text_field_tag(:car_num,'车牌后六位', :minlength => 6, :required => true) %>
-		    </p>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:serve_datetime, "服务时间:") %>
-		      <%= text_field_tag(:serve_datetime,'', :required => true) %>
-		      <select name="car_num">
-		        <option value="">8:00 - 12:00</option>
-		      </select>
-		    </p>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:pay_type, "付款方式:") %>
-		      <select id="pay_type" name="pay_type">
-		        <option value="">现金</option>
-		        <option value="">刷卡</option>
-		      </select>
-		    </p>
-		    <p>
-		      <%= label_tag(:friend_phone, "朋友手机:") %>
-		      <%= text_field_tag(:friend_phone,'', :minlength => 11) %>
-		    </p>
-		    <p>
-		      <var class="star">*</var>
-		      <%= label_tag(:registration_date, "车辆注册时间:") %>
-		      <%= text_field_tag(:registration_date,'', :required => true) %>
-		    </p>
-		    <p>
-		      <%= label_tag(:engine_num, "发动机号码:") %>
-		      <%= text_field_tag(:engine_num,'') %>
-		    </p>
-		    <p>
-		      <%= label_tag(:vin, "VIN:") %>
-		      <%= text_field_tag(:vin,'') %>
-		    </p>
-		    <p>
-		      <%= check_box_tag(:invoice_2) %>
-		      <%= label_tag(:invoice_2, "不要发票:") %>
-		      <%= check_box_tag(:invoice_1) %>
-		      <%= label_tag(:invoice_1, "发票:") %>
-		    </p>
-		    <p>
-		      <%= check_box_tag(:preferential_1) %>
-		      <%= label_tag(:preferential_1, "无电子优惠券:") %>
-		      <%= check_box_tag(:preferential_2) %>
-		      <%= label_tag(:preferential_2, "有电子优惠券:") %>
-		    </p>
-		    <p>
-		      <%= label_tag(:input_clinet_title, "备注:") %>
-		      <%= text_field_tag(:input_clinet_title,'填写备注') %>
-		    </p>
-		    <table id="item_table">
-		        <thead>商品详情</thead>
-		        <tbody>
-		        <tr>
-		          <td>商品名称</td>
-		          <td>保养项目</td>
-		          <td>价格</td>
-		          <td>总价</td>
-		        </tr>
-		    	<tr>
-		    		<td>
-		    			<%= @result['name'] %>
-		    		</td>
-			        <td>
-						<% @result['parts'].each_index do |index| %>
-							<% part = @result['parts'][index]%>
-							<p>
-								<% if part['空气滤清器'] %>
-									[空气滤清器]<%= part['空气滤清器'][0]['brand'] %>
-								<% end %>
-								<% if part['空调滤清器'] %>
-									[空调滤清器]<%= part['空调滤清器'][0]['brand'] %>
-								<% end %>
-								<% if part['机滤'] %>
-									[机滤]<%= part['机滤'][0]['brand'] %>
-								<% end %>
-								<% if part['机油'] %>
-									[机油]<%= part['机油'][0]['brand'] %>
-								<% end %>
-								<% if part['PM2.5特效滤芯'] %>
-									[PM2.5特效滤芯]<%= part['PM2.5特效滤芯'][0]['brand'] %>
-								<% end %>
-							</p> 
-						<% end %>
-			        </td>
-					<td>
-						<% @result['parts'].each_index do |index| %>
-							<% part = @result['parts'][index]%>
-							<p>
-								<% if part['空气滤清器'] %>
-									<%= part['空气滤清器'][0]['price'] %>
-								<% end %>
-								<% if part['空调滤清器'] %>
-									<%= part['空调滤清器'][0]['price'] %>
-								<% end %>
-								<% if part['机滤'] %>
-									<%= part['机滤'][0]['price'] %>
-								<% end %>
-								<% if part['机油'] %>
-									<%= part['机油'][0]['price'] %>
-								<% end %>
-								<% if part['PM2.5特效滤芯'] %>
-									<%= part['PM2.5特效滤芯'][0]['price'] %>
-								<% end %>
-							</p> 
-						<% end %>
-			        </td>	
-					<td>
-						<%= @result['price_without_discount'] %>
-					</td>
-		    	</tr>
-		        </tbody>
-		        <tfoot></tfoot>
-		    </table>
-		    <p class = "">应付总额: <%= @result['price'] %>￥
-		      <strong class = "good-price" id="price">
-		        元
-		      </strong>
-		    </p>
-		    <p>
-		      <%= submit_tag("提交") %>
-		    </p>
-	    </fieldset>
-    <% end %>
+  <%= form_tag '',:id => 'commentForm' do %>
+	<fieldset>
+	  <p>
+        <var class="star">*</var>
+        <%= label_tag(:name, "姓名:") %>
+        <%= text_field_tag(:name,'', :required => true) %>
+	  </p>
+	  <p>
+		<%= label_tag(:city_name, "所在地区:") %>
+		<select name="city_name" id="city_name">
+		  <option value="">北京市</option>
+		</select>	
+		<select name="town_name" id="town_name">
+		  <option value="">朝阳区</option>
+		</select>
+	  </p>
+	  <p>
+		<var class="star">*</var>
+		<%= label_tag(:address, "详细地址:") %>
+		<%= text_field_tag(:address,'', :required => true) %>
+	  </p>
+	  <p>
+		<var class="star">*</var>
+		<%= label_tag(:phone_num, "手机号码:") %>
+		<%= text_field_tag(:phone_num,'', :minlength => 11, :maxlength => 11, :required => true) %>
+	  </p>
+	  <p>
+		<var class="star">*</var>
+		<%= label_tag(:car_num, "车牌号:") %>
+		<select name="car_num">
+		  <option value="">京</option>
+		</select>
+		<%= text_field_tag(:car_num,'车牌后六位', :minlength => 6, :required => true) %>
+	  </p>
+	  <p>
+		<var class="star">*</var>
+		<%= label_tag(:serve_datetime, "服务时间:") %>
+		<%= text_field_tag(:serve_datetime,'', :required => true) %>
+		<select name="car_num">
+		  <option value="">8:00 - 12:00</option>
+		</select>
+	  </p>
+	  <p>
+		<var class="star">*</var>
+		<%= label_tag(:pay_type, "付款方式:") %>
+		<select id="pay_type" name="pay_type">
+		  <option value="">现金</option>
+		  <option value="">刷卡</option>
+		</select>
+	  </p>
+	  <p>
+		<%= label_tag(:friend_phone, "朋友手机:") %>
+		<%= text_field_tag(:friend_phone,'', :minlength => 11) %>
+	  </p>
+	  <p>
+		<var class="star">*</var>
+		<%= label_tag(:registration_date, "车辆注册时间:") %>
+		<%= text_field_tag(:registration_date,'', :required => true) %>
+	  </p>
+	  <p>
+		<%= label_tag(:engine_num, "发动机号码:") %>
+		<%= text_field_tag(:engine_num,'') %>
+	  </p>
+	  <p>
+		<%= label_tag(:vin, "VIN:") %>
+		<%= text_field_tag(:vin,'') %>
+	  </p>
+	  <p>
+		<%= check_box_tag(:invoice_2) %>
+		<%= label_tag(:invoice_2, "不要发票:") %>
+		<%= check_box_tag(:invoice_1) %>
+		<%= label_tag(:invoice_1, "发票:") %>
+	  </p>
+	  <p>
+		<%= check_box_tag(:preferential_1) %>
+		<%= label_tag(:preferential_1, "无电子优惠券:") %>
+		<%= check_box_tag(:preferential_2) %>
+		<%= label_tag(:preferential_2, "有电子优惠券:") %>
+	  </p>
+	  <p>
+		<%= label_tag(:input_clinet_title, "备注:") %>
+		<%= text_field_tag(:input_clinet_title,'填写备注') %>
+	  </p>
+	  <table id="item_table">
+        <thead>商品详情</thead>
+        <tbody>
+        <tr>
+          <td>商品名称</td>
+          <td>保养项目</td>
+          <td>价格</td>
+          <td>总价</td>
+        </tr>
+    	<tr>
+    		<td>
+    		  <%= @result['name'] %>
+    		</td>
+	        <td>
+			  <% @result['parts'].each_index do |index| %>
+				<% part = @result['parts'][index]%>
+				<p>
+				  <% if part['空气滤清器'] %>
+					[空气滤清器]<%= part['空气滤清器'][0]['brand'] %>
+				  <% end %>
+				  <% if part['空调滤清器'] %>
+					[空调滤清器]<%= part['空调滤清器'][0]['brand'] %>
+				  <% end %>
+				  <% if part['机滤'] %>
+					[机滤]<%= part['机滤'][0]['brand'] %>
+				  <% end %>
+				  <% if part['机油'] %>
+					[机油]<%= part['机油'][0]['brand'] %>
+				  <% end %>
+				  <% if part['PM2.5特效滤芯'] %>
+					[PM2.5特效滤芯]<%= part['PM2.5特效滤芯'][0]['brand'] %>
+				  <% end %>
+				</p> 
+			  <% end %>
+	        </td>
+			<td>
+			  <% @result['parts'].each_index do |index| %>
+				<% part = @result['parts'][index]%>
+				<p>
+				  <% if part['空气滤清器'] %>
+					<%= part['空气滤清器'][0]['price'] %>
+				  <% end %>
+				  <% if part['空调滤清器'] %>
+					<%= part['空调滤清器'][0]['price'] %>
+				  <% end %>
+				  <% if part['机滤'] %>
+					<%= part['机滤'][0]['price'] %>
+				  <% end %>
+				  <% if part['机油'] %>
+					<%= part['机油'][0]['price'] %>
+				  <% end %>
+				  <% if part['PM2.5特效滤芯'] %>
+					<%= part['PM2.5特效滤芯'][0]['price'] %>
+				  <% end %>
+				</p> 
+			  <% end %>
+	        </td>	
+			<td>
+				<%= @result['price_without_discount'] %>
+			</td>
+    	</tr>
+        </tbody>
+        <tfoot></tfoot>
+	  </table>
+	  <p class = "">应付总额: <%= @result['price'] %>￥
+	    <strong class = "good-price" id="price">
+	        元
+	    </strong>
+	  </p>
+	  <p>
+		<%= submit_tag("提交") %>
+	  </p>
+	</fieldset>
+  <% end %>
 </div>
 
