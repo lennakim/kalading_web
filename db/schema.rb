@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217141448) do
+ActiveRecord::Schema.define(version: 20141218101237) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -21,17 +21,6 @@ ActiveRecord::Schema.define(version: 20141217141448) do
     t.datetime "updated_at"
     t.integer  "impressions_count", default: 0
   end
-
-  create_table "authentications", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-    t.datetime "expires_at"
-  end
-
-  add_index "authentications", ["uid"], name: "index_authentications_on_uid", using: :btree
-  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -107,30 +96,34 @@ ActiveRecord::Schema.define(version: 20141217141448) do
   add_index "messages", ["msg_id"], name: "index_messages_on_msg_id", unique: true, using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
+  create_table "platforms", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "expires_at"
+  end
+
+  add_index "platforms", ["uid"], name: "index_platforms_on_uid", using: :btree
+  add_index "platforms", ["user_id"], name: "index_platforms_on_user_id", using: :btree
+
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "weixin_secret_key"
-    t.string   "weixin_token"
-    t.string   "weixin_id"
+    t.string   "account_secret_key"
+    t.string   "account_token"
+    t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
   end
 
+  add_index "public_accounts", ["account_id"], name: "index_public_accounts_on_account_id", unique: true, using: :btree
+  add_index "public_accounts", ["account_secret_key"], name: "index_public_accounts_on_account_secret_key", using: :btree
+  add_index "public_accounts", ["account_token"], name: "index_public_accounts_on_account_token", using: :btree
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
-  add_index "public_accounts", ["weixin_id"], name: "index_public_accounts_on_weixin_id", unique: true, using: :btree
-  add_index "public_accounts", ["weixin_secret_key"], name: "index_public_accounts_on_weixin_secret_key", using: :btree
-  add_index "public_accounts", ["weixin_token"], name: "index_public_accounts_on_weixin_token", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "nickname"
-    t.string   "sex"
-    t.string   "city"
-    t.string   "country"
-    t.string   "province"
-    t.string   "language"
-    t.string   "headimgurl"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
