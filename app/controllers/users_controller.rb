@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def maintain_histories
   	@maintain_orders = Order.maintain_histories_of '13111111111'
+    pp @maintain_orders
   end
 
   def cars
