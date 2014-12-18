@@ -1,4 +1,4 @@
-class Platform < ActiveRecord::Base
+class AuthInfo < ActiveRecord::Base
 
   belongs_to :user
 

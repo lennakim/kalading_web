@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218101237) do
+ActiveRecord::Schema.define(version: 20141218154416) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20141218101237) do
     t.datetime "updated_at"
     t.integer  "impressions_count", default: 0
   end
+
+  create_table "auth_infos", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "expires_at"
+  end
+
+  add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
+  add_index "auth_infos", ["user_id"], name: "index_auth_infos_on_user_id", using: :btree
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -95,17 +106,6 @@ ActiveRecord::Schema.define(version: 20141218101237) do
 
   add_index "messages", ["msg_id"], name: "index_messages_on_msg_id", unique: true, using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "platforms", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-    t.datetime "expires_at"
-  end
-
-  add_index "platforms", ["uid"], name: "index_platforms_on_uid", using: :btree
-  add_index "platforms", ["user_id"], name: "index_platforms_on_user_id", using: :btree
 
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
