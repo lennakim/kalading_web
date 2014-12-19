@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
+  has_many :user_authinfos
+  has_many :auth_infos, :through => :user_authinfos, dependent: :destroy
 
   validates :phone_number, :uniqueness => true
-  has_many :platforms, dependent: :destroy
-
   before_create :generate_token
 
   class << self

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219033231) do
+ActiveRecord::Schema.define(version: 20141219070036) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141219033231) do
     t.string   "uid"
     t.string   "token"
     t.datetime "expires_at"
+    t.integer  "public_account_id"
   end
 
   add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
@@ -118,6 +119,13 @@ ActiveRecord::Schema.define(version: 20141219033231) do
   add_index "public_accounts", ["account_secret_key"], name: "index_public_accounts_on_account_secret_key", using: :btree
   add_index "public_accounts", ["account_token"], name: "index_public_accounts_on_account_token", using: :btree
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
+
+  create_table "user_authinfos", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "auth_info_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

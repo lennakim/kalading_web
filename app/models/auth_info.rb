@@ -1,9 +1,12 @@
 class AuthInfo < ActiveRecord::Base
+  belongs_to :public_account
+  has_many :user_authinfos
+  has_many :users, :through => :user_authinfos
 
-  belongs_to :user
-
+=begin
   validates :provider, presence: true, uniqueness: {scope: :user_id}
   validates :uid, presence: true, uniqueness: {scope: :provider}
+=end
 
   def self.locate auth
     uid            = auth["uid"].to_s
