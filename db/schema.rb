@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219070036) do
+ActiveRecord::Schema.define(version: 20141219075944) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141219070036) do
     t.integer  "public_account_id"
   end
 
+  add_index "auth_infos", ["provider", "uid"], name: "index_auth_infos_on_provider_and_uid", using: :btree
   add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
 
   create_table "channels", force: true do |t|

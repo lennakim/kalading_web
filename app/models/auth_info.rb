@@ -8,6 +8,9 @@ class AuthInfo < ActiveRecord::Base
   validates :uid, presence: true, uniqueness: {scope: :provider}
 =end
 
+  validates_uniqueness_of :provider, :scope => [:uid]
+  validates :provider, :uid,  presence:true
+
   def self.locate auth
     uid            = auth["uid"].to_s
     provider       = auth["provider"]
