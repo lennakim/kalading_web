@@ -1,6 +1,5 @@
 class Message < ActiveRecord::Base
   validates :msg_id, presence: true, :uniqueness => :true
-  belongs_to :user
 
   def set_info info
     self.to_user_name   = info.ToUserName

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218154416) do
+ActiveRecord::Schema.define(version: 20141219033231) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20141218154416) do
   end
 
   create_table "auth_infos", force: true do |t|
-    t.integer  "user_id",    null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
@@ -31,7 +30,6 @@ ActiveRecord::Schema.define(version: 20141218154416) do
   end
 
   add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
-  add_index "auth_infos", ["user_id"], name: "index_auth_infos_on_user_id", using: :btree
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -99,13 +97,11 @@ ActiveRecord::Schema.define(version: 20141218154416) do
     t.string   "title"
     t.text     "description"
     t.string   "url"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "messages", ["msg_id"], name: "index_messages_on_msg_id", unique: true, using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
