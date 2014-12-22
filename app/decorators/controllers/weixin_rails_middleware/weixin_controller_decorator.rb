@@ -11,8 +11,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      # reply_text_message("Your Message: #{@keyword}")
-      reply_text_message("Hello, #{@weixin_message}")
+      reply_text_message("Your Message: #{@keyword}")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -77,7 +76,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
-        reply_text_message("Hello，欢迎关注卡拉丁！")
+        reply_text_message("关注公众账号")
       end
 
       # 取消关注
@@ -87,7 +86,6 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 扫描带参数二维码事件: 2. 用户已关注时的事件推送
       def handle_scan_event
-        puts "扫描二维码事件"
         reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
       end
 
@@ -105,8 +103,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 点击菜单跳转链接时的事件推送
       def handle_view_event
-        # reply_text_message("你点击了: #{@keyword}")
-        Rails.logger.info("#{@weixin_message.FromUserName}点击了: #{@keyword}").to_s
+        Rails.logger.info("你点击了: #{@keyword}")
       end
 
       # 帮助文档: https://github.com/lanrion/weixin_authorize/issues/22

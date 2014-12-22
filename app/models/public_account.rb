@@ -27,5 +27,4 @@ class PublicAccount < ActiveRecord::Base
       end
     end
   end
-
 end

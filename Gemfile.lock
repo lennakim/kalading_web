@@ -8,6 +8,28 @@ GIT
       jquery-rails
       railties
 
+GIT
+  remote: https://github.com/lanrion/weixin_authorize.git
+  revision: 5ef7b637e1f75e07232ebe6eed5e05d44b6b1fe5
+  specs:
+    weixin_authorize (1.6.0)
+      carrierwave (~> 0.10.0)
+      mini_magick (~> 3.7.0)
+      redis (~> 3.1.0)
+      rest-client (>= 1.6.7)
+      yajl-ruby (~> 1.2.0)
+
+GIT
+  remote: https://github.com/lanrion/weixin_rails_middleware.git
+  revision: d247447634031cc7a28934173da949f9ca535d55
+  specs:
+    weixin_rails_middleware (1.3.0)
+      multi_xml (>= 0.5.2)
+      nokogiri (>= 1.6.1)
+      rails (>= 3.1)
+      railties (>= 3.1)
+      roxml
+
 GEM
   remote: https://ruby.taobao.org/
   specs:
@@ -66,12 +88,9 @@ GEM
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.2.2)
-    faraday (0.9.0)
-      multipart-post (>= 1.2, < 3)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    hashie (3.3.1)
     hike (1.2.3)
     httpclient (2.4.0)
     i18n (0.6.11)
@@ -90,7 +109,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    jwt (1.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -106,28 +124,10 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
-    multipart-post (2.0.0)
     mysql2 (0.3.17)
     netrc (0.8.0)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
-    oauth2 (1.0.0)
-      faraday (>= 0.8, < 0.10)
-      jwt (~> 1.0)
-      multi_json (~> 1.3)
-      multi_xml (~> 0.5)
-      rack (~> 1.2)
-    omniauth (1.2.2)
-      hashie (>= 1.2, < 4)
-      rack (~> 1.0)
-    omniauth-oauth2 (1.2.0)
-      faraday (>= 0.8, < 0.10)
-      multi_json (~> 1.3)
-      oauth2 (~> 1.0)
-      omniauth (~> 1.2)
-    omniauth-wechat-oauth2 (0.1.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
     phonelib (0.3.6)
     polyglot (0.3.5)
     pry (0.10.1)
@@ -159,7 +159,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.0)
-    redis (3.0.7)
+    redis (3.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rest-client (1.7.2)
@@ -200,18 +200,6 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    weixin_authorize (1.6.0)
-      carrierwave (~> 0.10.0)
-      mini_magick (~> 3.7.0)
-      redis (~> 3.0.7)
-      rest-client (>= 1.6.7)
-      yajl-ruby (~> 1.2.0)
-    weixin_rails_middleware (1.2.6)
-      multi_xml (>= 0.5.2)
-      nokogiri (>= 1.6.1)
-      rails (>= 3.1)
-      railties (>= 3.1)
-      roxml
     yajl-ruby (1.2.1)
 
 PLATFORMS
@@ -231,8 +219,6 @@ DEPENDENCIES
   meta_request
   mini_magick (~> 3.7.0)
   mysql2
-  omniauth
-  omniauth-wechat-oauth2
   phonelib
   pry
   pry-rails
@@ -245,5 +231,5 @@ DEPENDENCIES
   spring
   turbolinks
   uglifier (>= 1.3.0)
-  weixin_authorize
-  weixin_rails_middleware
+  weixin_authorize!
+  weixin_rails_middleware!

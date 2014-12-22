@@ -30,12 +30,8 @@ gem "mini_magick", '~> 3.7.0'
 gem 'rest-client'
 
 # weixin
-gem 'weixin_rails_middleware'
-gem 'weixin_authorize'
-gem "omniauth-wechat-oauth2"
-
-# omniauth
-gem 'omniauth'
+gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git"
+gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
 
 # clean code
 gem 'inherited_resources'

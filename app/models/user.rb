@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   before_create :generate_token
 
   class << self
+=begin
     def from_auth(auth)
       locate_auth(auth) || create_auth(auth)
     end
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
             expires_at:    auth["expires_at"]
           }])
     end
+=end
   end
 
   def update_user
