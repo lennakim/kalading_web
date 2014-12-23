@@ -14,13 +14,23 @@ class SessionsController < ApplicationController
   end
 
   def callback
-  end
+    # Here got two params, one is params[:code], another one is params[:state]
 
-  def send_verification_code
-    vcode = VerificationCode.find_valid_one params[:phone_num]
-    success = vcode && vcode.send_sms
+    account = PublicAccount.find_by name:"kalading1"
+    client = account.weixin_client
+    sns_info = client.get_oauth_access_token(params[:code])
+    expires_in = sns_info.result["expires_in"].seconds.from_now.utc
 
-    render json: { success: success }
+    account.auth_infos.create(provider:"weixin",
+                                   uid:sns_info.result["openid"],
+                                 token:sns_info.result["access_token"],
+                            expires_at:expires_in)
+
+    follower = client.get_oauth_userinfo(sns_info.result["openid"],
+                                         sns_info.result["access_token"])
+    Rails.logger.info("------follower nickname: #{follower.result["nickname"]},
+                      expires_in: #{sns_info.result["expires_in"]}")
+    redirect_to root_path
   end
 
 end

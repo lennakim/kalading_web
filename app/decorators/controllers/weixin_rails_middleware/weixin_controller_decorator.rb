@@ -11,7 +11,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      reply_text_message("Your Message: #{@keyword}")
+      link = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde94f73ba776b7df&redirect_uri=http%3A%2F%2Fohcoder.ngrok.com%2Fsessions%2Fcallback&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect"
+      reply_text_message("#{link}")
     end
 
     # <Location_X>23.134521</Location_X>

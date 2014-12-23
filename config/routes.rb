@@ -25,8 +25,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :sessions do
-    post 'callback', on: :collection
-#    post 'by_phone', on: :collection
+    get 'callback',  on: :collection
   end
 
   namespace :admin do
