@@ -7,15 +7,13 @@ class SessionsController < ApplicationController
 
     if vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
       account = PublicAccount.find_by(name: "kalading1")
+      user = User.create(phone_number: vcode.phone_num)
       if auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
-        user = User.find_or_create_by(phone_number: vcode.phone_num)
-        user.update(token: cookies[:USERAUTH])
-        UserAuthinfo.create(user_id: user.id, auth_info_id: auth_info.id)
-      else
-        User.create(phone_number: vcode.phone_num)
+        user.userauthinfos.create(user_id: user.id, auth_info_id: auth_info.id)
       end
     end
 
+    sign_in user
     redirect_to root_path
   end
 
