@@ -61,6 +61,7 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'newrelic_rpm'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
