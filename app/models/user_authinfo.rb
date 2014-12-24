@@ -1,4 +1,4 @@
 class UserAuthinfo < ActiveRecord::Base
   belongs_to :user
-  belongs_to :auth_info, dependent: :destroy
+  belongs_to :auth_info
 end

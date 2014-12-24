@@ -77,12 +77,20 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
-        reply_text_message("关注公众账号")
+        account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
+        account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
+        reply_text_message("欢迎关注卡拉丁, #{@weixin_message.FromUserName}")
       end
 
       # 取消关注
       def handle_unsubscribe_event
-        Rails.logger.info("取消关注").to_s
+        account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
+        auth_info = account.auth_infos.find_by(provider:"weixin",
+                                                    uid:@weixin_message.FromUserName)
+        if user_authinfo = UserAuthinfo.find_by(auth_info_id:auth_info.id)
+          user_authinfo.delete
+        end
+        Rails.logger.info("欢迎再来！#{@weixin_message.FromUserName}").to_s
       end
 
       # 扫描带参数二维码事件: 2. 用户已关注时的事件推送
