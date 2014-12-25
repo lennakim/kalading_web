@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
 
     if vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
       account = PublicAccount.find_by(name: "kalading1")
-      user = User.create(phone_number: vcode.phone_num)
+      user = User.find_or_create_by(phone_number: vcode.phone_num)
       if auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
-        user.userauthinfos.create(user_id: user.id, auth_info_id: auth_info.id)
+        user.user_authinfos.create(user_id: user.id, auth_info_id: auth_info.id)
       end
     end
 
