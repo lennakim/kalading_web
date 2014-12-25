@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+#= require_self
+
+$ ->
+  if $(".users-new").length > 0
+    $('#car_style').chained('#car_type,#car_name')
+    $('#car_type').chained('#car_name')

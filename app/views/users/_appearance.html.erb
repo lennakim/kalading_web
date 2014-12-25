@@ -1,0 +1,13 @@
+<% @maintain_orders.each do |order| %>
+  lights: <% lights = order['lights'] %>
+  <ul>
+    <% lights.each do |light| %>
+      <% if light %>
+        <li>
+          <%= light_name_mapper light['name'] %>
+          <%= light_desc_mapper light['desc'] %>
+        </li>	
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

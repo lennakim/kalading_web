@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get 'maintain_histories'
       get 'cars'
       get 'balance'
+      get 'new'
     end
   end
 
