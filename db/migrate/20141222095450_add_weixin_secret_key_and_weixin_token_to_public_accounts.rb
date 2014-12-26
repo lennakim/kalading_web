@@ -1,11 +1,17 @@
 class AddWeixinSecretKeyAndWeixinTokenToPublicAccounts < ActiveRecord::Migration
   def self.up
-    change_table(:public_accounts) do |t|
-      t.string :weixin_secret_key
-      t.string :weixin_token
+
+    if !PublicAccount.new.respond_to?(:weixin_secret_key) && \
+       !PublicAccount.new.respond_to?(:weixin_secret_token)
+
+      change_table(:public_accounts) do |t|
+        t.string :weixin_secret_key
+        t.string :weixin_token
+      end
+      add_index :public_accounts, :weixin_secret_key
+      add_index :public_accounts, :weixin_token
+
     end
-    add_index :public_accounts, :weixin_secret_key
-    add_index :public_accounts, :weixin_token
   end
 
   def self.down

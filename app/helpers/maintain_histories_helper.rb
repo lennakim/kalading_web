@@ -256,14 +256,6 @@ module MaintainHistoriesHelper
     extract_arr_with hash, keys
   end
 
-  def extinguisher_desc_mapper key
-    {
-      '0' => '有',
-      '1' => '无',
-      '2' => '未检测'
-    }[key.to_s]
-  end
-
   def oil_position_mapper key
     {
       '0' => '正常（介于L和H之间）',

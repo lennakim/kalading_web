@@ -15,7 +15,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 # backbone
-gem 'rails-backbone', git: 'git@github.com:codebrew/backbone-rails.git'
+gem 'rails-backbone', git: 'https://github.com/codebrew/backbone-rails.git'
 
 gem 'spring',        group: :development
 
@@ -56,7 +56,8 @@ end
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
+gem 'newrelic_rpm'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

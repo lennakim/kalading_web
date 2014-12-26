@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
       account = PublicAccount.find_by(name: "kalading1")
       user = User.find_or_create_by(phone_number: vcode.phone_num)
       if auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
-        user.user_authinfos.create(user_id: user.id, auth_info_id: auth_info.id)
+        begin
+          user.auth_infos << auth_info
+        rescue ActiveRecord::RecordInvalid => e
+          # ...
+        end
       end
     end
 
@@ -26,12 +30,13 @@ class SessionsController < ApplicationController
     expires_in = sns_info.result["expires_in"].seconds.from_now.utc
     cookies[:USERAUTH] = { value: sns_info.result["openid"], expires: 30.days.from_now }
     auth_info = account.auth_infos.find_or_create_by(provider:"weixin",
-                                                          uid:sns_info.result["openid"])
+                                                     uid:sns_info.result["openid"])
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
 
     follower = client.get_oauth_userinfo(sns_info.result["openid"],
                                          sns_info.result["access_token"])
+
     Rails.logger.info("------follower nickname: #{follower.result["nickname"]},
                       expires_in: #{sns_info.result["expires_in"]}")
 
