@@ -15,7 +15,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 # backbone
-gem 'rails-backbone', git: 'git@github.com:codebrew/backbone-rails.git'
+gem 'rails-backbone', git: 'https://github.com/codebrew/backbone-rails.git'
 
 gem 'spring',        group: :development
 
