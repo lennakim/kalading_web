@@ -17,5 +17,6 @@
 *.swo
 *.swp
 config/database.yml
+config/secrets.yml
 .vagrant/
 /public/assets

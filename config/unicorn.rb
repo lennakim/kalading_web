@@ -1,4 +1,4 @@
-root = "/home/deployer/projects/kalading_web"
+root = "/home/deployer/apps/kaladingcom/current"
 
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
