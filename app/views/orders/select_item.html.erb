@@ -1,37 +1,61 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
-
-<input type="hidden" data-items="<%= @result %>" class='items-select-page'>
-
-<div class="main orders" id="main" data-car="<%= params[:car_id]%>">
-
-  <div class="price" data-price="<%= @result["price"] %>">
-    <%= @result["price"] %>
-  </div>
-
-  <% @result["applicable_parts"].each do |part|  %>
-    <div class="item">
-      <% part_name = part.keys[0] %>
-      <% part_items = part.values[0] %>
-      <input type="checkbox" class='part-selector' checked>
-      <label><%= part_name %></label>
-      <select class="part">
-        <% select_index = selected_item_index(default_parts(@result), part_items)  %>
-        <% part_items.each_with_index do |item, index| %>
-          <% unless item["quantity"] == 0 %>
-            <%= render "item", name: part_name, item: item, selected: select_index == index %>
-        <% end %>
-        <% end %>
-      </select>
+<div class="main items-select-page">
+  <ul class="process">
+    <li class="car-type">选择车型</li>
+    <li class="service selected">选择服务</li>
+    <li class="info">填写信息</li>
+    <li class="success">预定成功</li>
+  </ul>
+  <div class="orders" data-car="<%= params[:car_id]%>">
+    <input type="hidden" data-items="<%= @result %>">
+    <ul>
+      <li class="selected">PM2.5滤芯更换</li>
+      <li>车辆上门保养</li>
+    </ul>
+    <div class="maintain-con">
+      <h4>奔驰（北京）E级系列上门保养</h4>
+      <div class="item-list">
+        <label for="price">价格：</label>
+        <span class="price" data-price="<%= @result["price"] %>">
+          <%= @result["price"] %>
+        </span>
+        <span class="original"><%= @result["price"] %></span>
+        <span class="now">0元</span>
+        <var class="reason"></var>   
+      </div>
+      <div class="item-list">
+        <label for="item-box">项目：</label>
+        <div class="item-box">
+          <% @result["applicable_parts"].each do |part|  %>
+            <div class="item">
+              <% part_name = part.keys[0] %>
+              <% part_items = part.values[0] %>
+              <input type="checkbox" class='part-selector' checked>
+              <label><%= part_name %></label>
+              <select class="part">
+                <% select_index = selected_item_index(default_parts(@result), part_items)  %>
+                <% part_items.each_with_index do |item, index| %>
+                  <% unless item["quantity"] == 0 %>
+                    <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                <% end %>
+                <% end %>
+              </select>
+            </div>
+          <% end %>
+          <div class="service">
+            <input type="checkbox" checked disabled='disabled'>
+            <span class='service-price' data-price="<%= @result['service_price'] %>">服务费<%= @result['service_price'] %></span>
+          </div>
+          <button id="order_button">下一步</button>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="item">
-    <input type="checkbox" checked disabled='disabled'>
-    <label>服务费</label>
-    <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
+    <div class="maintainn-con hidden"></div>
   </div>
-
-  <button id="order_button">预定</button>
+  <div class="service">
+    <h3 class="service-intro">用户评价</h3>
+    <div class="service-con"></div>
+  </div>
 </div>

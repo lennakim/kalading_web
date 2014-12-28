@@ -8,7 +8,7 @@
 
 $ ->
 
-  $('#search_button').click ->
+  $('.search_button').click ->
     id = $('#car_style option:selected').data 'id'
     window.location.href = "/orders/select_item?car_id=#{id}"
 

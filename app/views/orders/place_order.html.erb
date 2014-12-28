@@ -4,7 +4,13 @@
 
 <%= title "提交订单" %>
 
-<div class="place-order-page">
+<div class="main place-order-page">
+  <ul class="process">
+    <li class="car-type selected">选择车型</li>
+    <li class="service">选择服务</li>
+    <li class="info">填写信息</li>
+    <li class="success">预定成功</li>
+  </ul>
   <%= form_tag '',:id => 'commentForm' do %>
 	<fieldset>
 	  <p>

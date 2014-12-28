@@ -1,6 +1,53 @@
 @import "orders";
+@import "home";
 @import "classic";
 @import "classic.date";
 @import "classic.time";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "flexslider";
+
+$border-yellow: #fdae1e;
+$font-gray: #626262;
+
+.header{
+	overflow: hidden;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 110px;
+	padding: 24px 14% 14px;
+	border-bottom: 2px solid $border-yellow;
+	.logo,li{
+		float: left;
+	}
+	.logo{
+		
+	}
+	.nav{
+		float: right;
+		overflow: hidden;
+		min-width: 320px;
+		font-family: STHeitiSC-Medium;
+		font-size: 14px;
+		color: $font-gray;
+		li{
+			width: 106px;
+			text-align: center;
+			&:before{
+				display: block;
+				padding-top: 15px;
+			}
+		}
+		.personal:before{
+			content: url("personal.png");
+		}
+		.wechat:before{
+			content: url("wechat.png");
+		}
+		.tel:before{
+			content: url("tel.png");
+		}
+	}
+}
