@@ -9,3 +9,8 @@ listen "/tmp/unicorn.kalading.sock"
 worker_processes 5
 timeout 30
 
+# Force the bundler gemfile environment variable to
+# reference the capistrano "current" symlink
+before_exec do |_|
+  ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
+end
