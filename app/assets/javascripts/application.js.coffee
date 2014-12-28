@@ -9,6 +9,7 @@
 #= require picker.date
 #= require picker.time
 #= require bootstrap-sprockets
+#= require jquery.flexslider-min
 #= require_self
 
 window.Kalading =

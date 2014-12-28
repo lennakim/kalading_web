@@ -1,3 +1,366 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$bac-orange: #ff9934;
+$border-orange: #ef7337;
+$font-gray: #dedede;
+.main{
+	padding: 0 10%;
+	li{
+
+		list-style: none;
+	}
+	.process{
+		overflow: hidden;
+		padding: 0;
+		text-align: center;
+		li{
+			float: left;
+			min-width: 25%;
+			margin: 60px 0;
+			height: 40px;
+			line-height: 40px;
+			font-size: 20px;
+			color: #666666;
+			&:before{
+				margin-right: 15px;
+			}
+		}
+		.car-type:before{
+			content: url("car.png");
+		}
+		.car-type.selected:before{
+			content: url("car-selected.png");
+		}
+		.service:before{
+			content: url("service.png");
+		}
+		.service.selected:before{
+			content: url("service-selected.png");
+		}
+		.info:before{
+			content: url("info.png");
+		}
+		.info.selected:before{
+			content: url("info-selected.png");
+		}
+		.success:before{
+			content: url("success.png");
+		}
+		.success.selected:before{
+			content: url("success-selected.png");
+		}
+	}
+}
+.index{
+	position: relative;
+	.flexslider{
+		overflow: hidden;
+		margin: 26px 0 14px; 
+	}
+	.login-form{
+		position: absolute;
+		top: 35px;
+		right: 14%;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 300px;
+		height: 340px;
+		text-align: center;
+		.form-bac{
+			background: #fff;
+			opacity: 0.5;
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+		}
+		.form-con{
+			position: absolute;
+			top: 0;
+			width: 100%;
+			padding: 24px 20px;
+		}
+		input,button{
+			height: 40px;
+			line-height: 40px;
+			margin-bottom: 10px;
+			border: 0;
+			border-radius: 5px;
+			outline:none;
+		}
+		.login-title{
+			margin: 5px 0 30px;
+			padding-bottom: 25px;
+			font-size: 24px;
+			color: #ff9938;
+			border-bottom: 1px solid #fff;
+		}
+		.phone_num{
+			width: 100%;
+		}
+		.phone_num,.verification_code{
+			padding-left: 10px;
+			color: $font-gray;
+			font-family: AdobeHeitiStd-Regular;
+			font-size: 18px;
+		}
+		.field{
+			overflow: hidden;
+		}
+		.verification_code,.get_code{
+			float: left;
+			width: 48%;
+		}
+		.verification_code{
+			margin-right: 10px;
+		}
+		.get_code{
+			font-size: 18px;
+		}
+		.get_code,.submit_button{
+			background: $bac-orange;
+			color: #fff;
+		}
+		.submit_button{
+			width: 98%;
+			margin: 0 auto;
+			margin-top: 40px;
+			font-size: 22px;
+		}
+	}
+	.maintian-item{
+		overflow: hidden;
+		dl{
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			float: left;
+			width: 48%;
+			margin: 0;
+			&:nth-child(odd){
+				margin-right: 14px;
+			}
+			dt{
+				overflow: hidden;
+				height: 204px;
+				background: #fff;
+				border-radius: 5px 5px 0 0;
+			}
+			dd{
+				overflow: hidden;
+				background: #ede8e4;
+				padding: 4px 30px 20px;
+				border-radius: 0 0 5px 5px;
+				.title{
+					color: #62615f;
+				}
+				.description{
+					font-family: AdobeHeitiStd-Regular;
+					font-size: 16px;
+					color: #999999;
+				}
+				button{
+					float: right;
+					width: 160px;
+					height: 40px;
+					line-height: 40px;
+					border: 0;
+					border-radius: 5px;
+					background: $bac-orange;
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+.select-car-page{
+	background: #f7f7f7;
+	.select-item{
+		overflow: hidden;
+		border: 1px solid #ccc;
+		background: #fff;
+		.select-car,.quick-select{
+			float: left;
+			width: 50%;
+			margin-top: 28px;
+			padding: 0 5%;
+			h4{
+				text-align: center;
+				margin: 30px 0;
+			}			
+			.search_button{
+				width: 130px;
+				height: 40px;
+				line-height: 40px;
+				
+				background: $bac-orange;
+				border: 0;
+				color: #fff;
+				text-align: center;
+			}
+		}
+		.select-car{
+			border-right: 1px solid #ccc;
+			.field{
+				overflow: hidden;
+				margin-bottom: 30px;
+				line-height: 18px;
+				label,select{
+					float: left;
+				}
+				label{
+					min-width: 70px;
+					font-size: 18px;
+				}
+				.more{
+					padding: 5px;
+					text-decoration: underline;
+					color: #4c4c4c;
+					font-size: 14px;
+				}
+				.search_button{
+					margin: 30px auto;
+				}
+			}
+		}
+		.quick-select{
+			.my-car{
+				width: 260px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background: #e1e1e1;
+				margin: 0 auto;
+				margin-bottom: 30px;
+				color: #fff;
+				&:after{
+					content:url("down.png");
+					float: right;
+				}
+				input{
+					float: left;
+					margin: 14px;
+				}
+			}
+			.selected{
+				background: #ffd4a9;
+			}
+			.search_button{
+				margin-left: 50%;
+			}
+		}
+	}
+	.comment{
+		.user-comment{
+			font-size: 18px;
+			padding-left: 5%;
+			margin: 90px 0 30px;
+			&:before{
+				content: url("comment.png");
+				margin-right: 15px;
+			}
+		}
+		.comment-con{
+			background: #fff;
+			height: 300px;
+		}
+	}
+}
+.items-select-page{
+	.orders{
+		padding: 0 20px;
+		background: #fff;
+		border: 1px solid #ccc;
+		ul{
+			overflow: hidden;
+			border-bottom: 1px solid $border-orange;
+			li{
+				float: left;
+				margin: 0 20px;
+				padding: 10px 0;
+				color: #999999;
+				font-size: 20px;
+			}
+			.selected{
+				color: $bac-orange;
+				border-bottom: 2px solid $bac-orange;
+			}
+		}
+		.maintain-con{
+			h4{
+				margin-bottom: 35px;
+			}
+			.item-list{
+				margin-bottom: 35px;
+				overflow: hidden;
+				line-height: 40px;
+				label{
+					color: #606060;
+					float: left;
+				}
+				.price,.now{
+					font-size: 28px;
+					color: #ef4f24;
+				}
+				.original{
+					margin-left: 20px;
+					text-decoration: line-through;
+					font-size: 16px;
+					color: #e1e1e1;
+				}
+				.item-box{
+					display: inline-block;
+					.item{
+						margin-bottom: 35px;
+						&:last-child{
+							margin: 0;
+						}
+						label{
+							width: 40px;
+						}
+						input{
+							float: left;
+							margin: 15px 10px 0 0;
+						}
+					}
+				}
+				.service-price{
+					background: #fafafa;
+					width: 360px;
+					height: 40px;
+					line-height: 40px;
+					text-align: center;
+					input{
+						float: left;
+						margin: 14px 2px;
+					}
+				}
+				#order_button{
+					margin-top: 35px;
+					width: 360px;
+					border: 0;
+					background: $bac-orange;
+					color: #fff;
+				}
+			}
+		}
+	}
+	.service{
+		.service-intro{
+			font-size: 18px;
+			padding-left: 5%;
+			margin: 90px 0 30px;
+			&:before{
+				content: url("service-intro.png");
+				margin-right: 15px;
+			}
+		}
+		.service-con{
+			background: #fff;
+			height: 300px;
+			border: 1px solid #ccc;
+		}
+	}
+}

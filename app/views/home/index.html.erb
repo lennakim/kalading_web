@@ -1,13 +1,73 @@
-<%= title "首页" %>
-
-<%= link_to "创建订单", select_car_orders_path %>
-<%= link_to "我的订单", orders_users_path %>
-<%= link_to "我的保养记录", maintain_histories_users_path %>
-<%= link_to "车辆信息", cars_users_path %>
-<% if signed_in? %>
-  你已经使用<%= current_user.nickname %>的账户登陆
-<% else %>
-  没登陆
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "home", 'data-turbolinks-track' => true %>
 <% end %>
-
-哈
+<%= title "首页" %>
+<%#= link_to "创建订单", select_car_orders_path %>
+<%#= link_to "我的订单", orders_users_path %>
+<%#= link_to "我的保养记录", maintain_histories_users_path %>
+<%#= link_to "车辆信息", cars_users_path %>
+<%# if signed_in? %>
+  <!-- 你已经使用<%#= current_user.nickname %>的账户登陆 -->
+<%# else %>
+  <!-- 没登陆 -->
+<%# end %>
+<div class="main index">
+  <div class="flexslider">
+    <ul class="slides">
+      <li>
+        <%= image_tag("slider.jpg")%>
+      </li>
+      <li>
+        <%= image_tag("slider.jpg")%>
+      </li>
+      <li>
+        <%= image_tag("slider.jpg")%>
+      </li>
+      <li>
+        <%= image_tag("slider.jpg")%>
+      </li>
+    </ul>
+  </div>
+  <div class="login-form">
+  	<div class="form-bac"></div>
+  	<div class="form-con">
+	  <h3 class="login-title">请您先登录</h3>
+      <div class="field">
+      	<input type="number" class="phone_num" id="phone_num" placeholder="手机号">
+      	<input type="number" class="verification_code" placeholder="验证码" id="verification_code"/>
+        <button class='get_code' id="get_code">获取验证码</button>
+        <button id="submit_button" class="submit_button" disabled="disabled">登录</button>
+      </div>
+      
+  	</div>
+  </div>
+  <div class="maintian-item">
+	<dl>
+	  <dt>
+		<%= image_tag("air-condition.png", :class=> "logo")%>
+	  </dt>
+	  <dd>
+		<h3 class="title">卡拉丁空调滤清器</h3>
+		<span class="description">3分钟告别车内雾霾</span>
+		<button>立即预定</button>
+	  </dd>
+	</dl>
+	<dl>
+	  <dt>
+		<%= image_tag("maintain.png", :class=> "logo")%>
+	  </dt>
+	  <dd>
+		<h3 class="title">卡拉丁上门保养</h3>
+		<span class="description">省时、省心、省钱</span>
+		<button>立即预定</button>
+	  </dd>
+	</dl>
+  </div>
+</div>
+<script>
+	$(window).load(function() {
+	  $('.flexslider').flexslider({
+	    animation: "slide"
+	  });
+	});
+</script>
