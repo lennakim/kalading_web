@@ -28,28 +28,28 @@ $font-gray: #dedede;
       }
     }
     .car-type:before{
-      content: url("car.png");
+      content: image-url("car.png");
     }
     .car-type.selected:before{
-      content: url("car-selected.png");
+      content: image-url("car-selected.png");
     }
     .service:before{
-      content: url("service.png");
+      content: image-url("service.png");
     }
     .service.selected:before{
-      content: url("service-selected.png");
+      content: image-url("service-selected.png");
     }
     .info:before{
-      content: url("info.png");
+      content: image-url("info.png");
     }
     .info.selected:before{
-      content: url("info-selected.png");
+      content: image-url("info-selected.png");
     }
     .success:before{
-      content: url("success.png");
+      content: image-url("success.png");
     }
     .success.selected:before{
-      content: url("success-selected.png");
+      content: image-url("success-selected.png");
     }
   }
 }
