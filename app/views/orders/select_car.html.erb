@@ -42,15 +42,17 @@
             <% car['ams'].each do |type| %>
               <% type['asms'].each do |style| %>
                 <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-                  <%= style['name'] %><%= style['_id'] %>
+                  <%= style['name'] %>
                 </option>
               <% end %>
             <% end %>
           <% end %>
         </select>
-        <button class="search_button bac-orange font-white">下一步</button>
-        <a class="more" href="">没招到车型？</a>
       </div>
+      <p>
+        <button class="search_button bac-orange font-white">下一步</button>
+        <a class="more" href="">没找到车型？</a>
+      </p>
     </div>
     <div class="quick-select">
       <h4>我的快捷车辆</h4>
@@ -62,11 +64,11 @@
         <%= check_box_tag :car2 %>
         <%= label_tag(:car2, "奔驰（北京）") %>
       </div>
-      <button class="search_button">下一步</button>
+      <button class="search_button bac-orange font-white">下一步</button>
     </div>
   </div>
   <div class="comment">
-    <h3 class="user-comment">用户评价</h3>
+    <h3 class="comment-title">用户评价</h3>
     <div class="comment-con bac-white"></div>
   </div> 
 </div>

@@ -1,3 +1,5 @@
+@import "compass";
+@import "compass/reset";
 @import "orders";
 @import "home";
 @import "classic";
@@ -7,14 +9,13 @@
 @import "bootstrap";
 @import "flexslider";
 
+
 $border-yellow: #fdae1e;
 $font-gray: #626262;
 
 .header{
 	overflow: hidden;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+	@include box-sizing(border-box);
 	width: 100%;
 	min-height: 110px;
 	padding: 24px 14% 14px;
