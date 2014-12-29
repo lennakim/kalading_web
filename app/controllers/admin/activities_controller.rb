@@ -1,4 +1,4 @@
-class Admin::ActivitiesController < Admin::HomeController
+class Admin::ActivitiesController < Admin::MainController
 
   inherit_resources
 

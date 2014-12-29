@@ -1,0 +1,35 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <table class='table'>
+    <tr>
+      <td>手机号</td>
+      <td><%= resource.phone_number %></td>
+    </tr>
+
+    <tr>
+      <td>绑定平台信息</td>
+      <td>
+
+        <table class='table'>
+          <tr>
+            <td>Provider</td>
+            <td>UID</td>
+            <td>TOKEN</td>
+            <td>Expires_at</td>
+            <td>PublicAccount</td>
+          </tr>
+
+          <% resource.auth_infos.each do |auth| %>
+            <tr>
+              <td><%= auth.provider %></td>
+              <td><%= auth.uid %></td>
+              <td><%= auth.token %></td>
+              <td><%= auth.expires_at %></td>
+              <td><%= link_to auth.public_account.try(:name), "#" %></td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

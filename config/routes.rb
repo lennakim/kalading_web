@@ -30,10 +30,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: 'home#index'
-    resources :home
+    root to: 'main#index'
+    resources :main
     resources :activities
     resources :channels
+    resources :users
   end
 
   namespace :activity do
