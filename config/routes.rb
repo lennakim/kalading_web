@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-
   mount WeixinRailsMiddleware::Engine, at: "/"
+
+  resources :posts
 
   resources :orders do
     collection do

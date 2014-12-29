@@ -1,7 +1,6 @@
+// libs
 @import "compass";
 @import "compass/reset";
-@import "orders";
-@import "home";
 @import "classic";
 @import "classic.date";
 @import "classic.time";
@@ -9,6 +8,10 @@
 @import "bootstrap";
 @import "flexslider";
 
+// resources
+@import "home";
+@import "orders";
+@import "posts";
 
 $border-yellow: #fdae1e;
 $font-gray: #626262;
