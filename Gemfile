@@ -57,11 +57,15 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+
+# monitor
 gem 'newrelic_rpm'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
+# deployment
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+end

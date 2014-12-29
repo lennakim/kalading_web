@@ -23,7 +23,7 @@ $font-gray: #626262;
 		float: left;
 	}
 	.logo{
-		
+
 	}
 	.nav{
 		float: right;
@@ -41,13 +41,13 @@ $font-gray: #626262;
 			}
 		}
 		.personal:before{
-			content: url("personal.png");
+			content: image-url("personal.png");
 		}
 		.wechat:before{
-			content: url("wechat.png");
+			content: image-url("wechat.png");
 		}
 		.tel:before{
-			content: url("tel.png");
+			content: image-url("tel.png");
 		}
 	}
 }
