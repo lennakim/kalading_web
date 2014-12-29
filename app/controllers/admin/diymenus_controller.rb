@@ -1,4 +1,4 @@
-class Admin::DiymenusController < Admin::HomeController
+class Admin::DiymenusController < Admin::MainController
   def index
   end
 end

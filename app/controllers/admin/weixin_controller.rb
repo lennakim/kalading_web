@@ -1,4 +1,4 @@
-class Admin::WeixinController < Admin::HomeController
+class Admin::WeixinController < Admin::MainController
   def index
   end
 end
