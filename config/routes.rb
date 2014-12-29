@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :home
     resources :activities
     resources :channels
+    resources :diymenus
+
+    get 'weixin/index'
   end
 
   namespace :activity do
