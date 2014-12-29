@@ -1,4 +1,4 @@
-class Activity::HomeController < ActionController::Base
+class Activity::MainController < ActionController::Base
   layout "activity"
   impressionist
 

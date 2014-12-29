@@ -1,0 +1,7 @@
+class Admin::UsersController < Admin::MainController
+
+  inherit_resources
+
+  defaults :resource_class => User, :route_prefix => 'admin'
+
+end
