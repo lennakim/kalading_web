@@ -34,6 +34,8 @@ gem 'rest-client'
 # weixin
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git"
 gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
+gem 'simple_form'
+gem 'cocoon'
 
 # clean code
 gem 'inherited_resources'
