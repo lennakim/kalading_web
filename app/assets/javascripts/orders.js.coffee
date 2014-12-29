@@ -47,6 +47,29 @@ $ ->
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
 
+    $('.my-car').each ->
+      $(this).click ->
+        if $(this).find('input').is(':checked')
+          $(this).addClass('selected')
+          $(this).next('.my-car-info').css({'borderColor':'#ffd4a9'})
+        else
+          $(this).removeClass('selected');
+          $(this).next('.my-car-info').css({'borderColor':'#e1e1e1'})
+
+    $('.my-car var').each ->
+      $(this).click ->
+        _myCar = $(this).parent()
+        _myCarInfo = _myCar.next('.my-car-info')
+
+        if _myCar.hasClass('down')
+          _myCar.removeClass('down')
+          _myCarInfo.removeClass('show-con')
+          $('.quick-select button').removeClass('hidden')
+        else
+          _myCar.addClass('down').siblings('.my-car').removeClass('down')
+          _myCarInfo.addClass('show-con').siblings('.my-car-info').removeClass('show-con')
+          $('.quick-select button').addClass('hidden')
+
   if $(".place-order-page").length > 0
     $("#commentForm").validate({
       rules: {

@@ -185,7 +185,7 @@ $font-orange: #ff7b3a;
 			padding: 0 5%;
 			h4{
 				text-align: center;
-				margin: 30px 0;
+				margin-bottom: 30px;
 			}			
 			.search_button{
 				width: 130px;
@@ -206,8 +206,8 @@ $font-orange: #ff7b3a;
 			border-right: 1px solid #ccc;
 			.field{
 				overflow: hidden;
-				margin-bottom: 30px;
-				line-height: 18px;
+				margin-bottom: 36px;
+				line-height: 20px;
 				label,select{
 					float: left;
 				}
@@ -221,30 +221,69 @@ $font-orange: #ff7b3a;
 			}
 		}
 		.quick-select{
-			.my-car{
+			.my-car,.my-car-info{
 				width: 260px;
+				margin: 0 auto;
+			}
+			.my-car{
+				position: relative;
 				height: 40px;
 				line-height: 40px;
 				text-align: center;
 				background: #e1e1e1;
-				margin: 0 auto;
-				margin-bottom: 30px;
+				margin:10px auto 30px;
 				color: #fff;
-				&:after{
-					content:url("down.png");
-					margin: 5px 10px;
-					float: right;
-				}
+				// &:after{
+				// 	content:url("down.png");
+				// 	margin: 5px 10px;
+				// 	float: right;
+				// }
 				input{
 					float: left;
 					margin: 14px;
+				}
+				var{
+					display: block;
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 18px;
+					height: 16px;
+					padding: 20px 15px;
+					background-image: url("down.png");
+					background-position: 0 12px;
+					background-repeat: no-repeat;
+					cursor: pointer;
+					cursor: hand;
+				}
+			}
+			.down{
+				margin-bottom: 0;
+				position: relative;
+				var{
+					background-image: url("up.png");
 				}
 			}
 			.selected{
 				background: #ffd4a9;
 			}
 			.search_button{
-				margin-left: 50%;
+				margin: 40px 0 0 50%;
+			}
+			.hidden{
+				display: none;
+			}
+			.my-car-info{
+				display: none;
+				padding: 10px;
+				color: #c6c6c6;
+				border: 1px solid #e1e1e1;
+				p{
+					margin: 0;
+				}
+			}
+			.show-con{
+				display: block;
 			}
 		}
 	}
