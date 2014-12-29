@@ -1,6 +1,6 @@
 class Kalading.Views.Items extends Backbone.View
 
-  el: '#main'
+  el: '#pm25'
 
   events:
     "change .part": "resetSelectItems"

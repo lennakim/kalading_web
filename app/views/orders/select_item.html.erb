@@ -8,13 +8,13 @@
     <li class="info">填写信息</li>
     <li class="success">预定成功</li>
   </ul>
-  <div class="orders" data-car="<%= params[:car_id]%>">
-    <input type="hidden" data-items="<%= @result %>">
+  <div class="orders bac-white" data-car="<%= params[:car_id]%>">
     <ul>
       <li class="selected">PM2.5滤芯更换</li>
       <li>车辆上门保养</li>
     </ul>
-    <div class="maintain-con">
+    <div class="maintain-con" id="pm25">
+      <input type="hidden" data-items="<%= @result %>">
       <h4>奔驰（北京）E级系列上门保养</h4>
       <div class="item-list">
         <label for="price">价格：</label>
@@ -48,7 +48,7 @@
             <input type="checkbox" checked disabled='disabled'>
             <span class='service-price' data-price="<%= @result['service_price'] %>">服务费<%= @result['service_price'] %></span>
           </div>
-          <button id="order_button">下一步</button>
+          <button id="order_button" class="bac-orange font-white">下一步</button>
         </div>
       </div>
     </div>
@@ -56,6 +56,6 @@
   </div>
   <div class="service">
     <h3 class="service-intro">用户评价</h3>
-    <div class="service-con"></div>
+    <div class="service-con bac-white"></div>
   </div>
 </div>

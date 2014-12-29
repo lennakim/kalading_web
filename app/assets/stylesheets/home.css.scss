@@ -5,11 +5,21 @@
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
+$font-orange: #ff7b3a;
 .main{
-	padding: 0 10%;
+	padding: 0 15%;
 	li{
 
 		list-style: none;
+	}
+	.bac-orange{
+		background: $bac-orange;
+	}
+	.bac-white{
+		background: #fff;
+	}
+	.font-white{
+		color: #fff;
 	}
 	.process{
 		overflow: hidden;
@@ -61,16 +71,15 @@ $font-gray: #dedede;
 	}
 	.login-form{
 		position: absolute;
-		top: 35px;
-		right: 14%;
+		top: 30px;
+		right: 18%;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
-		width: 300px;
-		height: 340px;
+		width: 267px;
+		height: 303px;
 		text-align: center;
 		.form-bac{
-			background: #fff;
 			opacity: 0.5;
 			width: 100%;
 			height: 100%;
@@ -80,11 +89,11 @@ $font-gray: #dedede;
 			position: absolute;
 			top: 0;
 			width: 100%;
-			padding: 24px 20px;
+			padding: 22px 3%;
 		}
 		input,button{
-			height: 40px;
-			line-height: 40px;
+			height: 34px;
+			line-height: 34px;
 			margin-bottom: 10px;
 			border: 0;
 			border-radius: 5px;
@@ -92,8 +101,7 @@ $font-gray: #dedede;
 		}
 		.login-title{
 			margin: 5px 0 30px;
-			padding-bottom: 25px;
-			font-size: 24px;
+			padding-bottom: 15px;
 			color: #ff9938;
 			border-bottom: 1px solid #fff;
 		}
@@ -104,33 +112,26 @@ $font-gray: #dedede;
 			padding-left: 10px;
 			color: $font-gray;
 			font-family: AdobeHeitiStd-Regular;
-			font-size: 18px;
 		}
 		.field{
 			overflow: hidden;
+			width: 84%;
+			margin: 0 auto;
 		}
 		.verification_code,.get_code{
 			float: left;
 			width: 48%;
 		}
 		.verification_code{
-			margin-right: 10px;
-		}
-		.get_code{
-			font-size: 18px;
-		}
-		.get_code,.submit_button{
-			background: $bac-orange;
-			color: #fff;
+			margin-right: 8px;
 		}
 		.submit_button{
 			width: 98%;
 			margin: 0 auto;
-			margin-top: 40px;
-			font-size: 22px;
+			margin-top: 34px;
 		}
 	}
-	.maintian-item{
+	.maintain-item{
 		overflow: hidden;
 		dl{
 			-moz-box-sizing: border-box;
@@ -145,7 +146,6 @@ $font-gray: #dedede;
 			dt{
 				overflow: hidden;
 				height: 204px;
-				background: #fff;
 				border-radius: 5px 5px 0 0;
 			}
 			dd{
@@ -168,8 +168,6 @@ $font-gray: #dedede;
 					line-height: 40px;
 					border: 0;
 					border-radius: 5px;
-					background: $bac-orange;
-					color: #fff;
 				}
 			}
 		}
@@ -180,7 +178,6 @@ $font-gray: #dedede;
 	.select-item{
 		overflow: hidden;
 		border: 1px solid #ccc;
-		background: #fff;
 		.select-car,.quick-select{
 			float: left;
 			width: 50%;
@@ -194,10 +191,7 @@ $font-gray: #dedede;
 				width: 130px;
 				height: 40px;
 				line-height: 40px;
-				
-				background: $bac-orange;
 				border: 0;
-				color: #fff;
 				text-align: center;
 			}
 		}
@@ -263,7 +257,6 @@ $font-gray: #dedede;
 			}
 		}
 		.comment-con{
-			background: #fff;
 			height: 300px;
 		}
 	}
@@ -271,7 +264,6 @@ $font-gray: #dedede;
 .items-select-page{
 	.orders{
 		padding: 0 20px;
-		background: #fff;
 		border: 1px solid #ccc;
 		ul{
 			overflow: hidden;
@@ -284,8 +276,8 @@ $font-gray: #dedede;
 				font-size: 20px;
 			}
 			.selected{
-				color: $bac-orange;
-				border-bottom: 2px solid $bac-orange;
+				color: $font-orange;
+				border-bottom: 2px solid $font-orange;
 			}
 		}
 		.maintain-con{
@@ -337,13 +329,11 @@ $font-gray: #dedede;
 						margin: 14px 2px;
 					}
 				}
-				#order_button{
-					margin-top: 35px;
-					width: 360px;
-					border: 0;
-					background: $bac-orange;
-					color: #fff;
-				}
+			}
+			#order_button{
+				margin-top: 35px;
+				width: 360px;
+				border: 0;
 			}
 		}
 	}
@@ -358,9 +348,175 @@ $font-gray: #dedede;
 			}
 		}
 		.service-con{
-			background: #fff;
 			height: 300px;
 			border: 1px solid #ccc;
+		}
+	}
+}
+.place-order-page{
+	#item_table{
+		width: 100%;
+		border: 1px solid #ccc;
+		th,td{
+			width: 25%;
+			height: 40px;
+			text-align: center;
+			color: #666666;
+			border: 1px solid #ccc;
+		}
+		th{
+			background: #f9f6f1;
+		}
+		td{
+			line-height: 40px;
+		}
+		p{
+			margin: 0;
+		}
+		.result{
+			font-size: 24px;
+			color: #ef4f24;
+		}
+	}
+	.address,.comment-form{
+		border: 1px solid #ccc;
+		padding: 15px 5%;
+	}
+	.info-group{
+		overflow: hidden;
+		height: 40px;
+		padding: 5px;
+		.star{
+			float: left;
+			color: $font-orange;
+			font-size: 20px;
+		}
+		.info-title{
+			float: left;
+			display: inline-block;
+			width: 110px;
+			text-align: right;
+		}
+		.info-con{
+			float: left;
+			min-width: 150px;
+			input{
+				border: 0;
+				background: #fafafa;
+			}
+			.verify{
+				border: 0;
+			}
+			.verify-info{
+				color: $font-orange;
+			}
+			.hidden{
+				display: none;
+			}
+		}
+	}
+	.address{
+		margin-top: 15px; 
+		border-bottom: 0;
+		.title{
+			color: $font-orange;
+		}
+		.choice{
+			overflow: hidden;
+			color: #666666;
+			.choice-title:before{
+				content: url('address.png');
+			}
+			.address-item{
+				float: left;
+				position: relative;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 30%;
+				height: 100px;
+				padding: 5px 10px 0;
+				margin-right: 5%;
+				border: 2px solid #f1f1f1;
+				font-size: 16px;
+				&:last-child{
+					margin: 0;
+				}
+				&:hover{
+					border-color: $border-orange;
+				}
+				dt,dd{
+					line-height: 30px;
+				}
+				dt{
+					border-bottom: 1px solid #f1f1f1;
+				}
+				.selected{
+					position: absolute;
+					right: 0;
+					top: 54px;
+				}
+				.hidden{
+					display: none;
+				}
+				.selected:before{
+					content: url('selected.png');
+				}
+			}
+			.selected-item{
+				border-color: $border-orange;
+			}
+		}
+		.more:after{
+			content: url('more-address.png');
+		}
+		.new{
+			.new-title{
+				background: #ccc;
+				width: 150px;
+				margin: 0;
+				padding: 5px;
+				text-align: center;
+			}
+			.new-con{
+				width: 400px;
+				padding: 10px;
+				border: 1px solid #f1f1f1;
+				.submit{
+					display: block;
+					height: 30px;
+					line-height: 30px;
+					width: 100px;
+					border: 0;
+					border-radius: 2px;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+	.comment-form{
+		.order-info:before{
+			content: url('order-info.png');
+		}
+		.submit-info{
+			overflow: hidden;
+			height: 40px;
+			line-height: 40px;
+			width: 100%;
+			padding: 0 10px;
+			border-radius: 5px;
+			.price,.submit{
+				float: right;
+			}
+			.submit{
+				border: 0;
+				border-radius: 2px;
+				height: 30px;
+				line-height: 30px;
+				width: 100px;
+				margin: 5px;
+				color: $font-orange;
+			}
 		}
 	}
 }
