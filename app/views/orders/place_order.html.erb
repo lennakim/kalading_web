@@ -94,7 +94,7 @@
 		<dd class="selected"></dd>
   	  </dl>
   	</div>
-  	<p class="more">展开其他地址</p>
+  	<!-- <p class="more">展开其他地址</p> -->
   	<div class="new">
   	  <h5 class="new-title"> + 填写新地址</h5>
   	  <div class="new-con">
@@ -206,14 +206,6 @@
 	  </div>
 	  <div class="info-group">
 	    <div class="info-title">
-		  <%= label_tag(:friend_phone, "朋友手机：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:friend_phone,'', :minlength => 11) %>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
 		  <var class="star">*</var>
 		  <%= label_tag(:registration_date, "车辆注册时间：") %>
 		</div>
@@ -270,8 +262,12 @@
 		</div>
 	  </div>
 	  <div class="info-group">
-		<%= label_tag(:input_clinet_title, "备注：") %>
-		<%= text_field_tag(:input_clinet_title,'填写备注') %>
+	    <div class="info-title">
+		  <%= label_tag(:input_clinet_title, "备注：") %>
+		</div>
+		<div class="info-con"> 
+		  <%= text_area(:input_clinet_title,'填写备注') %>
+	  	</div>
 	  </div>
 	  <div class="submit-info bac-orange font-white">
 	    <%= @result['name'] %>

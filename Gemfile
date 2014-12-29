@@ -15,6 +15,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 gem 'jbuilder', '~> 2.0'
+gem 'compass-rails'
 
 # backbone
 gem 'rails-backbone', git: 'https://github.com/codebrew/backbone-rails.git'
