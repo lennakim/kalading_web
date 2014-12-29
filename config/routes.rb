@@ -38,12 +38,12 @@ Rails.application.routes.draw do
   end
 
   namespace :activity do
-    resources :home
+    resources :main
   end
 
   resources :phones do
     post :send_verification_code, on: :collection
   end
 
-  get 'activities/:name' => 'activity/home#show', as: 'activity'
+  get 'activities/:name' => 'activity/main#show', as: 'activity'
 end

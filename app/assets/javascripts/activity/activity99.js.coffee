@@ -1,3 +1,5 @@
+#= require_self
+
 $ ->
   if $('.activity99').length > 0
     $("#submit_button").on "click", ->

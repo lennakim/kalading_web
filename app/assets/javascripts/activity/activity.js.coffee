@@ -5,7 +5,3 @@
 #= require bootstrap-sprockets
 
 #= require wechat
-
-#= require activity/activity99
-#= require_self
-
