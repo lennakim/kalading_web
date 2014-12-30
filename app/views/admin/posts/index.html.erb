@@ -1,0 +1,32 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>标题</th>
+        <th>创建时间</th>
+        <th>上次修改时间</th>
+        <th>编辑</th>
+        <th>删除</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% collection.desc.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, admin_post_path(post) %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.updated_at %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_post_path(post) %>
+          </td>
+          <td><%= link_to 'Destroy', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '新建', new_admin_post_path %>
+
+</div>

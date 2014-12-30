@@ -1,3 +1,1 @@
-$ ->
-
-
+#= require ckeditor/init

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount WeixinRailsMiddleware::Engine, at: "/"
+  mount Ckeditor::Engine => '/ckeditor'
 
   resources :posts
 
