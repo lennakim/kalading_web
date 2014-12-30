@@ -34,6 +34,9 @@ gem "mini_magick", '~> 3.7.0'
 # API
 gem 'rest-client'
 
+# tags
+gem 'acts-as-taggable-on', '~> 3.4'
+
 # weixin
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git"
 gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"

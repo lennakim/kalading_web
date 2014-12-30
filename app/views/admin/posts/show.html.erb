@@ -3,6 +3,12 @@
     <%= resource.title %>
   </h1>
 
+  <div class="tags">
+    <% resource.tag_list.each do |tag| %>
+      <%= tag %> |
+    <% end %>
+  </div>
+
   <div class="content">
     <%= sanitize resource.content %>
   </div>

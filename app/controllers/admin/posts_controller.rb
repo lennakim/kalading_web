@@ -4,6 +4,6 @@ class Admin::PostsController < Admin::MainController
   defaults :resource_class => Post, :route_prefix => 'admin'
 
   def permitted_params
-    {:post => params.fetch(:post, {}).permit(:title, :content)}
+    {:post => params.fetch(:post, {}).permit(:title, :content, :tag_list)}
   end
 end
