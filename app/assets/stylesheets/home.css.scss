@@ -185,8 +185,18 @@ $font-orange: #ff7b3a;
 			padding: 0 5%;
 			h4{
 				text-align: center;
-				margin: 30px 0;
-			}			
+				margin-bottom: 30px;
+			}
+		}	
+		.clear{
+			clear: both;
+		}
+		.next{
+			width: 90%;
+			margin: 0 auto;
+			padding: 20px 0;
+			border-top: 1px solid #ccc;
+			text-align: center;
 			.search_button{
 				width: 130px;
 				height: 40px;
@@ -201,13 +211,13 @@ $font-orange: #ff7b3a;
 				color: #4c4c4c;
 				font-size: 14px;
 			}
-		}
+		}		
 		.select-car{
 			border-right: 1px solid #ccc;
 			.field{
 				overflow: hidden;
-				margin-bottom: 30px;
-				line-height: 18px;
+				margin-bottom: 20px;
+				line-height: 20px;
 				label,select{
 					float: left;
 				}
@@ -221,30 +231,66 @@ $font-orange: #ff7b3a;
 			}
 		}
 		.quick-select{
+			.my-car,.my-car-info{
+				width: 210px;
+				margin: 0 auto;
+			}
 			.my-car{
-				width: 260px;
-				height: 40px;
-				line-height: 40px;
+				position: relative;
+				height: 35px;
+				line-height: 35px;
 				text-align: center;
 				background: #e1e1e1;
-				margin: 0 auto;
-				margin-bottom: 30px;
+				margin:10px auto 30px;
 				color: #fff;
-				&:after{
-					content:url("down.png");
-					margin: 5px 10px;
-					float: right;
-				}
 				input{
 					float: left;
-					margin: 14px;
+					margin: 11px;
+				}
+				label{
+					margin: 0;
+				}
+				var{
+					display: block;
+					position: absolute;
+					top: 0;
+					right: 0;
+					height: 16px;
+					padding: 18px 20px;
+					background-image: url("down.png");
+					background-position: 10px;
+					background-repeat: no-repeat;
+					cursor: pointer;
+					cursor: hand;
+				}
+			}
+			.down{
+				margin-bottom: 0;
+				position: relative;
+				var{
+					background-image: url("up.png");
 				}
 			}
 			.selected{
 				background: #ffd4a9;
 			}
 			.search_button{
-				margin-left: 50%;
+				margin: 40px 0 0 50%;
+			}
+			.hidden{
+				display: none;
+			}
+			.my-car-info{
+				display: none;
+				padding: 10px;
+				color: #c6c6c6;
+				border: 1px solid #e1e1e1;
+				p{
+					margin: 0;
+				}
+			}
+			.show-con{
+				display: block;
 			}
 		}
 	}
@@ -443,23 +489,28 @@ $font-orange: #ff7b3a;
 				float: left;
 				position: relative;
 				@include box-sizing(border-box);
-				width: 30%;
+				width: 29%;
 				height: 100px;
 				padding: 5px 10px 0;
 				margin-right: 5%;
 				border: 2px solid #f1f1f1;
 				font-size: 16px;
+				cursor: pointer;
+				cursor: hand;
 				&:last-child{
 					margin: 0;
-				}
-				&:hover{
-					border-color: $border-orange;
 				}
 				dt,dd{
 					line-height: 30px;
 				}
 				dt{
 					border-bottom: 1px solid #f1f1f1;
+				}
+				.close{
+					position: absolute;
+					top: -18px;
+					right: -18px;
+					content: url('close.png');
 				}
 				.selected{
 					position: absolute;
@@ -496,7 +547,7 @@ $font-orange: #ff7b3a;
 				width: 400px;
 				padding: 10px;
 				border: 1px solid #f1f1f1;
-				.submit{
+				.add-address{
 					display: block;
 					height: 30px;
 					line-height: 30px;

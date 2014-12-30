@@ -10,8 +10,8 @@
   </ul>
   <div class="orders bac-white" data-car="<%= params[:car_id]%>">
     <ul>
-      <li class="selected">PM2.5滤芯更换</li>
-      <li>车辆上门保养</li>
+      <li class="selected" data-id="pm25">PM2.5滤芯更换</li>
+      <li data-id="maintain">车辆上门保养</li>
     </ul>
     <div class="maintain-con" id="pm25">
       <input type="hidden" data-items="<%= @result %>">
@@ -52,7 +52,6 @@
         </div>
       </div>
     </div>
-    <div class="maintainn-con hidden"></div>
   </div>
   <div class="service">
     <h3 class="service-title">服务介绍</h3>
