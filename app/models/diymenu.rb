@@ -5,6 +5,8 @@ class Diymenu < ActiveRecord::Base
   CLICK_TYPE = "click"  # key
   VIEW_TYPE = "view"    # url
 
+  accepts_nested_attributes_for :sub_menus, :reject_if => :all_blank, :allow_destroy => true
+
   def has_sub_menu?
     sub_menus.present?
   end

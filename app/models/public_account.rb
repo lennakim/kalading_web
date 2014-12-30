@@ -5,6 +5,8 @@ class PublicAccount < ActiveRecord::Base
   has_many :diymenus, dependent: :destroy
   has_many :parent_menus, ->{includes(:sub_menus).where(parent_id: nil, is_show: true).order("sort").limit(3)}, class_name: "Diymenu", foreign_key: :public_account_id
 
+  accepts_nested_attributes_for :diymenus, :reject_if => :all_blank, :allow_destroy => true
+
   def weixin_client
     client = WeixinAuthorize::Client.new(self.appid, self.appsecret)
     client.is_valid? ? client : "invalid appid or appsecret"
