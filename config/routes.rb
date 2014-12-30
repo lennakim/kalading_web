@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount WeixinRailsMiddleware::Engine, at: "/"
 
   resources :posts
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     resources :activities
     resources :channels
     resources :users
+    resources :posts
   end
 
   namespace :activity do
