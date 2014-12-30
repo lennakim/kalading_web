@@ -43,6 +43,11 @@ $ ->
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
+    $('.orders li').each ->
+      $(this).click ->
+        $(this).addClass('selected').siblings('li').removeClass('selected')
+        $('.maintain-con').attr('id',$(this).data('id'))
+
   if $(".select-car-page").length > 0
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
@@ -64,11 +69,9 @@ $ ->
         if _myCar.hasClass('down')
           _myCar.removeClass('down')
           _myCarInfo.removeClass('show-con')
-          $('.quick-select button').removeClass('hidden')
         else
           _myCar.addClass('down').siblings('.my-car').removeClass('down')
           _myCarInfo.addClass('show-con').siblings('.my-car-info').removeClass('show-con')
-          $('.quick-select button').addClass('hidden')
 
   if $(".place-order-page").length > 0
     $("#commentForm").validate({

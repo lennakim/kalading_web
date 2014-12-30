@@ -186,7 +186,17 @@ $font-orange: #ff7b3a;
 			h4{
 				text-align: center;
 				margin-bottom: 30px;
-			}			
+			}
+		}	
+		.clear{
+			clear: both;
+		}
+		.next{
+			width: 90%;
+			margin: 0 auto;
+			padding: 20px 0;
+			border-top: 1px solid #ccc;
+			text-align: center;
 			.search_button{
 				width: 130px;
 				height: 40px;
@@ -201,12 +211,12 @@ $font-orange: #ff7b3a;
 				color: #4c4c4c;
 				font-size: 14px;
 			}
-		}
+		}		
 		.select-car{
 			border-right: 1px solid #ccc;
 			.field{
 				overflow: hidden;
-				margin-bottom: 36px;
+				margin-bottom: 20px;
 				line-height: 20px;
 				label,select{
 					float: left;
@@ -222,36 +232,33 @@ $font-orange: #ff7b3a;
 		}
 		.quick-select{
 			.my-car,.my-car-info{
-				width: 260px;
+				width: 210px;
 				margin: 0 auto;
 			}
 			.my-car{
 				position: relative;
-				height: 40px;
-				line-height: 40px;
+				height: 35px;
+				line-height: 35px;
 				text-align: center;
 				background: #e1e1e1;
 				margin:10px auto 30px;
 				color: #fff;
-				// &:after{
-				// 	content:url("down.png");
-				// 	margin: 5px 10px;
-				// 	float: right;
-				// }
 				input{
 					float: left;
-					margin: 14px;
+					margin: 11px;
+				}
+				label{
+					margin: 0;
 				}
 				var{
 					display: block;
 					position: absolute;
 					top: 0;
 					right: 0;
-					width: 18px;
 					height: 16px;
-					padding: 20px 15px;
+					padding: 18px 20px;
 					background-image: url("down.png");
-					background-position: 0 12px;
+					background-position: 10px;
 					background-repeat: no-repeat;
 					cursor: pointer;
 					cursor: hand;
@@ -482,23 +489,28 @@ $font-orange: #ff7b3a;
 				float: left;
 				position: relative;
 				@include box-sizing(border-box);
-				width: 30%;
+				width: 29%;
 				height: 100px;
 				padding: 5px 10px 0;
 				margin-right: 5%;
 				border: 2px solid #f1f1f1;
 				font-size: 16px;
+				cursor: pointer;
+				cursor: hand;
 				&:last-child{
 					margin: 0;
-				}
-				&:hover{
-					border-color: $border-orange;
 				}
 				dt,dd{
 					line-height: 30px;
 				}
 				dt{
 					border-bottom: 1px solid #f1f1f1;
+				}
+				.close{
+					position: absolute;
+					top: -18px;
+					right: -18px;
+					content: url('close.png');
 				}
 				.selected{
 					position: absolute;
@@ -535,7 +547,7 @@ $font-orange: #ff7b3a;
 				width: 400px;
 				padding: 10px;
 				border: 1px solid #f1f1f1;
-				.submit{
+				.add-address{
 					display: block;
 					height: 30px;
 					line-height: 30px;
