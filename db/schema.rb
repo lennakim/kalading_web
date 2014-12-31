@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230143108) do
+ActiveRecord::Schema.define(version: 20141231045519) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20141230143108) do
     t.datetime "updated_at"
     t.integer  "impressions_count", default: 0
   end
+
+  create_table "addresses", force: true do |t|
+    t.string   "city"
+    t.string   "street"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "auth_infos", force: true do |t|
     t.string   "provider"
@@ -32,6 +42,23 @@ ActiveRecord::Schema.define(version: 20141230143108) do
 
   add_index "auth_infos", ["provider", "uid"], name: "index_auth_infos_on_provider_and_uid", using: :btree
   add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
+
+  create_table "autos", force: true do |t|
+    t.string   "system_id"
+    t.string   "brand"
+    t.string   "series"
+    t.string   "model_number"
+    t.date     "registed_at"
+    t.string   "engine_number"
+    t.string   "vin"
+    t.string   "license_location"
+    t.string   "license_number"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "autos", ["user_id"], name: "index_autos_on_user_id", using: :btree
 
   create_table "channels", force: true do |t|
     t.string   "name"

@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :user_authinfos
   has_many :auth_infos, :through => :user_authinfos
 
+  has_many :autos
+  has_many :addresses
+
   validates :phone_number, :uniqueness => true
   before_create :generate_token
 
