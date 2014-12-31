@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231053142) do
+ActiveRecord::Schema.define(version: 20141231054020) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -205,23 +205,15 @@ ActiveRecord::Schema.define(version: 20141231053142) do
     t.datetime "updated_at"
   end
 
-  create_table "user_cities", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "city_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_cities", ["city_id"], name: "index_user_cities_on_city_id", using: :btree
-  add_index "user_cities", ["user_id"], name: "index_user_cities_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
     t.string   "phone_number"
+    t.integer  "city_id"
   end
 
+  add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
 
   create_table "verification_codes", force: true do |t|

@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   has_many :autos
   has_many :service_addresses
 
-  has_many :user_cities
-  has_many :cities, through: :user_cities
+  belongs_to :city
 
   validates :phone_number, uniqueness: true
   before_create :generate_token
