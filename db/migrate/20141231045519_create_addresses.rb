@@ -1,8 +1,8 @@
 class CreateAddresses < ActiveRecord::Migration
   def change
-    create_table :addresses do |t|
+    create_table :service_addresses do |t|
       t.string :city
-      t.string :street
+      t.string :detail
       t.references :user, index: true
 
       t.timestamps

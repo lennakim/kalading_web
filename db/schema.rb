@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231045519) do
+ActiveRecord::Schema.define(version: 20141231053142) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 20141231045519) do
     t.datetime "updated_at"
     t.integer  "impressions_count", default: 0
   end
-
-  create_table "addresses", force: true do |t|
-    t.string   "city"
-    t.string   "street"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "auth_infos", force: true do |t|
     t.string   "provider"
@@ -63,6 +53,13 @@ ActiveRecord::Schema.define(version: 20141231045519) do
   create_table "channels", force: true do |t|
     t.string   "name"
     t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.string   "system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,6 +168,16 @@ ActiveRecord::Schema.define(version: 20141231045519) do
   add_index "public_accounts", ["account_token"], name: "index_public_accounts_on_account_token", using: :btree
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
 
+  create_table "service_addresses", force: true do |t|
+    t.string   "city"
+    t.string   "detail"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "service_addresses", ["user_id"], name: "index_service_addresses_on_user_id", using: :btree
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -197,6 +204,16 @@ ActiveRecord::Schema.define(version: 20141231045519) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_cities", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_cities", ["city_id"], name: "index_user_cities_on_city_id", using: :btree
+  add_index "user_cities", ["user_id"], name: "index_user_cities_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
