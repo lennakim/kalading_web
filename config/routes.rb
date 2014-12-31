@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :main
     resources :activities
     resources :channels
-    resources :diymenus
+    resources :public_accounts
     resources :users
 
     get 'weixin/index'
