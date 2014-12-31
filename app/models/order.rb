@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/server_api.rb"
-
 class Order
 
   class << self
