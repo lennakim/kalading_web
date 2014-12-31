@@ -20,7 +20,7 @@ $ ->
       nowDay.setDate(nowDay.getDate()+2)
     else
       nowDay.setDate(nowDay.getDate()+1)
-    
+
     maxDate = new Date()
     maxDate.setDate(maxDate.getDate()+8)
 
@@ -58,7 +58,7 @@ $ ->
           $(this).addClass('selected')
           $(this).next('.my-car-info').css({'borderColor':'#ffd4a9'})
         else
-          $(this).removeClass('selected');
+          $(this).removeClass('selected')
           $(this).next('.my-car-info').css({'borderColor':'#e1e1e1'})
 
     $('.my-car var').each ->
@@ -74,6 +74,8 @@ $ ->
           _myCarInfo.addClass('show-con').siblings('.my-car-info').removeClass('show-con')
 
   if $(".place-order-page").length > 0
+
+
     $("#commentForm").validate({
       rules: {
         phone_num: {

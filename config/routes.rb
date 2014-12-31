@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  resources :cities, only: [:set]
+  resources :cities do
+    post 'set'
+  end
 
   resources :orders do
     collection do
