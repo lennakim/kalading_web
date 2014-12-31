@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
     cookies[:city] || "北京"
   end
 
+  def current_city_id
+
+  end
+
 end

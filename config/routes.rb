@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  resources :cities, only: [:set]
+
   resources :orders do
     collection do
       get 'select_car'

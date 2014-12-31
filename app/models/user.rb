@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
   validates :phone_number, uniqueness: true
   before_create :generate_token
 
+  def set_city city_name
+    if city_name
+      self.city = City.find_by name: city_name
+      save
+    end
+  end
+
   def update_user
     generate_token!
     token
