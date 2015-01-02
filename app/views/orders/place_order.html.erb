@@ -1,10 +1,12 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
+  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
 <% end %>
 
 <%= title "提交订单" %>
 
-<div class="main place-order-page">
+<div class="main place-order-page" data-city="<%= current_city %>">
   <ul class="process">
     <li class="car-type selected">选择车型</li>
     <li class="service">选择服务</li>
@@ -42,7 +44,7 @@
 			  <% if part['PM2.5特效滤芯'] %>
 				[PM2.5特效滤芯]<%= part['PM2.5特效滤芯'][0]['brand'] %>
 			  <% end %>
-			</p> 
+			</p>
 		  <% end %>
         </td>
 		<td>
@@ -64,9 +66,9 @@
 			  <% if part['PM2.5特效滤芯'] %>
 				<%= part['PM2.5特效滤芯'][0]['price'] %>
 			  <% end %>
-			</p> 
+			</p>
 		  <% end %>
-        </td>	
+        </td>
 		<td class="result">
 			<%= @result['price_without_discount'] %>
 		</td>
@@ -112,7 +114,7 @@
 	        <select name="city_name" id="city_name">
 			  <option value="">北京市</option>
 			  <option value="">天津市</option>
-			</select>	
+			</select>
 			<select name="town_name" id="town_name">
 			  <option value="">朝阳区</option>
 			  <option value="">海淀区</option>
@@ -121,12 +123,13 @@
 		</div>
 		<div class="info-group">
 		  <div class="info-title">
-            <var class="star">*</var>
-            <%= label_tag(:address, "详细地址：") %>
-	      </div>
-	      <div class="info-con">
-	        <%= text_field_tag(:address,'', :required => true) %>
-		  </div>
+        <var class="star">*</var>
+        <%= label_tag(:address, "详细地址：") %>
+      </div>
+      <div class="info-con">
+        <%= text_field_tag(:address, '', :required => true, id: 'address') %>
+	  </div>
+      <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 		</div>
 		<button class="add-address bac-orange font-white">确认添加</button>
   	  </div>
@@ -207,33 +210,33 @@
 	  </div>
 	  <div class="info-group">
 	    <div class="info-con">
-		  <%= radio_button_tag :invoice1,'' %> 
+		  <%= radio_button_tag :invoice1,'' %>
 		  <%= label_tag(:invoice1, "不要发票") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :invoice2,'' %> 
+		  <%= radio_button_tag :invoice2,'' %>
 		  <%= label_tag(:invoice2, "发票") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :unit1,'' %> 
+		  <%= radio_button_tag :unit1,'' %>
 		  <%= label_tag(:unit1, "个人") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :unit2,'' %> 
+		  <%= radio_button_tag :unit2,'' %>
 		  <%= label_tag(:unit2, "单位") %>
 		</div>
 	  </div>
 	  <div class="info-group">
 	    <div class="info-con">
-	      <%= radio_button_tag :preferential1,'' %> 
+	      <%= radio_button_tag :preferential1,'' %>
 		  <%= label_tag(:preferential1, "无优惠券") %>
 		</div>
-		<div class="info-con"> 
-		  <%= radio_button_tag :preferential2,'' %> 
+		<div class="info-con">
+		  <%= radio_button_tag :preferential2,'' %>
 		  <%= label_tag(:preferential2, "使用优惠券") %>
 		</div>
-		<div class="info-con"> 
-		  <button class="verify bac-orange font-white">验证</button> 
+		<div class="info-con">
+		  <button class="verify bac-orange font-white">验证</button>
 		  <label for="" class="hidden verify-info">验证成功！</label>
 		</div>
 	  </div>
@@ -241,20 +244,21 @@
 	    <div class="info-title">
 		  <%= label_tag(:input_clinet_title, "备注：") %>
 		</div>
-		<div class="info-con"> 
+		<div class="info-con">
 		  <%= text_area(:input_clinet_title,'填写备注') %>
 	  	</div>
 	  </div>
 	  <div class="submit-info bac-orange font-white">
 	    <%= @result['name'] %>
 	    <%= submit_tag("提交订单",:class => 'submit bac-white') %>
-	    <span class="price">总价: <%= @result['price'] %>元</span>	
+	    <span class="price">总价: <%= @result['price'] %>元</span>
 	  </div>
 	</fieldset>
   <% end %>
 </div>
 
 <script>
+
 	$('.address-item').each(function(){
 		var _close = $(this).find('.close')
 		var _selected = $(this).find('.selected')
@@ -281,7 +285,7 @@
 				_close.addClass('hidden')
 				$(this).css({'borderColor':'#f1f1f1'});
 			}
-		})	
+		})
 	});
 	$('.close').bind("click",function(){
 		$(this).parent('.address-item').remove();

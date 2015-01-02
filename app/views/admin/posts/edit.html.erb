@@ -1,0 +1,7 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'admin/posts', 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="container posts">
+  <%= render template: 'admin/posts/_form' %>
+</div>

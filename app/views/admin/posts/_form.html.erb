@@ -1,0 +1,19 @@
+<%= form_for [:admin, resource] do |f| -%>
+  <div class="form-group">
+    <label>标题</label>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label>Tags(，分割)</label>
+    <%= f.text_field :tag_list, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.cktext_area :content, id: 'content', ckeditor: {language: 'zh-cn'} %>
+  </div>
+
+  <div class="submit-btn">
+    <%= f.submit '保存', class: 'btn btn-default' %>
+  </div>
+<% end -%>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222101510) do
+ActiveRecord::Schema.define(version: 20141231054020) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -33,12 +33,52 @@ ActiveRecord::Schema.define(version: 20141222101510) do
   add_index "auth_infos", ["provider", "uid"], name: "index_auth_infos_on_provider_and_uid", using: :btree
   add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
 
+  create_table "autos", force: true do |t|
+    t.string   "system_id"
+    t.string   "brand"
+    t.string   "series"
+    t.string   "model_number"
+    t.date     "registed_at"
+    t.string   "engine_number"
+    t.string   "vin"
+    t.string   "license_location"
+    t.string   "license_number"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "autos", ["user_id"], name: "index_autos_on_user_id", using: :btree
+
   create_table "channels", force: true do |t|
     t.string   "name"
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.string   "system_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ckeditor_assets", force: true do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "diymenus", force: true do |t|
     t.integer  "public_account_id"
@@ -105,6 +145,13 @@ ActiveRecord::Schema.define(version: 20141222101510) do
 
   add_index "messages", ["msg_id"], name: "index_messages_on_msg_id", unique: true, using: :btree
 
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -121,6 +168,36 @@ ActiveRecord::Schema.define(version: 20141222101510) do
   add_index "public_accounts", ["account_token"], name: "index_public_accounts_on_account_token", using: :btree
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
 
+  create_table "service_addresses", force: true do |t|
+    t.string   "city"
+    t.string   "detail"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "service_addresses", ["user_id"], name: "index_service_addresses_on_user_id", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
   create_table "user_authinfos", force: true do |t|
     t.integer  "user_id"
     t.integer  "auth_info_id"
@@ -133,8 +210,10 @@ ActiveRecord::Schema.define(version: 20141222101510) do
     t.datetime "updated_at"
     t.string   "token"
     t.string   "phone_number"
+    t.integer  "city_id"
   end
 
+  add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
 
   create_table "verification_codes", force: true do |t|

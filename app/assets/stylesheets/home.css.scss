@@ -1,13 +1,9 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ff7b3a;
 .main{
-	padding: 0 15%;
 	font-family: AdobeHeitiStd-Regular;
 	li{
 
@@ -28,7 +24,7 @@ $font-orange: #ff7b3a;
 		text-align: center;
 		li{
 			float: left;
-			min-width: 25%;
+			// min-width: 25%;
 			margin: 60px 0;
 			height: 40px;
 			line-height: 40px;
@@ -39,28 +35,28 @@ $font-orange: #ff7b3a;
 			background-size: 15%;
 		}
 		.car-type{
-			background-image: url("car.png");
+			background-image: image-url("car.png");
 		}
 		.car-type.selected{
-			background-image: url("car-selected.png");
+			background-image: image-url("car-selected.png");
 		}
 		.service{
-			background-image: url("service.png");
+			background-image: image-url("service.png");
 		}
 		.service.selected{
-			background-image: url("service-selected.png");
+			background-image: image-url("service-selected.png");
 		}
 		.info{
-			background-image: url("info.png");
+			background-image: image-url("info.png");
 		}
 		.info.selected{
-			background-image: url("info-selected.png");
+			background-image: image-url("info-selected.png");
 		}
 		.success{
-			background-image: url("success.png");
+			background-image: image-url("success.png");
 		}
 		.success.selected{
-			background-image: url("success-selected.png");
+			background-image: image-url("success-selected.png");
 		}
 	}
 }
@@ -68,18 +64,18 @@ $font-orange: #ff7b3a;
 	position: relative;
 	.flexslider{
 		overflow: hidden;
-		margin: 26px 0 14px;
-		min-height: 360px;
+		margin: 0;
+		min-height: 350px;
 		background: #ccc; 
+		border: 0;
 	}
 	.login-form{
 		position: absolute;
-		top: 5%;
+		top: 2%;
 		right: 18%;
 		@include box-sizing(border-box);
 		width: 267px;
-		height: 306px;
-		min-height: 40%;
+		height: 270px;
 		text-align: center;
 		.form-bac{
 			opacity: 0.5;
@@ -91,7 +87,7 @@ $font-orange: #ff7b3a;
 			position: absolute;
 			top: 0;
 			width: 100%;
-			padding: 10% 3%;
+			padding: 0 3%;
 		}
 		input,button{
 			height: 34px;
@@ -133,44 +129,188 @@ $font-orange: #ff7b3a;
 			margin-top: 14%;
 		}
 	}
-	.maintain-item{
-		overflow: hidden;
-		dl{
-			@include box-sizing(border-box);
-			float: left;
-			width: 48%;
-			margin: 0;
-			&:nth-child(odd){
-				margin-right: 14px;
-			}
-			dt{
+	.product,.maintain-process,.guest,.menu{
+		min-width: 1000px;
+	}
+	.product,.maintain-process,.guest{
+		padding: 45px 0;
+		border-bottom: 2px solid #e4e4e4;
+		.title{
+			margin-bottom: 60px;
+			text-align: center;
+			color: #676767;
+		}
+		.content{
+			overflow: hidden;
+			padding: 0 15%;
+		}
+	}
+	.product{
+		background: #f8f4f3;
+		.maintain-item{
+			dl{
+				position: relative;
+				@include box-sizing(border-box);
+				float: left;
+				width: 30%;
+				max-height: 322px;
+				margin: 0 5% 0 0;
 				overflow: hidden;
-				height: 204px;
-				border-radius: 5px 5px 0 0;
-			}
-			dd{
-				overflow: hidden;
-				background: #ede8e4;
-				padding: 4px 30px 20px;
-				border-radius: 0 0 5px 5px;
-				.title{
-					color: #62615f;
-					line-height: 45px;
+				&:last-child{
+					margin-right: 0;
 				}
-				.description{
-					font-size: 16px;
-					color: #999999;
+				dt{
+					overflow: hidden;
+					img{
+						width: 100%;
+					}
+					.filter{
+						@include filter(blur(3px));
+					}
 				}
-				.order-btn{
-					float: right;
-					width: 160px;
-					height: 40px;
-					line-height: 40px;
-					border: 0;
-					border-radius: 5px;
+				.bac{
+					position: absolute;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background: #181413;
+					opacity: 0.1;
+				}
+				.hidden{
+					display: none;
+				}
+				.con{
+					position: absolute;
+					bottom: -70px;
+					overflow: hidden;
+					padding: 4px 30px 20px;
 					text-align: center;
-					text-decoration: none;
+					color: #fff;
+					background: #000;
+					opacity: 0.5;
+					cursor: pointer;
+					cursor: hand;
+					.item-title{
+						line-height: 20px;
+					}
+					.show-title{
+						margin-top: 50%;
+					}
+					.description{
+						font-size: 14px;
+					}
+					.order-btn{
+						width: 120px;
+						height: 40px;
+						line-height: 40px;
+						margin-top: 20px;
+						border: 1px solid #fff;
+						border-radius: 2px;
+						background: none;
+						text-align: center;
+						text-decoration: none;
+						color: #fff;
+					}
 				}
+				.show{
+					bottom: 0;
+					height: 100%;
+				}
+			}
+		}
+	}
+	.maintain-process{
+		.number{
+			li{
+				float: left;
+				width: 23%;
+				span,var{
+					float: left;
+					background: #e4e4e4;
+				}
+				span{
+					width: 50px;
+					height: 50px;
+					margin: 5px 11px;
+					padding: 11px;
+					border-radius: 25px;
+					color: #fff;
+					text-align: center;
+					font-size: 22px;
+				}
+				var{
+					width: 55%;
+					height: 6px;
+					margin-top: 28px;
+				}
+			}
+			.last{
+				width: 10%;
+			}
+			.shot{
+				width: 10%;
+				span{
+					width: 10px;
+					height: 10px;
+					padding: 10px;
+					margin-top: 22px;
+				}
+				var{
+					width: 40%;
+				}
+			}
+		}
+		.item{
+			overflow: hidden;
+			width: 62%;
+			margin: 0 auto;
+			li{
+				float: left;
+				width: 22%;
+				margin-right: 4%;
+				text-align: center;
+				&:last-child{
+					margin: 0;
+				}
+				h4{
+					margin: 25px 0;
+				}
+			}
+		}
+	}
+	.menu{
+		overflow: hidden;
+		padding: 0 17%;
+		border-bottom: 2px solid #e4e4e4;
+		text-align: center;
+		li{
+			float: left;
+			width: 19%;
+			height: 200px;
+			margin: 60px 7%;
+			padding-top: 180px;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			font-size: 18px;
+			color: #8a8a8a;
+		}
+		.pm{
+			background-image: image-url('pm25.png');
+		}
+		.know{
+			background-image: image-url('knowlege.png');
+		}
+		.report{
+			background-image: image-url('report.png');
+		}
+	}
+	.guest{
+		border-bottom: 0;
+		ul{
+			li{
+				float: left;
+				width: 20%;
+				text-align: center;
 			}
 		}
 	}
@@ -224,7 +364,7 @@ $font-orange: #ff7b3a;
 					float: left;
 				}
 				label{
-					min-width: 70px;
+					// min-width: 70px;
 					font-size: 18px;
 				}
 				.search_button{
@@ -259,7 +399,7 @@ $font-orange: #ff7b3a;
 					right: 0;
 					height: 16px;
 					padding: 18px 20px;
-					background-image: url("down.png");
+					background-image: image-url("down.png");
 					background-position: 10px;
 					background-repeat: no-repeat;
 					cursor: pointer;
@@ -270,7 +410,7 @@ $font-orange: #ff7b3a;
 				margin-bottom: 0;
 				position: relative;
 				var{
-					background-image: url("up.png");
+					background-image: image-url("up.png");
 				}
 			}
 			.selected{
@@ -302,7 +442,7 @@ $font-orange: #ff7b3a;
 			line-height: 40px;
 			padding-left: 40px;
 			margin: 90px 20px 30px;
-			background-image: url("comment.png");
+			background-image: image-url("comment.png");
 			background-repeat: no-repeat;
 		}
 		.comment-con{
@@ -378,7 +518,7 @@ $font-orange: #ff7b3a;
 					}
 				}
 			}
-			#order_button{
+			.order_button{
 				margin: 30px;
 				width: 360px;
 				border: 0;
@@ -391,7 +531,7 @@ $font-orange: #ff7b3a;
 			line-height: 40px;
 			padding-left: 40px;
 			margin: 90px 20px 30px;
-			background-image: url("service-intro.png");
+			background-image: image-url("service-intro.png");
 			background-repeat: no-repeat;
 		}
 		.service-con{
@@ -446,7 +586,7 @@ $font-orange: #ff7b3a;
 		}
 		.info-con{
 			float: left;
-			min-width: 150px;
+			// min-width: 150px;
 			padding-left: 5px;
 			input{
 				line-height: 35px;
@@ -484,7 +624,7 @@ $font-orange: #ff7b3a;
 				line-height: 40px;
 				padding-left: 40px;
 				margin: 10px 0;
-				background-image: url('address.png');
+				background-image: image-url('address.png');
 				background-repeat: no-repeat;
 			}
 			.address-item{
@@ -512,7 +652,7 @@ $font-orange: #ff7b3a;
 					position: absolute;
 					top: -18px;
 					right: -18px;
-					content: url('close.png');
+					content: image-url('close.png');
 				}
 				.selected{
 					position: absolute;
@@ -523,7 +663,7 @@ $font-orange: #ff7b3a;
 					display: none;
 				}
 				.selected:before{
-					content: url('selected.png');
+					content: image-url('selected.png');
 				}
 			}
 			.selected-item{
@@ -531,7 +671,7 @@ $font-orange: #ff7b3a;
 			}
 		}
 		.more:after{
-			content: url('more.png');
+			content: image-url('more.png');
 			line-height: 50px;
 			margin: 10px;
 		}
@@ -566,7 +706,7 @@ $font-orange: #ff7b3a;
 			line-height: 40px;
 			padding-left: 40px;
 			margin: 15px 0;
-			background-image: url('order-info.png');
+			background-image: image-url('order-info.png');
 			background-repeat: no-repeat;
 		}
 		.submit-info{

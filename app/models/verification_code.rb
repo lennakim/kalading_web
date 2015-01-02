@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/yunpian_api.rb"
-
 class VerificationCode < ActiveRecord::Base
 
   validates :phone_num, presence: true, phone: true

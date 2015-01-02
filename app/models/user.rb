@@ -1,9 +1,21 @@
 class User < ActiveRecord::Base
   has_many :user_authinfos
-  has_many :auth_infos, :through => :user_authinfos
+  has_many :auth_infos, through: :user_authinfos
 
-  validates :phone_number, :uniqueness => true
+  has_many :autos
+  has_many :service_addresses
+
+  belongs_to :city
+
+  validates :phone_number, uniqueness: true
   before_create :generate_token
+
+  def set_city city_name
+    if city_name
+      self.city = City.find_by name: city_name
+      save
+    end
+  end
 
   def update_user
     generate_token!

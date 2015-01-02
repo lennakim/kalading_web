@@ -43,7 +43,7 @@ $ ->
           $(this).addClass('selected')
           $(this).next('.my-car-info').css({'borderColor':'#ffd4a9'})
         else
-          $(this).removeClass('selected');
+          $(this).removeClass('selected')
           $(this).next('.my-car-info').css({'borderColor':'#e1e1e1'})
 
     $('.my-car var').each ->

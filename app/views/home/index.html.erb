@@ -9,6 +9,7 @@
   <!-- 没登陆 -->
 <%# end %>
 <div class="main index">
+  <%#= current_city %>
   <div class="flexslider">
     <ul class="slides">
       <li>
@@ -25,44 +26,108 @@
       </li>
     </ul>
   </div>
-  <div class="login-form">
-  	<div class="form-bac bac-white"></div>
-  	<div class="form-con">
-	  <h3 class="login-title">请您先登录</h3>
-      <div class="field">
-      	<input type="number" class="phone_num" id="phone_num" placeholder="手机号">
-      	<input type="number" class="verification_code" placeholder="验证码" id="verification_code"/>
-        <button class='get_code bac-orange font-white' id="get_code">获取验证码</button>
-        <button id="submit_button" class="submit_button bac-orange font-white" disabled="disabled">登录</button>
-      </div>
+  <div class="content">
+    <div class="login-form">
+    	<div class="form-bac bac-white"></div>
+    	<div class="form-con">
+  	  <h3 class="login-title">请您先登录</h3>
+        <div class="field">
+        	<input type="number" class="phone_num" id="phone_num" placeholder="手机号">
+        	<input type="number" class="verification_code" placeholder="验证码" id="verification_code"/>
+          <button class='get_code bac-orange font-white' id="get_code">获取验证码</button>
+          <button id="submit_button" class="submit_button bac-orange font-white" disabled="disabled">登录</button>
+        </div>
 
-  	</div>
-  </div>
-  <div class="maintain-item">
-	<dl>
-	  <dt class="bac-white">
-		<%= image_tag("air-condition.png", :class=> "logo")%>
-	  </dt>
-	  <dd>
-		  <h3 class="title">卡拉丁空调滤清器</h3>
-		  <span class="description">3分钟告别车内雾霾</span>
-      <a href="/orders/select_car?type=pm25">
-        <button class="order-btn bac-orange font-white">立即预定</button>
-      </a>
-	  </dd>
-	</dl>
-	<dl>
-	  <dt class="bac-white">
-		<%= image_tag("maintain.png", :class=> "logo")%>
-	  </dt>
-	  <dd>
-		  <h3 class="title">卡拉丁上门保养</h3>
-		  <span class="description">省时、省心、省钱</span>
-		  <a href="/orders/select_car?type=maintain">
-        <button class="order-btn bac-orange font-white">立即预定</button>
-      </a>
-	  </dd>
-	</dl>
+    	</div>
+    </div>
+    <div class="product">
+      <h3 class="title">产品与服务</h3>
+      <div class="content maintain-item">
+    	  <dl>
+      	  <dt class="bac-white">
+      		<%= image_tag("air-condition.jpg", :class=> "logo")%>
+      	  </dt>
+          <dd class="bac hidden"></dd>
+      	  <dd class="con">
+      		  <h4 class="item-title">卡拉丁空调滤清器</h4>
+      		  <span class="description">3分钟告别车内雾霾</span>
+            <a href="/orders/select_car?type=pm25">
+              <button class="order-btn">立即预定</button>
+            </a>
+      	  </dd>
+    	  </dl>
+    	  <dl>
+      	  <dt class="bac-white">
+      		<%= image_tag("air-condition.jpg", :class=> "logo")%>
+      	  </dt>
+          <dd class="bac hidden"></dd>
+      	  <dd class="con">
+      		  <h4 class="item-title">卡拉丁上门保养</h4>
+      		  <span class="description">省时、省心、省钱</span>
+      		  <a href="/orders/select_car?type=maintain">
+              <button class="order-btn">立即预定</button>
+            </a>
+      	  </dd>
+    	  </dl>
+        <dl>
+          <dt class="bac-white">
+          <%= image_tag("air-condition.jpg", :class=> "logo")%>
+          </dt>
+          <dd class="bac hidden"></dd>
+          <dd class="con">
+            <h4 class="item-title">卡拉丁空调滤清器</h4>
+            <span class="description">3分钟告别车内雾霾</span>
+            <a href="/orders/select_car?type=pm25">
+              <button class="order-btn">立即预定</button>
+            </a>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="maintain-process">
+      <h3 class="title">服务流程</h3>
+      <ul class="content number">
+        <li class="shot"><span></span><var></var></li>
+        <li><span>1</span><var></var></li>
+        <li><span>2</span><var></var></li>
+        <li><span>3</span><var></var></li>
+        <li class="last"><span>4</span></li>
+        <li class="shot"><var></var><span></span></li>
+      </ul>
+      <ul class="item">
+        <li>
+          <h4>提交订单</h4>
+          <span>您可以在产品与服务专栏按照流程提交您的订单</span> 
+        </li>
+        <li>
+          <h4>等待客服确认</h4>
+          <span>当您的订单提交成功后我们的客服会及时与您联系</span>
+        </li>
+        <li>
+          <h4>技师上门服务</h4>
+          <span>我们的小卡技师会根据您提供的地址上门服务</span>
+        </li>
+        <li>
+          <h4>订单完成</h4>
+          <span>订单完成后，不要忘记到个人中心收取您的车辆检查报告</span>
+        </li>
+      </ul>
+    </div>
+    <ul class="menu">
+      <li class="pm">PM2.5滤芯</li>
+      <li class="know">用车知识</li>
+      <li class="report">车检报告</li>
+    </ul>
+    <div class="guest">
+      <h3 class="title">集团客户</h3>
+      <ul class="content">
+        <li><%= image_tag("picc.png", :class=> "picc")%></li>
+        <li><%= image_tag("d.png", :class=> "d")%></li>
+        <li><%= image_tag("m.png", :class=> "m")%></li>
+        <li><%= image_tag("axa.png", :class=> "axa")%></li>
+        <li><%= image_tag("blue.png", :class=> "blue")%></li>
+      </ul>
+    </div>
   </div>
 </div>
 <script>
@@ -70,5 +135,19 @@
 	  $('.flexslider').flexslider({
 	    animation: "slide"
 	  });
+
+    $('.maintain-item dl').each(function(){
+      $(this).hover(function(){
+        $(this).find('img').addClass('filter');
+        $(this).find('.bac').removeClass('hidden');
+        $(this).find('.con').addClass('show');
+        $(this).find('.item-title').addClass('show-title');
+      },function(){
+        $(this).find('img').removeClass('filter');
+        $(this).find('.bac').addClass('hidden');
+        $(this).find('.con').removeClass('show');
+        $(this).find('.item-title').removeClass('show-title');
+      });
+    });
 	});
 </script>
