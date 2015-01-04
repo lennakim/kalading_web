@@ -1,10 +1,10 @@
 <div class="nested-fields">
-  <h3>这特么是子菜单</h3>
+  <h3>这是子菜单</h3>
   <%= f.error_notification %>
   <%= f.input :name, hint: "菜单标题，不超过16个字节，子菜单不超过40个字节" %>
   <%= f.hint "key 和 url 2 选其一, 填写key则为CLICK型，填写url则为VIEW型" %>
   <%= f.input :key, hint: "菜单KEY值，用于消息接口推送，不超过128字节" %>
   <%= f.input :url, hint: "网页链接，用户点击菜单可打开链接，不超过256字节" %>
   <%= f.input :is_show, label: "是否使用" %>
-  <%= link_to_remove_association "remove", f %>
+  <%= link_to_remove_association "remove", f, {class: 'btn btn-danger'} %>
 </div>
