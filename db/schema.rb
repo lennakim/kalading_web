@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231054020) do
+ActiveRecord::Schema.define(version: 20150104090752) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20141231054020) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "city_products", force: true do |t|
+    t.integer  "city_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "city_products", ["city_id"], name: "index_city_products_on_city_id", using: :btree
+  add_index "city_products", ["product_id"], name: "index_city_products_on_product_id", using: :btree
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -148,6 +158,14 @@ ActiveRecord::Schema.define(version: 20141231054020) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
