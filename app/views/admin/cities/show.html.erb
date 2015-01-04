@@ -11,6 +11,20 @@
       <td>System Id</td>
       <td><%= resource.system_id %></td>
     </tr>
+
+    <tr>
+      <td>产品</td>
+      <td>
+        <table class="table">
+
+          <% resource.products.each do |product| %>
+            <tr>
+              <td><%= link_to product.title, admin_product_path(product) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+    </tr>
   </table>
 
 

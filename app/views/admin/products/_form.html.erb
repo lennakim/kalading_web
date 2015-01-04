@@ -31,8 +31,21 @@
         </tr>
 
         <tr>
+          <td>适用城市</td>
+          <td>
+
+            <% City.all.each do |city| %>
+              <%= city.name %>
+              <%= check_box_tag "product[city_ids][]", city.id, resource.cities.include?(city) %>
+            <% end %>
+
+          </td>
+        </tr>
+
+        <tr>
           <td colspan=2><%= f.submit %></td>
         </tr>
+
       </table>
 
     </div>

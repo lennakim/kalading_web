@@ -4,6 +4,6 @@ class Admin::ProductsController < Admin::MainController
   defaults :resource_class => Product, :route_prefix => 'admin'
 
   def permitted_params
-    {:product => params.fetch(:product, {}).permit(:title, :description, :slug)}
+    {product: params.fetch(:product, {}).permit(:title, :description, :slug, city_ids: [])}
   end
 end
