@@ -8,9 +8,9 @@
 
 <div class="main place-order-page" data-city="<%= current_city %>">
   <ul class="process">
-    <li class="car-type selected">选择车型</li>
+    <li class="car-type">选择车型</li>
     <li class="service">选择服务</li>
-    <li class="info">填写信息</li>
+    <li class="info selected">填写信息</li>
     <li class="success">预定成功</li>
   </ul>
   <table id="item_table">
@@ -79,27 +79,8 @@
   <div class="address bac-white">
   	<h4 class="title">请正确填写以下内容，提交订单后，会有客服与您联系</h4>
   	<div class="choice">
-  	  <h4 class="choice-title">选择服务地址</h4>
-  	  <div class="address-list">
-	  	<dl class="address-item">
-	  	  <dt>北京市 海淀区</dt>
-	  	  <dd>海淀南路XX号楼</dd>
-	  	  <dd class="close hidden"></dd>
-	  	  <dd class="selected hidden"></dd>
-	  	</dl>
-	  	<dl class="address-item">
-		  <dt>北京市 海淀区</dt>
-	 	  <dd>海淀南路XX号楼</dd>
-		  <dd class="close hidden"></dd>
-		  <dd class="selected hidden"></dd>
-	  	</dl>
-	  	<dl class="address-item selected-item">
-		  <dt>北京市 海淀区</dt>
-		  <dd>海淀南路XX号楼</dd>
-		  <dd class="close hidden"></dd>
-		  <dd class="selected hidden"></dd>
-	  	</dl>
-	  </div>
+  	  <h4 class="choice-title hidden">选择服务地址</h4>
+  	  <div class="address-list"></div>
   	</div>
   	<!-- <p class="more">展开其他地址</p> -->
   	<div class="new">
@@ -256,46 +237,4 @@
 	</fieldset>
   <% end %>
 </div>
-
-<script>
-
-	$('.address-item').each(function(){
-		var _close = $(this).find('.close')
-		var _selected = $(this).find('.selected')
-		$(this).removeClass('selected-item')
-		$(this).on("click",function(){
-			$(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'});
-			_selected.removeClass('hidden').parent().siblings().find('.selected').addClass('hidden');
-			_close.addClass('hidden');
-		});
-
-		$(this).hover(function(){
-			if($(this).hasClass('selected-item')){
-				_close.addClass('hidden');
-				$(this).css({'borderColor':'#ffd4a9'});
-			}else{
-				_close.removeClass('hidden')
-				$(this).css({'borderColor':'#ffd4a9'});
-			}
-		},function(){
-			if($(this).hasClass('selected-item')){
-				_close.addClass('hidden');
-				$(this).css({'borderColor':'#ef7337'});
-			}else{
-				_close.addClass('hidden')
-				$(this).css({'borderColor':'#f1f1f1'});
-			}
-		})
-	});
-	$('.close').bind("click",function(){
-		$(this).parent('.address-item').remove();
-	})
-
-	$('.add-address').bind("click",function(){
-		var city = $('#city_name option:selected').text();
-		var town = $('#town_name option:selected').text();
-		var address = $('#address').val();
-		$('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>');
-	})
-</script>
 

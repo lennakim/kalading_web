@@ -3,20 +3,21 @@ $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ff7b3a;
+.bac-orange{
+	background: $bac-orange;
+}
+.bac-white{
+	background: #fff;
+}
+.font-white{
+	color: #fff;
+}
 .main{
+	padding: 0 15%;
 	font-family: AdobeHeitiStd-Regular;
 	li{
 
 		list-style: none;
-	}
-	.bac-orange{
-		background: $bac-orange;
-	}
-	.bac-white{
-		background: #fff;
-	}
-	.font-white{
-		color: #fff;
 	}
 	.process{
 		overflow: hidden;
@@ -24,7 +25,7 @@ $font-orange: #ff7b3a;
 		text-align: center;
 		li{
 			float: left;
-			// min-width: 25%;
+			width: 25%;
 			margin: 60px 0;
 			height: 40px;
 			line-height: 40px;
@@ -62,13 +63,6 @@ $font-orange: #ff7b3a;
 }
 .index{
 	position: relative;
-	.flexslider{
-		overflow: hidden;
-		margin: 0;
-		min-height: 350px;
-		background: #ccc; 
-		border: 0;
-	}
 	.login-form{
 		position: absolute;
 		top: 2%;
@@ -109,7 +103,6 @@ $font-orange: #ff7b3a;
 		}
 		.phone_num,.verification_code{
 			padding-left: 10px;
-			color: $font-gray;
 		}
 		.field{
 			overflow: hidden;
@@ -223,29 +216,30 @@ $font-orange: #ff7b3a;
 		.number{
 			li{
 				float: left;
-				width: 23%;
+				width: 24%;
 				span,var{
 					float: left;
 					background: #e4e4e4;
 				}
 				span{
-					width: 50px;
-					height: 50px;
-					margin: 5px 11px;
-					padding: 11px;
+					margin-right: 5%;
+					padding: 4% 8%;
 					border-radius: 25px;
 					color: #fff;
 					text-align: center;
 					font-size: 22px;
 				}
 				var{
-					width: 55%;
+					width: 68%;
 					height: 6px;
-					margin-top: 28px;
+					margin-top: 10%;
 				}
 			}
 			.last{
-				width: 10%;
+				width: 6%;
+				span{
+					padding: 16% 32%;
+				}
 			}
 			.shot{
 				width: 10%;
@@ -253,21 +247,22 @@ $font-orange: #ff7b3a;
 					width: 10px;
 					height: 10px;
 					padding: 10px;
-					margin-top: 22px;
+					margin: 16% 8% 0;
 				}
 				var{
-					width: 40%;
+					width: 54%;
+					margin-top: 24%;
 				}
 			}
 		}
 		.item{
 			overflow: hidden;
-			width: 62%;
+			width: 68%;
 			margin: 0 auto;
 			li{
 				float: left;
-				width: 22%;
-				margin-right: 4%;
+				width: 23%;
+				margin-right: 2%;
 				text-align: center;
 				&:last-child{
 					margin: 0;
@@ -364,7 +359,6 @@ $font-orange: #ff7b3a;
 					float: left;
 				}
 				label{
-					// min-width: 70px;
 					font-size: 18px;
 				}
 				.search_button{
@@ -498,7 +492,7 @@ $font-orange: #ff7b3a;
 							margin: 0;
 						}
 						label{
-							width: 40px;
+							margin-right: 10px;
 						}
 						input{
 							float: left;
@@ -586,7 +580,6 @@ $font-orange: #ff7b3a;
 		}
 		.info-con{
 			float: left;
-			// min-width: 150px;
 			padding-left: 5px;
 			input{
 				line-height: 35px;
@@ -627,47 +620,54 @@ $font-orange: #ff7b3a;
 				background-image: image-url('address.png');
 				background-repeat: no-repeat;
 			}
-			.address-item{
-				float: left;
-				position: relative;
-				@include box-sizing(border-box);
-				width: 29%;
-				height: 100px;
-				padding: 5px 10px 0;
-				margin-right: 5%;
-				border: 2px solid #f1f1f1;
-				font-size: 16px;
-				cursor: pointer;
-				cursor: hand;
-				&:last-child{
-					margin: 0;
+			.address-list{
+				overflow: hidden;
+				padding-top: 10px;
+				.address-item{
+					float: left;
+					position: relative;
+					@include box-sizing(border-box);
+					width: 29%;
+					height: 100px;
+					padding: 5px 10px 0;
+					margin-right: 5%;
+					border: 2px solid #f1f1f1;
+					font-size: 16px;
+					cursor: pointer;
+					cursor: hand;
+					&:nth-child(3n){
+						margin: 0;
+					}
+					dt,dd{
+						line-height: 30px;
+					}
+					dt{
+						border-bottom: 1px solid #f1f1f1;
+					}
+					.close{
+						position: absolute;
+						top: -18px;
+						right: -18px;
+						content: image-url('close.png');
+					}
+					.selected{
+						position: absolute;
+						right: 0;
+						top: 54px;
+					}
+					.hidden{
+						display: none;
+					}
+					.selected:before{
+						content: image-url('selected.png');
+					}
 				}
-				dt,dd{
-					line-height: 30px;
-				}
-				dt{
-					border-bottom: 1px solid #f1f1f1;
-				}
-				.close{
-					position: absolute;
-					top: -18px;
-					right: -18px;
-					content: image-url('close.png');
-				}
-				.selected{
-					position: absolute;
-					right: 0;
-					top: 54px;
-				}
-				.hidden{
-					display: none;
-				}
-				.selected:before{
-					content: image-url('selected.png');
+				.selected-item{
+					border-color: $border-orange;
 				}
 			}
-			.selected-item{
-				border-color: $border-orange;
+			.hidden{
+				display: none;
 			}
 		}
 		.more:after{
