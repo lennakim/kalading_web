@@ -12,6 +12,7 @@ $ ->
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
+    id = $('.orders').data('car')
     type = $('.items-select-page').data('type')
     $('.orders li').removeClass('selected')
     $('.orders-con').addClass('hidden')
@@ -25,8 +26,16 @@ $ ->
     $('.orders li').each ->
       $(this).click ->
         index = $(this).index()
+        if index == 0
+          $('.items-select-page').attr({'data-type':'pm25'})
+          type = 'pm25'
+        else
+          $('.items-select-page').attr({'data-type':'maintain'})
+          type = 'maintain'
+        window.location.href = "/orders/select_item?car_id=#{id}&type=#{type}"
         $(this).addClass('selected').siblings('li').removeClass('selected')
         $('.orders-con').eq(index).removeClass('hidden').siblings('.orders-con').addClass('hidden')
+
 
   if $(".select-car-page").length > 0
     $('#car_style').chained('#car_type,#car_name')
@@ -119,3 +128,53 @@ $ ->
       }
     })
     initPickaDate()
+
+    $('.address-list').on 'mouseover','.address-item', ->
+      _close = $(this).find('.close')
+      if $(this).hasClass('selected-item')
+        _close.addClass('hidden')
+        $(this).css({'borderColor':'#ffd4a9'})
+      else
+        _close.removeClass('hidden')
+        $(this).css({'borderColor':'#ffd4a9'})
+
+    $('.address-list').on 'mouseout','.address-item', ->
+      _close = $(this).find('.close')
+      if $(this).hasClass('selected-item')
+        _close.addClass('hidden')
+        $(this).css({'borderColor':'#ef7337'})
+      else
+        _close.addClass('hidden')
+        $(this).css({'borderColor':'#f1f1f1'})
+
+    $('.address-list').on 'click','.close', ->
+      $(this).parent('.address-item').remove()
+
+    $('.address-list').on 'click','.address-item', ->
+      _close = $(this).find('.close')
+      _selected = $(this).find('.selected')
+
+      $(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'})
+
+      _selected.removeClass('hidden').parent().siblings().find('.selected').addClass('hidden')
+
+      _close.addClass('hidden')
+
+      showTitle()
+
+    showTitle = ->
+      if $('.address-list').children().length != 0
+        $('.choice-title').removeClass('hidden')
+      else
+        $('.choice-title').addClass('hidden')
+
+    $('.add-address').on "click", ->
+      city = $('#city_name option:selected').text()
+      town = $('#town_name option:selected').text()
+      address = $('#address').val()
+      $('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>')
+
+      showTitle()
+
+
+
