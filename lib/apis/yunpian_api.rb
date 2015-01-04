@@ -5,7 +5,7 @@ module YunpianApi
 
   def send_to mobile, content
     payload = {
-      apikey: 'b898453f2ea218bbbe953ae0208d11dc',
+      apikey: 'c9bd661a0aa53ee2fa262f1ad6c027dc',
       mobile: mobile,
       text: content
     }
