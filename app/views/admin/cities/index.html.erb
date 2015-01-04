@@ -1,0 +1,31 @@
+<div class="container">
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>System Id</th>
+        <th>展示</th>
+        <th>编辑</th>
+        <th>删除</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% collection.each do |city| %>
+        <tr>
+
+          <td><%= city.name %></td>
+          <td><%= city.system_id %></td>
+
+          <td><%= link_to 'Show', admin_city_path(city) %></td>
+          <td><%= link_to 'Edit', edit_admin_city_path(city) %></td>
+          <td><%= link_to 'Destroy', admin_city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '创建', new_admin_city_path %>
+</div>

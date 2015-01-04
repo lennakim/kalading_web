@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :channels
     resources :users
     resources :posts
+    resources :cities
   end
 
   namespace :activity do
