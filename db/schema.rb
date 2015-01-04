@@ -155,12 +155,12 @@ ActiveRecord::Schema.define(version: 20141231054020) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "account_secret_key"
-    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
+    t.string   "account_secret_key"
+    t.string   "account_token"
   end
 
   add_index "public_accounts", ["account_id"], name: "index_public_accounts_on_account_id", unique: true, using: :btree

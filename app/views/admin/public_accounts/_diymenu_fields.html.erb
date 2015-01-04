@@ -5,13 +5,14 @@
   <%= f.hint "key 和 url 2 选其一，填写key则为CLICK型，填写url则为VIEW型" %>
   <%= f.input :key, hint: "菜单KEY值，用于消息接口推送，不超过128字节" %>
   <%= f.input :url, hint: "网页链接，用户点击菜单可打开链接，不超过256字节" %>
-  <%= f.input :is_show, label: "是否使用" %>
+  <%= f.check_box :is_show, label: "是否使用" %>
+  <div class="sub_menu">
+    <%= f.simple_fields_for :sub_menus do |sub_menu| %>
+      <%= render "sub_menu_fields", f: sub_menu %>
+    <% end %>
 
-  <%= f.simple_fields_for :sub_menus do |sub_menu| %>
-    <%= render "sub_menu_fields", f: sub_menu %>
-  <% end %>
-
-  <%= link_to_add_association "添加子菜单", f, :sub_menus, {"data-association-insertion-method" => "append", class: "btn btn-default"} %>
+    <%= link_to_add_association "添加子菜单", f, :sub_menus, class: "btn btn-default" %>
+  </div>
 
   <%= link_to_remove_association "remove", f, {class: "btn btn-danger"} %>
 </div>
