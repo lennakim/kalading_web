@@ -5,7 +5,9 @@ class SessionsController < ApplicationController
 
   def create
 
-    if vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
+    vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
+
+    if vcode && !vcode.expired?
       account = PublicAccount.find_by(name: "kalading1")
       user = User.find_or_create_by(phone_number: vcode.phone_num)
       if auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
