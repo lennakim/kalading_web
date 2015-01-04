@@ -15,6 +15,9 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 gem 'jbuilder', '~> 2.0'
+gem 'compass-rails'
+
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # backbone
 gem 'rails-backbone', git: 'https://github.com/codebrew/backbone-rails.git'
@@ -30,6 +33,9 @@ gem "mini_magick", '~> 3.7.0'
 
 # API
 gem 'rest-client'
+
+# tags
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # weixin
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git"

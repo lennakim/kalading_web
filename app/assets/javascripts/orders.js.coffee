@@ -8,46 +8,84 @@
 
 $ ->
 
-  $('.search_button').click ->
-    id = $('#car_style option:selected').data 'id'
-    window.location.href = "/orders/select_item?car_id=#{id}"
-
-  initPickaDate= ->
-    nowDay = new Date()
-    time = nowDay.getHours()
-
-    if(time>=17)
-      nowDay.setDate(nowDay.getDate()+2)
-    else
-      nowDay.setDate(nowDay.getDate()+1)
-    
-    maxDate = new Date()
-    maxDate.setDate(maxDate.getDate()+8)
-
-    $( '#serve_datetime' ).pickadate({
-      min: nowDay,
-      max: maxDate,
-      today: '',
-      format: 'yyyy-mm-dd'
-    })
-
-    $( '#registration_date' ).pickadate({
-      max: true,
-      today: 'Today',
-      format: 'yyyy-mm-dd',
-      selectMonths: true,
-      selectYears: true
-    })
-
   if $(".items-select-page").length > 0
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
+
+    type = $('.items-select-page').data('type')
+    $('.orders li').removeClass('selected')
+    $('.orders-con').addClass('hidden')
+    if type == 'maintain'
+      $('.orders .maintain').addClass('selected')
+      $('.maintain-con').removeClass('hidden')
+    if type == 'pm25'
+      $('.orders .pm25').addClass('selected')
+      $('.pm25-con').removeClass('hidden')
+
+    $('.orders li').each ->
+      $(this).click ->
+        index = $(this).index()
+        $(this).addClass('selected').siblings('li').removeClass('selected')
+        $('.orders-con').eq(index).removeClass('hidden').siblings('.orders-con').addClass('hidden')
 
   if $(".select-car-page").length > 0
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
 
+    $('.search_button').click ->
+      id = $('#car_style option:selected').data 'id'
+      type = $('.select-car-page').data('type')
+      window.location.href = "/orders/select_item?car_id=#{id}&type=#{type}"
+
+    $('.my-car').each ->
+      $(this).click ->
+        if $(this).find('input').is(':checked')
+          $(this).addClass('selected')
+          $(this).next('.my-car-info').css({'borderColor':'#ffd4a9'})
+        else
+          $(this).removeClass('selected')
+          $(this).next('.my-car-info').css({'borderColor':'#e1e1e1'})
+
+    $('.my-car var').each ->
+      $(this).click ->
+        _myCar = $(this).parent()
+        _myCarInfo = _myCar.next('.my-car-info')
+
+        if _myCar.hasClass('down')
+          _myCar.removeClass('down')
+          _myCarInfo.removeClass('show-con')
+        else
+          _myCar.addClass('down').siblings('.my-car').removeClass('down')
+          _myCarInfo.addClass('show-con').siblings('.my-car-info').removeClass('show-con')
+
   if $(".place-order-page").length > 0
+    initPickaDate = ->
+      nowDay = new Date()
+      time = nowDay.getHours()
+
+      if(time>=17)
+        nowDay.setDate(nowDay.getDate()+2)
+      else
+        nowDay.setDate(nowDay.getDate()+1)
+      
+      maxDate = new Date()
+      maxDate.setDate(maxDate.getDate()+8)
+
+      $( '#serve_datetime' ).pickadate({
+        min: nowDay,
+        max: maxDate,
+        today: '',
+        format: 'yyyy-mm-dd'
+      })
+
+      $( '#registration_date' ).pickadate({
+        max: true,
+        today: 'Today',
+        format: 'yyyy-mm-dd',
+        selectMonths: true,
+        selectYears: true
+      })
+
     $("#commentForm").validate({
       rules: {
         phone_num: {

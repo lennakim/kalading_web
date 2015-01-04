@@ -3,7 +3,7 @@
 <% end %>
 <%= title "创建订单" %>
 
-<div class="main select-car-page">
+<div class="main select-car-page" data-type="<%= params[:type] %>">
   <ul class="process">
     <li class="car-type selected">选择车型</li>
     <li class="service">选择服务</li>
@@ -42,31 +42,57 @@
             <% car['ams'].each do |type| %>
               <% type['asms'].each do |style| %>
                 <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-                  <%= style['name'] %><%= style['_id'] %>
+                  <%= style['name'] %>
                 </option>
               <% end %>
             <% end %>
           <% end %>
         </select>
-        <button class="search_button bac-orange font-white">下一步</button>
-        <a class="more" href="">没招到车型？</a>
       </div>
     </div>
     <div class="quick-select">
       <h4>我的快捷车辆</h4>
-      <div class="my-car selected">
-        <%= check_box_tag :car1,'',:checked => 'checked' %>
+      <div class="my-car">
+        <%= check_box_tag :car1,'' %>
         <%= label_tag(:car1, "宝马（进口）") %>
+        <var></var>
+      </div>
+      <div class="my-car-info">
+        <p>
+          品牌：宝马（进口）
+        </p>
+        <p>
+          系列：E级系列
+        </p>
+        <p>
+          型号：E200k（W211）2.0L 2006.09-2014
+        </p>
       </div>
       <div class="my-car">
         <%= check_box_tag :car2 %>
         <%= label_tag(:car2, "奔驰（北京）") %>
+        <var></var>
       </div>
-      <button class="search_button">下一步</button>
+      <div class="my-car-info">
+        <p>
+          品牌：宝马（进口）
+        </p>
+        <p>
+          系列：E级系列
+        </p>
+        <p>
+          型号：E200k（W211）2.0L 2006.09-2014
+        </p>
+      </div>
     </div>
+    <div class="clear"></div>
+    <p class="next">
+      <button class="search_button bac-orange font-white">下一步</button>
+      <a class="more" href="">没找到车型？</a>
+    </p>
   </div>
   <div class="comment">
-    <h3 class="user-comment">用户评价</h3>
+    <h3 class="comment-title">用户评价</h3>
     <div class="comment-con bac-white"></div>
   </div> 
 </div>

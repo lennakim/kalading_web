@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
   def submit
 
     car_id = params["order"]["car_id"]
+    type = params["type"]
     parts = params["order"]["parts"]
 
     json_data = '

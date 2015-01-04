@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
   mount WeixinRailsMiddleware::Engine, at: "/"
+  mount Ckeditor::Engine => '/ckeditor'
+
+  resources :posts
+
+  resources :cities do
+    post 'set'
+  end
 
   resources :orders do
     collection do
@@ -38,6 +45,7 @@ Rails.application.routes.draw do
     resources :users
 
     get 'weixin/index'
+    resources :posts
   end
 
   namespace :activity do

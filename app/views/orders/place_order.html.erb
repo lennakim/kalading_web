@@ -1,10 +1,12 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
+  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
 <% end %>
 
 <%= title "提交订单" %>
 
-<div class="main place-order-page">
+<div class="main place-order-page" data-city="<%= current_city %>">
   <ul class="process">
     <li class="car-type selected">选择车型</li>
     <li class="service">选择服务</li>
@@ -42,7 +44,7 @@
 			  <% if part['PM2.5特效滤芯'] %>
 				[PM2.5特效滤芯]<%= part['PM2.5特效滤芯'][0]['brand'] %>
 			  <% end %>
-			</p> 
+			</p>
 		  <% end %>
         </td>
 		<td>
@@ -64,9 +66,9 @@
 			  <% if part['PM2.5特效滤芯'] %>
 				<%= part['PM2.5特效滤芯'][0]['price'] %>
 			  <% end %>
-			</p> 
+			</p>
 		  <% end %>
-        </td>	
+        </td>
 		<td class="result">
 			<%= @result['price_without_discount'] %>
 		</td>
@@ -78,23 +80,28 @@
   	<h4 class="title">请正确填写以下内容，提交订单后，会有客服与您联系</h4>
   	<div class="choice">
   	  <h4 class="choice-title">选择服务地址</h4>
-  	  <dl class="address-item">
-  		<dt>北京市 海淀区</dt>
-  		<dd>海淀南路XX号楼</dd>
-  		<dd class="selected hidden"></dd>
-  	  </dl>
-  	  <dl class="address-item">
-		<dt>北京市 海淀区</dt>
-		<dd>海淀南路XX号楼</dd>
-		<dd class="selected hidden"></dd>
-  	  </dl>
-  	  <dl class="address-item selected-item">
-		<dt>北京市 海淀区</dt>
-		<dd>海淀南路XX号楼</dd>
-		<dd class="selected"></dd>
-  	  </dl>
+  	  <div class="address-list">
+	  	<dl class="address-item">
+	  	  <dt>北京市 海淀区</dt>
+	  	  <dd>海淀南路XX号楼</dd>
+	  	  <dd class="close hidden"></dd>
+	  	  <dd class="selected hidden"></dd>
+	  	</dl>
+	  	<dl class="address-item">
+		  <dt>北京市 海淀区</dt>
+	 	  <dd>海淀南路XX号楼</dd>
+		  <dd class="close hidden"></dd>
+		  <dd class="selected hidden"></dd>
+	  	</dl>
+	  	<dl class="address-item selected-item">
+		  <dt>北京市 海淀区</dt>
+		  <dd>海淀南路XX号楼</dd>
+		  <dd class="close hidden"></dd>
+		  <dd class="selected hidden"></dd>
+	  	</dl>
+	  </div>
   	</div>
-  	<p class="more">展开其他地址</p>
+  	<!-- <p class="more">展开其他地址</p> -->
   	<div class="new">
   	  <h5 class="new-title"> + 填写新地址</h5>
   	  <div class="new-con">
@@ -106,22 +113,25 @@
 	      <div class="info-con">
 	        <select name="city_name" id="city_name">
 			  <option value="">北京市</option>
-			</select>	
+			  <option value="">天津市</option>
+			</select>
 			<select name="town_name" id="town_name">
 			  <option value="">朝阳区</option>
+			  <option value="">海淀区</option>
 			</select>
 		  </div>
 		</div>
 		<div class="info-group">
 		  <div class="info-title">
-            <var class="star">*</var>
-            <%= label_tag(:address, "详细地址：") %>
-	      </div>
-	      <div class="info-con">
-	        <%= text_field_tag(:address,'', :required => true) %>
-		  </div>
+        <var class="star">*</var>
+        <%= label_tag(:address, "详细地址：") %>
+      </div>
+      <div class="info-con">
+        <%= text_field_tag(:address, '', :required => true, id: 'address') %>
+	  </div>
+      <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 		</div>
-		<button class=" submit bac-orange font-white">确认添加</button>
+		<button class="add-address bac-orange font-white">确认添加</button>
   	  </div>
   	</div>
   </div>
@@ -136,37 +146,6 @@
         <div class="info-con">
           <%= text_field_tag(:name,'', :required => true) %>
 	  	</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <%= label_tag(:city_name, "所在地区：") %>
-		</div>
-		<div class="info-con">
-		  <select name="city_name" id="city_name">
-			<option value="">北京市</option>
-		  </select>	
-		  <select name="town_name" id="town_name">
-			<option value="">朝阳区</option>
-		  </select>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <var class="star">*</var>
-		  <%= label_tag(:address, "详细地址：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:address,'', :required => true) %>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <var class="star">*</var>
-		  <%= label_tag(:phone_num, "手机号码：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:phone_num,'', :minlength => 11, :maxlength => 11, :required => true) %>
-		</div>
 	  </div>
 	  <div class="info-group">
 	    <div class="info-title">
@@ -206,14 +185,6 @@
 	  </div>
 	  <div class="info-group">
 	    <div class="info-title">
-		  <%= label_tag(:friend_phone, "朋友手机：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:friend_phone,'', :minlength => 11) %>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
 		  <var class="star">*</var>
 		  <%= label_tag(:registration_date, "车辆注册时间：") %>
 		</div>
@@ -239,46 +210,92 @@
 	  </div>
 	  <div class="info-group">
 	    <div class="info-con">
-		  <%= radio_button_tag :invoice1,'' %> 
+		  <%= radio_button_tag :invoice1,'' %>
 		  <%= label_tag(:invoice1, "不要发票") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :invoice2,'' %> 
+		  <%= radio_button_tag :invoice2,'' %>
 		  <%= label_tag(:invoice2, "发票") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :unit1,'' %> 
+		  <%= radio_button_tag :unit1,'' %>
 		  <%= label_tag(:unit1, "个人") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :unit2,'' %> 
+		  <%= radio_button_tag :unit2,'' %>
 		  <%= label_tag(:unit2, "单位") %>
 		</div>
 	  </div>
 	  <div class="info-group">
 	    <div class="info-con">
-	      <%= radio_button_tag :preferential1,'' %> 
+	      <%= radio_button_tag :preferential1,'' %>
 		  <%= label_tag(:preferential1, "无优惠券") %>
 		</div>
-		<div class="info-con"> 
-		  <%= radio_button_tag :preferential2,'' %> 
+		<div class="info-con">
+		  <%= radio_button_tag :preferential2,'' %>
 		  <%= label_tag(:preferential2, "使用优惠券") %>
 		</div>
-		<div class="info-con"> 
-		  <button class="verify bac-orange font-white">验证</button> 
+		<div class="info-con">
+		  <button class="verify bac-orange font-white">验证</button>
 		  <label for="" class="hidden verify-info">验证成功！</label>
 		</div>
 	  </div>
 	  <div class="info-group">
-		<%= label_tag(:input_clinet_title, "备注：") %>
-		<%= text_field_tag(:input_clinet_title,'填写备注') %>
+	    <div class="info-title">
+		  <%= label_tag(:input_clinet_title, "备注：") %>
+		</div>
+		<div class="info-con">
+		  <%= text_area(:input_clinet_title,'填写备注') %>
+	  	</div>
 	  </div>
 	  <div class="submit-info bac-orange font-white">
 	    <%= @result['name'] %>
 	    <%= submit_tag("提交订单",:class => 'submit bac-white') %>
-	    <span class="price">总价: <%= @result['price'] %>元</span>	
+	    <span class="price">总价: <%= @result['price'] %>元</span>
 	  </div>
 	</fieldset>
   <% end %>
 </div>
+
+<script>
+
+	$('.address-item').each(function(){
+		var _close = $(this).find('.close')
+		var _selected = $(this).find('.selected')
+		$(this).removeClass('selected-item')
+		$(this).on("click",function(){
+			$(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'});
+			_selected.removeClass('hidden').parent().siblings().find('.selected').addClass('hidden');
+			_close.addClass('hidden');
+		});
+
+		$(this).hover(function(){
+			if($(this).hasClass('selected-item')){
+				_close.addClass('hidden');
+				$(this).css({'borderColor':'#ffd4a9'});
+			}else{
+				_close.removeClass('hidden')
+				$(this).css({'borderColor':'#ffd4a9'});
+			}
+		},function(){
+			if($(this).hasClass('selected-item')){
+				_close.addClass('hidden');
+				$(this).css({'borderColor':'#ef7337'});
+			}else{
+				_close.addClass('hidden')
+				$(this).css({'borderColor':'#f1f1f1'});
+			}
+		})
+	});
+	$('.close').bind("click",function(){
+		$(this).parent('.address-item').remove();
+	})
+
+	$('.add-address').bind("click",function(){
+		var city = $('#city_name option:selected').text();
+		var town = $('#town_name option:selected').text();
+		var address = $('#address').val();
+		$('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>');
+	})
+</script>
 

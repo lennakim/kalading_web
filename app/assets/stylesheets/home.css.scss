@@ -1,13 +1,10 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ff7b3a;
 .main{
-	padding: 0 15%;
+	font-family: AdobeHeitiStd-Regular;
 	li{
 
 		list-style: none;
@@ -27,39 +24,39 @@ $font-orange: #ff7b3a;
 		text-align: center;
 		li{
 			float: left;
-			min-width: 25%;
+			// min-width: 25%;
 			margin: 60px 0;
 			height: 40px;
 			line-height: 40px;
 			font-size: 20px;
 			color: #666666;
-			&:before{
-				margin-right: 15px;
-			}
+			background-repeat: no-repeat;
+			background-position: 25px 3px;
+			background-size: 15%;
 		}
-		.car-type:before{
-			content: url("car.png");
+		.car-type{
+			background-image: image-url("car.png");
 		}
-		.car-type.selected:before{
-			content: url("car-selected.png");
+		.car-type.selected{
+			background-image: image-url("car-selected.png");
 		}
-		.service:before{
-			content: url("service.png");
+		.service{
+			background-image: image-url("service.png");
 		}
-		.service.selected:before{
-			content: url("service-selected.png");
+		.service.selected{
+			background-image: image-url("service-selected.png");
 		}
-		.info:before{
-			content: url("info.png");
+		.info{
+			background-image: image-url("info.png");
 		}
-		.info.selected:before{
-			content: url("info-selected.png");
+		.info.selected{
+			background-image: image-url("info-selected.png");
 		}
-		.success:before{
-			content: url("success.png");
+		.success{
+			background-image: image-url("success.png");
 		}
-		.success.selected:before{
-			content: url("success-selected.png");
+		.success.selected{
+			background-image: image-url("success-selected.png");
 		}
 	}
 }
@@ -67,17 +64,18 @@ $font-orange: #ff7b3a;
 	position: relative;
 	.flexslider{
 		overflow: hidden;
-		margin: 26px 0 14px; 
+		margin: 0;
+		min-height: 350px;
+		background: #ccc; 
+		border: 0;
 	}
 	.login-form{
 		position: absolute;
-		top: 30px;
+		top: 2%;
 		right: 18%;
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
+		@include box-sizing(border-box);
 		width: 267px;
-		height: 303px;
+		height: 270px;
 		text-align: center;
 		.form-bac{
 			opacity: 0.5;
@@ -89,21 +87,22 @@ $font-orange: #ff7b3a;
 			position: absolute;
 			top: 0;
 			width: 100%;
-			padding: 22px 3%;
+			padding: 0 3%;
 		}
 		input,button{
 			height: 34px;
 			line-height: 34px;
-			margin-bottom: 10px;
+			margin-bottom: 15px;
 			border: 0;
 			border-radius: 5px;
 			outline:none;
 		}
 		.login-title{
-			margin: 5px 0 30px;
-			padding-bottom: 15px;
+			margin-bottom: 24px;
+			padding-bottom: 20px;
 			color: #ff9938;
 			border-bottom: 1px solid #fff;
+			font-size: 22px;
 		}
 		.phone_num{
 			width: 100%;
@@ -111,7 +110,6 @@ $font-orange: #ff7b3a;
 		.phone_num,.verification_code{
 			padding-left: 10px;
 			color: $font-gray;
-			font-family: AdobeHeitiStd-Regular;
 		}
 		.field{
 			overflow: hidden;
@@ -128,47 +126,191 @@ $font-orange: #ff7b3a;
 		.submit_button{
 			width: 98%;
 			margin: 0 auto;
-			margin-top: 34px;
+			margin-top: 14%;
 		}
 	}
-	.maintain-item{
+	.product,.maintain-process,.guest,.menu{
+		min-width: 1000px;
+	}
+	.product,.maintain-process,.guest{
+		padding: 45px 0;
+		border-bottom: 2px solid #e4e4e4;
+		.title{
+			margin-bottom: 60px;
+			text-align: center;
+			color: #676767;
+		}
+		.content{
+			overflow: hidden;
+			padding: 0 15%;
+		}
+	}
+	.product{
+		background: #f8f4f3;
+		.maintain-item{
+			dl{
+				position: relative;
+				@include box-sizing(border-box);
+				float: left;
+				width: 30%;
+				max-height: 322px;
+				margin: 0 5% 0 0;
+				overflow: hidden;
+				&:last-child{
+					margin-right: 0;
+				}
+				dt{
+					overflow: hidden;
+					img{
+						width: 100%;
+					}
+					.filter{
+						@include filter(blur(3px));
+					}
+				}
+				.bac{
+					position: absolute;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background: #181413;
+					opacity: 0.1;
+				}
+				.hidden{
+					display: none;
+				}
+				.con{
+					position: absolute;
+					bottom: -70px;
+					overflow: hidden;
+					padding: 4px 30px 20px;
+					text-align: center;
+					color: #fff;
+					background: #000;
+					opacity: 0.5;
+					cursor: pointer;
+					cursor: hand;
+					.item-title{
+						line-height: 20px;
+					}
+					.show-title{
+						margin-top: 50%;
+					}
+					.description{
+						font-size: 14px;
+					}
+					.order-btn{
+						width: 120px;
+						height: 40px;
+						line-height: 40px;
+						margin-top: 20px;
+						border: 1px solid #fff;
+						border-radius: 2px;
+						background: none;
+						text-align: center;
+						text-decoration: none;
+						color: #fff;
+					}
+				}
+				.show{
+					bottom: 0;
+					height: 100%;
+				}
+			}
+		}
+	}
+	.maintain-process{
+		.number{
+			li{
+				float: left;
+				width: 23%;
+				span,var{
+					float: left;
+					background: #e4e4e4;
+				}
+				span{
+					width: 50px;
+					height: 50px;
+					margin: 5px 11px;
+					padding: 11px;
+					border-radius: 25px;
+					color: #fff;
+					text-align: center;
+					font-size: 22px;
+				}
+				var{
+					width: 55%;
+					height: 6px;
+					margin-top: 28px;
+				}
+			}
+			.last{
+				width: 10%;
+			}
+			.shot{
+				width: 10%;
+				span{
+					width: 10px;
+					height: 10px;
+					padding: 10px;
+					margin-top: 22px;
+				}
+				var{
+					width: 40%;
+				}
+			}
+		}
+		.item{
+			overflow: hidden;
+			width: 62%;
+			margin: 0 auto;
+			li{
+				float: left;
+				width: 22%;
+				margin-right: 4%;
+				text-align: center;
+				&:last-child{
+					margin: 0;
+				}
+				h4{
+					margin: 25px 0;
+				}
+			}
+		}
+	}
+	.menu{
 		overflow: hidden;
-		dl{
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
+		padding: 0 17%;
+		border-bottom: 2px solid #e4e4e4;
+		text-align: center;
+		li{
 			float: left;
-			width: 48%;
-			margin: 0;
-			&:nth-child(odd){
-				margin-right: 14px;
-			}
-			dt{
-				overflow: hidden;
-				height: 204px;
-				border-radius: 5px 5px 0 0;
-			}
-			dd{
-				overflow: hidden;
-				background: #ede8e4;
-				padding: 4px 30px 20px;
-				border-radius: 0 0 5px 5px;
-				.title{
-					color: #62615f;
-				}
-				.description{
-					font-family: AdobeHeitiStd-Regular;
-					font-size: 16px;
-					color: #999999;
-				}
-				button{
-					float: right;
-					width: 160px;
-					height: 40px;
-					line-height: 40px;
-					border: 0;
-					border-radius: 5px;
-				}
+			width: 19%;
+			height: 200px;
+			margin: 60px 7%;
+			padding-top: 180px;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			font-size: 18px;
+			color: #8a8a8a;
+		}
+		.pm{
+			background-image: image-url('pm25.png');
+		}
+		.know{
+			background-image: image-url('knowlege.png');
+		}
+		.report{
+			background-image: image-url('report.png');
+		}
+	}
+	.guest{
+		border-bottom: 0;
+		ul{
+			li{
+				float: left;
+				width: 20%;
+				text-align: center;
 			}
 		}
 	}
@@ -181,38 +323,49 @@ $font-orange: #ff7b3a;
 		.select-car,.quick-select{
 			float: left;
 			width: 50%;
-			margin-top: 28px;
+			margin: 28px 0;
 			padding: 0 5%;
 			h4{
 				text-align: center;
-				margin: 30px 0;
-			}			
+				margin-bottom: 30px;
+			}
+		}	
+		.clear{
+			clear: both;
+		}
+		.next{
+			width: 90%;
+			margin: 0 auto;
+			padding: 20px 0;
+			border-top: 1px solid #ccc;
+			text-align: center;
 			.search_button{
 				width: 130px;
 				height: 40px;
 				line-height: 40px;
+				margin-left: 70px;
 				border: 0;
 				text-align: center;
 			}
-		}
+			.more{
+				padding: 5px;
+				text-decoration: underline;
+				color: #4c4c4c;
+				font-size: 14px;
+			}
+		}		
 		.select-car{
 			border-right: 1px solid #ccc;
 			.field{
 				overflow: hidden;
-				margin-bottom: 30px;
-				line-height: 18px;
+				margin-bottom: 20px;
+				line-height: 20px;
 				label,select{
 					float: left;
 				}
 				label{
-					min-width: 70px;
+					// min-width: 70px;
 					font-size: 18px;
-				}
-				.more{
-					padding: 5px;
-					text-decoration: underline;
-					color: #4c4c4c;
-					font-size: 14px;
 				}
 				.search_button{
 					margin: 30px auto;
@@ -220,41 +373,77 @@ $font-orange: #ff7b3a;
 			}
 		}
 		.quick-select{
+			.my-car,.my-car-info{
+				width: 210px;
+				margin: 0 auto;
+			}
 			.my-car{
-				width: 260px;
-				height: 40px;
-				line-height: 40px;
+				position: relative;
+				height: 35px;
+				line-height: 35px;
 				text-align: center;
 				background: #e1e1e1;
-				margin: 0 auto;
-				margin-bottom: 30px;
+				margin:10px auto 30px;
 				color: #fff;
-				&:after{
-					content:url("down.png");
-					float: right;
-				}
 				input{
 					float: left;
-					margin: 14px;
+					margin: 11px;
+				}
+				label{
+					margin: 0;
+				}
+				var{
+					display: block;
+					position: absolute;
+					top: 0;
+					right: 0;
+					height: 16px;
+					padding: 18px 20px;
+					background-image: image-url("down.png");
+					background-position: 10px;
+					background-repeat: no-repeat;
+					cursor: pointer;
+					cursor: hand;
+				}
+			}
+			.down{
+				margin-bottom: 0;
+				position: relative;
+				var{
+					background-image: image-url("up.png");
 				}
 			}
 			.selected{
 				background: #ffd4a9;
 			}
 			.search_button{
-				margin-left: 50%;
+				margin: 40px 0 0 50%;
+			}
+			.hidden{
+				display: none;
+			}
+			.my-car-info{
+				display: none;
+				padding: 10px;
+				color: #c6c6c6;
+				border: 1px solid #e1e1e1;
+				p{
+					margin: 0;
+				}
+			}
+			.show-con{
+				display: block;
 			}
 		}
 	}
 	.comment{
-		.user-comment{
+		.comment-title{
 			font-size: 18px;
-			padding-left: 5%;
-			margin: 90px 0 30px;
-			&:before{
-				content: url("comment.png");
-				margin-right: 15px;
-			}
+			line-height: 40px;
+			padding-left: 40px;
+			margin: 90px 20px 30px;
+			background-image: image-url("comment.png");
+			background-repeat: no-repeat;
 		}
 		.comment-con{
 			height: 300px;
@@ -271,7 +460,7 @@ $font-orange: #ff7b3a;
 			li{
 				float: left;
 				margin: 0 20px;
-				padding: 10px 0;
+				padding: 20px 0;
 				color: #999999;
 				font-size: 20px;
 			}
@@ -280,12 +469,11 @@ $font-orange: #ff7b3a;
 				border-bottom: 2px solid $font-orange;
 			}
 		}
-		.maintain-con{
+		.orders-con{
 			h4{
-				margin-bottom: 35px;
+				line-height: 70px;
 			}
 			.item-list{
-				margin-bottom: 35px;
 				overflow: hidden;
 				line-height: 40px;
 				label{
@@ -305,7 +493,7 @@ $font-orange: #ff7b3a;
 				.item-box{
 					display: inline-block;
 					.item{
-						margin-bottom: 35px;
+						overflow: hidden;
 						&:last-child{
 							margin: 0;
 						}
@@ -330,22 +518,21 @@ $font-orange: #ff7b3a;
 					}
 				}
 			}
-			#order_button{
-				margin-top: 35px;
+			.order_button{
+				margin: 30px;
 				width: 360px;
 				border: 0;
 			}
 		}
 	}
 	.service{
-		.service-intro{
+		.service-title{
 			font-size: 18px;
-			padding-left: 5%;
-			margin: 90px 0 30px;
-			&:before{
-				content: url("service-intro.png");
-				margin-right: 15px;
-			}
+			line-height: 40px;
+			padding-left: 40px;
+			margin: 90px 20px 30px;
+			background-image: image-url("service-intro.png");
+			background-repeat: no-repeat;
 		}
 		.service-con{
 			height: 300px;
@@ -384,8 +571,8 @@ $font-orange: #ff7b3a;
 	}
 	.info-group{
 		overflow: hidden;
-		height: 40px;
-		padding: 5px;
+		line-height: 40px;
+		margin: 5px;
 		.star{
 			float: left;
 			color: $font-orange;
@@ -393,18 +580,26 @@ $font-orange: #ff7b3a;
 		}
 		.info-title{
 			float: left;
-			display: inline-block;
-			width: 110px;
+			width: 130px;
+			line-height: 35px;
 			text-align: right;
 		}
 		.info-con{
 			float: left;
-			min-width: 150px;
+			// min-width: 150px;
+			padding-left: 5px;
 			input{
+				line-height: 35px;
+				padding: 0 10px;
 				border: 0;
 				background: #fafafa;
 			}
+			#address{
+				width: 200px;
+			}
 			.verify{
+				width: 100px;
+				line-height: 30px;
 				border: 0;
 			}
 			.verify-info{
@@ -420,36 +615,44 @@ $font-orange: #ff7b3a;
 		border-bottom: 0;
 		.title{
 			color: $font-orange;
+			line-height: 40px;
 		}
 		.choice{
 			overflow: hidden;
 			color: #666666;
-			.choice-title:before{
-				content: url('address.png');
+			.choice-title{
+				line-height: 40px;
+				padding-left: 40px;
+				margin: 10px 0;
+				background-image: image-url('address.png');
+				background-repeat: no-repeat;
 			}
 			.address-item{
 				float: left;
 				position: relative;
-				-moz-box-sizing: border-box;
-				-webkit-box-sizing: border-box;
-				box-sizing: border-box;
-				width: 30%;
+				@include box-sizing(border-box);
+				width: 29%;
 				height: 100px;
 				padding: 5px 10px 0;
 				margin-right: 5%;
 				border: 2px solid #f1f1f1;
 				font-size: 16px;
+				cursor: pointer;
+				cursor: hand;
 				&:last-child{
 					margin: 0;
-				}
-				&:hover{
-					border-color: $border-orange;
 				}
 				dt,dd{
 					line-height: 30px;
 				}
 				dt{
 					border-bottom: 1px solid #f1f1f1;
+				}
+				.close{
+					position: absolute;
+					top: -18px;
+					right: -18px;
+					content: image-url('close.png');
 				}
 				.selected{
 					position: absolute;
@@ -460,7 +663,7 @@ $font-orange: #ff7b3a;
 					display: none;
 				}
 				.selected:before{
-					content: url('selected.png');
+					content: image-url('selected.png');
 				}
 			}
 			.selected-item{
@@ -468,35 +671,43 @@ $font-orange: #ff7b3a;
 			}
 		}
 		.more:after{
-			content: url('more-address.png');
+			content: image-url('more.png');
+			line-height: 50px;
+			margin: 10px;
 		}
 		.new{
+			margin-top: 20px;
 			.new-title{
-				background: #ccc;
 				width: 150px;
 				margin: 0;
 				padding: 5px;
+				background: #f0f0f0;
 				text-align: center;
+				color: #676767;
 			}
 			.new-con{
 				width: 400px;
 				padding: 10px;
 				border: 1px solid #f1f1f1;
-				.submit{
+				.add-address{
 					display: block;
 					height: 30px;
 					line-height: 30px;
 					width: 100px;
 					border: 0;
 					border-radius: 2px;
-					margin: 0 auto;
+					margin: 10px auto;
 				}
 			}
 		}
 	}
 	.comment-form{
-		.order-info:before{
-			content: url('order-info.png');
+		.order-info{
+			line-height: 40px;
+			padding-left: 40px;
+			margin: 15px 0;
+			background-image: image-url('order-info.png');
+			background-repeat: no-repeat;
 		}
 		.submit-info{
 			overflow: hidden;
@@ -504,6 +715,7 @@ $font-orange: #ff7b3a;
 			line-height: 40px;
 			width: 100%;
 			padding: 0 10px;
+			margin: 20px 0;
 			border-radius: 5px;
 			.price,.submit{
 				float: right;

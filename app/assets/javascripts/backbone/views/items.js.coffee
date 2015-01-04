@@ -1,11 +1,11 @@
 class Kalading.Views.Items extends Backbone.View
 
-  el: '#pm25'
+  el: '.orders-con'
 
   events:
     "change .part": "resetSelectItems"
     "click .part-selector": "chooseParts"
-    "click #order_button": "submitOrder"
+    "click .order_button": "submitOrder"
 
   initialize: ->
     @order = new Kalading.Models.Order
