@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :users
     resources :posts
     resources :cities
+    resources :products
   end
 
   namespace :activity do
