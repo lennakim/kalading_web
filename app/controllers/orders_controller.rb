@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
 
   def select_car
-    @cars_info = Order.cars_data
+    type = params[:type]
+    @cars_info = Order.cars_data type
   end
 
   def refresh_price
@@ -15,7 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def select_item
-    @result = Order.items_for params[:car_id]
+    type = params[:type]
+    @result = Order.items_for params[:car_id], type
   end
 
   def place_order

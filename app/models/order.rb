@@ -1,12 +1,12 @@
 class Order
 
   class << self
-    def cars_data
-      ServerApi.call "get", "auto_brands", {all: 1}
+    def cars_data type = "maintain"
+      ServerApi.call "get", "auto_brands", {all: 1, "#{type}" => true}
     end
 
-    def items_for car_id
-      ServerApi.call "get", "auto_maintain_order", {entry_id: car_id} {[]}
+    def items_for car_id, type = "maintain"
+      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, "#{type}" => true } {[]}
     end
 
     def refresh_price car_id, payload
