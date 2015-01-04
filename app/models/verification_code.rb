@@ -5,21 +5,6 @@ class VerificationCode < ActiveRecord::Base
   before_create :generate_code
   before_create :set_expires_at
 
-  class << self
-
-    def find_valid_one phone_num
-      vcode = self.where(phone_num: phone_num).order("created_at DESC").first
-
-      if vcode && !vcode.expired?
-        vcode
-      else
-        vcode = self.create(phone_num: phone_num)
-        vcode.valid? ? vcode : nil
-      end
-    end
-
-  end
-
   def expired?
     self.expires_at < Time.now
   end
@@ -35,7 +20,7 @@ class VerificationCode < ActiveRecord::Base
   end
 
   def set_expires_at
-    self.expires_at = 50.seconds.from_now.utc
+    self.expires_at = 15.minutes.from_now.utc
   end
 
 end

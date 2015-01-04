@@ -12,16 +12,10 @@ $ ->
           $('.form-box').animate({'bottom':'-250px'},50).hide()
           $('.order-btn').text('约好了，等电话吧~')
 
-          if(typeof WeixinJSBridge == 'undefined')
-            $('.bac').addClass('hidden')
-            $('.share').animate({'top':'-200'}, 200)
-
-          $('body').on "click", ->
-            $('.share').animate({'top':'-200'},200)
-            $('.bac').addClass('hidden')
+          $('.share').animate({'top':'0'}, 200)
+          $('.bac').addClass('hidden')
         else
           alert('一定是姿势不对，请再约一次！')
-
 
   data = {
     'img': $('.activity99').data('thumbnail'),
