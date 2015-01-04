@@ -1,2 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.share-weixin{
+  width: 100%;
+  padding: 30px 15px 5px;
+  position: absolute;
+  top: -200px;
+  z-index: 5;
+  color: #1b4772;
+  background: image-url('activity/sharebac.png') no-repeat;
+  background-size: 100% 100%;
+  .share-title{
+    color: #ee7833;
+    font-size: 22px;
+  }
+}

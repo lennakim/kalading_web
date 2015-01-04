@@ -1,3 +1,5 @@
+#= require activity/activity
+
 $ ->
   if $('.activity99').length > 0
     $("#submit_button").on "click", ->
@@ -9,11 +11,10 @@ $ ->
       $.post "/phones", { phone_num: phone_num, code: verification_code, car_license_num: car_license_num }, (data) ->
         if data.success == true
           $("html,body").animate({scrollTop:0},1000)
-          $('.form-box').animate({'bottom':'-250px'},50).hide()
+          $('.form-box').animate({'bottom':'-250px'}, 50).hide()
           $('.order-btn').text('约好了，等电话吧~')
 
-          $('.share').animate({'top':'0'}, 200)
-          $('.bac').addClass('hidden')
+          @share_to_weixin()
         else
           alert('一定是姿势不对，请再约一次！')
 
