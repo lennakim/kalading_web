@@ -13,111 +13,90 @@
     <li class="info selected">填写信息</li>
     <li class="success">预定成功</li>
   </ul>
-  <table id="item_table">
-    <thead>
-      <th>商品名称</th>
-      <th>保养项目</th>
-      <th>价格</th>
-      <th>总价</th>
-    </thead>
-    <tbody>
-	  <tr>
-		<td>
-		  <%= @result['name'] %>
-		</td>
-        <td class="item">
-		  <% @result['parts'].each_index do |index| %>
-			<% part = @result['parts'][index]%>
-			<p>
-			  <% if part['空气滤清器'] %>
-				[空气滤清器]<%= part['空气滤清器'][0]['brand'] %>
-			  <% end %>
-			  <% if part['空调滤清器'] %>
-				[空调滤清器]<%= part['空调滤清器'][0]['brand'] %>
-			  <% end %>
-			  <% if part['机滤'] %>
-				[机滤]<%= part['机滤'][0]['brand'] %>
-			  <% end %>
-			  <% if part['机油'] %>
-				[机油]<%= part['机油'][0]['brand'] %>
-			  <% end %>
-			  <% if part['PM2.5特效滤芯'] %>
-				[PM2.5特效滤芯]<%= part['PM2.5特效滤芯'][0]['brand'] %>
-			  <% end %>
-			</p>
-		  <% end %>
-        </td>
-		<td>
-		  <% @result['parts'].each_index do |index| %>
-			<% part = @result['parts'][index]%>
-			<p>
-			  <% if part['空气滤清器'] %>
-				<%= part['空气滤清器'][0]['price'] %>
-			  <% end %>
-			  <% if part['空调滤清器'] %>
-				<%= part['空调滤清器'][0]['price'] %>
-			  <% end %>
-			  <% if part['机滤'] %>
-				<%= part['机滤'][0]['price'] %>
-			  <% end %>
-			  <% if part['机油'] %>
-				<%= part['机油'][0]['price'] %>
-			  <% end %>
-			  <% if part['PM2.5特效滤芯'] %>
-				<%= part['PM2.5特效滤芯'][0]['price'] %>
-			  <% end %>
-			</p>
-		  <% end %>
-        </td>
-		<td class="result">
+  <%= form_tag 'submit' do %>
+    <fieldset>
+    <table id="item_table">
+      <thead>
+        <th>商品名称</th>
+        <th>保养项目</th>
+        <th>价格</th>
+        <th>总价</th>
+      </thead>
+      <tbody>
+	    <tr>
+		  <td>
+		    <%= @result['name'] %>
+		    <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
+		  </td>
+          <td class="item">
+		    <% @result['parts'].each_index do |index| %>
+			  <% part = @result['parts'][index]%>
+			  <p name='items'>
+				[<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
+				<%= hidden_field_tag("orders[parts][#{index}][brand]", part.values.first.first['brand']) %>
+
+				<%= hidden_field_tag("orders[parts][#{index}][number]", part.values.first.first['number']) %>
+			  </p>
+		    <% end %>
+          </td>
+		  <td>
+		    <% @result['parts'].each_index do |index| %>
+			  <% part = @result['parts'][index]%>
+			  <p>
+			    <%= part.values.first.first['price'] %>
+			    <%= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
+			  </p>
+		    <% end %>
+          </td>
+		  <td class="result">
 			<%= @result['price_without_discount'] %>
-		</td>
-	</tr>
-    </tbody>
-    <tfoot></tfoot>
-  </table>
-  <div class="address bac-white">
-  	<h4 class="title">请正确填写以下内容，提交订单后，会有客服与您联系</h4>
-  	<div class="choice">
-  	  <h4 class="choice-title hidden">选择服务地址</h4>
-  	  <div class="address-list"></div>
-  	</div>
-  	<!-- <p class="more">展开其他地址</p> -->
-  	<div class="new">
-  	  <h5 class="new-title"> + 填写新地址</h5>
-  	  <div class="new-con">
-		<div class="info-group">
-		  <div class="info-title">
-            <var class="star">*</var>
-            <%= label_tag(:address, "所在地区：") %>
-	      </div>
-	      <div class="info-con">
-	        <select name="city_name" id="city_name">
-			  <option value="">北京市</option>
-			  <option value="">天津市</option>
-			</select>
-			<select name="town_name" id="town_name">
-			  <option value="">朝阳区</option>
-			  <option value="">海淀区</option>
-			</select>
+			<%= hidden_field_tag(:price, @result['price_without_discount']) %>
+		  </td>
+	    </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+    <div class="address-content bac-white">
+  	  <h4 class="title">请正确填写以下内容，提交订单后，会有客服与您联系</h4>
+  	  <div class="choice">
+	  	<h4 class="choice-title hidden">选择服务地址</h4>
+	  	<div class="address-list"></div>
+	  	</div>
+	  	<!-- <p class="more">展开其他地址</p> -->
+	  	<div class="new">
+	  	  <h5 class="new-title"> + 填写新地址</h5>
+	  	  <div class="new-con">
+			<div class="info-group">
+			  <div class="info-title">
+	            <var class="star">*</var>
+	            <%= label_tag( "所在地区：") %>
+		      </div>
+		      <div class="info-con">
+		        <select id="city_name">
+				  <option value="">北京市</option>
+				  <option value="">天津市</option>
+				</select>
+				<select id="town_name">
+				  <option value="">朝阳区</option>
+				  <option value="">海淀区</option>
+				</select>
+			  </div>
+			</div>
+			<div class="info-group">
+			  <div class="info-title">
+	          <var class="star">*</var>
+	          <%= label_tag("详细地址：") %>
+	        </div>
+	        <div class="info-con">
+	          <%= text_field_tag('', '', :id => 'address') %>
+		    </div>
+	        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 		  </div>
-		</div>
-		<div class="info-group">
-		  <div class="info-title">
-        <var class="star">*</var>
-        <%= label_tag(:address, "详细地址：") %>
-      </div>
-      <div class="info-con">
-        <%= text_field_tag(:address, '', :required => true, id: 'address') %>
-	  </div>
-      <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
-		</div>
-		<button class="add-address bac-orange font-white">确认添加</button>
+		  <p class="add-address bac-orange font-white">确认添加</p>
+	  	</div>
   	  </div>
-  	</div>
-  </div>
-  <%= form_tag '',:class => 'comment-form bac-white' do %>
-	<fieldset>
+    </div>
+	<div class="orders-content bac-white">
 	  <p class='order-info'>订单信息</p>
 	  <div class="info-group">
 	  	<div class="info-title">
@@ -131,7 +110,7 @@
 	  <div class="info-group">
 	    <div class="info-title">
 		  <var class="star">*</var>
-		  <%= label_tag(:car_num, "车牌号：") %>
+		  <%= label_tag("车牌号：") %>
 		</div>
 		<div class="info-con">
 		  <select name="car_num">
@@ -190,29 +169,29 @@
 	  	</div>
 	  </div>
 	  <div class="info-group">
-	    <div class="info-con">
+	    <div class="info-con spe">
 		  <%= radio_button_tag :invoice,'' %>
 		  <%= label_tag(:invoice, "不要发票") %>
 		</div>
-		<div class="info-con">
+		<div class="info-con spe">
 		  <%= radio_button_tag :invoice,'' %>
 		  <%= label_tag(:invoice, "发票") %>
 		</div>
-		<div class="info-con">
+		<div class="info-con spe">
 		  <%= radio_button_tag :unit,'' %>
 		  <%= label_tag(:unit, "个人") %>
 		</div>
-		<div class="info-con">
+		<div class="info-con spe">
 		  <%= radio_button_tag :unit,'' %>
 		  <%= label_tag(:unit, "单位") %>
 		</div>
 	  </div>
 	  <div class="info-group">
-	    <div class="info-con">
+	    <div class="info-con spe">
 	      <%= radio_button_tag :preferential,'' %>
 		  <%= label_tag(:preferential, "无优惠券") %>
 		</div>
-		<div class="info-con">
+		<div class="info-con spe">
 		  <%= radio_button_tag :preferential,'' %>
 		  <%= label_tag(:preferential, "使用优惠券") %>
 		</div>
@@ -234,6 +213,7 @@
 	    <%= submit_tag("提交订单",:class => 'submit bac-white') %>
 	    <span class="price">总价: <%= @result['price'] %>元</span>
 	  </div>
+	</div>
 	</fieldset>
   <% end %>
 </div>

@@ -85,12 +85,14 @@ body{
 			}
 			dt{
 				float: left;
-				padding: 0px 10px 0 20%;
-				font-size: 30px;
+				padding: 0px 5px 0 20%;
+				font-size: 40px;
 				text-align: right;
 			}
 			dd{
 				text-align: left;
+				margin: 2px 0;
+				font-size: 16px;
 				&:nth-child(odd){
 					float: left;
 					width: 45%;
@@ -108,6 +110,7 @@ body{
 			li{
 				background-repeat: no-repeat;
 				background-position: 22% 0;
+				font-size: 16px;
 				a{
 					color: #a0a0a0;
 				}
@@ -131,7 +134,7 @@ body{
 				line-height: 35px;
 				background-image: image-url('foot-tel.png');
 				background-repeat: no-repeat;
-				font-size: 24px;
+				font-size: 26px;
 			}
 		}
 	}

@@ -2,6 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
+
 <% type = (params[:type] == nil || params[:type] == "") ? "maintain" : params[:type] %>
 
 <% unless @result.empty? %>
@@ -17,17 +18,13 @@
         <li class="pm25 <%= "selected" if type == "pm25" %>"><%= link_to "PM2.5滤芯更换", select_item_orders_path(car_id: params[:car_id], type: "pm25") %></li>
         <li class="maintain <%= "selected" if type == "maintain" %>"><%= link_to "车辆上门保养", select_item_orders_path(car_id: params[:car_id], type: "maintain") %></li>
       </ul>
-
-
       <div class="orders-con <%= type %>-con">
         <%= render "items", type: type %>
       </div>
-
     </div>
-
-    <div class="service">
-      <h3 class="service-title">服务介绍</h3>
-      <div class="service-con bac-white"></div>
+    <div class="service-module bac-white">
+      <h3 class="service-title module-title">服务介绍</h3>
+      <div class="service-con"></div>
     </div>
   </div>
 <% else %>
