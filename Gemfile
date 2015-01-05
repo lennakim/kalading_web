@@ -70,6 +70,8 @@ gem 'unicorn'
 
 # monitor
 gem 'newrelic_rpm'
+gem 'slack-notifier'
+gem 'exception_notification'
 
 # deployment
 group :development do

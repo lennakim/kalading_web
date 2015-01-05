@@ -4,13 +4,15 @@
       <tr>
         <th>所属账号</th>
         <th>编辑</th>
+        <th>应用</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
         <td><%= @account.name %></td>
-        <td><%= link_to "编辑", admin_edit_menu_path %></td>
+        <td><%= link_to "编辑", edit_menu_admin_public_accounts_path %></td>
+        <td><%= link_to "应用", apply_menu_admin_public_accounts_path %></td>
       </tr>
     </tbody>
   </table>

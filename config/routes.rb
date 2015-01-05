@@ -41,14 +41,17 @@ Rails.application.routes.draw do
     resources :main
     resources :activities
     resources :channels
-    resources :public_accounts
-    get 'public_account/diy_menu' => 'public_accounts#diy_menu', as: 'diy_menu'
-    get 'public_account/edit_menu' => 'public_accounts#edit_menu', as: 'edit_menu'
-    post 'public_accounts/:id/update_menu' => 'public_accounts#update_menu', as: 'update_menu'
     resources :users
-
-    get 'weixin/index'
     resources :posts
+    resources :public_accounts do
+      collection do
+        get 'apply_menu' => 'public_accounts#apply_menu'
+        get 'diy_menu' => 'public_accounts#diy_menu'
+        get 'edit_menu' => 'public_accounts#edit_menu'
+        post ':id/update_menu' => 'public_accounts#update_menu', as: 'update_menu'
+      end
+    end
+    get 'weixin/index'
   end
 
   namespace :activity do
