@@ -43,18 +43,18 @@
     <div class="login-form">
     	<div class="form-bac bac-white"></div>
     	<div class="form-con">
-  	  <h3 class="login-title">请您先登录</h3>
+  	  <h3 class="login-title" title="请您先登录">请您先登录</h3>
         <div class="field">
-        	<input class="phone_num" id="phone_num" placeholder="手机号">
-        	<input class="verification_code" placeholder="验证码" id="verification_code"/>
-          <button class='get_code bac-orange font-white' id="get_code">获取验证码</button>
-          <button id="submit_button" class="submit_button bac-orange font-white" disabled="disabled">登录</button>
+        	<input title="手机号" class="phone_num" id="phone_num" placeholder="手机号">
+        	<input title="验证码" class="verification_code" placeholder="验证码" id="verification_code"/>
+          <button title="点击获取验证码" class='get_code bac-orange font-white' id="get_code">获取验证码</button>
+          <button title="登录" id="submit_button" class="submit_button bac-orange font-white" disabled="disabled">登录</button>
         </div>
 
     	</div>
     </div>
     <div class="product">
-      <h3 class="title">产品与服务</h3>
+      <h3 class="title" title="产品与服务">产品与服务</h3>
       <div class="content maintain-item">
     	  <dl>
       	  <dt class="bac-white">
@@ -62,10 +62,10 @@
       	  </dt>
           <dd class="bac hidden"></dd>
       	  <dd class="con">
-      		  <h4 class="item-title">卡拉丁空调滤清器</h4>
-      		  <span class="description">3分钟告别车内雾霾</span>
+      		  <h4 class="item-title" title="卡拉丁空调滤清器">卡拉丁空调滤清器</h4>
+      		  <span class="description" title="3分钟告别车内雾霾">3分钟告别车内雾霾</span>
             <a href="/orders/select_car?type=pm25">
-              <button class="order-btn">立即预定</button>
+              <button class="order-btn" title="立即预定">立即预定</button>
             </a>
       	  </dd>
     	  </dl>
@@ -75,10 +75,10 @@
       	  </dt>
           <dd class="bac hidden"></dd>
       	  <dd class="con">
-      		  <h4 class="item-title">卡拉丁上门保养</h4>
-      		  <span class="description">省时、省心、省钱</span>
+      		  <h4 class="item-title" title="卡拉丁上门保养">卡拉丁上门保养</h4>
+      		  <span class="description" title="省时、省心、省钱">省时、省心、省钱</span>
       		  <a href="/orders/select_car?type=maintain">
-              <button class="order-btn">立即预定</button>
+              <button class="order-btn" title="立即预定">立即预定</button>
             </a>
       	  </dd>
     	  </dl>
@@ -88,57 +88,64 @@
           </dt>
           <dd class="bac hidden"></dd>
           <dd class="con">
-            <h4 class="item-title">卡拉丁空调滤清器</h4>
-            <span class="description">3分钟告别车内雾霾</span>
+            <h4 class="item-title" title="卡拉丁空调滤清器">卡拉丁空调滤清器</h4>
+            <span class="description" title="3分钟告别车内雾霾">3分钟告别车内雾霾</span>
             <a href="/orders/select_car?type=pm25">
-              <button class="order-btn">立即预定</button>
+              <button class="order-btn" title="立即预定">立即预定</button>
             </a>
           </dd>
         </dl>
       </div>
     </div>
     <div class="maintain-process">
-      <h3 class="title">服务流程</h3>
+      <h3 class="title" title="服务流程">服务流程</h3>
       <ul class="content number">
         <li class="shot"><span></span><var></var></li>
-        <li><span>1</span><var></var></li>
-        <li><span>2</span><var></var></li>
-        <li><span>3</span><var></var></li>
-        <li class="last"><span>4</span></li>
+        <li><span title="1">1</span><var></var></li>
+        <li><span title="2">2</span><var></var></li>
+        <li><span title="3">3</span><var></var></li>
+        <li class="last"><span title="4">4</span></li>
         <li class="shot"><var></var><span></span></li>
       </ul>
       <ul class="item">
         <li>
-          <h4>提交订单</h4>
+          <h4 title="提交订单">提交订单</h4>
           <span>您可以在产品与服务专栏按照流程提交您的订单</span>
         </li>
         <li>
-          <h4>等待客服确认</h4>
+          <h4 title="等待客服确认">等待客服确认</h4>
           <span>当您的订单提交成功后我们的客服会及时与您联系</span>
         </li>
         <li>
-          <h4>技师上门服务</h4>
+          <h4 title="技师上门服务">技师上门服务</h4>
           <span>我们的小卡技师会根据您提供的地址上门服务</span>
         </li>
         <li>
-          <h4>订单完成</h4>
+          <h4 title="订单完成">订单完成</h4>
           <span>订单完成后，不要忘记到个人中心收取您的车辆检查报告</span>
         </li>
       </ul>
     </div>
     <ul class="menu">
-      <li class="pm">PM2.5滤芯</li>
-      <li class="know">用车知识</li>
-      <li class="report">车检报告</li>
+      <li class="pm">
+        <%= link_to "PM2.5滤芯", '', target: "_blank", :title => "PM2.5滤芯" %>
+      </li>
+      <li class="know">
+        <%= link_to "用车知识", '', target: "_blank", :title => "用车知识" %>
+        <!-- post_page_path(id: 12) -->
+      </li>
+      <li class="report">
+        <%= link_to "车检报告", '', target: "_blank", :title => "车检报告" %>
+      </li>
     </ul>
     <div class="guest">
-      <h3 class="title">集团客户</h3>
+      <h3 class="title" title="集团客户">集团客户</h3>
       <ul class="content">
-        <li><%= image_tag("picc.png", :class=> "picc")%></li>
-        <li><%= image_tag("d.png", :class=> "d")%></li>
-        <li><%= image_tag("m.png", :class=> "m")%></li>
-        <li><%= image_tag("axa.png", :class=> "axa")%></li>
-        <li><%= image_tag("blue.png", :class=> "blue")%></li>
+        <li title="平安保险"><%= image_tag("picc.png", :class=> "picc")%></li>
+        <li title="太平保险"><%= image_tag("d.png", :class=> "d")%></li>
+        <li title=""><%= image_tag("m.png", :class=> "m")%></li>
+        <li title=""><%= image_tag("axa.png", :class=> "axa")%></li>
+        <li title=""><%= image_tag("blue.png", :class=> "blue")%></li>
       </ul>
     </div>
   </div>

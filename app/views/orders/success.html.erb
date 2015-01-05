@@ -1,0 +1,24 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+<div class="main success-page">
+  <ul class="process">
+    <li class="car-type">选择车型</li>
+    <li class="service">选择服务</li>
+    <li class="info">填写信息</li>
+    <li class="success selected">预定成功</li>
+  </ul>
+  <div class="content success-con">
+  	<h3 class="title">恭喜您，您的订单提交成功！</h3>
+  	<p class="next">您可以到个人中心中查看订单详情与进度</p>
+  	<p class="home">系统将在<var class="num"></var>后进入首页</p>
+  	<ul class="bac">
+  		<li>
+  			<%= link_to "返回首页", '/', target: "_blank", :title => "返回首页" %>
+  		</li>
+  		<li>
+  			<%= link_to "个人中心", '', target: "_blank", :title => "个人中心" %>
+  		</li>
+  	</ul>
+  </div>
+</div>
