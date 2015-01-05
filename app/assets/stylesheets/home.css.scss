@@ -3,6 +3,8 @@ $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ff7b3a;
+$title: #3d3d3d;
+$bac: #f7f4f3;
 .bac-orange{
 	background: $bac-orange;
 }
@@ -13,27 +15,34 @@ $font-orange: #ff7b3a;
 	color: #fff;
 }
 .main{
-	padding: 0 15%;
+	padding: 30px 15%;
 	font-family: AdobeHeitiStd-Regular;
 	li{
 
 		list-style: none;
 	}
+	.main-title{
+		margin: 0;
+		padding: 0 30px;
+		color: $title;
+	}
 	.process{
 		overflow: hidden;
-		padding: 0;
+		padding: 40px 0 50px;
 		text-align: center;
 		li{
 			float: left;
 			width: 25%;
-			margin: 60px 0;
 			height: 40px;
 			line-height: 40px;
 			font-size: 20px;
-			color: #666666;
+			color: #a0a0a0;
 			background-repeat: no-repeat;
 			background-position: 25px 3px;
 			background-size: 15%;
+		}
+		.selected{
+			color: $title;
 		}
 		.car-type{
 			background-image: image-url("car.png");
@@ -85,7 +94,7 @@ $font-orange: #ff7b3a;
 		}
 		input,button{
 			height: 34px;
-			line-height: 34px;
+			line-height: 32px;
 			margin-bottom: 15px;
 			border: 0;
 			border-radius: 5px;
@@ -94,10 +103,13 @@ $font-orange: #ff7b3a;
 		.login-title{
 			margin-bottom: 24px;
 			padding-bottom: 20px;
-			color: #ff9938;
+			color: #666666;
 			border-bottom: 1px solid #fff;
 			font-size: 22px;
 			font-weight: 600;
+		}
+		.phone_num,.verification_code,.get_code{
+			font-size: 16px;
 		}
 		.phone_num{
 			width: 100%;
@@ -121,6 +133,7 @@ $font-orange: #ff7b3a;
 			width: 98%;
 			margin: 0 auto;
 			margin-top: 14%;
+			font-size: 18px;
 		}
 	}
 	.product,.maintain-process,.guest,.menu{
@@ -130,9 +143,10 @@ $font-orange: #ff7b3a;
 		padding: 45px 0;
 		border-bottom: 2px solid #e4e4e4;
 		.title{
-			margin-bottom: 60px;
+			margin: 0 0 40px;
 			text-align: center;
-			color: #676767;
+			color: $title;
+			font-size: 28px;
 		}
 		.content{
 			overflow: hidden;
@@ -140,7 +154,7 @@ $font-orange: #ff7b3a;
 		}
 	}
 	.product{
-		background: #f8f4f3;
+		background: $bac;
 		.maintain-item{
 			dl{
 				position: relative;
@@ -220,7 +234,7 @@ $font-orange: #ff7b3a;
 				width: 24%;
 				span,var{
 					float: left;
-					background: #e4e4e4;
+					background: #ccc;
 				}
 				span{
 					margin-right: 5%;
@@ -265,11 +279,16 @@ $font-orange: #ff7b3a;
 				width: 23%;
 				margin-right: 2%;
 				text-align: center;
+				font-size: 16px;
 				&:last-child{
 					margin: 0;
 				}
 				h4{
 					margin: 25px 0;
+					color: #666666;
+				}
+				span{
+					color: #888888;
 				}
 			}
 		}
@@ -286,7 +305,7 @@ $font-orange: #ff7b3a;
 			height: 200px;
 			margin: 60px 7%;
 			padding-top: 180px;
-			font-size: 18px;
+			font-size: 22px;
 			color: #8a8a8a;
 			background-repeat: no-repeat;
 			background-size: 100%;
