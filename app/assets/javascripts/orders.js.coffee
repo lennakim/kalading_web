@@ -12,31 +12,6 @@ $ ->
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
-    id = $('.orders').data('car')
-    type = $('.items-select-page').data('type')
-    $('.orders li').removeClass('selected')
-    $('.orders-con').addClass('hidden')
-    if type == 'maintain'
-      $('.orders .maintain').addClass('selected')
-      $('.maintain-con').removeClass('hidden')
-    if type == 'pm25'
-      $('.orders .pm25').addClass('selected')
-      $('.pm25-con').removeClass('hidden')
-
-    $('.orders li').each ->
-      $(this).click ->
-        index = $(this).index()
-        if index == 0
-          $('.items-select-page').attr({'data-type':'pm25'})
-          type = 'pm25'
-        else
-          $('.items-select-page').attr({'data-type':'maintain'})
-          type = 'maintain'
-        window.location.href = "/orders/select_item?car_id=#{id}&type=#{type}"
-        $(this).addClass('selected').siblings('li').removeClass('selected')
-        $('.orders-con').eq(index).removeClass('hidden').siblings('.orders-con').addClass('hidden')
-
-
   if $(".select-car-page").length > 0
     $('#car_style').chained('#car_type,#car_name')
     $('#car_type').chained('#car_name')
@@ -76,7 +51,7 @@ $ ->
         nowDay.setDate(nowDay.getDate()+2)
       else
         nowDay.setDate(nowDay.getDate()+1)
-      
+
       maxDate = new Date()
       maxDate.setDate(maxDate.getDate()+8)
 
