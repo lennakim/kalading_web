@@ -4,18 +4,18 @@
 
 <div class="item-list">
   <label for="price">价格：</label>
-  <span class="price" data-price="<%= @result["price"] %>">
-    <%= @result["price"] %>
+  <span class="price">
   </span>
-  <span class="original"><%= @result["price"] %></span>
-  <span class="now">0元</span>
+  <span class="original"></span>
+  <span class="now">xxx元</span>
   <var class="reason"></var>
 </div>
 
 <div class="item-list">
   <label for="item-box">项目：</label>
   <div class="item-box">
-    <% @result["applicable_parts"].each do |part|  %>
+    <% parts = @result["applicable_parts"] %>
+    <% filter_parts(parts, type).each do |part|  %>
       <div class="item">
         <% part_name = part.keys[0] %>
         <% part_items = part.values[0] %>
