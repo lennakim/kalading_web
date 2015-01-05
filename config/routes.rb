@@ -46,6 +46,15 @@ Rails.application.routes.draw do
     resources :posts
     resources :cities
     resources :products
+    resources :public_accounts do
+      collection do
+        get 'apply_menu' => 'public_accounts#apply_menu'
+        get 'diy_menu' => 'public_accounts#diy_menu'
+        get 'edit_menu' => 'public_accounts#edit_menu'
+        post ':id/update_menu' => 'public_accounts#update_menu', as: 'update_menu'
+      end
+    end
+    resources :weixin
   end
 
   namespace :activity do

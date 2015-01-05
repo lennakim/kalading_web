@@ -1,0 +1,43 @@
+<input type="hidden" data-items="<%= @result %>">
+
+<h4><%= @result['name'] %></h4>
+
+<div class="item-list">
+  <label for="price">价格：</label>
+  <span class="price">
+  </span>
+  <span class="original"></span>
+  <span class="now">xxx元</span>
+  <var class="reason"></var>
+</div>
+
+<div class="item-list">
+  <label for="item-box">项目：</label>
+  <div class="item-box">
+    <% parts = @result["applicable_parts"] %>
+    <% filter_parts(parts, type).each do |part|  %>
+      <div class="item">
+        <% part_name = part.keys[0] %>
+        <% part_items = part.values[0] %>
+        <input type="checkbox" class='part-selector' checked>
+        <label><%= part_name %></label>
+        <select class="part">
+          <% select_index = selected_item_index(default_parts(@result), part_items)  %>
+          <% part_items.each_with_index do |item, index| %>
+            <% unless item["quantity"] == 0 %>
+              <%= render "item", name: part_name, item: item, selected: select_index == index %>
+            <% end %>
+          <% end %>
+        </select>
+      </div>
+    <% end %>
+
+    <div class="service">
+      <input type="checkbox" checked disabled='disabled'>
+      <span class='service-price' data-price="<%= @result['service_price'] %>">服务费<%= @result['service_price'] %>
+      </span>
+    </div>
+
+    <button class="order_button bac-orange font-white">下一步</button>
+  </div>
+</div>

@@ -16,29 +16,30 @@ class Kalading.Views.Items extends Backbone.View
     @$checkboxes = @$(".part-selector")
     @$order_button = @$("#order_button")
 
-    @resetSelectItems()
 
     @order.set 'price', @$price.data('price')
     @order.set 'car_id', $(".orders").data('car')
     @order.set 'service_price', @$service_price.data('price')
-    
+
     @listenTo(@order, 'sync', @render)
     @listenTo(@order, 'error', @errorHandler)
-    
+
+    @resetSelectItems()
+    @order.loadPrice()
+
   resetSelectItems: =>
     parts = _.map @$(".part:enabled option:selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
 
     @order.set 'parts', parts
-    
-    @disableSelectors()
 
+    @disableSelectors()
 
   chooseParts: (e)=>
     $checkbox = $(e.target)
     checked = $checkbox.prop('checked')
-    
+
     $checkbox.siblings('.part').attr('disabled', !checked)
 
     @resetSelectItems()

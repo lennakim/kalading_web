@@ -21,7 +21,6 @@ class Kalading.Models.Order extends Backbone.Model
     order = @
 
     if @isValid()
-      console.log 'load price'
       $.ajax
         type: 'post',
         url: '/orders/refresh_price',

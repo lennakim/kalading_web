@@ -6,17 +6,22 @@ $font-orange: #ff7b3a;
 $title: #3d3d3d;
 $bac: #f7f4f3;
 .bac-orange{
-	background: $bac-orange;
+  background: $bac-orange;
 }
 .bac-white{
-	background: #fff;
+  background: #fff;
 }
 .font-white{
-	color: #fff;
+  color: #fff;
 }
 .main{
 	padding: 30px 15%;
 	font-family: AdobeHeitiStd-Regular;
+	&.error{
+	    height: 300px;
+	    line-height: 300px;
+	    text-align: center;
+	  }
 	li{
 
 		list-style: none;

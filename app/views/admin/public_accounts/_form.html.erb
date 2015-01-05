@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @account], :url => update_menu_admin_public_accounts_path(@account), method: :post do |f|%>
+  <%= f.error_notification %>
+  <div class="parent-menus">
+    <%= f.simple_fields_for :diymenus do |diymenu| %>
+      <%= render "diymenu_fields", f: diymenu %>
+    <% end %>
+    <%= link_to_add_association "添加一个DIY菜单", f, :diymenus, {"data-association-insertion-method" => "append", class: 'btn btn-primary'} %>
+  </div>
+  <%= f.button :submit, value: "完成", class: "btn btn-primary" %>
+<% end %>

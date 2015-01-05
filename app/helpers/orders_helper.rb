@@ -4,6 +4,14 @@ module OrdersHelper
     result["parts"].map{ |part| part.values[0][0]["number"] }
   end
 
+  def filter_parts parts, type
+    if type == 'pm25'
+      parts.select{ |part| part.keys.first == "空调滤清器" }
+    else
+      parts
+    end
+  end
+
   def selected_item_index defaults, part_items
 
     conditions = [

@@ -16,8 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def select_item
-    type = params[:type]
-    @result = Order.items_for params[:car_id], type
+    @result = Order.items_for params[:car_id]
   end
 
   def place_order
