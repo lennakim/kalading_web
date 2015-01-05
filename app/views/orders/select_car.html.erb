@@ -14,7 +14,7 @@
     <div class="select-car">
       <h4>查询车辆</h4>
       <div class="field">
-        <label for="car_name">品牌</label>
+        <label for="car_name">品牌：</label>
         <select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
           <% @cars_info.each do |car| %>
             <option value="<%= car['name'] %>">
@@ -24,7 +24,7 @@
         </select>
       </div>
       <div class="field"> 
-        <label for="car_type">系列</label>
+        <label for="car_type">系列：</label>
         <select name="car_type" id="car_type">
           <% @cars_info.each do |car| %>
             <% car['ams'].each do |type| %>
@@ -36,7 +36,7 @@
         </select>
       </div> 
       <div class="field">
-        <label for="car_style">型号</label>
+        <label for="car_style">型号：</label>
         <select name="car_style" id="car_style">
           <% @cars_info.each do |car| %>
             <% car['ams'].each do |type| %>

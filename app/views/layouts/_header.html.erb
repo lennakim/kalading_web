@@ -1,9 +1,11 @@
 <div class="header">
-	<%= image_tag("logo.png", :class=> "logo")%>
-	<span class="maintain-address">保养地点：<%= current_city %></span>
+	<a href="/">
+		<%= image_tag("logo.png", :class=> "logo")%>
+	</a>
+	<span class="maintain-address" title="保养低点:<%= current_city %>">保养地点：<%= current_city %></span>
 	<ul class="nav">
-		<li class="personal"></li>
-		<li class="wechat"></li>
-		<li class="tel"></li>
+		<li class="personal" title="个人中心"></li>
+		<li class="wechat" title="微信"></li>
+		<li class="tel" title="电话"></li>
 	</ul>
 </div>

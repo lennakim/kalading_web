@@ -25,7 +25,7 @@
 		<td>
 		  <%= @result['name'] %>
 		</td>
-        <td>
+        <td class="item">
 		  <% @result['parts'].each_index do |index| %>
 			<% part = @result['parts'][index]%>
 			<p>
@@ -191,30 +191,30 @@
 	  </div>
 	  <div class="info-group">
 	    <div class="info-con">
-		  <%= radio_button_tag :invoice1,'' %>
-		  <%= label_tag(:invoice1, "不要发票") %>
+		  <%= radio_button_tag :invoice,'' %>
+		  <%= label_tag(:invoice, "不要发票") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :invoice2,'' %>
-		  <%= label_tag(:invoice2, "发票") %>
+		  <%= radio_button_tag :invoice,'' %>
+		  <%= label_tag(:invoice, "发票") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :unit1,'' %>
-		  <%= label_tag(:unit1, "个人") %>
+		  <%= radio_button_tag :unit,'' %>
+		  <%= label_tag(:unit, "个人") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :unit2,'' %>
-		  <%= label_tag(:unit2, "单位") %>
+		  <%= radio_button_tag :unit,'' %>
+		  <%= label_tag(:unit, "单位") %>
 		</div>
 	  </div>
 	  <div class="info-group">
 	    <div class="info-con">
-	      <%= radio_button_tag :preferential1,'' %>
-		  <%= label_tag(:preferential1, "无优惠券") %>
+	      <%= radio_button_tag :preferential,'' %>
+		  <%= label_tag(:preferential, "无优惠券") %>
 		</div>
 		<div class="info-con">
-		  <%= radio_button_tag :preferential2,'' %>
-		  <%= label_tag(:preferential2, "使用优惠券") %>
+		  <%= radio_button_tag :preferential,'' %>
+		  <%= label_tag(:preferential, "使用优惠券") %>
 		</div>
 		<div class="info-con">
 		  <button class="verify bac-orange font-white">验证</button>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       get 'select_car'
       get 'select_item'
+      get 'success'
 
       post 'refresh_price'
       post 'place_order'
