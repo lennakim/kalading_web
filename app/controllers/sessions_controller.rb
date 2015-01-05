@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     if vcode && !vcode.expired?
       account = PublicAccount.find_by(name: "kalading1")
       user = User.find_or_create_by(phone_number: vcode.phone_num)
-      if auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
+
+      if account && auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
         begin
           user.auth_infos << auth_info
         rescue ActiveRecord::RecordInvalid => e
@@ -19,8 +20,12 @@ class SessionsController < ApplicationController
       end
     end
 
-    sign_in user
-    redirect_to root_path
+    if user
+      sign_in user
+      redirect_to orders_users_path
+    else
+      redirect_to root_path
+    end
   end
 
   def callback

@@ -1,18 +1,11 @@
-<% content_for :javascripts do %>
-  <%= javascript_include_tag "home", 'data-turbolinks-track' => true %>
-<% end %>
-
 <%= title "首页" %>
 <%#= link_to "创建订单", select_car_orders_path %>
-<%#= link_to "我的订单", orders_users_path %>
-<%#= link_to "我的保养记录", maintain_histories_users_path %>
-<%#= link_to "车辆信息", cars_users_path %>
 <%# if signed_in? %>
   <!-- 你已经使用<%#= current_user.nickname %>的账户登陆 -->
 <%# else %>
   <!-- 没登陆 -->
 <%# end %>
-<div class="index">
+<div class="home-page index">
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -41,18 +34,29 @@
   </div>
   <div class="content">
     <div class="login-form">
-    	<div class="form-bac bac-white"></div>
-    	<div class="form-con">
-  	  <h3 class="login-title" title="请您先登录">请您先登录</h3>
-        <div class="field">
-        	<input title="手机号" class="phone_num" id="phone_num" placeholder="手机号">
-        	<input title="验证码" class="verification_code" placeholder="验证码" id="verification_code"/>
-          <button title="点击获取验证码" class='get_code bac-orange font-white' id="get_code">获取验证码</button>
-          <button title="登录" id="submit_button" class="submit_button bac-orange font-white" disabled="disabled">登录</button>
-        </div>
 
-    	</div>
+      <% if signed_in? %>
+        <div class="form-bac bac-white"></div>
+        <div class="form-con">
+          <%= link_to "我的订单", orders_users_path %>
+          <%= link_to "我的保养记录", maintain_histories_users_path %>
+          <%= link_to "车辆信息", cars_users_path %>
+        </div>
+      <% else %>
+        <div class="form-bac bac-white"></div>
+        <div class="form-con">
+          <h3 class="login-title" title="请您先登录">请您先登录</h3>
+          <div class="field">
+            <input title="手机号" class="phone_num" id="phone_num" placeholder="手机号">
+            <input title="验证码" class="verification_code" placeholder="验证码" id="verification_code"/>
+            <button title="点击获取验证码" class='get_code bac-orange font-white' id="get_code">获取验证码</button>
+            <button title="登录" id="submit_button" class="submit_button bac-orange font-white">登录</button>
+          </div>
+        </div>
+      <% end %>
+
     </div>
+
     <div class="product">
       <h3 class="title" title="产品与服务">产品与服务</h3>
       <div class="content maintain-item">

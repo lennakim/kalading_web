@@ -10,6 +10,9 @@
 #= require picker.date
 #= require picker.time
 #= require bootstrap-sprockets
+#
+#= require home
+#
 #= require_self
 
 window.Kalading =
