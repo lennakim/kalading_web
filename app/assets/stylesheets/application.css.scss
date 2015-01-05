@@ -19,123 +19,122 @@ $border-gray: #e4e4e4;
 
 body{
   background: #f7f4f3;
+  @include box-sizing(border-box);
 }
 
-.header{
-	overflow: hidden;
-	@include box-sizing(border-box);
-	width: 100%;
-	min-height: 65px;
-	padding: 10px 14%;
-	background: #494641;
-	.logo,li{
-		float: left;
-	}
-	.logo{
-		width: 15%;
-	}
-	.maintain-address{
-		float: left;
-		width: 100px;
-		margin-top: 25px;
-		font-size: 12px;
-		color: #fff;
-	}
-	.nav{
-		float: right;
-		overflow: hidden;
-		min-width: 320px;
-		font-family: STHeitiSC-Medium;
-		font-size: 14px;
-		color: $font-gray;
-		li{
-			width: 106px;
-			height: 35px;
-			margin-top: 10px;
-			text-align: center;
-		}
-		.personal:before{
-			content: image-url("personal.png");
-		}
-		.wechat:before{
-			content: image-url("wechat.png");
-		}
-		.tel:before{
-			content: image-url("tel.png");
-		}
-	}
+header.navbar{
+  width: 100%;
+  background: #494641;
+  margin-bottom: -1px;
+  .logo, li{
+    float: left;
+  }
+  .logo{
+    width: 15%;
+  }
+  .maintain-address{
+    float: left;
+    width: 100px;
+    margin-top: 25px;
+    font-size: 12px;
+    color: #fff;
+  }
+  .nav{
+    float: right;
+    overflow: hidden;
+    min-width: 320px;
+    font-family: STHeitiSC-Medium;
+    font-size: 14px;
+    color: $font-gray;
+    li{
+      width: 106px;
+      height: 35px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .personal:before{
+      content: image-url("personal.png");
+    }
+    .wechat:before{
+      content: image-url("wechat.png");
+    }
+    .tel:before{
+      content: image-url("tel.png");
+    }
+  }
 }
+
 .footer{
-	padding: 60px 15%;
-	border-top: 2px solid #fe9870;
-	color: #a0a0a0;
-	.promise{
-		overflow: hidden;
-		border-bottom: 1px solid $border-gray;
-		margin: 20px 0;
-		min-width: 770px;
-		dl{
-			border-right: 1px solid #e4e4e4;
-			float: left;
-			width: 25%;
-			min-width: 190px;
-			margin: 20px 0;
-			&:last-child{
-				border: 0;
-			}
-			dt{
-				float: left;
-				padding: 0px 5px 0 20%;
-				font-size: 40px;
-				text-align: right;
-			}
-			dd{
-				text-align: left;
-				margin: 2px 0;
-				font-size: 16px;
-				&:nth-child(odd){
-					float: left;
-					width: 45%;
-				}
-			}
-		}
-	}
-	.bottom-nav{
-		overflow: hidden;
-		min-width: 720px;
-		text-align: center;
-		ul{
-			float: left;
-			width: 22%;
-			li{
-				background-repeat: no-repeat;
-				background-position: 22% 0;
-				font-size: 16px;
-				a{
-					color: #a0a0a0;
-				}
-			}
-			.title{
-				font-size: 18px;
-				margin-bottom: 10px;
-			}
-			.sina{
-				background-image: image-url('foot-wei.png');
-			}
-			.chat{
-				background-image: image-url('foot-chat.png')
-			}
-		}
-		.contact{
-			float: left;
-			.tel{
-				margin: 0;
-				height: 35px;
-				line-height: 35px;
-				background-image: image-url('foot-tel.png');
-				background-repeat: no-repeat;
-				font-size: 26px;
-			}
-		}
-	}
+  padding: 60px 15%;
+  border-top: 2px solid #fe9870;
+  color: #a0a0a0;
+  .promise{
+    overflow: hidden;
+    border-bottom: 1px solid $border-gray;
+    margin: 20px 0;
+    min-width: 770px;
+    dl{
+      border-right: 1px solid #e4e4e4;
+      float: left;
+      width: 25%;
+      min-width: 190px;
+      margin: 20px 0;
+      &:last-child{
+        border: 0;
+      }
+      dt{
+        float: left;
+        padding: 0px 5px 0 20%;
+        font-size: 40px;
+        text-align: right;
+      }
+      dd{
+        text-align: left;
+        margin: 2px 0;
+        font-size: 16px;
+        &:nth-child(odd){
+          float: left;
+          width: 45%;
+        }
+      }
+    }
+  }
+  .bottom-nav{
+    overflow: hidden;
+    min-width: 720px;
+    text-align: center;
+    ul{
+      float: left;
+      width: 22%;
+      li{
+        background-repeat: no-repeat;
+        background-position: 22% 0;
+        font-size: 16px;
+        a{
+          color: #a0a0a0;
+        }
+      }
+      .title{
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .sina{
+        background-image: image-url('foot-wei.png');
+      }
+      .chat{
+        background-image: image-url('foot-chat.png')
+      }
+    }
+    .contact{
+      float: left;
+      .tel{
+        margin: 0;
+        height: 35px;
+        line-height: 35px;
+        background-image: image-url('foot-tel.png');
+        background-repeat: no-repeat;
+        font-size: 26px;
+      }
+    }
+  }
 }

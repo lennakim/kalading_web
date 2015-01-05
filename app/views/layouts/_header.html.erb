@@ -1,11 +1,17 @@
-<div class="header">
-	<a href="/">
-		<%= image_tag("logo.png", :class=> "logo")%>
-	</a>
-	<span class="maintain-address" title="保养低点:<%= current_city %>">保养地点：<%= current_city %></span>
-	<ul class="nav">
-		<li class="personal" title="个人中心"></li>
-		<li class="wechat" title="微信"></li>
-		<li class="tel" title="电话"></li>
-	</ul>
-</div>
+<header class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/">
+        <%= image_tag("logo.png", :class=> "logo")%>
+      </a>
+      <span class="maintain-address" title="保养低点:<%= current_city %>">保养地点：<%= current_city %></span>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="personal" title="个人中心"></li>
+        <li class="wechat" title="微信"></li>
+        <li class="tel" title="电话"></li>
+      </ul>
+    </nav>
+  </div>
+</header>
