@@ -1,48 +1,68 @@
 <%= title "我的订单" %>
 
-<table>
-  <thead></thead>
-  <tbody>
-	<tr>
-	  <td>订单信息</td>
-	  <td>车主</td>
-	  <td>电话</td>
-	  <td>金额</td>
-	  <td>服务时间</td>
-	  <td>订单状态</td>
-	  <td>操作</td>
-	</tr>
-	<tr>
-	  <td>
-		  <p>
-			<%= @orders[0]['auto_model'] %>
-		  </p>
-		  <% @orders[0]['parts'].each_index do |index| %>
-			<% order = @orders[0]['parts'][index] %>
-			<p>
-				[<%= order['type']  %>]<%= order['brand']  %><%= order['number']  %>
-			</p>
-		  <% end %>
-	  </td>
-	  <td>
-		<%= @orders[0]['name'] %>
-	  </td>
-	  <td>
-		<%= @orders[0]['phone_num'] %>
-	  </td>
-	  <td>
-		<%= @orders[0]['price'] %>
-	  </td>
-	  <td>
-		<%= @orders[0]['serve_datetime'] %>
-	  </td>
-	  <td>
-		<%= @orders[0]['part_deliver_state'] %>
-	  </td>
-	  <td>
-		<%= @orders[0]['state'] %>
-	  </td>
-	</tr>
-  </tbody>
-  <tfoot></tfoot>
-</table>
+<div class="container user-info">
+
+  <div class="row">
+    <div class="col-md-12 title">
+      个人中心
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <ul class='menu'>
+        <li class='active'>我的订单</li>
+        <li>车辆信息</li>
+        <li>个人信息</li>
+      </ul>
+    </div>
+
+    <div class="col-md-9 content">
+      <div class="orders">
+        <% @orders.each do |order| %>
+          <div class="order">
+            <div class="top clearfix">
+              <div class="datetime pull-left">
+                <%= order["serve_datetime"] %>
+              </div>
+              <div class="number pull-left">
+                订单号: <%= order['seq'] %>
+              </div>
+            </div>
+            <div class="order-detail clearfix">
+
+              <div class="pull-left">
+                <div class="order-title">
+                  <%= order["auto_model"] %> 上门保养
+                </div>
+
+                <div class="items">
+                  <% order["parts"].each do |part| %>
+                    <div class="item">
+                      [<%= part["type"] %>] <%= part["brand"] %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="order-price pull-left">
+                <%= order["price"] %> 元
+              </div>
+
+              <div class="comment pull-left">
+                <div class="cmt">
+                  <%= link_to "评价", "#", class: "btn btn-default orange-button" %>
+                </div>
+                <div class="order-status">
+                  <%= link_to "订单状态", "#" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
