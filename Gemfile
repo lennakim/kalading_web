@@ -40,6 +40,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 # weixin
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git"
 gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
+gem 'simple_form'
+gem 'cocoon'
 
 # clean code
 gem 'inherited_resources'
@@ -68,6 +70,8 @@ gem 'unicorn'
 
 # monitor
 gem 'newrelic_rpm'
+gem 'slack-notifier'
+gem 'exception_notification'
 
 # deployment
 group :development do
