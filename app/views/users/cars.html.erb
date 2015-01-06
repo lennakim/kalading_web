@@ -31,10 +31,34 @@
           </div>
         </div>
       </div>
+
+      <div class="maintain-histories">
+        <div class="header">
+          车辆保养记录
+        </div>
+        <div class="cards clearfix">
+          <% @maintain_histories.each do |maintain_history| %>
+            <div class="card pull-left">
+              <div class="serve-datetime">
+                <%= maintain_history["serve_datetime"] %>
+              </div>
+
+              <div class="report">
+                <div class="car-num">
+                  车牌号: <%= maintain_history["car_num"] %>
+                </div>
+
+                <div class="show">
+                  <button>体检报告单</button>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 
 
 <div class="modal fade" id="select_car_modal">
@@ -102,3 +126,4 @@
     </div>
   </div>
 </div>
+<%= @maintain_histories %>

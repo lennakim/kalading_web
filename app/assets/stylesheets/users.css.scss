@@ -46,18 +46,62 @@ $grey: #c4c4c4;
   }
 
   .content{
+    .header{
+      color: #666666;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .maintain-histories{
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border: 1px solid #e4e4e4;
+      @include border-radius(3px);
+      min-height: 300px;
+
+      .cards{
+        margin-top: 20px;
+        margin-left: -20px;
+        .card{
+          width: 392px;
+          border: 2px solid #f0f0f0;
+          height: 173px;
+          margin-left: 20px;
+          margin-bottom: 20px;
+          .serve-datetime{
+            padding: 8px 20px;
+            font-size: 16px;
+            color: #c1c1c1;
+            border-bottom: 1px solid #f0f0f0;
+          }
+          .report{
+            padding: 20px;
+            .car-num{
+              color: #666666;
+              font-size: 16px;
+            }
+            .show{
+              text-align: center;
+              height: 65px;
+              padding-top: 20px;
+              button{
+                @include button();
+                height: 30px;
+                font-size: 14px;
+                padding: 5px 20px;
+              }
+            }
+          }
+        }
+      }
+    }
 
     .select-car{
       background: white;
-      padding: 15px;
+      padding: 20px;
       border: 1px solid #e4e4e4;
       @include border-radius(3px);
-
-      .header{
-        color: #666666;
-        font-size: 20px;
-        font-weight: bold;
-      }
 
       .cars{
         margin-top: 8px;
