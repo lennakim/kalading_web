@@ -12,11 +12,10 @@ class UsersController < ApplicationController
   end
 
   def cars
-
+    @cars_info = Order.cars_data
   end
 
   def new
-    @cars_info = Order.cars_data
   end
 
   def balance

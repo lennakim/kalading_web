@@ -19,7 +19,7 @@ $border-gray: #e4e4e4;
 
 body{
   background: #f7f4f3;
-  @include box-sizing(border-box);
+  font: 14px/1.5 arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif;
 }
 
 header.navbar{
@@ -62,9 +62,12 @@ header.navbar{
 }
 
 .footer{
-  padding: 60px 0;
   border-top: 2px solid #fe9870;
   color: #a0a0a0;
+  .container{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
   .promise{
     overflow: hidden;
     border-bottom: 1px solid $border-gray;
@@ -119,7 +122,7 @@ header.navbar{
         background-image: image-url('foot-wei.png');
       }
       .chat{
-        background-image: image-url('foot-chat.png')
+        background-image: image-url('foot-chat.png');
       }
     }
     .contact{
