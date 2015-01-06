@@ -58,7 +58,9 @@
       <tfoot></tfoot>
     </table>
 
-    <%= render "shared/add_address" %>
+    <div class="address-content bac-white clearfix">
+      <%= render "shared/select_address" %>
+    </div>
 
     <div class="orders-content bac-white">
       <p class='order-info'>订单信息</p>
@@ -182,3 +184,4 @@
 <% end %>
 </div>
 
+<%= render "shared/add_address_modal" %>

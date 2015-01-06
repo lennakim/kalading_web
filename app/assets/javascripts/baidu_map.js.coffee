@@ -2,11 +2,10 @@ $ ->
 
   # 建立一个自动完成的对象
   ac = new BMap.Autocomplete({
-    "input" : "address"
+    "input" : "address_detail"
   })
 
   window.ac = ac
-
 
   ac.setInputValue "北京市海淀区"
 
@@ -28,7 +27,6 @@ $ ->
 
     str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value
     $("#searchResultPanel").html str
-
 
   # 鼠标点击下拉列表后的事件
 
