@@ -1,0 +1,8 @@
+<% action = params["action"] %>
+<div class="col-md-3">
+  <ul class='menu'>
+    <li class='<%= set_class action, "orders" %>'>我的订单</li>
+    <li class='<%= set_class action, "cars" %>'>车辆信息</li>
+    <li class='<%= set_class action, "info" %>'>个人信息</li>
+  </ul>
+</div>

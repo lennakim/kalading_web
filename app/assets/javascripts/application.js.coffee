@@ -19,3 +19,8 @@
 window.Kalading =
   Views: {}
   Models: {}
+
+$ ->
+
+  $('#car_style').chained('#car_type,#car_name')
+  $('#car_type').chained('#car_name')

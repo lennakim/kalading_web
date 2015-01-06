@@ -3,13 +3,6 @@
 
 $ ->
 
-  ####
-  if $(".users-new").length > 0
-    $('#car_style').chained('#car_type,#car_name')
-    $('#car_type').chained('#car_name')
-
-  ####
-
   if $('.user-info').length > 0
 
     $(".orders").on "click", ".order .comment a", (e)->
@@ -17,6 +10,12 @@ $ ->
       e.preventDefault()
 
       $("#comment_modal").modal()
+
+    $("#add_car").on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      $("#select_car_modal").modal()
 
   if $("#comment_modal").length > 0
     $('.submit-comment button.orange-btn').click (e)->
@@ -30,3 +29,4 @@ $ ->
         comment = tags.join(', ')
 
         $.post '/xxx', comment
+
