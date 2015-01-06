@@ -3,8 +3,8 @@
 <% end %>
 <%= title "创建订单" %>
 
-<div class="main select-car-page" data-type="<%= params[:type] %>">
-  <h3 class="main-title">保养预约</h3>
+<div class="container select-car-page" data-type="<%= params[:type] %>">
+  <h3 class="main-title row">保养预约</h3>
   <ul class="process">
     <li class="car-type selected">选择车型</li>
     <li class="service">选择服务</li>
@@ -92,9 +92,57 @@
       <a class="more" href="">没找到车型？</a>
     </p>
   </div>
-  <div class="comment-module bac-white">
-    <h3 class="comment-title module-title">用户评价</h3>
-    <div class="comment-con"></div>
-  </div> 
+  <div class="row">
+    <div class="col-md-8">
+      <div class="comment-module bac-white">
+        <h3 class="comment-title module-title">用户评价</h3>
+        <div class="comment-con">
+          <dl>
+            <dt>
+              <h3>北京市东城区 | 京A***34</h3>
+              <span class="time">11分钟前</span>
+            </dt>
+            <dd>
+              评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <h3>北京市东城区 | 京A***34</h3>
+              <span class="time">11分钟前</span>
+            </dt>
+            <dd>
+              评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="orders-situation bac-white">
+        <h3 class="orders-title module-title">订单概况</h3>
+        <div class="orders-con">
+          <dl>
+            <dt>
+              <h3>北京市东城区 | 京A***34</h3>
+              <span class="time">11分钟前</span>
+            </dt>
+            <dd>
+              保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <h3>北京市东城区 | 京A***34</h3>
+              <span class="time">11分钟前</span>
+            </dt>
+            <dd>
+              保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+            </dd>
+          </dl>
+        </div>
+      </div> 
+    </div>
+  </div>
 </div>
 
