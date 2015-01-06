@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
+  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
+  <% end %>
 <%= title "个人信息" %>
 
 <div class="container user-info i">
