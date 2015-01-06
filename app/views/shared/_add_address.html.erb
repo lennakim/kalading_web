@@ -1,0 +1,40 @@
+<div class="address-content bac-white">
+  <h4 class="description">请正确填写以下内容</h4>
+  <div class="choice">
+    <h4 class="choice-title hidden">选择服务地址</h4>
+    <div class="address-list"></div>
+  </div>
+  <!-- <p class="more">展开其他地址</p> -->
+  <div class="new">
+    <h5 class="new-title"> + 填写新地址</h5>
+    <div class="new-con">
+      <div class="info-group">
+        <div class="info-title">
+          <var class="star">*</var>
+          <%= label_tag( "所在地区：") %>
+        </div>
+        <div class="info-con">
+          <select id="city_name">
+            <option value="">北京市</option>
+            <option value="">天津市</option>
+          </select>
+          <select id="town_name">
+            <option value="">朝阳区</option>
+            <option value="">海淀区</option>
+          </select>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <var class="star">*</var>
+          <%= label_tag("详细地址：") %>
+        </div>
+        <div class="info-con">
+          <%= text_field_tag('', '', :id => 'address') %>
+        </div>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+      </div>
+      <p class="add-address bac-orange font-white">确认添加</p>
+    </div>
+  </div>
+</div>

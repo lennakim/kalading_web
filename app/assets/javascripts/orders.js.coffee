@@ -104,63 +104,21 @@ $ ->
     })
     initPickaDate()
 
-    $('.address-list').on 'mouseover','.address-item', ->
-      _close = $(this).find('.close')
-      if $(this).hasClass('selected-item')
-        _close.addClass('hidden')
-        $(this).css({'borderColor':'#ffd4a9'})
-      else
-        _close.removeClass('hidden')
-        $(this).css({'borderColor':'#ffd4a9'})
-
-    $('.address-list').on 'mouseout','.address-item', ->
-      _close = $(this).find('.close')
-      if $(this).hasClass('selected-item')
-        _close.addClass('hidden')
-        $(this).css({'borderColor':'#ef7337'})
-      else
-        _close.addClass('hidden')
-        $(this).css({'borderColor':'#f1f1f1'})
-
-    $('.address-list').on 'click','.close', ->
-      $(this).parent('.address-item').remove()
-
-    $('.address-list').on 'click','.address-item', ->
-      _close = $(this).find('.close')
-      _selected = $(this).find('.selected')
-
-      $(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'})
-
-      _selected.removeClass('hidden').parent().siblings().find('.selected').addClass('hidden')
-
-      _close.addClass('hidden')
-
-      showTitle()
-
-    showTitle = ->
-      if $('.address-list').children().length != 0
-        $('.choice-title').removeClass('hidden')
-      else
-        $('.choice-title').addClass('hidden')
-
-    $('.add-address').on "click", ->
-      city = $('#city_name option:selected').text()
-      town = $('#town_name option:selected').text()
-      address = $('#address').val()
-      $('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>')
-
-      showTitle()
 
   if $('.success-page').length > 0
     num = 30
     countdown = ->
-      if num > 0 
+      if num > 0
         num--
       else
         window.location.href = '/'
       $('.num').text(num+"s")
       setTimeout(countdown,1000)
     countdown()
+
+
+
+
 
 
 
