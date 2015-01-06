@@ -25,14 +25,22 @@ body{
 header.navbar{
   width: 100%;
   background: #494641;
+  height: 50px;
+
+  @include background-image(linear-gradient(top , #564E45, #2F2C29));
+  @include filter-gradient(#564E45, #2F2C29);
+  @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
+
+  border-bottom: 1px solid rgb(39, 29, 29);
   margin-bottom: -1px;
   .logo, li{
+    width: 128px;
     float: left;
   }
   .maintain-address{
     float: left;
     width: 100px;
-    margin-top: 45px;
+    margin-top: 24px;
     font-size: 14px;
     color: #fff;
   }
@@ -40,7 +48,7 @@ header.navbar{
     float: right;
     overflow: hidden;
     min-width: 320px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: STHeitiSC-Medium;
     font-size: 14px;
     color: $font-gray;
@@ -64,6 +72,7 @@ header.navbar{
 .footer{
   border-top: 2px solid #fe9870;
   color: #a0a0a0;
+  background: white;
   .container{
     padding-top: 30px;
     padding-bottom: 30px;
