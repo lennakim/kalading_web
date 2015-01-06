@@ -6,7 +6,8 @@
 <% type = (params[:type] == nil || params[:type] == "") ? "maintain" : params[:type] %>
 
 <% unless @result.empty? %>
-  <div class="main items-select-page" data-type="<%= type %>">
+  <div class="container items-select-page" data-type="<%= type %>">
+    <h3 class="main-title row">保养预约</h3>
     <ul class="process">
       <li class="car-type">选择车型</li>
       <li class="service selected">选择服务</li>

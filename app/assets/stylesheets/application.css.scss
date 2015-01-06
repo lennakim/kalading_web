@@ -29,27 +29,24 @@ header.navbar{
   .logo, li{
     float: left;
   }
-  .logo{
-    width: 15%;
-  }
   .maintain-address{
     float: left;
     width: 100px;
-    margin-top: 25px;
-    font-size: 12px;
+    margin-top: 45px;
+    font-size: 14px;
     color: #fff;
   }
   .nav{
     float: right;
     overflow: hidden;
     min-width: 320px;
+    margin-top: 20px;
     font-family: STHeitiSC-Medium;
     font-size: 14px;
     color: $font-gray;
     li{
       width: 106px;
       height: 35px;
-      margin-top: 10px;
       text-align: center;
     }
     .personal:before{
@@ -65,7 +62,7 @@ header.navbar{
 }
 
 .footer{
-  padding: 60px 15%;
+  padding: 60px 0;
   border-top: 2px solid #fe9870;
   color: #a0a0a0;
   .promise{

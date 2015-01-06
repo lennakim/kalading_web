@@ -14,8 +14,7 @@ $bac: #f7f4f3;
 .font-white{
   color: #fff;
 }
-.main{
-	padding: 30px 15%;
+.container{
 	font-family: AdobeHeitiStd-Regular;
 	&.error{
 	    height: 300px;
@@ -28,12 +27,13 @@ $bac: #f7f4f3;
 	}
 	.main-title{
 		margin: 0;
-		padding: 0 30px;
+		padding: 30px;
 		color: $title;
+		font-size: 24px;
 	}
 	.process{
 		overflow: hidden;
-		padding: 40px 0 50px;
+		padding: 10px 0 50px;
 		text-align: center;
 		li{
 			float: left;
@@ -95,7 +95,7 @@ $bac: #f7f4f3;
 			position: absolute;
 			top: 0;
 			width: 100%;
-			padding: 0 3%;
+			padding: 20px 3%;
 		}
 		input,button{
 			height: 34px;
@@ -166,7 +166,7 @@ $bac: #f7f4f3;
 				@include box-sizing(border-box);
 				float: left;
 				width: 30%;
-				max-height: 322px;
+				max-height: 343px;
 				margin: 0 5% 0 0;
 				overflow: hidden;
 				&:last-child{
@@ -195,6 +195,7 @@ $bac: #f7f4f3;
 				.con{
 					position: absolute;
 					bottom: -70px;
+					width: 100%;
 					overflow: hidden;
 					padding: 4px 30px 20px;
 					text-align: center;
@@ -204,12 +205,10 @@ $bac: #f7f4f3;
 					cursor: pointer;
 					cursor: hand;
 					.item-title{
-						line-height: 20px;
-					}
-					.show-title{
-						margin-top: 50%;
+						line-height: 35px;
 					}
 					.description{
+						display: block;
 						font-size: 14px;
 					}
 					.order-btn{
@@ -228,6 +227,9 @@ $bac: #f7f4f3;
 				.show{
 					bottom: 0;
 					height: 100%;
+					.item-title{
+						margin-top: 50%;
+					}
 				}
 			}
 		}
@@ -243,7 +245,7 @@ $bac: #f7f4f3;
 				}
 				span{
 					margin-right: 5%;
-					padding: 4% 8%;
+					padding: 6% 8%;
 					border-radius: 25px;
 					color: #fff;
 					text-align: center;
@@ -258,7 +260,7 @@ $bac: #f7f4f3;
 			.last{
 				width: 6%;
 				span{
-					padding: 16% 32%;
+					padding: 24% 32%;
 				}
 			}
 			.shot{
@@ -281,8 +283,8 @@ $bac: #f7f4f3;
 			margin: 0 auto;
 			li{
 				float: left;
-				width: 23%;
-				margin-right: 2%;
+				width: 21%;
+				margin-right: 4%;
 				text-align: center;
 				font-size: 16px;
 				&:last-child{
@@ -318,7 +320,7 @@ $bac: #f7f4f3;
 				position: absolute;
 				width: 100%;
 				left: 0;
-				top: 4px;
+				top: 15px;
 				padding-top: 100%;
 				color: #666666;
 			}

@@ -5,14 +5,13 @@ $font-gray: #dedede;
 $font-orange: #ec8721;
 $title-gray: #787878;
 .select-car-page,.items-select-page{
-	.comment-module,.service-module{
+	.comment-module,.service-module,.orders-situation{
 		margin: 40px 0;
 		padding: 20px;
 	}
 	.module-title{
 		font-size: 20px;
 		line-height: 40px;
-		padding-left: 40px;
 		margin: 0;
 	}
 }
@@ -30,6 +29,7 @@ $title-gray: #787878;
 				text-align: center;
 				margin-bottom: 30px;
 				color: $title-gray;
+				font-size: 20px;
 			}
 		}	
 		.clear{
@@ -127,8 +127,9 @@ $title-gray: #787878;
 			.my-car-info{
 				display: none;
 				padding: 10px;
-				color: #c6c6c6;
+				line-height: 25px;
 				border: 1px solid #e1e1e1;
+				color: #c6c6c6;
 				p{
 					margin: 0;
 				}
@@ -138,27 +139,46 @@ $title-gray: #787878;
 			}
 		}
 	}
-	.comment-module{
-		.comment-title{
-			background-image: image-url("comment.png");
-			background-repeat: no-repeat;
-		}
-		.comment-con{
-			height: 300px;
+	.comment-module,.orders-situation{
+		dl{
+			padding: 20px 0;
+			border-bottom: 1px solid #ccc;
+			dt{
+				overflow: hidden;
+				line-height: 40px;
+			}
+			h3{
+				width: 230px;
+				float: left;
+				font-size: 16px;
+				color: #2c698c;
+			}
+			.time{
+				float: left;
+				font-size: 10px;
+				color: #a0a0a0;
+			}
+			dd{
+				color: $title-gray;
+			}
 		}
 	}
 }
 .items-select-page{
 	background: $bac;
 	.orders{
-		padding: 0 20px;
+		position: relative;
+		padding: 20px;
 		border: 1px solid #ccc;
 		ul{
 			overflow: hidden;
-			border-bottom: 1px solid $border-orange;
+			position: relative;
+			top: 2px;
+			z-index: 999;
+			width: 342px;
 			li{
 				float: left;
-				margin: 0 20px;
+				padding: 0 20px;
 				font-size: 20px;
 				a{
 					display: block;
@@ -168,7 +188,9 @@ $title-gray: #787878;
 				}
 			}
 			.selected{
-				border-bottom: 2px solid $font-orange;
+				border: 2px solid #ccc;
+				border-bottom: 0;
+				background: #fff;
 				a{
 					color: $font-orange;
 				}
@@ -176,6 +198,7 @@ $title-gray: #787878;
 		}
 		.orders-con{
 			padding: 0 20px;
+			border: 2px solid #ccc;
 			h4{
 				line-height: 70px;
 				color: $title;
@@ -191,8 +214,26 @@ $title-gray: #787878;
 					font-size: 28px;
 					color: #f57e56;
 				}
+				.price,.now,.reason{
+					float: left;
+				}
+				.reason{
+					float: left;
+					display: inline-block;
+					width: 30px;
+					height: 30px;
+					background-repeat: no-repeat; 
+					cursor: pointer;
+					cursor: hand;
+				}
+				.reason1{
+					background-image: image-url('reason1.png'); 
+				}
+				.reason2{
+					background-image: image-url('reason2.png'); 
+				}
 				.original{
-					margin-left: 20px;
+					margin: 5px 5px 0 20px;
 					text-decoration: line-through;
 					font-size: 16px;
 					color: #e1e1e1;
@@ -234,16 +275,15 @@ $title-gray: #787878;
 	}
 	.service-module{
 		border: 1px solid #ccc;
-		.service-title{
-			background-image: image-url("service-intro.png");
-			background-repeat: no-repeat;
-		}
 		.service-con{
 			height: 300px;
 		}
 	}
 }
 .place-order-page{
+	form{
+		margin-bottom: 40px;
+	}
 	#item_table{
 		width: 100%;
 		border: 1px solid #ccc;
