@@ -12,6 +12,7 @@
 #= require bootstrap-sprockets
 #
 #= require home
+#= require users
 #
 #= require_self
 

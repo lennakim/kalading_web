@@ -1,65 +1,60 @@
-
 <%= title "添加车辆" %>
 <div>添加车辆</div>
 
 <div class="users-new">
   <%= form_tag '',:id => 'newCarForm' do %>
-	<fieldset>
-	  <select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
-	    <% @cars_info.each do |car| %>
-	      <option value="<%= car['name'] %>">
-	        <%= car['name'] %>
-	      </option>
-	    <% end %>
-	  </select>
-	  <select name="car_type" id="car_type">
-	    <% @cars_info.each do |car| %>
-	      <% car['ams'].each do |type| %>
-	        <option value="<%= type['name'] %>" class="<%= car['name'] %>">
-	          <%= type['name'] %>
-	        </option>
-	      <% end %>
-	    <% end %>
-	  </select>
-	  <select name="car_style" id="car_style">
-	    <% @cars_info.each do |car| %>
-	      <% car['ams'].each do |type| %>
-	        <% type['asms'].each do |style| %>
-	          <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-	            <%= style['name'] %><%= style['_id'] %>
-	          </option>
-	        <% end %>
-	      <% end %>
-	    <% end %>
-	  </select>
-	  <p>
-		<var class="star">*</var>
-		<%= label_tag(:car_num, "车牌号:") %>
-		<select name="car_num">
-		  <option value="">京</option>
-		</select>
-		<%= text_field_tag(:car_num,'车牌后六位', :minlength => 6, :required => true) %>
-	  </p>
-	  <p>
-		<var class="star">*</var>
-		<%= label_tag(:registration_date, "车辆注册时间:") %>
-		<%= text_field_tag(:registration_date,'', :required => true) %>
-	  </p>
-	  <p>
-		<%= label_tag(:engine_num, "发动机号码:") %>
-		<%= text_field_tag(:engine_num,'') %>
-	  </p>
-	  <p>
-		<%= label_tag(:vin, "VIN:") %>
-		<%= text_field_tag(:vin,'') %>
-	  </p>
-	  <p>
-		<%= submit_tag("提交") %>
-	  </p>
-	</fieldset>
-  <% end %>
+    <fieldset>
+    <select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
+      <% @cars_info.each do |car| %>
+        <option value="<%= car['name'] %>">
+      <%= car['name'] %>
+      </option>
+    <% end %>
+    </select>
+    <select name="car_type" id="car_type">
+      <% @cars_info.each do |car| %>
+        <% car['ams'].each do |type| %>
+        <option value="<%= type['name'] %>" class="<%= car['name'] %>">
+      <%= type['name'] %>
+      </option>
+    <% end %>
+    <% end %>
+    </select>
+    <select name="car_style" id="car_style">
+      <% @cars_info.each do |car| %>
+        <% car['ams'].each do |type| %>
+        <% type['asms'].each do |style| %>
+        <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
+      <%= style['name'] %><%= style['_id'] %>
+      </option>
+    <% end %>
+    <% end %>
+    <% end %>
+    </select>
+    <p>
+    <var class="star">*</var>
+    <%= label_tag(:car_num, "车牌号:") %>
+    <select name="car_num">
+      <option value="">京</option>
+    </select>
+    <%= text_field_tag(:car_num,'车牌后六位', :minlength => 6, :required => true) %>
+    </p>
+    <p>
+    <var class="star">*</var>
+    <%= label_tag(:registration_date, "车辆注册时间:") %>
+    <%= text_field_tag(:registration_date,'', :required => true) %>
+    </p>
+    <p>
+    <%= label_tag(:engine_num, "发动机号码:") %>
+    <%= text_field_tag(:engine_num,'') %>
+    </p>
+    <p>
+    <%= label_tag(:vin, "VIN:") %>
+    <%= text_field_tag(:vin,'') %>
+    </p>
+    <p>
+    <%= submit_tag("提交") %>
+    </p>
+  </fieldset>
+<% end %>
 </div>
-<script>
-	$('#car_style').chained('#car_type,#car_name')
-    $('#car_type').chained('#car_name');
-</script>

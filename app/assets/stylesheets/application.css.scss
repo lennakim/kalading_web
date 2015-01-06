@@ -19,7 +19,7 @@ $border-gray: #e4e4e4;
 
 body{
   background: #f7f4f3;
-  @include box-sizing(border-box);
+  font: 14px/1.5 arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif;
 }
 
 header.navbar{
@@ -43,7 +43,7 @@ header.navbar{
     float: right;
     overflow: hidden;
     min-width: 320px;
-    font-family: STHeitiSC-Medium;
+    // font-family: STHeitiSC-Medium;
     font-size: 14px;
     color: $font-gray;
     li{
@@ -65,7 +65,10 @@ header.navbar{
 }
 
 .footer{
-  padding: 60px 15%;
+  .container{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
   border-top: 2px solid #fe9870;
   color: #a0a0a0;
   .promise{
@@ -122,7 +125,7 @@ header.navbar{
         background-image: image-url('foot-wei.png');
       }
       .chat{
-        background-image: image-url('foot-chat.png')
+        background-image: image-url('foot-chat.png');
       }
     }
     .contact{

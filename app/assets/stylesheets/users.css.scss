@@ -1,5 +1,6 @@
 @import "compass";
 @import "compass/reset";
+@import "mixins/button";
 
 .user-info{
 
@@ -104,6 +105,57 @@
           }
         }
       }
+    }
+  }
+}
+
+$orange: #ff9933;
+$grey: #c4c4c4;
+
+#comment_modal{
+  .comment-tags{
+    padding: 5px 50px;
+    .tags{
+      input[type='radio']{
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none;
+      }
+
+      .tag{
+        &.good{
+          width: 60%;
+          .btn{
+            color: $orange;
+            border-color: $orange;
+
+            &:hover, &.active{
+              color: #ffffff;
+              background: $orange;
+            }
+          }
+        }
+        &.bad{
+          margin-left: 40px;
+          .btn{
+            color: $grey;
+            border-color: $grey;
+
+            &:hover, &.active{
+              color: #ffffff;
+              background: $grey;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .submit-comment{
+    margin-top: 15px;
+    text-align: center;
+    .orange-btn{
+      @include button();
     }
   }
 }
