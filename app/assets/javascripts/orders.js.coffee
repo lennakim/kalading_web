@@ -128,6 +128,8 @@ $ ->
     $('.address-list').on 'click','.address-item', ->
       _close = $(this).find('.close')
       _selected = $(this).find('.selected')
+      address = $(this).find('dd').text()
+      $('#address').val(address)
 
       $(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'})
 
@@ -146,7 +148,7 @@ $ ->
     $('.add-address').on "click", ->
       city = $('#city_name option:selected').text()
       town = $('#town_name option:selected').text()
-      address = $('#address').val()
+      address = $('.address').val()
       $('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>')
 
       showTitle()

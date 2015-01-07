@@ -59,6 +59,7 @@
     </table>
     <div class="address-content bac-white">
   	  <h4 class="title">请正确填写以下内容，提交订单后，会有客服与您联系</h4>
+  	  <%= hidden_field_tag(:address) %>
   	  <div class="choice">
 	  	<h4 class="choice-title hidden">选择服务地址</h4>
 	  	<div class="address-list"></div>
@@ -88,8 +89,8 @@
 	          <var class="star">*</var>
 	          <%= label_tag("详细地址：") %>
 	        </div>
-	        <div class="info-con">
-	          <%= text_field_tag('', '', :id => 'address') %>
+	        <div class="info-con address-info">
+	          <%= text_field_tag('', '', :class => 'address') %>
 		    </div>
 	        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 		  </div>
