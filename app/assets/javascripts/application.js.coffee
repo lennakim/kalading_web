@@ -22,62 +22,27 @@ window.Kalading =
 
 $ ->
 
+  # select car
   $('#car_style').chained('#car_type,#car_name')
   $('#car_type').chained('#car_name')
 
+
+  # select address
   $(".addresses .add").on "click", (e)->
     e.stopPropagation()
     e.preventDefault()
 
     $("#add_address_modal").modal()
 
+  # add address modal
+  $("#add_address_modal").on "click", ".add-address > button", (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+    $(@).addClass('disabled')
+    $modal = $(e.delegateTarget)
+    city = $modal.find('select.city').val()
+    detail = $modal.find('#address_detail').val()
+    $.post "/service_addresses", { service_address: { city: city, detail: detail } }
 
-  # add address
-  $('.address-list').on 'mouseover','.address-item', ->
-    _close = $(this).find('.close')
-    if $(this).hasClass('selected-item')
-      _close.addClass('hidden')
-      $(this).css({'borderColor':'#ffd4a9'})
-    else
-      _close.removeClass('hidden')
-      $(this).css({'borderColor':'#ffd4a9'})
-
-  $('.address-list').on 'mouseout','.address-item', ->
-    _close = $(this).find('.close')
-    if $(this).hasClass('selected-item')
-      _close.addClass('hidden')
-      $(this).css({'borderColor':'#ef7337'})
-    else
-      _close.addClass('hidden')
-      $(this).css({'borderColor':'#f1f1f1'})
-
-  $('.address-list').on 'click','.close', ->
-    $(this).parent('.address-item').remove()
-
-  $('.address-list').on 'click','.address-item', ->
-    _close = $(this).find('.close')
-    _selected = $(this).find('.selected')
-
-    $(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'})
-
-    _selected.removeClass('hidden').parent().siblings().find('.selected').addClass('hidden')
-
-    _close.addClass('hidden')
-
-    showTitle()
-
-  showTitle = ->
-    if $('.address-list').children().length != 0
-      $('.choice-title').removeClass('hidden')
-    else
-      $('.choice-title').addClass('hidden')
-
-  $('.add-address').on "click", ->
-    city = $('#city_name option:selected').text()
-    town = $('#town_name option:selected').text()
-    address = $('#address').val()
-    $('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>')
-
-    showTitle()
-
-  # end - add address
+  $("#add_address_modal").on "hidden.bs.modal", ->
+    $(@).find(".add-address > button").removeClass('disabled')

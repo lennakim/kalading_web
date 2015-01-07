@@ -1,0 +1,18 @@
+<div class="current_addresses">
+
+  <% addresses = current_user.service_addresses %>
+
+  <% if addresses.length > 0 %>
+
+    <% addresses.each do |service_address| %>
+      <div class="radio">
+        <label>
+          <input type="radio" name="address" value="<%= service_address.id %>" checked>
+          <%= service_address.detail %>
+        </label>
+      </div>
+    <% end %>
+  <% else %>
+    没有地址。添加
+  <% end %>
+</div>

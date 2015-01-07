@@ -31,6 +31,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :service_addresses do
+    post 'set_default'
+  end
+
   root to: 'home#index'
 
   resources :sessions do
