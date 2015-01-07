@@ -2,7 +2,6 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-
 <% type = (params[:type] == nil || params[:type] == "") ? "maintain" : params[:type] %>
 
 <% unless @result.empty? %>
@@ -20,10 +19,12 @@
         <%= render "items", type: type %>
       </div>
     </div>
+
     <div class="service-module bac-white">
       <h3 class="service-title module-title">服务介绍</h3>
       <div class="service-con"></div>
     </div>
+
   </div>
 <% else %>
   <div class="main error">

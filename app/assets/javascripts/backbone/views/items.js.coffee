@@ -6,6 +6,7 @@ class Kalading.Views.Items extends Backbone.View
     "change .part": "resetSelectItems"
     "click .part-selector": "chooseParts"
     "click .order_button": "submitOrder"
+    "click #no_parts": "cleanParts"
 
   initialize: ->
     @order = new Kalading.Models.Order
@@ -15,6 +16,7 @@ class Kalading.Views.Items extends Backbone.View
     @$service_price = @$(".service-price")
     @$checkboxes = @$(".part-selector")
     @$order_button = @$("#order_button")
+    @$no_parts = @$("#no_parts")
 
 
     @order.set 'price', @$price.data('price')
@@ -27,6 +29,19 @@ class Kalading.Views.Items extends Backbone.View
     @resetSelectItems()
     @order.loadPrice()
 
+  cleanParts: (e)->
+
+    if checked = @$no_parts.prop('checked')
+      $('.part-selector').prop('disabled', true).prop('checked', false)
+      $('.part').prop('disabled', true)
+
+    else
+      $('.part-selector').prop('disabled', false).prop('checked', true)
+      $('.part').prop('disabled', false)
+
+    @resetSelectItems()
+
+
   resetSelectItems: =>
     parts = _.map @$(".part:enabled option:selected"), (el, index) ->
       brand: $(el).data('brand')
@@ -34,13 +49,16 @@ class Kalading.Views.Items extends Backbone.View
 
     @order.set 'parts', parts
 
+    console.log @order
+    console.log parts
+
     @disableSelectors()
 
   chooseParts: (e)=>
     $checkbox = $(e.target)
     checked = $checkbox.prop('checked')
 
-    $checkbox.siblings('.part').attr('disabled', !checked)
+    $checkbox.closest('.item').find('.part').attr('disabled', !checked)
 
     @resetSelectItems()
 
@@ -56,12 +74,13 @@ class Kalading.Views.Items extends Backbone.View
   disableSelectors: ->
     @$price.addClass "disabled"
     @$checkboxes.attr('disabled', true)
-    @$order_button.attr('disabled', true)
+    @$order_button.attr('disabled', true).addClass('disabled')
 
   recoverSelectors: ->
     @$price.removeClass "disabled"
-    @$checkboxes.attr('disabled', false)
-    @$order_button.attr('disabled', false)
+    if !@$no_parts.prop('checked')
+      @$checkboxes.attr('disabled', false)
+    @$order_button.attr('disabled', false).removeClass('disabled')
 
   errorHandler: ->
     alert '服务器错误...请稍后再试'

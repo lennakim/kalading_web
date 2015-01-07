@@ -200,16 +200,22 @@ $title-gray: #787878;
         .item-box{
           display: inline-block;
           .item{
+
+            .part-checkbox{
+              width: 20px;
+            }
+            .part{
+
+              width: 250px;
+              &.form-control{
+                @include border-top-left-radius(0);
+                @include border-bottom-left-radius(0);
+              }
+            }
+
             overflow: hidden;
             &:last-child{
               margin: 0;
-            }
-            label{
-              margin-right: 10px;
-            }
-            input{
-              float: left;
-              margin: 15px 10px 0 0;
             }
           }
         }
@@ -226,9 +232,7 @@ $title-gray: #787878;
         }
       }
       .order_button{
-        margin: 30px;
-        width: 360px;
-        border: 0;
+        @include button;
       }
     }
   }
