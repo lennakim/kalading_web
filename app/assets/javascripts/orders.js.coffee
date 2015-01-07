@@ -104,7 +104,6 @@ $ ->
     })
     initPickaDate()
 
-
   if $('.success-page').length > 0
     num = 30
     countdown = ->
