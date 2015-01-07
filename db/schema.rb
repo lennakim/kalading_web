@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104090752) do
+ActiveRecord::Schema.define(version: 20150107093608) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -173,12 +173,12 @@ ActiveRecord::Schema.define(version: 20150104090752) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
-    t.string   "account_secret_key"
-    t.string   "account_token"
   end
 
   add_index "public_accounts", ["account_id"], name: "index_public_accounts_on_account_id", unique: true, using: :btree
@@ -229,9 +229,11 @@ ActiveRecord::Schema.define(version: 20150104090752) do
     t.string   "token"
     t.string   "phone_number"
     t.integer  "city_id"
+    t.integer  "default_address_id"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
+  add_index "users", ["default_address_id"], name: "index_users_on_default_address_id", using: :btree
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
 
   create_table "verification_codes", force: true do |t|

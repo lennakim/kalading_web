@@ -10,6 +10,17 @@ class User < ActiveRecord::Base
   validates :phone_number, uniqueness: true
   before_create :generate_token
 
+  def set_default_address address
+    if address
+      self.default_address_id = address.id
+      save
+    end
+  end
+
+  def default_address
+    default_address_id ? ServiceAddress.find(default_address_id)  : service_addresses.last
+  end
+
   def set_city city_name
     if city_name
       self.city = City.find_by name: city_name

@@ -50,3 +50,8 @@ $ ->
 
   $("#add_address_modal").on "hidden.bs.modal", ->
     $(@).find(".add-address > button").removeClass('disabled')
+
+  $("#address_detail").on "keyup", (e) ->
+    $button = $("#add_address_modal .add-address > button")
+    if e.keyCode == 13 && !$button.hasClass('disabled')
+      $button.trigger "click"
