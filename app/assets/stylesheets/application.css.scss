@@ -69,44 +69,52 @@ header.navbar{
   }
 }
 
+.promise{
+  overflow: hidden;
+  border-bottom: 1px solid $border-gray;
+  margin: 20px 0;
+  dl{
+    border-right: 1px solid #e4e4e4;
+    float: left;
+    width: 25%;
+    margin: 20px 0;
+    &:last-child{
+      border: 0;
+    }
+    dt{
+      float: left;
+      font-size: 40px;
+      text-align: right;
+    }
+    dd{
+      margin: 2px 0;
+      font-size: 16px; 
+    }
+  }
+}
 .footer{
   border-top: 2px solid #fe9870;
   color: #a0a0a0;
   background: white;
+  .promise{
+    min-width: 770px;
+    dl{
+      min-width: 190px;
+    }
+    dt{
+      padding: 0px 5px 0 20%;
+    }
+    dd{
+      text-align: left;
+      &:nth-child(odd){
+        float: left;
+        width: 45%;
+      }
+    }
+  }
   .container{
     padding-top: 30px;
     padding-bottom: 30px;
-  }
-  .promise{
-    overflow: hidden;
-    border-bottom: 1px solid $border-gray;
-    margin: 20px 0;
-    min-width: 770px;
-    dl{
-      border-right: 1px solid #e4e4e4;
-      float: left;
-      width: 25%;
-      min-width: 190px;
-      margin: 20px 0;
-      &:last-child{
-        border: 0;
-      }
-      dt{
-        float: left;
-        padding: 0px 5px 0 20%;
-        font-size: 40px;
-        text-align: right;
-      }
-      dd{
-        text-align: left;
-        margin: 2px 0;
-        font-size: 16px;
-        &:nth-child(odd){
-          float: left;
-          width: 45%;
-        }
-      }
-    }
   }
   .bottom-nav{
     overflow: hidden;
@@ -150,4 +158,87 @@ header.navbar{
 
 .tangram-suggestion-main{
   z-index: 2000;
+}
+
+.phone-page{
+  .head-title{
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    .back{
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 70px;
+    }
+    .menu{
+      position: absolute;
+      top: 7px;
+      right: 10px;
+      display: block;
+      width: 30px;
+    }
+  }
+  .promise{
+    h3{
+      text-align: center;
+      font-size: 22px;
+    }
+    dt{
+      padding: 0 8px 0;
+      font-size: 30px;
+    }
+    dd{
+      text-align: center;
+      &:nth-child(even){
+        float: left;
+        margin: 15px 0 6px;
+      }
+    }
+  }
+  .service-module,.tec-team,.service-address,.service-process{
+    padding: 0 20px;
+    margin: 20px 0;
+    font-size: 18px;
+    h3{
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .module-item{
+      margin: 10px 0;
+    }
+    .star{
+
+    }
+  }
+  .service-module{
+    ul{
+      line-height: 30px;
+      li{
+        margin: 10px 0;
+      }
+    }
+  }
+  .showimg{
+    padding: 20px;
+    li{
+      margin-bottom: 10px;
+      &:last-child{
+        margin: 0;
+      }
+    }
+  }
+  .tec-team{
+    .img-item{
+      margin: 10px 0;
+    }
+  }
+  .totop{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
 }
