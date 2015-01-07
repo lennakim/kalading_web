@@ -41,8 +41,12 @@ $ ->
     $(@).addClass('disabled')
     $modal = $(e.delegateTarget)
     city = $modal.find('select.city').val()
+
     detail = $modal.find('#address_detail').val()
-    $.post "/service_addresses", { service_address: { city: city, detail: detail } }
+    if $.trim(detail) != ""
+      $.post "/service_addresses", { service_address: { city: city, detail: detail } }
+    else
+      $modal.find("#address_detail").closest(".form-group").addClass("has-error")
 
   $("#add_address_modal").on "hidden.bs.modal", ->
     $(@).find(".add-address > button").removeClass('disabled')

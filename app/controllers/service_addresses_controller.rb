@@ -14,6 +14,10 @@ class ServiceAddressesController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.service_addresses.destroy params[:id]
+  end
+
   def set_default
     # ...
   end
