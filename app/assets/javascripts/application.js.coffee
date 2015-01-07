@@ -28,7 +28,7 @@ $ ->
 
 
   # select address
-  $(".addresses .add").on "click", (e)->
+  $(".addresses .add > a.btn").on "click", (e)->
     e.stopPropagation()
     e.preventDefault()
 

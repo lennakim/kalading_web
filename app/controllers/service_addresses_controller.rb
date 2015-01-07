@@ -7,7 +7,7 @@ class ServiceAddressesController < ApplicationController
       current_user.set_default_address address
       render "create"
     else
-      render js: "alert('login first')"
+      render js: "alert('需要登陆')"
     end
   end
 
@@ -20,7 +20,7 @@ class ServiceAddressesController < ApplicationController
       current_user.set_default_address ServiceAddress.find(params[:service_address_id])
       render js: "alert('设置成功')"
     else
-
+      render js: "alert('设置失败')"
     end
   end
 

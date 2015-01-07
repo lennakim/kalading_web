@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
   end
 
   def default_address
-    default_address_id ? ServiceAddress.find(default_address_id)  : service_addresses.last
+    default_address = default_address_id && ServiceAddress.find(default_address_id)
+
+    default_address ? default_address : service_addresses.last
   end
 
   def set_city city_name
