@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get 'maintain_histories'
       get 'cars'
       get 'balance'
-      get 'i'
+      get 'settings'
     end
   end
 

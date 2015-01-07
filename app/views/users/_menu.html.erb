@@ -1,8 +1,14 @@
 <% action = params["action"] %>
 <div class="col-md-3">
   <ul class='menu'>
-    <li class='<%= set_class action, "orders" %>'>我的订单</li>
-    <li class='<%= set_class action, "cars" %>'>车辆信息</li>
-    <li class='<%= set_class action, "i" %>'>个人信息</li>
+    <li class='<%= set_class action, "orders" %>'>
+      <%= link_to "我的订单", orders_users_path  %>
+    </li>
+    <li class='<%= set_class action, "cars" %>'>
+      <%= link_to "车辆信息", cars_users_path %>
+    </li>
+    <li class='<%= set_class action, "settings" %>'>
+      <%= link_to "个人信息", settings_users_path %>
+    </li>
   </ul>
 </div>
