@@ -28,7 +28,6 @@ module ServerApi
 
       Rails.logger.info '--- send api to url:'
       Rails.logger.info url
-      Rails.logger.info args[:body].to_json
 
       result = method == "get" ? \
         RestClient.get(url, content_type: 'json') :
@@ -48,8 +47,8 @@ module ServerApi
 
     query_string_arr = URI.decode_www_form(uri.query || '')
 
-    query_string_hash.inject(query_string_arr) do|initial, e| 
-      initial << e if e.compact.length == 2 
+    query_string_hash.inject(query_string_arr) do|initial, e|
+      initial << e if e.compact.length == 2
       initial
     end
 

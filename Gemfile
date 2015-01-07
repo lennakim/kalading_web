@@ -48,6 +48,7 @@ gem 'inherited_resources'
 
 # phone
 gem 'phonelib'
+gem 'browser'
 
 # traffic data
 gem 'impressionist'
