@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     post 'set_default'
   end
 
+  resources :autos
+
   root to: 'home#index'
 
   resources :sessions do
