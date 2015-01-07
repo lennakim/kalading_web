@@ -26,12 +26,10 @@ $ ->
   $('#car_style').chained('#car_type,#car_name')
   $('#car_type').chained('#car_name')
 
-
   # select address
   $(".addresses .add > a.btn").on "click", (e)->
     e.stopPropagation()
     e.preventDefault()
-
     $("#add_address_modal").modal()
 
   # add address modal

@@ -140,11 +140,19 @@ $grey: #c4c4c4;
         font-size: 18px;
         .car{
           color: $grey;
-          height: 40px;
-          margin-right: 20px;
-          border: 1px solid $grey;
-          line-height: 40px;
-          padding: 0 20px;
+          padding-left: 0;
+          margin-bottom: 10px;
+
+          .content{
+            padding: 10px;
+            table.table{
+              margin-bottom: 0;
+              td{
+                border-top: 0 none;
+              }
+            }
+          }
+
           a{
             color: $grey;
           }
