@@ -22,62 +22,34 @@ window.Kalading =
 
 $ ->
 
-  $('#car_style').chained('#car_type,#car_name')
+  # select car
+  $('#car_style').chained('#car_type, #car_name')
   $('#car_type').chained('#car_name')
 
-  $(".addresses .add").on "click", (e)->
+  # select address
+  $(".addresses .add > a.btn").on "click", (e)->
     e.stopPropagation()
     e.preventDefault()
-
     $("#add_address_modal").modal()
 
+  # add address modal
+  $("#add_address_modal").on "click", ".add-address > button", (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+    $(@).addClass('disabled')
+    $modal = $(e.delegateTarget)
+    city = $modal.find('select.city').val()
 
-  # add address
-  $('.address-list').on 'mouseover','.address-item', ->
-    _close = $(this).find('.close')
-    if $(this).hasClass('selected-item')
-      _close.addClass('hidden')
-      $(this).css({'borderColor':'#ffd4a9'})
+    detail = $modal.find('#address_detail').val()
+    if $.trim(detail) != ""
+      $.post "/service_addresses", { service_address: { city: city, detail: detail } }
     else
-      _close.removeClass('hidden')
-      $(this).css({'borderColor':'#ffd4a9'})
+      $modal.find("#address_detail").closest(".form-group").addClass("has-error")
 
-  $('.address-list').on 'mouseout','.address-item', ->
-    _close = $(this).find('.close')
-    if $(this).hasClass('selected-item')
-      _close.addClass('hidden')
-      $(this).css({'borderColor':'#ef7337'})
-    else
-      _close.addClass('hidden')
-      $(this).css({'borderColor':'#f1f1f1'})
+  $("#add_address_modal").on "hidden.bs.modal", ->
+    $(@).find(".add-address > button").removeClass('disabled')
 
-  $('.address-list').on 'click','.close', ->
-    $(this).parent('.address-item').remove()
-
-  $('.address-list').on 'click','.address-item', ->
-    _close = $(this).find('.close')
-    _selected = $(this).find('.selected')
-
-    $(this).addClass('selected-item').css({'borderColor':'#ef7337'}).siblings().removeClass('selected-item').css({'borderColor':'#f1f1f1'})
-
-    _selected.removeClass('hidden').parent().siblings().find('.selected').addClass('hidden')
-
-    _close.addClass('hidden')
-
-    showTitle()
-
-  showTitle = ->
-    if $('.address-list').children().length != 0
-      $('.choice-title').removeClass('hidden')
-    else
-      $('.choice-title').addClass('hidden')
-
-  $('.add-address').on "click", ->
-    city = $('#city_name option:selected').text()
-    town = $('#town_name option:selected').text()
-    address = $('#address').val()
-    $('.address-list').prepend('<dl class="address-item"><dt>'+city+' '+town+'</dt><dd>'+address+'</dd><dd class="close hidden"></dd><dd class="selected hidden"></dd></dl>')
-
-    showTitle()
-
-  # end - add address
+  $("#address_detail").on "keyup", (e) ->
+    $button = $("#add_address_modal .add-address > button")
+    if e.keyCode == 13 && !$button.hasClass('disabled')
+      $button.trigger "click"

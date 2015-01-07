@@ -1,3 +1,4 @@
+@import "mixins/button";
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
@@ -20,7 +21,7 @@ $title-gray: #787878;
   .select-item{
     overflow: hidden;
     border: 1px solid #ccc;
-    .select-car,.quick-select{
+    .select-car, .quick-select{
       float: left;
       width: 50%;
       margin: 28px 0;
@@ -36,24 +37,22 @@ $title-gray: #787878;
       clear: both;
     }
     .next{
+      position: relative;
       width: 90%;
       margin: 0 auto;
       padding: 20px 0;
       border-top: 1px solid #ccc;
       text-align: center;
       .search_button{
-        width: 130px;
-        height: 40px;
-        line-height: 40px;
-        margin-left: 70px;
-        border: 0;
-        text-align: center;
+        @include button();
       }
       .more{
+        position: absolute;
+        top: 35px;
         padding: 5px;
         text-decoration: underline;
-        color: #4c4c4c;
-        font-size: 14px;
+        color: #999999;
+        font-size: 12px;
       }
     }
     .select-car{
@@ -75,68 +74,28 @@ $title-gray: #787878;
       }
     }
     .quick-select{
-      .my-car,.my-car-info{
-        width: 210px;
-        margin: 0 auto;
-      }
-      .my-car{
-        position: relative;
-        height: 35px;
-        line-height: 35px;
-        text-align: center;
-        background: #e1e1e1;
-        margin:10px auto 30px;
-        color: #fff;
-        input{
-          float: left;
-          margin: 11px;
+
+      .car{
+        padding-left: 0;
+        margin-bottom: 10px;
+
+        &.pull-left.col-sm-3{
+          width: 100%;
+
+          float: none;
         }
-        label{
-          margin: 0;
-        }
-        var{
-          display: block;
-          position: absolute;
-          top: 0;
-          right: 0;
-          height: 16px;
-          padding: 18px 20px;
-          background-image: image-url("down.png");
-          background-position: 10px;
-          background-repeat: no-repeat;
-          cursor: pointer;
-          cursor: hand;
+
+        .content{
+          padding: 10px;
+          table.table{
+            margin-bottom: 0;
+            td{
+              border-top: 0 none;
+            }
+          }
         }
       }
-      .down{
-        margin-bottom: 0;
-        position: relative;
-        var{
-          background-image: image-url("up.png");
-        }
-      }
-      .selected{
-        background: #ffd4a9;
-      }
-      .search_button{
-        margin: 40px 0 0 50%;
-      }
-      .hidden{
-        display: none;
-      }
-      .my-car-info{
-        display: none;
-        padding: 10px;
-        line-height: 25px;
-        border: 1px solid #e1e1e1;
-        color: #c6c6c6;
-        p{
-          margin: 0;
-        }
-      }
-      .show-con{
-        display: block;
-      }
+
     }
   }
   .comment-module,.orders-situation{

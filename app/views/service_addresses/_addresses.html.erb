@@ -1,0 +1,17 @@
+<div class="current_addresses">
+  <% addresses = current_user.service_addresses %>
+
+  <% if addresses.length > 0 %>
+    <% addresses.each do |service_address| %>
+      <div class="radio">
+        <label>
+          <input type="radio" name="address" value="<%= service_address.id %>" <%= "checked" if service_address == current_user.default_address %>>
+          <%= service_address.detail %>
+        </label>
+        <%= link_to "", service_address_path(service_address), remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "确认删除吗?" } %>
+      </div>
+    <% end %>
+  <% else %>
+    暂时没有地址，请添加
+  <% end %>
+</div>

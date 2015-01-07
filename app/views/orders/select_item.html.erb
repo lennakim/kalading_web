@@ -8,12 +8,9 @@
 <% unless @result.empty? %>
   <div class="container items-select-page" data-type="<%= type %>">
     <h3 class="main-title row">保养预约</h3>
-    <ul class="process">
-      <li class="car-type">选择车型</li>
-      <li class="service selected">选择服务</li>
-      <li class="info">填写信息</li>
-      <li class="success">预定成功</li>
-    </ul>
+
+    <%= render "order_process" %>
+
     <div class="orders bac-white" data-car="<%= params[:car_id]%>">
       <ul>
         <li class="pm25 <%= "selected" if type == "pm25" %>"><%= link_to "PM2.5滤芯更换", select_item_orders_path(car_id: params[:car_id], type: "pm25") %></li>

@@ -5,93 +5,30 @@
 
 <div class="container select-car-page" data-type="<%= params[:type] %>">
   <h3 class="main-title row">保养预约</h3>
-  <ul class="process">
-    <li class="car-type selected">选择车型</li>
-    <li class="service">选择服务</li>
-    <li class="info">填写信息</li>
-    <li class="success">预定成功</li>
-  </ul>
+
+  <%= render "order_process" %>
+
   <div class="select-item bac-white">
     <div class="select-car">
       <h4>查询车辆</h4>
-      <div class="field">
-        <label for="car_name">品牌：</label>
-        <select data-cars="<%= @cars_info %>" name="car_name" id="car_name">
-          <% @cars_info.each do |car| %>
-            <option value="<%= car['name'] %>">
-              <%= car['name'] %>
-            </option>
-          <% end %>
-        </select>
-      </div>
-      <div class="field"> 
-        <label for="car_type">系列：</label>
-        <select name="car_type" id="car_type">
-          <% @cars_info.each do |car| %>
-            <% car['ams'].each do |type| %>
-              <option value="<%= type['name'] %>" class="<%= car['name'] %>">
-                <%= type['name'] %>
-              </option>
-            <% end %>
-          <% end %>
-        </select>
-      </div> 
-      <div class="field">
-        <label for="car_style">型号：</label>
-        <select name="car_style" id="car_style">
-          <% @cars_info.each do |car| %>
-            <% car['ams'].each do |type| %>
-              <% type['asms'].each do |style| %>
-                <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-                  <%= style['name'] %>
-                </option>
-              <% end %>
-            <% end %>
-          <% end %>
-        </select>
-      </div>
+      <%= render "shared/select_car" %>
     </div>
+
     <div class="quick-select">
       <h4>我的快捷车辆</h4>
-      <div class="my-car">
-        <%= check_box_tag :car1,'' %>
-        <%= label_tag(:car1, "宝马（进口）") %>
-        <var></var>
-      </div>
-      <div class="my-car-info">
-        <p>
-          品牌：宝马（进口）
-        </p>
-        <p>
-          系列：E级系列
-        </p>
-        <p>
-          型号：E200k（W211）2.0L 2006.09-2014
-        </p>
-      </div>
-      <div class="my-car">
-        <%= check_box_tag :car2 %>
-        <%= label_tag(:car2, "奔驰（北京）") %>
-        <var></var>
-      </div>
-      <div class="my-car-info">
-        <p>
-          品牌：宝马（进口）
-        </p>
-        <p>
-          系列：E级系列
-        </p>
-        <p>
-          型号：E200k（W211）2.0L 2006.09-2014
-        </p>
-      </div>
+      <%= render "shared/car_item" %>
+      <%= render "shared/car_item" %>
+      <%= render "shared/car_item" %>
     </div>
+
     <div class="clear"></div>
+
     <p class="next">
-      <button class="search_button bac-orange font-white">下一步</button>
+      <button id="next_step" class="search_button bac-orange font-white">下一步</button>
       <a class="more" href="">没找到车型？</a>
     </p>
   </div>
+
   <div class="row">
     <div class="col-md-8">
       <div class="comment-module bac-white">
@@ -141,8 +78,7 @@
             </dd>
           </dl>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
-

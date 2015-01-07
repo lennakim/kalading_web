@@ -13,34 +13,10 @@ $ ->
     items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
-    $('#car_style').chained('#car_type,#car_name')
-    $('#car_type').chained('#car_name')
-
-    $('.search_button').click ->
+    $('#next_step').click ->
       id = $('#car_style option:selected').data 'id'
       type = $('.select-car-page').data('type')
-      window.location.href = "/orders/select_item?car_id=#{id}&type=#{type}"
-
-    $('.my-car').each ->
-      $(this).click ->
-        if $(this).find('input').is(':checked')
-          $(this).addClass('selected')
-          $(this).next('.my-car-info').css({'borderColor':'#ffd4a9'})
-        else
-          $(this).removeClass('selected')
-          $(this).next('.my-car-info').css({'borderColor':'#e1e1e1'})
-
-    $('.my-car var').each ->
-      $(this).click ->
-        _myCar = $(this).parent()
-        _myCarInfo = _myCar.next('.my-car-info')
-
-        if _myCar.hasClass('down')
-          _myCar.removeClass('down')
-          _myCarInfo.removeClass('show-con')
-        else
-          _myCar.addClass('down').siblings('.my-car').removeClass('down')
-          _myCarInfo.addClass('show-con').siblings('.my-car-info').removeClass('show-con')
+      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
   if $(".place-order-page").length > 0
     initPickaDate = ->
@@ -114,10 +90,3 @@ $ ->
       $('.num').text(num+"s")
       setTimeout(countdown,1000)
     countdown()
-
-
-
-
-
-
-

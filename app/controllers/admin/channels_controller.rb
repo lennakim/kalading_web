@@ -6,5 +6,4 @@ class Admin::ChannelsController < Admin::MainController
   def permitted_params
     {:channel => params.fetch(:channel, {}).permit(:name)}
   end
-
 end

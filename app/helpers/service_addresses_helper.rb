@@ -1,0 +1,2 @@
+module ServiceAddressesHelper
+end

@@ -3,21 +3,8 @@
     选择:
   </label>
 
-  <div class="col-sm-4">
-    <div class="radio">
-      <label>
-        <input type="radio" name="address" id="optionsRadios1" value="option1" checked>
-        北京市海淀区苏州街地铁A口
-      </label>
-    </div>
-
-    <div class="radio">
-      <label>
-        <input type="radio" name="address" id="optionsRadios2" value="option2">
-        北京市海淀区苏州街地铁B口
-      </label>
-    </div>
-
+  <div class="col-sm-6">
+    <%= render "service_addresses/addresses" %>
     <div class="add">
       <a class='btn btn-default orange-btn'>添加</a>
     </div>

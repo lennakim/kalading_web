@@ -5,6 +5,10 @@ $ ->
     "input" : "address_detail"
   })
 
+  $("#address_detail").on "focus", ->
+    $(@).closest(".form-group").removeClass('has-error')
+    $(".add-address > button").removeClass("disabled")
+
   window.ac = ac
 
   ac.setInputValue "北京市海淀区"
