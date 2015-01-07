@@ -7,53 +7,7 @@
           <h4 class="modal-title">添加车辆</h4>
         </div>
 
-        <div class="form-horizontal selectors">
-
-          <div class="form-group">
-            <label for="car_name" class="col-sm-2 control-label">品牌: </label>
-            <div class="col-sm-10">
-              <select name="car_name" id="car_name" class="form-control">
-                <% @cars_info.each do |car| %>
-                  <option value="<%= car['name'] %>">
-                    <%= car['name'] %>
-                  </option>
-                <% end %>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="car_type" class="col-sm-2 control-label">系列: </label>
-            <div class="col-sm-10">
-              <select name="car_type" id="car_type" class="form-control">
-                <% @cars_info.each do |car| %>
-                  <% car['ams'].each do |type| %>
-                    <option value="<%= type['name'] %>" class="<%= car['name'] %>">
-                      <%= type['name'] %>
-                    </option>
-                  <% end %>
-                <% end %>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="car_style" class="col-sm-2 control-label">型号: </label>
-            <div class="col-sm-10">
-              <select name="car_style" id="car_style" class="form-control">
-                <% @cars_info.each do |car| %>
-                  <% car['ams'].each do |type| %>
-                    <% type['asms'].each do |style| %>
-                      <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-                        <%= style['name'] %>
-                      </option>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </select>
-            </div>
-          </div>
-        </div>
+        <%= render "shared/select_car" %>
 
         <div class="add-car">
           <button class='btn btn-default orange-btn'>添加</button>
