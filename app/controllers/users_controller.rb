@@ -7,15 +7,15 @@ class UsersController < ApplicationController
   end
 
   def maintain_histories
-    @maintain_orders = Order.maintain_histories_of '13111111111'
-    pp @maintain_orders
+  end
+
+  def i
   end
 
   def cars
     @cars_info = Order.cars_data
-  end
 
-  def new
+    @maintain_histories = Order.maintain_histories_of '13111111111'
   end
 
   def balance

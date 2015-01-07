@@ -24,39 +24,40 @@
         <th>总价</th>
       </thead>
       <tbody>
-	    <tr>
-		  <td>
-		    <%= @result['name'] %>
-		    <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
-		  </td>
-          <td class="item">
-		    <% @result['parts'].each_index do |index| %>
-			  <% part = @result['parts'][index]%>
-			  <p name='items'>
-				[<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
-				<%= hidden_field_tag("orders[parts][#{index}][brand]", part.values.first.first['brand']) %>
+      <tr>
+        <td>
+          <%= @result['name'] %>
+          <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
+        </td>
+        <td class="item">
+          <% @result['parts'].each_index do |index| %>
+            <% part = @result['parts'][index]%>
+          <p name='items'>
+          [<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
+        <%= hidden_field_tag("orders[parts][#{index}][brand]", part.values.first.first['brand']) %>
 
-				<%= hidden_field_tag("orders[parts][#{index}][number]", part.values.first.first['number']) %>
-			  </p>
-		    <% end %>
-          </td>
-		  <td>
-		    <% @result['parts'].each_index do |index| %>
-			  <% part = @result['parts'][index]%>
-			  <p>
-			    <%= part.values.first.first['price'] %>
-			    <%= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
-			  </p>
-		    <% end %>
-          </td>
-		  <td class="result">
-			<%= @result['price_without_discount'] %>
-			<%= hidden_field_tag(:price, @result['price_without_discount']) %>
-		  </td>
-	    </tr>
+          <%= hidden_field_tag("orders[parts][#{index}][number]", part.values.first.first['number']) %>
+          </p>
+        <% end %>
+        </td>
+        <td>
+          <% @result['parts'].each_index do |index| %>
+            <% part = @result['parts'][index]%>
+          <p>
+          <%= part.values.first.first['price'] %>
+          <%= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
+          </p>
+        <% end %>
+        </td>
+        <td class="result">
+          <%= @result['price_without_discount'] %>
+          <%= hidden_field_tag(:price, @result['price_without_discount']) %>
+        </td>
+      </tr>
       </tbody>
       <tfoot></tfoot>
     </table>
+<<<<<<< HEAD
     <div class="address-content bac-white">
   	  <h4 class="title">请正确填写以下内容，提交订单后，会有客服与您联系</h4>
   	  <%= hidden_field_tag(:address) %>
@@ -97,126 +98,133 @@
 		  <p class="add-address bac-orange font-white">确认添加</p>
 	  	</div>
   	  </div>
+=======
+
+    <div class="address-content bac-white clearfix">
+      <%= render "shared/select_address" %>
+>>>>>>> 8843b725a4c697f92538964019f0bbe0c2f8866e
     </div>
-	<div class="orders-content bac-white">
-	  <p class='order-info'>订单信息</p>
-	  <div class="info-group">
-	  	<div class="info-title">
+
+    <div class="orders-content bac-white">
+      <p class='order-info'>订单信息</p>
+      <div class="info-group">
+        <div class="info-title">
           <var class="star">*</var>
           <%= label_tag(:name, "姓名：") %>
         </div>
         <div class="info-con">
           <%= text_field_tag(:name,'', :required => true) %>
-	  	</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <var class="star">*</var>
-		  <%= label_tag("车牌号：") %>
-		</div>
-		<div class="info-con">
-		  <select name="car_num">
-		    <option value="">京</option>
-		  </select>
-		  <%= text_field_tag(:car_num,'', :minlength => 6, :required => true, :placeholder => '车牌后六位') %>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <var class="star">*</var>
-		  <%= label_tag(:serve_datetime, "服务时间：") %>
-	    </div>
-	    <div class="info-con">
-		  <%= text_field_tag(:serve_datetime,'', :required => true) %>
-		  <select name="car_num">
-		    <option value="">8:00 - 12:00</option>
-		  </select>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <var class="star">*</var>
-		  <%= label_tag(:pay_type, "付款方式：") %>
-		</div>
-		<div class="info-con">
-		  <select id="pay_type" name="pay_type">
-		    <option value="">现金</option>
-		    <option value="">刷卡</option>
-		  </select>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <var class="star">*</var>
-		  <%= label_tag(:registration_date, "车辆注册时间：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:registration_date,'', :required => true) %>
-	  	</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <%= label_tag(:engine_num, "发动机号码：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:engine_num,'') %>
-	  	</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <%= label_tag(:vin, "VIN：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_field_tag(:vin,'') %>
-	  	</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-con spe">
-		  <%= radio_button_tag :invoice,'' %>
-		  <%= label_tag(:invoice, "不要发票") %>
-		</div>
-		<div class="info-con spe">
-		  <%= radio_button_tag :invoice,'' %>
-		  <%= label_tag(:invoice, "发票") %>
-		</div>
-		<div class="info-con spe">
-		  <%= radio_button_tag :unit,'' %>
-		  <%= label_tag(:unit, "个人") %>
-		</div>
-		<div class="info-con spe">
-		  <%= radio_button_tag :unit,'' %>
-		  <%= label_tag(:unit, "单位") %>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-con spe">
-	      <%= radio_button_tag :preferential,'' %>
-		  <%= label_tag(:preferential, "无优惠券") %>
-		</div>
-		<div class="info-con spe">
-		  <%= radio_button_tag :preferential,'' %>
-		  <%= label_tag(:preferential, "使用优惠券") %>
-		</div>
-		<div class="info-con">
-		  <button class="verify bac-orange font-white">验证</button>
-		  <label for="" class="hidden verify-info">验证成功！</label>
-		</div>
-	  </div>
-	  <div class="info-group">
-	    <div class="info-title">
-		  <%= label_tag(:input_clinet_title, "备注：") %>
-		</div>
-		<div class="info-con">
-		  <%= text_area(:input_clinet_title,'填写备注') %>
-	  	</div>
-	  </div>
-	  <div class="submit-info bac-orange font-white">
-	    <%= @result['name'] %>
-	    <%= submit_tag("提交订单",:class => 'submit bac-white') %>
-	    <span class="price">总价: <%= @result['price'] %>元</span>
-	  </div>
-	</div>
-	</fieldset>
-  <% end %>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <var class="star">*</var>
+          <%= label_tag("车牌号：") %>
+        </div>
+        <div class="info-con">
+          <select name="car_num">
+            <option value="">京</option>
+          </select>
+          <%= text_field_tag(:car_num,'', :minlength => 6, :required => true, :placeholder => '车牌后六位') %>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <var class="star">*</var>
+          <%= label_tag(:serve_datetime, "服务时间：") %>
+        </div>
+        <div class="info-con">
+          <%= text_field_tag(:serve_datetime,'', :required => true) %>
+          <select name="car_num">
+            <option value="">8:00 - 12:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <var class="star">*</var>
+          <%= label_tag(:pay_type, "付款方式：") %>
+        </div>
+        <div class="info-con">
+          <select id="pay_type" name="pay_type">
+            <option value="">现金</option>
+            <option value="">刷卡</option>
+          </select>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <var class="star">*</var>
+          <%= label_tag(:registration_date, "车辆注册时间：") %>
+        </div>
+        <div class="info-con">
+          <%= text_field_tag(:registration_date,'', :required => true) %>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <%= label_tag(:engine_num, "发动机号码：") %>
+        </div>
+        <div class="info-con">
+          <%= text_field_tag(:engine_num,'') %>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <%= label_tag(:vin, "VIN：") %>
+        </div>
+        <div class="info-con">
+          <%= text_field_tag(:vin,'') %>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-con spe">
+          <%= radio_button_tag :invoice,'' %>
+          <%= label_tag(:invoice, "不要发票") %>
+        </div>
+        <div class="info-con spe">
+          <%= radio_button_tag :invoice,'' %>
+          <%= label_tag(:invoice, "发票") %>
+        </div>
+        <div class="info-con spe">
+          <%= radio_button_tag :unit,'' %>
+          <%= label_tag(:unit, "个人") %>
+        </div>
+        <div class="info-con spe">
+          <%= radio_button_tag :unit,'' %>
+          <%= label_tag(:unit, "单位") %>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-con spe">
+          <%= radio_button_tag :preferential,'' %>
+          <%= label_tag(:preferential, "无优惠券") %>
+        </div>
+        <div class="info-con spe">
+          <%= radio_button_tag :preferential,'' %>
+          <%= label_tag(:preferential, "使用优惠券") %>
+        </div>
+        <div class="info-con">
+          <button class="verify bac-orange font-white">验证</button>
+          <label for="" class="hidden verify-info">验证成功！</label>
+        </div>
+      </div>
+      <div class="info-group">
+        <div class="info-title">
+          <%= label_tag(:input_clinet_title, "备注：") %>
+        </div>
+        <div class="info-con">
+          <%= text_area(:input_clinet_title,'填写备注') %>
+        </div>
+      </div>
+      <div class="submit-info bac-orange font-white">
+        <%= @result['name'] %>
+        <%= submit_tag("提交订单",:class => 'submit bac-white') %>
+        <span class="price">总价: <%= @result['price'] %>元</span>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
 </div>
 
+<%= render "shared/add_address_modal" %>
