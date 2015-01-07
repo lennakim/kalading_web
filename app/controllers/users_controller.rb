@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    redirect_to action: :orders
+  end
+
   def orders
     # phone_nums = params[:phone_nums]
     @orders = Order.get_orders_of '13333333333'
@@ -9,7 +13,7 @@ class UsersController < ApplicationController
   def maintain_histories
   end
 
-  def i
+  def settings
   end
 
   def cars
