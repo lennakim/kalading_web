@@ -73,7 +73,6 @@ class OrdersController < ApplicationController
         "address"        => params[:address],
         "name"           => params[:name],
         "phone_num"      => params[:phone_num],
-        "client_id"      => params[:car_id],
         "car_location"   => params[:car_location],
         "car_num"        => params[:car_num],
         "serve_datetime" => "#{params[:serve_date]} #{params[:serve_period]}",
