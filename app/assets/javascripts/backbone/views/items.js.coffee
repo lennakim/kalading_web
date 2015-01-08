@@ -49,9 +49,6 @@ class Kalading.Views.Items extends Backbone.View
 
     @order.set 'parts', parts
 
-    console.log @order
-    console.log parts
-
     @disableSelectors()
 
   chooseParts: (e)=>

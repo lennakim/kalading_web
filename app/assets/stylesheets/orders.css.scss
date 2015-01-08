@@ -280,7 +280,6 @@ $title-gray: #787878;
   }
   .info-group{
     overflow: hidden;
-    line-height: 40px;
     margin: 5px;
     .star{
       float: left;
@@ -296,19 +295,11 @@ $title-gray: #787878;
     .info-con{
       float: left;
       padding-left: 5px;
-      input{
-        line-height: 35px;
-        padding: 0 10px;
-        border: 0;
-        background: #fafafa;
-      }
       #address{
         width: 230px;
       }
-      .verify{
-        width: 100px;
-        line-height: 30px;
-        border: 0;
+      .verify-btn{
+        @include button();
       }
       .verify-info{
         color: $font-orange;
