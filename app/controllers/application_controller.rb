@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :signed_in?
-  helper_method :current_city
+  helper_method :current_city, :current_city_id
 
   before_action :set_city
   before_action :set_device_type
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_city_id
-
+    City.find_by(name: current_city).system_id
   end
 
   private

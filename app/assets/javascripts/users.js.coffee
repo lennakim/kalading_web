@@ -30,6 +30,3 @@ $ ->
 
         $.post '/xxx', comment
 
-  $(".addresses").on "change", ".radio input[type=radio]", (e) ->
-    id = $(@).val()
-    $.post "/service_addresses/#{ id }/set_default"

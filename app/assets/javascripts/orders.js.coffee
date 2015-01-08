@@ -31,7 +31,7 @@ $ ->
       maxDate = new Date()
       maxDate.setDate(maxDate.getDate()+8)
 
-      $( '#serve_datetime' ).pickadate({
+      $( '#serve_date' ).pickadate({
         min: nowDay,
         max: maxDate,
         today: '',

@@ -13,6 +13,7 @@
 #
 #= require home
 #= require users
+#= require service_addresses
 #
 #= require_self
 
