@@ -59,12 +59,17 @@
       <tfoot></tfoot>
     </table>
 
-    <div class="address-content bac-white clearfix">
-      <%= render "shared/select_address" %>
-    </div>
-
     <div class="orders-content bac-white form-horizontal">
+
       <p class='order-info'>订单信息</p>
+
+
+      <div class="address bac-white clearfix">
+        <%= render "shared/select_address" %>
+      </div>
+
+      <hr>
+
       <div class="info-group form-group">
         <div class="info-title">
           <var class="star">*</var>

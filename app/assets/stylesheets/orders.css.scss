@@ -274,13 +274,13 @@ $title-gray: #787878;
       color: #ef4f24;
     }
   }
-  .address-content,.orders-content{
-    border: 1px solid #ccc;
-    padding: 15px 5%;
-  }
   .info-group{
     overflow: hidden;
     margin: 5px;
+
+    input{
+      line-height: 30px;
+    }
     .star{
       float: left;
       color: $font-orange;
@@ -313,6 +313,9 @@ $title-gray: #787878;
     }
   }
   .orders-content{
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
     .order-info{
       line-height: 40px;
       padding-left: 40px;
