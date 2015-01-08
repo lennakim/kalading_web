@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_city, :current_city_id, :current_city_name
 
   before_action :set_city
-  # before_action :set_device_type
+  before_action :set_device_type
 
   def sign_in user
     cookies[:LGT] = { value: user.update_user, expires: 30.days.from_now }
