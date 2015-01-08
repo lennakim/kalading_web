@@ -118,7 +118,12 @@ class OrdersController < ApplicationController
 
     Rails.logger.info payload
 
-    Order.submit params[:car_id], payload
+    result = Order.submit params[:car_id], payload
+    if result["result"] == "succeeded"
+      render "success"
+    else
+      render "fail"
+    end
   end
 
   def show

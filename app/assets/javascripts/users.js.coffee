@@ -29,4 +29,3 @@ $ ->
         comment = tags.join(', ')
 
         $.post '/xxx', comment
-
