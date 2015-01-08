@@ -4,73 +4,73 @@
 
 <div class="select-car-phone phone-page">
   <div role="tabpanel">
-	<ul class="nav nav-tabs" role="tablist" id="myTab">
-	  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
-	  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">保养说明</a></li>
-	  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">订单评价</a></li>
-	</ul>
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">保养说明</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">订单评价</a></li>
+    </ul>
 
-	<div class="tab-content">
-	  <div role="tabpanel" class="tab-pane active" id="home">
-	  	<div class="quick-select">
-	      <h4 class="item-title">我的快捷车辆</h4>
-	      <a class="add-car"> + 重新选择</a>
-	      <div class="car-content content">
-	      	<%= render "shared/car_item" %>
-	      	<%= render "shared/car_item" %>
-	      	<%= render "shared/car_item" %>
-	      </div>
-	    </div>
-		<div class="orders bac-white">
-		  <h4 class="item-title">服务类型</h4>
-	      <ul class="content">
-	        <li class="pm25"><%= link_to "PM2.5滤芯滤清器", select_car_orders_path(car_id: params[:car_id], type: "pm25") %></li>
-	        <li class="maintain"><%= link_to "车辆上门保养", select_car_orders_path(car_id: params[:car_id], type: "maintain") %></li>
-	      </ul>
-	      <h4 class="item-title">选择配件</h4>
-	      <div class="orders-con <%= type=params['type'] %>-con content">
-	        <% if params[:car_id] %>
-	          <%= render "items", type: type %>
-	        <% else %>
-	          请选择车辆
-	        <% end %>
-	      </div>
-	    </div>
-	  </div>
-	  <div role="tabpanel" class="tab-pane" id="profile">保养说明</div>
-	  <div role="tabpanel" class="tab-pane" id="messages">
-	  	<dl class="comment-item">
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="quick-select">
+          <h4 class="item-title">我的快捷车辆</h4>
+          <a class="add-car"> + 重新选择</a>
+          <div class="car-content content">
+            <% current_user.autos.each do |auto| %>
+              <%= render "shared/car_item", auto: auto %>
+            <% end %>
+          </div>
+        </div>
+        <div class="orders bac-white">
+          <h4 class="item-title">服务类型</h4>
+          <ul class="content">
+            <li class="pm25"><%= link_to "PM2.5滤芯滤清器", select_car_orders_path(car_id: params[:car_id], type: "pm25") %></li>
+            <li class="maintain"><%= link_to "车辆上门保养", select_car_orders_path(car_id: params[:car_id], type: "maintain") %></li>
+          </ul>
+          <h4 class="item-title">选择配件</h4>
+          <div class="orders-con <%= type=params['type'] %>-con content">
+            <% if params[:car_id] %>
+              <%= render "items", type: type %>
+          <% else %>
+              请选择车辆
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile">保养说明</div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <dl class="comment-item">
           <dt>
-            <h3>北京市东城区 | 京A***34</h3>
-            <span class="time">11分钟前</span>
+          <h3>北京市东城区 | 京A***34</h3>
+          <span class="time">11分钟前</span>
           </dt>
           <dd>
-            保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+          保养订单保养订单保养订单保养订单保养订单保养订单保养订单
           </dd>
         </dl>
         <dl class="comment-item">
           <dt>
-            <h3>北京市东城区 | 京A***34</h3>
-            <span class="time">11分钟前</span>
+          <h3>北京市东城区 | 京A***34</h3>
+          <span class="time">11分钟前</span>
           </dt>
           <dd>
-            保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+          保养订单保养订单保养订单保养订单保养订单保养订单保养订单
           </dd>
         </dl>
-	  </div>
-	</div>
+      </div>
+    </div>
   </div>
 </div>
 <script>
-	$('#myTab a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
-	})
+$('#myTab a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+    })
 
-	$('.quick-select').on('click','input:radio',function(){
-		var car_id = $('input:radio:checked').parent().siblings('.btn').data('id');
-		window.location.href = '/orders/select_car?car_id='+car_id+'&type=pm25'
-	})
-	
+$('.quick-select').on('click','input:radio',function(){
+    var car_id = $('input:radio:checked').parent().siblings('.btn').data('id');
+    window.location.href = '/orders/select_car?car_id='+car_id+'&type=pm25'
+    })
+
 
 </script>

@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def cars
     @cars_info = Order.cars_data
-
     @maintain_histories = Order.maintain_histories_of current_user.phone_number
   end
 
