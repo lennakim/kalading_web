@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def default_address
-    default_address = default_address_id && ServiceAddress.find(default_address_id)
+    default_address = default_address_id && ServiceAddress.find_by(id: default_address_id)
 
     default_address ? default_address : service_addresses.last
   end
