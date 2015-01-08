@@ -5,14 +5,18 @@
     </span>
 
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-      奥迪A6L 2009 <span class="caret"></span>
+      <%= auto.brand %>
+      <span class="caret"></span>
     </button>
 
     <div class="content dropdown-menu" role="menu">
       <ul>
-        <li>品牌: &nbsp; 宝马(进口)</li>
-        <li>系列: &nbsp; E</li>
-        <li>型号: &nbsp; E200k（W211）2.0L 2006.09-2014</li>
+        <li>品牌: &nbsp; <%= auto.brand %></li>
+        <li>系列: &nbsp; <%= auto.series %></li>
+        <li>型号: &nbsp; <%= auto.model_number %></li>
+        <li>注册日期: &nbsp; <%= auto.registed_at %></li>
+        <li>引擎号: &nbsp; <%= auto.engine_number %></li>
+        <li>VIN: &nbsp; <%= auto.vin %></li>
       </ul>
     </div>
   </div>

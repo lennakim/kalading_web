@@ -19,14 +19,9 @@
         <div class="cars clearfix">
 
           <div class="select-cars">
-
-            <%= render "shared/car_item" %>
-            <%= render "shared/car_item" %>
-            <%= render "shared/car_item" %>
-            <%= render "shared/car_item" %>
-            <%= render "shared/car_item" %>
-            <%= render "shared/car_item" %>
-
+            <% current_user.autos.each do |auto| %>
+              <%= render "shared/car_item", auto: auto %>
+            <% end %>
           </div>
 
           <div class="car pull-left col-sm-3">
