@@ -1,0 +1,23 @@
+<div class="modal fade" id="select_city_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <div class="cities clearfix" data-toggle="buttons">
+          <% City.all.each do |city| %>
+            <div class="city pull-left">
+              <label class="btn btn-default <%= "active" if city.name == current_city_name %>">
+                <input name="city" type="radio" value="<%= city.id %>"><%= city.name %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="change-city">
+          <button id="change_city" class='btn btn-default orange-btn'>切换</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -4,7 +4,12 @@
       <a href="/">
         <%= image_tag("logo1.png", :class=> "logo")%>
       </a>
-      <span class="maintain-address" title="保养低点:<%= current_city %>">保养地点：<%= current_city %></span>
+      <span class="maintain-address" title="保养低点:<%= current_city %>">保养地点：
+
+        <span id="current_city">
+          <%= current_city_name %>
+        </span>
+      </span>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">

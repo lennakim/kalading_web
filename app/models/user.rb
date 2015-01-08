@@ -23,9 +23,9 @@ class User < ActiveRecord::Base
     default_address ? default_address : service_addresses.last
   end
 
-  def set_city city_name
-    if city_name
-      self.city = City.find_by name: city_name
+  def set_city city
+    if id
+      self.city = city
       save
     end
   end

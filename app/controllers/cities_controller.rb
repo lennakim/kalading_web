@@ -1,10 +1,11 @@
 class CitiesController < ApplicationController
   def set
+    city = City.find params[:city_id]
+
     if signed_in?
-      current_user.set_city params[:city_name]
-      render json: { success: true }
-    else
-      render json: { success: false }
+      current_user.set_city city
     end
+
+    cookies[:city_id] = city.id
   end
 end

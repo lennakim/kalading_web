@@ -27,6 +27,25 @@ $ ->
   $('#car_style').chained('#car_type, #car_name')
   $('#car_type').chained('#car_name')
 
+  # select city modal
+
+  $("#current_city").on "click", (e) ->
+    e.stopPropagation()
+    e.preventDefault()
+
+    $("#select_city_modal").modal()
+
+  $("#change_city").on "click", (e) ->
+    e.stopPropagation()
+    e.preventDefault()
+
+    if $('#select_city_modal .cities .active').length > 0
+      $(@).addClass('disabled')
+      id = $("#select_city_modal .cities .active input").val()
+
+      $.post("/cities/#{ id }/set")
+
+
   # select address
   $(".addresses .add > a.btn").on "click", (e)->
     e.stopPropagation()

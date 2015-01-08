@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :signed_in?
-  helper_method :current_city, :current_city_id
+  helper_method :current_city, :current_city_id, :current_city_name
 
   before_action :set_city
   before_action :set_device_type
@@ -22,27 +22,35 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_locale
-    return current_user.city.name if current_user && current_user.city
+    return current_user.city.id if current_user && current_user.city
 
-    cookies[:city]
+    cookies[:city_id]
   end
 
   def extract_from_ip
     address = BaiduApi.ip_to_city(request.remote_ip)
-    address.split('|')[1] if address
+    City.find_by(name: address.split('|'))[1] if address
+  end
+
+  def default_city
+    City.find_by(name: "北京")
   end
 
   def set_city
-    city = current_user_locale || extract_from_ip || "北京"
-    cookies[:city] = city
+    city_id = current_user_locale || extract_from_ip || default_city.id
+    cookies[:city_id] = city_id
   end
 
   def current_city
-    cookies[:city] || "北京"
+    cookies[:city_id] || default_city.id
+  end
+
+  def current_city_name
+    City.find(current_city).name
   end
 
   def current_city_id
-    City.find_by(name: current_city).system_id
+    City.find(current_city).system_id
   end
 
   private
