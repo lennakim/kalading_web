@@ -1,7 +1,5 @@
 class PhonesController < ApplicationController
 
-  skip_before_action :set_device_type
-
   def create
 
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
