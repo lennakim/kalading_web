@@ -348,5 +348,48 @@ $bac: #f7f4f3;
 	}
 }
 .home-phone{
-	
+  .service-module,.tec-team,.service-address,.service-process{
+    padding: 0 20px;
+    margin: 20px 0;
+    font-size: 18px;
+    h3{
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .module-item{
+      margin: 10px 0;
+    }
+    .star{
+
+    }
+  }
+  .service-module{
+    ul{
+      line-height: 30px;
+      li{
+        margin: 10px 0;
+      }
+    }
+  }
+  .showimg{
+    padding: 20px;
+    li{
+      margin-bottom: 10px;
+      &:last-child{
+        margin: 0;
+      }
+    }
+  }
+  .tec-team{
+    .img-item{
+      margin: 10px 0;
+    }
+  }
+  .totop{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
 }

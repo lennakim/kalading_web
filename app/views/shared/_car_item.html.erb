@@ -4,11 +4,12 @@
       <input type="radio" name="car_brand" aria-label="...">
     </span>
 
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" data-id="<%= auto.system_id %>">
       <%= auto.brand %>
       <span class="caret"></span>
     </button>
 
+    <span class="close">X</span>
     <div class="content dropdown-menu" role="menu">
       <ul>
         <li>品牌: &nbsp; <%= auto.brand %></li>

@@ -1,0 +1,51 @@
+<div class="orders">
+  <% if @orders %>
+    <% @orders.each do |order| %>
+      <div class="order">
+        <div class="top clearfix">
+          <div class="datetime pull-left">
+            <%= order["serve_datetime"] %>
+          </div>
+          <div class="number pull-left">
+            订单号: <%= order['seq'] %>
+          </div>
+        </div>
+        <div class="order-detail clearfix">
+
+          <div class="pull-left">
+            <div class="order-title">
+              <%= order["auto_model"] %> 上门保养
+            </div>
+
+            <div class="items">
+              <% order["parts"].each do |part| %>
+                <div class="item">
+                  [<%= part["type"] %>] <%= part["brand"] %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="order-price pull-left">
+            <%= order["price"] %> 元
+          </div>
+
+          <div class="comment pull-left">
+            <div class="del">
+              <%= link_to "取消订单", "#", class: "btn btn-default orange-button", "data-order" => order["id"] %>
+            </div>
+            <div class="cmt">
+              <%= link_to "评价订单", "#", class: "btn btn-default orange-button", "data-order" => order["id"] %>
+            </div>
+            <div class="order-status">
+              <%= link_to "订单状态", "#", class: "btn btn-default orange-button", "data-order" => order["id"] %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>呀~您还没有预定过我们的服务呢~</p>
+    <p>赶紧去首页下单吧！</p>
+  <% end %>
+</div>

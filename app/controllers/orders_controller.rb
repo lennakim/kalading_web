@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   def select_car
     type = params[:type]
     @cars_info = Order.cars_data type
+    @result = Order.items_for params[:car_id]
   end
 
   def refresh_price
@@ -20,13 +21,13 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    car_id = params["order"]["car_id"]
-    parts = params["order"]["parts"]
-    payload = {
-      "parts" => parts
-    }
+    # car_id = params["order"]["car_id"]
+    # parts = params["order"]["parts"]
+    # payload = {
+    #   "parts" => parts
+    # }
 
-    @result = Order.refresh_price car_id, payload
+    #@result = Order.refresh_price car_id, payload
   end
 
   def submit
@@ -68,5 +69,9 @@ class OrdersController < ApplicationController
 
   def show
   end
+
+  def order_status
+  end
+
 
 end
