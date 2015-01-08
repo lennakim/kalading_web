@@ -8,8 +8,6 @@
       <%= auto.brand %>
       <span class="caret"></span>
     </button>
-
-    <span class="close">X</span>
     <div class="content dropdown-menu" role="menu">
       <ul>
         <li>品牌: &nbsp; <%= auto.brand %></li>
@@ -18,6 +16,12 @@
         <li>注册日期: &nbsp; <%= auto.registed_at %></li>
         <li>引擎号: &nbsp; <%= auto.engine_number %></li>
         <li>VIN: &nbsp; <%= auto.vin %></li>
+        <li>
+          <%= link_to "编辑", "#" %>
+        </li>
+        <li>
+          <%= link_to "删除", "#" %>
+        </li>
       </ul>
     </div>
   </div>
