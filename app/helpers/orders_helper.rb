@@ -1,5 +1,44 @@
 module OrdersHelper
 
+  def can_cancel? order
+    status = order["state"]
+    ["未审核", "未分配", "未预约", "已预约"].include? status
+  end
+
+  def can_comment? order
+    status = order["state"]
+    status == "服务完成"
+  end
+
+  def order_statuses order
+    status = order["state"]
+
+    # 提交订单     0
+    # 等待客服确认 2 / 客服已确认  3
+    # 等待技师预约 3 / 技师已预约  4
+    # 等待上门服务 4 / 订单完成    5
+    #
+    # 0: 未审核， 1：审核失败，2：未分配，3：未预约，4：已预约，5：服务完成，6：已交接，7：已回访，8：已取消，9：用户咨询, 10: 取消待审核
+
+    content = [[nil, "提交订单"], ["等待客服确认", "客服已确认"], ["等待技师预约", "技师已预约"], ["等待上门服务", "订单完成"] ]
+
+    statuses = {
+      "未审核"     => [[1], [0], [0], [0]],
+      "未分配"     => [[1], [0], [0], [0]],
+      "未预约"     => [[1], [1], [0], [0]],
+      "已预约"     => [[1], [1], [1], [0]],
+      "服务完成"   => [[1], [1], [1], [1]]
+    }
+
+    if statuses[status]
+      statuses[status].each_with_index.map do |s, i|
+        [ content[i][s.first], (s.first == 1) ]
+      end
+    else
+      nil
+    end
+  end
+
   def default_parts result
     result["parts"].map{ |part| part.values[0][0]["number"] }
   end

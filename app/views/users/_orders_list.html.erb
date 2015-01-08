@@ -31,16 +31,43 @@
           </div>
 
           <div class="comment pull-left">
-            <div class="del">
-              <%= link_to "取消订单", "#", class: "btn btn-default orange-button", "data-order" => order["id"] %>
-            </div>
-            <div class="cmt">
-              <%= link_to "评价订单", "#", class: "btn btn-default orange-button", "data-order" => order["id"] %>
-            </div>
+            <% if can_cancel?(order) %>
+              <div class="del">
+                <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+              </div>
+            <% end %>
+            <% if can_comment?(order) %>
+              <div class="cmt">
+                <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+              </div>
+            <% end %>
+
             <div class="order-status">
-              <%= link_to "订单状态", "#", class: "btn btn-default orange-button", "data-order" => order["id"] %>
+              <%= link_to "订单状态", "#", class: "btn btn-default" %>
             </div>
           </div>
+        </div>
+
+        <div class="status hidden clearfix">
+          <% statuses = order_statuses(order) %>
+          <% if statuses %>
+            <% statuses.each_with_index do |status_hash, index| %>
+              <div class="col-sm-3">
+                <div class="content <%= "highlight" if status_hash[1] %> clearfix">
+                  <div class="number">
+                    <%= index + 1 %>
+                  </div>
+                  <div class="ct">
+                    <%= status_hash[0] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="col-sm-12">
+              <%= order["state"] %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

@@ -5,7 +5,7 @@ $ ->
 
   if $('.user-info').length > 0
 
-    $(".orders").on "click", ".order .comment a", (e)->
+    $(".orders").on "click", ".order .comment > .cmt > a", (e)->
       e.stopPropagation()
       e.preventDefault()
 
@@ -29,3 +29,14 @@ $ ->
         comment = tags.join(', ')
 
         $.post '/xxx', comment
+
+  $('.orders').on "click", ".order .order-status a", (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+
+    area = $(@).closest('.order').find('.status')
+    if area.hasClass('hidden')
+      area.removeClass('hidden')
+    else
+      area.addClass('hidden')
+
