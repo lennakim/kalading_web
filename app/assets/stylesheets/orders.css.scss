@@ -542,6 +542,7 @@ $title-gray: #787878;
     dt{
       overflow: hidden;
       line-height: 40px;
+      border-bottom: 1px solid #f7f4f3;
     }
     h3{
       width: 230px;
@@ -551,8 +552,8 @@ $title-gray: #787878;
     }
     .time{
       float: left;
-      font-size: 10px;
-      color: #a0a0a0;
+      font-size: 12px;
+      color: #999999;
     }
     dd{
       color: $title-gray;
@@ -596,20 +597,60 @@ $title-gray: #787878;
   }
 }
 .order-status-phone{
+  .order-status{
+    // .item-title:before{
+    //   content: url('order-status.png') 
+    // }
+  }
   .status{
-    padding: 0 20px 0 60px;
+    padding: 10px 20px;
+    background: #fff;
     li{
-      padding: 10px 0;
       line-height: 30px;
-      border-bottom: 1px solid #ccc;
       &:last-child{
         border: 0;
+      }
+      .num{
+        float: left;
+        margin: 8px 10px;
+        width: 15px;
+        height: 15px;
+        background: #d5e1e8;
+        border-radius: 10px;
+      }
+      .title,.con{
+        color: #999999;
+      }
+      .title{
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      .con{
+        padding-left: 18px;
+        margin-left: 15px;
+        border-left: 3px solid #d5e1e8;
+        font-size: 14px;
+      }
+    }
+    .selected{
+      .num{
+        float: left;
+        margin: 0 5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 13px;
+        background: #2c698c;
+        border: 4px solid #d5e1e8;
+      }
+      .title,.con{
+        color: #2c698c;
       }
     }
   }
   .tips{
     p{
       padding: 20px;
+      background: #fff;
     }
   }
 }
