@@ -54,7 +54,6 @@ class Kalading.Views.Items extends Backbone.View
   chooseParts: (e)=>
     $checkbox = $(e.target)
     checked = $checkbox.prop('checked')
-
     $checkbox.closest('.item').find('.part').attr('disabled', !checked)
 
     @resetSelectItems()

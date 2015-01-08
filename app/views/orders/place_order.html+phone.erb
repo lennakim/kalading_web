@@ -1,75 +1,32 @@
-<% content_for :javascripts do %>
-  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
-  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
-  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
-<% end %>
-
-<%= title "提交订单" %>
-
-<div class="container place-order-page" data-city="<%= current_city %>">
-  <h3 class="main-title row">保养预约</h3>
-
-  <%= render "order_process" %>
+<div class="place-order-phone phone-page">
+  <div class="head-title">
+	<span class="back">< 返回</span>
+	<span>上门保养</span>
+	<%= image_tag("menu.jpg",:class => 'menu')%>
+  </div>
 
   <%= form_tag 'submit' do %>
     <fieldset>
-    <table id="item_table">
-      <thead>
-        <th>商品名称</th>
-        <th>保养项目</th>
-        <th>价格</th>
-        <th>总价</th>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-          <%= @result['name'] %>
-          <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
-        </td>
-        <td class="item">
-          <% @result['parts'].each_index do |index| %>
-            <% part = @result['parts'][index]%>
-          <p name='items'>
-          [<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
-          <%#= hidden_field_tag("orders[parts][#{index}][brand]", part.values.first.first['brand']) %>
-
-          <%#= hidden_field_tag("orders[parts][#{index}][number]", part.values.first.first['number']) %>
-
-          <%= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
-
-          <%= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
-          </p>
-        <% end %>
-        </td>
-        <td>
-          <% @result['parts'].each_index do |index| %>
-            <% part = @result['parts'][index]%>
-          <p>
-          <%= part.values.first.first['price'] %>
-          <%= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
-          </p>
-        <% end %>
-        </td>
-        <td class="result">
-          <%= @result['price_without_discount'] %>
-          <%= hidden_field_tag(:price, @result['price_without_discount']) %>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot></tfoot>
-    </table>
-
     <div class="orders-content bac-white form-horizontal">
-
       <p class='order-info'>订单信息</p>
-
-
       <div class="address bac-white clearfix">
-        <%= render "shared/select_address" %>
+        <h4 class="item-title">选择服务地址</h4>
+	  	<ul>
+	  		<li class="address-item">
+	  			<input type="radio" name="car_brand">
+	  			<span>海淀区苏州街</span>
+	  			<span class="close">X</span>
+	  		</li>
+	  		<li class="address-item">
+	  			<input type="radio" name="car_brand">
+	  			<span>海淀区苏州街</span>
+	  			<span class="close">X</span>
+	  		</li>
+	  		<li>+ 添加地址</li>
+	  	</ul>
       </div>
-
       <hr>
-
+      <h4 class="item-title">订单信息 <span class="des">注：<span class="red">红色“*”</span>为必填选项</span></h4>
       <div class="info-group form-group">
         <div class="info-title">
           <var class="star">*</var>
@@ -153,19 +110,19 @@
       <hr>
 
       <div class="info-group form-group">
-        <div class="info-con spe">
+        <div class="info-con spe1">
           <%= radio_button_tag :invoice,'', class: 'form-control' %>
           <%= label_tag(:invoice, "不要发票") %>
         </div>
-        <div class="info-con spe">
+        <div class="info-con spe1">
           <%= radio_button_tag :invoice,'', class: 'form-control' %>
           <%= label_tag(:invoice, "发票") %>
         </div>
-        <div class="info-con spe">
+        <div class="info-con spe1">
           <%= radio_button_tag :unit,'', class: 'form-control' %>
           <%= label_tag(:unit, "个人") %>
         </div>
-        <div class="info-con spe">
+        <div class="info-con spe1">
           <%= radio_button_tag :unit,'', class: 'form-control' %>
           <%= label_tag(:unit, "单位") %>
         </div>
@@ -173,15 +130,15 @@
 
 
       <div class="info-group form-group">
-        <div class="info-con spe">
+        <div class="info-con spe2">
           <%= radio_button_tag :preferential,'', class: 'form-control' %>
           <%= label_tag(:preferential, "无优惠券") %>
         </div>
-        <div class="info-con spe">
+        <div class="info-con spe2">
           <%= radio_button_tag :preferential,'', class: 'form-control' %>
           <%= label_tag(:preferential, "使用优惠券") %>
         </div>
-        <div class="info-con">
+        <div class="info-con spe2">
           <a class="verify-btn">验证</a>
           <label for="" class="hidden verify-info">验证成功！</label>
         </div>
@@ -195,14 +152,57 @@
           <%= text_area(:input_clinet_title, '填写备注', class: 'form-control') %>
         </div>
       </div>
-      <div class="submit-info bac-orange font-white">
-        <%= @result['name'] %>
+      <table id="item_table">
+      	<thead>
+        	<th>商品名称</th>
+        	<th>保养项目</th>
+        	<th>价格</th>
+        	<th>总价</th>
+      	</thead>
+        <tbody>
+	      <tr>
+	        <td>
+	          <%#= @result['name'] %>
+	          <%#= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
+	        </td>
+	        <td class="item">
+	          <%# @result['parts'].each_index do |index| %>
+	            <%# part = @result['parts'][index]%>
+		        <p name='items'>
+		          [<%#= part.keys.first %>]<%#= part.values.first.first['brand'] %>
+
+		          <%#= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
+
+		          <%#= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
+		        </p>
+	          <%# end %>
+	        </td>
+	        <td>
+	          <%# @result['parts'].each_index do |index| %>
+	            <%# part = @result['parts'][index]%>
+		        <p>
+		          <%#= part.values.first.first['price'] %>
+		          <%#= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
+		        </p>
+	          <%# end %>
+	        </td>
+	        <td class="result">
+	          <%#= @result['price_without_discount'] %>
+	          <%#= hidden_field_tag(:price, @result['price_without_discount']) %>
+	        </td>
+	      </tr>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+      <div class="submit-info">
+        <%#= @result['name'] %>
+        <span class="price">当前费用: <%#= @result['price'] %>元</span>
+        <p>支持现金、刷卡支付</p>
         <%= submit_tag("提交订单",:class => 'submit bac-white') %>
-        <span class="price">总价: <%= @result['price'] %>元</span>
       </div>
     </div>
     </fieldset>
   <% end %>
-</div>
 
-<%= render "shared/add_address_modal" %>
+
+</div>

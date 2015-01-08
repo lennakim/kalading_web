@@ -1,0 +1,11 @@
+<div class="car pull-left col-sm-3">
+  <div class="input-group btn-group">
+    <span class="input-group-addon">
+      <input type="radio" name="service-type" aria-label="...">
+    </span>
+
+    <button class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+      <%= link_to "PM2.5空调滤清器", select_item_orders_path(car_id: params[:car_id], type: "pm25") %>
+    </button>
+  </div>
+</div>

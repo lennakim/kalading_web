@@ -14,9 +14,10 @@ Rails.application.routes.draw do
       get 'select_car'
       get 'select_item'
       get 'success'
+      get 'order_status'
 
       post 'refresh_price'
-      post 'place_order'
+      get 'place_order'
       post 'submit'
     end
   end

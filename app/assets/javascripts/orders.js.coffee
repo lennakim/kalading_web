@@ -8,7 +8,7 @@
 
 $ ->
 
-  if $(".items-select-page").length > 0
+  if $(".items-select-page,.select-car-phone").length > 0
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
