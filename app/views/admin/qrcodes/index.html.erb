@@ -1,0 +1,7 @@
+<%= link_to "返回", admin_weixin_index_path %>
+<% @index.each do |num| %>
+  <h4>
+    场景二维码<%=num%>:
+  </h4>
+  <%= image_tag @client.qr_code_url(@client.create_qr_limit_scene(num.to_s).result["ticket"]) %>
+<% end %>

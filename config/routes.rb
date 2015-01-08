@@ -60,6 +60,7 @@ Rails.application.routes.draw do
         post ':id/update_menu' => 'public_accounts#update_menu', as: 'update_menu'
       end
     end
+    resources :qrcodes
     resources :weixin
   end
 
