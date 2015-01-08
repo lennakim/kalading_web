@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   def extract_from_ip
     address = BaiduApi.ip_to_city(request.remote_ip)
-    City.find_by(name: address.split('|')[1]) if address
+    City.find_by(name: address.split('|')[1]).id if address
   end
 
   def default_city
