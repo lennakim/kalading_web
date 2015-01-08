@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       get 'order_status'
 
       post 'refresh_price'
-      get 'place_order'
+      post 'place_order'
       post 'submit'
     end
   end
@@ -61,6 +61,7 @@ Rails.application.routes.draw do
         post ':id/update_menu' => 'public_accounts#update_menu', as: 'update_menu'
       end
     end
+    resources :qrcodes
     resources :weixin
   end
 

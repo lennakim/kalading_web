@@ -54,6 +54,7 @@ gem 'browser'
 gem 'impressionist'
 
 group :development, :test do
+  gem 'http_logger'
   gem 'pry'
   gem 'pry-rails'
   gem 'awesome_print'

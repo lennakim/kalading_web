@@ -32,42 +32,39 @@ class OrdersController < ApplicationController
 
   def submit
 
-    car_id = params["car_id"]
-    type = params["type"]
-    parts = params["parts"]
+    payload = {
+      parts: params[:parts].values,
+      info: {
+        "address"        => params[:address],
+        "name"           => params[:name],
+        "phone_num"      => params[:phone_num],
+        "car_location"   => params[:car_location],
+        "car_num"        => params[:car_num],
+        "serve_datetime" => "#{params[:serve_date]} #{params[:serve_period]}",
+        "pay_type"       => params[:pay_type],
+        "reciept_type"   => 1,
+        "reciept_title"  => "卡拉丁汽车技术",
+        "client_comment" => params[:client_comment],
+        "city_id"        => params[:city_id],
+        "car_id"         => params[:car_id],
+        "registration_date" => params[:registration_date],
+        "engine_num"     => params[:engine_num],
+        "vin"            => params[:vin]
+      }
+    }
 
+    result = Order.submit params[:car_id], payload
+    if result["result"] == "succeeded"
 
-    # json_data = '
-    #   "parts": [
-    #     {
-    #       "brand": "曼牌 Mann",
-    #       "number": "528af433098e7180590042ca"
-    #     },
-    #     {
-    #       "brand": "卡拉丁",
-    #       "number": "53672bab9a94e45d440005ae"
-    #     }
-    #   ],
-    #   "info": {
-    #     "address": "北京朝阳区光华路888号",
-    #     "name": "王一迅",
-    #     "phone_num": "13888888888",
-    #     "client_id": "040471abcd",
-    #     "car_location": "京",
-    #     "car_num": "N333M3",
-    #     "serve_datetime": "2014-06-09 15:44",
-    #     "pay_type": 1,
-    #     "reciept_type": 1,
-    #     "reciept_title": "卡拉丁汽车技术",
-    #     "client_comment": "请按时到场",
-    #     "city_id": "5307033e098e719c45000043"
-    #   }
-    # }
-    # '
+      # add this car to user
+      current_user.add_auto payload[:info]
 
+      # send notification to user's wechat
 
-    payload = JSON.parse json_data
-    Order.submit car_id, payload
+      render "success"
+    else
+      render "fail"
+    end
   end
 
   def show

@@ -21,6 +21,9 @@
   <%= render 'layouts/header' %>
   <%= yield %>
   <%= render 'layouts/footer' %>
+
+  <%= render "shared/select_city_modal" %>
+
   <% if Rails.env.production? %>
     <script src="http://s19.cnzz.com/z_stat.php?id=1252972288&web_id=1252972288" language="JavaScript"></script>
   <% end %>

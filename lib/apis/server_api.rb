@@ -26,9 +26,6 @@ module ServerApi
         "#{Settings.server_uri}/#{api_name}.json"
       url = append_query_string base_url, args.except(:body)
 
-      Rails.logger.info '--- send api to url:'
-      Rails.logger.info url
-
       result = method == "get" ? \
         RestClient.get(url, content_type: 'json') :
         RestClient.send(method, url, args[:body].to_json, content_type: 'json')

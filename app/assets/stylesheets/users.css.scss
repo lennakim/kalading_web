@@ -260,6 +260,32 @@ $grey: #c4c4c4;
   }
 }
 
+#select_city_modal{
+
+  .cities{
+    padding: 5px 50px;
+
+    .city{
+      margin-right: 20px;
+      margin-bottom: 20px;
+
+      input[type='radio']{
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none;
+      }
+    }
+  }
+
+  .change-city{
+    margin-top: 15px;
+    text-align: center;
+    .orange-btn{
+      @include button();
+    }
+  }
+}
+
 #comment_modal{
   .comment-tags{
     padding: 5px 50px;
