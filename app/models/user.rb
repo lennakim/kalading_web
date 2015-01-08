@@ -10,6 +10,21 @@ class User < ActiveRecord::Base
   validates :phone_number, uniqueness: true
   before_create :generate_token
 
+  def add_auto order_info
+    auto = autos.find_or_create_by \
+      license_location: order_info["car_location"],
+      license_number: order_info["car_num"]
+
+    auto.update_attributes \
+      system_id:        order_info["car_id"],
+      brand:            "宝马(进口)",
+      series:           "E",
+      model_number:     "E200k（W211）2.0L 2006.09-2014",
+      registed_at:      order_info["registration_date"],
+      engine_number:    order_info["engine_num"],
+      vin:              order_info["vin"]
+  end
+
   def set_default_address address
     if address
       self.default_address_id = address.id

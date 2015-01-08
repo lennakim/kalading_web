@@ -44,12 +44,22 @@ class OrdersController < ApplicationController
         "reciept_type"   => 1,
         "reciept_title"  => "卡拉丁汽车技术",
         "client_comment" => params[:client_comment],
-        "city_id"        => params[:city_id]
+        "city_id"        => params[:city_id],
+        "car_id"         => params[:car_id],
+        "registration_date" => params[:registration_date],
+        "engine_num"     => params[:engine_num],
+        "vin"            => params[:vin]
       }
     }
 
     result = Order.submit params[:car_id], payload
     if result["result"] == "succeeded"
+
+      # add this car to user
+      current_user.add_auto payload[:info]
+
+      # send notification to user's wechat
+
       render "success"
     else
       render "fail"
