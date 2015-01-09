@@ -59,10 +59,11 @@ $ ->
     $(@).addClass('disabled')
     $modal = $(e.delegateTarget)
     city = $modal.find('select.city').val()
+    district = $modal.find('select.district').val()
 
     detail = $modal.find('#address_detail').val()
     if $.trim(detail) != ""
-      $.post "/service_addresses", { service_address: { city: city, detail: detail } }
+      $.post "/service_addresses", { service_address: { city: city, district: district, detail: detail } }
     else
       $modal.find("#address_detail").closest(".form-group").addClass("has-error")
 

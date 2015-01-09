@@ -25,6 +25,6 @@ class ServiceAddressesController < ApplicationController
   end
 
   def permitted_params
-    {:service_address => params.fetch(:service_address, {}).permit(:city, :detail)}
+    {:service_address => params.fetch(:service_address, {}).permit(:city, :district, :detail)}
   end
 end
