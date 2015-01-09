@@ -4,6 +4,7 @@ class PublicAccount < ActiveRecord::Base
   has_many :auth_infos
   has_many :diymenus, dependent: :destroy
   has_many :parent_menus, ->{includes(:sub_menus).where(parent_id: nil, is_show: true).order("sort").limit(3)}, class_name: "Diymenu", foreign_key: :public_account_id
+  has_many :recv_messages
 
   accepts_nested_attributes_for :diymenus, :allow_destroy => true
 
