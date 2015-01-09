@@ -6,6 +6,23 @@ class OrdersController < ApplicationController
     @result = Order.items_for params[:car_id]
   end
 
+  def comment
+    data = Order.comment params[:id], {
+      evaluation: params[:content],
+      evaluation_tags: params[:tags],
+      evaluation_score: params[:score]
+    }
+
+    @id = params[:id]
+    @order = Order.find params[:id]
+
+    if data && data["result"] == "ok"
+      render "comment"
+    else
+      render js: "alert('评价失败')"
+    end
+  end
+
   def refresh_price
     car_id = params["order"]["car_id"]
     parts = params["order"]["parts"].try :values
@@ -21,17 +38,16 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    # car_id = params["order"]["car_id"]
-    # parts = params["order"]["parts"]
-    # payload = {
-    #   "parts" => parts
-    # }
+    car_id = params["order"]["car_id"]
+    parts = params["order"]["parts"]
+    payload = {
+      "parts" => parts
+    }
 
-    #@result = Order.refresh_price car_id, payload
+    @result = Order.refresh_price car_id, payload
   end
 
   def submit
-
     payload = {
       parts: params[:parts].values,
       info: {
@@ -72,6 +88,5 @@ class OrdersController < ApplicationController
 
   def order_status
   end
-
 
 end

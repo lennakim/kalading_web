@@ -1,6 +1,11 @@
 class Order
 
   class << self
+
+    def find id
+      get_orders_of("15666300899").first
+    end
+
     def cars_data type = "maintain"
       ServerApi.call "get", "auto_brands", {all: 1, "#{type}" => true}
     end
@@ -27,6 +32,10 @@ class Order
 
     def submit_special_order payload
       ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
+    end
+
+    def comment order_id, payload
+      ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
     end
   end
 

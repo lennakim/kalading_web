@@ -7,7 +7,7 @@ module OrdersHelper
 
   def can_comment? order
     status = order["state"]
-    status == "服务完成"
+    status == "服务完成" && order["evaluation"] == 0
   end
 
   def order_statuses order
