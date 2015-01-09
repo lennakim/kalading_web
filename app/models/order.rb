@@ -2,6 +2,13 @@ class Order
 
   class << self
 
+    def cancel id
+      payload = {
+        order: { state: 8, cancel_reason: '有事先不做了' }
+      }
+      ServerApi.call "put", "orders", { entry_id: id, body: payload }
+    end
+
     def find id
       get_orders_of("15666300899").first
     end

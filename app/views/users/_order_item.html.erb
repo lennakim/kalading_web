@@ -30,7 +30,7 @@
     <div class="comment pull-left">
       <% if can_cancel?(order) %>
         <div class="del">
-          <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+          <%= link_to "取消订单", order_path(order["id"]), class: "btn btn-default", data: { confirm: "确定取消吗？" }, method: :delete, remote: true %>
         </div>
       <% end %>
       <% if can_comment?(order) %>
@@ -38,7 +38,6 @@
           <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
         </div>
       <% end %>
-
       <div class="order-status">
         <%= link_to "订单状态", "#", class: "btn btn-default" %>
       </div>

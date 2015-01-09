@@ -5,7 +5,7 @@ $ ->
 
   if $('.user-info').length > 0
 
-    $(".orders").on "click", ".order .comment > .cmt > a", (e)->
+    $(".orders").on "click", ".order .comment > .cmt > a", (e) ->
       e.stopPropagation()
       e.preventDefault()
 

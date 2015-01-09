@@ -89,4 +89,14 @@ class OrdersController < ApplicationController
   def order_status
   end
 
+  def destroy
+    data = Order.cancel params[:id]
+    @id = params[:id]
+    @order = Order.find params[:id]
+    if data["result"] == "ok"
+      render "destroy"
+    else
+      render js: "alert('取消失败, 请刷新重试')"
+    end
+  end
 end
