@@ -17,12 +17,21 @@ class UsersController < ApplicationController
     @cities = Order.cities
   end
 
+  def update
+    current_user.update_attributes permitted_params[:user]
+    redirect_to settings_users_path
+  end
+
   def cars
     @cars_info = Order.cars_data
     @maintain_histories = Order.maintain_histories_of current_user.phone_number
   end
 
   def balance
+  end
+
+  def permitted_params
+    {:user => params.fetch(:user, {}).permit(:username, :invoice_title)}
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109092216) do
+ActiveRecord::Schema.define(version: 20150109100831) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -231,6 +231,8 @@ ActiveRecord::Schema.define(version: 20150109092216) do
     t.string   "phone_number"
     t.integer  "city_id"
     t.integer  "default_address_id"
+    t.string   "username"
+    t.string   "invoice_title"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
