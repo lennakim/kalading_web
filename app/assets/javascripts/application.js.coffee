@@ -27,6 +27,13 @@ $ ->
   $('#car_style').chained('#car_type, #car_name')
   $('#car_type').chained('#car_name')
 
+  # select service address
+  $("#service_districts").chained("#service_cities")
+  $('#service_districts').on 'change', (e) ->
+    city = $("#service_cities").val()
+    district = $("#service_districts").val()
+    ac.setInputValue "#{city}#{district}"
+
   # select city modal
 
   $("#current_city").on "click", (e) ->

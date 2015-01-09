@@ -2,6 +2,10 @@ class Order
 
   class << self
 
+    def cities
+      ServerApi.call "get", "cities"
+    end
+
     def cancel id
       payload = {
         order: { state: 8, cancel_reason: '有事先不做了' }

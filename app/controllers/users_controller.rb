@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def settings
+    @cities = Order.cities
   end
 
   def cars

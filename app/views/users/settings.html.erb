@@ -70,3 +70,7 @@
 </div>
 
 <%= render "shared/add_address_modal" %>
+<% @cities.each do |city| %>
+  <%= city %>
+  <hr>
+<% end %>
