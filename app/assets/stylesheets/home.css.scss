@@ -348,28 +348,46 @@ $bac: #f7f4f3;
 	}
 }
 .home-phone{
+  .orange{
+  	color: #eb7400;
+  }
+  .order_button{
+  	display: block;
+	width: 180px;
+	margin: 0 auto;
+	line-height: 35px;
+	background: #ee7700;
+	color: #fff;
+  }
   .service-module,.tec-team,.service-address,.service-process{
-    padding: 0 20px;
+    padding: 0 14px;
     margin: 20px 0;
     font-size: 18px;
-    h3{
+    .title{
       margin-bottom: 20px;
       font-size: 20px;
+      &:before{
+		content: url('phone-logo.png')
+  	  }
     }
     .module-item{
       margin: 10px 0;
     }
-    .star{
-
+    ul{
+    	margin-left: 20px;
     }
   }
   .service-module{
     ul{
+      margin-left: 20px;
       line-height: 30px;
       li{
         margin: 10px 0;
       }
     }
+  }
+  .service-address{
+  	margin-left: 20px;
   }
   .showimg{
     padding: 20px;
@@ -383,6 +401,9 @@ $bac: #f7f4f3;
   .tec-team{
     .img-item{
       margin: 10px 0;
+    }
+    .module-item{
+    	margin-left: 20px;
     }
   }
   .totop{

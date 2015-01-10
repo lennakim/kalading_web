@@ -52,7 +52,7 @@
           <% statuses = order_statuses(order) %>
           <% if statuses %>
             <% statuses.each_with_index do |status_hash, index| %>
-              <div class="col-sm-3">
+              <div class="col-sm-3 status-item">
                 <div class="content <%= "highlight" if status_hash[1] %> clearfix">
                   <div class="number">
                     <%= index + 1 %>

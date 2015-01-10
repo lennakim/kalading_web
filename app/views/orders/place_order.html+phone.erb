@@ -1,26 +1,14 @@
 <div class="place-order-phone phone-page">
   <%= form_tag 'submit' do %>
     <fieldset>
+    <%= hidden_field_tag(:phone_num, current_user.phone_number) %>
+    <%= hidden_field_tag(:city_id, current_city_id) %>
     <div class="orders-content bac-white form-horizontal">
-      <p class='order-info'>订单信息</p>
+      <h4 class="item-title choice-address-title">选择服务地址</h4>
       <div class="address bac-white clearfix">
-        <h4 class="item-title">选择服务地址</h4>
-	  	<ul>
-	  		<li class="address-item">
-	  			<input type="radio" name="car_brand">
-	  			<span>海淀区苏州街</span>
-	  			<span class="close">X</span>
-	  		</li>
-	  		<li class="address-item">
-	  			<input type="radio" name="car_brand">
-	  			<span>海淀区苏州街</span>
-	  			<span class="close">X</span>
-	  		</li>
-	  		<li>+ 添加地址</li>
-	  	</ul>
+        <%= render "shared/select_address" %>
       </div>
-      <hr>
-      <h4 class="item-title">订单信息 <span class="des">注：<span class="red">红色“*”</span>为必填选项</span></h4>
+      <h4 class="item-title order-info-title">订单信息 <span class="des">注：<span class="red">红色“*”</span>为必填选项</span></h4>
       <div class="info-group form-group">
         <div class="info-title">
           <var class="star">*</var>
@@ -37,11 +25,11 @@
           <%= label_tag("车牌号：") %>
         </div>
         <div class="info-con form-inline">
-          <select name="car_num" class="form-control">
-            <option value="">京</option>
-            <option value="">京</option>
-            <option value="">京</option>
-            <option value="">京</option>
+          <select  name="car_location" class="form-control">
+            <option value="京">京</option>
+            <option value="a">京</option>
+            <option value="b">京</option>
+            <option value="c">京</option>
           </select>
           <%= text_field_tag(:car_num,'', :minlength => 6, :required => true, :placeholder => '车牌后六位', class: 'form-control') %>
         </div>
@@ -54,8 +42,10 @@
         </div>
         <div class="info-con form-inline">
           <%= text_field_tag(:serve_datetime, '', :required => true, class: 'form-control') %>
-          <select name="car_num" class='form-control'>
-            <option value="">8:00 - 12:00</option>
+          <select name="serve_period" class='form-control'>
+            <option value="8:00-12:00">8:00 - 12:00</option>
+            <option value="8:00-12:00">8:00 - 12:00</option>
+            <option value="8:00-12:00">8:00 - 12:00</option>
           </select>
         </div>
       </div>
@@ -67,8 +57,8 @@
         </div>
         <div class="info-con">
           <select id="pay_type" name="pay_type" class='form-control'>
-            <option value="">现金</option>
-            <option value="">刷卡</option>
+            <option value="0">现金</option>
+            <option value="1">刷卡</option>
           </select>
         </div>
       </div>
@@ -140,12 +130,13 @@
 
       <div class="info-group form-group">
         <div class="info-title">
-          <%= label_tag(:input_clinet_title, "备注：") %>
+          <%= label_tag(:client_comment, "备注：") %>
         </div>
         <div class="info-con">
           <%= text_area(:input_clinet_title, '填写备注', class: 'form-control') %>
         </div>
       </div>
+      <h4 class="item-title">商品详情</h4>
       <table id="item_table">
       	<thead>
         	<th>商品名称</th>
@@ -156,47 +147,47 @@
         <tbody>
 	      <tr>
 	        <td>
-	          <%#= @result['name'] %>
-	          <%#= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
+	          <%= @result['name'] %>
+	          <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
 	        </td>
 	        <td class="item">
-	          <%# @result['parts'].each_index do |index| %>
-	            <%# part = @result['parts'][index]%>
+	          <% @result['parts'].each_index do |index| %>
+	            <% part = @result['parts'][index]%>
 		        <p name='items'>
-		          [<%#= part.keys.first %>]<%#= part.values.first.first['brand'] %>
+		          [<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
 
-		          <%#= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
+		          <%= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
 
-		          <%#= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
+		          <%= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
 		        </p>
-	          <%# end %>
+	          <% end %>
 	        </td>
 	        <td>
-	          <%# @result['parts'].each_index do |index| %>
-	            <%# part = @result['parts'][index]%>
+	          <% @result['parts'].each_index do |index| %>
+	            <% part = @result['parts'][index]%>
 		        <p>
-		          <%#= part.values.first.first['price'] %>
-		          <%#= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
+		          <%= part.values.first.first['price'] %>
+		          <%= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
 		        </p>
-	          <%# end %>
+	          <% end %>
 	        </td>
 	        <td class="result">
-	          <%#= @result['price_without_discount'] %>
-	          <%#= hidden_field_tag(:price, @result['price_without_discount']) %>
+	          <%= @result['price_without_discount'] %>
+	          <%= hidden_field_tag(:price, @result['price_without_discount']) %>
 	        </td>
 	      </tr>
         </tbody>
         <tfoot></tfoot>
       </table>
-      <div class="submit-info">
-        <%#= @result['name'] %>
-        <span class="price">当前费用: <%#= @result['price'] %>元</span>
+      <div class="submit-con">
+        <span>当前费用: <span class="result-price"> <%= @result['price'] %></span>元</span>
+        <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default order_button') %>
         <p>支持现金、刷卡支付</p>
-        <%= submit_tag("提交订单",:class => 'submit bac-white') %>
       </div>
     </div>
     </fieldset>
   <% end %>
 
-
 </div>
+
+<%= render "shared/add_address_modal" %>

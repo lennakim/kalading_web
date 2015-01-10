@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def maintain_histories
+    @maintain_orders = Order.maintain_histories_of current_user.phone_number
   end
 
   def settings

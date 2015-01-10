@@ -21,7 +21,7 @@
             <% end %>
           </div>
         </div>
-        <div class="orders bac-white">
+        <div class="orders bac-white" data-car="<%= params[:car_id]%>">
           <h4 class="item-title">服务类型</h4>
           <ul class="content">
             <li class="pm25"><%= link_to "PM2.5滤芯滤清器", select_car_orders_path(car_id: params[:car_id], type: "pm25") %></li>
@@ -31,13 +31,42 @@
           <div class="orders-con <%= type=params['type'] %>-con content">
             <% if params[:car_id] %>
               <%= render "items", type: type %>
-          <% else %>
+            <% else %>
               请选择车辆
-          <% end %>
+            <% end %>
+          </div>
+          <div class="submit-con">
+            <span>当前费用: 
+              <span class="result-price"> 
+                <% if params[:car_id] %>
+                  <%= @result['price'] %>
+                <% end %>
+              </span>元
+            </span>
+            <p>支持现金、刷卡支付</p>
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane" id="profile">保养说明</div>
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <% if params[:type]=='pm25' %>
+          <div class = "col-xs-12">
+            <%= image_tag("pm25_detail_1.png", style: 'width: 100%') %>
+          </div>
+          <div class = "col-xs-12">
+            <%= image_tag("pm25_detail_2.png",:class => "img-thumbnail") %>
+          </div>
+        <% else %>
+          <div class = "col-xs-12">
+            <%= image_tag("detail_1.png",:class => "img-thumbnail") %>
+          </div>
+          <div class = "col-xs-12">
+            <%= image_tag("detail_2.jpg",:class => "img-thumbnail") %>
+          </div>
+          <div class = "col-xs-12">
+            <%= image_tag("detail_3.jpg",:class => "img-thumbnail") %>
+          </div>
+        <% end %>
+      </div>
       <div role="tabpanel" class="tab-pane" id="messages">
         <dl class="comment-item">
           <dt>
@@ -66,11 +95,21 @@ $('#myTab a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
     })
+  var car_id ;
+  $('.quick-select').on('click','input:radio',function(){
+    car_id = $('input:radio:checked').parent().siblings('.btn').data('id');
+  })
 
-$('.quick-select').on('click','input:radio',function(){
-    var car_id = $('input:radio:checked').parent().siblings('.btn').data('id');
-    window.location.href = '/orders/select_car?car_id='+car_id+'&type=pm25'
-    })
+  $('.pm25').click(function(){
+    if(!$('.orders').data('car')){
+      window.location.href = '/orders/select_car?car_id='+car_id+'&type=pm25'
+    }
+  });
 
+  $('.maintain').click(function(){
+    if(!$('.orders').data('car')){
+      window.location.href = '/orders/select_car?car_id='+car_id+'&type=maintain'
+    }
+  });
 
 </script>

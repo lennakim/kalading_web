@@ -21,13 +21,13 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    # car_id = params["order"]["car_id"]
-    # parts = params["order"]["parts"]
-    # payload = {
-    #   "parts" => parts
-    # }
+    car_id = params["order"]["car_id"]
+    parts = params["order"]["parts"]
+    payload = {
+      "parts" => parts
+    }
 
-    #@result = Order.refresh_price car_id, payload
+    @result = Order.refresh_price car_id, payload
   end
 
   def submit

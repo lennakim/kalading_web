@@ -1,0 +1,133 @@
+<%= title "我的保养记录" %>
+<div class="maintain-histories-phone phone-page">
+  <% order=@maintain_orders.first %>
+    <h3><%= order['serve_datetime'] %>检测报告</h3>
+    <div class="score">
+      <%= order['score']['total'] %>
+    </div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title panel-title1">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              外观车灯
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <%= render "appearance" %>  
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title panel-title2">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              轮胎侧车
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <%= render "tire" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title panel-title3">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              油液/滤芯/电瓶
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            <%= render "elements" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+          <h4 class="panel-title panel-title4">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              其他
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div class="panel-body">
+            <%= render "others" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+          <h4 class="panel-title panel-title5">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              保养总结
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+          <div class="panel-body">
+            <% score = order['score'] %>
+            <ul>
+              <li>
+                <p>轮胎/刹车-><%= score['wheels'] %></p>
+                <p>外观/灯光-><%= score['lights'] %></p>
+                <p>油液/滤芯/电瓶-><%= score['filter_oil_battery'] %></p>
+                <p>其他-><%= score['others'] %></p>
+                <p>总计-><%= score['total'] %></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  $('.collapse').collapse()
+</script>
+
+
+<!-- <%# @maintain_orders.each do |order| %>
+  <p>
+  	car_num: <%#= order['car_num'] %>
+  </p>
+  <p>
+  	serve_datetime: <%#= order['serve_datetime'] %>
+  </p>
+  <p>
+  	curr_km: <%#= order['curr_km'] %>
+  </p>
+  <p>
+  	next_maintain_time: <%#= order['next_maintain_time'] %>
+  </p>
+  <p>
+  	<%# score = order['score'] %>
+	  <ul>
+	    <li>
+	    	<p>轮胎/刹车-><%#= score['wheels'] %></p>
+	    	<p>外观/灯光-><%#= score['lights'] %></p>
+	    	<p>油液/滤芯/电瓶-><%#= score['filter_oil_battery'] %></p>
+	    	<p>其他-><%#= score['others'] %></p>
+	    	<p>总计-><%#= score['total'] %></p>
+	    </li>
+	  </ul>
+  </p>
+  <p>
+	  <%#= render "appearance" %>	
+  </p>
+  <p>
+	  <%#= render "tire" %>
+  </p>
+  <p>
+  	<%#= render "elements" %>
+  </p>
+  <p>
+  	<%#= render "others" %>
+  </p>
+<%# end %> -->
