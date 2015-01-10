@@ -13,12 +13,7 @@
 
   <%= form_tag 'submit' do %>
 
-    <% if signed_in? %>
-      <%= hidden_field_tag(:phone_num, current_user.phone_number) %>
-    <% end %>
     <%= hidden_field_tag(:city_id, current_city_id) %>
-
-    <%= @result %>
 
     <fieldset>
 
@@ -94,6 +89,16 @@
               <input title="验证码" name="verification_code" class="verification_code form-control" placeholder="验证码" id="verification_code"/>
               <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
 
+            </div>
+          </div>
+        <% else %>
+          <div class="info-group form-group">
+            <div class="info-title">
+              <var class="star">*</var>
+              <%= label_tag(:name, "手机号：") %>
+            </div>
+            <div class="info-con">
+              <input title="手机号" name="phone_num" class="phone_num form-control" value="<%= current_user.phone_number %>" disabled>
             </div>
           </div>
         <% end %>
