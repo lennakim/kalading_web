@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
     car_id = params["car_id"]
     @parts = params["parts"].values
 
-
     payload = {
       parts: @parts,
       discount: code
