@@ -231,12 +231,22 @@
 
           </div>
         </div>
-        <div class="submit-info bac-orange font-white">
+      </div>
+
+      <div class="submit-info clearfix">
+        <div class="maintain-name col-sm-8">
           <%= @result['name'] %>
-          <%= submit_tag("提交订单",:class => 'submit bac-white') %>
-          <span class="price">总价: <%= @result['price'] %>元</span>
+        </div>
+
+        <div class="price col-sm-2">
+          <span>总价: <%= @result['price'] %>元</span>
+        </div>
+
+        <div class="col-sm-2">
+          <%= submit_tag("提交订单", class: 'submit-btn bac-white') %>
         </div>
       </div>
+
     </fieldset>
   <% end %>
 </div>
