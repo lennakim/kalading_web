@@ -43,9 +43,7 @@ class OrdersController < ApplicationController
     payload = {
       "parts" => parts
     }
-
     @cities = Order.cities
-
     @result = Order.refresh_price car_id, payload
   end
 

@@ -1,6 +1,75 @@
 <div class="orders">
   <% if @orders %>
     <% @orders.each do |order| %>
+      <div class="order">
+        <div class="top clearfix">
+          <div class="datetime pull-left">
+            <%= order["serve_datetime"] %>
+          </div>
+          <div class="number pull-left">
+            订单号: <%= order['seq'] %>
+          </div>
+        </div>
+        <div class="order-detail clearfix">
+
+          <div class="pull-left">
+            <div class="order-title">
+              <%= order["auto_model"] %> 上门保养
+            </div>
+
+            <div class="items">
+              <% order["parts"].each do |part| %>
+                <div class="item">
+                  [<%= part["type"] %>] <%= part["brand"] %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="order-price pull-left">
+            <%= order["price"] %> 元
+          </div>
+
+          <div class="comment pull-left">
+            <% if can_cancel?(order) %>
+              <div class="del">
+                <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+              </div>
+            <% end %>
+            <% if can_comment?(order) %>
+              <div class="cmt">
+                <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+              </div>
+            <% end %>
+
+            <div class="order-status">
+              <%= link_to "订单状态", "#", class: "btn btn-default" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="status hidden clearfix">
+          <% statuses = order_statuses(order) %>
+          <% if statuses %>
+            <% statuses.each_with_index do |status_hash, index| %>
+              <div class="col-sm-3 status-item">
+                <div class="content <%= "highlight" if status_hash[1] %> clearfix">
+                  <div class="number">
+                    <%= index + 1 %>
+                  </div>
+                  <div class="ct">
+                    <%= status_hash[0] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="col-sm-12">
+              <%= order["state"] %>
+            </div>
+          <% end %>
+        </div>
+      </div>
       <%= render "order_item", order: order %>
     <% end %>
   <% else %>
