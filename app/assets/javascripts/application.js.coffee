@@ -31,7 +31,7 @@ $ ->
 
   $('#to_select_item').click ->
     id = $('#car_style option:selected').data 'id'
-    type = $('.select-car-page').data('type')
+    type = $('.select-car-page').data('type') || 'maintain'
     window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
   # select car
@@ -100,7 +100,7 @@ $ ->
     $('#get_code').click ->
 
       phone_num = $('#phone_num').val()
-      $(this).addClass('disable').attr('disabled','disabled')
+      $(this).addClass('disable').attr('disabled', 'disabled')
       seconds = 60
 
       if phone_num == ''
