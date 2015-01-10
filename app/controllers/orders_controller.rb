@@ -6,6 +6,23 @@ class OrdersController < ApplicationController
     @result = Order.items_for params[:car_id]
   end
 
+  def comment
+    data = Order.comment params[:id], {
+      evaluation: params[:content],
+      evaluation_tags: params[:tags],
+      evaluation_score: params[:score]
+    }
+
+    @id = params[:id]
+    @order = Order.find params[:id]
+
+    if data && data["result"] == "ok"
+      render "comment"
+    else
+      render js: "alert('评价失败')"
+    end
+  end
+
   def refresh_price
     car_id = params["order"]["car_id"]
     parts = params["order"]["parts"].try :values
@@ -26,12 +43,11 @@ class OrdersController < ApplicationController
     payload = {
       "parts" => parts
     }
-
+    @cities = Order.cities
     @result = Order.refresh_price car_id, payload
   end
 
   def submit
-
     payload = {
       parts: params[:parts].values,
       info: {
@@ -73,5 +89,14 @@ class OrdersController < ApplicationController
   def order_status
   end
 
-
+  def destroy
+    data = Order.cancel params[:id]
+    @id = params[:id]
+    @order = Order.find params[:id]
+    if data["result"] == "ok"
+      render "destroy"
+    else
+      render js: "alert('取消失败, 请刷新重试')"
+    end
+  end
 end

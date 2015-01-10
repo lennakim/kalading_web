@@ -79,7 +79,7 @@
             <%= label_tag(:name, "姓名：") %>
           </div>
           <div class="info-con">
-            <%= text_field_tag(:name,'', :required => true, class: 'form-control') %>
+            <%= text_field_tag(:name, current_user.username, :required => true, class: 'form-control') %>
           </div>
         </div>
 

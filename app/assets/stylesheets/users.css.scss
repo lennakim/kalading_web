@@ -310,8 +310,9 @@ $grey: #c4c4c4;
 
 #comment_modal{
   .comment-tags{
-    padding: 5px 50px;
+    // padding: 5px 50px;
     .tags{
+      margin-bottom: 8px;
       input[type='radio']{
         position: absolute;
         clip: rect(0, 0, 0, 0);
@@ -320,7 +321,7 @@ $grey: #c4c4c4;
 
       .tag{
         &.good{
-          width: 60%;
+          width: 44%;
           .btn{
             color: $orange;
             border-color: $orange;

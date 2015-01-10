@@ -12,6 +12,7 @@
             <div class="tag good pull-left">
               <label class="btn btn-default">
                 <input type="radio" value="<%= tag %>"><%= tag %>
+                <input type="hidden" name="score[]" >
               </label>
             </div>
 
@@ -23,6 +24,10 @@
           </div>
         </div>
       <% end %>
+
+      <div class="comment-area">
+        <textarea class="form-control" rows="3" placeholder="说点什么吧"></textarea>
+      </div>
 
       <div class="submit-comment">
         <button class='btn btn-default orange-btn'>提交评价</button>

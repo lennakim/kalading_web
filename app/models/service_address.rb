@@ -2,6 +2,6 @@ class ServiceAddress < ActiveRecord::Base
   belongs_to :user
 
   def full_address
-    "[#{city}]#{detail}"
+    "[#{city}#{district}]#{detail}"
   end
 end

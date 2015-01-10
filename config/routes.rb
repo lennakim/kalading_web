@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   end
 
   resources :orders do
+    member do
+      post 'comment'
+    end
+
     collection do
       get 'select_car'
       get 'select_item'
