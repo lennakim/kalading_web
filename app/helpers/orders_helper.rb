@@ -46,7 +46,9 @@ module OrdersHelper
   def filter_parts parts, type
     if type == 'pm25'
       parts.select{ |part| part.keys.first == "空调滤清器" }
-    else
+    elsif type == 'smt'
+      parts.select{ |part| ["机油", "机滤"].include?(part.keys.first) }
+    elsif type == 'bmt'
       parts
     end
   end
