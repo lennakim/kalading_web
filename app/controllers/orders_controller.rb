@@ -50,6 +50,13 @@ class OrdersController < ApplicationController
   end
 
   def submit
+
+    vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
+
+    if !signed_in? && !(vcode && !vcode.expired?)
+      return render "fail"
+    end
+
     payload = {
       parts: params[:parts].values,
       info: {
@@ -74,10 +81,16 @@ class OrdersController < ApplicationController
     result = Order.submit params[:car_id], payload
     if result["result"] == "succeeded"
 
-      # add this car to user
-      current_user.add_auto payload[:info]
+      # find_or_create user
+      user = User.find_or_create_by(phone_number: vcode.phone_num)
+      unless signed_in?
+        sign_in user
+      end
 
-      # send notification to user's wechat
+      # add this car to user , TODO this api is not done
+      # user.add_auto payload[:info]
+
+      # send notification to user's wechat TODO
 
       render "success"
     else

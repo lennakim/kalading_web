@@ -14,18 +14,20 @@
       <%= render "shared/select_car" %>
     </div>
 
-    <div class="quick-select">
-      <h4>我的快捷车辆</h4>
+    <% if signed_in? %>
+      <div class="quick-select">
+        <h4>我的快捷车辆</h4>
 
-      <% current_user.autos.each do |auto| %>
-        <%= render "shared/car_item", auto: auto %>
-      <% end %>
-    </div>
+        <% current_user.autos.each do |auto| %>
+          <%= render "shared/car_item", auto: auto %>
+        <% end %>
+      </div>
+    <% end %>
 
     <div class="clear"></div>
 
     <p class="next">
-      <button id="next_step" class="search_button bac-orange font-white">下一步</button>
+      <button id="to_select_item" class="search_button bac-orange font-white">下一步</button>
       <a class="more" href="">没找到车型？</a>
     </p>
   </div>

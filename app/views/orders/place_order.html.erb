@@ -13,7 +13,9 @@
 
   <%= form_tag 'submit' do %>
 
-    <%= hidden_field_tag(:phone_num, current_user.phone_number) %>
+    <% if signed_in? %>
+      <%= hidden_field_tag(:phone_num, current_user.phone_number) %>
+    <% end %>
     <%= hidden_field_tag(:city_id, current_city_id) %>
 
     <%= @result %>
@@ -73,13 +75,36 @@
 
         <hr>
 
+        <% unless signed_in? %>
+          <div class="info-group form-group">
+            <div class="info-title">
+              <var class="star">*</var>
+              <%= label_tag(:name, "手机号：") %>
+            </div>
+            <div class="info-con">
+              <input title="手机号" name="phone_num" class="phone_num form-control" id="phone_num" placeholder="手机号">
+            </div>
+          </div>
+          <div class="info-group form-group">
+            <div class="info-title">
+              <var class="star">*</var>
+              <%= label_tag(:name, "验证手机：") %>
+            </div>
+            <div class="info-con form-inline">
+              <input title="验证码" name="verification_code" class="verification_code form-control" placeholder="验证码" id="verification_code"/>
+              <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
+
+            </div>
+          </div>
+        <% end %>
+
         <div class="info-group form-group">
           <div class="info-title">
             <var class="star">*</var>
             <%= label_tag(:name, "姓名：") %>
           </div>
           <div class="info-con">
-            <%= text_field_tag(:name, current_user.username, :required => true, class: 'form-control') %>
+            <%= text_field_tag(:name, current_user.try(:username), :required => true, class: 'form-control') %>
           </div>
         </div>
 
