@@ -1,5 +1,27 @@
 class OrdersController < ApplicationController
 
+  def validate_preferential_code
+    code = params[:code]
+    car_id = params["car_id"]
+    @parts = params["parts"].values
+
+
+    payload = {
+      parts: @parts,
+      discount: code
+    }
+    @result = Order.refresh_price car_id, payload
+  end
+
+  def no_preferential
+    car_id = params["car_id"]
+    @parts = params["parts"].values
+    payload = {
+      parts: @parts
+    }
+    @result = Order.refresh_price car_id, payload
+  end
+
   def select_car
     type = params[:type]
     @cars_info = Order.cars_data type
@@ -39,9 +61,9 @@ class OrdersController < ApplicationController
 
   def place_order
     car_id = params["order"]["car_id"]
-    parts = params["order"]["parts"]
+    @parts = params["order"]["parts"]
     payload = {
-      "parts" => parts
+      "parts" => @parts
     }
     @cities = Order.cities
     @result = Order.refresh_price car_id, payload
@@ -58,21 +80,22 @@ class OrdersController < ApplicationController
     payload = {
       parts: params[:parts].values,
       info: {
-        "address"        => params[:address],
-        "name"           => params[:name],
-        "phone_num"      => params[:phone_num],
-        "car_location"   => params[:car_location],
-        "car_num"        => params[:car_num],
-        "serve_datetime" => "#{params[:serve_date]} #{params[:serve_period]}",
-        "pay_type"       => params[:pay_type],
-        "reciept_type"   => 1,
-        "reciept_title"  => "卡拉丁汽车技术",
-        "client_comment" => params[:client_comment],
-        "city_id"        => params[:city_id],
-        "car_id"         => params[:car_id],
+        "address"           => params[:address],
+        "name"              => params[:name],
+        "phone_num"         => params[:phone_num],
+        "car_location"      => params[:car_location],
+        "car_num"           => params[:car_num],
+        "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
+        "pay_type"          => params[:pay_type],
+        "reciept_type"      => params[:reciept_type],
+        "reciept_title"     => params[:reciept_title],
+        "client_comment"    => params[:client_comment],
+        "city_id"           => params[:city_id],
+        "car_id"            => params[:car_id],
         "registration_date" => params[:registration_date],
-        "engine_num"     => params[:engine_num],
-        "vin"            => params[:vin]
+        "engine_num"        => params[:engine_num],
+        "vin"               => params[:vin],
+        "discount"          => params[:discount]
       }
     }
 
@@ -80,8 +103,9 @@ class OrdersController < ApplicationController
     if result["result"] == "succeeded"
 
       # find_or_create user
-      user = User.find_or_create_by(phone_number: vcode.phone_num)
+
       unless signed_in?
+        user = User.find_or_create_by(phone_number: vcode.phone_num)
         sign_in user
       end
 
