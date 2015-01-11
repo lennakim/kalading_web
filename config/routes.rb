@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'orders'
+      get 'maintain_histories_list'
       get 'maintain_histories'
       get 'cars'
       get 'balance'

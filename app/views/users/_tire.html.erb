@@ -1,42 +1,41 @@
-<% @maintain_orders.each do |order| %>
-wheels: <%= wheels = order['wheels'] %>
+<% order=@maintain_orders.first %>
+<% wheels = order['wheels'] %>
 <ul>
   <% wheels.each do |wheel|%>
     <% if wheel %>
       <li>
       	<%= wheel_name_mapper wheel['name'] %>:
       	<p>
-      	  胎压-><%= wheel['pressure'] %>
+      	  胎压：<%= wheel['pressure'] %>
       	</p>
       	<p>
-      	  出厂日子是否可检查-><%= factory_data_checked_value_mapper wheel['factory_data_checked'] %>
+      	  出厂日子是否可检查：<%= factory_data_checked_value_mapper wheel['factory_data_checked'] %>
       	</p>
 		<p>
-          出厂日期-><%= wheel['factory_data'] %>
+          出厂日期：<%= wheel['factory_data'] %>
 		</p>
 		<p>
-		  花纹深度-><%= wheel['tread_depth'] %>
+		  花纹深度：<%= wheel['tread_depth'] %>
 		</p>
 		<p>
-		  老化程度-><%= ageing_mapper wheel['ageing_desc'] %>
+		  老化程度：<%= ageing_mapper wheel['ageing_desc'] %>
 		</p>
 		<p>
-		  胎面-><%= tread_desc_mapper wheel['tread_desc'] %>
+		  胎面：<%= tread_desc_mapper wheel['tread_desc'] %>
 		</p>
 		<p>
-		  胎侧-><%= sidewall_desc_mapper wheel['sidewall_desc'] %>
+		  胎侧：<%= sidewall_desc_mapper wheel['sidewall_desc'] %>
 		</p>
 		<p>
-		  刹车片是否可检测-><%= brake_pad_checked_mapper wheel['brake_pad_checked'] %>
+		  刹车片是否可检测：<%= brake_pad_checked_mapper wheel['brake_pad_checked'] %>
 		</p>
 		<p>
-		  刹车片厚度-><%= wheel['brake_pad_thickness'] %>
+		  刹车片厚度：<%= wheel['brake_pad_thickness'] %>
 		</p>
 		<p>
-		  刹车盘-><%= brake_disc_desc_mapper wheel['brake_disc_desc'] %>
+		  刹车盘：<%= brake_disc_desc_mapper wheel['brake_disc_desc'] %>
 		</p>
       </li>
     <% end %>
   <% end %>
 </ul>
-<% end %>

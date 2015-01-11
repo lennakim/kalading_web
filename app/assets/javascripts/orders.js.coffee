@@ -12,7 +12,13 @@ $ ->
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
-  if $(".place-order-page").length > 0
+  if $(".select-car-page").length > 0
+    $('#next_step').click ->
+      id = $('#car_style option:selected').data 'id'
+      type = $('.select-car-page').data('type')
+      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
+
+  if $(".place-order-page,.place-order-phone").length > 0
 
     $('#no_invoice').on "click", (e) ->
       $('#invoice_info').collapse('hide')
@@ -46,7 +52,6 @@ $ ->
       parts = $('#item_table').data("parts")
 
       $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
-
 
     initPickaDate = ->
       nowDay = new Date()
