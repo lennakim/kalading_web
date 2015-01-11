@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     collection do
       get 'orders'
       get 'maintain_histories_list'
-      get 'maintain_histories'
+      get 'maintain_history'
       get 'cars'
       get 'balance'
       get 'settings'

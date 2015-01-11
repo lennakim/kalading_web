@@ -47,56 +47,12 @@
                 <div class="report">
 
                   <div class="show">
-                    <button>体检报告单</button>
+                    <%= link_to "体检报告单", maintain_history_users_path(), remote: true %>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
           <% end %>
 
         </div>
@@ -106,6 +62,7 @@
 </div>
 
 <%= render "shared/select_car_modal" %>
+<%= render "maintain_report_modal" %>
 
 <hr>
 

@@ -14,8 +14,14 @@ class UsersController < ApplicationController
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
   end
 
-  def maintain_histories
+  def maintain_history
+
+    id = params[:id]
+
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
+
+    # @maintain_history = @maintain_orders.first
+
   end
 
   def settings
@@ -30,6 +36,7 @@ class UsersController < ApplicationController
   def cars
     @cars_info = Order.cars_data
     @maintain_histories = Order.maintain_histories_of current_user.phone_number
+    @maintain_orders = Order.maintain_histories_of current_user.phone_number
   end
 
   def balance

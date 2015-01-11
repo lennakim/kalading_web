@@ -1,12 +1,11 @@
-<% order=@maintain_orders.first %>
-<% lights = order['lights'] %>
+<% lights = report['lights'] %>
 <ul>
   <% lights.each do |light| %>
     <% if light %>
       <li>
         <%= light_name_mapper light['name'] %>：
         <%= light_desc_mapper light['desc'] %>
-      </li>	
+      </li>
     <% end %>
   <% end %>
 </ul>

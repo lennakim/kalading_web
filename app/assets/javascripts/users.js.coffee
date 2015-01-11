@@ -53,3 +53,6 @@ $ ->
     else
       area.addClass('hidden')
 
+
+  $("#maintain_report_modal").on "shown.bs.modal", ->
+    $(".modal-backdrop").css('height', 2000)
