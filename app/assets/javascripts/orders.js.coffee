@@ -8,7 +8,7 @@
 
 $ ->
 
-  if $(".items-select-page,.select-car-phone").length > 0
+  if $(".items-select-page, .select-car-phone").length > 0
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
@@ -19,6 +19,40 @@ $ ->
       window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
   if $(".place-order-page,.place-order-phone").length > 0
+
+    $('#no_invoice').on "click", (e) ->
+      $('#invoice_info').collapse('hide')
+    $("#yes_invoice").on "click", (e) ->
+      $('#invoice_info').collapse('show')
+
+    $('#no_preferential').on "click", (e) ->
+      $('#preferential_info').collapse('hide')
+    $("#yes_preferential").on "click", (e) ->
+      $('#preferential_info').collapse('show')
+
+    $("#validate_preferential").on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      car_id = $('.place-order-page').data('car')
+      code = $("#preferential_code").val()
+
+      parts = $('#item_table').data("parts")
+
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts }
+
+    $('#no_preferential').on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      $("#yes_preferential").removeClass('active')
+      $(@).addClass('active')
+
+      car_id = $('.place-order-page').data('car')
+      parts = $('#item_table').data("parts")
+
+      $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
+
     initPickaDate = ->
       nowDay = new Date()
       time = nowDay.getHours()

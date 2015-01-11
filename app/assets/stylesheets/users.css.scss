@@ -156,7 +156,7 @@ $grey: #c4c4c4;
         @include border-radius(3px);
 
         margin-bottom: 20px;
-        
+
         .top{
           color: #c1c1c1;
           font-size: 16px;
@@ -285,7 +285,8 @@ $grey: #c4c4c4;
 #select_city_modal{
 
   .cities{
-    padding: 5px 50px;
+    padding: 20px;
+    padding-bottom: 0;
 
     .city{
       margin-right: 20px;
@@ -423,7 +424,7 @@ $grey: #c4c4c4;
     padding-top: 80px;
     background-image: image-url('maintain-title.png');
     background-repeat: no-repeat;
-    background-size: 80%; 
+    background-size: 80%;
     background-position: 32px 0;
   }
   .panel-title{
@@ -432,19 +433,19 @@ $grey: #c4c4c4;
     text-align: center;
   }
   .panel-title1{
-    background-image: image-url('maintain1.png'); 
+    background-image: image-url('maintain1.png');
   }
   .panel-title2{
-    background-image: image-url('maintain2.png'); 
+    background-image: image-url('maintain2.png');
   }
   .panel-title3{
-    background-image: image-url('maintain3.png'); 
+    background-image: image-url('maintain3.png');
   }
   .panel-title4{
-    background-image: image-url('maintain4.png'); 
+    background-image: image-url('maintain4.png');
   }
   .panel-title5{
-    background-image: image-url('maintain5.png'); 
+    background-image: image-url('maintain5.png');
   }
   li{
     text-align: left;

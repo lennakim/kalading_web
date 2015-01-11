@@ -14,18 +14,20 @@
       <%= render "shared/select_car" %>
     </div>
 
-    <div class="quick-select">
-      <h4>我的快捷车辆</h4>
+    <% if signed_in? %>
+      <div class="quick-select">
+        <h4>我的快捷车辆</h4>
 
-      <% current_user.autos.each do |auto| %>
-        <%= render "shared/car_item", auto: auto %>
-      <% end %>
-    </div>
+        <% current_user.autos.each do |auto| %>
+          <%= render "shared/car_item", auto: auto %>
+        <% end %>
+      </div>
+    <% end %>
 
     <div class="clear"></div>
 
     <p class="next">
-      <button id="next_step" class="search_button bac-orange font-white">下一步</button>
+      <button id="to_select_item" class="search_button bac-orange font-white">下一步</button>
       <a class="more" href="">没找到车型？</a>
     </p>
   </div>
@@ -59,26 +61,18 @@
     <div class="col-md-4">
       <div class="orders-situation bac-white">
         <h3 class="orders-title module-title">订单概况</h3>
-        <div class="orders-con">
-          <dl>
-            <dt>
-              <h3>北京市东城区 | 京A***34</h3>
-              <span class="time">11分钟前</span>
-            </dt>
-            <dd>
-              保养订单保养订单保养订单保养订单保养订单保养订单保养订单
-            </dd>
-          </dl>
-          <dl>
-            <dt>
-              <h3>北京市东城区 | 京A***34</h3>
-              <span class="time">11分钟前</span>
-            </dt>
-            <dd>
-              保养订单保养订单保养订单保养订单保养订单保养订单保养订单
-            </dd>
-          </dl>
-        </div>
+        <marquee direction='up' height='300'>
+          <% Order.recent_orders.each do |order| %>
+            <dl>
+              <dt>
+                <h3><%= order["name"]%> | <%= order["car_num"] %></h3>
+              </dt>
+              <dd>
+                <%= order["auto_model"] %>
+              </dd>
+            </dl>
+          <% end %>
+        </marquee>
       </div>
     </div>
   </div>

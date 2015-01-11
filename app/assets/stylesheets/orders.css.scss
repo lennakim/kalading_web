@@ -214,7 +214,6 @@ $title-gray: #787878;
       position: relative;
       top: 2px;
       z-index: 999;
-      width: 342px;
       li{
         float: left;
         padding: 0 20px;
@@ -243,11 +242,17 @@ $title-gray: #787878;
     }
   }
 }
+
+#invoice_info{
+  margin-top: 10px;
+}
+
 .place-order-page{
   form{
     margin-bottom: 40px;
   }
   #item_table{
+    background: white;
     width: 100%;
     border: 1px solid #ccc;
     th,td{
@@ -277,6 +282,10 @@ $title-gray: #787878;
   .info-group{
     overflow: hidden;
     margin: 5px;
+
+    .reciept-detail{
+      padding-left: 5px;
+    }
 
     input{
       line-height: 30px;
@@ -313,7 +322,7 @@ $title-gray: #787878;
     }
   }
   .orders-content{
-    margin-top: 20px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     padding: 20px;
     .order-info{
@@ -323,29 +332,43 @@ $title-gray: #787878;
       background-image: image-url('order-info.png');
       background-repeat: no-repeat;
     }
-    .submit-info{
-      overflow: hidden;
-      height: 40px;
-      line-height: 40px;
+  }
+
+  .submit-info{
+    height: 68px;
+    // line-height: 68px;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 20px 0;
+
+    @include border-radius(3px);
+    @include background-image(linear-gradient(top , #ff9933, #ec8721));
+    @include filter-gradient(#ff9933, #ec8721);
+    @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
+    border: 1px solid #e97a0c;
+
+    .maintain-name, .price{
+      line-height: 48px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+    .submit-btn{
+      border: 0;
+      @include border-radius(6px);
+      height: 48px;
+      line-height: 48px;
       width: 100%;
-      padding: 0 10px;
-      margin: 20px 0;
-      border-radius: 5px;
-      .price,.submit{
-        float: right;
-      }
-      .submit{
-        border: 0;
-        border-radius: 2px;
-        height: 30px;
-        line-height: 30px;
-        width: 100px;
-        margin: 5px;
-        color: $font-orange;
+      color: $font-orange;
+      font-size: 22px;
+      &:hover{
+        background: #ececec;
+        color: #FFBB76;
       }
     }
   }
 }
+
 .success-page{
   .success-con{
     border: 1px solid #ccc;
@@ -490,7 +513,7 @@ $title-gray: #787878;
     }
   }
 }
-  
+
 .submit-con{
   position: fixed;
   bottom: 0;
@@ -699,7 +722,7 @@ $title-gray: #787878;
 .order-status-phone{
   .order-status{
     .item-title:before{
-      content: url('order-status.png') 
+      content: url('order-status.png')
     }
   }
   .status{
@@ -754,4 +777,3 @@ $title-gray: #787878;
     }
   }
 }
-

@@ -2,6 +2,10 @@ class Order
 
   class << self
 
+    def recent_orders
+      ServerApi.call 'get', 'latest_orders'
+    end
+
     def cities
       ServerApi.call "get", "cities"
     end

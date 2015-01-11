@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       post 'refresh_price'
       post 'place_order'
       post 'submit'
+      post 'validate_preferential_code'
+      post 'no_preferential'
     end
   end
 

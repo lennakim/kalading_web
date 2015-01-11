@@ -22,6 +22,17 @@ window.Kalading =
   Models: {}
 
 $ ->
+  @signed_in = ->
+    current_user_id != -1
+
+  # if current_user_id == -1
+  #   $('.need-login').on 'click', ->
+  #     $('#login_modal').modal()
+
+  $('#to_select_item').click ->
+    id = $('#car_style option:selected').data 'id'
+    type = $('.select-car-page').data('type') || 'maintain'
+    window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
   # select car
   $('#car_style').chained('#car_type, #car_name')
@@ -71,6 +82,7 @@ $ ->
     detail = $modal.find('#address_detail').val()
     if $.trim(detail) != ""
       $.post "/service_addresses", { service_address: { city: city, district: district, detail: detail } }
+
     else
       $modal.find("#address_detail").closest(".form-group").addClass("has-error")
 
@@ -88,7 +100,7 @@ $ ->
     $('#get_code').click ->
 
       phone_num = $('#phone_num').val()
-      $(this).addClass('disable').attr('disabled','disabled')
+      $(this).addClass('disable').attr('disabled', 'disabled')
       seconds = 60
 
       if phone_num == ''
