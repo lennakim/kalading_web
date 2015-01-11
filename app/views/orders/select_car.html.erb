@@ -15,11 +15,25 @@
     </div>
 
     <% if signed_in? %>
-      <div class="quick-select">
-        <h4>我的快捷车辆</h4>
 
+      <div class="quick-select">
+        <% if last_select_car %>
+          <h4>上次选择</h4>
+          <%= last_select_car %>
+        <% end %>
+
+        <h4>我的车辆</h4>
         <% current_user.autos.each do |auto| %>
           <%= render "shared/car_item", auto: auto %>
+        <% end %>
+
+        <%= link_to "其他车辆", select_car_orders_path %>
+      </div>
+    <% else %>
+      <div class="quick-select">
+        <% if last_select_car %>
+          <h4>上次选择</h4>
+          <%= last_select_car %>
         <% end %>
       </div>
     <% end %>

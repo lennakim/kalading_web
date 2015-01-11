@@ -37,9 +37,7 @@
     <div class="select-car select-item">
 
       <% if signed_in? %>
-
         <div class="quick-select">
-
           <% if last_select_car %>
             <h4>上次选择</h4>
             <%= last_select_car %>
@@ -51,22 +49,17 @@
           <% end %>
 
           <%= link_to "其他车辆", select_car_orders_path %>
-
         </div>
-
       <% else %>
-
-          <% if last_select_car %>
-            <h4>上次选择</h4>
-            <%= last_select_car %>
-            <%= link_to "其他车辆", select_car_orders_path %>
-          <% else %>
-            <%= render "shared/select_car" %>
-            <a id="to_select_item" class="btn btn-default">下一步</a>
-          <% end %>
-
+        <% if last_select_car %>
+          <h4>上次选择</h4>
+          <%= last_select_car %>
+          <%= link_to "其他车辆", select_car_orders_path %>
+        <% else %>
+          <%= render "shared/select_car" %>
+          <a id="to_select_item" class="btn btn-default">下一步</a>
+        <% end %>
       <% end %>
-
     </div>
 
     <div class="product">
