@@ -31,7 +31,7 @@ $ ->
 
   $('#to_select_item').click ->
     id = $('#car_style option:selected').data 'id'
-    type = $('.select-car-page').data('type') || 'maintain'
+    type = $('.select-car-page').data('type') || 'bmt'
     window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
   # select car

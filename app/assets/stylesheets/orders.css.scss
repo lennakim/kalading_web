@@ -243,6 +243,30 @@ $title-gray: #787878;
   }
 }
 
+    .quick-select{
+      .car{
+        padding-left: 0;
+        margin-bottom: 10px;
+
+        &.pull-left.col-sm-3{
+          width: 100%;
+
+          float: none;
+        }
+
+        .content{
+          padding: 10px;
+          table.table{
+            margin-bottom: 0;
+            td{
+              border-top: 0 none;
+            }
+          }
+        }
+      }
+    }
+
+
 #invoice_info{
   margin-top: 10px;
 }

@@ -60,6 +60,7 @@ class OrdersController < ApplicationController
   end
 
   def select_item
+    save_last_select_car params[:car_id]
     @result = Order.items_for params[:car_id]
   end
 
