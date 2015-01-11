@@ -34,32 +34,10 @@
   </div>
   <div class="content">
 
-    <div class="select-car select-item">
-
-      <% if signed_in? %>
-        <div class="quick-select">
-          <% if last_select_car %>
-            <h4>上次选择</h4>
-            <%= last_select_car %>
-          <% end %>
-
-          <h4>我的车辆</h4>
-          <% current_user.autos.each do |auto| %>
-            <%= render "shared/car_item", auto: auto %>
-          <% end %>
-
-          <%= link_to "其他车辆", select_car_orders_path %>
-        </div>
-      <% else %>
-        <% if last_select_car %>
-          <h4>上次选择</h4>
-          <%= last_select_car %>
-          <%= link_to "其他车辆", select_car_orders_path %>
-        <% else %>
-          <%= render "shared/select_car" %>
-          <a id="to_select_item" class="btn btn-default">下一步</a>
-        <% end %>
-      <% end %>
+    <div class="select-car">
+      <%= render "shared/select_car" %>
+        <a id="to_select_item" class="btn btn-default">下一步</a>
+      </div>
     </div>
 
     <div class="product">
