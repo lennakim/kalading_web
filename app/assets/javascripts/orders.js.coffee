@@ -13,11 +13,19 @@ $ ->
     items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
-    $('#next_step').click ->
-      id = $('.selected option:selected').data 'id' || $('.selected input:radio:checked').parent().next('button').data 'id'
-      
+    $('.select-car').css({'height':$('.quick-select').height()})
+
+    $('.select-car,.quick-select').click ->
+      $(this).addClass('selected').siblings().removeClass('selected')
+
+      id = $('.select-item .selected #car_style option:selected').data('id') || $('.select-item .selected input:radio:checked').parent().next('button').data('id')
+
+      $('.select-car-page').data 'car_id',id
+
+    $('#to_select_item').click ->
       type = $('.select-car-page').data('type')
-      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
+      car_id = $('.select-car-page').data 'car_id'
+      window.location.href = "/orders/select_item?car_id=#{ car_id }&type=#{ type }"
 
   if $(".place-order-page,.place-order-phone").length > 0
 

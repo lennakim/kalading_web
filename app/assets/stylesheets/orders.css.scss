@@ -104,18 +104,18 @@ $title-gray: #787878;
     border: 1px solid #ccc;
     .select-car, .quick-select{
       float: left;
-      width: 50%;
-      margin: 28px 0;
-      padding: 0 5%;
+      width: 46%;
+      margin: 28px 2%;
+      padding: 0 20px;
       h4{
         text-align: center;
         margin-bottom: 30px;
         color: $title-gray;
-        font-size: 20px;
+        font-size: 18px;
       }
     }
     .selected{
-      border: 1px solid red;
+      border: 1px solid #ccc;
     }
     .clear{
       clear: both;
@@ -125,7 +125,6 @@ $title-gray: #787878;
       width: 90%;
       margin: 0 auto;
       padding: 20px 0;
-      border-top: 1px solid #ccc;
       text-align: center;
       .search_button{
         @include button();
@@ -140,7 +139,6 @@ $title-gray: #787878;
       }
     }
     .select-car{
-      border-right: 1px solid #ccc;
       .field{
         overflow: hidden;
         margin-bottom: 20px;
