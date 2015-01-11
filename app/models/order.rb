@@ -2,6 +2,18 @@ class Order
 
   class << self
 
+    def auto_brands
+      ServerApi.call "get", "auto_brands"
+    end
+
+    def auto_series brand_id
+      ServerApi.call "get", "auto_brands", { entry_id: brand_id }
+    end
+
+    def auto_model_numbers series_id
+      ServerApi.call "get", "auto_models", { entry_id: series_id }
+    end
+
     def recent_orders
       ServerApi.call 'get', 'latest_orders'
     end
