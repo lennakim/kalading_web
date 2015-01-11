@@ -1,0 +1,50 @@
+<%= title "我的保养记录" %>
+<div class="maintain-histories-phone phone-page">
+  <% order=@maintain_orders.first %>
+  <h3><%= order['serve_datetime'] %>检测报告</h3>
+  <%= render "report_body", report: order %>
+</div>
+
+<script>
+  $('.collapse').collapse()
+</script>
+
+
+<!-- <%# @maintain_orders.each do |order| %>
+  <p>
+  	car_num: <%#= order['car_num'] %>
+  </p>
+  <p>
+  	serve_datetime: <%#= order['serve_datetime'] %>
+  </p>
+  <p>
+  	curr_km: <%#= order['curr_km'] %>
+  </p>
+  <p>
+  	next_maintain_time: <%#= order['next_maintain_time'] %>
+  </p>
+  <p>
+  	<%# score = order['score'] %>
+	  <ul>
+	    <li>
+	    	<p>轮胎/刹车-><%#= score['wheels'] %></p>
+	    	<p>外观/灯光-><%#= score['lights'] %></p>
+	    	<p>油液/滤芯/电瓶-><%#= score['filter_oil_battery'] %></p>
+	    	<p>其他-><%#= score['others'] %></p>
+	    	<p>总计-><%#= score['total'] %></p>
+	    </li>
+	  </ul>
+  </p>
+  <p>
+	  <%#= render "appearance" %>
+  </p>
+  <p>
+	  <%#= render "tire" %>
+  </p>
+  <p>
+  	<%#= render "elements" %>
+  </p>
+  <p>
+  	<%#= render "others" %>
+  </p>
+<%# end %> -->

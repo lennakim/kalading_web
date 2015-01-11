@@ -14,7 +14,8 @@ $ ->
 
   if $(".select-car-page").length > 0
     $('#next_step').click ->
-      id = $('#car_style option:selected').data 'id'
+      id = $('.selected option:selected').data 'id' || $('.selected input:radio:checked').parent().next('button').data 'id'
+      
       type = $('.select-car-page').data('type')
       window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 

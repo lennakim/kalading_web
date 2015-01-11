@@ -24,8 +24,9 @@
         <div class="orders bac-white" data-car="<%= params[:car_id]%>">
           <h4 class="item-title">服务类型</h4>
           <ul class="content">
-            <li class="pm25"><%= link_to "PM2.5滤芯滤清器", select_car_orders_path(car_id: params[:car_id], type: "pm25") %></li>
-            <li class="maintain"><%= link_to "车辆上门保养", select_car_orders_path(car_id: params[:car_id], type: "maintain") %></li>
+            <li class="pm25"><%= link_to "PM2.5滤芯更换", select_car_orders_path(car_id: params[:car_id], type: "pm25") %></li>
+            <li class="bmt"><%= link_to "大保养", select_car_orders_path(car_id: params[:car_id], type: "bmt") %></li>
+            <li class="smt"><%= link_to "小保养", select_car_orders_path(car_id: params[:car_id], type: "smt") %></li>
           </ul>
           <h4 class="item-title">选择配件</h4>
           <div class="orders-con <%= type=params['type'] %>-con content">
@@ -37,7 +38,7 @@
           </div>
           <div class="submit-con">
             <span>当前费用: 
-              <span class="price result-price"></span>元
+              <span class="result-price"></span>元
             </span>
             <p>支持现金、刷卡支付</p>
           </div>
@@ -102,9 +103,14 @@ $('#myTab a').click(function (e) {
     }
   });
 
-  $('.maintain').click(function(){
+  $('.bmt').click(function(){
     if(!$('.orders').data('car')){
-      window.location.href = '/orders/select_car?car_id='+car_id+'&type=maintain'
+      window.location.href = '/orders/select_car?car_id='+car_id+'&type=bmt'
+    }
+  });
+  $('.smt').click(function(){
+    if(!$('.orders').data('car')){
+      window.location.href = '/orders/select_car?car_id='+car_id+'&type=smt'
     }
   });
 
