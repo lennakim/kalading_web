@@ -1,60 +1,59 @@
-<% order=@maintain_orders.first %>
 <ul>
   <li>
-    备胎：<%= spare_tire_desc_mapper order['spare_tire_desc'] %>
+    备胎：<%= spare_tire_desc_mapper report['spare_tire_desc'] %>
   </li>
   <li>
-    机油尺标注：<%= oil_position_mapper order['oil_position'] %>
+    机油尺标注：<%= oil_position_mapper report['oil_position'] %>
   </li>
   <li>
-    旧机油判断：<%= oil_desc_mapper order['oil_desc'] %>
+    旧机油判断：<%= oil_desc_mapper report['oil_desc'] %>
   </li>
   <li>
-    空气滤芯：<%= air_filter_desc_mapper order['air_filter_desc'] %>
+    空气滤芯：<%= air_filter_desc_mapper report['air_filter_desc'] %>
   </li>
   <li>
-    空调滤芯：<%= cabin_filter_desc_mapper order['cabin_filter_desc'] %>
+    空调滤芯：<%= cabin_filter_desc_mapper report['cabin_filter_desc'] %>
   </li>
   <li>
-    防冻液冰点：<%= order['antifreeze_freezing_point'] %>
+    防冻液冰点：<%= report['antifreeze_freezing_point'] %>
   </li>
   <li>
-    防冻液目测：<%= antifreeze_desc_mapper order['antifreeze_desc'] %>
+    防冻液目测：<%= antifreeze_desc_mapper report['antifreeze_desc'] %>
   </li>
   <li>
-    防冻液位：<%= antifreeze_position_mapper order['antifreeze_position'] %>
+    防冻液位：<%= antifreeze_position_mapper report['antifreeze_position'] %>
   </li>
   <li>
-    转向助力油目测：<%= steering_oil_desc_mapper order['steering_oil_desc'] %>
+    转向助力油目测：<%= steering_oil_desc_mapper report['steering_oil_desc'] %>
   </li>
   <li>
-    转向助力油位：<%= steering_oil_position_mapper order['steering_oil_position'] %>
+    转向助力油位：<%= steering_oil_position_mapper report['steering_oil_position'] %>
   </li>
   <li>
-    变速箱油目测：<%= gearbox_oil_desc_mapper order['gearbox_oil_desc'] %>
+    变速箱油目测：<%= gearbox_oil_desc_mapper report['gearbox_oil_desc'] %>
   </li>
   <li>
-    变速箱油位：<%= gearbox_oil_position_mapper order['gearbox_oil_position'] %>
+    变速箱油位：<%= gearbox_oil_position_mapper report['gearbox_oil_position'] %>
   </li>
   <li>
-    玻璃水：<%= glass_water_desc_mapper order['glass_water_desc'] %>
+    玻璃水：<%= glass_water_desc_mapper report['glass_water_desc'] %>
   </li>
   <li>
-    电瓶外观：<%= battery_desc_mapper order['battery_desc'] %>
+    电瓶外观：<%= battery_desc_mapper report['battery_desc'] %>
   </li>
   <li>
-    电瓶充电程度：<%= order['battery_charge'] %>
+    电瓶充电程度：<%= report['battery_charge'] %>
   </li>
   <li>
-    电瓶健康指数：<%= order['battery_health'] %>
+    电瓶健康指数：<%= report['battery_health'] %>
   </li>
   <li>
-    电瓶桩头：<%= battery_head_desc_mapper order['battery_head_desc'] %>
+    电瓶桩头：<%= battery_head_desc_mapper report['battery_head_desc'] %>
   </li>
   <li>
-    电瓶指示灯颜色：<%= order['battery_light_color'] %>
+    电瓶指示灯颜色：<%= report['battery_light_color'] %>
   </li>
   <li>
-    车内软管和线路：<%= engine_hose_and_line_desc_mapper order['engine_hose_and_line_desc'] %>
+    车内软管和线路：<%= engine_hose_and_line_desc_mapper report['engine_hose_and_line_desc'] %>
   </li>
 </ul>
