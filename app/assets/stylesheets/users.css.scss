@@ -110,7 +110,7 @@ $grey: #c4c4c4;
             }
             .show{
               text-align: center;
-              button{
+              a{
                 @include button();
                 height: 30px;
                 font-size: 14px;
