@@ -91,7 +91,7 @@ header.navbar{
     }
     dt{
       float: left;
-      margin-left: 5px;
+      margin-left: 8px;
       font-size: 18px;
       text-align: right;
     }
@@ -101,7 +101,7 @@ header.navbar{
     }
     .des{
       clear: both;
-      font-size: 16px;
+      font-size: 14px;
       color: #666666;
     }
   }
@@ -119,9 +119,11 @@ header.navbar{
     }
     dt{
       padding: 0px 5px 0 20%;
+      font-size: 30px;
     }
     dd{
       text-align: left;
+      font-size: 18px;
       &:nth-child(odd){
         float: left;
         width: 45%;
@@ -177,33 +179,11 @@ header.navbar{
 }
 
 .phone-page{
-  .promise{
-    padding: 20px 0;
-    margin: 0;
-    background: #fff;
-    .pros{
-      overflow: hidden;
-    }
-    h3{
-      text-align: center;
-      font-size: 22px;
-    }
-    dt{
-      font-size: 30px;
-    }
-    dd{
-      text-align: center;
-      &:nth-child(even){
-        float: left;
-        margin: 15px 2px 6px;
-      }
-    }
-  }
   .item-title{
     padding: 12px 20px;
     background: #f7f4f3;
     color: #515151;
-    font-size: 18px;
+    font-size: 16px;
   }
   .item-title:before{
     margin-right: 5px;
