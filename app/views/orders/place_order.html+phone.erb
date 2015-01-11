@@ -1,8 +1,16 @@
-<div class="place-order-phone phone-page">
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
+  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="place-order-phone phone-page" data-city="<%= current_city %>" data-car='<%= params["order"]["car_id"] %>'>
   <%= form_tag 'submit' do %>
     <fieldset>
     <%= hidden_field_tag(:phone_num, current_user.phone_number) %>
     <%= hidden_field_tag(:city_id, current_city_id) %>
+    <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
+
     <div class="orders-content bac-white form-horizontal">
       <h4 class="item-title choice-address-title">选择服务地址</h4>
       <div class="address bac-white clearfix">
@@ -94,39 +102,79 @@
       <hr>
 
       <div class="info-group form-group">
-        <div class="info-con spe1">
-          <%= radio_button_tag :invoice,'', class: 'form-control' %>
-          <%= label_tag(:invoice, "不要发票") %>
+          <div class="info-title">
+            <%= label_tag("发票：") %>
+          </div>
+          <div class="info-con">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default active" id="no_invoice">
+                <input type="radio" autocomplete="off" checked> 不要
+              </label>
+              <label class="btn btn-default" id="yes_invoice">
+                <input type="radio" autocomplete="off"> 需要
+              </label>
+            </div>
+          </div>
         </div>
-        <div class="info-con spe1">
-          <%= radio_button_tag :invoice,'', class: 'form-control' %>
-          <%= label_tag(:invoice, "发票") %>
+
+        <div class="info-group form-group">
+          <div id="invoice_info" class="collapse">
+            <div class="info-title">
+              <%= label_tag("详细信息：") %>
+            </div>
+
+            <div class="input-group reciept-detail col-sm-6">
+
+              <span class="input-group-addon">
+                <label>
+                  <input type="radio" value='1' name="reciept_type" autocomplete="off"> 个人
+                </label>
+              </span>
+
+              <span class="input-group-addon">
+                <label>
+                  <input type="radio" value='2' name="reciept_type" autocomplete="off"> 单位
+                </label>
+              </span>
+
+              <input type="text" class='form-control' name="reciept_title" placeholder="发票抬头">
+            </div>
+          </div>
         </div>
-        <div class="info-con spe1">
-          <%= radio_button_tag :unit,'', class: 'form-control' %>
-          <%= label_tag(:unit, "个人") %>
-        </div>
-        <div class="info-con spe1">
-          <%= radio_button_tag :unit,'', class: 'form-control' %>
-          <%= label_tag(:unit, "单位") %>
-        </div>
-      </div>
 
 
-      <div class="info-group form-group">
-        <div class="info-con spe2">
-          <%= radio_button_tag :preferential,'', class: 'form-control' %>
-          <%= label_tag(:preferential, "无优惠券") %>
+
+
+        <div class="info-group form-group">
+          <div class="info-title">
+            <%= label_tag("优惠券：") %>
+          </div>
+
+          <div class="info-con">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default active" id="no_preferential">
+                <input type="radio" autocomplete="off" checked> 无
+              </label>
+              <label class="btn btn-default" id="yes_preferential">
+                <input type="radio" autocomplete="off"> 有
+              </label>
+            </div>
+          </div>
+
         </div>
-        <div class="info-con spe2">
-          <%= radio_button_tag :preferential,'', class: 'form-control' %>
-          <%= label_tag(:preferential, "使用优惠券") %>
+
+        <div class="info-group form-group">
+          <div id="preferential_info" class="collapse">
+            <div class="info-title">
+              <%= label_tag("详细信息：") %>
+            </div>
+
+            <div class="info-con form-inline">
+              <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
+              <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
+            </div>
+          </div>
         </div>
-        <div class="info-con spe2">
-          <a class="verify-btn">验证</a>
-          <label for="" class="hidden verify-info">验证成功！</label>
-        </div>
-      </div>
 
       <div class="info-group form-group">
         <div class="info-title">
@@ -137,50 +185,9 @@
         </div>
       </div>
       <h4 class="item-title">商品详情</h4>
-      <table id="item_table">
-      	<thead>
-        	<th>商品名称</th>
-        	<th>保养项目</th>
-        	<th>价格</th>
-        	<th>总价</th>
-      	</thead>
-        <tbody>
-	      <tr>
-	        <td>
-	          <%= @result['name'] %>
-	          <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
-	        </td>
-	        <td class="item">
-	          <% @result['parts'].each_index do |index| %>
-	            <% part = @result['parts'][index]%>
-		        <p name='items'>
-		          [<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
-
-		          <%= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
-
-		          <%= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
-		        </p>
-	          <% end %>
-	        </td>
-	        <td>
-	          <% @result['parts'].each_index do |index| %>
-	            <% part = @result['parts'][index]%>
-		        <p>
-		          <%= part.values.first.first['price'] %>
-		          <%= hidden_field_tag(:parts_price, part.values.first.first['price']) %>
-		        </p>
-	          <% end %>
-	        </td>
-	        <td class="result">
-	          <%= @result['price_without_discount'] %>
-	          <%= hidden_field_tag(:price, @result['price_without_discount']) %>
-	        </td>
-	      </tr>
-        </tbody>
-        <tfoot></tfoot>
-      </table>
+      <%= render "offer_table" %>
       <div class="submit-con">
-        <span>当前费用: <span class="result-price"> <%= @result['price'] %></span>元</span>
+        <span>当前费用: <span class="result-price" id="result_price"> <%= @result['price'] %></span>元</span>
         <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default order_button') %>
         <p>支持现金、刷卡支付</p>
       </div>

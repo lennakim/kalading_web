@@ -43,7 +43,7 @@ $ ->
       e.preventDefault()
       e.stopPropagation()
 
-      car_id = $('.place-order-page').data('car')
+      car_id = $("#car_id").val()
       code = $("#preferential_code").val()
 
       parts = $('#item_table').data("parts")
@@ -57,7 +57,7 @@ $ ->
       $("#yes_preferential").removeClass('active')
       $(@).addClass('active')
 
-      car_id = $('.place-order-page').data('car')
+      car_id = $("#car_id").val()
       parts = $('#item_table').data("parts")
 
       $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
