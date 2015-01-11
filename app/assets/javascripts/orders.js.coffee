@@ -18,7 +18,7 @@ $ ->
       type = $('.select-car-page').data('type')
       window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
-  if $(".place-order-page").length > 0
+  if $(".place-order-page,.place-order-phone").length > 0
     initPickaDate = ->
       nowDay = new Date()
       time = nowDay.getHours()

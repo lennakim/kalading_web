@@ -535,7 +535,7 @@ $title-gray: #787878;
     }
   }
   .tab-content{
-    padding: 60px 0 120px;
+    padding: 60px 0 110px;
   }
   a{
     color: #000;
@@ -620,6 +620,9 @@ $title-gray: #787878;
 .place-order-phone{
   form{
     padding-bottom: 130px;
+  }
+  .orders-content{
+    overflow: hidden;
   }
   .addr{
     display: none;

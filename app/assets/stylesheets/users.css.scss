@@ -383,6 +383,30 @@ $grey: #c4c4c4;
     content: url(order-status-phone.png);
   }
 }
+.maintain-histories-list-phone{
+  .my-maintain-title:before{
+    content: url(my-maintain.png)
+  }
+  dl{
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background: #fff;
+    dt,dd{
+      padding: 0 5px;
+    }
+    dt{
+      line-height: 35px;
+      border-bottom: 1px solid #ccc;
+      color: #a5a5a5;
+      font-size: 14px;
+    }
+    dd{
+      line-height: 40px;
+      color: #696969;
+      font-size: 18px;
+    }
+  }
+}
 .maintain-histories-phone{
   h3{
     margin: 10px 0 20px;
@@ -421,5 +445,9 @@ $grey: #c4c4c4;
   }
   .panel-title5{
     background-image: image-url('maintain5.png'); 
+  }
+  li{
+    text-align: left;
+    line-height: 30px;
   }
 }
