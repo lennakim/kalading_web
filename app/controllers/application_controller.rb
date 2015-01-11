@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :signed_in?
   helper_method :current_city, :current_city_id, :current_city_name
+  helper_method :last_select_car
 
   before_action :set_city
   before_action :set_device_type
@@ -15,6 +16,14 @@ class ApplicationController < ActionController::Base
 
   def signed_in?
     current_user.present?
+  end
+
+  def save_last_select_car id
+    cookies[:last_select_car] = { value: id, expired: 365.days.from_now }
+  end
+
+  def last_select_car
+    cookies[:last_select_car]
   end
 
   def current_user

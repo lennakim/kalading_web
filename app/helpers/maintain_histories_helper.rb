@@ -1,5 +1,5 @@
 module MaintainHistoriesHelper
-  
+
   def light_name_mapper key
     {
       'high_beam'    => '远光灯',
