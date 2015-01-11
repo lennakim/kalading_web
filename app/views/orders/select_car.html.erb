@@ -26,8 +26,6 @@
         <% current_user.autos.each do |auto| %>
           <%= render "shared/car_item", auto: auto %>
         <% end %>
-
-        <%= link_to "其他车辆", select_car_orders_path %>
       </div>
     <% else %>
       <div class="quick-select">
