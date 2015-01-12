@@ -1,0 +1,15 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="auto-brands-phone phone-page">
+	<% @brands.each do |brand| %>
+	  <div class="carinfo list clearfix" >
+	    <div class="brand pull-left" brand_id="<%= brand['_id']%>" >
+	      <span><%= brand["name"]%></span>
+	    </div>
+	    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
+	    </div>
+	  </div>
+	<% end %>
+</div>

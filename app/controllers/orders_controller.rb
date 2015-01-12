@@ -21,9 +21,16 @@ class OrdersController < ApplicationController
     @result = Order.refresh_price car_id, payload
   end
 
-  def brands
-    @brands = Order.cars_data type
-    render_html
+  def auto_brands
+    @brands = Order.auto_brands
+  end
+
+  def auto_series
+    @series = Order.auto_series params[:brand_id]
+  end
+
+  def auto_model_numbers
+    @auto_model_numbers = Order.auto_model_numbers params[:series_id]
   end
 
   def select_car
