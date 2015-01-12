@@ -37,28 +37,7 @@
         <div class="header">
           车辆保养记录
         </div>
-        <div class="cards clearfix">
-
-          <% @maintain_histories.each do |maintain_history| %>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <%= link_to "体检报告单", maintain_history_users_path(), remote: true %>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <% end %>
-
-        </div>
+        <%= render "maintain_report_card" %>
       </div>
     </div>
   </div>

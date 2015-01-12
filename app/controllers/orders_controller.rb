@@ -127,7 +127,7 @@ class OrdersController < ApplicationController
       end
 
       # add this car to user , TODO this api is not done
-      # user.add_auto payload[:info]
+      user.add_auto payload[:info]
 
       # send notification to user's wechat TODO
 

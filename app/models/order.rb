@@ -65,6 +65,9 @@ class Order
       ServerApi.call "get", "auto_inspection_report", queries
     end
 
+    def api_maintain_find id
+      ServerApi.call "get", "maintains", { entry_id: id }
+    end
 
     def submit_special_order payload
       ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
