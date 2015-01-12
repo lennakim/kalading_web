@@ -83,7 +83,7 @@
               <option value="b">京</option>
               <option value="c">京</option>
             </select>
-            <%= text_field_tag(:car_num, '', :minlength => 6, :required => true, :placeholder => '车牌后六位', class: 'form-control') %>
+            <%= text_field_tag(:car_num, '', minlength: 6, maxlength: 6, required: true, placeholder: '车牌后六位', class: 'form-control') %>
           </div>
         </div>
 
@@ -93,11 +93,11 @@
             <%= label_tag(:serve_date, "服务时间：") %>
           </div>
           <div class="info-con form-inline">
-            <%= text_field_tag(:serve_date, '', :required => true, class: 'form-control') %>
-            <select name="serve_period" class='form-control'>
+            <%= text_field_tag(:serve_date, '', :required => true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
+            <select id="serve_period" name="serve_period" class='form-control'>
               <option value="8:00-12:00">8:00 - 12:00</option>
-              <option value="8:00-12:00">8:00 - 12:00</option>
-              <option value="8:00-12:00">8:00 - 12:00</option>
+              <option value="12:00-17:00">12:00 - 17:00</option>
+              <option value="17:00-20:00">17:00 - 20:00</option>
             </select>
           </div>
         </div>

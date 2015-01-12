@@ -57,6 +57,40 @@ $ ->
 
       $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
 
+
+    date = $('#serve_date').data('cc')
+    min = _.first(_.keys(date))
+    max = _.last(_.keys(date))
+
+    disabled = _.select _.pairs(date), (e) ->
+      e[1].length == 0
+
+    disabled_date = _.map disabled, (e, i) ->
+      new Date(e)
+
+    $('#serve_date').pickadate({
+      format: 'yyyy-mm-dd',
+      min: new Date(min),
+      max: new Date(max),
+      disable: disabled_date,
+      onSet: () ->
+        # date_string = $("#serve_date").val()
+        # _.each date[date_string], (e, i) ->
+        #   console.log e
+        #   if e == 0
+        #     $("#serve_period option").find(i).addClass('hidden')
+
+    })
+
+    $( '#registration_date' ).pickadate({
+      max: true,
+      today: 'Today',
+      format: 'yyyy-mm-dd',
+      selectMonths: true,
+      selectYears: true
+    })
+
+
     initPickaDate = ->
       nowDay = new Date()
       time = nowDay.getHours()
@@ -69,20 +103,8 @@ $ ->
       maxDate = new Date()
       maxDate.setDate(maxDate.getDate()+8)
 
-      $( '#serve_date' ).pickadate({
-        min: nowDay,
-        max: maxDate,
-        today: '',
-        format: 'yyyy-mm-dd'
-      })
 
-      $( '#registration_date' ).pickadate({
-        max: true,
-        today: 'Today',
-        format: 'yyyy-mm-dd',
-        selectMonths: true,
-        selectYears: true
-      })
+
 
     $("#commentForm").validate({
       rules: {

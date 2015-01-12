@@ -1,9 +1,10 @@
 // libs
 @import "compass";
 @import "compass/reset";
-@import "classic";
-@import "classic.date";
-@import "classic.time";
+@import "default";
+@import "default.date";
+@import "default.time";
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -202,7 +203,7 @@ header.navbar{
         @include border-radius(3px);
 
         margin-bottom: 20px;
-        
+
         .top{
           color: #c1c1c1;
           font-size: 16px;

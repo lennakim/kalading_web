@@ -79,6 +79,7 @@ class OrdersController < ApplicationController
   def place_order
     car_id = params["order"]["car_id"]
     @parts = params["order"]["parts"]
+    @city_capacity = Order.city_capacity current_city_id
     payload = {
       "parts" => @parts
     }
