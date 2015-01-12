@@ -34,7 +34,7 @@ class Order
     end
 
     def find id
-      get_orders_of("15666300899").first
+      ServerApi.call "get", "orders", { entry_id: id }
     end
 
     def cars_data type = "bmt"

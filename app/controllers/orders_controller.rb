@@ -34,9 +34,9 @@ class OrdersController < ApplicationController
 
   def comment
     data = Order.comment params[:id], {
-      evaluation: params[:content],
       evaluation_tags: params[:tags],
-      evaluation_score: params[:score]
+      evaluation_score: params[:score],
+      evaluation_time: Time.now.to_s
     }
 
     @id = params[:id]
