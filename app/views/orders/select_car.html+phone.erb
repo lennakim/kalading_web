@@ -2,7 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-<div class="select-car-phone phone-page">
+<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>">
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist" id="myTab">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
@@ -24,9 +24,9 @@
         <div class="orders bac-white" data-car="<%= params[:car_id]%>">
           <h4 class="item-title">服务类型</h4>
           <ul class="content">
-            <li class="pm25"><%= link_to "PM2.5滤芯更换", select_car_orders_path(car_id: params[:car_id], type: "pm25") %></li>
-            <li class="bmt"><%= link_to "大保养", select_car_orders_path(car_id: params[:car_id], type: "bmt") %></li>
-            <li class="smt"><%= link_to "小保养", select_car_orders_path(car_id: params[:car_id], type: "smt") %></li>
+            <li class="pm25 <%= "selected" if params[:type] == "pm25" %>"><%= link_to "PM2.5滤芯更换", "" %></li>
+            <li class="bmt <%= "selected" if params[:type] == "bmt" %>"><%= link_to "大保养","" %></li>
+            <li class="smt <%= "selected" if params[:type] == "smt" %>"><%= link_to "小保养", "" %></li>
           </ul>
           <h4 class="item-title">选择配件</h4>
           <div class="orders-con <%= type=params['type'] %>-con content">
@@ -92,26 +92,30 @@ $('#myTab a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
     })
-  var car_id ;
+  var car_id,auto_id ;
+
   $('.quick-select').on('click','input:radio',function(){
-    car_id = $('input:radio:checked').parent().siblings('.btn').data('id');
+    auto_id = $('input:radio:checked').parent().siblings('.btn').data('autoid');
+    $('.select-car-phone').attr('data-autoid',auto_id);
   })
 
-  $('.pm25').click(function(){
-    if(!$('.orders').data('car')){
-      window.location.href = '/orders/select_car?car_id='+car_id+'&type=pm25'
-    }
+  $('.content').on('click','li',function(e){
+    e.preventDefault()
+    e.stopPropagation()
+    car_id = $('.orders').data('car') ? $('.orders').data('car') : $('input:radio:checked').parent().siblings('.btn').data('id');
+    autoid = $('.select-car-phone').attr('data-autoid');
+    var type = $(this).attr('class');
+    window.location.href = '/orders/select_car?car_id='+car_id+'&auto_id='+autoid+'&type='+type;
   });
 
-  $('.bmt').click(function(){
-    if(!$('.orders').data('car')){
-      window.location.href = '/orders/select_car?car_id='+car_id+'&type=bmt'
-    }
-  });
-  $('.smt').click(function(){
-    if(!$('.orders').data('car')){
-      window.location.href = '/orders/select_car?car_id='+car_id+'&type=smt'
-    }
-  });
+  function selectItem(){
+    autoid = $('.select-car-phone').attr('data-autoid');
+    $('.btn').each(function(){
+      if($(this).data('autoid')==autoid){
+        $(this).siblings('span').find('input:radio').attr('checked','checked')
+      }
+    })
+  }
+  selectItem()
 
 </script>
