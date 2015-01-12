@@ -14,7 +14,7 @@
 
               <select id="service_cities" class="form-control city" name="">
                 <% @cities.each do |city| %>
-                  <option value="<%= city["name"] %>"><%= city["name"] %></option>
+                  <option value="<%= city["name"] %>" <%= "selected" if city["name"].match(current_city_name) %>><%= city["name"] %> </option>
                 <% end %>
               </select>
 
