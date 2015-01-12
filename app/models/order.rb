@@ -2,6 +2,10 @@ class Order
 
   class << self
 
+    def comments
+      ServerApi.call "get", "order_evaluation_list"
+    end
+
     def auto_brands
       ServerApi.call "get", "auto_brands"
     end

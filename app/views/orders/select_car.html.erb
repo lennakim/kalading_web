@@ -49,24 +49,20 @@
       <div class="comment-module bac-white">
         <h3 class="comment-title module-title">用户评价</h3>
         <div class="comment-con">
-          <dl>
-            <dt>
-              <h3>北京市东城区 | 京A***34</h3>
-              <span class="time">11分钟前</span>
-            </dt>
-            <dd>
-              评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价
-            </dd>
-          </dl>
-          <dl>
-            <dt>
-              <h3>北京市东城区 | 京A***34</h3>
-              <span class="time">11分钟前</span>
-            </dt>
-            <dd>
-              评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价
-            </dd>
-          </dl>
+
+          <% Order.comments.first(5).each do |comment| %>
+
+            <dl>
+              <dt>
+                <h3><%= comment['phone_num'] %></h3>
+                <span class="time"><%= comment['evaluation_time'] %></span>
+              </dt>
+              <dd>
+                <%= comment['evaluation_tags'].join(', ') %>
+              </dd>
+            </dl>
+
+          <% end %>
         </div>
       </div>
     </div>
