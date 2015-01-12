@@ -17,8 +17,9 @@
     <% if signed_in? %>
 
       <div class="quick-select">
+
+        <h4>快捷车辆</h4>
         <% if @last_select_car %>
-          <h4>上次选择</h4>
 
           <div class="car pull-left col-sm-3">
             <div class="input-group btn-group">
@@ -34,10 +35,10 @@
 
         <% end %>
 
-        <h4>我的车辆</h4>
         <% current_user.autos.each do |auto| %>
           <%= render "shared/car_item", auto: auto %>
         <% end %>
+
       </div>
     <% else %>
       <div class="quick-select">
@@ -66,7 +67,11 @@
 
             <dl>
               <dt>
-                <h3><%= comment['phone_num'] %></h3>
+              <h3>
+                <% phone = comment['phone_num'] %>
+                <% phone[3..6] = "****" %>
+                <%= phone %>
+              </h3>
                 <span class="time"><%= comment['evaluation_time'] %></span>
               </dt>
               <dd>

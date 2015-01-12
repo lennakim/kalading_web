@@ -22,11 +22,6 @@ $ ->
 
       $('.select-car-page').data 'car_id',id
 
-    $('#to_select_item').click ->
-      type = $('.select-car-page').data('type')
-      car_id = $('.select-car-page').data 'car_id'
-      window.location.href = "/orders/select_item?car_id=#{ car_id }&type=#{ type }"
-
   if $(".place-order-page,.place-order-phone").length > 0
 
     $('#no_invoice').on "click", (e) ->
