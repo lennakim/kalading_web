@@ -20,11 +20,9 @@ class User < ActiveRecord::Base
     auto.update_attributes \
       system_id:        order_info["car_id"],
 
-      # TODO
-
-      brand:            "宝马(进口)",
-      series:           "E",
-      model_number:     "E200k（W211）2.0L 2006.09-2014",
+      brand:            auto_hash["brand"],
+      series:           auto_hash["model"],
+      model_number:     auto_hash["name"],
 
       registed_at:      order_info["registration_date"],
       engine_number:    order_info["engine_num"],

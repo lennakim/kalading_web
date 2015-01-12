@@ -5,6 +5,14 @@ $ ->
 
   if $('.user-info').length > 0
 
+    $('.content').on "click", ".select-car input[name=car_brand]", (e) ->
+      e.stopPropagation()
+
+      id = $(@).data('id')
+      car_num = $(@).data('car_num')
+
+      $.get "/users/cars.js?car_id=#{ id }&car_num=#{ car_num }"
+
     $( '#registration_date' ).pickadate({
       max: true,
       today: 'Today',
@@ -12,10 +20,6 @@ $ ->
       selectMonths: true,
       selectYears: true
     })
-
-
-
-
 
     $(".orders").on "click", ".order .comment > .cmt > a", (e) ->
       e.stopPropagation()

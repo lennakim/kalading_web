@@ -5,9 +5,7 @@ class UsersController < ApplicationController
   end
 
   def orders
-    # phone_nums = params[:phone_nums]
     @orders = Order.get_orders_of current_user.phone_number
-    # @orders = Order.get_orders_of '13111111111'
   end
 
   def maintain_histories_list
@@ -28,11 +26,8 @@ class UsersController < ApplicationController
   end
 
   def cars
-    # car_id   = params[:car_id]
-    # car_num  = params[:car_num]
-    # datetime = params[:datetime]
-
     @cars_info = Order.cars_data
+    @auto_id = params[:auto_id]
     @maintain_histories = Order.maintain_report login_phone_num: current_user.phone_number, car_id: params[:car_id], car_num: params[:car_num]
   end
 
