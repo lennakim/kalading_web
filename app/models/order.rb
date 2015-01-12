@@ -2,6 +2,10 @@ class Order
 
   class << self
 
+    def comments
+      ServerApi.call "get", "order_evaluation_list"
+    end
+
     def auto_brands
       ServerApi.call "get", "auto_brands"
     end
@@ -33,7 +37,7 @@ class Order
       get_orders_of("15666300899").first
     end
 
-    def cars_data type = "maintain"
+    def cars_data type = "bmt"
       ServerApi.call "get", "auto_brands", {all: 1, "#{type}" => true}
     end
 
