@@ -5,6 +5,18 @@ $ ->
 
   if $('.user-info').length > 0
 
+    $( '#registration_date' ).pickadate({
+      max: true,
+      today: 'Today',
+      format: 'yyyy-mm-dd',
+      selectMonths: true,
+      selectYears: true
+    })
+
+
+
+
+
     $(".orders").on "click", ".order .comment > .cmt > a", (e) ->
       e.stopPropagation()
       e.preventDefault()
