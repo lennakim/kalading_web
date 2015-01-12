@@ -408,28 +408,23 @@ $grey: #c4c4c4;
     }
   }
 }
-.maintain-histories-phone{
-  h3{
-    margin: 10px 0 20px;
-    font-size: 16px;
-    color: #515151;
-    text-align: center;
-  }
+.report-body{
   .score{
-    height: 175px;
+    height: 210px;
+    padding-top: 100px;
+    margin-top: 20px;
     font-size: 60px;
     color: #ff973a;
     text-shadow: 0 -2px 0 #aaa;
     text-align: center;
-    padding-top: 80px;
     background-image: image-url('maintain-title.png');
     background-repeat: no-repeat;
-    background-size: 80%;
-    background-position: 32px 0;
+    background-size: 60%;
+    background-position: 50% 0;
   }
   .panel-title{
     background-repeat: no-repeat;
-    background-size: 8%;
+    background-size: 5%;
     text-align: center;
   }
   .panel-title1{
@@ -447,8 +442,44 @@ $grey: #c4c4c4;
   .panel-title5{
     background-image: image-url('maintain5.png');
   }
+  .title{
+    line-height: 40px;
+    border-top: 1px solid #ccc;
+    font-size: 16px;
+  }
+  p{
+    text-indent: 2em;
+    line-height: 30px;
+  }
   li{
     text-align: left;
-    line-height: 30px;
+    &:first-child{
+      .title{
+        border: 0;
+      }
+    }
+  }
+  .on{
+    color: #008012;
+  }
+  .off{
+    color: #ea4609;
+  }
+}
+.maintain-histories-phone{
+  h3{
+    margin: 10px 0 20px;
+    font-size: 16px;
+    color: #515151;
+    text-align: center;
+  }
+  .score{
+    height: 175px;
+    padding-top: 80px;
+    background-size: 80%;
+    background-position: 32px 0;
+  }
+  .panel-title{
+    background-size: 8%;
   }
 }

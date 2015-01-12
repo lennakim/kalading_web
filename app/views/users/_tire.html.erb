@@ -2,39 +2,69 @@
 <ul>
   <% wheels.each do |wheel|%>
     <% if wheel %>
-    <li>
-  <%= wheel_name_mapper wheel['name'] %>:
-  <p>
-  胎压：<%= wheel['pressure'] %>
-</p>
-  <p>
-  出厂日子是否可检查：<%= factory_data_checked_value_mapper wheel['factory_data_checked'] %>
-</p>
-  <p>
-  出厂日期：<%= wheel['factory_data'] %>
-</p>
-  <p>
-  花纹深度：<%= wheel['tread_depth'] %>
-</p>
-  <p>
-  老化程度：<%= ageing_mapper wheel['ageing_desc'] %>
-</p>
-  <p>
-  胎面：<%= tread_desc_mapper wheel['tread_desc'] %>
-</p>
-  <p>
-  胎侧：<%= sidewall_desc_mapper wheel['sidewall_desc'] %>
-</p>
-  <p>
-  刹车片是否可检测：<%= brake_pad_checked_mapper wheel['brake_pad_checked'] %>
-</p>
-  <p>
-  刹车片厚度：<%= wheel['brake_pad_thickness'] %>
-</p>
-  <p>
-  刹车盘：<%= brake_disc_desc_mapper wheel['brake_disc_desc'] %>
-</p>
-  </li>
-<% end %>
-<% end %>
+      <li>
+        <h4 class="title"><%= wheel_name_mapper wheel['name'] %>：</h4> 
+        <p>
+          胎压：
+          <span class="<%= wheel['factory_data'] ? 'on' : 'off' %>">
+            <%= wheel['pressure'] %>
+          </span> 
+        </p>
+        <p>
+          出厂日子是否可检查：
+          <span class='<%= wheel['factory_data_checked'] ? 'on' : 'off' %>'>
+            <%= factory_data_checked_value_mapper wheel['factory_data_checked'] %>
+          </span>
+        </p>
+        <p>
+          出厂日期：
+          <span class="<%= wheel['factory_data'] ? 'on' : 'off' %>">
+            <%= wheel['factory_data'] %>
+          </span>
+        </p>
+        <p>
+          花纹深度：
+          <span class="<%= wheel['tread_depth'] ? 'on' : 'off' %>">
+            <%= wheel['tread_depth'] %>
+          </span>
+        </p>
+        <p>
+          老化程度：
+          <span class="<%= status_class wheel['ageing_desc'] %>">
+            <%= ageing_mapper wheel['ageing_desc'] %>
+          </span>
+        </p>
+        <p>
+          胎面：
+          <span class="<%= status_class_arr wheel['tread_desc'] %>">
+            <%= tread_desc_mapper wheel['tread_desc'] %>
+          </span>
+        </p>
+        <p>
+          胎侧：
+          <span class='<%= status_class_arr wheel['sidewall_desc'] %>'>
+            <%= sidewall_desc_mapper wheel['sidewall_desc'] %>
+          </span>
+        </p>
+        <p>
+          刹车片是否可检测：
+          <span class='<%= wheel['brake_pad_checked'] ? 'on' : 'off' %>'>
+            <%= brake_pad_checked_mapper wheel['brake_pad_checked'] %>
+          </span>
+        </p>
+        <p>
+          刹车片厚度：
+          <span class="<%= wheel['brake_pad_thickness'] ? 'on' : 'off' %>">
+            <%= wheel['brake_pad_thickness'] %>
+          </span>
+        </p>
+        <p>
+          刹车盘：
+          <span class='<%= status_class_arr wheel['brake_disc_desc'] %>'>
+            <%= brake_disc_desc_mapper wheel['brake_disc_desc'] %>
+          </span>
+        </p>
+      </li>
+    <% end %>
+  <% end %>
 </ul>

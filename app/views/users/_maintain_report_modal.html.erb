@@ -8,11 +8,12 @@
         </div>
 
         <div class="report-body">
-
-          <% order = @maintain_orders.first %>
-
-          <%= render "report_body", report: order %>
-
+          <% if !@maintain_orders.empty? %>
+            <% order = @maintain_orders.first %>
+            <%= render "report_body", report: order %>
+          <% else %>
+            <h3>您还没有保养记录~</h3>
+          <% end %>
         </div>
 
         <div class="close-btn">
