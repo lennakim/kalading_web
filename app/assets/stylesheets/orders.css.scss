@@ -808,3 +808,21 @@ $title-gray: #787878;
     }
   }
 }
+
+.auto-brands-phone,.auto-series-phone,.auto-model-phone{
+  .list{
+    padding-left: 20px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-style:solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #eee;
+    color:#666462;
+
+    .arrow{
+      margin-right: 20px;
+      line-height: 40px;
+    }
+  }
+}

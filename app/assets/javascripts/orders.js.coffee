@@ -128,3 +128,15 @@ $ ->
       $('.num').text(num+"s")
       setTimeout(countdown,1000)
     countdown()
+
+  if $('.auto-brands-phone,.auto-series-phone,.auto-model-phone').length>0
+    $('.carinfo').on 'click', ->
+      if $(this).children('.brand').length > 0
+        brand_id = $(this).children('.brand').attr("brand_id")
+        window.location.href = "/orders/auto_series/" + brand_id
+      else if $(this).children('.car-type').length > 0
+        type_id = $(this).children('.car-type').data("type_id")
+        window.location.href = "/orders/auto_model_numbers/" + type_id
+      else if $(this).children('.car-model').length > 0
+        model_id = $(this).children('.car-model').attr("model_id")
+        window.location.href = "/orders/select_car?car_id=" + model_id+"&type=bmt"
