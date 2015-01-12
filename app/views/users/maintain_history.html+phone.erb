@@ -1,8 +1,14 @@
 <%= title "我的保养记录" %>
 <div class="maintain-histories-phone phone-page">
-  <% order=@maintain_orders.first %>
-  <h3><%= order['serve_datetime'] %>检测报告</h3>
-  <%= render "report_body", report: order %>
+  <div class="report-body">
+    <% if !@maintain_orders.empty? %>
+      <% order = @maintain_orders.first %>
+      <h3><%= order['serve_datetime'] %>车辆体检报告</h3>
+      <%= render "report_body", report: order %>
+    <% else %>
+      <h3>您还没有保养记录~</h3>
+    <% end %>
+  </div>
 </div>
 
 <script>

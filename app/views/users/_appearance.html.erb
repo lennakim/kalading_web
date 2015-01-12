@@ -1,11 +1,11 @@
 <% lights = report['lights'] %>
-<ul>
-  <% lights.each do |light| %>
-    <% if light %>
-      <li>
-        <%= light_name_mapper light['name'] %>：
-        <%= light_desc_mapper light['desc'] %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<% lights.each do |light| %>
+<% if light %>
+  <p>
+    <%= light_name_mapper light['name'] %>：
+    <span class='<%= status_class_arr light['desc']%>'>
+    	<%= light_desc_mapper light['desc'] %>
+    </span>
+  </p>
+<% end %>
+<% end %>
