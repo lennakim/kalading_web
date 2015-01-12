@@ -410,7 +410,7 @@ $grey: #c4c4c4;
 }
 .report-body{
   .score{
-    height: 210px;
+    height: 230px;
     padding-top: 100px;
     margin-top: 20px;
     font-size: 60px;
@@ -444,20 +444,14 @@ $grey: #c4c4c4;
   }
   .title{
     line-height: 40px;
-    border-top: 1px solid #ccc;
     font-size: 16px;
+    color: #aaa;
   }
   p{
-    text-indent: 2em;
     line-height: 30px;
   }
   li{
     text-align: left;
-    &:first-child{
-      .title{
-        border: 0;
-      }
-    }
   }
   .on{
     color: #008012;
@@ -481,5 +475,18 @@ $grey: #c4c4c4;
   }
   .panel-title{
     background-size: 8%;
+  }
+  .title{
+    border-top: 1px solid #ccc;
+  }
+  p{
+    text-indent: 2em;
+  }
+  li{
+    &:first-child{
+      .title{
+        border: 0;
+      }
+    }
   }
 }

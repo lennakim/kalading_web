@@ -1,8 +1,8 @@
 <% wheels = report['wheels'] %>
-<ul>
+<ul class="row">
   <% wheels.each do |wheel|%>
     <% if wheel %>
-      <li>
+      <li class="col-sm-6">
         <h4 class="title"><%= wheel_name_mapper wheel['name'] %>：</h4> 
         <p>
           胎压：
