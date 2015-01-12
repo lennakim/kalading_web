@@ -28,6 +28,11 @@ class OrdersController < ApplicationController
 
   def select_car
     type = params[:type]
+
+    if last_select_car
+      @last_select_car = result = Auto.api_find last_select_car
+    end
+
     @cars_info = Order.cars_data type
     @result = Order.items_for params[:car_id]
   end
