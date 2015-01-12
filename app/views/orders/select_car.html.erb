@@ -21,17 +21,7 @@
         <h4>快捷车辆</h4>
         <% if @last_select_car %>
 
-          <div class="car pull-left col-sm-3">
-            <div class="input-group btn-group">
-              <span class="input-group-addon">
-                <input type="radio" name="car_brand" aria-label="...">
-              </span>
-
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" data-id="<%= @last_select_car["_id"] %>">
-                <%= @last_select_car["full_name"] %>
-              </button>
-            </div>
-          </div>
+          <%= render "shared/car_item", auto: @last_select_car %>
 
         <% end %>
 
