@@ -201,6 +201,9 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def success
+  end
+
   def order_status
   end
 

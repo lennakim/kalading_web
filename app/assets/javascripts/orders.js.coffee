@@ -142,16 +142,6 @@ $ ->
     })
     initPickaDate()
 
-  if $('.success-page').length > 0
-    num = 30
-    countdown = ->
-      if num > 0
-        num--
-      else
-        window.location.href = '/'
-      $('.num').text(num+"s")
-      setTimeout(countdown,1000)
-    countdown()
 
   if $('.auto-brands-phone,.auto-series-phone,.auto-model-phone').length>0
     $('.carinfo').on 'click', ->

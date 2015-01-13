@@ -1,18 +1,16 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
-<div class="container success-page">
-  <h3 class="main-title row">保养预约</h3>
-  <%= render "order_process" %>
+<div class="container success-page-phone">
   <div class="content success-con">
     <h3 class="title">恭喜您，您的订单提交成功！</h3>
     <p class="next">您可以到个人中心中查看订单详情与进度</p>
     <ul class="bac">
       <li>
-      <%= link_to "返回首页", '/', target: "_blank", :title => "返回首页" %>
+      <%= link_to "返回首页", '/', :title => "返回首页" %>
       </li>
       <li>
-      <%= link_to "个人中心", '/users/orders', target: "_blank", :title => "个人中心" %>
+      <%= link_to "个人中心", '/users/orders', :title => "个人中心" %>
       </li>
     </ul>
   </div>

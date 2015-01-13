@@ -404,8 +404,7 @@ $title-gray: #787878;
     }
   }
 }
-
-.success-page{
+.success-page,.success-page-phone{
   .success-con{
     border: 1px solid #ccc;
     background: #fff;
@@ -424,17 +423,6 @@ $title-gray: #787878;
       font-size: 16px;
       color: #999999;
     }
-    .home{
-      font-size: 16px;
-      color: #999999;
-    }
-    .num{
-      display: inline-block;
-      margin: 0 10px;
-      width: 40px;
-      height: 30px;
-      color: #ffae20;
-    }
     .bac{
       overflow: hidden;
       width: 170px;
@@ -451,6 +439,11 @@ $title-gray: #787878;
   }
 }
 
+.success-page-phone{
+  .success-con{
+    margin: 100px 0;
+  }
+}
 .address-content{
   margin-top: 15px;
   border-bottom: 0;
