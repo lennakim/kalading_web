@@ -6,7 +6,7 @@
 
 <%= title "提交订单" %>
 
-<div class="container place-order-page" data-city="<%= current_city %>" data-car='<%= params["order"]["car_id"] %>'>
+<div class="container place-order-page" data-city="<%= current_user_city %>" data-car='<%= params["order"]["car_id"] %>'>
   <h3 class="main-title row">保养预约</h3>
 
   <%= render "order_process" %>

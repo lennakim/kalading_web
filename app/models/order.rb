@@ -14,16 +14,16 @@ class Order
       ServerApi.call "get", "order_evaluation_list"
     end
 
-    def auto_brands
-      ServerApi.call "get", "auto_brands"
+    def auto_brands city_id
+      ServerApi.call "get", "auto_brands", { city_id: city_id }
     end
 
-    def auto_series brand_id
-      ServerApi.call "get", "auto_brands", { entry_id: brand_id }
+    def auto_series brand_id, city_id
+      ServerApi.call "get", "auto_brands", { entry_id: brand_id, city_id: city_id }
     end
 
-    def auto_model_numbers series_id
-      ServerApi.call "get", "auto_models", { entry_id: series_id }
+    def auto_model_numbers series_id, city_id
+      ServerApi.call "get", "auto_models", { entry_id: series_id, city_id: city_id }
     end
 
     def recent_orders
@@ -45,16 +45,16 @@ class Order
       ServerApi.call "get", "orders", { entry_id: id }
     end
 
-    def cars_data type = "bmt"
-      ServerApi.call "get", "auto_brands", {all: 1, "#{type}" => true}
+    def cars_data city_id, type = "bmt"
+      ServerApi.call "get", "auto_brands", {all: 1, "#{type}" => true, city_id: city_id}
     end
 
-    def items_for car_id
-      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id } {[]}
+    def items_for car_id, city_id
+      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id } {[]}
     end
 
-    def refresh_price car_id, payload
-      ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, body: payload }
+    def refresh_price car_id, city_id, payload
+      ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, city_id: city_id, body: payload }
     end
 
     def submit car_id, payload

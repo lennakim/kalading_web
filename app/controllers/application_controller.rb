@@ -50,16 +50,12 @@ class ApplicationController < ActionController::Base
     cookies[:city_id] = city_id
   end
 
-  def current_city
-    cookies[:city_id] || default_city.id
-  end
-
   def current_city_name
-    City.find(current_city).name
+    City.find(current_user_city).name
   end
 
   def current_city_id
-    City.find(current_city).system_id
+    City.find(current_user_city).system_id
   end
 
   private
