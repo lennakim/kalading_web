@@ -7,4 +7,8 @@ class Auto < ActiveRecord::Base
       Auto.new brand: data["brand"], series: data["model"], model_number: data["name"], system_id: data["_id"]
     end
   end
+
+  def full_name
+    "#{ brand }#{ series }#{ model_number }"
+  end
 end
