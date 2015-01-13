@@ -14,10 +14,37 @@
       <div role="tabpanel" class="tab-pane active" id="home">
         <div class="quick-select">
           <h4 class="item-title">我的快捷车辆</h4>
-          <a class="add-car"> + 重新选择</a>
+          <a href="/orders/auto_brands" class="add-car"> + 重新选择</a>
           <div class="car-content content">
-            <% current_user.autos.each do |auto| %>
-              <%= render "shared/car_item", auto: auto %>
+            <% if signed_in? %>
+
+              <% if @last_select_car %>
+                <h4>上次选择</h4>
+                <div class="car pull-left col-sm-3">
+                  <div class="input-group btn-group">
+                    <span class="input-group-addon">
+                      <input type="radio" name="car_brand" aria-label="...">
+                    </span>
+
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" data-id="<%= @last_select_car["_id"] %>">
+                      <%= @last_select_car["full_name"] %>
+                    </button>
+                  </div>
+                </div>
+              <% end %>
+
+              <h4>我的车辆</h4>
+              <% current_user.autos.each do |auto| %>
+                <%= render "shared/car_item", auto: auto %>
+              <% end %>
+              
+            <% else %>
+
+              <% if last_select_car %>
+                <h4>上次选择</h4>
+                <%= last_select_car %>
+              <% end %>
+
             <% end %>
           </div>
         </div>
