@@ -25,17 +25,24 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <% if signed_in? %>
-    <ul class="personal">
-      <li><a href="/users/orders">我的订单</a></li>
-      <li><a href="/users/maintain_histories_list">保养记录</a></li>
-    </ul>
-  <% else %>
-    <ul id="login_btn" class="personal">
-      <li>我的订单</li>
-      <li>保养记录</li>
-    </ul>
-  <% end %>
+  <div class="personal-maintain">
+    <% if signed_in? %>
+      <ul class="personal">
+        <li><a href="/users/orders">我的订单</a></li>
+        <li><a href="/users/maintain_histories_list">保养记录</a></li>
+      </ul>
+    <% else %>
+      <ul id="login_btn" class="personal">
+        <li>我的订单</li>
+        <li>保养记录</li>
+      </ul>
+    <% end %>
+    <p class="maintain-address" title="保养地点:<%= current_city %>">保养地点：
+      <span id="current_city">
+        <%= current_city_name %>
+      </span>
+    </p>
+  </div>
   <div class="promise">
   	<h3>为什么选择上门保养</h3>
     <div class="pros">
@@ -60,7 +67,11 @@
         <dd class="des">全年无休</dd>
       </dl>
     </div>
-    <a class="btn btn-default order_button" href="/orders/select_car">立即预约</a>
+    <% if signed_in? %>
+      <a class="btn btn-default order_button" href="/orders/select_car_item">立即预约</a>
+    <% else %>
+      <a class="btn btn-default order_button" href="/orders/auto_brands">立即预约</a>
+    <% end %>
   </div>
   <div class="service-module">
   	<h3 class="title">服务介绍</h3>

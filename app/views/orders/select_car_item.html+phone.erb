@@ -16,20 +16,16 @@
           <h4 class="item-title">我的快捷车辆</h4>
           <a href="/orders/auto_brands" class="add-car"> + 重新选择</a>
           <div class="car-content content">
-            <% if signed_in? %>
+
 
               <% if @last_select_car %>
                 <%= render "shared/car_item", auto: @last_select_car %>
               <% end %>
+
+            <% if signed_in? %>
+              
               <% current_user.autos.each do |auto| %>
                 <%= render "shared/car_item", auto: auto %>
-              <% end %>
-
-            <% else %>
-
-              <% if last_select_car %>
-                <h4>上次选择</h4>
-                <%= last_select_car %>
               <% end %>
 
             <% end %>

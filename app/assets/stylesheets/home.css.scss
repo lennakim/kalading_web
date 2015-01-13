@@ -348,21 +348,33 @@ $bac: #f7f4f3;
 	}
 }
 .home-phone{
-  .personal{
+  .personal-maintain{
   	overflow: hidden;
-  	line-height: 30px;
-  	padding: 10px 0;
-  	text-align: center;
-  	li{
-  		float: left;
-		width: 50%;
-		&:nth-child(1){
-			border-right: 1px solid #ccc;
-		}
-		a{
-			color: #676767;
-		}
-  	}
+  	color: #676767;
+  	.personal{
+	  	overflow: hidden;
+	  	float: left;
+	  	width: 60%;
+		margin: 10px 0;
+	  	text-align: center;
+	  	li{
+	  		float: left;
+			width: 50%;
+			&:nth-child(1){
+				border-right: 1px solid #ccc;
+			}
+			a{
+				color: #676767;
+			}
+	  	}
+	  }
+	.maintain-address{
+		float: left;
+		width: 40%;
+		margin: 10px 0;
+		text-align: center;
+		border-left: 1px solid #ccc;
+	}
   }
   .promise{
     padding: 20px 0;

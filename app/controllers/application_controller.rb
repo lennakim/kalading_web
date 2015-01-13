@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :signed_in?
   helper_method :current_city, :current_city_id, :current_city_name
-  helper_method :last_select_car
+  helper_method :last_select_car, :current_user_city
 
   before_action :set_city
   before_action :set_device_type
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(token: cookies[:LGT]) if cookies[:LGT]
   end
 
-  def current_user_locale
+  def current_user_city
     return current_user.city.id if current_user && current_user.city
 
     cookies[:city_id]
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_city
-    city_id = current_user_locale || extract_from_ip || default_city.id
+    city_id = current_user_city || extract_from_ip || default_city.id
     cookies[:city_id] = city_id
   end
 

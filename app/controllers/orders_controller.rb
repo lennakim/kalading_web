@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def validate_preferential_code
     code = params[:code]
     car_id = params["car_id"]
-    @parts = params["parts"].values
+    @parts = params["parts"].try :values
 
     payload = {
       parts: @parts,
@@ -150,8 +150,10 @@ class OrdersController < ApplicationController
       return render "fail"
     end
 
+    parts = params[:parts] ? params[:parts].values : []
+
     payload = {
-      parts: params[:parts].values,
+      parts: parts,
       info: {
         "address"           => params[:address],
         "name"              => params[:name],

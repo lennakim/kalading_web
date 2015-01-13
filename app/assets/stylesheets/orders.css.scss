@@ -553,6 +553,7 @@ $title-gray: #787878;
 .submit-con{
   position: fixed;
   bottom: 0;
+  z-index: 999;
   padding: 15px;
   width: 100%;
   line-height: 30px;
@@ -752,6 +753,7 @@ $title-gray: #787878;
     }
   }
   #item_table{
+    width: 100%;
     th,tr{
       line-height: 30px;
       text-align: center;
@@ -835,5 +837,9 @@ $title-gray: #787878;
       margin-right: 20px;
       line-height: 40px;
     }
+  }
+  .blank{
+    line-height: 200px;
+    text-align: center;
   }
 }

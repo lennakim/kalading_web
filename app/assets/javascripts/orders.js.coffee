@@ -22,6 +22,8 @@ $ ->
       $('.select-car-page').data 'car_id',id
 
   if $(".place-order-page,.place-order-phone").length > 0
+    if $('.address input').length == 0
+      $('.add a').click()
 
     $('#no_invoice').on "click", (e) ->
       $('#invoice_info').collapse('hide')

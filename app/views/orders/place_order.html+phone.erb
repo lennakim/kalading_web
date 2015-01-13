@@ -7,7 +7,6 @@
 <div class="place-order-phone phone-page" data-city="<%= current_city %>" data-car='<%= params["order"]["car_id"] %>'>
   <%= form_tag 'submit' do %>
     <fieldset>
-    <%= hidden_field_tag(:phone_num, current_user.phone_number) %>
     <%= hidden_field_tag(:city_id, current_city_id) %>
     <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
 
@@ -17,6 +16,41 @@
         <%= render "shared/select_address" %>
       </div>
       <h4 class="item-title order-info-title">订单信息 <span class="des">注：<span class="red">红色“*”</span>为必填选项</span></h4>
+
+
+      <% unless signed_in? %>
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "手机号：") %>
+          </div>
+          <div class="info-con">
+            <input title="手机号" name="phone_num" class="phone_num form-control" id="phone_num" placeholder="手机号">
+          </div>
+        </div>
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "验证手机：") %>
+          </div>
+          <div class="info-con form-inline">
+            <input title="验证码" name="verification_code" class="verification_code form-control" placeholder="验证码" id="verification_code"/>
+            <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
+
+          </div>
+        </div>
+      <% else %>
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "手机号：") %>
+          </div>
+          <div class="info-con">
+            <input title="手机号" name="phone_num" class="phone_num form-control" value="<%= current_user.phone_number %>" readonly>
+          </div>
+        </div>
+      <% end %>
+
       <div class="info-group form-group">
         <div class="info-title">
           <var class="star">*</var>
@@ -216,7 +250,7 @@
       <%= render "offer_table" %>
       <div class="submit-con">
         <span>当前费用: <span class="result-price" id="result_price"> <%= @result['price'] %></span>元</span>
-        <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default order_button') %>
+        <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default') %>
         <p>支持现金、刷卡支付</p>
       </div>
     </div>
