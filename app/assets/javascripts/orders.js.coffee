@@ -105,7 +105,6 @@ $ ->
 
 
 
-
     $("#commentForm").validate({
       rules: {
         phone_num: {

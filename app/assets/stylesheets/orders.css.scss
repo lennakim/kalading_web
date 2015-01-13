@@ -181,6 +181,11 @@ $title-gray: #787878;
     }
   }
   .comment-module,.orders-situation{
+
+    marquee{
+      margin-top: 20px;
+    }
+
     dl{
       padding: 20px 0;
       border-bottom: 1px solid #ccc;

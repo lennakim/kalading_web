@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       post 'submit'
       post 'validate_preferential_code'
       post 'no_preferential'
+      get  'no_car_type'
+      post 'submit_no_car_order'
     end
   end
 
