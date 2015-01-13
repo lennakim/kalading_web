@@ -63,19 +63,20 @@ class ApplicationController < ActionController::Base
   end
 
   def aes128_encrypt(data)
-    aes = OpenSSL::Cipher::AES.new("128-ECB")
+    aes = OpenSSL::Cipher::AES.new(128, :CBC)
     aes.encrypt
-    aes.padding = 0
-    aes.key = Settings.aes_key
-    aes.update(data)
+    key = aes.random_key
+    iv = aes.random_iv
+    encrypted = cipher.update(data) + cipher.final
+    return encrypted, key, iv
   end
 
-  def aes128_decrypt(data)
-    aes = OpenSSL::Cipher::AES.new("128-ECB")
+  def aes128_decrypt(data, key, iv)
+    aes = OpenSSL::Cipher::AES.new(128, :CBC)
     aes.descrypt
-    aes.padding = 0
-    aes.key = Settings.aes_key
-    aes.update(data)
+    aes.key = key
+    aes.iv = iv
+    aes.update(data) + aes.final
   end
 
   private
