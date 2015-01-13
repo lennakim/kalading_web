@@ -8,7 +8,6 @@ $title-gray: #787878;
 
 .orders-con{
   padding: 0 20px;
-  border: 2px solid #ccc;
   border-radius: 4px;
   h4{
     line-height: 70px;
@@ -255,28 +254,28 @@ $title-gray: #787878;
   }
 }
 
-    .quick-select{
-      .car{
-        padding-left: 0;
-        margin-bottom: 10px;
+.quick-select{
+  .car{
+    padding-left: 0;
+    margin-bottom: 10px;
 
-        &.pull-left.col-sm-3{
-          width: 100%;
+    &.pull-left.col-sm-3{
+      width: 100%;
 
-          float: none;
-        }
+      float: none;
+    }
 
-        .content{
-          padding: 10px;
-          table.table{
-            margin-bottom: 0;
-            td{
-              border-top: 0 none;
-            }
-          }
+    .content{
+      padding: 10px;
+      table.table{
+        margin-bottom: 0;
+        td{
+          border-top: 0 none;
         }
       }
     }
+  }
+}
 
 
 #invoice_info{
@@ -547,11 +546,15 @@ $title-gray: #787878;
   position: fixed;
   bottom: 0;
   z-index: 999;
-  padding: 15px;
+  padding: 10px;
   width: 100%;
-  line-height: 30px;
-  background: #fff;
+  line-height: 18px;
   border-top: 1px solid #ccc;
+  background: #f7f4f3;
+  p{
+    font-size: 12px;
+    color: #999;
+  }
   .result-price{
     color: #f57e56;
     font-size: 22px;
@@ -566,6 +569,15 @@ $title-gray: #787878;
 }
 .select-car-phone{
   line-height: 35px;
+  .my-car-title{
+    border-bottom: 1px solid #ccc;
+  }
+  .my-car-title:before{
+    content: url('my-car.png');
+  }
+  .service-type-title:before{
+    content: url('service-type.png');
+  }
   #myTab{
     position: fixed;
     top: 0;
@@ -577,8 +589,9 @@ $title-gray: #787878;
       text-align: center;
       font-size: 16px;
       a{
-        line-height: 35px;
+        line-height: 20px;
         color: #515151;
+        border-radius: initial;
       }
     }
     .active{
@@ -587,8 +600,9 @@ $title-gray: #787878;
       }
     }
   }
+
   .tab-content{
-    padding: 60px 0 110px;
+    padding: 42px 0 67px;
   }
   a{
     color: #000;
@@ -604,9 +618,12 @@ $title-gray: #787878;
     padding: 0 20px;
   }
   .orders{
+    .content{
+      padding-left: 20px;
+    }
     .service-item{
-      padding: 8px 30px;
-      border-bottom: 1px solid #ccc;
+      padding: 5px 10px;
+      border-bottom: 1px solid #eee;
       &:last-child{
         border: 0;
       }
@@ -621,18 +638,24 @@ $title-gray: #787878;
       margin: 0 auto;
     }
     .btn{
-      margin: 20px 30%;
+      position: fixed;
+      bottom: 14px;
+      right: 20px;
+      z-index: 9999;
+      line-height: 20px;
+      margin: 0;
     }
   }
   .quick-select{
     position: relative;
     .add-car{
       position: absolute;
-      top: 14px;
+      top: 10px;
       right: 20px;
+      line-height: 30px;
       background: #feac5a;
       padding: 0 10px;
-      border-radius: 5px;
+      border-radius: 4px;
       font-size: 12px;
       color: #fff;
     }
@@ -678,7 +701,7 @@ $title-gray: #787878;
 }
 .place-order-phone{
   form{
-    padding-bottom: 130px;
+    padding-bottom: 85px;
   }
   .orders-content{
     overflow: hidden;
@@ -716,12 +739,52 @@ $title-gray: #787878;
     }
   }
   .info-group{
-    padding: 10px 25px;
+    padding: 5px 25px;
     margin-bottom: 0;
     line-height: 35px;
   }
+  .verification_code,
+  .get_code,
+  .car_location,
+  #car_num,
+  #serve_date,
+  #serve_period,
+  #preferential_code,
+  #validate_preferential,
+  .info-title,
   .info-title{
     float: left;
+  }
+
+  .verification_code{
+    width: 50%;
+  }
+  .get_code{
+    width: 45%;
+    margin-left: 5%;
+    line-height: 20px;
+    font-size: 12px;
+  }
+  .car_location{
+    width: 35%;
+  }
+  #car_num{
+    width: 60%;
+    margin-left: 5%;
+  }
+  #serve_date{
+    width: 55%;
+  }
+  #serve_period{
+    width: 40%;
+    margin-left: 5%;
+  }
+  #preferential_code{
+    width: 65%;
+  }
+  #validate_preferential{
+    width: 30%;
+    margin-left: 5%;
   }
   .info-con{
     float: right;
@@ -747,12 +810,23 @@ $title-gray: #787878;
   }
   #item_table{
     width: 100%;
+    line-height: 15px;
+    font-size: 12px;
+    .item{
+      width: 50%;
+    }
+    p{
+      border-bottom: 1px solid #ccc;
+      &:last-child{
+        border: 0;
+      }
+    }
     th,tr{
       line-height: 30px;
-      text-align: center;
     }
     th,td{
       border: 1px solid #ccc;
+      text-align: center;
     }
   }
 }
@@ -825,10 +899,17 @@ $title-gray: #787878;
     border-width: 0px 0px 1px 0px;
     border-color: #eee;
     color:#666462;
-
+    .pull-left{
+      width: 85%;
+    }
     .arrow{
       margin-right: 20px;
       line-height: 40px;
+    }
+    a{
+      display: block;
+      width: 100%;
+      color: #000;
     }
   }
 }

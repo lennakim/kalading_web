@@ -313,7 +313,36 @@ $grey: #c4c4c4;
     }
   }
 }
-
+#login_modal{
+  .modal-body{
+    overflow: hidden;
+  }
+  .phone_num{
+    margin: 10px 0;
+  }
+  .verification_code{
+    float: left;
+    width: 60%;
+  }
+  .get_code{
+    float: left;
+    width: 35%;
+    margin-left: 5%;
+  }
+  .get_code,.submit_button{
+    line-height: 30px;
+    border: 0;
+    border-radius: 4px;
+  }
+  .login{
+    width: 100px;
+    margin: 0 auto;
+  }
+  .submit_button{
+    width: 100%;
+    margin: 10px 0;
+  }
+}
 #comment_modal{
   .comment-tags{
     // padding: 5px 50px;

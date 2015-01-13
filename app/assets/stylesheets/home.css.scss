@@ -328,13 +328,13 @@ $bac: #f7f4f3;
       font-size: 18px;
     }
     dt{
-      font-size: 22px;
+      font-size: 18px;
     }
     dd{
       text-align: center;
       &:nth-child(even){
         float: left;
-        margin: 8px 2px 6px;
+        margin: 4px 2px 6px;
       }
     }
   }
@@ -345,23 +345,23 @@ $bac: #f7f4f3;
   	display: block;
 	width: 180px;
 	margin: 0 auto;
-	line-height: 35px;
+	line-height: 25px;
 	background: #ee7700;
 	color: #fff;
+	border: 0;
   }
   .service-module,.tec-team,.service-address,.service-process{
     padding: 0 14px;
     margin: 20px 0;
+    line-height: 25px;
     font-size: 12px;
     .title{
-      margin-bottom: 20px;
-      font-size: 14px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #666;
       &:before{
 		content: url('phone-logo.png')
   	  }
-    }
-    .module-item{
-      margin: 10px 0;
     }
     ul{
     	margin-left: 20px;
@@ -370,10 +370,7 @@ $bac: #f7f4f3;
   .service-module{
     ul{
       margin-left: 20px;
-      line-height: 30px;
-      li{
-        margin: 10px 0;
-      }
+      line-height: 25px;
     }
   }
   .service-address{
