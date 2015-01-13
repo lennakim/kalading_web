@@ -23,7 +23,7 @@
           <%= render "shared/car_item", auto: @last_select_car %>
         <% end %>
 
-        <% current_user.autos.each do |auto| %>
+        <% current_user.autos.order('created_at desc').each do |auto| %>
           <%= render "shared/car_item", auto: auto %>
         <% end %>
 
@@ -41,7 +41,7 @@
 
     <p class="next">
       <button id="to_select_item" class="search_button bac-orange font-white">下一步</button>
-      <a class="more" href="">没找到车型？</a>
+      <%= link_to "没找到车型？", no_car_type_orders_path, class: "more" %>
     </p>
   </div>
 

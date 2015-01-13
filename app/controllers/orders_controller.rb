@@ -100,6 +100,48 @@ class OrdersController < ApplicationController
     @result = Order.refresh_price car_id, payload
   end
 
+  def no_car_type
+    @city_capacity = Order.city_capacity current_city_id
+    @cities = Order.cities
+  end
+
+  def submit_no_car_order
+
+    vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
+
+    if !signed_in? && !(vcode && !vcode.expired?)
+      return render "fail"
+    end
+
+    payload = {
+      "info" => {
+        "address"           => params[:address],
+        "name"              => params[:name],
+        "phone_num"         => params[:phone_num],
+        "car_location"      => params[:car_location],
+        "car_num"           => params[:car_num],
+        "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
+        "pay_type"          => params[:pay_type],
+        "client_comment"    => "#{params[:brand]} #{params[:year]} #{params[:car_pl]}",
+        "city_id"           => params[:city_id],
+        "registration_date" => params[:registration_date]
+      }
+    }
+
+    result = Order.submit_no_car_order payload
+    if result["result"] == "succeeded"
+
+      unless signed_in?
+        user = User.find_or_create_by(phone_number: vcode.phone_num)
+        sign_in user
+      end
+
+      render "success"
+    else
+      render "fail"
+    end
+  end
+
   def submit
 
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
@@ -134,6 +176,7 @@ class OrdersController < ApplicationController
     if result["result"] == "succeeded"
 
       # find_or_create user
+      user = current_user
 
       user = current_user
 

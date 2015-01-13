@@ -69,6 +69,7 @@ $ ->
 
     $('#serve_date').pickadate({
       format: 'yyyy-mm-dd',
+      editable: true,
       min: new Date(min),
       max: new Date(max),
       disable: disabled_date,
@@ -83,6 +84,7 @@ $ ->
 
     $( '#registration_date' ).pickadate({
       max: true,
+      editable: true,
       today: 'Today',
       format: 'yyyy-mm-dd',
       selectMonths: true,
@@ -101,7 +103,6 @@ $ ->
 
       maxDate = new Date()
       maxDate.setDate(maxDate.getDate()+8)
-
 
 
 
