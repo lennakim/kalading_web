@@ -2,6 +2,10 @@ class Order
 
   class << self
 
+    def submit_no_car_order payload
+      ServerApi.call "post", "auto_maintain_order2", { body: payload }
+    end
+
     def city_capacity city_id
       ServerApi.call "get", "city_capacity", { entry_id: city_id }
     end

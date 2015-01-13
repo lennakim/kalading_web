@@ -13,7 +13,6 @@ $ ->
     items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
-    $('.select-car').css({'height':$('.quick-select').height()})
 
     $('.select-car,.quick-select').click ->
       $(this).addClass('selected').siblings().removeClass('selected')
@@ -23,6 +22,8 @@ $ ->
       $('.select-car-page').data 'car_id',id
 
   if $(".place-order-page,.place-order-phone").length > 0
+    if $('.address input').length == 0
+      $('.add a').click()
 
     $('#no_invoice').on "click", (e) ->
       $('#invoice_info').collapse('hide')
@@ -70,6 +71,7 @@ $ ->
 
     $('#serve_date').pickadate({
       format: 'yyyy-mm-dd',
+      editable: true,
       min: new Date(min),
       max: new Date(max),
       disable: disabled_date,
@@ -84,6 +86,7 @@ $ ->
 
     $( '#registration_date' ).pickadate({
       max: true,
+      editable: true,
       today: 'Today',
       format: 'yyyy-mm-dd',
       selectMonths: true,
@@ -102,7 +105,6 @@ $ ->
 
       maxDate = new Date()
       maxDate.setDate(maxDate.getDate()+8)
-
 
 
 
@@ -140,16 +142,6 @@ $ ->
     })
     initPickaDate()
 
-  if $('.success-page').length > 0
-    num = 30
-    countdown = ->
-      if num > 0
-        num--
-      else
-        window.location.href = '/'
-      $('.num').text(num+"s")
-      setTimeout(countdown,1000)
-    countdown()
 
   if $('.auto-brands-phone,.auto-series-phone,.auto-model-phone').length>0
     $('.carinfo').on 'click', ->
@@ -161,4 +153,4 @@ $ ->
         window.location.href = "/orders/auto_model_numbers/" + type_id
       else if $(this).children('.car-model').length > 0
         model_id = $(this).children('.car-model').attr("model_id")
-        window.location.href = "/orders/select_car?car_id=" + model_id+"&type=bmt"
+        window.location.href = "/orders/select_car_item?car_id=" + model_id+"&type=bmt"

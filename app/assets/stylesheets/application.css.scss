@@ -72,7 +72,10 @@ header.navbar{
     }
   }
 }
-
+.blank{
+  line-height: 200px;
+  text-align: center;
+}
 .promise{
   overflow: hidden;
   border-bottom: 1px solid $border-gray;
@@ -174,6 +177,70 @@ header.navbar{
     }
   }
 }
+
+.container{
+  font-family: AdobeHeitiStd-Regular; 
+  &.error{
+      height: 300px;
+      line-height: 300px;
+      text-align: center;
+    }
+  li{
+
+    list-style: none;
+  }
+  .main-title{
+    margin: 0;
+    padding: 30px;
+    color: $title;
+    font-size: 24px;
+  }
+  .process{
+    overflow: hidden;
+    padding: 10px 0 50px;
+    text-align: center;
+    li{
+      float: left;
+      width: 25%;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+      color: #a0a0a0;
+      background-repeat: no-repeat;
+      background-position: 25px 3px;
+      background-size: 15%;
+    }
+    .selected{
+      color: $title;
+    }
+    .car-type{
+      background-image: image-url("car.png");
+    }
+    .car-type.selected{
+      background-image: image-url("car-selected.png");
+    }
+    .service{
+      background-image: image-url("service.png");
+    }
+    .service.selected{
+      background-image: image-url("service-selected.png");
+    }
+    .info{
+      background-image: image-url("info.png");
+    }
+    .info.selected{
+      background-image: image-url("info-selected.png");
+    }
+    .success{
+      background-image: image-url("success.png");
+    }
+    .success.selected{
+      background-image: image-url("success-selected.png");
+    }
+  }
+}
+
+
 
 .tangram-suggestion-main{
   z-index: 2000;

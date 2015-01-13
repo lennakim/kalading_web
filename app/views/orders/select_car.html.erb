@@ -9,7 +9,7 @@
   <%= render "order_process" %>
 
   <div class="select-item bac-white">
-    <div class="select-car">
+    <div class="select-car selected">
       <h4>查询车辆</h4>
       <%= render "shared/select_car" %>
     </div>
@@ -20,12 +20,10 @@
 
         <h4>快捷车辆</h4>
         <% if @last_select_car %>
-
           <%= render "shared/car_item", auto: @last_select_car %>
-
         <% end %>
 
-        <% current_user.autos.each do |auto| %>
+        <% current_user.autos.order('created_at desc').each do |auto| %>
           <%= render "shared/car_item", auto: auto %>
         <% end %>
 
@@ -43,7 +41,7 @@
 
     <p class="next">
       <button id="to_select_item" class="search_button bac-orange font-white">下一步</button>
-      <a class="more" href="">没找到车型？</a>
+      <%= link_to "没找到车型？", no_car_type_orders_path, class: "more" %>
     </p>
   </div>
 

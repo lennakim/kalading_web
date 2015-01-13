@@ -6,15 +6,12 @@
 
 <%= title "提交订单" %>
 
-<div class="container place-order-page" data-city="<%= current_city %>" data-car='<%= params["order"]["car_id"] %>'>
+<div class="container place-order-page" data-city="<%= current_city %>">
   <h3 class="main-title row">保养预约</h3>
 
-  <%= render "order_process" %>
-
-  <%= form_tag 'submit' do %>
+  <%= form_tag submit_no_car_order_orders_path do %>
 
     <%= hidden_field_tag(:city_id, current_city_id) %>
-    <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
 
     <fieldset>
 
@@ -27,6 +24,36 @@
         </div>
 
         <hr>
+
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "车辆品牌：") %>
+          </div>
+          <div class="info-con">
+            <input title="车辆品牌" name="brand" class="phone_num form-control">
+          </div>
+        </div>
+
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "车辆年款：") %>
+          </div>
+          <div class="info-con">
+            <input title="车辆年款" name="year" class="phone_num form-control">
+          </div>
+        </div>
+
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "车辆排量：") %>
+          </div>
+          <div class="info-con">
+            <input title="车辆排量" name="car_pl" class="phone_num form-control" placeholder="例:1.6T/l">
+          </div>
+        </div>
 
         <% unless signed_in? %>
           <div class="info-group form-group">
@@ -153,119 +180,12 @@
           </div>
         </div>
 
-        <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag(:engine_num, "发动机号码：") %>
-          </div>
-          <div class="info-con">
-            <%= text_field_tag(:engine_num,'', class: "form-control") %>
-          </div>
-        </div>
-
-        <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag(:vin, "VIN：") %>
-          </div>
-          <div class="info-con">
-            <%= text_field_tag(:vin,'', class: 'form-control') %>
-          </div>
-        </div>
 
         <hr>
 
-        <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag("发票：") %>
-          </div>
-          <div class="info-con">
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default active" id="no_invoice">
-                <input type="radio" name="reciept_type" value='0' autocomplete="off" checked> 不要
-              </label>
-              <label class="btn btn-default" id="yes_invoice">
-                <input type="radio" autocomplete="off"> 需要
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-group form-group">
-          <div id="invoice_info" class="collapse">
-            <div class="info-title">
-              <%= label_tag("详细信息：") %>
-            </div>
-
-            <div class="input-group reciept-detail col-sm-6">
-
-              <span class="input-group-addon">
-                <label>
-                  <input type="radio" value='1' name="reciept_type" autocomplete="off"> 个人
-                </label>
-              </span>
-
-              <span class="input-group-addon">
-                <label>
-                  <input type="radio" value='2' name="reciept_type" autocomplete="off"> 单位
-                </label>
-              </span>
-
-              <input type="text" class='form-control' name="reciept_title" placeholder="发票抬头">
-            </div>
-          </div>
-        </div>
-
-        <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag("优惠券：") %>
-          </div>
-
-          <div class="info-con">
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default active" id="no_preferential">
-                <input type="radio" autocomplete="off" checked> 无
-              </label>
-              <label class="btn btn-default" id="yes_preferential">
-                <input type="radio" autocomplete="off"> 有
-              </label>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="info-group form-group">
-          <div id="preferential_info" class="collapse">
-            <div class="info-title">
-              <%= label_tag("详细信息：") %>
-            </div>
-
-            <div class="info-con form-inline">
-              <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
-              <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag(:client_comment, "备注：") %>
-          </div>
-          <div class="info-con">
-            <%= text_area_tag(:client_comment, '', class: 'form-control') %>
-
-          </div>
-        </div>
       </div>
 
-      <%= render "offer_table" %>
-
       <div class="submit-info clearfix">
-        <div class="maintain-name col-sm-8">
-          <%= @result['name'] %>
-        </div>
-
-        <div class="price col-sm-2">
-          <span>总价: <span id="final_price"><%= @result['price'] %></span>元</span>
-        </div>
 
         <div class="col-sm-2">
           <%= submit_tag("提交订单", class: 'submit-btn bac-white') %>

@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="auto-series-phone phone-page">
-  <% if @series %>
+  <% if @series.length>0 %>
 	<% @series.each do |car_type| %>
 	  <div class="carinfo list clearfix" >
 		<div data-type_id="<%= car_type['_id']%>" class="car-type pull-left">

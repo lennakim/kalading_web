@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'success'
       get 'order_status'
 
+      get 'select_car_item'
       get 'auto_brands'
       get 'auto_series/:brand_id' => 'orders#auto_series'
       get 'auto_model_numbers/:series_id' => 'orders#auto_model_numbers'
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
       post 'submit'
       post 'validate_preferential_code'
       post 'no_preferential'
+      get  'no_car_type'
+      post 'submit_no_car_order'
     end
   end
 

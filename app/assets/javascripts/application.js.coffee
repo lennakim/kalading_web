@@ -10,6 +10,7 @@
 #= require picker.date
 #= require picker.time
 #= require bootstrap-sprockets
+#= require URI
 #
 #= require home
 #= require users
@@ -24,10 +25,11 @@ window.Kalading =
 $ ->
   @signed_in = ->
     current_user_id != -1
+  @need_login = ->
+    URI().search(true)['login'] == '1'
 
-  # if current_user_id == -1
-  #   $('.need-login').on 'click', ->
-  #     $('#login_modal').modal()
+  if !signed_in() && need_login()
+    $('#login_modal').modal()
 
   $('#to_select_item').click ->
     id = $('#car_style option:selected').data 'id'
