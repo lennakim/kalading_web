@@ -418,7 +418,7 @@ $title-gray: #787878;
       }
     }
     .next{
-      margin: 30px 0 25px;
+      margin: 10px 50px;
       font-size: 16px;
       color: #999999;
     }
@@ -548,7 +548,7 @@ $title-gray: #787878;
   z-index: 999;
   padding: 10px;
   width: 100%;
-  line-height: 18px;
+  line-height: 22px;
   border-top: 1px solid #ccc;
   background: #f7f4f3;
   p{
@@ -560,7 +560,7 @@ $title-gray: #787878;
     font-size: 22px;
   }
   .submit{
-    margin: 15px 0 0 60px;
+    margin: 10px 0 0 60px;
     background: #feac5a;
     border: 0;
     border-radius: 5px;
@@ -705,6 +705,9 @@ $title-gray: #787878;
   }
   .orders-content{
     overflow: hidden;
+  }
+  .radio{
+    height: 35px;
   }
   .addr{
     display: none;
