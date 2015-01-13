@@ -143,7 +143,7 @@ $ ->
     initPickaDate()
 
 
-  if $('.auto-brands-phone,.auto-series-phone,.auto-model-phone').length>0
+  if $('.auto-brands-phone,.auto-series-phone,.auto-model-phone').length > 0
     $('.carinfo').on 'click', ->
       if $(this).children('.brand').length > 0
         brand_id = $(this).children('.brand').attr("brand_id")

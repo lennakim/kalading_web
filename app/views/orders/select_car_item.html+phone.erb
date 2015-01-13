@@ -17,13 +17,12 @@
           <a href="/orders/auto_brands" class="add-car"> + 重新选择</a>
           <div class="car-content content">
 
-
               <% if @last_select_car %>
                 <%= render "shared/car_item", auto: @last_select_car %>
               <% end %>
 
             <% if signed_in? %>
-              
+
               <% current_user.autos.each do |auto| %>
                 <%= render "shared/car_item", auto: auto %>
               <% end %>
@@ -33,16 +32,16 @@
         </div>
         <div class="orders bac-white" data-car="<%= car_id=params[:car_id]%>" data-type="<%= params[:type] %>">
           <h4 class="item-title">服务类型</h4>
-          <div class="content"> 
-            <div class="service-item" data-type="pm25"> 
+          <div class="content">
+            <div class="service-item" data-type="pm25">
               <input type="radio" name="service">
               <span class="pm25 <%= "selected" if params[:type] == "pm25" %>">PM2.5滤芯更换</span>
             </div>
-            <div class="service-item" data-type="bmt"> 
+            <div class="service-item" data-type="bmt">
               <input type="radio" name="service">
               <span class="bmt <%= "selected" if params[:type] == "bmt" %>">大保养</span>
             </div>
-            <div class="service-item" data-type="smt"> 
+            <div class="service-item" data-type="smt">
               <input type="radio" name="service">
               <span class="smt <%= "selected" if params[:type] == "smt" %>">小保养</span>
             </div>
@@ -56,7 +55,7 @@
             <% end %>
           </div>
           <div class="submit-con">
-            <span>当前费用: 
+            <span>当前费用:
               <span class="result-price"></span>元
             </span>
             <p>支持现金、刷卡支付</p>

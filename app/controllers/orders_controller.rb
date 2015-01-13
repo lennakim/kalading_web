@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   end
 
   def auto_model_numbers
-    @auto_model_numbers = Order.auto_model_numbers params[:series_id]
+    @auto_model_numbers = Order.auto_model_numbers params[:series_id], current_city_id
   end
 
   def select_car
@@ -46,15 +46,22 @@ class OrdersController < ApplicationController
 
   def select_car_item
 
-    unless params[:auto_id]
-      save_last_select_car params[:car_id]
+    if params[:car_id] || last_select_car.present?
+
+      car_id = params[:car_id] || last_select_car
+
+      if !params[:auto].present?
+        save_last_select_car(car_id)
+        @last_select_car = Auto.api_find(car_id)
+      end
+
+      type = params[:type]
+      @cars_info = Order.cars_data current_city_id, type
+      @result = Order.items_for car_id, current_city_id
+
+    else
+      return redirect_to auto_brands_orders_path
     end
-
-    @last_select_car = Auto.api_find(last_select_car) if last_select_car.present?
-
-    type = params[:type]
-    @cars_info = Order.cars_data current_city_id, type
-    @result = Order.items_for params[:car_id], current_city_id
   end
 
   def comment
