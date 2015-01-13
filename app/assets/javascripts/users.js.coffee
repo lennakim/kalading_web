@@ -62,3 +62,4 @@ $ ->
 
   $("#maintain_report_modal").on "shown.bs.modal", ->
     $(".modal-backdrop").css('height', 2000)
+

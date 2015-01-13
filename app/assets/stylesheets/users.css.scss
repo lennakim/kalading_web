@@ -392,6 +392,10 @@ $grey: #c4c4c4;
   .my-maintain-title:before{
     content: url(my-maintain.png)
   }
+  a{
+    display: block;
+    color: #000;
+  }
   dl{
     padding: 0 15px;
     margin-bottom: 10px;

@@ -154,3 +154,4 @@ $ ->
       else if $(this).children('.car-model').length > 0
         model_id = $(this).children('.car-model').attr("model_id")
         window.location.href = "/orders/select_car_item?car_id=" + model_id+"&type=bmt"
+
