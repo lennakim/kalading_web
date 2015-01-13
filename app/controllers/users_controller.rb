@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def cars
-    @cars_info = Order.cars_data
+    @cars_info = Order.cars_data current_city_id
     @auto_id = params[:auto_id]
     @maintain_histories = Order.maintain_report login_phone_num: current_user.phone_number, car_id: params[:car_id], car_num: params[:car_num]
   end

@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
       parts: @parts,
       discount: code
     }
-    @result = Order.refresh_price car_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload
   end
 
   def no_preferential
@@ -18,15 +18,15 @@ class OrdersController < ApplicationController
     payload = {
       parts: @parts
     }
-    @result = Order.refresh_price car_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload
   end
 
   def auto_brands
-    @brands = Order.auto_brands
+    @brands = Order.auto_brands current_city_id
   end
 
   def auto_series
-    @series = Order.auto_series params[:brand_id]
+    @series = Order.auto_series params[:brand_id], current_city_id
   end
 
   def auto_model_numbers
@@ -36,12 +36,12 @@ class OrdersController < ApplicationController
   def select_car
     type = params[:type]
 
-    if last_select_car
+    if last_select_car.present?
       @last_select_car = Auto.api_find last_select_car
     end
 
-    @cars_info = Order.cars_data type
-    @result = Order.items_for params[:car_id]
+    @cars_info = Order.cars_data current_city_id, type
+    @result = Order.items_for params[:car_id], current_city_id
   end
 
   def select_car_item
@@ -49,12 +49,12 @@ class OrdersController < ApplicationController
     unless params[:auto_id]
       save_last_select_car params[:car_id]
     end
-    
+
     @last_select_car = Auto.api_find(last_select_car) if last_select_car.present?
-    
+
     type = params[:type]
-    @cars_info = Order.cars_data type
-    @result = Order.items_for params[:car_id]
+    @cars_info = Order.cars_data current_city_id, type
+    @result = Order.items_for params[:car_id], current_city_id
   end
 
   def comment
@@ -80,13 +80,13 @@ class OrdersController < ApplicationController
     payload = {
       "parts" => parts
     }
-    result = Order.refresh_price car_id, payload
+    result = Order.refresh_price car_id, current_city_id, payload
     render json: { result: result }
   end
 
   def select_item
     save_last_select_car params[:car_id]
-    @result = Order.items_for params[:car_id]
+    @result = Order.items_for params[:car_id], current_city_id
   end
 
   def place_order
@@ -97,7 +97,7 @@ class OrdersController < ApplicationController
       "parts" => @parts
     }
     @cities = Order.cities
-    @result = Order.refresh_price car_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload
   end
 
   def no_car_type
@@ -192,7 +192,7 @@ class OrdersController < ApplicationController
 
       # send notification to user's wechat TODO
 
-      render "success"
+      redirect_to action: :success
     else
       render "fail"
     end

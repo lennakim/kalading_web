@@ -29,12 +29,14 @@
 
       </div>
     <% else %>
+
       <div class="quick-select">
-        <% if last_select_car %>
-          <h4>上次选择</h4>
-          <%= last_select_car %>
+        <h4>快捷车辆</h4>
+        <% if @last_select_car %>
+          <%= render "shared/car_item", auto: @last_select_car %>
         <% end %>
       </div>
+
     <% end %>
 
     <div class="clear"></div>

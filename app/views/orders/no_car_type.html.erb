@@ -6,7 +6,7 @@
 
 <%= title "提交订单" %>
 
-<div class="container place-order-page" data-city="<%= current_city %>">
+<div class="container place-order-page" data-city="<%= current_user_city %>">
   <h3 class="main-title row">保养预约</h3>
 
   <%= form_tag submit_no_car_order_orders_path do %>
