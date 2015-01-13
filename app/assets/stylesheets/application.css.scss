@@ -72,7 +72,10 @@ header.navbar{
     }
   }
 }
-
+.blank{
+  line-height: 200px;
+  text-align: center;
+}
 .promise{
   overflow: hidden;
   border-bottom: 1px solid $border-gray;
@@ -176,7 +179,7 @@ header.navbar{
 }
 
 .container{
-  font-family: AdobeHeitiStd-Regular;
+  font-family: AdobeHeitiStd-Regular; 
   &.error{
       height: 300px;
       line-height: 300px;

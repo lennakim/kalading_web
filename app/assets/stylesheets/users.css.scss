@@ -324,30 +324,29 @@ $grey: #c4c4c4;
         clip: rect(0, 0, 0, 0);
         pointer-events: none;
       }
-
-      .tag{
-        &.good{
-          width: 44%;
-          .btn{
-            color: $orange;
-            border-color: $orange;
-
-            &:hover, &.active{
-              color: #ffffff;
-              background: $orange;
-            }
+    }
+    .tag{
+      &.good{
+        width: 44%;
+        .btn{
+          color: $orange;
+          border-color: $orange;
+          font-size: 12px;
+          &:hover, &.active{
+            color: #ffffff;
+            background: $orange;
           }
         }
-        &.bad{
-          margin-left: 40px;
-          .btn{
-            color: $grey;
-            border-color: $grey;
-
-            &:hover, &.active{
-              color: #ffffff;
-              background: $grey;
-            }
+      }
+      &.bad{
+        margin-left: 25px;
+        .btn{
+          color: $grey;
+          border-color: $grey;
+          font-size: 12px;
+          &:hover, &.active{
+            color: #ffffff;
+            background: $grey;
           }
         }
       }
