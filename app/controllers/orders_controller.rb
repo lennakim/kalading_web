@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
       save_last_select_car params[:car_id]
     end
     
-    @last_select_car = Auto.api_find last_select_car if last_select_car
+    @last_select_car = Auto.api_find(last_select_car) if last_select_car.present?
     
     type = params[:type]
     @cars_info = Order.cars_data type
