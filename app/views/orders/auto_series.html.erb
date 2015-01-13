@@ -6,8 +6,8 @@
   <% if @series.length>0 %>
 	<% @series.each do |car_type| %>
 	  <div class="carinfo list clearfix" >
-		<div data-type_id="<%= car_type['_id']%>" class="car-type pull-left">
-		  <span ><%= car_type["name"]%></span>
+		<div class="car-type pull-left">
+		  <a href="/orders/auto_model_numbers/<%= car_type['_id']%>"><%= car_type["name"]%></a>
 		</div>
 		<div class="arrow glyphicon glyphicon-chevron-right pull-right"></div>
 	  </div>

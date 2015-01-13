@@ -89,13 +89,13 @@ header.navbar{
     float: left;
     width: 25%;
     margin: 20px 0;
-    color: #a0a0a0;
+    color: #ccc;
     &:last-child{
       border: 0;
     }
     dt{
       float: left;
-      margin-left: 8px;
+      margin-left: 16px;
       font-size: 18px;
       text-align: right;
     }
@@ -105,8 +105,8 @@ header.navbar{
     }
     .des{
       clear: both;
-      font-size: 14px;
-      color: #666666;
+      font-size: 12px;
+      color: #888;
     }
   }
 }
@@ -248,7 +248,7 @@ header.navbar{
 
 .phone-page{
   .item-title{
-    padding: 12px 20px;
+    padding: 8px 20px;
     background: #f7f4f3;
     color: #515151;
     font-size: 16px;

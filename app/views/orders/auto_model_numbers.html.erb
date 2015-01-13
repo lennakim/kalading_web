@@ -7,7 +7,7 @@
 	<% @auto_model_numbers.each do |car_model| %>
 	  <div class="carinfo list clearfix">
 	    <div class="car-model pull-left" model_id="<%= car_model['_id']%>" >
-	      <span><%= car_model["name"]%></span>
+	      <a href="/orders/select_car_item?car_id=<%= car_model['_id']%>&type=bmt"><%= car_model["name"]%></a>
 	    </div>
 	    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
 	      </div>
