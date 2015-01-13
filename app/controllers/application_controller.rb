@@ -62,6 +62,22 @@ class ApplicationController < ActionController::Base
     City.find(current_city).system_id
   end
 
+  def aes128_encrypt(data)
+    aes = OpenSSL::Cipher::AES.new("128-ECB")
+    aes.encrypt
+    aes.padding = 0
+    aes.key = Settings.aes_key
+    aes.update(data)
+  end
+
+  def aes128_decrypt(data)
+    aes = OpenSSL::Cipher::AES.new("128-ECB")
+    aes.descrypt
+    aes.padding = 0
+    aes.key = Settings.aes_key
+    aes.update(data)
+  end
+
   private
 
   def set_device_type
