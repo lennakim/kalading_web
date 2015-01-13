@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
   helper_method :current_city, :current_city_id, :current_city_name
   helper_method :last_select_car
+  helper_method :aes128_encrypt, :aes128_decrypt
 
   before_action :set_city
   before_action :set_device_type

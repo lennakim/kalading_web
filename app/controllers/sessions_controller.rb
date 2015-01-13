@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
 
     if vcode && !vcode.expired?
-      account = PublicAccount.find_by(name: "kalading1")
+      account = PublicAccount.find_by(name: "kaladingcom")
       user = User.find_or_create_by(phone_number: vcode.phone_num)
 
       if account && auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
           user.auth_infos << auth_info
         rescue ActiveRecord::RecordInvalid => e
           # ...
+          Rails.logger.info(e)
         end
       end
     end
@@ -29,9 +30,10 @@ class SessionsController < ApplicationController
   end
 
   def callback
-    # Here got two params, one is params[:code], another one is params[:state]
+    # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom
+    # Here got three params: params[:code], params[:state], params[:name]
 
-    account = PublicAccount.find_by(name:"kalading1")
+    account = PublicAccount.find_by(name: params[:name])
     client = account.weixin_client
     sns_info = client.get_oauth_access_token(params[:code])
     expires_in = sns_info.result["expires_in"].seconds.from_now.utc
@@ -47,6 +49,14 @@ class SessionsController < ApplicationController
     Rails.logger.info("------follower nickname: #{follower.result["nickname"]},
                       expires_in: #{sns_info.result["expires_in"]}")
 
+    user = current_user
+    if user
+      begin
+        user.auth_infos << auth_info
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.info(e)
+      end
+    end
     redirect_to root_path
   end
 
