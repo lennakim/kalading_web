@@ -17,27 +17,18 @@
     <% if signed_in? %>
 
       <div class="quick-select">
+
+        <h4>快捷车辆</h4>
         <% if @last_select_car %>
-          <h4>上次选择</h4>
 
-          <div class="car pull-left col-sm-3">
-            <div class="input-group btn-group">
-              <span class="input-group-addon">
-                <input type="radio" name="car_brand" aria-label="...">
-              </span>
-
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" data-id="<%= @last_select_car["_id"] %>">
-                <%= @last_select_car["full_name"] %>
-              </button>
-            </div>
-          </div>
+          <%= render "shared/car_item", auto: @last_select_car %>
 
         <% end %>
 
-        <h4>我的车辆</h4>
         <% current_user.autos.each do |auto| %>
           <%= render "shared/car_item", auto: auto %>
         <% end %>
+
       </div>
     <% else %>
       <div class="quick-select">
@@ -66,7 +57,11 @@
 
             <dl>
               <dt>
-                <h3><%= comment['phone_num'] %></h3>
+              <h3>
+                <% phone = comment['phone_num'] %>
+                <% phone[3..6] = "****" %>
+                <%= phone %>
+              </h3>
                 <span class="time"><%= comment['evaluation_time'] %></span>
               </dt>
               <dd>

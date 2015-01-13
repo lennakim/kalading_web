@@ -1,7 +1,7 @@
 <div class="car pull-left col-sm-3">
   <div class="input-group btn-group">
     <span class="input-group-addon">
-      <input type="radio" name="car_brand" aria-label="...">
+      <input type="radio" name="car_brand" aria-label="..." data-id="<%= auto.system_id %>" data-car_num="<%= auto.license_number %>">
     </span>
 
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" data-autoid = "<%= auto.id %>" data-id="<%= auto.system_id %>">
@@ -14,9 +14,14 @@
         <li>品牌: &nbsp; <%= auto.brand %></li>
         <li>系列: &nbsp; <%= auto.series %></li>
         <li>型号: &nbsp; <%= auto.model_number %></li>
-        <li>注册日期: &nbsp; <%= auto.registed_at %></li>
-        <li>引擎号: &nbsp; <%= auto.engine_number %></li>
-        <li>VIN: &nbsp; <%= auto.vin %></li>
+
+        <% if auto.id %>
+
+          <li>车牌号: &nbsp; <%= auto.license_location %><%= auto.license_number %></li>
+          <li>注册日期: &nbsp; <%= auto.registed_at %></li>
+          <li>引擎号: &nbsp; <%= auto.engine_number %></li>
+          <li>VIN: &nbsp; <%= auto.vin %></li>
+        <% end %>
 
         <!--  TODO
 

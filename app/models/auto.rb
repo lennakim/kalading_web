@@ -3,7 +3,8 @@ class Auto < ActiveRecord::Base
 
   class << self
     def api_find id
-      ServerApi.call "get", "auto_submodels", { entry_id: id }
+      data = ServerApi.call "get", "auto_submodels", { entry_id: id }
+      Auto.new brand: data["brand"], series: data["model"], model_number: data["name"], system_id: data["_id"]
     end
   end
 end

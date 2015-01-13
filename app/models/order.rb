@@ -2,6 +2,10 @@ class Order
 
   class << self
 
+    def city_capacity city_id
+      ServerApi.call "get", "city_capacity", { entry_id: city_id }
+    end
+
     def comments
       ServerApi.call "get", "order_evaluation_list"
     end
