@@ -1,0 +1,152 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>">
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">保养说明</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">订单评价</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="quick-select">
+          <h4 class="item-title">我的快捷车辆</h4>
+          <a href="/orders/auto_brands" class="add-car"> + 重新选择</a>
+          <div class="car-content content">
+            <% if signed_in? %>
+
+              <% if @last_select_car %>
+                <%= render "shared/car_item", auto: @last_select_car %>
+              <% end %>
+              <% current_user.autos.each do |auto| %>
+                <%= render "shared/car_item", auto: auto %>
+              <% end %>
+
+            <% else %>
+
+              <% if last_select_car %>
+                <h4>上次选择</h4>
+                <%= last_select_car %>
+              <% end %>
+
+            <% end %>
+          </div>
+        </div>
+        <div class="orders bac-white" data-car="<%= car_id=params[:car_id]%>" data-type="<%= params[:type] %>">
+          <h4 class="item-title">服务类型</h4>
+          <div class="content"> 
+            <div class="service-item" data-type="pm25"> 
+              <input type="radio" name="service">
+              <span class="pm25 <%= "selected" if params[:type] == "pm25" %>">PM2.5滤芯更换</span>
+            </div>
+            <div class="service-item" data-type="bmt"> 
+              <input type="radio" name="service">
+              <span class="bmt <%= "selected" if params[:type] == "bmt" %>">大保养</span>
+            </div>
+            <div class="service-item" data-type="smt"> 
+              <input type="radio" name="service">
+              <span class="smt <%= "selected" if params[:type] == "smt" %>">小保养</span>
+            </div>
+          </div>
+          <h4 class="item-title">选择配件</h4>
+          <div class="orders-con <%= type=params['type'] %>-con content">
+            <% if params[:car_id] %>
+              <%= render "items", type: type %>
+            <% else %>
+              请选择车辆
+            <% end %>
+          </div>
+          <div class="submit-con">
+            <span>当前费用: 
+              <span class="result-price"></span>元
+            </span>
+            <p>支持现金、刷卡支付</p>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <% if params[:type]=='pm25' %>
+          <div class = "col-xs-12">
+            <%= image_tag("pm25_detail_1.png", style: 'width: 100%') %>
+          </div>
+          <div class = "col-xs-12">
+            <%= image_tag("pm25_detail_2.png",:class => "img-thumbnail") %>
+          </div>
+        <% else %>
+          <div class = "col-xs-12">
+            <%= image_tag("detail_1.png",:class => "img-thumbnail") %>
+          </div>
+          <div class = "col-xs-12">
+            <%= image_tag("detail_2.jpg",:class => "img-thumbnail") %>
+          </div>
+          <div class = "col-xs-12">
+            <%= image_tag("detail_3.jpg",:class => "img-thumbnail") %>
+          </div>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <dl class="comment-item">
+          <dt>
+          <h3>北京市东城区 | 京A***34</h3>
+          <span class="time">11分钟前</span>
+          </dt>
+          <dd>
+          保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+          </dd>
+        </dl>
+        <dl class="comment-item">
+          <dt>
+          <h3>北京市东城区 | 京A***34</h3>
+          <span class="time">11分钟前</span>
+          </dt>
+          <dd>
+          保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('#myTab a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+    })
+  var car_id,auto_id,type ;
+
+  $('.quick-select').on('click','input:radio',function(){
+    car_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('id');
+    auto_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('autoid');
+
+    type = $('.orders').data('type')?$('.orders').data('type'):'bmt';
+    window.location.href = '/orders/select_car_item?car_id='+car_id+'&auto_id='+auto_id+'&type='+type;
+    $('.select-car-phone').attr('data-autoid',auto_id);
+  })
+
+  $('.content').on('click','.service-item',function(e){
+    car_id = $('.orders').data('car') ? $('.orders').data('car') : $('.quick-select input:radio:checked').parent().siblings('.btn').data('id');
+    autoid = $('.select-car-phone').attr('data-autoid');
+    type = $(this).data('type');
+    window.location.href = '/orders/select_car_item?car_id='+car_id+'&auto_id='+autoid+'&type='+type;
+  });
+
+  function selectItem(){
+    autoid = $('.select-car-phone').attr('data-autoid');
+    type = $('.orders').data('type');
+    $('.btn').each(function(){
+      if($(this).data('autoid') == autoid){
+        $(this).siblings('span').find('input:radio').attr('checked','checked')
+      }
+    })
+    $('.service-item').each(function(){
+      if($(this).data('type') == type){
+        $(this).find('input:radio').attr('checked','checked')
+      }
+    })
+  }
+  selectItem()
+
+</script>

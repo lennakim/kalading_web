@@ -13,7 +13,6 @@ $ ->
     items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
-    $('.select-car').css({'height':$('.quick-select').height()})
 
     $('.select-car,.quick-select').click ->
       $(this).addClass('selected').siblings().removeClass('selected')
@@ -161,4 +160,4 @@ $ ->
         window.location.href = "/orders/auto_model_numbers/" + type_id
       else if $(this).children('.car-model').length > 0
         model_id = $(this).children('.car-model').attr("model_id")
-        window.location.href = "/orders/select_car?car_id=" + model_id+"&type=bmt"
+        window.location.href = "/orders/select_car_item?car_id=" + model_id+"&type=bmt"

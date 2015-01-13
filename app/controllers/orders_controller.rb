@@ -44,6 +44,19 @@ class OrdersController < ApplicationController
     @result = Order.items_for params[:car_id]
   end
 
+  def select_car_item
+
+    unless params[:auto_id]
+      save_last_select_car params[:car_id]
+    end
+    
+    @last_select_car = Auto.api_find last_select_car if last_select_car
+    
+    type = params[:type]
+    @cars_info = Order.cars_data type
+    @result = Order.items_for params[:car_id]
+  end
+
   def comment
     data = Order.comment params[:id], {
       evaluation_tags: params[:tags],
@@ -121,6 +134,8 @@ class OrdersController < ApplicationController
     if result["result"] == "succeeded"
 
       # find_or_create user
+
+      user = current_user
 
       unless signed_in?
         user = User.find_or_create_by(phone_number: vcode.phone_num)

@@ -9,6 +9,7 @@ $title-gray: #787878;
 .orders-con{
   padding: 0 20px;
   border: 2px solid #ccc;
+  border-radius: 4px;
   h4{
     line-height: 70px;
     color: $title;
@@ -87,6 +88,7 @@ $title-gray: #787878;
   }
   .order_button{
     @include button;
+    margin: 20px 0;
   }
 }
 .select-car-page,.items-select-page{
@@ -103,13 +105,14 @@ $title-gray: #787878;
 .select-car-page{
   background: $bac;
   .select-item{
-    overflow: hidden;
+    clear: both;
     border: 1px solid #ccc;
     .select-car, .quick-select{
       float: left;
       width: 46%;
       margin: 28px 2%;
       padding: 0 20px;
+      border: 1px solid #fff;
       h4{
         text-align: center;
         margin-bottom: 30px;
@@ -165,6 +168,7 @@ $title-gray: #787878;
 
         &.pull-left.col-sm-3{
           width: 50%;
+          min-width: 150px;
         }
 
         .content{
@@ -222,13 +226,14 @@ $title-gray: #787878;
         font-size: 20px;
         a{
           display: block;
-          padding: 20px 0;
+          padding: 10px 0;
           color: #a0a0a0;
           text-decoration: none;
         }
       }
       .selected{
         border: 2px solid #ccc;
+        border-radius: 4px 4px 0 0;
         border-bottom: 0;
         background: #fff;
         a{
@@ -573,7 +578,7 @@ $title-gray: #787878;
       text-align: center;
       font-size: 16px;
       a{
-        line-height: 40px;
+        line-height: 35px;
         color: #515151;
       }
     }
@@ -600,17 +605,18 @@ $title-gray: #787878;
     padding: 0 20px;
   }
   .orders{
-    li{
-      padding: 8px 20px;
+    .service-item{
+      padding: 8px 30px;
       border-bottom: 1px solid #ccc;
       &:last-child{
         border: 0;
       }
+      input{
+        margin-right: 5px;
+      }
     }
     .selected{
-      a{
-        color: #f57e56;
-      }
+      color: #f57e56;
     }
     .part{
       margin: 0 auto;
