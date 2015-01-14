@@ -403,10 +403,10 @@ $title-gray: #787878;
       font-size: 18px;
     }
     .address-info{
-      background-image: url(/assets/address-info-pc.png);
+      background-image: image-url('address-info-pc.png');
     }
     .order-info{
-      background-image: url(/assets/order-info-pc.png);
+      background-image: image-url('order-info-pc.png');
     }
   }
 
@@ -454,7 +454,7 @@ $title-gray: #787878;
       font-size: 20px;
       color: #f37920;
       &:before{
-        content: url(success-phone.png);
+        content: image-url('success-phone.png');
         display: block;
         margin: 10px 0;
       }
@@ -616,10 +616,10 @@ $title-gray: #787878;
     border-bottom: 1px solid #ccc;
   }
   .my-car-title:before{
-    content: url('my-car.png');
+    content: image-url('my-car.png');
   }
   .service-type-title:before{
-    content: url('service-type.png');
+    content: image-url('service-type.png');
   }
   #myTab{
     position: fixed;
@@ -756,10 +756,10 @@ $title-gray: #787878;
     display: none;
   }
   .choice-address-title:before{
-    content: url('choice-address-title.png')
+    content: image-url('choice-address-title.png');
   }
   .order-info-title:before{
-    content: url('order-info-title.png')
+    content: image-url('order-info-title.png');
   }
   .addresses{
     padding: 0 15px;
@@ -879,7 +879,7 @@ $title-gray: #787878;
 .order-status-phone{
   .order-status{
     .item-title:before{
-      content: url('order-status.png')
+      content: image-url('order-status.png');
     }
   }
   .status{

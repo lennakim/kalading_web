@@ -1,9 +1,9 @@
 // libs
 @import "compass";
 @import "compass/reset";
-@import "default";
-@import "default.date";
-@import "default.time";
+@import "classic";
+@import "classic.date";
+@import "classic.time";
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -20,7 +20,12 @@ $border-gray: #e4e4e4;
 
 body{
   background: #f7f4f3;
-  font: 14px/1.5 arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif !important;
+
+  font: 14px/1.5 arial, "Microsoft Yahei", "Hiragino Sans GB", sans-serif !important;
+}
+
+*{
+  font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif, 'Glyphicons Halflings' !important;
 }
 
 header.navbar{
