@@ -31,7 +31,7 @@ $ ->
   if !signed_in() && need_login()
     $('#login_modal').modal()
 
-  $('#to_select_item').click ->
+  $('#next_step').click ->
     id = $('#car_style option:selected').data 'id'
     type = $('.select-car-page').data('type') || 'bmt'
     window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"

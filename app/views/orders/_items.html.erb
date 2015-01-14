@@ -31,14 +31,24 @@
 
           <div class="">
             <label class='col-sm-2'><%= part_name %></label>
-            <select class="part form-control">
-              <% select_index = selected_item_index(default_parts(@result), part_items)  %>
-              <% part_items.each_with_index do |item, index| %>
-                <% unless item["quantity"] == 0 %>
-                  <%= render "item", name: part_name, item: item, selected: select_index == index %>
+
+            <% if part_items.sum{ |e| e['quantity'] } == 0 %>
+
+              <input type="text" value="暂时缺货" class="form-control" disabled>
+
+            <% else %>
+
+              <select class="part form-control">
+                <% select_index = selected_item_index(default_parts(@result), part_items)  %>
+                <% part_items.each_with_index do |item, index| %>
+                  <% unless item["quantity"] == 0 %>
+                    <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </select>
+              </select>
+
+            <% end %>
+
           </div>
         </div>
 

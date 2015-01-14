@@ -52,7 +52,10 @@ class OrdersController < ApplicationController
 
       if !params[:auto_id].present?
         save_last_select_car(car_id)
-        @last_select_car = Auto.api_find(car_id)
+      end
+
+      if last_select_car.present?
+        @last_select_car = Auto.api_find last_select_car
       end
 
       type = params[:type]
@@ -92,7 +95,11 @@ class OrdersController < ApplicationController
   end
 
   def select_item
-    save_last_select_car params[:car_id]
+
+    if !params[:auto_id].present?
+      save_last_select_car params[:car_id]
+    end
+
     @result = Order.items_for params[:car_id], current_city_id
   end
 
