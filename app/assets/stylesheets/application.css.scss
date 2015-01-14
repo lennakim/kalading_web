@@ -23,7 +23,7 @@ a:link[title="站长统计"]{
 }
 
 body{
-  background: #f7f4f3;
+  background: #fbfbfb;
 
   font: 14px/1.5 arial, "Microsoft Yahei", "Hiragino Sans GB", sans-serif !important;
 }
@@ -43,7 +43,7 @@ header.navbar{
 
   border-bottom: 1px solid rgb(39, 29, 29);
   margin-bottom: -1px;
-  .logo, li{
+  .logo,.nav-item{
     width: 128px;
     float: left;
   }
@@ -61,13 +61,13 @@ header.navbar{
   }
   .nav{
     float: right;
-    overflow: hidden;
     min-width: 320px;
     margin-top: 10px;
     font-family: STHeitiSC-Medium;
     font-size: 14px;
     color: $font-gray;
-    li{
+    .dropdown{
+      float: left;
       width: 106px;
       height: 35px;
       text-align: center;
