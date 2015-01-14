@@ -13,11 +13,24 @@
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <div class="nav navbar-nav">
-        <div class="dropdown personal">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
-        </div>
+    
+          <% if signed_in? %>
+            <div class="dropdown personal">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/users/orders">我的订单</a></li>
+                <li><a href="/users/maintain_histories_list">保养记录</a></li>
+                <li><a>登出</a></li>
+              </ul>
+            </div>
+          <% else %>
+            <div class="dropdown personal">
+              <a href="" id="login_btn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+            </div>
+          <% end %>
+
         <div class="dropdown wechat">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
           <ul class="dropdown-menu" role="menu">
             <li>
               <%= image_tag "wei.png", alt: '二维码'%>
@@ -25,7 +38,7 @@
           </ul>
         </div>
         <div class="dropdown tel">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#" title="400-006-8181">400-006-8181</a></li>
           </ul>
