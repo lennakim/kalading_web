@@ -60,11 +60,16 @@ $title-gray: #787878;
         .part-checkbox{
           width: 20px;
         }
+
         .part{
           width: 90%;
           &.form-control{
             @include border-top-left-radius(0);
             @include border-bottom-left-radius(0);
+          }
+
+          &.no-part{
+            @include border-radius(3px);
           }
         }
 

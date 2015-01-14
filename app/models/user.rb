@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
     auto.update_attributes \
       system_id:        order_info["car_id"],
 
-      brand:            auto_hash["brand"],
-      series:           auto_hash["model"],
-      model_number:     auto_hash["name"],
+      brand:            auto_hash.brand,
+      series:           auto_hash.series,
+      model_number:     auto_hash.model_number,
 
       registed_at:      order_info["registration_date"],
       engine_number:    order_info["engine_num"],
