@@ -118,7 +118,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 点击菜单拉取消息时的事件推送
       def handle_click_event
-        reply_text_message(RecvMessage.reply_message(@keyword))
+        account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
+        msg = account.reply_messages.find_by(keyword:@keyword)
+        reply_text_message(msg.reply_message)
       end
 
       # 点击菜单跳转链接时的事件推送
