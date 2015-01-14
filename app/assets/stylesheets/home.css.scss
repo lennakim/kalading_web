@@ -361,9 +361,11 @@ $bac: #f7f4f3;
 	color: #fff;
 	border: 0;
   }
-  .service-module,.tec-team,.service-address,.service-process{
-    padding: 0 14px;
-    margin: 20px 0;
+  .tec-team,.service-address,.service-process{
+  	padding: 0 14px;
+  }
+  .service-module,.tec-team,.service-address,.service-process{   
+    margin: 10px 0;
     line-height: 25px;
     font-size: 12px;
     .title{
@@ -379,6 +381,9 @@ $bac: #f7f4f3;
     }
   }
   .service-module{
+  	.title{
+  		padding: 0 14px;
+  	}
     ul{
       margin-left: 20px;
       line-height: 25px;
