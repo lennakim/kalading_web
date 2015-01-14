@@ -9,6 +9,9 @@ $title-gray: #787878;
 .orders-con{
   padding: 0 20px;
   border-radius: 4px;
+  .spe{
+    color: $font-orange;
+  }
   h4{
     line-height: 70px;
     color: #666;
@@ -62,7 +65,7 @@ $title-gray: #787878;
         }
 
         .part{
-          width: 90%;
+          width: 260px;
           &.form-control{
             @include border-top-left-radius(0);
             @include border-bottom-left-radius(0);
@@ -269,7 +272,7 @@ $title-gray: #787878;
   .service-module{
     border: 1px solid #ccc;
     .service-con{
-      height: 300px;
+      
     }
   }
 }
