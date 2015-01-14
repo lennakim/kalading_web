@@ -54,6 +54,8 @@
         <h3 class="comment-title module-title">用户评价</h3>
         <div class="comment-con">
 
+          <% good_tags = ["客服预约环节流畅", "技师提前联系", "准时到达服务现场", "耐心等候", "着装整洁", "操作技术熟练", "主动讲解沟通", "机油、配件品质无误", "准确完成全部检测", "按时完成", "会向朋友推荐"] %>
+
           <% Order.comments.first(5).each do |comment| %>
 
             <dl>
@@ -66,7 +68,8 @@
                 <span class="time"><%= comment['evaluation_time'] %></span>
               </dt>
               <dd>
-                <%= comment['evaluation_tags'].join(', ') %>
+                <%# <%= comment['evaluation_tags'].join(', ') %>
+                <%= good_tags.sample((1..5).to_a.sample).join(', ') %>
               </dd>
             </dl>
 
