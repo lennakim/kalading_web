@@ -20,22 +20,29 @@
     <div class="col-sm-10 item-box">
 
       <% parts = @result["applicable_parts"] %>
+      <% to_next_step = false %>
+
       <% filter_parts(parts, type).each do |part|  %>
         <div class="item clearfix">
           <% part_name = part.keys[0] %>
           <% part_items = part.values[0] %>
 
+          <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
+
+          <% to_next_step ||= !no_items %>
+
           <div class="part-checkbox pull-left">
-            <input type="checkbox" class='part-selector' checked>
+            <% if no_items %>
+              <input type="checkbox" class='part-selector' disabled>
+            <% else %>
+              <input type="checkbox" class='part-selector' checked>
+            <% end %>
           </div>
 
           <div class="">
             <label class='col-sm-2'><%= part_name %></label>
-
-            <% if part_items.sum{ |e| e['quantity'] } == 0 %>
-
-              <input type="text" value="暂时缺货" class="form-control" disabled>
-
+            <% if no_items %>
+              <input type="text" value="暂时缺货" class="part no-part form-control" disabled>
             <% else %>
 
               <select class="part form-control">
@@ -90,7 +97,11 @@
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
-      <button type="submit" class="btn btn-default order_button">下一步</button>
+      <% if to_next_step %>
+        <button type="submit" class="btn btn-default order_button">下一步</button>
+      <% else %>
+        <button disabled type="submit" class="btn btn-default order_button">下一步</button>
+      <% end %>
     </div>
   </div>
 </div>

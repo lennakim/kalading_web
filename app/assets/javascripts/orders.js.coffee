@@ -10,7 +10,7 @@ $ ->
 
   if $(".items-select-page, .select-car-phone").length > 0
     items_view = new Kalading.Views.Items
-    items_view.recoverSelectors()
+    # items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
     $('.select-car, .quick-select').click ->
