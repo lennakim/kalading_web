@@ -42,10 +42,12 @@ header.navbar{
     float: left;
     width: 200px;
     margin-top: 24px;
-    font-size: 14px;
+    font-size: 12px;
     color: #fff;
+    opacity: 0.6;
     #current_city{
       cursor: pointer;
+      text-decoration: underline;
     }
   }
   .nav{
