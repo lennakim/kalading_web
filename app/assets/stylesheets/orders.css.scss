@@ -11,17 +11,19 @@ $title-gray: #787878;
   border-radius: 4px;
   h4{
     line-height: 70px;
-    color: $title;
+    color: #666;
+    font-size: 18px;
   }
   .item-list{
     overflow: hidden;
     line-height: 40px;
     label{
-      color: #606060;
+      color: #666;
       float: left;
+      padding: 0;
     }
     .form-group{
-      margin-bottom: 0;
+      margin: 0;
     }
     .price,.now{
       font-size: 28px;
@@ -60,8 +62,7 @@ $title-gray: #787878;
         }
 
         .part{
-
-          width: 250px;
+          width: 90%;
           &.form-control{
             @include border-top-left-radius(0);
             @include border-bottom-left-radius(0);
@@ -91,7 +92,6 @@ $title-gray: #787878;
     }
   }
   .order_button{
-    // @include button;
     margin: 20px 0 0 60px;
     width: 80px;
     background: #feac5a;
@@ -119,6 +119,7 @@ $title-gray: #787878;
     .select-car, .quick-select{
       float: left;
       width: 46%;
+      min-height: 220px;
       margin: 28px 2%;
       padding: 0 20px;
       border: 1px solid #fff;
@@ -232,27 +233,36 @@ $title-gray: #787878;
     ul{
       overflow: hidden;
       position: relative;
-      top: 2px;
+      top: 1px;
       z-index: 999;
       li{
         float: left;
         padding: 0 20px;
-        font-size: 20px;
+        font-size: 18px;
         a{
           display: block;
-          padding: 10px 0;
-          color: #a0a0a0;
+          padding: 5px 0;
+          color: #ddd;
           text-decoration: none;
         }
       }
       .selected{
-        border: 2px solid #ccc;
+        border: 1px solid #ccc;
         border-radius: 4px 4px 0 0;
         border-bottom: 0;
         background: #fff;
         a{
           color: $font-orange;
         }
+      }
+    }
+    .orders-con{
+      border: 1px solid #ccc;
+      .order_button{
+        margin: 20px 0;
+        @include button;
+        padding: 0;
+        height: 35px;
       }
     }
   }
@@ -296,6 +306,11 @@ $title-gray: #787878;
   form{
     margin-bottom: 40px;
   }
+  .addresses{
+    .addr{
+      color: #666;
+    }
+  }
   #item_table{
     background: white;
     width: 100%;
@@ -327,11 +342,13 @@ $title-gray: #787878;
   .info-group{
     overflow: hidden;
     margin: 5px;
-
+    padding-left: 30px;
     .reciept-detail{
       padding-left: 5px;
     }
-
+    .phone_num{
+      color: #ccc;
+    }
     input{
       line-height: 30px;
     }
@@ -345,6 +362,9 @@ $title-gray: #787878;
       width: 130px;
       line-height: 35px;
       text-align: right;
+      label{
+        color: #666;
+      }
     }
     .info-con{
       float: left;
@@ -370,12 +390,20 @@ $title-gray: #787878;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     padding: 20px;
-    .order-info{
+    .title{
       line-height: 40px;
       padding-left: 40px;
-      margin: 15px 0;
-      background-image: image-url('order-info.png');
+      margin-bottom: 10px;
+      background-size: 26px;
+      background-position: 10px;
       background-repeat: no-repeat;
+      font-size: 18px;
+    }
+    .address-info{
+      background-image: url(/assets/address-info-pc.png);
+    }
+    .order-info{
+      background-image: url(/assets/order-info-pc.png);
     }
   }
 
@@ -387,7 +415,8 @@ $title-gray: #787878;
     margin: 20px 0;
 
     @include border-radius(3px);
-    @include background-image(linear-gradient(top , #ff9933, #ec8721));
+    background: #ec8721;
+    // @include background-image(linear-gradient(top , #ff9933, #ec8721));
     @include filter-gradient(#ff9933, #ec8721);
     @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
     border: 1px solid #e97a0c;
@@ -570,7 +599,8 @@ $title-gray: #787878;
     font-size: 22px;
   }
   .submit{
-    margin-left: 60px;
+    position: absolute;
+    right: 10px;
     background: #feac5a;
     border: 0;
     border-radius: 5px;
@@ -650,7 +680,7 @@ $title-gray: #787878;
     .btn{
       position: fixed;
       bottom: 25px;
-      right: 30px;
+      right: 10px;
       z-index: 9999;
       line-height: 20px;
       margin: 0;
@@ -711,7 +741,7 @@ $title-gray: #787878;
 }
 .place-order-phone{
   form{
-    padding-bottom: 75px;
+    padding-bottom: 68px;
   }
   .orders-content{
     overflow: hidden;
