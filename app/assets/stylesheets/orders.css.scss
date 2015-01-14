@@ -91,8 +91,13 @@ $title-gray: #787878;
     }
   }
   .order_button{
-    @include button;
-    margin: 20px 0;
+    // @include button;
+    margin: 20px 0 0 60px;
+    width: 80px;
+    background: #feac5a;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
   }
 }
 .select-car-page,.items-select-page{
@@ -565,7 +570,7 @@ $title-gray: #787878;
     font-size: 22px;
   }
   .submit{
-    margin: 10px 0 0 60px;
+    margin-left: 60px;
     background: #feac5a;
     border: 0;
     border-radius: 5px;
@@ -644,8 +649,8 @@ $title-gray: #787878;
     }
     .btn{
       position: fixed;
-      bottom: 14px;
-      right: 20px;
+      bottom: 25px;
+      right: 30px;
       z-index: 9999;
       line-height: 20px;
       margin: 0;
@@ -706,7 +711,7 @@ $title-gray: #787878;
 }
 .place-order-phone{
   form{
-    padding-bottom: 85px;
+    padding-bottom: 75px;
   }
   .orders-content{
     overflow: hidden;
