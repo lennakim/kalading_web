@@ -6,7 +6,7 @@ $ ->
     $('#login_modal').modal()
 
   if $('.home-page').length > 0
-    $('.home-page').siblings('.navbar,.footer').css({'min-Width':'1400px'}).find('.container').css({'min-Width':'1170px'})
+    $('.home-page').css({'min-Width':'1280px'}).siblings('.navbar,.footer').css({'min-Width':'1280px'}).find('.container').css({'min-Width':'1170px'})
     $('.home-page .container').css({'min-Width':'1170px'})
 
     $('.carousel').carousel()

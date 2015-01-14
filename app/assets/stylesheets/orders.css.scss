@@ -594,7 +594,8 @@ $title-gray: #787878;
     font-size: 22px;
   }
   .submit{
-    margin-left: 60px;
+    position: absolute;
+    right: 10px;
     background: #feac5a;
     border: 0;
     border-radius: 5px;
@@ -674,7 +675,7 @@ $title-gray: #787878;
     .btn{
       position: fixed;
       bottom: 25px;
-      right: 30px;
+      right: 10px;
       z-index: 9999;
       line-height: 20px;
       margin: 0;
@@ -735,7 +736,7 @@ $title-gray: #787878;
 }
 .place-order-phone{
   form{
-    padding-bottom: 75px;
+    padding-bottom: 68px;
   }
   .orders-content{
     overflow: hidden;
