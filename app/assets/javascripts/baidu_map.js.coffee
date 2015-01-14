@@ -11,7 +11,10 @@ $ ->
 
   window.ac = ac
 
-  ac.setInputValue $("#address_detail").data("address")
+  city = $("#service_cities option:selected").val()
+  district = $("#service_districts option:selected").val()
+
+  ac.setInputValue "#{ city }#{ district }"
 
   # 鼠标放在下拉列表上的事件
   ac.addEventListener "onhighlight", (e) ->
