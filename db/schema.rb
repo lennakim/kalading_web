@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109100831) do
+ActiveRecord::Schema.define(version: 20150114095135) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -149,12 +149,12 @@ ActiveRecord::Schema.define(version: 20150109100831) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
-    t.string   "account_secret_key"
-    t.string   "account_token"
   end
 
   add_index "public_accounts", ["account_id"], name: "index_public_accounts_on_account_id", unique: true, using: :btree
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20150109100831) do
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
 
   create_table "recv_messages", force: true do |t|
+    t.string   "from_user_name"
     t.string   "create_time"
     t.string   "msg_type"
     t.text     "content"
@@ -180,11 +181,29 @@ ActiveRecord::Schema.define(version: 20150109100831) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "from_user_name"
     t.integer  "public_account_id"
   end
 
   add_index "recv_messages", ["msg_id"], name: "index_recv_messages_on_msg_id", unique: true, using: :btree
+
+  create_table "reply_messages", force: true do |t|
+    t.string   "msg_type"
+    t.text     "content"
+    t.string   "media_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "music_url"
+    t.string   "hq_music_url"
+    t.string   "thumb_media_id"
+    t.integer  "article_count"
+    t.text     "articles"
+    t.string   "pic_url"
+    t.string   "url"
+    t.integer  "public_account_id"
+    t.string   "keyword"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "service_addresses", force: true do |t|
     t.string   "city"
