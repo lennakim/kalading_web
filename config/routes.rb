@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
   resources :sessions do
     get 'callback',  on: :collection
+    delete 'destroy', on: :collection
   end
 
   namespace :admin do
