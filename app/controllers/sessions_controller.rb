@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
                                                      uid:sns_info.result["openid"])
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
-    if sign_in?
+    if signed_in?
       begin
         current_user.auth_infos << auth_info
       rescue ActiveRecord::RecordInvalid => e
