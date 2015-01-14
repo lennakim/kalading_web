@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?
   helper_method :current_city, :current_city_id, :current_city_name
   helper_method :last_select_car, :current_user_city
+  helper_method :aes128_encrypt, :aes128_decrypt
 
   before_action :set_city
   before_action :set_device_type
@@ -56,6 +57,23 @@ class ApplicationController < ActionController::Base
 
   def current_city_id
     City.find(current_user_city).system_id
+  end
+
+  def aes128_encrypt(data)
+    aes = OpenSSL::Cipher::AES.new(128, :CBC)
+    aes.encrypt
+    key = aes.random_key
+    iv = aes.random_iv
+    encrypted = cipher.update(data) + cipher.final
+    return encrypted, key, iv
+  end
+
+  def aes128_decrypt(data, key, iv)
+    aes = OpenSSL::Cipher::AES.new(128, :CBC)
+    aes.descrypt
+    aes.key = key
+    aes.iv = iv
+    aes.update(data) + aes.final
   end
 
   private
