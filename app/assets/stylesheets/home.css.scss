@@ -35,7 +35,11 @@ $bac: #fbfbfb;
 		border-radius: 4px;
 		text-align: center;
 		.btn{
-			@include button();
+			width: 90px;
+			margin: 10px 0;
+	        @include button;
+	        padding: 0;
+	        line-height: 35px;
 		}
 		.form-group{
 			margin: 25px 0;
@@ -373,7 +377,7 @@ $bac: #fbfbfb;
       font-size: 16px;
       color: #666;
       &:before{
-		content: url('phone-logo.png')
+		content: image-url('phone-logo.png')
   	  }
     }
     ul{
