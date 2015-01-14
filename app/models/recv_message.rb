@@ -11,11 +11,13 @@ class RecvMessage < ActiveRecord::Base
 
   private
 
-  def handle_location_info info
-    self.location_x = info.Location_X
-    self.location_y = info.Location_Y
-    self.scale = info.Scale
-    self.label = info.Label
+  def handle_text_info info
+    self.content = info.Content
+  end
+
+  def handle_image_info info
+    self.pic_url  = info.PicUrl
+    self.media_id = info.MediaId
   end
 
   def handle_link_info info
@@ -24,12 +26,10 @@ class RecvMessage < ActiveRecord::Base
     self.url = info.Url
   end
 
-  def handle_text_info info
-    self.content = info.Content
-  end
-
-  def handle_image_info info
-    self.pic_url  = info.PicUrl
-    self.media_id = info.MediaId
+  def handle_location_info info
+    self.location_x = info.Location_X
+    self.location_y = info.Location_Y
+    self.scale = info.Scale
+    self.label = info.Label
   end
 end

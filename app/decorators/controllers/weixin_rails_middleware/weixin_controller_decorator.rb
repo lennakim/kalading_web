@@ -8,10 +8,18 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     render xml: send("response_#{@weixin_message.MsgType}_message", {})
   end
 
+  def handle_recv_messages msg
+    account = PublicAccount.find_by(account_id: msg.ToUserName)
+    message = account.recv_messages.new
+    message.set_info msg
+    message.save
+  end
+
   private
 
     def response_text_message(options={})
-      link = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde94f73ba776b7df&redirect_uri=http%3A%2F%2Fohcoder.ngrok.com%2Fsessions%2Fcallback&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect"
+      link = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde94f73ba776b7df&redirect_uri=http%3A%2F%2Fohcoder.ngrok.com%2Fsessions%2Fcallback%3Fname%3Dkaladingcom&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect"
+      handle_recv_messages @weixin_message
       reply_text_message("#{link}")
     end
 
@@ -24,6 +32,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @ly    = @weixin_message.Location_Y
       @scale = @weixin_message.Scale
       @label = @weixin_message.Label
+      handle_recv_messages @weixin_message
       reply_text_message("Your Location: #{@lx}, #{@ly}, #{@scale}, #{@label}")
     end
 
@@ -32,6 +41,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def response_image_message(options={})
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
+      handle_recv_messages @weixin_message
       reply_image_message(generate_image(@media_id))
     end
 
@@ -39,9 +49,10 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # <Description><![CDATA[公众平台官网链接]]></Description>
     # <Url><![CDATA[url]]></Url>
     def response_link_message(options={})
-      @title = @weixin_message.Title
-      @desc  = @weixin_message.Description
-      @url   = @weixin_message.Url
+    # @title = @weixin_message.Title
+    # @desc  = @weixin_message.Description
+    # @url   = @weixin_message.Url
+      handle_recv_messages @weixin_message
       reply_text_message("回复链接信息")
     end
 
@@ -107,7 +118,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 点击菜单拉取消息时的事件推送
       def handle_click_event
-        reply_text_message("你点击了: #{@keyword}")
+        account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
+        msg = account.reply_messages.find_by(keyword:@keyword)
+        reply_text_message(msg.reply_message)
       end
 
       # 点击菜单跳转链接时的事件推送
