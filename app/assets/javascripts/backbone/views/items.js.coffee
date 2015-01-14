@@ -85,5 +85,5 @@ class Kalading.Views.Items extends Backbone.View
   #   @$order_button.attr('disabled', false).removeClass('disabled')
 
   errorHandler: ->
-    alert '服务器错误...请稍后再试'
-    @recoverSelectors()
+    # alert '服务器错误...请稍后再试'
+    # @recoverSelectors()
