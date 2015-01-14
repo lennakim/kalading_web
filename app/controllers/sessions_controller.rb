@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
           user.auth_infos << auth_info
         rescue ActiveRecord::RecordInvalid => e
           # ...
-          Rails.logger.info(e)
+          Rails.logger.info '-' * 30
+          Rails.logger.error e
         end
       end
     end
@@ -42,14 +43,15 @@ class SessionsController < ApplicationController
                                                      uid:sns_info.result["openid"])
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
-    user = current_user
-    if user
+    if sign_in?
       begin
-        user.auth_infos << auth_info
+        current_user.auth_infos << auth_info
       rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info(e)
+        Rails.logger.info '-' * 30
+        Rails.logger.error e
       end
     end
+
     redirect_to root_path(login:1)
   end
 
