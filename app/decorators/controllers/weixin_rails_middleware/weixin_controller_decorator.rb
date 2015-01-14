@@ -18,7 +18,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      link = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde94f73ba776b7df&redirect_uri=http%3A%2F%2Fohcoder.ngrok.com%2Fsessions%2Fcallback&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect"
+      link = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde94f73ba776b7df&redirect_uri=http%3A%2F%2Fohcoder.ngrok.com%2Fsessions%2Fcallback%3Fname%3Dkaladingcom&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect"
       handle_recv_messages @weixin_message
       reply_text_message("#{link}")
     end
@@ -49,9 +49,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # <Description><![CDATA[公众平台官网链接]]></Description>
     # <Url><![CDATA[url]]></Url>
     def response_link_message(options={})
-      @title = @weixin_message.Title
-      @desc  = @weixin_message.Description
-      @url   = @weixin_message.Url
+    # @title = @weixin_message.Title
+    # @desc  = @weixin_message.Description
+    # @url   = @weixin_message.Url
       handle_recv_messages @weixin_message
       reply_text_message("回复链接信息")
     end
@@ -118,7 +118,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 点击菜单拉取消息时的事件推送
       def handle_click_event
-        reply_text_message("你点击了: #{@keyword}")
+        reply_text_message(RecvMessage.reply_message(@keyword))
       end
 
       # 点击菜单跳转链接时的事件推送

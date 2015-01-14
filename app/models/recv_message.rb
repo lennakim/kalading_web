@@ -3,7 +3,6 @@ class RecvMessage < ActiveRecord::Base
   validates :msg_id, presence: true, :uniqueness => :true
 
   def set_info info
-    self.to_user_name   = info.ToUserName
     self.from_user_name = info.FromUserName
     self.msg_type       = info.MsgType
     self.msg_id         = info.MsgId
@@ -19,5 +18,18 @@ class RecvMessage < ActiveRecord::Base
   def handle_image_info info
     self.pic_url  = info.PicUrl
     self.media_id = info.MediaId
+  end
+
+  def handle_link_info info
+    self.title = info.Title
+    self.description = info.Description
+    self.url = info.Url
+  end
+
+  def handle_location_info info
+    self.location_x = info.Location_X
+    self.location_y = info.Location_Y
+    self.scale = info.Scale
+    self.label = info.Label
   end
 end
