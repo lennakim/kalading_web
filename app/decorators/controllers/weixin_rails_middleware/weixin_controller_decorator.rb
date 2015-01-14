@@ -18,9 +18,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
   private
 
     def response_text_message(options={})
-      link = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde94f73ba776b7df&redirect_uri=http%3A%2F%2Fohcoder.ngrok.com%2Fsessions%2Fcallback%3Fname%3Dkaladingcom&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect"
       handle_recv_messages @weixin_message
-      reply_text_message("#{link}")
+      #reply_text_message("#{link}")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -88,9 +87,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
-        account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
-        account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
-        reply_text_message("欢迎关注卡拉丁, #{@weixin_message.FromUserName}")
+        reply_text_message("欢迎关注卡拉丁")
       end
 
       # 取消关注
