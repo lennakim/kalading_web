@@ -1,4 +1,4 @@
-
+@import "mixins/button";
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
@@ -17,6 +17,7 @@ $bac: #f7f4f3;
 
 .index{
 	position: relative;
+	min-width: 1400px;
 	.slide{
 		img{
 			width: 100%;
@@ -25,12 +26,17 @@ $bac: #f7f4f3;
 	.select-car{
     	background: white;
 		position: absolute;
-		top: 6%;
+		top: 2%;
 		right: 18%;
 		@include box-sizing(border-box);
 		width: 267px;
-		height: 270px;
+		padding: 15px 0;
+		opacity: 0.9;
+		border-radius: 4px;
 		text-align: center;
+		.btn{
+			@include button();
+		}
 		.form-group{
 			margin: 25px 0;
 		}
@@ -91,7 +97,7 @@ $bac: #f7f4f3;
 		}
 	}
 	.product,.maintain-process,.guest,.menu{
-		min-width: 1000px;
+		min-width: 1140px;
 	}
 	.product,.maintain-process,.guest{
 		padding: 45px 0;
@@ -104,7 +110,7 @@ $bac: #f7f4f3;
 		}
 		.content{
 			overflow: hidden;
-			padding: 0 15%;
+			padding: 0 10%;
 		}
 	}
 	.product{
@@ -115,7 +121,7 @@ $bac: #f7f4f3;
 				@include box-sizing(border-box);
 				float: left;
 				width: 30%;
-				max-height: 343px;
+				max-height: 342px;
 				margin: 0 5% 0 0;
 				overflow: hidden;
 				&:last-child{
@@ -123,7 +129,7 @@ $bac: #f7f4f3;
 				}
 				dt{
 					overflow: hidden;
-					height: 335px;
+					height: 342px;
 					img{
 						width: 100%;
 					}
@@ -133,14 +139,11 @@ $bac: #f7f4f3;
 				}
 				.bac{
 					position: absolute;
-					top: 0;
+					top: 270px;
 					width: 100%;
 					height: 100%;
-					background: #181413;
-					opacity: 0.1;
-				}
-				.hidden{
-					display: none;
+					background: #000;
+					opacity: 0.4;
 				}
 				.con{
 					position: absolute;
@@ -150,47 +153,48 @@ $bac: #f7f4f3;
 					padding: 4px 30px 20px;
 					text-align: center;
 					color: #fff;
-					background: #000;
-					opacity: 0.5;
 					cursor: pointer;
 					cursor: hand;
 					.item-title{
 						line-height: 35px;
+						font-size: 18px;
 					}
 					.description{
 						display: block;
 						font-size: 14px;
+						opacity: 0.8
 					}
 					.order-btn{
-						width: 120px;
-						height: 40px;
-						line-height: 35px;
+						width: 106px;
+						height: 35px;
+						line-height: 30px;
 						margin-top: 20px;
 						border: 1px solid #fff;
-						border-radius: 2px;
+						border-radius: 4px;
 						background: none;
 						text-align: center;
 						text-decoration: none;
 						color: #fff;
 					}
 				}
-				.show{
-					bottom: 0;
-					height: 100%;
+				.showbac{
+					top: 0;
 					.item-title{
 						margin-top: 35%;
 					}
+				}
+				.showcon{
+					bottom: 28%;
 				}
 			}
 		}
 	}
 	.maintain-process{
 		.number{
-			min-width: 1000px;
 			line-height: 60px;
 			li{
 				float: left;
-				width: 23%;
+				width: 24%;
 				span,var{
 					float: left;
 					background: #ccc;
@@ -204,9 +208,9 @@ $bac: #f7f4f3;
 					font-size: 22px;
 				}
 				var{
-					width: 60%;
+					width: 58%;
 					height: 2px;
-					margin-top: 10%;
+					margin-top: 14%;
 				}
 			}
 			.last{
@@ -221,21 +225,21 @@ $bac: #f7f4f3;
 					width: 10px;
 					height: 10px;
 					padding: 10px;
-					margin: 16% 8% 0;
+					margin: 24% 8% 0;
 				}
 				var{
 					width: 54%;
-					margin-top: 24%;
+					margin-top: 34%;
 				}
 			}
 		}
 		.item{
 			overflow: hidden;
-			width: 68%;
+			width: 74%;
 			margin: 0 auto;
 			li{
 				float: left;
-				width: 21%;
+				width: 22%;
 				margin-right: 4%;
 				text-align: center;
 				font-size: 16px;
@@ -245,6 +249,7 @@ $bac: #f7f4f3;
 				h4{
 					margin: 25px 0;
 					color: #666666;
+					font-size: 18px;
 				}
 				span{
 					color: #888888;
@@ -254,7 +259,7 @@ $bac: #f7f4f3;
 	}
 	.menu{
 		overflow: hidden;
-		padding: 0 17%;
+		padding: 0 10%;
 		border-bottom: 2px solid #e4e4e4;
 		li{
 			position: relative;
@@ -273,6 +278,7 @@ $bac: #f7f4f3;
 				display: block;
 				width: 100%;
 				color: #666666;
+				text-decoration: none;
 			}
 		}
 	}

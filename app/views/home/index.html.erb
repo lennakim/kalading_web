@@ -9,19 +9,19 @@
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <!-- <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="item active">
         <%= image_tag("slider.jpg")%>
       </div>
-      <!-- <div class="item">
-        <%#= image_tag("slider.jpg")%>
+      <div class="item">
+        <%= image_tag("slider.jpg")%>
       </div>
       <div class="item">
-        <%#= image_tag("slider.jpg")%>
-      </div> -->
+        <%= image_tag("slider.jpg")%>
+      </div>
     </div>
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -32,22 +32,19 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <div class="content">
-
-    <div class="select-car">
-      <%= render "shared/select_car" %>
-        <a id="to_select_item" class="btn btn-default">下一步</a>
-      </div>
-    </div>
-
+  <div class="select-car">
+    <%= render "shared/select_car" %>
+    <a id="to_select_item" class="btn btn-default">下一步</a>
+  </div>
+  <div class="container">
     <div class="product">
       <h3 class="title" title="产品与服务">产品与服务</h3>
       <div class="content maintain-item">
         <dl>
           <dt class="bac-white">
-          <%= image_tag("air-condition.jpg", :class=> "logo")%>
+          <%= image_tag("menu1.jpg", :class=> "logo")%>
           </dt>
-          <dd class="bac hidden"></dd>
+          <dd class="bac"></dd>
           <dd class="con">
           <h4 class="item-title" title="卡拉丁空调滤清器">卡拉丁空调滤清器</h4>
           <span class="description" title="3分钟告别车内雾霾">3分钟告别车内雾霾</span>
@@ -58,9 +55,9 @@
         </dl>
         <dl>
           <dt class="bac-white">
-          <%= image_tag("air-condition.jpg", :class=> "logo")%>
+          <%= image_tag("menu2.jpg", :class=> "logo")%>
           </dt>
-          <dd class="bac hidden"></dd>
+          <dd class="bac"></dd>
           <dd class="con">
           <h4 class="item-title" title="卡拉丁空调滤清器">卡拉丁上门大保养</h4>
           <span class="description" title="3分钟告别车内雾霾"> 省时、省心、省钱 </span>
@@ -71,9 +68,9 @@
         </dl>
         <dl>
           <dt class="bac-white">
-          <%= image_tag("air-condition.jpg", :class=> "logo")%>
+            <%= image_tag("menu3.jpg", :class=> "logo")%>
           </dt>
-          <dd class="bac hidden"></dd>
+          <dd class="bac"></dd>
           <dd class="con">
           <h4 class="item-title" title="卡拉丁空调滤清器">卡拉丁上门小保养</h4>
           <span class="description" title="3分钟告别车内雾霾">3分钟告别车内雾霾</span>
@@ -109,23 +106,26 @@
         </li>
         <li>
         <h4 title="订单完成">订单完成</h4>
-        <span>订单完成后，不要忘记到个人中心收取您的车辆检查报告</span>
+        <span>订单完成后，可到个人中心收取您的车辆检查报告</span>
         </li>
       </ul>
     </div>
     <ul class="menu">
       <li class="pm">
         <%= image_tag("pm25.png", :class=> "picc")%>
-        <%= link_to "PM2.5滤芯", '', target: "_blank", :title => "PM2.5滤芯" %>
+        <%#= link_to "PM2.5滤芯", '', target: "_blank", :title => "PM2.5滤芯" %>
+        <a title="PM2.5滤芯">PM2.5滤芯</a>
       </li>
       <li class="know">
         <%= image_tag("knowlege.png", :class=> "picc")%>
-        <%= link_to "用车知识", '', target: "_blank", :title => "用车知识" %>
-      <!-- post_page_path(id: 12) -->
+        <%#= link_to "用车知识", '', target: "_blank", :title => "用车知识" %>
+        <!-- post_page_path(id: 12) -->
+        <a title="用车知识">用车知识</a>
       </li>
       <li class="report">
         <%= image_tag("report.png", :class=> "picc")%>
-        <%= link_to "车检报告", '', target: "_blank", :title => "车检报告" %>
+        <%#= link_to "车检报告", '', target: "_blank", :title => "车检报告" %>
+        <a title="车检报告">车检报告</a>
       </li>
     </ul>
     <div class="guest">
