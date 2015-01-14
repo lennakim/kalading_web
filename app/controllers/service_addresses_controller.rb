@@ -5,10 +5,10 @@ class ServiceAddressesController < ApplicationController
     if signed_in?
       address = current_user.service_addresses.create permitted_params[:service_address]
       current_user.set_default_address address
-      render "create"
     else
-      render js: "alert('需要登陆')"
+      cookies[:address] = { value: params[:service_address][:detail], expires: 30.days.from_now }
     end
+    render "create"
   end
 
   def destroy
@@ -25,6 +25,6 @@ class ServiceAddressesController < ApplicationController
   end
 
   def permitted_params
-    {:service_address => params.fetch(:service_address, {}).permit(:city, :detail)}
+    {:service_address => params.fetch(:service_address, {}).permit(:city, :district, :detail)}
   end
 end

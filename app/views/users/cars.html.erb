@@ -24,9 +24,12 @@
             <% end %>
           </div>
 
-          <div class="car pull-left col-sm-3">
-            <%= link_to "添加车辆", "#", id: "add_car", class: 'btn btn-default' %>
-          </div>
+
+          <!-- TODO -->
+          <!-- <div class="car pull&#45;left col&#45;sm&#45;3"> -->
+          <!--   <%= link_to "添加车辆", "#", id: "add_car", class: 'btn btn&#45;default' %> -->
+          <!-- </div> -->
+
         </div>
       </div>
 
@@ -34,79 +37,11 @@
         <div class="header">
           车辆保养记录
         </div>
-        <div class="cards clearfix">
-
-          <% @maintain_histories.each do |maintain_history| %>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card">
-                <div class="serve-datetime">
-                  <%= maintain_history["serve_datetime"] %>
-                </div>
-
-                <div class="report">
-
-                  <div class="show">
-                    <button>体检报告单</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
-
-        </div>
+        <%= render "maintain_report_card" %>
       </div>
     </div>
   </div>
 </div>
 
 <%= render "shared/select_car_modal" %>
-
-<hr>
-
-<%= @maintain_histories %>
+<%= render "maintain_report_modal" %>

@@ -1,16 +1,24 @@
-<% @maintain_orders.each do |order| %>
-  <ul>
-    <li>
-      前雨刷-><%= front_wiper_desc_mapper order['front_wiper_desc'] %>
-    </li>
-    <li>
-      后雨刷-><%= back_wiper_desc_mapper order['back_wiper_desc'] %>
-    </li>
-    <li>
-      灭火器-><%= extinguisher_desc_mapper order['extinguisher_desc'] %>
-    </li>
-    <li>
-      警示牌-><%= warning_board_desc_mapper order['warning_board_desc'] %>
-    </li>
-  </ul>
-<% end %>
+<p>
+  前雨刷：
+  <span class='<%= status_class report['front_wiper_desc'] %>'>
+  	<%= front_wiper_desc_mapper report['front_wiper_desc'] %>
+  </span>
+</p>
+<p>
+  后雨刷：
+  <span class='<%= status_class report['back_wiper_desc'] %>'>
+  	<%= back_wiper_desc_mapper report['back_wiper_desc'] %>
+  </span>
+</p>
+<p>
+  灭火器：
+  <span class='<%= status_class report['extinguisher_desc'] %>'>
+  	<%= extinguisher_desc_mapper report['extinguisher_desc'] %>
+  </span>
+</p>
+<p>
+  警示牌：
+  <span class='<%= status_class report['warning_board_desc'] %>'>
+  	<%= warning_board_desc_mapper report['warning_board_desc'] %>
+  </span>
+</p>

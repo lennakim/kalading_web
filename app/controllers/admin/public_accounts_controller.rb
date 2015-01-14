@@ -22,7 +22,7 @@ class Admin::PublicAccountsController < Admin::MainController
   private
 
   def set_account
-    @account = PublicAccount.find_by(name: "kalading1")
+    @account = PublicAccount.find_by(name: "kaladingcom")
   end
 
   def menu_params

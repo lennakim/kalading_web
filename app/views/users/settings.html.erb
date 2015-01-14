@@ -16,7 +16,8 @@
     <%= render "users/menu" %>
     <div class="col-md-9 content">
       <div class="info">
-        <form class="form-horizontal">
+        <%= form_for current_user, html: {class: 'form-horizontal'} do |f| %>
+
           <div class="address">
             <div class="header">
               常用服务地址
@@ -32,13 +33,13 @@
             <div class="form-group">
               <label for="username" class="col-sm-2 control-label">姓名</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="username">
+                <%= f.text_field :username, class: 'form-control' %>
               </div>
             </div>
             <div class="form-group">
               <label for="phonenum" class="col-sm-2 control-label">手机号码</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="phonenum">
+                <%= f.text_field :phone_number, class: 'form-control', disabled: true %>
               </div>
             </div>
           </div>
@@ -51,7 +52,7 @@
             <div class="form-group">
               <label for="invoice_info" class="col-sm-2 control-label">发票抬头</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="invoice_info">
+                <%= f.text_field :invoice_title, class: 'form-control' %>
               </div>
             </div>
           </div>
@@ -63,7 +64,7 @@
               </div>
             </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>

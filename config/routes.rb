@@ -10,22 +10,36 @@ Rails.application.routes.draw do
   end
 
   resources :orders do
+    member do
+      post 'comment'
+    end
+
     collection do
       get 'select_car'
       get 'select_item'
       get 'success'
       get 'order_status'
 
+      get 'select_car_item'
+      get 'auto_brands'
+      get 'auto_series/:brand_id' => 'orders#auto_series'
+      get 'auto_model_numbers/:series_id' => 'orders#auto_model_numbers'
+
       post 'refresh_price'
       post 'place_order'
       post 'submit'
+      post 'validate_preferential_code'
+      post 'no_preferential'
+      get  'no_car_type'
+      post 'submit_no_car_order'
     end
   end
 
   resources :users do
     collection do
       get 'orders'
-      get 'maintain_histories'
+      get 'maintain_histories_list'
+      get 'maintain_history'
       get 'cars'
       get 'balance'
       get 'settings'

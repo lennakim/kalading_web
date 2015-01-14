@@ -60,6 +60,7 @@ class Kalading.Views.Items extends Backbone.View
 
   render: ->
     console.log 'render price'
+    $('.result-price').text(@order.get('price'))
     @$price.text(@order.get('price'))
     @$service_price.text(@order.get('service_price'))
     @recoverSelectors()

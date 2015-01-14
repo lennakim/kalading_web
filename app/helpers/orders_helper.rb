@@ -7,7 +7,7 @@ module OrdersHelper
 
   def can_comment? order
     status = order["state"]
-    status == "服务完成"
+    status == "服务完成" && order["evaluated"] == 0
   end
 
   def order_statuses order
@@ -46,7 +46,9 @@ module OrdersHelper
   def filter_parts parts, type
     if type == 'pm25'
       parts.select{ |part| part.keys.first == "空调滤清器" }
-    else
+    elsif type == 'smt'
+      parts.select{ |part| ["机油", "机滤"].include?(part.keys.first) }
+    elsif type == 'bmt'
       parts
     end
   end

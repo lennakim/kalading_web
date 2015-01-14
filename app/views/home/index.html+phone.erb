@@ -25,35 +25,57 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <div class="personal-maintain">
+    <% if signed_in? %>
+      <ul class="personal">
+        <li><a href="/users/orders">我的订单</a></li>
+        <li><a href="/users/maintain_histories_list">保养记录</a></li>
+      </ul>
+    <% else %>
+      <ul id="login_btn" class="personal">
+        <li>我的订单</li>
+        <li>保养记录</li>
+      </ul>
+    <% end %>
+    <p class="maintain-address" title="保养地点:<%= current_city_name %>">保养地点：
+      <span id="current_city">
+        <%= current_city_name %>
+      </span>
+    </p>
+  </div>
   <div class="promise">
   	<h3>为什么选择上门保养</h3>
-    <dl title="100%正品配件">
-      <dt>100</dt>
-      <dd>%</dd>
-      <dd>正品配件</dd>
-    </dl>
-    <dl title="24小时上门服务">
-      <dt>24</dt>
-      <dd>h预约</dd>
-      <dd>上门服务</dd>
-    </dl>
-    <dl title="200万责任险">
-      <dt>200</dt>
-      <dd>万</dd>
-      <dd>责任险</dd>
-    </dl>
-    <dl title="365天全年无休">
-      <dt>365</dt>
-      <dd>天</dd>
-      <dd>全年无休</dd>
-    </dl>
-    <button>立即预约</button>
+    <div class="pros">
+      <dl title="100%正品配件">
+        <dt>100</dt>
+        <dd>%</dd>
+        <dd class="des">正品配件</dd>
+      </dl>
+      <dl title="24小时上门服务">
+        <dt>24</dt>
+        <dd>h预约</dd>
+        <dd class="des">上门服务</dd>
+      </dl>
+      <dl title="200万责任险">
+        <dt>200</dt>
+        <dd>万</dd>
+        <dd class="des">责任险</dd>
+      </dl>
+      <dl title="365天全年无休">
+        <dt>365</dt>
+        <dd>天</dd>
+        <dd class="des">全年无休</dd>
+      </dl>
+    </div>
+
+    <a class="btn btn-default order_button" href="/orders/select_car_item">立即预约</a>
+
   </div>
   <div class="service-module">
-  	<h3>服务介绍</h3>
+  	<h3 class="title">服务介绍</h3>
   	<ul>
   		<li class="module-item">
-  			注意：建议给已经超出质保期的车辆预约上门保养服务哦！（可以在车辆保养手册找到质保相关规定）
+  			<span class="orange">注意：</span>建议给已经超出质保期的车辆预约上门保养服务哦！（可以在车辆保养手册找到质保相关规定）
   		</li>
   		<li class="module-item">
   			上门更换机油、机滤、空滤及空调滤。
@@ -65,9 +87,9 @@
   			全程视频录像，保障操作质量。
   		</li>
   		<li>
-  			<span>省时：上门服务，45分钟搞定。</span>
-  			<span>省心：正品配件，也可自行购买。</span>
-			<span>省钱：常规保养，最多可省70%。</span>
+  			<span><span class="orange">省时：</span>上门服务，45分钟搞定。</span>
+  			<span><span class="orange">省心：</span>正品配件，也可自行购买。</span>
+			<span><span class="orange">省钱：</span>常规保养，最多可省70%。</span>
   		</li>
   	</ul>
   </div>
@@ -86,7 +108,7 @@
   	</li>
   </ul>
   <div class="tec-team">
-  	<h3>技师团队</h3>
+  	<h3 class="title">技师团队</h3>
 	<p class="module-item">
 		汽修学校毕业，再经过卡拉丁严格、专业的培训每位技师必须保养过100台车、接触过30种不同车型才能上岗。
 	</p>
@@ -97,41 +119,41 @@
   </div>
   <ul class="service-address">
   	<li class="module-item">
-  		目前开通服务的城市：<span class="star">北京、上海、天津</span>
+  		目前开通服务的城市：<span class="star"><span class="orange">北京、上海、天津</span></span>
   	</li>
   	<li class="module-item">
-  		<span class="star">北京</span>五环内及天通苑、回龙观、亦庄和上地等地区；<span class="star">天津</span>主城区；<span class="star">外环线内。</span>
+  		<span class="orange">北京</span>五环内及天通苑、回龙观、亦庄和上地等地区；<span class="orange">天津</span>主城区；<span class="orange">上海</span>外环线内。
   	</li>
   </ul>
   <div class="service-process">
-  	<h3>服务流程</h3>
+  	<h3 class="title">服务流程</h3>
   	<ul>
 	  <li class="module-item">
-	  	<span class="star">第一步：</span>预定服务后，客服审核订单，安排养护技师并确认服务时间。
+	  	<span class="orange">第一步：</span>预定服务后，客服审核订单，安排养护技师并确认服务时间。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第二步：</span>卡拉丁养护技师准时达到约定地点。
+	  	<span class="orange">第二步：</span>卡拉丁养护技师准时达到约定地点。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第三步：</span>养护技师当面确认服务项目及所用配件。
+	  	<span class="orange">第三步：</span>养护技师当面确认服务项目及所用配件。
 	  </li>
 	  <li class="module-item">
-	 	<span class="star">第四步：</span>车辆检查及施工单确认签字。
+	 	<span class="orange">第四步：</span>车辆检查及施工单确认签字。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第五步：</span>施工现场布置及安全防护。
+	  	<span class="orange">第五步：</span>施工现场布置及安全防护。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第六步：</span>现场施工。
+	  	<span class="orange">第六步：</span>现场施工。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第七步：</span>32项全车安全检测。
+	  	<span class="orange">第七步：</span>32项全车安全检测。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第八步：</span>用户验收施工质量。
+	  	<span class="orange">第八步：</span>用户验收施工质量。
 	  </li>
 	  <li class="module-item">
-	  	<span class="star">第九步：</span>费用结算，提供票据。
+	  	<span class="orange">第九步：</span>费用结算，提供票据。
 	  </li>
 	</ul>
   </div>

@@ -1,0 +1,31 @@
+<div class="cards clearfix">
+  <% if @maintain_histories.length > 0 %>
+    <% @maintain_histories.each do |maintain_history| %>
+
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="serve-datetime">
+            <%= maintain_history["serve_datetime"] %>
+          </div>
+          <div class="report">
+
+            <div class="full-name">
+              <%= maintain_history["car_name"] %>
+            </div>
+
+            <div class="car-num">
+              <%= maintain_history["car_num"] %>
+            </div>
+
+            <div class="show">
+              <%= link_to "体检报告单", maintain_history_users_path(id: maintain_history["id"]), remote: true %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  <% else %>
+    暂无保养记录
+  <% end %>
+</div>

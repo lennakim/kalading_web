@@ -8,17 +8,106 @@
 
 $ ->
 
-  if $(".items-select-page,.select-car-phone").length > 0
+  if $(".items-select-page, .select-car-phone").length > 0
     items_view = new Kalading.Views.Items
     items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
-    $('#next_step').click ->
-      id = $('#car_style option:selected').data 'id'
-      type = $('.select-car-page').data('type')
+    $('.select-car, .quick-select').click ->
+
+      $('.select-car, .quick-select').removeClass('selected')
+      $(@).addClass('selected')
+
+
+  $('#to_select_item').click ->
+
+    $area = $('.select-car-page .selected')
+    if $area.hasClass('select-car')
+      id = $('#car_style option:selected').data('id')
+    else
+      id = $(".quick-select input:radio:checked").data('id')
+      auto_id = $(".quick-select input:radio:checked").data('autoid')
+
+    type = $('.select-car-page').data('type') || 'bmt'
+    if auto_id
+      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }&auto_id=#{ auto_id }"
+    else
       window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
 
-  if $(".place-order-page").length > 0
+
+  if $(".place-order-page,.place-order-phone").length > 0
+    if $('.address input').length == 0
+      $('.add a').click()
+
+    $('#no_invoice').on "click", (e) ->
+      $('#invoice_info').collapse('hide')
+    $("#yes_invoice").on "click", (e) ->
+      $('#invoice_info').collapse('show')
+
+    $('#no_preferential').on "click", (e) ->
+      $('#preferential_info').collapse('hide')
+    $("#yes_preferential").on "click", (e) ->
+      $('#preferential_info').collapse('show')
+
+    $("#validate_preferential").on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      car_id = $("#car_id").val()
+      code = $("#preferential_code").val()
+
+      parts = $('#item_table').data("parts")
+
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts }
+
+    $('#no_preferential').on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      $("#yes_preferential").removeClass('active')
+      $(@).addClass('active')
+
+      car_id = $("#car_id").val()
+      parts = $('#item_table').data("parts")
+
+      $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
+
+
+    date = $('#serve_date').data('cc')
+    min = _.first(_.keys(date))
+    max = _.last(_.keys(date))
+
+    disabled = _.select _.pairs(date), (e) ->
+      e[1].length == 0
+
+    disabled_date = _.map disabled, (e, i) ->
+      new Date(e)
+
+    $('#serve_date').pickadate({
+      format: 'yyyy-mm-dd',
+      editable: true,
+      min: new Date(min),
+      max: new Date(max),
+      disable: disabled_date,
+      onSet: () ->
+        # date_string = $("#serve_date").val()
+        # _.each date[date_string], (e, i) ->
+        #   console.log e
+        #   if e == 0
+        #     $("#serve_period option").find(i).addClass('hidden')
+
+    })
+
+    $( '#registration_date' ).pickadate({
+      max: true,
+      editable: true,
+      today: 'Today',
+      format: 'yyyy-mm-dd',
+      selectMonths: true,
+      selectYears: true
+    })
+
+
     initPickaDate = ->
       nowDay = new Date()
       time = nowDay.getHours()
@@ -31,20 +120,7 @@ $ ->
       maxDate = new Date()
       maxDate.setDate(maxDate.getDate()+8)
 
-      $( '#serve_date' ).pickadate({
-        min: nowDay,
-        max: maxDate,
-        today: '',
-        format: 'yyyy-mm-dd'
-      })
 
-      $( '#registration_date' ).pickadate({
-        max: true,
-        today: 'Today',
-        format: 'yyyy-mm-dd',
-        selectMonths: true,
-        selectYears: true
-      })
 
     $("#commentForm").validate({
       rules: {
@@ -79,14 +155,3 @@ $ ->
       }
     })
     initPickaDate()
-
-  if $('.success-page').length > 0
-    num = 30
-    countdown = ->
-      if num > 0
-        num--
-      else
-        window.location.href = '/'
-      $('.num').text(num+"s")
-      setTimeout(countdown,1000)
-    countdown()

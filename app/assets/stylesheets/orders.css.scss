@@ -5,6 +5,91 @@ $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ec8721;
 $title-gray: #787878;
+
+.orders-con{
+  padding: 0 20px;
+  border-radius: 4px;
+  h4{
+    line-height: 70px;
+    color: $title;
+  }
+  .item-list{
+    overflow: hidden;
+    line-height: 40px;
+    label{
+      color: #606060;
+      float: left;
+    }
+    .form-group{
+      margin-bottom: 0;
+    }
+    .price,.now{
+      font-size: 28px;
+      color: #f57e56;
+    }
+    .price,.now,.reason{
+      float: left;
+    }
+    .reason{
+      float: left;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      cursor: hand;
+    }
+    .reason1{
+      background-image: image-url('reason1.png');
+    }
+    .reason2{
+      background-image: image-url('reason2.png');
+    }
+    .original{
+      margin: 5px 5px 0 20px;
+      text-decoration: line-through;
+      font-size: 16px;
+      color: #e1e1e1;
+    }
+    .item-box{
+      display: inline-block;
+      .item{
+
+        .part-checkbox{
+          width: 20px;
+        }
+        .part{
+
+          width: 250px;
+          &.form-control{
+            @include border-top-left-radius(0);
+            @include border-bottom-left-radius(0);
+          }
+        }
+
+        overflow: hidden;
+        &:last-child{
+          margin: 0;
+        }
+      }
+    }
+    .service-price{
+      background: #fafafa;
+      width: 360px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      input{
+        float: left;
+        margin: 14px 2px;
+      }
+    }
+  }
+  .order_button{
+    @include button;
+    margin: 20px 0;
+  }
+}
 .select-car-page,.items-select-page{
   .comment-module,.service-module,.orders-situation{
     margin: 40px 0;
@@ -19,19 +104,23 @@ $title-gray: #787878;
 .select-car-page{
   background: $bac;
   .select-item{
-    overflow: hidden;
+    clear: both;
     border: 1px solid #ccc;
     .select-car, .quick-select{
       float: left;
-      width: 50%;
-      margin: 28px 0;
-      padding: 0 5%;
+      width: 46%;
+      margin: 28px 2%;
+      padding: 0 20px;
+      border: 1px solid #fff;
       h4{
         text-align: center;
         margin-bottom: 30px;
         color: $title-gray;
-        font-size: 20px;
+        font-size: 18px;
       }
+    }
+    .selected{
+      border: 1px solid #ccc;
     }
     .clear{
       clear: both;
@@ -41,7 +130,6 @@ $title-gray: #787878;
       width: 90%;
       margin: 0 auto;
       padding: 20px 0;
-      border-top: 1px solid #ccc;
       text-align: center;
       .search_button{
         @include button();
@@ -56,7 +144,6 @@ $title-gray: #787878;
       }
     }
     .select-car{
-      border-right: 1px solid #ccc;
       .field{
         overflow: hidden;
         margin-bottom: 20px;
@@ -74,15 +161,13 @@ $title-gray: #787878;
       }
     }
     .quick-select{
-
       .car{
         padding-left: 0;
         margin-bottom: 10px;
 
         &.pull-left.col-sm-3{
-          width: 100%;
-
-          float: none;
+          width: 50%;
+          min-width: 150px;
         }
 
         .content{
@@ -99,6 +184,11 @@ $title-gray: #787878;
     }
   }
   .comment-module,.orders-situation{
+
+    marquee{
+      margin-top: 20px;
+    }
+
     dl{
       padding: 20px 0;
       border-bottom: 1px solid #ccc;
@@ -134,105 +224,25 @@ $title-gray: #787878;
       position: relative;
       top: 2px;
       z-index: 999;
-      width: 342px;
       li{
         float: left;
         padding: 0 20px;
         font-size: 20px;
         a{
           display: block;
-          padding: 20px 0;
+          padding: 10px 0;
           color: #a0a0a0;
           text-decoration: none;
         }
       }
       .selected{
         border: 2px solid #ccc;
+        border-radius: 4px 4px 0 0;
         border-bottom: 0;
         background: #fff;
         a{
           color: $font-orange;
         }
-      }
-    }
-    .orders-con{
-      padding: 0 20px;
-      border: 2px solid #ccc;
-      h4{
-        line-height: 70px;
-        color: $title;
-      }
-      .item-list{
-        overflow: hidden;
-        line-height: 40px;
-        label{
-          color: #606060;
-          float: left;
-        }
-        .price,.now{
-          font-size: 28px;
-          color: #f57e56;
-        }
-        .price,.now,.reason{
-          float: left;
-        }
-        .reason{
-          float: left;
-          display: inline-block;
-          width: 30px;
-          height: 30px;
-          background-repeat: no-repeat;
-          cursor: pointer;
-          cursor: hand;
-        }
-        .reason1{
-          background-image: image-url('reason1.png');
-        }
-        .reason2{
-          background-image: image-url('reason2.png');
-        }
-        .original{
-          margin: 5px 5px 0 20px;
-          text-decoration: line-through;
-          font-size: 16px;
-          color: #e1e1e1;
-        }
-        .item-box{
-          display: inline-block;
-          .item{
-
-            .part-checkbox{
-              width: 20px;
-            }
-            .part{
-
-              width: 250px;
-              &.form-control{
-                @include border-top-left-radius(0);
-                @include border-bottom-left-radius(0);
-              }
-            }
-
-            overflow: hidden;
-            &:last-child{
-              margin: 0;
-            }
-          }
-        }
-        .service-price{
-          background: #fafafa;
-          width: 360px;
-          height: 40px;
-          line-height: 40px;
-          text-align: center;
-          input{
-            float: left;
-            margin: 14px 2px;
-          }
-        }
-      }
-      .order_button{
-        @include button;
       }
     }
   }
@@ -243,11 +253,41 @@ $title-gray: #787878;
     }
   }
 }
+
+.quick-select{
+  .car{
+    padding-left: 0;
+    margin-bottom: 10px;
+
+    &.pull-left.col-sm-3{
+      width: 100%;
+
+      float: none;
+    }
+
+    .content{
+      padding: 10px;
+      table.table{
+        margin-bottom: 0;
+        td{
+          border-top: 0 none;
+        }
+      }
+    }
+  }
+}
+
+
+#invoice_info{
+  margin-top: 10px;
+}
+
 .place-order-page{
   form{
     margin-bottom: 40px;
   }
   #item_table{
+    background: white;
     width: 100%;
     border: 1px solid #ccc;
     th,td{
@@ -277,6 +317,10 @@ $title-gray: #787878;
   .info-group{
     overflow: hidden;
     margin: 5px;
+
+    .reciept-detail{
+      padding-left: 5px;
+    }
 
     input{
       line-height: 30px;
@@ -313,7 +357,7 @@ $title-gray: #787878;
     }
   }
   .orders-content{
-    margin-top: 20px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     padding: 20px;
     .order-info{
@@ -323,53 +367,60 @@ $title-gray: #787878;
       background-image: image-url('order-info.png');
       background-repeat: no-repeat;
     }
-    .submit-info{
-      overflow: hidden;
-      height: 40px;
-      line-height: 40px;
+  }
+
+  .submit-info{
+    height: 68px;
+    // line-height: 68px;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 20px 0;
+
+    @include border-radius(3px);
+    @include background-image(linear-gradient(top , #ff9933, #ec8721));
+    @include filter-gradient(#ff9933, #ec8721);
+    @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
+    border: 1px solid #e97a0c;
+
+    .maintain-name, .price{
+      line-height: 48px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+    .submit-btn{
+      border: 0;
+      @include border-radius(6px);
+      height: 48px;
+      line-height: 48px;
       width: 100%;
-      padding: 0 10px;
-      margin: 20px 0;
-      border-radius: 5px;
-      .price,.submit{
-        float: right;
-      }
-      .submit{
-        border: 0;
-        border-radius: 2px;
-        height: 30px;
-        line-height: 30px;
-        width: 100px;
-        margin: 5px;
-        color: $font-orange;
+      color: $font-orange;
+      font-size: 22px;
+      &:hover{
+        background: #ececec;
+        color: #FFBB76;
       }
     }
   }
 }
-.success-page{
+.success-page,.success-page-phone{
   .success-con{
     border: 1px solid #ccc;
     background: #fff;
     text-align: center;
     .title{
-      font-size: 24px;
+      font-size: 20px;
       color: #f37920;
+      &:before{
+        content: url(success-phone.png);
+        display: block;
+        margin: 10px 0;
+      }
     }
     .next{
-      margin: 30px 0 25px;
-      font-size: 18px;
-      color: #999999;
-    }
-    .home{
+      margin: 10px 50px;
       font-size: 16px;
       color: #999999;
-    }
-    .num{
-      display: inline-block;
-      margin: 0 10px;
-      width: 40px;
-      height: 30px;
-      color: #ffae20;
     }
     .bac{
       overflow: hidden;
@@ -387,6 +438,11 @@ $title-gray: #787878;
   }
 }
 
+.success-page-phone{
+  .success-con{
+    margin: 100px 0;
+  }
+}
 .address-content{
   margin-top: 15px;
   border-bottom: 0;
@@ -486,8 +542,68 @@ $title-gray: #787878;
   }
 }
 
+.submit-con{
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  padding: 10px;
+  width: 100%;
+  line-height: 22px;
+  border-top: 1px solid #ccc;
+  background: #f7f4f3;
+  p{
+    font-size: 12px;
+    color: #999;
+  }
+  .result-price{
+    color: #f57e56;
+    font-size: 22px;
+  }
+  .submit{
+    margin: 10px 0 0 60px;
+    background: #feac5a;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+  }
+}
 .select-car-phone{
   line-height: 35px;
+  .my-car-title{
+    border-bottom: 1px solid #ccc;
+  }
+  .my-car-title:before{
+    content: url('my-car.png');
+  }
+  .service-type-title:before{
+    content: url('service-type.png');
+  }
+  #myTab{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background: #fff;
+    li{
+      width: 33%;
+      text-align: center;
+      font-size: 16px;
+      a{
+        line-height: 20px;
+        color: #515151;
+        border-radius: initial;
+      }
+    }
+    .active{
+      a{
+        border-bottom: 2px solid #ec7705;
+      }
+    }
+  }
+
+  .tab-content{
+    padding: 42px 0 67px;
+  }
   a{
     color: #000;
   }
@@ -502,23 +618,46 @@ $title-gray: #787878;
     padding: 0 20px;
   }
   .orders{
-    h4{
-      padding: 0 20px;
+    .content{
+      padding-left: 20px;
     }
-    li,.form-group{
-      padding: 0 20px;
-      border-bottom: 1px solid #ccc;
+    .service-item{
+      padding: 5px 10px;
+      border-bottom: 1px solid #eee;
       &:last-child{
         border: 0;
       }
+      input{
+        margin-right: 5px;
+      }
+    }
+    .selected{
+      color: #f57e56;
+    }
+    .part{
+      margin: 0 auto;
+    }
+    .btn{
+      position: fixed;
+      bottom: 14px;
+      right: 20px;
+      z-index: 9999;
+      line-height: 20px;
+      margin: 0;
     }
   }
   .quick-select{
     position: relative;
     .add-car{
       position: absolute;
-      top: 0;
+      top: 10px;
       right: 20px;
+      line-height: 30px;
+      background: #feac5a;
+      padding: 0 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #fff;
     }
     .car{
       margin: 10px 0;
@@ -561,24 +700,98 @@ $title-gray: #787878;
   }
 }
 .place-order-phone{
+  form{
+    padding-bottom: 85px;
+  }
+  .orders-content{
+    overflow: hidden;
+  }
+  .radio{
+    height: 35px;
+  }
+  .addr{
+    display: none;
+  }
+  .choice-address-title:before{
+    content: url('choice-address-title.png')
+  }
+  .order-info-title:before{
+    content: url('order-info-title.png')
+  }
+  .addresses{
+    padding: 0 15px;
+    li{
+      padding: 10px;
+    }
+    .add-new{
+      text-align: center;
+    }
+  }
+  .star{
+    float: left;
+    color: $font-orange;
+    font-size: 20px;
+    margin: 3px;
+  }
   .des{
     float: right;
+    line-height: 30px;
     font-size: 14px;
     .red{
-      color: red;
+      color: #ff7a3c;
     }
   }
   .info-group{
-    padding: 10px 25px;
+    padding: 5px 25px;
     margin-bottom: 0;
     line-height: 35px;
   }
+  .verification_code,
+  .get_code,
+  .car_location,
+  #car_num,
+  #serve_date,
+  #serve_period,
+  #preferential_code,
+  #validate_preferential,
+  .info-title,
   .info-title{
     float: left;
   }
+
+  .verification_code{
+    width: 50%;
+  }
+  .get_code{
+    width: 45%;
+    margin-left: 5%;
+    line-height: 20px;
+    font-size: 12px;
+  }
+  .car_location{
+    width: 35%;
+  }
+  #car_num{
+    width: 60%;
+    margin-left: 5%;
+  }
+  #serve_date{
+    width: 55%;
+  }
+  #serve_period{
+    width: 40%;
+    margin-left: 5%;
+  }
+  #preferential_code{
+    width: 65%;
+  }
+  #validate_preferential{
+    width: 30%;
+    margin-left: 5%;
+  }
   .info-con{
     float: right;
-    width: 190px;
+    width: 185px;
   }
   .spe1{
     float: left;
@@ -593,14 +806,38 @@ $title-gray: #787878;
     .verify-btn{
       display: block;
       width: 90px;
+      background: #feac5a;
+      color: #fff;
+      border-radius: 5px;
+    }
+  }
+  #item_table{
+    width: 100%;
+    line-height: 15px;
+    font-size: 12px;
+    .item{
+      width: 50%;
+    }
+    p{
+      border-bottom: 1px solid #ccc;
+      &:last-child{
+        border: 0;
+      }
+    }
+    th,tr{
+      line-height: 30px;
+    }
+    th,td{
+      border: 1px solid #ccc;
+      text-align: center;
     }
   }
 }
 .order-status-phone{
   .order-status{
-    // .item-title:before{
-    //   content: url('order-status.png') 
-    // }
+    .item-title:before{
+      content: url('order-status.png')
+    }
   }
   .status{
     padding: 10px 20px;
@@ -655,3 +892,27 @@ $title-gray: #787878;
   }
 }
 
+.auto-brands-phone,.auto-series-phone,.auto-model-phone{
+  .list{
+    padding-left: 20px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-style:solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #eee;
+    color:#666462;
+    .pull-left{
+      width: 85%;
+    }
+    .arrow{
+      margin-right: 20px;
+      line-height: 40px;
+    }
+    a{
+      display: block;
+      width: 100%;
+      color: #000;
+    }
+  }
+}

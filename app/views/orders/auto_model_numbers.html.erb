@@ -1,0 +1,21 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="auto-model-phone phone-page">
+  <% if @auto_model_numbers.length>0 %>
+	<% @auto_model_numbers.each do |car_model| %>
+	  <div class="carinfo list clearfix">
+	    <div class="car-model pull-left" model_id="<%= car_model['_id']%>" >
+	      <a href="/orders/select_car_item?car_id=<%= car_model['_id']%>&type=bmt"><%= car_model["name"]%></a>
+	    </div>
+	    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
+	      </div>
+	  </div>
+	<% end %>
+  <% else %>
+	<div class="blank">
+	  暂无此款式
+	</div>
+  <% end %>
+</div>

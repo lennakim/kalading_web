@@ -4,7 +4,7 @@
       <div class="modal-body">
 
         <div class="modal-header">
-          <h4 class="modal-title">添加地址</h4>
+          <h4 class="modal-title">服务地址</h4>
         </div>
 
         <div class="form-horizontal address-inputs">
@@ -12,20 +12,18 @@
             <label class="col-sm-2 control-label">所在地区: </label>
             <div class="col-sm-8">
 
-              <select class="form-control city">
-                <option>北京市</option>
-                <option>北京市</option>
-                <option>北京市</option>
-                <option>北京市</option>
-                <option>北京市</option>
+              <select id="service_cities" class="form-control city" name="">
+                <% @cities.each do |city| %>
+                  <option value="<%= city["name"] %>" <%= "selected" if city["name"].match(current_city_name) %>><%= city["name"] %> </option>
+                <% end %>
               </select>
 
-              <select class="form-control district">
-                <option>海淀区</option>
-                <option>海淀区</option>
-                <option>海淀区</option>
-                <option>海淀区</option>
-                <option>海淀区</option>
+              <select id="service_districts" class="form-control district" name="">
+                <% @cities.each do |city| %>
+                  <% city["districts"].each do |district| %>
+                    <option value="<%= district["name"] %>" class='<%= city["name"] %>'><%= district["name"] %></option>
+                  <% end %>
+                <% end %>
               </select>
 
             </div>
@@ -33,7 +31,7 @@
           <div class="form-group">
             <label for="address_detail" class="col-sm-2 control-label">详细地址: </label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="address_detail">
+              <input type="text" class="form-control" id="address_detail" data-address="<%= "#{@cities.first["name"]}#{@cities.first["districts"].first["name"]}" %>">
               <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
             </div>
           </div>

@@ -11,7 +11,7 @@ $ ->
 
   window.ac = ac
 
-  ac.setInputValue "北京市海淀区"
+  ac.setInputValue $("#address_detail").data("address")
 
   # 鼠标放在下拉列表上的事件
   ac.addEventListener "onhighlight", (e) ->

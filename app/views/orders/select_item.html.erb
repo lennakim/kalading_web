@@ -2,7 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-<% type = (params[:type] == nil || params[:type] == "") ? "maintain" : params[:type] %>
+<% type = (params[:type] == nil || params[:type] == "") ? "bmt" : params[:type] %>
 
 <% unless @result.empty? %>
   <div class="container items-select-page" data-type="<%= type %>">
@@ -12,8 +12,10 @@
 
     <div class="orders bac-white" data-car="<%= params[:car_id]%>">
       <ul>
-        <li class="pm25 <%= "selected" if type == "pm25" %>"><%= link_to "PM2.5滤芯更换", select_item_orders_path(car_id: params[:car_id], type: "pm25") %></li>
-        <li class="maintain <%= "selected" if type == "maintain" %>"><%= link_to "车辆上门保养", select_item_orders_path(car_id: params[:car_id], type: "maintain") %></li>
+        <li class="<%= "selected" if type == "pm25" %>"><%= link_to "PM2.5滤芯更换", select_item_orders_path(car_id: params[:car_id], type: "pm25") %></li>
+        <li class="<%= "selected" if type == "bmt" %>"><%= link_to "大保养", select_item_orders_path(car_id: params[:car_id], type: "bmt") %></li>
+        <li class="<%= "selected" if type == "smt" %>"><%= link_to "小保养", select_item_orders_path(car_id: params[:car_id], type: "smt") %></li>
+
       </ul>
       <div class="orders-con <%= type %>-con">
         <%= render "items", type: type %>

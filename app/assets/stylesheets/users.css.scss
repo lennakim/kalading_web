@@ -7,7 +7,6 @@ $orange: #ff9933;
 $grey: #c4c4c4;
 
 .user-info{
-
   .title{
     color: #3d3d3d;
     font-size: 24px;
@@ -15,7 +14,6 @@ $grey: #c4c4c4;
     height: 84px;
     line-height: 84px;
   }
-
   .menu{
     widhth: 100%;
 
@@ -96,7 +94,6 @@ $grey: #c4c4c4;
         margin-top: 20px;
         .card{
           border: 2px solid #f0f0f0;
-          height: 100px;
           margin-bottom: 20px;
           .serve-datetime{
             padding: 8px 20px;
@@ -105,14 +102,20 @@ $grey: #c4c4c4;
             border-bottom: 1px solid #f0f0f0;
           }
           .report{
-            padding: 10px;
+            padding: 10px 20px;
+
+            .full-name{
+              font-size: 12px;
+              color: #787878;
+            }
+
             .car-num{
               color: #666666;
               font-size: 16px;
             }
             .show{
               text-align: center;
-              button{
+              a{
                 @include button();
                 height: 30px;
                 font-size: 14px;
@@ -287,7 +290,8 @@ $grey: #c4c4c4;
 #select_city_modal{
 
   .cities{
-    padding: 5px 50px;
+    padding: 20px;
+    padding-bottom: 0;
 
     .city{
       margin-right: 20px;
@@ -309,40 +313,69 @@ $grey: #c4c4c4;
     }
   }
 }
-
+#login_modal{
+  .modal-body{
+    overflow: hidden;
+  }
+  .phone_num{
+    margin: 10px 0;
+  }
+  .verification_code{
+    float: left;
+    width: 60%;
+  }
+  .get_code{
+    float: left;
+    width: 35%;
+    margin-left: 5%;
+  }
+  .get_code,.submit_button{
+    line-height: 30px;
+    border: 0;
+    border-radius: 4px;
+  }
+  .login{
+    width: 100px;
+    margin: 0 auto;
+  }
+  .submit_button{
+    width: 100%;
+    margin: 10px 0;
+  }
+}
 #comment_modal{
   .comment-tags{
-    padding: 5px 50px;
+    // padding: 5px 50px;
     .tags{
+      margin-bottom: 8px;
       input[type='radio']{
         position: absolute;
         clip: rect(0, 0, 0, 0);
         pointer-events: none;
       }
-
-      .tag{
-        &.good{
-          width: 60%;
-          .btn{
-            color: $orange;
-            border-color: $orange;
-
-            &:hover, &.active{
-              color: #ffffff;
-              background: $orange;
-            }
+    }
+    .tag{
+      &.good{
+        width: 44%;
+        .btn{
+          color: $orange;
+          border-color: $orange;
+          font-size: 12px;
+          &:hover, &.active{
+            color: #ffffff;
+            background: $orange;
           }
         }
-        &.bad{
-          margin-left: 40px;
-          .btn{
-            color: $grey;
-            border-color: $grey;
-
-            &:hover, &.active{
-              color: #ffffff;
-              background: $grey;
-            }
+      }
+      &.bad{
+        margin-left: 25px;
+        .btn{
+          color: $grey;
+          border-color: $grey;
+          font-size: 12px;
+          &:hover, &.active{
+            color: #ffffff;
+            background: $grey;
           }
         }
       }
@@ -376,6 +409,121 @@ $grey: #c4c4c4;
       height: 30px;
       font-size: 14px;
       padding: 5px 20px;
+    }
+  }
+}
+.my-orders-phone{
+  .my-orders-title:before{
+    content: url(order-status-phone.png);
+  }
+}
+.maintain-histories-list-phone{
+  .my-maintain-title:before{
+    content: url(my-maintain.png)
+  }
+  a{
+    display: block;
+    color: #000;
+  }
+  dl{
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background: #fff;
+    dt,dd{
+      padding: 0 5px;
+    }
+    dt{
+      line-height: 35px;
+      border-bottom: 1px solid #ccc;
+      color: #a5a5a5;
+      font-size: 14px;
+    }
+    dd{
+      line-height: 40px;
+      color: #696969;
+      font-size: 18px;
+    }
+  }
+}
+.report-body{
+  .score{
+    height: 230px;
+    padding-top: 100px;
+    margin-top: 20px;
+    font-size: 60px;
+    color: #ff973a;
+    text-shadow: 0 -1px 0 #ddd,1px 1px #fff;
+    text-align: center;
+    background-image: image-url('maintain-title.png');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50% 0;
+  }
+  .panel-title{
+    background-repeat: no-repeat;
+    background-size: 5%;
+    text-align: center;
+  }
+  .panel-title1{
+    background-image: image-url('maintain1.png');
+  }
+  .panel-title2{
+    background-image: image-url('maintain2.png');
+  }
+  .panel-title3{
+    background-image: image-url('maintain3.png');
+  }
+  .panel-title4{
+    background-image: image-url('maintain4.png');
+  }
+  .panel-title5{
+    background-image: image-url('maintain5.png');
+  }
+  .title{
+    line-height: 40px;
+    font-size: 16px;
+    color: #aaa;
+  }
+  p{
+    line-height: 30px;
+  }
+  li{
+    text-align: left;
+  }
+  .on{
+    color: #008012;
+  }
+  .off{
+    color: #ea4609;
+  }
+}
+.maintain-histories-phone{
+  h3{
+    margin: 10px 0 20px;
+    font-size: 16px;
+    color: #515151;
+    text-align: center;
+  }
+  .score{
+    height: 175px;
+    padding-top: 80px;
+    background-size: 80%;
+    background-position: 32px 0;
+  }
+  .panel-title{
+    background-size: 8%;
+  }
+  .title{
+    border-top: 1px solid #ccc;
+  }
+  p{
+    text-indent: 2em;
+  }
+  li{
+    &:first-child{
+      .title{
+        border: 0;
+      }
     }
   }
 }

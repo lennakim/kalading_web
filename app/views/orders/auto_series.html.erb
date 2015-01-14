@@ -1,0 +1,20 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="auto-series-phone phone-page">
+  <% if @series.length>0 %>
+	<% @series.each do |car_type| %>
+	  <div class="carinfo list clearfix" >
+		<div class="car-type pull-left">
+		  <a href="/orders/auto_model_numbers/<%= car_type['_id']%>"><%= car_type["name"]%></a>
+		</div>
+		<div class="arrow glyphicon glyphicon-chevron-right pull-right"></div>
+	  </div>
+	<% end %>
+  <% else %>
+	<div class="blank">
+	    暂无此车型
+	</div>
+  <% end %>
+</div>
