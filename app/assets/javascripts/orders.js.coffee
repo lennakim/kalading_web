@@ -72,13 +72,14 @@ $ ->
 
       $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
 
-
     date = $('#serve_date').data('cc')
     min = _.first(_.keys(date))
     max = _.last(_.keys(date))
 
     disabled = _.select _.pairs(date), (e) ->
       e[1].length == 0
+
+    disabled = disabled[0]
 
     disabled_date = _.map disabled, (e, i) ->
       new Date(e)
