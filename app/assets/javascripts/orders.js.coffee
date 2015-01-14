@@ -13,13 +13,27 @@ $ ->
     items_view.recoverSelectors()
 
   if $(".select-car-page").length > 0
+    $('.select-car, .quick-select').click ->
 
-    $('.select-car,.quick-select').click ->
-      $(this).addClass('selected').siblings().removeClass('selected')
+      $('.select-car, .quick-select').removeClass('selected')
+      $(@).addClass('selected')
 
-      id = $('.select-item .selected #car_style option:selected').data('id') || $('.select-item .selected input:radio:checked').parent().next('button').data('id')
 
-      $('.select-car-page').data 'car_id',id
+  $('#to_select_item').click ->
+
+    $area = $('.select-car-page .selected')
+    if $area.hasClass('select-car')
+      id = $('#car_style option:selected').data('id')
+    else
+      id = $(".quick-select input:radio:checked").data('id')
+      auto_id = $(".quick-select input:radio:checked").data('autoid')
+
+    type = $('.select-car-page').data('type') || 'bmt'
+    if auto_id
+      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }&auto_id=#{ auto_id }"
+    else
+      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
+
 
   if $(".place-order-page,.place-order-phone").length > 0
     if $('.address input').length == 0
