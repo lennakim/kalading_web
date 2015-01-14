@@ -272,7 +272,7 @@ $title-gray: #787878;
   .service-module{
     border: 1px solid #ccc;
     .service-con{
-      
+
     }
   }
 }
@@ -418,7 +418,7 @@ $title-gray: #787878;
     margin: 20px 0;
 
     @include border-radius(3px);
-    background: #ec8721;
+    background: #EC9C21;
     // @include background-image(linear-gradient(top , #ff9933, #ec8721));
     @include filter-gradient(#ff9933, #ec8721);
     @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
@@ -426,18 +426,18 @@ $title-gray: #787878;
 
     .maintain-name, .price{
       line-height: 48px;
-      font-size: 22px;
-      font-weight: bold;
+      font-size: 18px;
       color: white;
     }
     .submit-btn{
+      margin-top: 3px;
       border: 0;
-      @include border-radius(6px);
-      height: 48px;
-      line-height: 48px;
+      @include border-radius(4px);
+      height: 40px;
+      line-height: 40px;
       width: 100%;
       color: $font-orange;
-      font-size: 22px;
+      font-size: 18px;
       &:hover{
         background: #ececec;
         color: #FFBB76;
