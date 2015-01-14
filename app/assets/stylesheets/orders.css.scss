@@ -603,7 +603,7 @@ $title-gray: #787878;
   }
   .submit{
     position: absolute;
-    right: 10px;
+    right: 20px;
     background: #feac5a;
     border: 0;
     border-radius: 5px;
@@ -683,7 +683,7 @@ $title-gray: #787878;
     .btn{
       position: fixed;
       bottom: 25px;
-      right: 10px;
+      right: 20px;
       z-index: 9999;
       line-height: 20px;
       margin: 0;
@@ -803,10 +803,10 @@ $title-gray: #787878;
   }
 
   .verification_code{
-    width: 50%;
+    width: 45%;
   }
   .get_code{
-    width: 45%;
+    width: 50%;
     margin-left: 5%;
     line-height: 20px;
     font-size: 12px;
