@@ -10,18 +10,18 @@ class UsersController < ApplicationController
 
   def maintain_histories_list
 
-    redirect_to root_path(login: 1) unless signed_in?
+    return redirect_to root_path(login: 1) unless signed_in?
 
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
   end
 
   def maintain_history
-    redirect_to root_path(login: 1) unless signed_in?
+    return redirect_to root_path(login: 1) unless signed_in?
     @maintain_history = Order.api_maintain_find params[:id]
   end
 
   def settings
-    redirect_to root_path(login: 1) unless signed_in?
+    return redirect_to root_path(login: 1) unless signed_in?
     @cities = Order.cities
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def cars
-    redirect_to root_path(login: 1) unless signed_in?
+    return redirect_to root_path(login: 1) unless signed_in?
     @cars_info = Order.cars_data current_city_id
     @auto_id = params[:auto_id]
     @maintain_histories = Order.maintain_report login_phone_num: current_user.phone_number, car_id: params[:car_id], car_num: params[:car_num]
