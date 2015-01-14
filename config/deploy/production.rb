@@ -17,7 +17,7 @@ role :db,  %w{deployer@115.28.84.90}
 server '115.28.84.90', user: 'deployer', roles: %w{web app db}
 
 set :ssh_options, {
-  forward_agent: true,
+  # forward_agent: true,
   port: 25000
 }
 
