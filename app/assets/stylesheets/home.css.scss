@@ -40,9 +40,10 @@ $bac: #fbfbfb;
 		.btn{
 			width: 90px;
 			margin: 10px 0;
-	        @include button;
-	        padding: 0;
-	        line-height: 35px;
+      @include button;
+      padding: 0;
+      line-height: 35px;
+      height: 38px;
 		}
 		.form-group{
 			margin: 25px 0;
@@ -371,7 +372,7 @@ $bac: #fbfbfb;
   .tec-team,.service-address,.service-process{
   	padding: 0 14px;
   }
-  .service-module,.tec-team,.service-address,.service-process{   
+  .service-module,.tec-team,.service-address,.service-process{
     margin: 10px 0;
     line-height: 25px;
     font-size: 12px;
