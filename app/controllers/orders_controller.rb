@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
 
       car_id = params[:car_id] || last_select_car
 
-      if !params[:auto].present?
+      if !params[:auto_id].present?
         save_last_select_car(car_id)
         @last_select_car = Auto.api_find(car_id)
       end

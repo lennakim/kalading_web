@@ -15,18 +15,22 @@
         <div class="quick-select">
           <h4 class="item-title my-car-title">我的快捷车辆</h4>
           <a href="/orders/auto_brands" class="add-car"> + 重新选择</a>
-          <div class="car-content content">
+          <div class="car-content content clearfix">
+
+            <% if signed_in? %>
 
               <% if @last_select_car %>
                 <%= render "shared/car_item", auto: @last_select_car %>
               <% end %>
 
-            <% if signed_in? %>
-
               <% current_user.autos.each do |auto| %>
                 <%= render "shared/car_item", auto: auto %>
               <% end %>
 
+            <% else %>
+              <% if @last_select_car %>
+                <%= render "shared/car_item", auto: @last_select_car %>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -51,7 +55,7 @@
             <% if params[:car_id] %>
               <%= render "items", type: type %>
             <% else %>
-              请选择车辆
+              请选择车辆和保养类型
             <% end %>
           </div>
           <div class="submit-con">
@@ -83,24 +87,23 @@
         <% end %>
       </div>
       <div role="tabpanel" class="tab-pane" id="messages">
-        <dl class="comment-item">
-          <dt>
-          <h3>北京市东城区 | 京A***34</h3>
-          <span class="time">11分钟前</span>
-          </dt>
+        <% Order.comments.first(5).each do |comment| %>
+
+          <dl class='comment-item'>
+            <dt>
+            <h3>
+              <% phone = comment['phone_num'] %>
+              <% phone[3..6] = "****" %>
+              <%= phone %>
+            </h3>
+            <span class="time"><%= comment['evaluation_time'] %></span>
+            </dt>
           <dd>
-          保养订单保养订单保养订单保养订单保养订单保养订单保养订单
+            <%= comment['evaluation_tags'].join(', ') %>
           </dd>
         </dl>
-        <dl class="comment-item">
-          <dt>
-          <h3>北京市东城区 | 京A***34</h3>
-          <span class="time">11分钟前</span>
-          </dt>
-          <dd>
-          保养订单保养订单保养订单保养订单保养订单保养订单保养订单
-          </dd>
-        </dl>
+
+      <% end %>
       </div>
     </div>
   </div>
