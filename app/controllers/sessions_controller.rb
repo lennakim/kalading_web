@@ -42,13 +42,6 @@ class SessionsController < ApplicationController
                                                      uid:sns_info.result["openid"])
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
-
-    follower = client.get_oauth_userinfo(sns_info.result["openid"],
-                                         sns_info.result["access_token"])
-
-    Rails.logger.info("------follower nickname: #{follower.result["nickname"]},
-                      expires_in: #{sns_info.result["expires_in"]}")
-
     user = current_user
     if user
       begin
@@ -57,7 +50,7 @@ class SessionsController < ApplicationController
         Rails.logger.info(e)
       end
     end
-    redirect_to root_path
+    redirect_to root_path(login:1)
   end
 
 end
