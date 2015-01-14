@@ -20,14 +20,14 @@
 
       <div class="orders-content bac-white form-horizontal">
 
-        <p class='order-info'>订单信息</p>
+        <p class='title address-info'>选择服务地址</p>
 
         <div class="address bac-white clearfix">
           <%= render "shared/select_address" %>
         </div>
 
         <hr>
-
+        <p class='title order-info'>订单信息</p>
         <% unless signed_in? %>
           <div class="info-group form-group">
             <div class="info-title">
