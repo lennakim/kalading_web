@@ -414,12 +414,12 @@ $grey: #c4c4c4;
 }
 .my-orders-phone{
   .my-orders-title:before{
-    content: url(order-status-phone.png);
+    content: image-url('order-status-phone.png');
   }
 }
 .maintain-histories-list-phone{
   .my-maintain-title:before{
-    content: url(my-maintain.png)
+    content: image-url('my-maintain.png');
   }
   a{
     display: block;
