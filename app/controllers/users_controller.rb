@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def orders
+    return redirect_to root_path(login: 1) unless signed_in?
     @orders = Order.get_orders_of current_user.phone_number
   end
 
