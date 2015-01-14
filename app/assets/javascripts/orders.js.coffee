@@ -84,6 +84,9 @@ $ ->
       new Date(e)
 
     $('#serve_date').pickadate({
+
+      container: '#serve_date_picker',
+
       format: 'yyyy-mm-dd',
       min: new Date(min),
       max: new Date(max),
@@ -98,6 +101,7 @@ $ ->
     })
 
     $( '#registration_date' ).pickadate({
+      container: '#registed_date_picker',
       max: true,
       today: 'Today',
       format: 'yyyy-mm-dd',

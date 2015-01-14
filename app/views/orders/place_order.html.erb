@@ -121,6 +121,7 @@
             <%= label_tag(:serve_date, "服务时间：") %>
           </div>
           <div class="info-con form-inline">
+            <div id="serve_date_picker"></div>
             <%= text_field_tag(:serve_date, '', :required => true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
             <select id="serve_period" name="serve_period" class='form-control'>
               <option value="8:00-12:00">8:00 - 12:00</option>
@@ -149,6 +150,7 @@
             <%= label_tag(:registration_date, "车辆注册时间：") %>
           </div>
           <div class="info-con">
+            <div id="registed_date_picker"></div>
             <%= text_field_tag(:registration_date,'', :required => true, class: 'form-control') %>
           </div>
         </div>
