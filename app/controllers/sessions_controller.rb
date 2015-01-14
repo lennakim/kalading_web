@@ -55,4 +55,9 @@ class SessionsController < ApplicationController
     redirect_to root_path(login:1)
   end
 
+  def destroy
+    cookies.delete(:LGT)
+    redirect_to '/'
+  end
+
 end
