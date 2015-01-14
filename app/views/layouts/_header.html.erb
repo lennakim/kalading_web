@@ -18,9 +18,15 @@
             <div class="dropdown personal">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="/users/orders">我的订单</a></li>
-                <li><a href="/users/maintain_histories_list">保养记录</a></li>
-                <li><a>登出</a></li>
+                <li>
+                  <%= link_to '我的订单', orders_users_path %>
+                </li>
+                <li>
+                  <%= link_to '保养记录', cars_users_path %>
+                </li>
+                <li>
+                  <%= link_to '登出', '' %>
+                </li>
               </ul>
             </div>
           <% else %>
