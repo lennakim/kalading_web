@@ -149,12 +149,12 @@ ActiveRecord::Schema.define(version: 20150115070338) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
-    t.string   "account_secret_key"
-    t.string   "account_token"
   end
 
   add_index "public_accounts", ["account_id"], name: "index_public_accounts_on_account_id", unique: true, using: :btree
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20150115070338) do
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
 
   create_table "recv_messages", force: true do |t|
+    t.string   "from_user_name"
     t.string   "msg_type"
     t.text     "content"
     t.string   "msg_id"
@@ -179,7 +180,6 @@ ActiveRecord::Schema.define(version: 20150115070338) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "from_user_name"
     t.integer  "public_account_id"
   end
 
