@@ -46,6 +46,10 @@ class OrdersController < ApplicationController
 
   def select_car_item
 
+    unless browser.mobile?
+      return redirect_to select_car_orders_path
+    end
+
     if params[:car_id] || last_select_car.present?
 
       car_id = params[:car_id] || last_select_car

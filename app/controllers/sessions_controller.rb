@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to orders_users_path
     else
-      redirect_to root_path
+      redirect_to root_path(login: 1)
     end
   end
 
