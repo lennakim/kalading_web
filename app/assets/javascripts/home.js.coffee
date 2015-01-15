@@ -20,5 +20,16 @@ $ ->
       $(this).find('.bac').removeClass('showbac')
       $(this).find('.con').removeClass('showcon')
 
+  if $('.home-phone').length > 0
+    $(window).scroll ->
+      if $(window).scrollTop()>200
+        $("#totop").fadeIn(1000)
+      else
+        $("#totop").fadeOut(1000)
+    
+    $("#totop").click ->
+        $('body,html').animate({scrollTop:0},1000)
+        return false
+
 
 

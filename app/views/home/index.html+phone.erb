@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "home", 'data-turbolinks-track' => true %>
+<% end %>
+
 <div class="home-phone phone-page">
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -71,92 +75,133 @@
     <a class="btn btn-default order_button" href="/orders/select_car_item">立即预约</a>
 
   </div>
-  <div class="service-module">
-  	<h3 class="title">服务介绍</h3>
-    <%= image_tag("detail_2.jpg", :class => "img-thumbnail") %>
-  	<!-- <ul>
-  		<li class="module-item">
-  			<span class="orange">注意：</span>建议给已经超出质保期的车辆预约上门保养服务哦！（可以在车辆保养手册找到质保相关规定）
-  		</li>
-  		<li class="module-item">
-  			上门更换机油、机滤、空滤及空调滤。
-  		</li>
-  		<li class="module-item">
-  			提供全车32项安全检查：刹车液、刹车片、冷却液、轮胎、胎压、灯光、电瓶、玻璃水、随车工具等。
-  		</li>
-  		<li class="module-item">
-  			全程视频录像，保障操作质量。
-  		</li>
-  		<li>
-  			<span><span class="orange">省时：</span>上门服务，45分钟搞定。</span>
-  			<span><span class="orange">省心：</span>正品配件，也可自行购买。</span>
-			<span><span class="orange">省钱：</span>常规保养，最多可省70%。</span>
-  		</li>
-  	</ul> -->
+  <div class="maintain-intro">
+    <%= image_tag("serv-title.jpg",:class => 'title-photo')%>
+    <div class="service-module">
+    	<h3 class="title"><span>服务介绍</span></h3>
+      <%#= image_tag("detail_2.jpg", :class => "img-thumbnail") %>
+    	<ul>
+    		<li class="module-item">
+    			<var class="point"></var>
+          <span class="con">上门更换机油、机滤、空滤及空调滤。</span>
+    		</li>
+    		<li class="module-item">
+    			<var class="point"></var>
+          <span class="con">提供全车32项安全检查：刹车液、刹车片、冷却液、轮胎、胎压、灯光、电瓶、玻璃水、随车工具等。</span>
+    		</li>
+    		<li class="module-item">
+    			<var class="point"></var>
+          <span class="con">全程视频录像，保证操作质量。</span>
+    		</li>
+    		<li>
+    			<p><span class="orange">便捷 </span>上门服务、打破传统服务桎梏</p>
+    			<p><span class="orange">专注 </span>流程把控、全标准化服务品质</p>
+  			  <p><span class="orange">可靠 </span>正品配件、4S店出身专业技师</p>
+    		</li>
+    	</ul>
+    </div>
+    <ul class="showimg">
+    	<li class="img-item">
+    		<%= image_tag("detail_2.1.jpg",:class => 'photo')%>
+    		<span class="des"></span>
+    	</li>
+    	<li class="img-item">
+    		<%= image_tag("detail_2.2.jpg",:class => 'photo')%>
+    		<span class="des"></span>
+    	</li>
+    	<li class="img-item">
+    		<%= image_tag("detail_2.3.jpg",:class => 'photo')%>
+    		<span class="des"></span>
+    	</li>
+    </ul>
+    <div class="tec-team">
+    	<h3 class="title"><span>技师队伍</span></h3>
+    	<ul>
+        <li class="module-item">
+      		<var class="point"></var>
+          <span class="con">汽修学校毕业，再经过卡拉丁严格、专业的培训，每位技师必须保养过100台车、接触过30种不同车型才能上岗。</span>
+      	</li>
+        <li class="module-item img-item">
+      	  <%= image_tag("detail_2.4.jpg",:class => 'photo')%>
+        </li>
+      </ul>
+    </div>
+    <div class="service-address">
+      <h3 class="title"><span>服务区域</span></h3>
+      <ul>
+      	<li class="module-item">
+      		<var class="point"></var>
+          <span class="con">目前开通服务的城市：北京、天津、上海、成都、深圳、广州</span>
+      	</li>
+      	<li class="module-item">
+          <var class="point"></var><span>服务地区</span>
+      		<p>北京：五环内及通州主城区、石景山、天通苑、回龙观、上地、亦庄</p>
+          <p>天津：主城区（含和平区、河东区、河西区、河北区、南开区、红桥区）；塘沽区、开发区、保税区；东丽区全境、津南区全境、北辰区外环、西青区环内（包含中北镇）</p>
+          <p>上海：外环线以内</p>
+          <p>深圳：南山区、福田区、罗湖区</p>
+          <p>广州：东西南北环即外环线以内区域</p>
+          <p>成都：锦江区、青羊区、金牛区、武侯区、成华区、高新区、龙泉驿区</p>
+      	</li>
+      </ul>
+    </div>
+    <div class="service-process">
+    	<h3 class="title"><span>服务流程</span></h3>
+    	<ul>
+    	  <li class="module-item">
+          <var class="point1"></var>
+          <span>第一步：预订服务→审核订单→技师提前一天与您确认服务时间。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第二步：小卡技师到达与您约定的服务地点。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第三步：小卡技师跟您确认服务项目及所用配件。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	 	  <span>第四步：为您的爱车进行车辆检查及施工单确认签字。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第五步：小卡技师布置施工现场、安全防护及架设录像设备。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第六步：小卡技师为您爱车进行现场保养项目施工。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第七步：小卡技师为您进行全车32项安全监测并录入APP。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第八步：您验收服务项目及施工质量。</span>
+    	  </li>
+    	  <li class="module-item">
+          <var class="point1"></var>
+    	  	<span>第九步：结算费用并提供相关票据。</span>
+    	  </li>
+    	</ul>
+    </div>
+    <div class="others">
+      <h3 class="title"><span>其他信息</span></h3>
+      <ul>
+        <li class="module-item">
+          <var class="point"></var>关注卡拉丁微信服务号“<span class="orange">kaladingcom</span>”，有专业客服帮您答疑关于车的其他问题。
+        </li>
+        <li class="module-item">
+          <var class="point"></var>关注<span class="orange">@卡拉丁</span>微博，参与互动，即时获得优惠信息。
+        </li>
+        <li class="module-item">
+          <var class="point"></var>如您想找人工客服解决问题，请拨打：<span class="orange">400-006-8181</span>
+        </li>
+        <li class="img-item">
+          <%= image_tag("2weima.jpg",:class => 'photo')%>
+        </li>
+      </ul>
+    </div>
   </div>
-  <!-- <ul class="showimg">
-  	<li class="img-item">
-  		<%= image_tag("photo1.jpg",:class => 'photo')%>
-  		<span class="des"></span>
-  	</li>
-  	<li class="img-item">
-  		<%= image_tag("photo2.jpg",:class => 'photo')%>
-  		<span class="des"></span>
-  	</li>
-  	<li class="img-item">
-  		<%= image_tag("photo3.jpg",:class => 'photo')%>
-  		<span class="des"></span>
-  	</li>
-  </ul>
-  <div class="tec-team">
-  	<h3 class="title">技师团队</h3>
-	<p class="module-item">
-		汽修学校毕业，再经过卡拉丁严格、专业的培训每位技师必须保养过100台车、接触过30种不同车型才能上岗。
-	</p>
-	<p class="img-item">
-  		<%= image_tag("photo4.jpg",:class => 'photo')%>
-  		<span class="des"></span>
-  	</p>
-  </div>
-  <ul class="service-address">
-  	<li class="module-item">
-  		目前开通服务的城市：<span class="star"><span class="orange">北京、上海、天津</span></span>
-  	</li>
-  	<li class="module-item">
-  		<span class="orange">北京</span>五环内及天通苑、回龙观、亦庄和上地等地区；<span class="orange">天津</span>主城区；<span class="orange">上海</span>外环线内。
-  	</li>
-  </ul>
-  <div class="service-process">
-  	<h3 class="title">服务流程</h3>
-  	<ul>
-	  <li class="module-item">
-	  	<span class="orange">第一步：</span>预定服务后，客服审核订单，安排养护技师并确认服务时间。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第二步：</span>卡拉丁养护技师准时达到约定地点。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第三步：</span>养护技师当面确认服务项目及所用配件。
-	  </li>
-	  <li class="module-item">
-	 	<span class="orange">第四步：</span>车辆检查及施工单确认签字。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第五步：</span>施工现场布置及安全防护。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第六步：</span>现场施工。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第七步：</span>32项全车安全检测。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第八步：</span>用户验收施工质量。
-	  </li>
-	  <li class="module-item">
-	  	<span class="orange">第九步：</span>费用结算，提供票据。
-	  </li>
-	</ul>
-  </div> -->
-  <p class="totop"></p>
+  <%= image_tag("totop.png",:id => 'totop')%>
 </div>

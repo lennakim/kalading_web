@@ -327,7 +327,7 @@ $bac: #fbfbfb;
 	}
   }
   .promise{
-    padding: 20px 0;
+    padding: 10px 0;
     margin: 0;
     background: #fff;
     .pros{
@@ -344,7 +344,7 @@ $bac: #fbfbfb;
       text-align: center;
       &:nth-child(even){
         float: left;
-        margin: 4px 2px 6px;
+        margin: 4px 2px 0;
       }
     }
     .des{
@@ -365,36 +365,60 @@ $bac: #fbfbfb;
 	color: #fff;
 	border: 0;
   }
-  .tec-team,.service-address,.service-process{
-  	padding: 0 14px;
+  .maintain-intro{
+  	background: #fff;
+  	.title-photo{
+  		margin-top: 15px;
+  	}
+  	img{
+  		width: 100%;
+  	}
   }
-  .service-module,.tec-team,.service-address,.service-process{
+  .service-module,.tec-team,.service-address,.service-process,.others{
     margin: 10px 0;
     line-height: 25px;
     font-size: 12px;
     .title{
       margin-bottom: 10px;
       font-size: 16px;
-      color: #666;
-      &:before{
-		content: image-url('phone-logo.png')
+      color: #fff;
+      border-bottom: 2px solid #fcd23e; 
+  	  span{
+  	  	padding: 5px;
+  	  	background: #f57921;
   	  }
     }
-    ul{
-    	margin-left: 20px;
+    .point{
+		float: left;
+		width: 10px;
+		height: 10px;
+		margin: 6px 10px;
+		border-radius: 5px;
+		background: #f57921;
+		border: 2px solid #fff;
+		box-shadow: 1px 1px 1px #f57921;
     }
-  }
-  .service-module{
-  	.title{
-  		padding: 0 14px;
-  	}
-    ul{
-      margin-left: 20px;
-      line-height: 25px;
+    .point1{
+		float: left;
+		width: 6px;
+		height: 6px;
+		margin: 10px 12px;
+		border-radius: 3px;
+		background: #f57921;
     }
-  }
-  .service-address{
-  	margin-left: 20px;
+    .con{
+    	float: left;
+    	width: 89%;
+    }
+    ul{
+    	margin-left: 0;
+    	li{
+    		overflow: hidden;
+    	}
+    }
+    p{
+    	text-indent: 2em;
+    }
   }
   .showimg{
     padding: 20px;
@@ -406,14 +430,27 @@ $bac: #fbfbfb;
     }
   }
   .tec-team{
-    .img-item{
-      margin: 10px 0;
-    }
-    .module-item{
-    	margin-left: 20px;
-    }
+  	.img-item{
+  		padding: 20px 0;
+  	}
   }
-  .totop{
+  .service-address{
+  	p{
+  		text-indent: 0;
+  		padding-left: 30px;
+  	}
+  }
+  .others{
+  	.img-item{
+  		text-align: center;
+  	}
+  	img{
+  		width: 70%;
+  		margin: 10px 0;
+  	}
+  }
+  #totop{
+  	display: none;
     width: 60px;
     height: 60px;
     position: fixed;
