@@ -19,7 +19,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       handle_recv_messages @weixin_message
-      #reply_text_message("#{link}")
+      reply_text_message("")
     end
 
     # <Location_X>23.134521</Location_X>
@@ -87,6 +87,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
           return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         end
+        account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
+        account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
         reply_text_message("欢迎关注卡拉丁")
       end
 
