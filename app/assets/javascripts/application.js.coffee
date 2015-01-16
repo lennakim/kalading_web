@@ -11,6 +11,8 @@
 #= require picker.time
 #= require bootstrap-sprockets
 #= require URI
+#= require nprogress
+#= require nprogress-turbolinks
 #
 #= require home
 #= require users
@@ -34,7 +36,7 @@ $ ->
   $('#next_step').click ->
     id = $('#car_style option:selected').data 'id'
     type = $('.select-car-page').data('type') || 'bmt'
-    window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
+    Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
 
   # select car
   $('#car_style').chained('#car_type, #car_name')

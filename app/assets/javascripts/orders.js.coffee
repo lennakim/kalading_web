@@ -30,9 +30,9 @@ $ ->
 
     type = $('.select-car-page').data('type') || 'bmt'
     if auto_id
-      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }&auto_id=#{ auto_id }"
+      Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }&auto_id=#{ auto_id }")
     else
-      window.location.href = "/orders/select_item?car_id=#{ id }&type=#{ type }"
+      Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
 
 
   if $(".place-order-page,.place-order-phone").length > 0

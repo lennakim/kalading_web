@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114095135) do
+ActiveRecord::Schema.define(version: 20150115070338) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -164,7 +164,6 @@ ActiveRecord::Schema.define(version: 20150114095135) do
 
   create_table "recv_messages", force: true do |t|
     t.string   "from_user_name"
-    t.string   "create_time"
     t.string   "msg_type"
     t.text     "content"
     t.string   "msg_id"

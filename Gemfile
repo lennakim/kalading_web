@@ -19,6 +19,8 @@ gem 'compass-rails'
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
 
+gem 'nprogress-rails'
+
 # backbone
 gem 'rails-backbone', git: 'https://github.com/codebrew/backbone-rails.git'
 

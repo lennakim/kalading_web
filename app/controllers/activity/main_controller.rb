@@ -10,7 +10,7 @@ class Activity::MainController < ActionController::Base
     if @activity && Time.now < @activity.end_date && Time.now > @activity.start_date
       render "#{@activity.name}"
     else
-      render text: "no such activity"
+      render text: "此活动已经下线了哦，请持续关注我们的官网，将会有更多精彩活动等着你！"
     end
   end
 
