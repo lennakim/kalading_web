@@ -17,8 +17,9 @@
           <% if signed_in? %>
             <div class="dropdown" title="个人中心">
               <%= image_tag "personal1.png", alt: '二维码'%>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               </a>
+              <span>个人中心</span>
               <ul class="dropdown-menu" role="menu">
                 <li>
                   <%= link_to '我的订单', orders_users_path %>
@@ -34,13 +35,15 @@
           <% else %>
             <div class="dropdown" title="个人中心">
               <%= image_tag "personal.png", alt: '二维码'%>
-              <a href="" id="login_btn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心
+              <a href="" id="login_btn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               </a>
+              <span>个人中心</span>
             </div>
           <% end %>
 
         <div class="dropdown wechat" title="二维码">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">二维码</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+          <span>二维码</span>
           <ul class="dropdown-menu" role="menu">
             <li>
               <%= image_tag "wei.png", alt: '二维码'%>
@@ -48,7 +51,8 @@
           </ul>
         </div>
         <div class="dropdown tel" title="联系我们">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">电话</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+          <span>电话</span>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#" title="400-006-8181">400-006-8181</a></li>
           </ul>
