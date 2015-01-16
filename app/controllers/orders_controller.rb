@@ -165,10 +165,16 @@ class OrdersController < ApplicationController
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
 
     if !signed_in? && !(vcode && !vcode.expired?)
-      return render "fail"
+      return render js: "alert('请填写正确的验证码')"
     end
 
     parts = params[:parts] ? params[:parts].values : []
+
+    Rails.logger.info
+
+    if !params[:serve_date].present?
+      return render js: "alert('请填写正确的服务日期')"
+    end
 
     payload = {
       parts: parts,
@@ -210,9 +216,9 @@ class OrdersController < ApplicationController
 
       # send notification to user's wechat TODO
 
-      redirect_to action: :success
+      redirect_via_turbolinks_to action: :success
     else
-      render "fail"
+      render js: "alert('请填写正确的订单信息')"
     end
   end
 
