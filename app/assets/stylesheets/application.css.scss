@@ -31,7 +31,7 @@ a:link[title="站长统计"]{
 }
 
 body{
-  background: #fbfbfb;
+  background: #fff;
 
   font: 14px/1.5 arial, "Microsoft Yahei", "Hiragino Sans GB", sans-serif !important;
 }
@@ -42,18 +42,19 @@ body{
 
 header.navbar{
   width: 100%;
-  background: #494641;
+  background: #26221d;
   height: 50px;
 
-  @include background-image(linear-gradient(top , #564E45, #2F2C29));
-  @include filter-gradient(#564E45, #2F2C29);
-  @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
+  // @include background-image(linear-gradient(top , #564E45, #2F2C29));
+  // @include filter-gradient(#564E45, #2F2C29);
+  // @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
 
   border-bottom: 1px solid rgb(39, 29, 29);
   margin-bottom: -1px;
   .logo,.nav-item{
     width: 128px;
     float: left;
+    margin: 7px 0;
   }
   .maintain-address{
     float: left;
@@ -86,7 +87,9 @@ header.navbar{
         position: absolute;
         top: 0;
         left: 0;
-        opacity: 0;
+        padding-top: 18px;
+        font-size: 12px;
+        color: #eee;
       }
     }
     .personal:before{
@@ -135,23 +138,23 @@ header.navbar{
 
 .footer{
   margin-top: 50px;
-  border-top: 2px solid #fe9870;
-  color: #a0a0a0;
-  background: white;
+  color: #eee;
+  background: #26221d;
   .promise{
-    min-width: 770px;
+    width: 70%;
+    margin: 0 auto;
     dl{
       min-width: 190px;
       margin: 10px 0;
     }
     dt{
       padding: 0px 5px 0 20%;
-      font-size: 40px;
+      font-size: 32px;
     }
     dd{
-      line-height: 18px;
+      line-height: 12px;
       text-align: left;
-      font-size: 16px;
+      font-size: 12px;
       &:nth-child(even){
         margin-top: 10px;
       }
@@ -163,22 +166,23 @@ header.navbar{
   }
   .bottom-nav{
     overflow: hidden;
-    min-width: 720px;
+    width: 74%;
+    margin: 0 auto;
     margin-top: 10px;
     text-align: center;
     ul{
       float: left;
-      width: 22%;
+      width: 25%;
       li{
         background-repeat: no-repeat;
-        background-position: 28% 0;
-        font-size: 14px;
+        background-position: 24% 0;
+        font-size: 12px;
         a{
-          color: #a0a0a0;
+          color: #eee;
         }
       }
       .title{
-        font-size: 16px;
+        font-size: 14px;
         margin-bottom: 5px;
       }
       .sina{
@@ -195,8 +199,12 @@ header.navbar{
         height: 35px;
         line-height: 35px;
         background-image: image-url('foot-tel.png');
+        background-size: 15%;
         background-repeat: no-repeat;
-        font-size: 26px;
+        font-size: 22px;
+      }
+      span{
+        font-size: 12px;
       }
     }
   }

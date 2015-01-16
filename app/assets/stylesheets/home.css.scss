@@ -4,7 +4,7 @@ $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ff7b3a;
 $title: #3d3d3d;
-$bac: #fbfbfb;
+$bac: #fff;
 .bac-orange{
   background: $bac-orange;
 }
@@ -118,7 +118,7 @@ $bac: #fbfbfb;
 		}
 	}
 	.product{
-		background: $bac;
+		background: #fff;
 		.maintain-item{
 			dl{
 				position: relative;
