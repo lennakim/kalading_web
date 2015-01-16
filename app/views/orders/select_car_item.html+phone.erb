@@ -55,7 +55,7 @@
             <% if params[:car_id] %>
               <%= render "items", type: type %>
             <% else %>
-                <span class="spe">请先选择车辆和保养类型</span> 
+                <span class="spe">请先选择车辆和保养类型</span>
             <% end %>
           </div>
           <div class="submit-con">
@@ -120,7 +120,8 @@
     auto_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('autoid');
 
     type = $('.orders').data('type')?$('.orders').data('type'):'bmt';
-    window.location.href = '/orders/select_car_item?car_id='+car_id+'&auto_id='+auto_id+'&type='+type;
+    Turbolinks.visit('/orders/select_car_item?car_id='+car_id+'&auto_id='+auto_id+'&type='+type);
+
     $('.select-car-phone').attr('data-autoid',auto_id);
   })
 
@@ -128,7 +129,9 @@
     car_id = $('.orders').data('car') ? $('.orders').data('car') : $('.quick-select input:radio:checked').parent().siblings('.btn').data('id');
     autoid = $('.select-car-phone').attr('data-autoid');
     type = $(this).data('type');
-    window.location.href = '/orders/select_car_item?car_id='+car_id+'&auto_id='+autoid+'&type='+type;
+
+    Turbolinks.visit('/orders/select_car_item?car_id='+car_id+'&auto_id='+autoid+'&type='+type);
+
   });
 
   function selectItem(){

@@ -8,6 +8,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+$nprogress-color: #f57e56;
+$nprogress-height: 2px;
+$nprogress-zindex: 10100;
+
+@import "nprogress";
+@import "nprogress-bootstrap";
+
 // resources
 @import "home";
 @import "orders";
