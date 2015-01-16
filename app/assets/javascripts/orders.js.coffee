@@ -101,7 +101,7 @@ $ ->
 
     })
 
-    $( '#registration_date' ).pickadate({
+    $('#registration_date').pickadate({
       container: '#registed_date_picker',
       max: true,
       today: 'Today',
@@ -111,50 +111,69 @@ $ ->
     })
 
 
-    initPickaDate = ->
-      nowDay = new Date()
-      time = nowDay.getHours()
-
-      if(time>=17)
-        nowDay.setDate(nowDay.getDate()+2)
-      else
-        nowDay.setDate(nowDay.getDate()+1)
-
-      maxDate = new Date()
-      maxDate.setDate(maxDate.getDate()+8)
+    $("#place_order_form").validate
 
 
+      highlight: (element, errorClass, validClass) ->
+        $(element).closest('.form-group').addClass('has-error')
+        # $(element.form).find("label[for=" + element.id + "]")
+        #   .addClass(errorClass)
 
-    $("#commentForm").validate({
-      rules: {
-        phone_num: {
+      unhighlight: (element, errorClass, validClass) ->
+        $(element).closest('.form-group').removeClass('has-error')
+        # $(element.form).find("label[for=" + element.id + "]")
+        #   .removeClass(errorClass)
+
+
+      errorPlacement: (error, element) ->
+
+        # 不提醒
+
+        # element.data('title', error[0].innerText)
+        # element.tooltip
+        #   placement: 'left'
+        # .tooltip 'show'
+
+
+      rules:
+        phone_num:
+          required: true
           number: true
-        },
-        friend_phone: {
+          minlength: 11
+          maxlength: 11
+
+        verification_code:
+          required: true
           number: true
-        }
-      }
-      messages: {
-        name: "请输入姓名",
-        address: "请输入详细地址",
-        phone_num: {
-          required: "请输入手机号码",
-          minlength: "请输入11位手机号码",
-          maxlength: "请输入11位手机号码",
+          minlength: 6
+          maxlength: 6
+
+        serve_date:
+          required: true
+          date: true
+
+        registration_date:
+          required: true
+          date: true
+
+      messages:
+        name: "请输入姓名"
+        address: "请输入详细地址"
+        verification_code: "请输入正确的短信验证码"
+
+        phone_num:
+          required: "请输入手机号码"
+          minlength: "请输入11位手机号码"
+          maxlength: "请输入11位手机号码"
           number: "手机号码应为数字"
-        },
-        car_num: {
-          required: "请输入车牌号码",
-          minlength: "请输入车牌后六位"
-        },
-        serve_datetime: {
+
+        car_num:
+          required: "请输入车牌号码"
+          minlength: "请输入车牌后6位"
+          maxlength: "请输入车牌后6位"
+
+        serve_date:
           required: "请选择服务时间"
-        },
-        friend_phone: {
-          minlength: "请输入11位手机号码",
-          number: "手机号码应为数字"
-        },
-        registration_date: "请选择车辆注册时间"
-      }
-    })
-    initPickaDate()
+
+        registration_date:
+          required: "请选择车辆注册时间"
