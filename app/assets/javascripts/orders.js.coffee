@@ -113,7 +113,6 @@ $ ->
 
     $("#place_order_form").validate
 
-
       highlight: (element, errorClass, validClass) ->
         $(element).closest('.form-group').addClass('has-error')
         # $(element.form).find("label[for=" + element.id + "]")

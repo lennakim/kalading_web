@@ -5,6 +5,7 @@
 #= require jquery.chained.remote.min
 #= require jquery.form
 #= require jquery.validate.min
+#= require jquery.cookie
 #= require picker
 #= require legacy
 #= require picker.date
@@ -25,6 +26,10 @@ window.Kalading =
   Models: {}
 
 $ ->
+
+  if !$.cookie('set_city_manually')
+    $("#select_city_modal").modal()
+
   @signed_in = ->
     current_user_id != -1
   @need_login = ->

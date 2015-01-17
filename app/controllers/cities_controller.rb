@@ -7,5 +7,6 @@ class CitiesController < ApplicationController
     end
 
     cookies[:city_id] = city.id
+    cookies[:set_city_manually] = true
   end
 end

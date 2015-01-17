@@ -9,6 +9,8 @@
 <div class="container place-order-page" data-city="<%= current_user_city %>" data-car='<%= params["order"]["car_id"] %>'>
   <h3 class="main-title row">保养预约</h3>
 
+  <div id="map"></div>
+
   <%= render "order_process" %>
 
   <%= form_tag 'submit', id: "place_order_form", remote: true do %>
