@@ -91,15 +91,24 @@ class OrdersController < ApplicationController
   def refresh_price
     car_id = params["order"]["car_id"]
     parts = params["order"]["parts"].try :values
-    payload = {
-      "parts" => parts
-    }
+
+    activity = Activity.find_by id: params[:act]
+    if activity && activity.valid_activity?
+      payload = {
+        parts: parts,
+        discount: activity.preferential_code
+      }
+    else
+      payload = {
+        parts: parts
+      }
+    end
+
     result = Order.refresh_price car_id, current_city_id, payload
     render json: { result: result }
   end
 
   def select_item
-
     if !params[:auto_id].present?
       save_last_select_car params[:car_id]
     end
@@ -111,9 +120,19 @@ class OrdersController < ApplicationController
     car_id = params["order"]["car_id"]
     @parts = params["order"]["parts"]
     @city_capacity = Order.city_capacity current_city_id
-    payload = {
-      "parts" => @parts
-    }
+
+    activity = Activity.find_by id: params[:act]
+    if activity && activity.valid_activity?
+      payload = {
+        parts: @parts,
+        discount: activity.preferential_code
+      }
+    else
+      payload = {
+        parts: @parts
+      }
+    end
+
     @cities = Order.cities
     @result = Order.refresh_price car_id, current_city_id, payload
   end
