@@ -26,11 +26,11 @@ class OrdersController < ApplicationController
   end
 
   def auto_series
-    @series = Order.auto_series params[:brand_id], current_city_id
+    @series = Order.auto_series params[:id], current_city_id
   end
 
   def auto_model_numbers
-    @auto_model_numbers = Order.auto_model_numbers params[:series_id], current_city_id
+    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id
   end
 
   def select_car
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
       @result = Order.items_for car_id, current_city_id
 
     else
-      return redirect_to auto_brands_orders_path
+      return redirect_to auto_brands_orders_path(act: params[:act])
     end
   end
 
