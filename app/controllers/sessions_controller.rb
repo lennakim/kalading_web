@@ -12,13 +12,11 @@ class SessionsController < ApplicationController
       user = User.find_or_create_by(phone_number: vcode.phone_num)
 
       if account && auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
-        begin
+
+        if user.auth_infos.include? auth_info
           user.auth_infos << auth_info
-        rescue ActiveRecord::RecordInvalid => e
-          # ...
-          Rails.logger.info '-' * 30
-          Rails.logger.error e
         end
+
       end
     end
 
@@ -44,11 +42,8 @@ class SessionsController < ApplicationController
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
     if signed_in?
-      begin
+      if current_user.auth_infos.include? auth_info
         current_user.auth_infos << auth_info
-      rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info '-' * 30
-        Rails.logger.error e
       end
     end
 
