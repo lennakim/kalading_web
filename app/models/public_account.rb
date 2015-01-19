@@ -7,8 +7,7 @@ class PublicAccount < ActiveRecord::Base
   has_many :recv_messages
   has_many :reply_messages
 
-  before_create :set_token_expires_at
-  before_create :set_ticket_expires_at
+  before_create :init_expired_at
 
   accepts_nested_attributes_for :diymenus, :allow_destroy => true
 
@@ -59,6 +58,8 @@ class PublicAccount < ActiveRecord::Base
     end
   end
 
+  private
+
   def token_expired?
     self.token_expires_at < Time.now.to_i
   end
@@ -77,5 +78,8 @@ class PublicAccount < ActiveRecord::Base
     self.ticket_expires_at = 3600.seconds.from_now.to_i
   end
 
-
+  def init_expired_at
+    self.token_expires_at = Time.now.to_i
+    self.ticket_expires_at = Time.now.to_i
+  end
 end
