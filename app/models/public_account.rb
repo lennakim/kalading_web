@@ -25,13 +25,16 @@ class PublicAccount < ActiveRecord::Base
       self.access_token = client.access_token if client
       set_token_expires_at
     end
-    access_token
+    self.access_token
   end
 
   def get_jsapi_ticket
     if ticket_expired?
-
+      access_token = get_access_token
+      self.jsapi_ticket = RestClient.get "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{access_token}&type=jsapi"
+      set_ticket_expires_at
     end
+    self.jsapi_ticket
   end
 
   def build_menu
