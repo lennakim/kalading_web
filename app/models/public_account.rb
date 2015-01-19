@@ -7,6 +7,9 @@ class PublicAccount < ActiveRecord::Base
   has_many :recv_messages
   has_many :reply_messages
 
+  before_create :set_token_expires_at
+  before_create :set_ticket_expires_at
+
   accepts_nested_attributes_for :diymenus, :allow_destroy => true
 
   def weixin_client
@@ -54,8 +57,6 @@ class PublicAccount < ActiveRecord::Base
       end
     end
   end
-
-  private
 
   def token_expired?
     self.token_expires_at < Time.now
