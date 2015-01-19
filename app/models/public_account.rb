@@ -59,21 +59,21 @@ class PublicAccount < ActiveRecord::Base
   end
 
   def token_expired?
-    self.token_expires_at < Time.now
+    self.token_expires_at < Time.now.to_i
   end
 
   def ticket_expired?
-    self.ticket_expires_at < Time.now
+    self.ticket_expires_at < Time.now.to_i
   end
 
   # The real expires time is 7200 seconds. But here I set all 3600 seconds.
 
   def set_token_expires_at
-    self.token_expires_at = 3600.seconds.from_now.utc
+    self.token_expires_at = 3600.seconds.from_now.to_i
   end
 
   def set_ticket_expires_at
-    self.ticket_expires_at = 3600.seconds.from_now.utc
+    self.ticket_expires_at = 3600.seconds.from_now.to_i
   end
 
 
