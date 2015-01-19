@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
       if account && auth_info = account.auth_infos.find_by(uid: cookies[:USERAUTH])
 
-        if user.auth_infos.include? auth_info
+        unless user.auth_infos.include? auth_info
           user.auth_infos << auth_info
         end
 
@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
     if signed_in?
-      if current_user.auth_infos.include? auth_info
+      unless current_user.auth_infos.include? auth_info
         current_user.auth_infos << auth_info
       end
     end
