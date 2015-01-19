@@ -10,6 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= favicon_link_tag 'favicon.ico' %>
 
+  <%= javascript_include_tag "http://res.wx.qq.com/open/js/jweixin-1.0.0.js", media: 'all', 'data-turbolinks-track' => true %>
+
   <%= yield :assets %>
 
   <%= csrf_meta_tags %>
