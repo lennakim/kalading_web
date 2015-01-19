@@ -34,7 +34,8 @@ class PublicAccount < ActiveRecord::Base
   def get_jsapi_ticket
     if ticket_expired?
       access_token = get_access_token
-      self.jsapi_ticket = RestClient.get "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{access_token}&type=jsapi"
+      result = RestClient.get "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{access_token}&type=jsapi"
+      self.jsapi_ticket = JSON.parse(result)["ticket"]
       set_ticket_expires_at
     end
     self.jsapi_ticket
