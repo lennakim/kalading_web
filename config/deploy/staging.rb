@@ -4,10 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
-
+role :app, %w{deployer@121.42.155.108}
+role :web, %w{deployer@121.42.155.108}
+role :db,  %w{deployer@121.42.155.108}
 
 # Extended Server Syntax
 # ======================
@@ -15,8 +14,39 @@ role :db,  %w{deploy@example.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server '121.42.155.108', user: 'deployer', roles: %w{web app db}
 
+set :ssh_options, {
+  forward_agent: true,
+  password: 'kalading'
+  # port: 25000
+}
+
+set :stage, :production
+set :branch, 'new'
+set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/kaladingcom"
+set :rails_env, :production
+set :unicorn_worker_count, 5
+# config file
+set :enable_ssl, false
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+
+  desc 'Restart application'
+  task :restart do
+    # Reload unicorn with capistrano3-unicorn hook
+    # needs to be before "on roles()"
+    invoke 'unicorn:reload'
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+    end
+  end
+
+  after :finishing, 'deploy:cleanup'
+  before :finishing, 'deploy:restart'
+  after 'deploy:rollback', 'deploy:restart'
+end
 
 # Custom SSH Options
 # ==================
@@ -33,13 +63,3 @@ server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 #
 # And/or per server (overrides global)
 # ------------------------------------
-# server 'example.com',
-#   user: 'user_name',
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: 'user_name', # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: 'please use keys'
-#   }
