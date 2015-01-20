@@ -8,7 +8,7 @@
 
 <% pa = PublicAccount.find_by(name: 'kaladingcom') %>
 
-<% result = pa.get_signature(activity_url('papago')) %>
+<% result = pa.get_signature(request.original_url) %>
 
 <div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>"></div>
 
@@ -21,3 +21,4 @@ timestamp: <%= result[1] %>
 <br>
 noncestr: <%= result[2] %>
 
+<%= request.original_url %>
