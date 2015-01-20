@@ -6,7 +6,7 @@
 	<% @brands.each do |brand| %>
 	  <div class="carinfo list clearfix" >
 	    <div class="brand pull-left" >
-        <%= link_to brand["name"], auto_series_orders_path(id: brand['_id']) %>
+        <%= link_to brand["name"], auto_series_orders_path(id: brand['_id'], act: params[:act]) %>
 	    </div>
 	    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
 	    </div>

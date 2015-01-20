@@ -18,6 +18,6 @@ class Activity::MainController < ActionController::Base
 
   def find_activity
     @activity = Activity.find_by name: params[:name]
-    return render text: "no such activity" unless @activity
+    return render text: "不存在这个活动" unless @activity
   end
 end
