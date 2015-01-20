@@ -5,3 +5,9 @@
   <%= stylesheet_link_tag    'activity/papago', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'activity/papago', 'data-turbolinks-track' => true %>
 <% end %>
+
+<% pa = PublicAccount.find_by(name: 'kaladingcom') %>
+
+<% result = pa.get_signature(activity_url('papago')) %>
+
+<div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>"></div>
