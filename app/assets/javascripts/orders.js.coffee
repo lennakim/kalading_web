@@ -12,6 +12,46 @@ $ ->
     items_view = new Kalading.Views.Items
     # items_view.recoverSelectors()
 
+  if $(".select-car-phone").length > 0
+    $('#myTab a').click (e) ->
+      e.preventDefault()
+      $(@).tab('show')
+    
+    if $('.quick-select input:radio:checked').length > 0 
+      car_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('id')
+
+      Turbolinks.visit("/orders/select_car_item?car_id=#{car_id}&type=bmt")
+    
+    $('.quick-select').on 'click','input:radio', ->
+      car_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('id')
+      auto_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('autoid')
+      type = if $('.orders').data('type') then $('.orders').data('type') else 'bmt'
+      
+      Turbolinks.visit("/orders/select_car_item?car_id=#{car_id}&auto_id=#{auto_id}&type=#{type}")      
+
+      $('.select-car-phone').attr('data-autoid', auto_id)
+    
+    $('.content').on 'click', '.service-item', (e) ->
+
+      car_id = if $('.orders').data('car') ? $('.orders').data('car') then $('.orders').data('car') ? $('.orders').data('car') else $('.quick-select input:radio:checked').parent().siblings('.btn').data('id')
+
+      auto_id = $('.select-car-phone').attr('data-autoid')
+      type = $(@).data('type')
+
+      Turbolinks.visit "/orders/select_car_item?car_id=#{car_id}&auto_id=#{auto_id}&type=#{type}"
+
+    autoid = $('.select-car-phone').attr('data-autoid')
+    type = $('.orders').data('type')
+    
+    $('.btn').each ->
+      if $(this).data('autoid') == autoid
+        $(this).siblings('span').find('input:radio').attr('checked','checked')
+    
+    $('.service-item').each ->
+      if $(this).data('type') == type
+        $(this).find('input:radio').attr('checked','checked')
+
+
   if $(".select-car-page").length > 0
     $('.select-car, .quick-select').click ->
       $('.select-car, .quick-select').removeClass('selected')
