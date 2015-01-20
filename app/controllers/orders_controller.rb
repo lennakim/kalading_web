@@ -93,15 +93,13 @@ class OrdersController < ApplicationController
     parts = params["order"]["parts"].try :values
 
     activity = Activity.find_by id: params[:act]
+
+    payload = {
+      parts: parts
+    }
+
     if activity && activity.valid_activity?
-      payload = {
-        parts: parts,
-        discount: activity.preferential_code
-      }
-    else
-      payload = {
-        parts: parts
-      }
+      payload[:discount] = activity.preferential_code
     end
 
     result = Order.refresh_price car_id, current_city_id, payload
@@ -122,15 +120,13 @@ class OrdersController < ApplicationController
     @city_capacity = Order.city_capacity current_city_id
 
     activity = Activity.find_by id: params[:act]
+
+    payload = {
+      parts: @parts
+    }
+
     if activity && activity.valid_activity?
-      payload = {
-        parts: @parts,
-        discount: activity.preferential_code
-      }
-    else
-      payload = {
-        parts: @parts
-      }
+      payload[:discount] = activity.preferential_code
     end
 
     @cities = Order.cities
