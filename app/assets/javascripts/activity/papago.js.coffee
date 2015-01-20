@@ -14,7 +14,7 @@ $ ->
     timestamp: timestamp
     nonceStr: nonceStr
     signature: signature
-    jsApiList: ['onMenuShareTimeline']
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
 
   wx.ready ->
     alert 'ready!'
@@ -23,8 +23,14 @@ $ ->
     alert 'error!'
     alert res
 
+  wx.checkJsApi
+  jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+  success: (res) ->
+    alert res
+    alert '可以用 onMenuShareTimeline, onMenuShareAppMessage'
+
   wx.onMenuShareTimeline
-    title: '', # 分享标题
+    title: '病毒别点', # 分享标题
     link: '', # 分享链接
     imgUrl: '', # 分享图标
     success: ->
@@ -32,3 +38,15 @@ $ ->
       $('body').css('background', 'black')
     cancel: ->
       alert '取消了'
+
+  wx.onMenuShareAppMessage
+    title: '病毒别点'
+    desc: '病毒别点 desc ..'
+    link: ''
+    imgUrl: ''
+    type: ''
+    dataUrl: ''
+    success: ->
+      alert '分享给朋友成功了'
+    cancel: ->
+      alert '取消分享给朋友'
