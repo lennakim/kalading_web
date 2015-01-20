@@ -15,7 +15,7 @@ $bac: #fff;
   color: #fff;
 }
 .carousel-inner{
-	overflow: inherit;
+	overflow: -moz-hidden-unscrollable;
 }
 .carousel-inner > .item > img, .carousel-inner > .item > a > img{
 	display: inline;
