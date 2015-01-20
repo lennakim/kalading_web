@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119155502) do
+ActiveRecord::Schema.define(version: 20150120064235) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(version: 20150119155502) do
     t.string   "account_token"
     t.string   "access_token"
     t.string   "jsapi_ticket"
-    t.integer  "token_expires_at"
-    t.integer  "ticket_expires_at"
+    t.datetime "token_expires_at"
+    t.datetime "ticket_expires_at"
   end
 
   add_index "public_accounts", ["account_id"], name: "index_public_accounts_on_account_id", unique: true, using: :btree
