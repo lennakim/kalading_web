@@ -5,3 +5,120 @@
   <%= stylesheet_link_tag    'activity/papago', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'activity/papago', 'data-turbolinks-track' => true %>
 <% end %>
+
+<div class="papago">
+  <div class="login-form">
+  	<div class="form-tit">
+  	  <%= image_tag("activity/papago/title1.png",width:"100%", class: "title1") %>
+  	  <%= image_tag("activity/papago/title2.png",width:"100%", class: "title2") %>
+  	</div>
+	<div class="form-con">
+	  <%= image_tag("activity/papago/car.png",width:"100%", class: "car translate-car") %>
+	  <%= image_tag("activity/papago/title3.png",width:"100%", class: "title3") %>
+	  <div class="field">
+	  	<input title="手机号" class="phone_num form-control" id="phone_num" placeholder="手机号">
+	  </div>
+	  <div class="field">   
+	    <input title="验证码" class="verification_code form-control" placeholder="验证码" id="verification_code"/>
+	    <button title="点击获取验证码" class='get_code orange' id="get_code">发送验证码</button>
+	  </div>
+	  <div class="field">
+	  	<button title="下一步" id="next_button" class="next_button orange">下一步</button>
+	  </div>
+	</div>
+    <div class="discount-con hidden">
+  		<%= image_tag("activity/papago/discount.png",width:"100%", class: "discount") %>
+  		<%= image_tag("activity/papago/money.png",width:"100%", class: "money translate-money") %>
+  		<%= image_tag("activity/papago/packet.png",width:"100%", class: "packet") %>
+    	<button title="立即使用" id="use_button" class="use_button">立即使用</button>
+    </div>
+  </div>
+  <div class="active">
+  	<%= image_tag("activity/papago/active_tit1.png",width:"100%", class: "active_tit1 translate-car") %>
+  	<%= image_tag("activity/papago/active_tit2.png",width:"100%", class: "active_tit2") %>
+  	<div class="active_con">
+  		<p>
+  			>> 点击【下一步】轻松获取卡拉丁【新年无霾券】一张！
+  		</p>
+  		<p>
+  			>> 限卡拉丁活动链接预订【PM2.5空调滤芯】直接抵扣原价，服务+配件+附带检测仅需支付9块9，并有机会享每年三次免费滤芯更换！
+  		</p>
+  		<p>
+  			>> 每天限量500张，即抢即有！
+  		</p>
+  	</div>
+  </div>
+  <div class="rule">
+  	<%= image_tag("activity/papago/rule_tit1.png",width:"100%", class: "rule_tit1 translate-car") %>
+  	<%= image_tag("activity/papago/rule_tit2.png",width:"100%", class: "rule_tit2") %>
+  	<div class="rule_con">
+  		<p>
+  			1. 本活动时间为即日起至2015年2月18日23时59分
+  		</p>
+  		<p>
+  			2. 本活动提供的奖品为卡拉丁【新年无霾劵】，面值为9.9元，在选购时候自动抵用原价，每天限量发放500个。
+  		</p>
+  		<p>
+  			3. 活动期间，每位用户限成功获取无霾劵一次，送完即止。
+  		</p>
+  		<p>
+  			4. 满足任一条件均视为同一用户：同一手机号码或同一车牌号码。
+  		</p>
+  		<p>
+  			5. 新年无霾劵限于卡拉丁活动链接预订【PM2.5空调滤芯】服务时，直接抵扣产品原价，本次活动获得的新年无霾券不可与卡拉丁其他活动叠加使用，不可预订其他保养服务。
+  		</p>
+  		<p>
+  			6. 新年无霾券有效期为自发放之日起至2015年4月30日，逾期未预约服务则自动失效。
+  		</p>
+  		<p>
+  			7. 卡拉丁新年无霾券不可拆分，不可折现，不可提现。
+  		</p>
+  		<p>
+  			8. 预订成功后，服务现场可选择是否贴No霾inCar车贴，贴上车贴即享每年三次免费更换卡拉丁防霾空调滤芯。
+  		</p>
+  		<p>
+  			9. 活动最终解释权归卡拉丁所有。
+  		</p>
+  		<%= image_tag("activity/papago/marklogo.png",width:"100%", class: "marklogo") %>
+  	</div>
+  </div>
+  <div class="bac hidden"></div>
+  <div class="msg hidden">
+  	<h3 class="title">温馨提示</h3>
+  	<p>
+  		恭喜您！成功加入卡粉行列！现在就差最后一步了！点击朋友圈右上角按钮
+  		<%= image_tag("activity/papago/share.png",width:"10%", class: "share") %>
+  		分享朋友圈即可享受9块9终身换啦！
+  	</p>
+  	<button title="去分享" class="share_button orange">去分享</button>
+  	<%= image_tag("activity/papago/close.png",width:"10%", class: "close") %>
+  </div>
+</div>
+
+<script>
+	$('.close').click(function(){
+		$(this).parent().remove();
+		$('.bac').addClass('hidden');
+	})
+	$('.bac').css({'height':$(window).height()});
+	$('.next_button').click(function(){
+		$('.msg,.bac').removeClass('hidden');
+	})
+
+	wx.onMenuShareAppMessage({
+	    title: '', // 分享标题
+	    desc: '', // 分享描述
+	    link: '', // 分享链接
+	    imgUrl: '', // 分享图标
+	    type: '', // 分享类型,music、video或link，不填默认为link
+	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	    success: function () { 
+	        $('.active,.rule,.form-con').addClass('hidden');
+	        $('.discount-con').removeClass('hidden');
+	    },
+	    cancel: function () { 
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+
+</script>
