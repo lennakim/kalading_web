@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/galetahub/ckeditor.git
-  revision: d0bc44a6fc9fa67d4b007877688f89e5a0cbf79f
-  specs:
-    ckeditor (4.1.1)
-      cocaine
-      orm_adapter (~> 0.5.0)
-
-GIT
   remote: https://github.com/codebrew/backbone-rails.git
   revision: 2d98d7157767dc04b00cac3f822f9576283ba921
   specs:
@@ -15,6 +7,14 @@ GIT
       ejs
       jquery-rails
       railties
+
+GIT
+  remote: https://github.com/galetahub/ckeditor.git
+  revision: 3f7e92e67336a6012a933f2643afb97f2088f474
+  specs:
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
 
 GIT
   remote: https://github.com/lanrion/weixin_authorize.git

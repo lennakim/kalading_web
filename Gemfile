@@ -17,7 +17,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'compass-rails'
 
-gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'ckeditor', git: 'https://github.com/galetahub/ckeditor.git'
 
 gem 'nprogress-rails'
 
