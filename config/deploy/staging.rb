@@ -22,7 +22,7 @@ set :ssh_options, {
   # port: 25000
 }
 
-set :stage, :production
+set :stage, :staging
 set :branch, 'new'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/kaladingcom"
 set :rails_env, :production

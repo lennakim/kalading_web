@@ -29,6 +29,10 @@ test:
   <<: *default
   database: kalading_web_dev
 
+staging:
+  <<: *default
+  database: kalading_web_staging
+
 production:
   <<: *default
   database: kalading_web_dev
