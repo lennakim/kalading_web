@@ -34,25 +34,46 @@
             <% end %>
           </div>
         </div>
-        <div class="orders bac-white" data-car="<%= car_id=params[:car_id]%>" data-type="<%= params[:type] %>">
+
+        <% type = params[:type] || 'bmt' %>
+        <% car_id = params[:car_id] %>
+
+        <% activity = Activity.find_by(id: params[:act]) %>
+        <% via_act = activity && activity.valid_activity? %>
+        <% if via_act %>
+          <% types = activity.products.map &:slug %>
+          <% type = types.first %>
+          <% code = activity.preferential_code %>
+        <%end %>
+
+        <div class="orders bac-white" data-car="<%= car_id %>" data-type="<%= type %>">
           <h4 class="item-title service-type-title">服务类型</h4>
           <div class="content">
-            <div class="service-item" data-type="pm25">
-              <input type="radio" name="service">
-              <span class="pm25 <%= "selected" if params[:type] == "pm25" %>">PM2.5滤芯更换</span>
-            </div>
-            <div class="service-item" data-type="bmt">
-              <input type="radio" name="service">
-              <span class="bmt <%= "selected" if params[:type] == "bmt" %>">大保养</span>
-            </div>
-            <div class="service-item" data-type="smt">
-              <input type="radio" name="service">
-              <span class="smt <%= "selected" if params[:type] == "smt" %>">小保养</span>
-            </div>
+
+            <% if !via_act || types.include?('pm25') %>
+              <div class="service-item" data-type="pm25">
+                <input type="radio" name="service">
+                <span class="pm25 <%= "selected" if type == "pm25" %>">PM2.5滤芯更换</span>
+              </div>
+            <% end %>
+
+            <% if !via_act || types.include?('bmt') %>
+              <div class="service-item" data-type="bmt">
+                <input type="radio" name="service">
+                <span class="bmt <%= "selected" if type == "bmt" %>">大保养</span>
+              </div>
+            <% end %>
+
+            <% if !via_act || types.include?('smt') %>
+              <div class="service-item" data-type="smt">
+                <input type="radio" name="service">
+                <span class="smt <%= "selected" if type == "smt" %>">小保养</span>
+              </div>
+            <% end %>
           </div>
           <h4 class="item-title">选择配件</h4>
-          <div class="orders-con <%= type=params['type'] %>-con content">
-            <% if params[:car_id] %>
+          <div class="orders-con <%= type %>-con content">
+            <% if car_id %>
               <%= render "items", type: type %>
             <% else %>
                 <span class="spe">请先选择车辆和保养类型</span>
@@ -67,7 +88,7 @@
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="profile">
-        <% if params[:type]=='pm25' %>
+        <% if type =='pm25' %>
           <div class = "col-xs-12">
             <%= image_tag("pm25_detail_1.png", style: 'width: 100%') %>
           </div>

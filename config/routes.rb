@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
       get 'select_car_item'
       get 'auto_brands'
-      get 'auto_series/:brand_id' => 'orders#auto_series'
-      get 'auto_model_numbers/:series_id' => 'orders#auto_model_numbers'
+      get 'auto_series'
+      get 'auto_model_numbers'
 
       post 'refresh_price'
       post 'place_order'

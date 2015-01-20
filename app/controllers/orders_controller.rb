@@ -26,11 +26,11 @@ class OrdersController < ApplicationController
   end
 
   def auto_series
-    @series = Order.auto_series params[:brand_id], current_city_id
+    @series = Order.auto_series params[:id], current_city_id
   end
 
   def auto_model_numbers
-    @auto_model_numbers = Order.auto_model_numbers params[:series_id], current_city_id
+    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id
   end
 
   def select_car
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
       @result = Order.items_for car_id, current_city_id
 
     else
-      return redirect_to auto_brands_orders_path
+      return redirect_to auto_brands_orders_path(act: params[:act])
     end
   end
 
@@ -91,15 +91,24 @@ class OrdersController < ApplicationController
   def refresh_price
     car_id = params["order"]["car_id"]
     parts = params["order"]["parts"].try :values
-    payload = {
-      "parts" => parts
-    }
+
+    activity = Activity.find_by id: params[:act]
+    if activity && activity.valid_activity?
+      payload = {
+        parts: parts,
+        discount: activity.preferential_code
+      }
+    else
+      payload = {
+        parts: parts
+      }
+    end
+
     result = Order.refresh_price car_id, current_city_id, payload
     render json: { result: result }
   end
 
   def select_item
-
     if !params[:auto_id].present?
       save_last_select_car params[:car_id]
     end
@@ -111,9 +120,19 @@ class OrdersController < ApplicationController
     car_id = params["order"]["car_id"]
     @parts = params["order"]["parts"]
     @city_capacity = Order.city_capacity current_city_id
-    payload = {
-      "parts" => @parts
-    }
+
+    activity = Activity.find_by id: params[:act]
+    if activity && activity.valid_activity?
+      payload = {
+        parts: @parts,
+        discount: activity.preferential_code
+      }
+    else
+      payload = {
+        parts: @parts
+      }
+    end
+
     @cities = Order.cities
     @result = Order.refresh_price car_id, current_city_id, payload
   end

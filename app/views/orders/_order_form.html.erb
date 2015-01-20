@@ -198,6 +198,8 @@
     </div>
   </div>
 
+  <% unless params[:act] %>
+
   <div class="info-group form-group">
     <div class="info-title">
       <%= label_tag("优惠券：") %>
@@ -213,7 +215,6 @@
         </label>
       </div>
     </div>
-
   </div>
 
   <div class="info-group form-group">
@@ -228,6 +229,8 @@
       </div>
     </div>
   </div>
+
+  <% end %>
 
   <div class="info-group form-group">
     <div class="info-title">

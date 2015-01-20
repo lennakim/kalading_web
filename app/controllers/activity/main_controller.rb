@@ -7,7 +7,7 @@ class Activity::MainController < ActionController::Base
   def show
     impressionist(@activity, params[:from])
 
-    if @activity && Time.now < @activity.end_date && Time.now > @activity.start_date
+    if @activity && @activity.valid_activity?
       render "#{@activity.name}"
     else
       render text: "此活动已经下线了哦，请持续关注我们的官网，将会有更多精彩活动等着你！"
@@ -18,6 +18,6 @@ class Activity::MainController < ActionController::Base
 
   def find_activity
     @activity = Activity.find_by name: params[:name]
-    return render text: "no such activity" unless @activity
+    return render text: "不存在这个活动" unless @activity
   end
 end
