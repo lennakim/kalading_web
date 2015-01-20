@@ -7,11 +7,45 @@ class PublicAccount < ActiveRecord::Base
   has_many :recv_messages
   has_many :reply_messages
 
+  before_create :init_expired_at
+
   accepts_nested_attributes_for :diymenus, :allow_destroy => true
 
   def weixin_client
     client = WeixinAuthorize::Client.new(self.appid, self.appsecret)
-    client.is_valid? ? client : "invalid appid or appsecret"
+    if client.is_valid?
+      self.access_token = client.access_token
+      set_token_expires_at
+      return client
+    end
+    nil
+  end
+
+  def get_access_token
+    if token_expired?
+      client = weixin_client
+      self.access_token = client.access_token if client
+      set_token_expires_at
+    end
+    self.access_token
+  end
+
+  def get_jsapi_ticket
+    if ticket_expired?
+      access_token = get_access_token
+      result = RestClient.get "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{access_token}&type=jsapi"
+      self.jsapi_ticket = JSON.parse(result)["ticket"]
+      set_ticket_expires_at
+    end
+    self.jsapi_ticket
+  end
+
+  def get_signature url
+    noncestr = SecureRandom.hex[0..16]
+    timestamp = Time.now.to_i
+    jsapi_ticket = get_jsapi_ticket
+    signature = Digest::SHA1.digest("jsapi_ticket=#{jsapi_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}")
+    return signature, timestamp, noncestr
   end
 
   def build_menu
@@ -30,5 +64,30 @@ class PublicAccount < ActiveRecord::Base
         end
       end
     end
+  end
+
+  private
+
+  def token_expired?
+    self.token_expires_at < Time.now
+  end
+
+  def ticket_expired?
+    self.ticket_expires_at < Time.now
+  end
+
+  # The real expires time is 7200 seconds. But here I set all 3600 seconds.
+
+  def set_token_expires_at
+    self.token_expires_at = 3600.seconds.from_now
+  end
+
+  def set_ticket_expires_at
+    self.ticket_expires_at = 3600.seconds.from_now
+  end
+
+  def init_expired_at
+    self.token_expires_at = Time.now
+    self.ticket_expires_at = Time.now
   end
 end
