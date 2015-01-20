@@ -44,7 +44,7 @@ class PublicAccount < ActiveRecord::Base
     noncestr = SecureRandom.hex[0..16]
     timestamp = Time.now.to_i
     jsapi_ticket = get_jsapi_ticket
-    signature = Digest::SHA1.digest("jsapi_ticket=#{jsapi_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}")
+    signature = Digest::SHA1.hexdigest("jsapi_ticket=#{jsapi_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}")
     return signature, timestamp, noncestr
   end
 

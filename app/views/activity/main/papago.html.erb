@@ -122,3 +122,20 @@
 	});
 
 </script>
+<% pa = PublicAccount.find_by(name: 'kaladingcom') %>
+
+<% result = pa.get_signature(request.original_url) %>
+
+<div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>"></div>
+
+<br>
+appid: <%= pa.appid %>
+<br>
+signature: <%= result[0] %>
+<br>
+timestamp: <%= result[1] %>
+<br>
+noncestr: <%= result[2] %>
+
+<%= request.original_url %>
+
