@@ -20,7 +20,18 @@ ActiveRecord::Schema.define(version: 20150120064235) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "impressions_count", default: 0
+    t.string   "preferential_code"
   end
+
+  create_table "activity_products", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_products", ["activity_id"], name: "index_activity_products_on_activity_id", using: :btree
+  add_index "activity_products", ["product_id"], name: "index_activity_products_on_product_id", using: :btree
 
   create_table "auth_infos", force: true do |t|
     t.string   "provider"

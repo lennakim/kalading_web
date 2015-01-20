@@ -31,6 +31,21 @@
         </tr>
 
         <tr>
+          <td>优惠码</td>
+          <td><%= f.text_field :preferential_code %></td>
+        </tr>
+
+        <tr>
+          <td>适用服务(产品)</td>
+          <td>
+            <% Product.all.each do |product| %>
+              <%= product.title %>
+              <%= check_box_tag "activity[product_ids][]", product.id, resource.products.include?(product) %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
           <td colspan=2><%= f.submit %></td>
         </tr>
 

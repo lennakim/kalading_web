@@ -17,6 +17,16 @@
     </tr>
 
     <tr>
+      <td>优惠码</td>
+      <td><%= resource.preferential_code %></td>
+    </tr>
+
+    <tr>
+      <td>适用服务(产品)</td>
+      <td><%= resource.products.map(&:title).join(' | ')%></td>
+    </tr>
+
+    <tr>
       <td>活动链接</td>
       <td><%= link_to "#{activity_url(resource.name)}", activity_path(resource.name), target: '_blank' %></td>
     </tr>
