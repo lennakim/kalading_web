@@ -91,12 +91,17 @@
   		分享朋友圈即可享受9块9终身换啦！
   	</p>
   	<button title="去分享" class="share_button orange">去分享</button>
-  	<%= image_tag("activity/papago/close.png",width:"10%", class: "close") %>
+  	<%= image_tag("activity/papago/close.png",width:"10%", class: "closebtn") %>
   </div>
 </div>
 
 <script>
-	$('.close,.share_button').click(function(){
+
+	$('.title1').animate({'left':'0'},500,function(){
+		$('.title2').animate({'left':'0'},500);
+	})
+
+	$('.closebtn,.share_button').click(function(){
 		$('.msg').addClass('hidden');
 		$('.msg,.bac').addClass('hidden');
 		$('body').css({'overflow':'auto'});
