@@ -117,7 +117,9 @@ body{
 		.money{
 			position: absolute;
 			top: -30px;
-			left: 0;
+			left: 1%;
+			display: block;
+			width: 98%;
 		}
 		.translate-money{
 			animation:translate-money-animate 1s linear infinite;
@@ -223,92 +225,13 @@ body{
 @media screen and (min-device-width: 414px){
 .login-form{
 	.form-tit{
-		height: 300px;
+		height: 280px;
 		.title2{
-			top: 120px;
+			top: 110px;
 		}
 	}
 	.form-con{
 		height: 290px;
-	}
-}
-}
-@media screen and (min-device-width: 480px){
-.login-form{
-	.form-tit{
-		height: 350px;
-		.title2{
-			top: 140px;
-		}
-	}
-	.form-con{
-		height: 315px;
-	}
-}
-}
-@media screen and (min-device-width: 540px){
-.login-form{
-	.form-tit{
-		height: 395px;
-		.title2{
-			top: 155px;
-		}
-	}
-	.form-con{
-		height: 330px;
-	}
-}
-}
-@media screen and (min-device-width: 720px){
-.login-form{
-	.form-tit{
-		height: 527px;
-		.title2{
-			top: 200px;
-		}
-	}
-	.form-con{
-		height: 400px;
-	}
-}
-}
-@media screen and (min-device-width: 960px){
-.login-form{
-	.form-tit{
-		height: 700px;
-		.title2{
-			top: 280px;
-		}
-	}
-	.form-con{
-		height: 500px;
-	}
-}
-}
-@media screen and (min-device-width: 1024px){
-.login-form{
-	.form-tit{
-		height: 750px;
-		.title2{
-			top: 290px;
-		}
-	}
-	.form-con{
-		height: 500px;
-	}
-}
-}
-
-@media screen and (min-device-width: 1280px){
-.login-form{
-	.form-tit{
-		height: 935px;
-		.title2{
-			top: 355px;
-		}
-	}
-	.form-con{
-		height: 600px;
 	}
 }
 }
