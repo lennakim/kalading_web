@@ -42,7 +42,7 @@ $ ->
   wx.ready ->
 
     wx.onMenuShareTimeline
-      title: '爱车新年无霾劵！每天500张戳进来抢！'
+      title: '爱车新年无霾劵！每天500张，戳进来抢！'
       link: link
       imgUrl: thumbnail
       desc: '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！'
@@ -55,7 +55,7 @@ $ ->
           showMessage()
 
     wx.onMenuShareAppMessage
-      title: '爱车新年无霾劵！每天500张戳进来抢！'
+      title: '爱车新年无霾劵！每天500张，戳进来抢！'
       desc: '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！'
       link: link
       imgUrl: thumbnail
