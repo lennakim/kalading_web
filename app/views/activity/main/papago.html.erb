@@ -129,20 +129,20 @@
 	});
 
 </script>
-<%# pa = PublicAccount.find_by(name: 'kaladingcom') %>
+<% pa = PublicAccount.find_by(name: 'kaladingcom') %>
 
-<%# result = pa.get_signature(request.original_url) %>
+<% result = pa.get_signature(request.original_url) %>
 
-<!-- <div id="data" data-signature="<%#= result[0] %>" data-timestamp="<%#= result[1] %>" data-noncestr="<%#= result[2] %>" data-appid="<%#= pa.appid %>"></div> -->
+<div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>"></div>
 
 <br>
-appid: <%#= pa.appid %>
+appid: <%= pa.appid %>
 <br>
-signature: <%#= result[0] %>
+signature: <%= result[0] %>
 <br>
-timestamp: <%#= result[1] %>
+timestamp: <%= result[1] %>
 <br>
-noncestr: <%#= result[2] %>
+noncestr: <%= result[2] %>
 
-<%#= request.original_url %>
+<%= request.original_url %>
 

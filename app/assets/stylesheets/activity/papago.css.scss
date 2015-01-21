@@ -43,7 +43,7 @@ body{
 	line-height: 30px;
 	background: #ea6f45;
 	border: 0;
-	border-radius: 5px;
+	border-radius: 3px;
 	box-shadow: 0 4px 0 #c85f3f;
 	color: #fff;
 }
@@ -180,7 +180,7 @@ body{
 }
 .msg{
 	position: fixed;
-	top: 100px;
+	top: 12%;
 	left: 8%;
 	width: 84%;
 	border-radius: 5px;
@@ -197,6 +197,117 @@ body{
 	.closebtn{
 		position: fixed;
 		right: 5%;
-		top: 92px;
+		top: 10%;
 	}
+}
+@media screen and (min-device-width: 360px){
+.login-form{
+	.form-tit{
+		height: 263px;
+		.title2{
+			top: 100px;
+		}
+	}
+}
+}
+@media screen and (min-device-width: 375px){
+.login-form{
+	.form-tit{
+		height: 274px;
+		.title2{
+			top: 110px;
+		}
+	}
+}
+}
+@media screen and (min-device-width: 414px){
+.login-form{
+	.form-tit{
+		height: 302px;
+		.title2{
+			top: 120px;
+		}
+	}
+	.form-con{
+		height: 290px;
+	}
+}
+}
+@media screen and (min-device-width: 480px){
+.login-form{
+	.form-tit{
+		height: 350px;
+		.title2{
+			top: 140px;
+		}
+	}
+	.form-con{
+		height: 315px;
+	}
+}
+}
+@media screen and (min-device-width: 540px){
+.login-form{
+	.form-tit{
+		height: 395px;
+		.title2{
+			top: 155px;
+		}
+	}
+	.form-con{
+		height: 330px;
+	}
+}
+}
+@media screen and (min-device-width: 720px){
+.login-form{
+	.form-tit{
+		height: 527px;
+		.title2{
+			top: 200px;
+		}
+	}
+	.form-con{
+		height: 400px;
+	}
+}
+}
+@media screen and (min-device-width: 960px){
+.login-form{
+	.form-tit{
+		height: 700px;
+		.title2{
+			top: 280px;
+		}
+	}
+	.form-con{
+		height: 500px;
+	}
+}
+}
+@media screen and (min-device-width: 1024px){
+.login-form{
+	.form-tit{
+		height: 750px;
+		.title2{
+			top: 290px;
+		}
+	}
+	.form-con{
+		height: 500px;
+	}
+}
+}
+@media screen and (min-device-width: 1280px){
+.login-form{
+	.form-tit{
+		height: 935px;
+		.title2{
+			top: 355px;
+		}
+	}
+	.form-con{
+		height: 600px;
+	}
+}
 }
