@@ -1,10 +1,12 @@
-<%= title 'papago' %>
-<%= meta_description '一生只要9.9，papago' %>
+<%= title '爱车新年无霾劵！每天500张，戳进来抢！' %>
+<%= meta_description '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！' %>
 
 <%= content_for :assets do %>
   <%= stylesheet_link_tag    'activity/papago', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'activity/papago', 'data-turbolinks-track' => true %>
 <% end %>
+
+<% activity = Activity.find_by name: 'papago' %>
 
 <div class="papago">
   <div class="login-form">
@@ -30,7 +32,7 @@
   		<%= image_tag("activity/papago/discount.png",width:"100%", class: "discount") %>
   		<%= image_tag("activity/papago/money.png",width:"100%", class: "money translate-money") %>
   		<%= image_tag("activity/papago/packet.png",width:"100%", class: "packet") %>
-		<%= link_to "立即使用", select_city_activity_main_index_path, id: 'use_button', class: 'use_button' %>
+		<%= link_to "立即使用", auto_brands_orders_path(act: activity.id), id: 'use_button', class: 'use_button' %>
     </div>
   </div>
   <div class="active">

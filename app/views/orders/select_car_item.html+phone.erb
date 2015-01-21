@@ -2,7 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>">
+<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>" data-act="<%= params[:act] %>">
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist" id="myTab">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
@@ -43,7 +43,9 @@
         <% via_act = activity && activity.valid_activity? %>
         <% if via_act %>
           <% types = activity.products.map &:slug %>
-          <% type = types.first %>
+          <% if !types.include?(type) %>
+            <% type = types.first %>
+          <% end %>
           <% code = activity.preferential_code %>
         <%end %>
 
