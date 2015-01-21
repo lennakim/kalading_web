@@ -179,6 +179,10 @@ class OrdersController < ApplicationController
 
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
 
+    if !params[:address]
+      return render js: "$('#add_address_modal').modal();"
+    end
+
     if !signed_in? && !(vcode && !vcode.expired?)
       return render js: "alert('请填写正确的验证码')"
     end
