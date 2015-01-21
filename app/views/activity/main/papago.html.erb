@@ -32,7 +32,7 @@
   		<%= image_tag("activity/papago/discount.png",width:"100%", class: "discount") %>
   		<%= image_tag("activity/papago/money.png",width:"100%", class: "money translate-money") %>
   		<%= image_tag("activity/papago/packet.png",width:"100%", class: "packet") %>
-		<%= link_to "立即使用", auto_brands_orders_path(act: activity.id), id: 'use_button', class: 'use_button' %>
+		<%= link_to "立即使用", select_car_item_orders_path(act: activity.id), id: 'use_button', class: 'use_button' %>
     </div>
   </div>
   <div class="active">
