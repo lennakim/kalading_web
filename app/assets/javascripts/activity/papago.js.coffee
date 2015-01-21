@@ -105,6 +105,6 @@ $ ->
       $("#next_button").removeClass('disable').attr('disabled', false)
       if data.success == true
         sharable = true
-        showRedPacket()
+        showMessage()
       else
         alert data.msg
