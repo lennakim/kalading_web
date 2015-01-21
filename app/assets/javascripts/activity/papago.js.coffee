@@ -88,10 +88,8 @@ $ ->
     verification_code = $("#verification_code").val()
 
     $.post "/phones", { phone_num: phone_num, code: verification_code }, (data) ->
+      $("#next_button").removeClass('disable').attr('disabled', false)
       if data.success == true
-
-        $("#next_button").removeClass('disable').attr('disabled', false)
-
         $('.msg,.bac').removeClass('hidden')
         $('body').css({'overflow':'hidden'})
       else
