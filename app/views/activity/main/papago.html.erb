@@ -9,6 +9,7 @@
 <div class="papago">
   <div class="login-form">
   	<div class="form-tit">
+  	  <%= image_tag("activity/papago/tit_bac.png",width:"100%", class: "tit_bac") %>
   	  <%= image_tag("activity/papago/title1.png",width:"100%", class: "title1") %>
   	  <%= image_tag("activity/papago/title2.png",width:"100%", class: "title2") %>
   	</div>
@@ -30,7 +31,7 @@
   		<%= image_tag("activity/papago/discount.png",width:"100%", class: "discount") %>
   		<%= image_tag("activity/papago/money.png",width:"100%", class: "money translate-money") %>
   		<%= image_tag("activity/papago/packet.png",width:"100%", class: "packet") %>
-    	<button title="立即使用" id="use_button" class="use_button">立即使用</button>
+    	<a href="/activity/select_city" title="立即使用" id="use_button" class="use_button">立即使用</a>
     </div>
   </div>
   <div class="active">
@@ -38,13 +39,16 @@
   	<%= image_tag("activity/papago/active_tit2.png",width:"100%", class: "active_tit2") %>
   	<div class="active_con">
   		<p>
-  			>> 点击【下一步】轻松获取卡拉丁【新年无霾券】一张！
+  			<%= image_tag("activity/papago/right.png",width:"8%", class: "right") %>
+  			<span>点击【下一步】轻松获取卡拉丁【新年无霾券】一张！</span>
   		</p>
   		<p>
-  			>> 限卡拉丁活动链接预订【PM2.5空调滤芯】直接抵扣原价，服务+配件+附带检测仅需支付9块9，并有机会享每年三次免费滤芯更换！
+  			<%= image_tag("activity/papago/right.png",width:"8%", class: "right") %>
+  			<span>限卡拉丁活动链接预订【PM2.5空调滤芯】直接抵扣原价，服务+配件+附带检测仅需支付9块9，并有机会享每年三次免费滤芯更换！</span>
   		</p>
   		<p>
-  			>> 每天限量500张，即抢即有！
+  			<%= image_tag("activity/papago/right.png",width:"8%", class: "right") %>
+  			<span>每天限量500张，即抢即有！</span>
   		</p>
   	</div>
   </div>
