@@ -130,46 +130,4 @@
     </div>
   </div>
 </div>
-<script>
-  $('#myTab a').click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-    })
-  var car_id,auto_id,type ;
 
-  $('.quick-select').on('click','input:radio',function(){
-    car_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('id');
-    auto_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('autoid');
-
-    type = $('.orders').data('type')?$('.orders').data('type'):'bmt';
-    Turbolinks.visit('/orders/select_car_item?car_id='+car_id+'&auto_id='+auto_id+'&type='+type);
-
-    $('.select-car-phone').attr('data-autoid',auto_id);
-  })
-
-  $('.content').on('click','.service-item',function(e){
-    car_id = $('.orders').data('car') ? $('.orders').data('car') : $('.quick-select input:radio:checked').parent().siblings('.btn').data('id');
-    autoid = $('.select-car-phone').attr('data-autoid');
-    type = $(this).data('type');
-
-    Turbolinks.visit('/orders/select_car_item?car_id='+car_id+'&auto_id='+autoid+'&type='+type);
-
-  });
-
-  function selectItem(){
-    autoid = $('.select-car-phone').attr('data-autoid');
-    type = $('.orders').data('type');
-    $('.btn').each(function(){
-      if($(this).data('autoid') == autoid){
-        $(this).siblings('span').find('input:radio').attr('checked','checked')
-      }
-    })
-    $('.service-item').each(function(){
-      if($(this).data('type') == type){
-        $(this).find('input:radio').attr('checked','checked')
-      }
-    })
-  }
-  selectItem()
-
-</script>
