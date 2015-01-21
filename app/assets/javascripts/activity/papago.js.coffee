@@ -45,6 +45,7 @@ $ ->
       imgUrl: '', # 分享图标
       success: ->
         if sharable
+          hideMessage()
           showRedPacket()
 
       cancel: ->
@@ -60,6 +61,7 @@ $ ->
       dataUrl: ''
       success: ->
         if sharable
+          hideMessage()
           showRedPacket()
       cancel: ->
         if sharable
