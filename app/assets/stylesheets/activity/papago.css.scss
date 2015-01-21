@@ -117,7 +117,9 @@ body{
 		.money{
 			position: absolute;
 			top: -30px;
-			left: 0;
+			left: 1%;
+			display: block;
+			width: 98%;
 		}
 		.translate-money{
 			animation:translate-money-animate 1s linear infinite;
