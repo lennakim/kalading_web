@@ -198,38 +198,38 @@
     </div>
   </div>
 
-  <% unless params[:act] %>
-
-  <div class="info-group form-group">
-    <div class="info-title">
-      <%= label_tag("优惠券：") %>
-    </div>
-
-    <div class="info-con">
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-default active" id="no_preferential">
-          <input type="radio" autocomplete="off" checked> 无
-        </label>
-        <label class="btn btn-default" id="yes_preferential">
-          <input type="radio" autocomplete="off"> 有
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="info-group form-group">
-    <div id="preferential_info" class="collapse">
+  <% if params[:act] && activity = Activity.find_by(id: params[:act]) %>
+    <input type="hidden" name="discount" value="<%= activity.preferential_code %>">
+  <% else %>
+    <div class="info-group form-group">
       <div class="info-title">
-        <%= label_tag("详细信息：") %>
+        <%= label_tag("优惠券：") %>
       </div>
 
-      <div class="info-con form-inline">
-        <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
-        <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
+      <div class="info-con">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default active" id="no_preferential">
+            <input type="radio" autocomplete="off" checked> 无
+          </label>
+          <label class="btn btn-default" id="yes_preferential">
+            <input type="radio" autocomplete="off"> 有
+          </label>
+        </div>
       </div>
     </div>
-  </div>
 
+    <div class="info-group form-group">
+      <div id="preferential_info" class="collapse">
+        <div class="info-title">
+          <%= label_tag("详细信息：") %>
+        </div>
+
+        <div class="info-con form-inline">
+          <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
+          <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 
   <div class="info-group form-group">
