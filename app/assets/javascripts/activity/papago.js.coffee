@@ -10,7 +10,48 @@ $ ->
     $('.msg,.bac').addClass('hidden')
     $('body').css({'overflow':'auto'})
 
+
+  #下一步（有手机号和验证码的时候 弹出分享提示框）
+  $('.next_button').click ->
+    if $('#phone_num').val() != ''
+      if $('#verification_code').val() != ''
+        $('.msg,.bac').removeClass('hidden')
+        $('body').css({'overflow':'hidden'})
+      else
+        alert('请您先获取验证码！')
+    else
+      alert('请您先填写手机号！')
+      
+  $('#get_code').click ->
+    phone_num = $('#phone_num').val()
+    $(this).addClass('disable').attr('disabled', 'disabled')
+    seconds = 60
+
+    if phone_num == ''
+      alert('请输入手机号')
+      $('.get_code').removeClass('disable').removeAttr('disabled')
+    else
+      $.ajax
+        type: 'POST',
+        url: '/phones/send_verification_code',
+        data: {phone_num: phone_num},
+        success: (data) ->
+          if data.success
+            timer = setInterval ->
+              if seconds > 0
+                seconds -= 1
+                $('.get_code').text(seconds+'秒后重新获取')
+              if seconds == 0
+                $('.get_code').removeClass('disable').removeAttr('disabled').text('重新获取')
+                clearInterval(timer)
+            , 1000
+
+          else
+            alert('请输入正确手机号')
+            $('.get_code').removeClass('disable').removeAttr('disabled')
+
   $('.bac').css({'height':$(window).height()})
+
 
 
   signature = $("#data").data('signature')

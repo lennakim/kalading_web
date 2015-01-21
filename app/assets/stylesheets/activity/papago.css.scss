@@ -1,6 +1,6 @@
 @import "activity/activity";
 body{
-  
+  background: #ffc122;
 }
 @keyframes translate-car-animate{
   0%{transform:translateY(-2px);}
@@ -102,7 +102,6 @@ body{
 	.discount-con{
 		position: relative;
 		width: 100%;
-		height: 336px;
 		background: #ffc122;
 		.use_button{
 			position: absolute;
@@ -118,13 +117,14 @@ body{
 		.money{
 			position: absolute;
 			top: -30px;
+			left: 0;
 		}
 		.translate-money{
 			animation:translate-money-animate 1s linear infinite;
 			-webkit-animation:translate-money-animate 1s linear infinite;
 		}
 		.packet{
-			margin-top: 100px;
+			margin-top: 130px;
 		}
 	}
 }
@@ -298,6 +298,7 @@ body{
 	}
 }
 }
+
 @media screen and (min-device-width: 1280px){
 .login-form{
 	.form-tit{
