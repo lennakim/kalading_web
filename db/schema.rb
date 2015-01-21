@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120064235) do
+ActiveRecord::Schema.define(version: 20150121092836) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20150120064235) do
 
   add_index "auth_infos", ["provider", "uid"], name: "index_auth_infos_on_provider_and_uid", using: :btree
   add_index "auth_infos", ["uid"], name: "index_auth_infos_on_uid", using: :btree
+
+  create_table "authinfo_activities", force: true do |t|
+    t.integer  "auth_info_id"
+    t.integer  "activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "autos", force: true do |t|
     t.string   "system_id"
@@ -160,12 +167,12 @@ ActiveRecord::Schema.define(version: 20150120064235) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "account_secret_key"
-    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "access_token"
     t.string   "jsapi_ticket"
     t.datetime "token_expires_at"
@@ -178,7 +185,6 @@ ActiveRecord::Schema.define(version: 20150120064235) do
   add_index "public_accounts", ["name"], name: "index_public_accounts_on_name", unique: true, using: :btree
 
   create_table "recv_messages", force: true do |t|
-    t.string   "from_user_name"
     t.string   "msg_type"
     t.text     "content"
     t.string   "msg_id"
@@ -195,6 +201,7 @@ ActiveRecord::Schema.define(version: 20150120064235) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "from_user_name"
     t.integer  "public_account_id"
   end
 
