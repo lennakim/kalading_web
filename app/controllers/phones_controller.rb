@@ -16,7 +16,6 @@ class PhonesController < ApplicationController
 
   def send_verification_code
     vcode = VerificationCode.create phone_num: params[:phone_num]
-
     success = vcode.valid? && vcode.send_sms
 
     render json: { success: success }
