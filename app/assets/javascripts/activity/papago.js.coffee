@@ -8,7 +8,7 @@ $ ->
   $('.closebtn,.share_button').click ->
     $('.msg').addClass('hidden')
     $('.msg,.bac').addClass('hidden')
-    $('body').css({'overflow':'auto'})
+    $('body').css({'overflowY':'auto'})
 
 
   #下一步（有手机号和验证码的时候 弹出分享提示框）
