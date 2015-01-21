@@ -96,6 +96,7 @@
 </div>
 
 <% pa = PublicAccount.find_by(name: 'kaladingcom') %>
-<% url = activity_url(name: 'papago') %>
+<% url = request.original_url %>
 <% result = pa.get_signature(url) %>
 <div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>" data-thumbnail="<%= image_url('activity/papago/thumbnail.jpg') %>" data-url="<%= url %>"></div>
+
