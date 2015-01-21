@@ -94,8 +94,7 @@
   	<%= image_tag("activity/papago/close.png",width:"10%", class: "closebtn") %>
   </div>
 </div>
+
 <% pa = PublicAccount.find_by(name: 'kaladingcom') %>
-
 <% result = pa.get_signature(request.original_url) %>
-
 <div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>"></div>
