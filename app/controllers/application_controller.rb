@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
   before_action :set_city
   before_action :set_device_type
 
+  http_basic_authenticate_with name: 'staging', password: 'abcdefg' if Rails.env == "staging"
+
   def sign_in user
     cookies[:LGT] = { value: user.update_user, expires: 30.days.from_now }
   end
