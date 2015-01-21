@@ -29,8 +29,8 @@ class SessionsController < ApplicationController
   end
 
   def callback
-    # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom
-    # Here got three params: params[:code], params[:state], params[:name]
+    # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
+    # Here got four params: params[:code], params[:state], params[:name], params[:go]
 
     account = PublicAccount.find_by(name: params[:name])
     client = account.weixin_client
@@ -47,7 +47,22 @@ class SessionsController < ApplicationController
       end
     end
 
-    redirect_to root_path(login:1)
+    go = params[:go]
+
+    return redirect_to root_path(login: 1) unless go
+
+    go_somewhere = go.split("_").first
+
+    case go_somewhere
+    when "act"
+      go_content = go.split("_").second
+      AuthinfoActivity.find_or_create_by(auth_info_id: auth_info.id,
+                              activity_id: Activity.find_by(name: go_content).id)
+      redirect_to activity_path(name: go_content, from: Channel.find_by(name: "微信").key)
+    else
+      redirect_to root_path(login: 1)
+    end
+
   end
 
   def destroy

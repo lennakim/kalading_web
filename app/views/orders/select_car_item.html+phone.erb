@@ -2,7 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>">
+<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>" data-act="<%= params[:act] %>">
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist" id="myTab">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
@@ -37,13 +37,15 @@
         </div>
 
         <% type = params[:type] || 'bmt' %>
-        <% car_id = params[:car_id] %>
+        <% car_id = params[:car_id] || @last_select_car.system_id %>
 
         <% activity = Activity.find_by(id: params[:act]) %>
         <% via_act = activity && activity.valid_activity? %>
         <% if via_act %>
           <% types = activity.products.map &:slug %>
-          <% type = types.first %>
+          <% if !types.include?(type) %>
+            <% type = types.first %>
+          <% end %>
           <% code = activity.preferential_code %>
         <%end %>
 
@@ -53,21 +55,21 @@
 
             <% if !via_act || types.include?('pm25') %>
               <div class="service-item" data-type="pm25">
-                <input type="radio" name="service">
+                <input type="radio" name="service" <%= "checked" if type == "pm25" %>>
                 <span class="pm25 <%= "selected" if type == "pm25" %>">PM2.5滤芯更换</span>
               </div>
             <% end %>
 
             <% if !via_act || types.include?('bmt') %>
               <div class="service-item" data-type="bmt">
-                <input type="radio" name="service">
+                <input type="radio" name="service" <%= "checked" if type == "bmt" %>>
                 <span class="bmt <%= "selected" if type == "bmt" %>">大保养</span>
               </div>
             <% end %>
 
             <% if !via_act || types.include?('smt') %>
               <div class="service-item" data-type="smt">
-                <input type="radio" name="service">
+                <input type="radio" name="service" <%= "checked" if type == "smt" %>>
                 <span class="smt <%= "selected" if type == "smt" %>">小保养</span>
               </div>
             <% end %>

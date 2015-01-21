@@ -3,13 +3,13 @@
 <% end %>
 
 <div class="select-city">
-	<% @cities.each do |city| %>
-	  <div class="city list clearfix" >
-		<div class="city pull-left" >
-        	<%= link_to city["name"], auto_brands_orders_path(id: city['system_id'], act: params[:act]) %>
-	    </div>
-	    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
-	    </div>
-	  </div>
-	<% end %>
+  <% @cities.each do |city| %>
+    <div class="city list clearfix" >
+    <div class="city pull-left" >
+      <%= link_to city["name"], auto_brands_orders_path(id: city['system_id'], act: params[:act]) %>
+    </div>
+    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
+    </div>
+  </div>
+<% end %>
 </div>
