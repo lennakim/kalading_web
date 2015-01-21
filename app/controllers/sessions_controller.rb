@@ -29,8 +29,8 @@ class SessionsController < ApplicationController
   end
 
   def callback
-    # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom
-    # Here got three params: params[:code], params[:state], params[:name]
+    # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
+    # Here got four params: params[:code], params[:state], params[:name], params[:go]
 
     account = PublicAccount.find_by(name: params[:name])
     client = account.weixin_client
@@ -47,7 +47,18 @@ class SessionsController < ApplicationController
       end
     end
 
-    redirect_to root_path(login:1)
+    go = params[:go]
+    go_somewhere = go.split("_").first
+
+    case go_somewhere
+    when "act"
+      go_content = go.split("_").second
+      url = "http://kalading.com/activities/#{go_content}?from=dab5e6b582ad98c1c23c89d10c4cb6f2"
+      redirect_to url
+    else
+      redirect_to root_path(login:1)
+    end
+
   end
 
   def destroy
