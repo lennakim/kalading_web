@@ -16,6 +16,8 @@ $ ->
   timestamp = $("#data").data('timestamp')
   nonceStr = $("#data").data('noncestr')
   appId = $("#data").data('appid')
+  thumbnail = $("#data").data('thumbnail')
+  link = $("#data").data('url')
   sharable = false
 
   wx.config
@@ -42,23 +44,23 @@ $ ->
   wx.ready ->
 
     wx.onMenuShareTimeline
-      title: '病毒别点', # 分享标题
-      link: '', # 分享链接
-      imgUrl: '', # 分享图标
+      title: '爱车新年无霾劵！每天500张，戳进来抢！'
+      link: link
+      imgUrl: thumbnail
+      desc: '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！'
       success: ->
         if sharable
           hideMessage()
           showRedPacket()
-
       cancel: ->
         if sharable
           showMessage()
 
     wx.onMenuShareAppMessage
-      title: '病毒别点'
-      desc: '病毒别点 desc ..'
-      link: ''
-      imgUrl: ''
+      title: '爱车新年无霾劵！每天500张，戳进来抢！'
+      desc: '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！'
+      link: link
+      imgUrl: thumbnail
       type: ''
       dataUrl: ''
       success: ->
