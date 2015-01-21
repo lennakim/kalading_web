@@ -29,12 +29,11 @@ $ ->
     $('.discount-con').removeClass('hidden')
 
   showMessage = ->
-    $('.msg, .bac').removeClass('hidden')
+    $('.point, .msg, .bac').removeClass('hidden')
     $('body').css({'overflow':'hidden'})
 
   hideMessage = ->
-    $('.msg').addClass('hidden')
-    $('.msg,.bac').addClass('hidden')
+    $('.point, .msg,.bac').addClass('hidden')
 
     $('body').css({'overflow': 'auto'})
 

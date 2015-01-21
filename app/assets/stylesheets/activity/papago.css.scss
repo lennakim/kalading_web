@@ -110,7 +110,7 @@ body{
 		background: #ffc122;
 		.use_button{
 			position: absolute;
-			top: 120px;
+			top: 110px;
 			left: 30%;
 			width: 40%;
 			height: 35px;
@@ -200,18 +200,26 @@ body{
 		}
 	}
 }
+.point{
+	position: fixed;
+	top: 0;
+}
 .msg{
 	position: fixed;
-	top: 12%;
+	top: 25%;
 	left: 8%;
 	width: 84%;
 	border-radius: 5px;
-	padding: 0 7% 7%;
+	padding: 0 7% 10%;
 	background: #fff;
 	color: #5c5c5c;
 	.title{
 		text-align: center;
 		color: #ea6f45;
+	}
+	p{
+		margin-bottom: 29px;
+		font-size: 16px;
 	}
 	.share_button{
 		width: 100%;
@@ -219,7 +227,7 @@ body{
 	.closebtn{
 		position: fixed;
 		right: 5%;
-		top: 10%;
+		top: 22%;
 	}
 }
 @media screen and (min-device-width: 360px){
