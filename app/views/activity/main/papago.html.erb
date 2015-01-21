@@ -18,7 +18,7 @@
 	  <div class="field">
 	  	<input title="手机号" class="phone_num form-control" id="phone_num" placeholder="手机号">
 	  </div>
-	  <div class="field">   
+	  <div class="field">
 	    <input title="验证码" class="verification_code form-control" placeholder="验证码" id="verification_code"/>
 	    <button title="点击获取验证码" class='get_code orange' id="get_code">发送验证码</button>
 	  </div>
@@ -119,11 +119,11 @@
 	    imgUrl: '', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-	    success: function () { 
+	    success: function () {
 	        $('.active,.rule,.form-con').addClass('hidden');
 	        $('.discount-con').removeClass('hidden');
 	    },
-	    cancel: function () { 
+	    cancel: function () {
 	        // 用户取消分享后执行的回调函数
 	    }
 	});
