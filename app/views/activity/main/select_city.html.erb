@@ -1,7 +1,15 @@
+<%= content_for :assets do %>
+  <%= stylesheet_link_tag    'activity/activity', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
 <div class="select-city">
 	<% @cities.each do |city| %>
-	  <div class="city clearfix" >
-        <%#= link_to city["name"], auto_series_orders_path(id: brand['_id'], act: params[:act]) %>
+	  <div class="city list clearfix" >
+		<div class="city pull-left" >
+        	<%= link_to city["name"], auto_brands_orders_path(id: city['system_id'], act: params[:act]) %>
+	    </div>
+	    <div class="arrow glyphicon glyphicon-chevron-right pull-right">
+	    </div>
 	  </div>
 	<% end %>
 </div>

@@ -1,7 +1,9 @@
 #= require activity/activity
 
 $ ->
-
+  
+  
+  
   $('.title1').animate {'left':'0'}, 500, ->
     $('.title2').animate({'left':'0'},500)
 

@@ -9,7 +9,6 @@
 <div class="papago">
   <div class="login-form">
   	<div class="form-tit">
-  	  <%= image_tag("activity/papago/tit_bac.png",width:"100%", class: "tit_bac") %>
   	  <%= image_tag("activity/papago/title1.png",width:"100%", class: "title1") %>
   	  <%= image_tag("activity/papago/title2.png",width:"100%", class: "title2") %>
   	</div>
@@ -31,7 +30,7 @@
   		<%= image_tag("activity/papago/discount.png",width:"100%", class: "discount") %>
   		<%= image_tag("activity/papago/money.png",width:"100%", class: "money translate-money") %>
   		<%= image_tag("activity/papago/packet.png",width:"100%", class: "packet") %>
-    	<a href="/activity/select_city" title="立即使用" id="use_button" class="use_button">立即使用</a>
+		<%= link_to "立即使用", select_city_activity_main_index_path, id: 'use_button', class: 'use_button' %>
     </div>
   </div>
   <div class="active">

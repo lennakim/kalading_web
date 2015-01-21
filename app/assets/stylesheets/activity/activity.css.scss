@@ -19,4 +19,28 @@
 a:link[title="站长统计"]{
   display: none;
 }
+.select-city{
+  .list{
+    padding-left: 20px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-style:solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #eee;
+    color:#666462;
+    .pull-left{
+      width: 85%;
+    }
+    .arrow{
+      margin-right: 20px;
+      line-height: 40px;
+    }
+    a{
+      display: block;
+      width: 100%;
+      color: #000;
+    }
+  }
+}
 

@@ -81,7 +81,11 @@ Rails.application.routes.draw do
   end
 
   namespace :activity do
-    resources :main
+    resources :main do
+      collection do
+        get 'select_city'
+      end
+    end
   end
 
   resources :phones do

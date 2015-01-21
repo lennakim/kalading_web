@@ -2,7 +2,7 @@ class Activity::MainController < ActionController::Base
   layout "activity"
   impressionist
 
-  before_action :find_activity
+  before_action :find_activity, only: ['show']
 
   def show
     impressionist(@activity, params[:from])
@@ -12,6 +12,10 @@ class Activity::MainController < ActionController::Base
     else
       render text: "此活动已经下线了哦，请持续关注我们的官网，将会有更多精彩活动等着你！"
     end
+  end
+
+  def select_city
+    @cities = City.all
   end
 
   private

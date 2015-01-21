@@ -55,18 +55,18 @@ body{
 		overflow: hidden;
 		position: relative;
 		width: 100%;
-		//height: 234px;
-		// background-image: image-url("activity/papago/tit_bac.png"); 
-		// background-size: 100%;
-		// background-repeat: no-repeat;
+		height: 234px;
+		background-image: image-url("activity/papago/tit_bac.png"); 
+		background-size: 100%;
+		background-repeat: no-repeat;
 		.title1{
 			position: absolute;
 			left: 100%;
-			top: 0;
 		}
 		.title2{
 			position: absolute;
 			left: -100%;
+			top: 90px;
 		}
 	} 
 	.form-con{
@@ -214,36 +214,101 @@ body{
 		top: 10%;
 	}
 }
-// @media screen and (min-device-width: 360px){
+@media screen and (min-device-width: 360px){
+.login-form{
+	.form-tit{
+		height: 260px;
+		.title2{
+			top: 100px;
+		}
+	}
+}
+}
+@media screen and (min-device-width: 375px){
+.login-form{
+	.form-tit{
+		height: 270px;
+		.title2{
+			top: 110px;
+		}
+	}
+}
+}
+@media screen and (min-device-width: 400px){
+.login-form{
+	.form-tit{
+		height: 300px;
+		.title2{
+			top: 110px;
+		}
+	}
+	.form-con{
+		height: 290px;
+	}
+}
+}
+@media screen and (device-width: 480px){
+.login-form{
+	.form-tit{
+		height: 400px;
+		.title2{
+			top: 150px;
+		}
+	}
+	.form-con{
+		height: 330px;
+	}
+}
+}
+@media screen and (device-width: 540px){
+.login-form{
+	.form-tit{
+		height: 400px;
+		.title2{
+			top: 150px;
+		}
+	}
+	.form-con{
+		height: 330px;
+	}
+}
+}
+// @media screen and (device-width: 720px){
 // .login-form{
 // 	.form-tit{
-// 		height: 260px;
+// 		height: 520px;
 // 		.title2{
-// 			top: 100px;
-// 		}
-// 	}
-// }
-// }
-// @media screen and (min-device-width: 375px){
-// .login-form{
-// 	.form-tit{
-// 		height: 270px;
-// 		.title2{
-// 			top: 110px;
-// 		}
-// 	}
-// }
-// }
-// @media screen and (min-device-width: 414px){
-// .login-form{
-// 	.form-tit{
-// 		height: 280px;
-// 		.title2{
-// 			top: 110px;
+// 			top: 200px;
 // 		}
 // 	}
 // 	.form-con{
-// 		height: 290px;
+// 		height: 380px;
 // 	}
 // }
 // }
+@media screen and(min-device-width: 960px) and(max-device-width: 1024px){
+.login-form{
+	.form-tit{
+		height: 740px;
+		.title2{
+			top: 280px;
+		}
+	}
+	.form-con{
+		height: 500px;
+	}
+}
+}
+@media screen and (device-width: 1280px){
+.login-form{
+	.form-tit{
+		height: 930px;
+		.title2{
+			top: 350px;
+		}
+	}
+	.form-con{
+		height: 580px;
+	}
+}
+}
