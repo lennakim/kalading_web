@@ -95,9 +95,8 @@ $ ->
 
   wx.error (res) ->
     alert '出错啦! 请刷新重试~'
-    alert res
 
-  $('.get_code').click ->
+  $('#get_code').click ->
     phone_num = $('#phone_num').val()
     $(this).addClass('disable').attr('disabled','disabled')
     seconds = 60
@@ -132,6 +131,9 @@ $ ->
 
     $.post "/phones", { phone_num: phone_num, code: verification_code }, (data) ->
       if data.success == true
+
+        $("#next_button").removeClass('disable').attr('disabled', false)
+
         $('.msg,.bac').removeClass('hidden')
         $('body').css({'overflow':'hidden'})
       else
