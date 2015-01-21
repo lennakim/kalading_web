@@ -118,6 +118,7 @@ body{
 		.money{
 			position: absolute;
 			top: -30px;
+			left: 0;
 		}
 		.translate-money{
 			animation:translate-money-animate 1s linear infinite;
@@ -298,6 +299,7 @@ body{
 	}
 }
 }
+
 @media screen and (min-device-width: 1280px){
 .login-form{
 	.form-tit{
