@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
     case go_somewhere
     when "act"
       go_content = go.split("_").second
-      AuthinfoActivity.create(auth_info_id: auth_info.id,
+      AuthinfoActivity.find_or_create_by(auth_info_id: auth_info.id,
                               activity_id: Activity.find_by(name: go_content).id)
       redirect_to activity_path(name: go_content, from: Channel.find_by(name: "微信").key)
     else
