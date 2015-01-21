@@ -5,10 +5,8 @@ $ ->
   $('.title1').animate {'left':'0'}, 500, ->
     $('.title2').animate({'left':'0'},500)
 
-  $('.closebtn,.share_button').click ->
-    $('.msg').addClass('hidden')
-    $('.msg,.bac').addClass('hidden')
-    $('body').css({'overflowY':'auto'})
+  $('.closebtn, .share_button').click ->
+    hideMessage()
 
   $('.bac').css({'height':$(window).height()})
 
@@ -16,6 +14,7 @@ $ ->
   timestamp = $("#data").data('timestamp')
   nonceStr = $("#data").data('noncestr')
   appId = $("#data").data('appid')
+  sharable = false
 
   wx.config
     appId: appId
@@ -24,6 +23,20 @@ $ ->
     signature: signature
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
 
+  showRedPacket = ->
+    $('.active, .rule, .form-con').addClass('hidden')
+    $('.discount-con').removeClass('hidden')
+
+  showMessage = ->
+    $('.msg, .bac').removeClass('hidden')
+    $('body').css({'overflow':'hidden'})
+
+  hideMessage = ->
+    $('.msg').addClass('hidden')
+    $('.msg,.bac').addClass('hidden')
+
+    $('body').css({'overflow': 'auto'})
+
   wx.ready ->
 
     wx.onMenuShareTimeline
@@ -31,11 +44,13 @@ $ ->
       link: '', # 分享链接
       imgUrl: '', # 分享图标
       success: ->
-        $('.active, .rule, .form-con').addClass('hidden')
-        $('.discount-con').removeClass('hidden')
+        if sharable
+          hideMessage()
+          showRedPacket()
+
       cancel: ->
-        $('.msg,.bac'). removeClass('hidden')
-        $('body').css({'overflow':'hidden'})
+        if sharable
+          showMessage()
 
     wx.onMenuShareAppMessage
       title: '病毒别点'
@@ -45,11 +60,12 @@ $ ->
       type: ''
       dataUrl: ''
       success: ->
-        $('.active,.rule,.form-con').addClass('hidden')
-        $('.discount-con').removeClass('hidden')
+        if sharable
+          hideMessage()
+          showRedPacket()
       cancel: ->
-        $('.msg,.bac').removeClass('hidden')
-        $('body').css({'overflow':'hidden'})
+        if sharable
+          showMessage()
 
   wx.error (res) ->
     alert '出错啦! 请刷新重试~'
@@ -90,8 +106,7 @@ $ ->
     $.post "/phones", { phone_num: phone_num, code: verification_code }, (data) ->
       $("#next_button").removeClass('disable').attr('disabled', false)
       if data.success == true
-        $('.msg,.bac').removeClass('hidden')
-        $('body').css({'overflow':'hidden'})
+        sharable = true
+        showMessage()
       else
         alert data.msg
-
