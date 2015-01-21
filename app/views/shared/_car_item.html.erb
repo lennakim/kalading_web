@@ -1,7 +1,7 @@
 <div class="car pull-left col-sm-3">
   <div class="input-group btn-group">
     <span class="input-group-addon">
-      <input type="radio" name="car_brand" aria-label="..." data-id="<%= auto.system_id %>" data-autoid= "<%= auto.id %>" data-car_num="<%= auto.license_number %>">
+      <input type="radio" name="car_brand" aria-label="..." data-id="<%= auto.system_id %>" data-autoid= "<%= auto.id %>" data-car_num="<%= auto.license_number %>" <%= "checked" if params[:auto_id].to_s == auto.id.to_s %>>
     </span>
 
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" data-autoid = "<%= auto.id %>" data-id="<%= auto.system_id %>">
