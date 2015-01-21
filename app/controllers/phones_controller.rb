@@ -1,13 +1,9 @@
 class PhonesController < ApplicationController
 
   def create
-
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
 
     if vcode && !vcode.expired?
-
-
-
       render json: { success: true }
     else
       render json: { success: false, msg: '手机或者验证码错误' }
