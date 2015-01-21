@@ -11,17 +11,7 @@ $ ->
     $('body').css({'overflow':'auto'})
 
 
-  #下一步（有手机号和验证码的时候 弹出分享提示框）
-  $('.next_button').click ->
-    if $('#phone_num').val() != ''
-      if $('#verification_code').val() != ''
-        $('.msg,.bac').removeClass('hidden')
-        $('body').css({'overflow':'hidden'})
-      else
-        alert('请您先获取验证码！')
-    else
-      alert('请您先填写手机号！')
-      
+
   $('#get_code').click ->
     phone_num = $('#phone_num').val()
     $(this).addClass('disable').attr('disabled', 'disabled')
@@ -137,5 +127,5 @@ $ ->
         $('.msg,.bac').removeClass('hidden')
         $('body').css({'overflow':'hidden'})
       else
-        alert('一定是姿势不对，请再约一次！')
+        alert data.msg
 
