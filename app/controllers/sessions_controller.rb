@@ -48,15 +48,19 @@ class SessionsController < ApplicationController
     end
 
     go = params[:go]
+
+    return redirect_to root_path(login: 1) unless go
+
     go_somewhere = go.split("_").first
 
     case go_somewhere
     when "act"
       go_content = go.split("_").second
-      url = "http://kalading.com/activities/#{go_content}?from=dab5e6b582ad98c1c23c89d10c4cb6f2"
-      redirect_to url
+      AuthinfoActivity.create(auth_info_id: auth_info.id,
+                              activity_id: Activity.find_by(name: go_content).id)
+      redirect_to activity_path(name: go_content, from: Channel.find_by(name: "微信").key)
     else
-      redirect_to root_path(login:1)
+      redirect_to root_path(login: 1)
     end
 
   end
