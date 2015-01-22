@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     end
 
     @cars_info = Order.cars_data current_city_id, type
-    @result = Order.items_for params[:car_id], current_city_id, type
+    # @result = Order.items_for params[:car_id], current_city_id, type
   end
 
   def select_car_item

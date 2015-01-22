@@ -54,6 +54,10 @@ $ ->
         auto_id = $(".quick-select input:radio:checked").data('autoid')
 
       type = $('.select-car-page').data('type') || 'bmt'
+
+      unless id
+        return alert "请先选择车辆"
+
       if auto_id
         Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }&auto_id=#{ auto_id }")
       else
