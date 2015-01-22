@@ -50,7 +50,7 @@ class Order
     end
 
     def items_for car_id, city_id, type = "bmt"
-      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id, "#{type}": true } {[]}
+      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id, "#{type}" => true } {[]}
     end
 
     def refresh_price car_id, city_id, payload
