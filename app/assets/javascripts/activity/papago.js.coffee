@@ -39,8 +39,8 @@ $ ->
 
     $('body').css({'overflow': 'auto'})
 
-  # if shared
-    # showRedPacket()
+  if shared
+    showRedPacket()
 
   wx.ready ->
 
