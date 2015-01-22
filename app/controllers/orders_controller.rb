@@ -30,7 +30,8 @@ class OrdersController < ApplicationController
   end
 
   def auto_model_numbers
-    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id
+    type = params[:type] || 'bmt'
+    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, type
   end
 
   def select_car
@@ -41,7 +42,7 @@ class OrdersController < ApplicationController
     end
 
     @cars_info = Order.cars_data current_city_id, type
-    @result = Order.items_for params[:car_id], current_city_id
+    @result = Order.items_for params[:car_id], current_city_id, type
   end
 
   def select_car_item
@@ -63,8 +64,8 @@ class OrdersController < ApplicationController
       end
 
       type = params[:type]
-      @cars_info = Order.cars_data current_city_id, type
-      @result = Order.items_for car_id, current_city_id
+      # @cars_info = Order.cars_data current_city_id, type
+      @result = Order.items_for car_id, current_city_id, type
 
     else
       return redirect_to auto_brands_orders_path(act: params[:act])
@@ -107,11 +108,13 @@ class OrdersController < ApplicationController
   end
 
   def select_item
+    type = params[:type]
+
     if !params[:auto_id].present?
       save_last_select_car params[:car_id]
     end
 
-    @result = Order.items_for params[:car_id], current_city_id
+    @result = Order.items_for params[:car_id], current_city_id, type
   end
 
   def place_order

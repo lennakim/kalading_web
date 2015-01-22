@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121092836) do
+ActiveRecord::Schema.define(version: 20150122075055) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150121092836) do
     t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "share_authinfo_id"
   end
 
   create_table "autos", force: true do |t|

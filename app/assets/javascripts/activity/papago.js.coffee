@@ -1,4 +1,5 @@
 #= require activity/activity
+#= require jquery.cookie
 
 $ ->
   $('.title1').animate {'left':'0'}, 500, ->
@@ -16,6 +17,7 @@ $ ->
   thumbnail = $("#data").data('thumbnail')
   link = $("#data").data('url')
   sharable = false
+  shared = $.cookie('shared')
 
   wx.config
     appId: appId
@@ -37,6 +39,9 @@ $ ->
 
     $('body').css({'overflow': 'auto'})
 
+  # if shared
+    # showRedPacket()
+
   wx.ready ->
 
     wx.onMenuShareTimeline
@@ -48,6 +53,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
+          $.cookie('shared', true)
       cancel: ->
         if sharable
           showMessage()
@@ -63,6 +69,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
+          $.cookie('shared', true)
       cancel: ->
         if sharable
           showMessage()
