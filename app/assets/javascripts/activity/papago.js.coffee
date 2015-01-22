@@ -1,4 +1,5 @@
 #= require activity/activity
+#= require jquery.cookie
 
 $ ->
   $('.title1').animate {'left':'0'}, 500, ->
@@ -15,7 +16,7 @@ $ ->
   appId = $("#data").data('appid')
   thumbnail = $("#data").data('thumbnail')
   link = $("#data").data('url')
-  sharable = false
+  sharable = $.cookie('sharable') || false
 
   wx.config
     appId: appId
@@ -48,6 +49,8 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
+          $.cookie('sharable', true)
+
       cancel: ->
         if sharable
           showMessage()
@@ -63,6 +66,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
+          $.cookie('sharable', true)
       cancel: ->
         if sharable
           showMessage()
