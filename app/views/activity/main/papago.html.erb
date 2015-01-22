@@ -7,6 +7,7 @@
 <% end %>
 
 <% activity = Activity.find_by name: 'papago' %>
+<% current_openid = cookies[:USERAUTH] %>
 
 <div class="papago">
   <div class="login-form">
@@ -105,7 +106,7 @@
 
 <% url = request.original_url %>
 
-<% callback_url = pa.weixin_client.authorize_url(callback_sessions_url(name: pa.name, go: "act_#{activity.name}"), "snsapi_userinfo") %>
+<% callback_url = pa.weixin_client.authorize_url(callback_sessions_url(name: pa.name, go: "act_#{activity.name}", share_openid: current_openid), "snsapi_userinfo") %>
 
 <% result = pa.get_signature(url) %>
 <div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>" data-thumbnail="<%= image_url('activity/papago/thumbnail.jpg') %>" data-url="<%= callback_url %>"></div>
