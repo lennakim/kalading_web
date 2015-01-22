@@ -16,7 +16,12 @@ $ ->
   appId = $("#data").data('appid')
   thumbnail = $("#data").data('thumbnail')
   link = $("#data").data('url')
-  sharable = $.cookie('sharable') || false
+  sharable = false
+
+  shared = $.cookie('shared')
+
+  if shared
+    showRedPacket()
 
   wx.config
     appId: appId
@@ -49,8 +54,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
-          $.cookie('sharable', true)
-
+          $.cookie('shared', true)
       cancel: ->
         if sharable
           showMessage()
@@ -66,7 +70,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
-          $.cookie('sharable', true)
+          $.cookie('shared', true)
       cancel: ->
         if sharable
           showMessage()
