@@ -16,16 +16,8 @@ $ ->
   appId = $("#data").data('appid')
   thumbnail = $("#data").data('thumbnail')
   link = $("#data").data('url')
-
   sharable = false
-
   shared = $.cookie('shared')
-
-  alert $.cookie('shared')
-
-  if shared
-    alert 'shared ..'
-    showRedPacket()
 
   wx.config
     appId: appId
@@ -35,7 +27,6 @@ $ ->
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
 
   showRedPacket = ->
-    alert 'show red packet'
     $('.active, .rule, .form-con').addClass('hidden')
     $('.discount-con').removeClass('hidden')
 
@@ -47,6 +38,9 @@ $ ->
     $('.point, .msg,.bac').addClass('hidden')
 
     $('body').css({'overflow': 'auto'})
+
+  if shared
+    showRedPacket()
 
   wx.ready ->
 
