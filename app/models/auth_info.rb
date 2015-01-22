@@ -6,7 +6,7 @@ class AuthInfo < ActiveRecord::Base
   has_many :authinfo_activities
   has_many :activities, through: :authinfo_activities
 
-  has_many :share_authinfos, through: :authinfo_activities, foreign_key: :share_authinfo_id, source: :auth_info_id
+  has_many :share_authinfos, through: :authinfo_activities, foreign_key: :share_authinfo_id, source: 'auth_info'
 
   validates_uniqueness_of :provider, :scope => [:uid]
   validates :provider, :uid,  presence:true
