@@ -37,8 +37,10 @@ class SessionsController < ApplicationController
     sns_info = client.get_oauth_access_token(params[:code])
     expires_in = sns_info.result["expires_in"].seconds.from_now.utc
     cookies[:USERAUTH] = { value: sns_info.result["openid"], expires: 30.days.from_now }
-    auth_info = account.auth_infos.find_or_create_by(provider:"weixin",
-                                                     uid:sns_info.result["openid"])
+    auth_info = account.auth_infos.find_or_create_by \
+      provider: "weixin",
+      uid: sns_info.result["openid"]
+
     auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
 
     if signed_in?
@@ -59,10 +61,12 @@ class SessionsController < ApplicationController
     when "act"
       go_content = go.split("_").second
 
-      AuthinfoActivity.find_or_create_by \
-        auth_info_id: auth_info.id,
-        activity_id: Activity.find_by(name: go_content).id,
-        share_authinfo_id: AuthInfo.find_by(uid: share_openid).try(:id)
+      if auth_info.uid != share_openid
+        AuthinfoActivity.find_or_create_by \
+          auth_info_id: auth_info.id,
+          activity_id: Activity.find_by(name: go_content).id,
+          share_authinfo_id: AuthInfo.find_by(uid: share_openid).try(:id)
+      end
 
       redirect_to activity_path(name: go_content, from: Channel.find_by(name: "微信").key, share_openid: share_openid)
     else
