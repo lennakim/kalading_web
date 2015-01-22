@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
       @result = Order.items_for car_id, current_city_id, type
 
     else
-      return redirect_to auto_brands_orders_path(act: params[:act])
+      return redirect_to auto_brands_orders_path(act: params[:act], type: params[:type])
     end
   end
 
