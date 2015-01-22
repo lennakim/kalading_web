@@ -89,7 +89,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         end
         account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
         account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
-        reply_text_message("欢迎关注卡拉丁")
+        reply_text_message("感谢关注小卡！为您的爱车提供便捷·专注·可靠的机油三滤保养服务！【九块九趴趴走】活动火热进行中！点击右下角【最新活动】即可预定哦~任何问题请回复或拨打400-006-8181~")
       end
 
       # 取消关注
