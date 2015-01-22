@@ -22,8 +22,8 @@ class Order
       ServerApi.call "get", "auto_brands", { entry_id: brand_id, city_id: city_id }
     end
 
-    def auto_model_numbers series_id, city_id
-      ServerApi.call "get", "auto_models", { entry_id: series_id, city_id: city_id }
+    def auto_model_numbers series_id, city_id, type = "bmt"
+      ServerApi.call "get", "auto_models", { entry_id: series_id, city_id: city_id, "#{type}" => true }
     end
 
     def recent_orders
@@ -46,7 +46,11 @@ class Order
     end
 
     def cars_data city_id, type = "bmt"
-      ServerApi.call "get", "auto_brands", {all: 1, "#{type}" => true, city_id: city_id}
+      if type == 'pm25'
+        ServerApi.call "get", "auto_sms_with_pm25", {city_id: city_id}
+      else
+        ServerApi.call "get", "auto_brands", {all: 1, city_id: city_id}
+      end
     end
 
     def items_for car_id, city_id, type = "bmt"

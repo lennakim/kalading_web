@@ -30,7 +30,8 @@ class OrdersController < ApplicationController
   end
 
   def auto_model_numbers
-    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id
+    type = params[:type] || 'bmt'
+    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, type
   end
 
   def select_car
@@ -63,7 +64,7 @@ class OrdersController < ApplicationController
       end
 
       type = params[:type]
-      @cars_info = Order.cars_data current_city_id, type
+      # @cars_info = Order.cars_data current_city_id, type
       @result = Order.items_for car_id, current_city_id, type
 
     else
