@@ -19,7 +19,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       handle_recv_messages @weixin_message
-      reply_text_message("")
+      reply_text_message("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
     end
 
     # <Location_X>23.134521</Location_X>
