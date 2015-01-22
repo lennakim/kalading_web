@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
   def select_car_item
 
     unless browser.mobile?
-      return redirect_to select_car_orders_path
+      return redirect_to select_car_orders_path(act: params[:act], type: params[:type])
     end
 
     if params[:car_id] || last_select_car.present?
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
       @result = Order.items_for car_id, current_city_id, type
 
     else
-      return redirect_to auto_brands_orders_path(act: params[:act])
+      return redirect_to auto_brands_orders_path(act: params[:act], type: params[:type])
     end
   end
 
