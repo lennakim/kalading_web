@@ -6,7 +6,6 @@ class AuthInfo < ActiveRecord::Base
   has_many :authinfo_activities
   has_many :activities, through: :authinfo_activities
 
-
   has_many :share_authinfo_activities, class_name: "AuthinfoActivity", foreign_key: "share_authinfo_id"
   has_many :share_authinfos, through: :share_authinfo_activities, source: "auth_info"
 
