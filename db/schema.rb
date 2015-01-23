@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122075055) do
+ActiveRecord::Schema.define(version: 20150123081939) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20150122075055) do
     t.string   "token"
     t.datetime "expires_at"
     t.integer  "public_account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "auth_infos", ["provider", "uid"], name: "index_auth_infos_on_provider_and_uid", using: :btree

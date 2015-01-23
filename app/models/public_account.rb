@@ -12,19 +12,14 @@ class PublicAccount < ActiveRecord::Base
   accepts_nested_attributes_for :diymenus, :allow_destroy => true
 
   def weixin_client
-    client = WeixinAuthorize::Client.new(self.appid, self.appsecret)
-    if client.is_valid?
-      self.access_token = client.access_token
-      set_token_expires_at
-      return client
-    end
-    nil
+    WeixinAuthorize::Client.new(self.appid, self.appsecret)
   end
 
   def get_access_token
+    client = weixin_client
     if token_expired?
-      client = weixin_client
-      self.access_token = client.access_token if client
+      client.is_valid?
+      self.access_token = client.access_token
       set_token_expires_at
     end
     self.access_token

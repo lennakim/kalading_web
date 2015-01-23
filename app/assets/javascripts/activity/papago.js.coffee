@@ -53,7 +53,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
-          $.cookie('shared', true)
+          $.cookie('shared', true, { expires: 365 })
       cancel: ->
         if sharable
           showMessage()
@@ -69,7 +69,7 @@ $ ->
         if sharable
           hideMessage()
           showRedPacket()
-          $.cookie('shared', true)
+          $.cookie('shared', true, { expires: 365 })
       cancel: ->
         if sharable
           showMessage()

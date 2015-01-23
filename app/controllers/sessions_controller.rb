@@ -32,16 +32,21 @@ class SessionsController < ApplicationController
     # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
     # Here got four params: params[:code], params[:state], params[:name], params[:go]
 
-    account = PublicAccount.find_by(name: params[:name])
+    account = PublicAccount.find_by name: params[:name]
     client = account.weixin_client
-    sns_info = client.get_oauth_access_token(params[:code])
+    sns_info = client.get_oauth_access_token params[:code]
     expires_in = sns_info.result["expires_in"].seconds.from_now.utc
-    cookies[:USERAUTH] = { value: sns_info.result["openid"], expires: 30.days.from_now }
+    cookies[:USERAUTH] = {
+      value: sns_info.result["openid"],
+      expires: 30.days.from_now
+    }
     auth_info = account.auth_infos.find_or_create_by \
       provider: "weixin",
       uid: sns_info.result["openid"]
 
-    auth_info.update(token: sns_info.result["access_token"], expires_at: expires_in)
+    auth_info.update \
+      token: sns_info.result["access_token"],
+      expires_at: expires_in
 
     if signed_in?
       unless current_user.auth_infos.include? auth_info

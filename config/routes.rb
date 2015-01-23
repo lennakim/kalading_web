@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  resources :wx, controller: :weixin  do
+    get 'transform', on: :collection
+  end
+
   resources :cities do
     post 'set'
   end

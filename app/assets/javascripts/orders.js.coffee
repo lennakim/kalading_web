@@ -65,6 +65,13 @@ $ ->
 
 
   if $(".place-order-page,.place-order-phone").length > 0
+
+    $("#place_order_form").on "ajax:beforeSend", ->
+      $("#submit_form_button").attr('disabled', true)
+
+    $("#place_order_form").on "ajax:complete", ->
+      $("#submit_form_button").attr('disabled', false)
+
     if $('.address input').length == 0
       $('.add a').click()
 
