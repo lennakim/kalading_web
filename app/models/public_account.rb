@@ -13,26 +13,22 @@ class PublicAccount < ActiveRecord::Base
 
   def weixin_client
     client = WeixinAuthorize::Client.new(self.appid, self.appsecret)
+    client
+  end
+
+  def get_access_token
+    client = weixin_client
     if token_expired?
       if client.is_valid?
         self.access_token = client.access_token
         set_token_expires_at
-        return client
+        self.access_token
       else
-        return nil
+        nil
       end
     else
-      return client
+      self.access_token
     end
-  end
-
-  def get_access_token
-    if token_expired?
-      client = weixin_client
-      self.access_token = client.access_token if client
-      set_token_expires_at
-    end
-    self.access_token
   end
 
   def get_jsapi_ticket
