@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  resources :weixin do
+  resources :wx, controller: :weixin  do
     get 'transform', on: :collection
   end
 
