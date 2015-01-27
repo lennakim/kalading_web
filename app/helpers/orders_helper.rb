@@ -1,5 +1,20 @@
 module OrdersHelper
 
+
+  def yidao_filter items, activity
+
+    items = items.select { |ele| ele["brand"] == "嘉实多" }
+
+    case activity.name
+    when "yidao-bmt-1"
+      items.select{ |ele| ele["number"]["金嘉护"] }
+    when "yidao-bmt-2"
+      items.select{ |ele| ele["number"]["磁护"] }
+    when "yidao-bmt-3"
+      items.select{ |ele| ele["number"]["极护"] }
+    end
+  end
+
   def can_cancel? order
     status = order["state"]
     ["未审核", "未分配", "未预约", "已预约"].include? status

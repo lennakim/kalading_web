@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <% type = params[:type] || 'bmt' %>
+        <% type = (params[:type] == nil || params[:type] == "") ? "bmt" : params[:type] %>
         <% car_id = params[:car_id] || @last_select_car.system_id %>
 
         <% activity = Activity.find_by(id: params[:act]) %>
@@ -77,7 +77,7 @@
           <h4 class="item-title">选择配件</h4>
           <div class="orders-con <%= type %>-con content">
             <% if car_id %>
-              <%= render "items", type: type %>
+              <%= render "items", type: type, activity: activity %>
             <% else %>
                 <span class="spe">请先选择车辆和保养类型</span>
             <% end %>

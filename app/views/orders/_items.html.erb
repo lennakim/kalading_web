@@ -19,6 +19,8 @@
     <label class="col-sm-1 control-label">项目：</label>
     <div class="col-sm-11 item-box">
 
+      <% activity = nil unless defined? activity %>
+
       <% parts = @result["applicable_parts"] %>
       <% to_next_step = false %>
 
@@ -26,9 +28,7 @@
         <div class="item clearfix">
           <% part_name = part.keys[0] %>
           <% part_items = part.values[0] %>
-
           <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
-
           <% to_next_step ||= !no_items %>
 
           <div class="part-checkbox pull-left">
@@ -40,26 +40,40 @@
           </div>
 
           <div class="">
-
             <label class='col-sm-1'><%= part_name %></label>
             <% if no_items %>
               <input type="text" value="暂时缺货" class="part no-part form-control" disabled>
             <% else %>
-
               <select class="part form-control">
                 <% select_index = selected_item_index(default_parts(@result), part_items)  %>
+
                 <% part_items.each_with_index do |item, index| %>
                   <% unless item["quantity"] == 0 %>
-                    <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                    <!-- 专门给易道活动的-->
+                    <% if activity && ['yidao-bmt-1', 'yidao-bmt-2', 'yidao-bmt-3'].include?(activity.name) %>
+                      <% if part_name == "机油" %>
+                        <% item = yidao_filter(part_items, activity).first %>
+
+                        <% if item %>
+                          <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                        <% end %>
+
+                        <% break %>
+
+                      <% else %>
+                        <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                      <% end %>
+
+                    <% else %>
+
+                      <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                    <% end %>
                   <% end %>
                 <% end %>
               </select>
-
             <% end %>
-
           </div>
         </div>
-
       <% end %>
 
       <div class="item">
