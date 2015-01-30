@@ -3,11 +3,11 @@ module OrdersHelper
 
   def yidao_filter items, activity
     case activity.name
-    when "yidao-bmt-1" # low
+    when "yi-dao-yi-wan-smt-1" # low
       items.select{ |ele| ele["number"] =~ /金嘉护/ }
-    when "yidao-bmt-2" # mid
+    when "yi-dao-yi-wan-smt-2" # mid
       items.select{ |ele| ele["number"] =~ /磁护/ }
-    when "yidao-bmt-3" # top
+    when "yi-dao-yi-wan-smt-3" # top
       items.select{ |ele| ele["brand"] == "美孚" }
     end
   end
