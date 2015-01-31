@@ -27,6 +27,17 @@ window.Kalading =
 
 $ ->
 
+  #header menu
+  $('.menu').on 'click', 'li', ->
+    $('.menu li').removeClass('selected')
+    $(@).addClass('selected')
+
+  #header nav address
+  $('.nav .address').on 'click','li', ->
+    text = $(@).text()
+    $('.nav .address span.city').text(text);
+
+
   if !$.cookie('set_city_manually')
     $("#select_city_modal").modal()
 

@@ -43,8 +43,8 @@ body{
 
 header.navbar{
   width: 100%;
-  background: #26221d;
-  height: 50px;
+  background: #fff;
+  height: 80px;
 
   // @include background-image(linear-gradient(top , #564E45, #2F2C29));
   // @include filter-gradient(#564E45, #2F2C29);
@@ -53,26 +53,54 @@ header.navbar{
   border-bottom: 1px solid rgb(39, 29, 29);
   margin-bottom: -1px;
   .logo,.nav-item{
-    width: 128px;
+    width: 160px;
     float: left;
-    margin: 7px 0;
+    margin: 16px;
   }
-  .maintain-address{
+  .menu{
     float: left;
-    width: 200px;
-    margin-top: 24px;
-    font-size: 12px;
-    color: #fff;
-    opacity: 0.6;
-    #current_city{
-      cursor: pointer;
-      text-decoration: underline;
+    margin-left: 100px;
+    li{
+      float: left;
+      min-width: 130px;
+      line-height: 74px;
+      text-align: center;
+      a{
+        color: #333;
+        text-decoration: none;
+      }
+      &:hover{
+        background: #f8c999;
+        border-bottom: 5px solid #ee7800;
+        a{
+          color: #fff;
+        }
+      }
+    }
+    .selected{
+      background: #f8c999;
+      border-bottom: 5px solid #ee7800;
+      a{
+        color: #fff;
+      }
     }
   }
+  // .maintain-address{
+  //   float: left;
+  //   width: 200px;
+  //   margin-top: 24px;
+  //   font-size: 12px;
+  //   color: #fff;
+  //   opacity: 0.6;
+  //   #current_city{
+  //     cursor: pointer;
+  //     text-decoration: underline;
+  //   }
+  // }
   .nav{
     float: right;
     min-width: 320px;
-    margin-top: 10px;
+    margin-top: 8px;
     font-family: STHeitiSC-Medium;
     font-size: 14px;
     color: $font-gray;
@@ -90,21 +118,39 @@ header.navbar{
         left: 0;
         opacity: 0;
       }
-      span{
-        display: block;
-        margin-top: -5px;
-        font-size: 12px;
-        color: #eee;
+      .dropdown-menu{
+        text-align: center;
       }
+      span.val{
+        display: block;
+        margin-top: -8px;
+        font-size: 12px;
+        color: #333;
+      }
+    }
+    .address:before{
+      content: image-url("city.png");
+    }
+    .address:hover:before{
+      content: image-url("city1.png");
     }
     .personal:before{
       content: image-url("personal.png");
     }
+    .personal:hover:before{
+      content: image-url("personal1.png");
+    }
     .wechat:before{
       content: image-url("wechat.png");
     }
+    .wechat:hover:before{
+      content: image-url("wechat1.png");
+    }
     .tel:before{
       content: image-url("tel.png");
+    }
+    .tel:hover:before{
+      content: image-url("tel1.png");
     }
   }
 }
