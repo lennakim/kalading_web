@@ -52,7 +52,13 @@ $ ->
   $('#next_step').click ->
     id = $('#car_style option:selected').data 'id'
     type = $('.select-car-page').data('type') || 'bmt'
-    Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
+
+    if id
+
+      Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
+    else
+      return alert "请先选择车辆"
+
 
   # select car
   $('#car_style').chained('#car_type, #car_name')

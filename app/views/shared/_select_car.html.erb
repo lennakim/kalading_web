@@ -3,6 +3,8 @@
     <label for="car_name" class="col-sm-3 control-label">品牌: </label>
     <div class="col-sm-8">
       <select name="car_name" id="car_name" class="form-control">
+        <option value="">选择品牌</option>
+
         <% @cars_info.each do |car| %>
           <option value="<%= car['name'] %>">
             <%= car['name'] %>
@@ -16,6 +18,7 @@
     <label for="car_type" class="col-sm-3 control-label">系列: </label>
     <div class="col-sm-8">
       <select name="car_type" id="car_type" class="form-control">
+        <option value="">选择系列</option>
         <% @cars_info.each do |car| %>
           <% car['ams'].each do |type| %>
             <option value="<%= type['name'] %>" class="<%= car['name'] %>">
@@ -31,6 +34,7 @@
     <label for="car_style" class="col-sm-3 control-label">型号: </label>
     <div class="col-sm-8">
       <select name="car_style" id="car_style" class="form-control">
+        <option value="">选择型号</option>
         <% @cars_info.each do |car| %>
           <% car['ams'].each do |type| %>
             <% type['asms'].each do |style| %>
