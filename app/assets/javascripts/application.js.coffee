@@ -27,12 +27,6 @@ window.Kalading =
 
 $ ->
 
-  $('a[href=#]').click (e)->
-    e.preventDefault()
-    e.stopPropagation()
-    alert '马上开通，敬请期待...'
-
-
   #header nav address
   $('.nav .address a').click ->
     $("#select_city_modal").modal()
