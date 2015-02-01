@@ -35,7 +35,7 @@ $ ->
   #header nav address
   $('.nav .address').on 'click','li', ->
     text = $(@).text()
-    $('.nav .address span.city').text(text);
+    $('.nav .address span.city').text(text)
 
 
   if !$.cookie('set_city_manually')
@@ -61,9 +61,9 @@ $ ->
 
 
   # select car
-  $('#car_style').chained('#car_type, #car_name')
   $('#car_type').chained('#car_name')
-
+  $('#car_style').chained('#car_type')
+  #
   # select service address
   $("#service_districts").chained("#service_cities")
   $('#service_districts').on 'change', (e) ->
