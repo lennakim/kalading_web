@@ -372,22 +372,22 @@ $bac: #fff;
 			}
 			&:nth-child(1){
 				dt{
-					background-image: image-url('w1.png');
+					background-image: image-url('w1.jpg');
 				}
 			}
 			&:nth-child(2){
 				dt{
-					background-image: image-url('w2.png');
+					background-image: image-url('w2.jpg');
 				}
 			}
 			&:nth-child(3){
 				dt{
-					background-image: image-url('w3.png');
+					background-image: image-url('w3.jpg');
 				}
 			}
 			&:nth-child(4){
 				dt{
-					background-image: image-url('w4.png');
+					background-image: image-url('w4.jpg');
 				}
 			}
 			dd{
@@ -446,6 +446,7 @@ $bac: #fff;
 				width: 90%;
 			}
 			.tit{
+				float: left;
 				width: 10%;
 				font-size: 16px;
 				color: #ee7800;

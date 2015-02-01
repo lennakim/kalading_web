@@ -1,14 +1,65 @@
 <% action = params["action"] %>
-<div class="col-md-3">
-  <ul class='menu'>
-    <li class='<%= set_class action, "orders" %>'>
-      <%= link_to "我的订单", orders_users_path  %>
-    </li>
-    <li class='<%= set_class action, "cars" %>'>
-      <%= link_to "车辆信息", cars_users_path %>
-    </li>
-    <li class='<%= set_class action, "settings" %>'>
-      <%= link_to "个人信息", settings_users_path %>
-    </li>
-  </ul>
-</div>
+<% if action == 'orders' %>
+  <div class="col-md-3">
+    <ul class='menu'>
+      <li class='<%= set_class action, "orders" %>'>
+        <%= link_to "我的订单", orders_users_path  %>
+      </li>
+      <li class='<%= set_class action, "cars" %>'>
+        <%= link_to "车辆信息", cars_users_path %>
+      </li>
+      <li class='<%= set_class action, "settings" %>'>
+        <%= link_to "个人信息", settings_users_path %>
+      </li>
+    </ul>
+  </div>
+<% elsif ['pm25', 'knowledge'].include?(action) %>
+  <div class="col-md-3">
+    <ul class='menu'>
+      <li class='<%= set_class action, "pm25" %>'>
+        <%= link_to "pm2.5", pm25_users_path  %>
+      </li>
+      <li class='<%= set_class action, "knowledge" %>'>
+        <%= link_to "用车知识", knowledge_users_path %>
+      </li>
+    </ul>
+  </div>
+<% elsif ['company', 'team', 'media', 'service_process', 'guest', 'area', 'aftermarket', 'product', 'service_descripion', 'contact', 'guest_service'].include?(action) %>
+  <div class="col-md-3">
+    <ul class='menu'>
+      <li class='<%= set_class action, "company" %>'>
+        <%= link_to "公司简介", company_users_path  %>
+      </li>
+      <li class='<%= set_class action, "team" %>'>
+        <%= link_to "团队介绍", team_users_path %>
+      </li>
+      <li class='<%= set_class action, "media" %>'>
+        <%= link_to "媒体报道", media_users_path  %>
+      </li>
+      <li class='<%= set_class action, "service_process" %>'>
+        <%= link_to "服务流程", service_process_users_path %>
+      </li>
+      <li class='<%= set_class action, "guest" %>'>
+        <%= link_to "集团客户", guest_users_path  %>
+      </li>
+      <li class='<%= set_class action, "area" %>'>
+        <%= link_to "服务区域", area_users_path %>
+      </li>
+      <li class='<%= set_class action, "aftermarket" %>'>
+        <%= link_to "售后政策", aftermarket_users_path  %>
+      </li>
+      <li class='<%= set_class action, "product" %>'>
+        <%= link_to "产品保障", product_users_path %>
+      </li>
+      <li class='<%= set_class action, "service_descripion" %>'>
+        <%= link_to "服务说明", service_descripion_users_path %>
+      </li>
+      <li class='<%= set_class action, "contact" %>'>
+        <%= link_to "联系我们", contact_users_path  %>
+      </li>
+      <li class='<%= set_class action, "guest_service" %>'>
+        <%= link_to "集团客户服务", guest_service_users_path %>
+      </li>
+    </ul>
+  </div>
+<% end %>

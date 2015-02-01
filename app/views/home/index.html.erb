@@ -128,7 +128,7 @@
             </p>
             <p>
               卡拉丁车用空调滤清器PM2.5过滤效果最高可达99%，无论车外空气环境多恶劣，都能让车内PM2.5浓度在50以内，达国家一级优良空气标准...
-              <a href="" class="more">查看更多>></a>
+              <%= link_to "查看更多>>", knowledge_users_path(type: 'knowledge'),:class=>'more' %>
             </p>
           </div>
           <%= image_tag("k1.png", :class=> "k1")%>
@@ -145,7 +145,7 @@
             </p>
             <p>
               卡拉丁有最专业的技术，给您带去最好的保养服务，点击查看更多学习更多保养知识...
-              <a href="" class="more">查看更多>></a>
+              <%= link_to "查看更多>>", knowledge_users_path(type: 'knowledge'),:class=>'more' %>
             </p>
           </div>
         </div>
@@ -180,7 +180,7 @@
         </p>
         <p>
           上门汽车保养、上门汽车安全检测、上门更换车用防霾空调滤清器是卡拉丁现有三大标准化产品。卡拉丁自主研发的防霾空调滤芯，安装后防霾效果达95%+，让车内空气质量可达到国家一级标准。
-          <a href="" class="more">查看更多>></a>
+          <%= link_to "查看更多>>", company_users_path,:class=>'more'  %>
         </p>
       </div>
     </div>
@@ -192,7 +192,7 @@
           <dd>
             <p>
               汽车产业链的钱景正从售前转向售后。2013年，汽车后市场规模已达到4500亿元。这4500亿元包括了保险、配件、改装、维修等诸多品类，但其中最核心的细分市场是保养维修...
-              <a href="" class="more">查看更多>></a>
+              <%= link_to "查看更多>>", media_users_path,:class=>'more'  %>
             </p>
             <span class="num">No.1</span>
           </dd>
@@ -202,7 +202,7 @@
           <dd>
             <p>
               汽车产业链的钱景正从售前转向售后。2013年，汽车后市场规模已达到4500亿元。这4500亿元包括了保险、配件、改装、维修等诸多品类，但其中最核心的细分市场是保养维修...
-              <a href="" class="more">查看更多>></a>
+              <%= link_to "查看更多>>", media_users_path,:class=>'more'  %>
             </p>
             <span class="num">No.2</span>
           </dd>
@@ -212,7 +212,7 @@
           <dd>
             <p>
               汽车产业链的钱景正从售前转向售后。2013年，汽车后市场规模已达到4500亿元。这4500亿元包括了保险、配件、改装、维修等诸多品类，但其中最核心的细分市场是保养维修...
-              <a href="" class="more">查看更多>></a>
+              <%= link_to "查看更多>>", media_users_path,:class=>'more'  %>
             </p>
             <span class="num">No.3</span>
           </dd>
@@ -222,7 +222,7 @@
           <dd>
             <p>
               汽车产业链的钱景正从售前转向售后。2013年，汽车后市场规模已达到4500亿元。这4500亿元包括了保险、配件、改装、维修等诸多品类，但其中最核心的细分市场是保养维修...
-              <a href="" class="more">查看更多>></a>
+              <%= link_to "查看更多>>", media_users_path,:class=>'more'  %>
             </p>
             <span class="num">No.4</span>
           </dd>
@@ -232,11 +232,31 @@
     <div class="guest">
       <h3 class="title" title="集团客户">集团客户</h3>
       <ul class="content">
-        <li title="平安保险"><%= image_tag("picc.png", :class=> "picc")%></li>
-        <li title="太平保险"><%= image_tag("d.png", :class=> "d")%></li>
-        <li title=""><%= image_tag("m.png", :class=> "m")%></li>
-        <li title=""><%= image_tag("axa.png", :class=> "axa")%></li>
-        <li title=""><%= image_tag("blue.png", :class=> "blue")%></li>
+        <li title="平安保险">
+          <a href="/users/guest">
+            <%= image_tag("picc.png", :class=> "picc")%>
+          </a>
+        </li>
+        <li title="太平保险">
+          <a href="/users/guest">
+            <%= image_tag("d.png", :class=> "d")%>
+          </a>
+        </li>
+        <li title="">
+          <a href="/users/guest">
+            <%= image_tag("m.png", :class=> "m")%>
+          </a>
+        </li>
+        <li title="">
+          <a href="/users/guest">
+            <%= image_tag("axa.png", :class=> "axa")%>
+          </a>
+        </li>
+        <li title="">
+          <a href="/users/guest">
+            <%= image_tag("blue.png", :class=> "blue")%>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="area">
@@ -245,35 +265,35 @@
         <%= image_tag("map.png")%>
         <ul>
           <li>
-            <span class="tit">北京</span>
+            <a class="tit" href="/users/area">北京</a>
             <span>五环内及通州主城区、石景山、天通苑、回龙观、上地、亦庄</span>
           </li>
           <li>
-            <span class="tit">天津</span>
+            <a class="tit" href="/users/area">天津</a>
             <span>
               主城（含和平区、河东区、河西区、河北区、南开区、红桥区）；塘沽区、开发区、保税区；东丽区全境、津南区
             </span>
           </li>
           <li>
-            <span class="tit">上海</span>
+            <a class="tit" href="/users/area">上海</a>
             <span>
               外环线以内
             </span>
           </li>
           <li>
-            <span class="tit">深圳</span>
+            <a class="tit" href="/users/area">深圳</a>
             <span>
               南山区、福田区、罗湖区
             </span>
           </li>
           <li>
-            <span class="tit">广州</span>
+            <a class="tit" href="/users/area">广州</a>
             <span>
               东西南北环即外环线以内区域
             </span>
           </li>
           <li>
-            <span class="tit">成都</span>
+            <a class="tit" href="/users/area">成都</a>
             <span>
               成都：锦江区、青羊区、金牛区、武侯区、成华区、高新区、龙泉驿城区
             </span>
@@ -283,4 +303,22 @@
     </div>
   </div>
 </div>
+<script>
+$(function(){
+
+
+  
+  var path = window.location.pathname;
+
+  if(path.indexOf('orders')>0){
+    $('.navbar .menu li:nth-child(1)').addClass('selected')
+  }
+  else if (path.indexOf('pm25')>0){
+    $('.navbar .menu li:nth-child(2)').addClass('selected')
+  }
+  else if (path.indexOf('knowledge')>0){
+    $('.navbar .menu li:nth-child(3)').addClass('selected')
+  }
+})
+</script>
 
