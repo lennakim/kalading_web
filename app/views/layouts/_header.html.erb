@@ -31,11 +31,11 @@
             <span class="caret"></span>
           </span>
           
-          <ul class="dropdown-menu" role="menu">
-            <% City.all.each do |city| %>
-              <li><%= city.name %></li> 
-            <% end %>
-          </ul>
+          <!-- <ul class="dropdown-menu" role="menu">
+            <%# City.all.each do |city| %>
+              <li><%#= city.name %></li> 
+            <%# end %>
+          </ul> -->
         </div>
         <div class="dropdown personal" title="个人中心">
           <% if signed_in? %>
@@ -79,6 +79,7 @@
       </div>
     </nav>
   </div>
+  <%= render "shared/select_city_modal" %>
 </header>
 
 <script>

@@ -28,9 +28,7 @@ window.Kalading =
 $ ->
   
   #header menu
-
   path = window.location.pathname;
-
   if path.indexOf('orders')>0
     $('.navbar .menu li:nth-child(1)').addClass('selected')
   else if path.indexOf('pm25')>0
@@ -40,9 +38,13 @@ $ ->
 
   
   #header nav address
-  $('.nav .address').on 'click','li', ->
+  $('.nav .address a').click ->
+    $("#select_city_modal").modal()
+
+  $('#select_city_modal').on 'click','.city', ->
     text = $(@).text()
     $('.nav .address span.city').text(text)
+
 
 
   if !$.cookie('set_city_manually')
