@@ -26,17 +26,13 @@ window.Kalading =
   Models: {}
 
 $ ->
-  
-  #header menu
-  path = window.location.pathname;
-  if path.indexOf('orders')>0
-    $('.navbar .menu li:nth-child(1)').addClass('selected')
-  else if path.indexOf('pm25')>0
-    $('.navbar .menu li:nth-child(2)').addClass('selected')
-  else if path.indexOf('knowledge')>0
-    $('.navbar .menu li:nth-child(3)').addClass('selected')
 
-  
+  $('a[href=#]').click (e)->
+    e.preventDefault()
+    e.stopPropagation()
+    alert '马上开通，敬请期待...'
+
+
   #header nav address
   $('.nav .address a').click ->
     $("#select_city_modal").modal()
