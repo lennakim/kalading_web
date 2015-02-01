@@ -7,9 +7,15 @@
     <p class="items"></p>
     <%= image_tag 'activity/yd_3_by_tc/packet.png', :class => 'packetimg' %>
     <ul class="packet" id="packet">
-      <li>嘉实多金嘉护套餐</li>
-      <li>嘉实多磁护套餐</li>
-      <li>嘉实多极护套餐</li>
+      <li>
+        <%= link_to "嘉实多金嘉护套餐148元", select_car_item_orders_path(act: 10, type: 'smt') %>
+      </li>
+      <li>
+        <%= link_to "嘉实多磁护套餐248元", select_car_item_orders_path(act: 11, type: 'smt') %>
+      </li>
+      <li>
+        <%= link_to "美孚一号套餐368元", select_car_item_orders_path(act: 12, type: 'smt') %>
+      </li>
     </ul>
     <div class="description">
       <h4 class="tit">
