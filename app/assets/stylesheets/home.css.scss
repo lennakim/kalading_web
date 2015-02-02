@@ -1,3 +1,4 @@
+
 @import "mixins/button";
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
@@ -35,7 +36,7 @@ $bac: #fff;
     	background: white;
 		position: absolute;
 		top: 1%;
-		right: 18%;
+		right: 13%;
 		@include box-sizing(border-box);
 		width: 267px;
 		padding: 15px 0;
@@ -119,7 +120,7 @@ $bac: #fff;
 	}
 	.product,.maintain-process,.guest,.knowlege,.menu,.award,.area{
 		padding: 45px 0;
-		border-bottom: 2px solid #e4e4e4;
+		border-bottom: 1px solid #ddd;
 		.title{
 			margin: 0 0 40px;
 			text-align: center;
@@ -132,7 +133,7 @@ $bac: #fff;
 		}
 	}
 	.product{
-		background: #fbfbfb;
+		background: #FEF9F5;
 		.maintain-item{
 			dl{
 				position: relative;
@@ -272,12 +273,13 @@ $bac: #fff;
 					margin: 0;
 				}
 				h4{
-					margin: 25px 0;
+					margin: 12px 0;
 					color: #666666;
-					font-size: 18px;
+					font-size: 16px;
 				}
 				span{
 					color: #888888;
+					font-size: 12px;
 				}
 			}
 		}
@@ -292,11 +294,13 @@ $bac: #fff;
 			width: 70%;
 			line-height: 28px;
 			text-indent: 2em;
-			color: #333;
+			font-size: 12px;
+			color: #666;
 		}
 		h4{
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: bold;
+			color: #333;
 		}
 		img{
 			float: left;
@@ -319,6 +323,8 @@ $bac: #fff;
 		p{
 			text-indent: 2em;
 			line-height: 25px;
+			font-size: 12px;
+			color: #666;
 		}
 		li{
 			position: relative;
@@ -371,29 +377,29 @@ $bac: #fff;
 			}
 			&:nth-child(1){
 				dt{
-					background-image: image-url('w1.jpg');
+					background-image: image-url('award/w1.jpg');
 				}
 			}
 			&:nth-child(2){
 				dt{
-					background-image: image-url('w2.jpg');
+					background-image: image-url('award/w2.jpg');
 				}
 			}
 			&:nth-child(3){
 				dt{
-					background-image: image-url('w3.jpg');
+					background-image: image-url('award/w3.jpg');
 				}
 			}
 			&:nth-child(4){
 				dt{
-					background-image: image-url('w4.jpg');
+					background-image: image-url('award/w4.jpg');
 				}
 			}
 			dd{
 				line-height: 25px;
 				padding: 4% 14%;
 				background: #f3eee9;
-        height: 110px;
+        		height: 110px;
 				.num{
 					position: absolute;
 					top: 232px;
@@ -444,11 +450,12 @@ $bac: #fff;
 			span{
 				float: left;
 				width: 90%;
+				font-size: 12px;
 			}
 			.tit{
 				float: left;
 				width: 10%;
-				font-size: 16px;
+				font-size: 14px;
 				color: #ee7800;
 			}
 		}

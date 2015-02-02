@@ -22,6 +22,12 @@ $nprogress-zindex: 10100;
 @import "posts";
 @import "users";
 
+//compass
+@import "header/*.png";
+@import "process/*.png";
+@import "footer/*.png";
+
+
 $border-yellow: #fdae1e;
 $font-gray: #626262;
 $border-gray: #e4e4e4;
@@ -31,7 +37,7 @@ a:link[title="站长统计"]{
 }
 
 body{
-  background: #fbfbfb;
+  background: #FEF9F5;
 
   font: 14px/1.5 arial, "Microsoft Yahei", "Hiragino Sans GB", sans-serif !important;
 }
@@ -40,18 +46,21 @@ body{
 *{
   font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif, 'Glyphicons Halflings' !important;
 }
-
+.container{
+  background: #FEF9F5;
+}
+.form-control{
+  color: #999;
+}
 header.navbar{
   width: 100%;
   background: #fff;
   height: 80px;
-
-  // @include background-image(linear-gradient(top , #564E45, #2F2C29));
-  // @include filter-gradient(#564E45, #2F2C29);
-  // @include box-shadow(inset 0px 1px rgba(255, 255, 255, 0.4));
-
-  border-bottom: 1px solid rgb(39, 29, 29);
   margin-bottom: -1px;
+  box-shadow: 0 1px 6px #eee;
+  .container{
+    background: #fff;
+  }
   .logo,.nav-item{
     width: 160px;
     float: left;
@@ -59,17 +68,17 @@ header.navbar{
   }
   .menu{
     float: left;
-    margin-left: 100px;
+    margin-left: 30px;
     li{
       float: left;
-      min-width: 130px;
-      line-height: 74px;
+      min-width: 106px;
+      line-height: 75px;
       text-align: center;
       a{
         display: block;
         width: 100%;
         height: 100%;
-        color: #333;
+        color: #666;
         text-decoration: none;
       }
       &:hover{
@@ -109,7 +118,7 @@ header.navbar{
     color: $font-gray;
     .dropdown{
       float: left;
-      width: 106px;
+      width: 75px;
       height: 35px;
       text-align: center;
       .dropdown-toggle{
@@ -127,42 +136,50 @@ header.navbar{
       }
       span.val{
         display: block;
-        margin-top: -8px;
+        margin-top: 35px;
         font-size: 12px;
         color: #333;
       }
     }
-    .address:before{
+    .address{
       display: block;
       height: 40px;
-      content: image-url("city.png");
+      @include header-sprite(city);
+      background-position: 50% -72px;
     }
-    .address:hover:before{
-      content: image-url("city1.png");
+    .address:hover{
+      @include header-sprite(city1);
+      background-position: 50% -108px;
     }
-    .personal:before{
+    .personal{
       display: block;
       height: 40px;
-      content: image-url("personal.png");
+      @include header-sprite(personal);
+      background-position: 50% -252px;
     }
-    .personal:hover:before{
-      content: image-url("personal1.png");
+    .personal:hover{
+      @include header-sprite(personal1);
+      background-position: 50% -216px;
     }
-    .wechat:before{
+    .wechat{
       display: block;
       height: 40px;
-      content: image-url("wechat.png");
+      @include header-sprite(wechat);
+      background-position: 50% 0;
     }
-    .wechat:hover:before{
-      content: image-url("wechat1.png");
+    .wechat:hover{
+      @include header-sprite(wechat1);
+      background-position: 50% -36px;
     }
-    .tel:before{
+    .tel{
       display: block;
       height: 40px;
-      content: image-url("tel.png");
+      @include header-sprite(tel);
+      background-position: 50% -144px;
     }
-    .tel:hover:before{
-      content: image-url("tel1.png");
+    .tel:hover{
+      @include header-sprite(tel1);
+      background-position: 50% -180px;
     }
   }
 }
@@ -182,7 +199,7 @@ header.navbar{
     float: left;
     width: 25%;
     margin: 20px 0;
-    color: #ccc;
+    color: #eee;
     &:last-child{
       border: 0;
     }
@@ -202,7 +219,10 @@ header.navbar{
 .footer{
   margin-top: 50px;
   color: #eee;
-  background: #26221d;
+  background: #5a5855;
+  .container{
+    background: #5a5855;
+  }
   .promise{
     width: 70%;
     margin: 0 auto;
@@ -248,22 +268,24 @@ header.navbar{
         font-size: 14px;
         margin-bottom: 5px;
       }
-      .sina{
-        background-image: image-url('foot-wei.png');
-      }
-      .chat{
-        background-image: image-url('foot-chat.png');
-      }
+      // .sina{
+      //   @include footer-sprite(foot-wei);
+      //   background-position: 40px 0;
+      // }
+      // .chat{
+      //   @include footer-sprite(foot-chat);
+      //   background-position: 40px -54px;
+      // }
     }
     .contact{
       float: left;
       .tel{
         margin: 0;
-        height: 35px;
-        line-height: 35px;
-        background-image: image-url('foot-tel.png');
-        background-size: 15%;
-        background-repeat: no-repeat;
+        height: 28px;
+        line-height: 28px;
+        // @include footer-sprite(foot-tel);
+        // background-size: 15%;
+        // background-repeat: no-repeat;
         font-size: 22px;
       }
       span{
@@ -288,7 +310,7 @@ header.navbar{
     margin: 0;
     padding: 30px;
     color: $title;
-    font-size: 24px;
+    font-size: 20px;
   }
   .process{
     overflow: hidden;
@@ -296,41 +318,40 @@ header.navbar{
     text-align: center;
     li{
       float: left;
-      width: 25%;
+      width: 20%;
       height: 40px;
+      margin-left: 5%;
       line-height: 40px;
-      font-size: 20px;
+      font-size: 18px;
       color: #a0a0a0;
       background-repeat: no-repeat;
-      background-position: 25px 3px;
-      background-size: 12%;
     }
     .selected{
       color: $title;
     }
     .car-type{
-      background-image: image-url("car.png");
+      @include process-sprite(car);
     }
     .car-type.selected{
-      background-image: image-url("car-selected.png");
+      @include process-sprite(car-selected);
     }
     .service{
-      background-image: image-url("service.png");
+      @include process-sprite(service);
     }
     .service.selected{
-      background-image: image-url("service-selected.png");
+      @include process-sprite(service-selected);
     }
     .info{
-      background-image: image-url("info.png");
+      @include process-sprite(info);
     }
     .info.selected{
-      background-image: image-url("info-selected.png");
+      @include process-sprite(info-selected);
     }
     .success{
-      background-image: image-url("success.png");
+      @include process-sprite(success);
     }
     .success.selected{
-      background-image: image-url("success-selected.png");
+      @include process-sprite(success-selected);
     }
   }
 }
@@ -359,19 +380,14 @@ header.navbar{
       .order{
         background: white;
         border: 1px solid #e4e4e4;
-
         padding: 20px;
         @include border-radius(3px);
-
         margin-bottom: 20px;
-
         .top{
           color: #c1c1c1;
           font-size: 16px;
-
           border-bottom: 1px solid #e4e4e4;
           padding-bottom: 15px;
-
           .datetime{
             margin-right: 30px;
           }

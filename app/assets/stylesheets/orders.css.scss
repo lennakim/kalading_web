@@ -15,7 +15,7 @@ $title-gray: #787878;
   h4{
     line-height: 70px;
     color: #666;
-    font-size: 18px;
+    font-size: 16px;
   }
   .item-list{
     overflow: hidden;
@@ -95,12 +95,7 @@ $title-gray: #787878;
     }
   }
   .order_button{
-    margin: 20px 0 0 60px;
-    width: 80px;
-    background: #feac5a;
-    border: 0;
-    border-radius: 5px;
-    color: #fff;
+    @include button;
   }
 }
 .select-car-page,.items-select-page{
@@ -118,7 +113,6 @@ $title-gray: #787878;
   background: $bac;
   .select-item{
     clear: both;
-    border: 1px solid #ccc;
     .select-car, .quick-select{
       float: left;
       width: 46%;
@@ -134,7 +128,7 @@ $title-gray: #787878;
       }
     }
     .selected{
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
     }
     .clear{
       clear: both;
@@ -205,7 +199,7 @@ $title-gray: #787878;
 
     dl{
       padding: 20px 0;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #ddd;
       dt{
         overflow: hidden;
         line-height: 40px;
@@ -232,7 +226,6 @@ $title-gray: #787878;
   .orders{
     position: relative;
     padding: 20px;
-    border: 1px solid #ccc;
     ul{
       overflow: hidden;
       position: relative;
@@ -250,7 +243,7 @@ $title-gray: #787878;
         }
       }
       .selected{
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
         border-radius: 4px 4px 0 0;
         border-bottom: 0;
         background: #fff;
@@ -260,7 +253,7 @@ $title-gray: #787878;
       }
     }
     .orders-con{
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       .order_button{
         margin: 20px 0;
         @include button;
