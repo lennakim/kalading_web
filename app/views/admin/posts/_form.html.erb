@@ -5,6 +5,11 @@
   </div>
 
   <div class="form-group">
+    <label>Slug(唯一)</label>
+    <%= f.text_field :slug, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <label>Tags(，分割)</label>
     <%= f.text_field :tag_list, class: 'form-control' %>
   </div>

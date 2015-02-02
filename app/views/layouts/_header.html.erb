@@ -15,10 +15,10 @@
           <%= link_to "立即下单", select_car_orders_path(type: 'bmt') %>
         </li>
         <li>
-          <%= link_to "PM2.5滤芯", pm25_users_path(type: 'pm25')%>
+          <%= link_to "PM2.5滤芯", '#' %>
         </li>
         <li>
-          <%= link_to "用车知识", knowledge_users_path(type: 'knowledge') %>
+          <%= link_to "用车知识", '#' %>
         </li>
       </ul>
     </div>
@@ -27,13 +27,13 @@
         <div class="dropdown address" title="服务地址">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
           <span class="val">
-            <span class="city"><%= current_city_name %></span>  
+            <span class="city"><%= current_city_name %></span>
             <span class="caret"></span>
           </span>
-          
+
           <!-- <ul class="dropdown-menu" role="menu">
             <%# City.all.each do |city| %>
-              <li><%#= city.name %></li> 
+              <li><%#= city.name %></li>
             <%# end %>
           </ul> -->
         </div>
