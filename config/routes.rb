@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get 'about_us'
       get 'knowledge'
+      get '/:slug', action: 'show'
     end
   end
 

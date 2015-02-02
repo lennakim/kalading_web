@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   inherit_resources
 
+  def show
+    @post = Post.find_by slug: params[:slug]
+    show!
+  end
+
   def about_us
     @posts = Post.tagged_with("关于我们")
     if id = params[:id]
@@ -18,4 +23,6 @@ class PostsController < ApplicationController
       @post = @posts.first
     end
   end
+
+
 end
