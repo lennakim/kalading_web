@@ -257,15 +257,7 @@ $title-gray: #787878;
       .order_button{
         margin: 20px 0;
         @include button;
-        padding: 0;
-        height: 35px;
       }
-    }
-  }
-  .service-module{
-    border: 1px solid #ccc;
-    .service-con{
-
     }
   }
 }
@@ -381,7 +373,6 @@ $title-gray: #787878;
   }
   .orders-content{
     margin-bottom: 20px;
-    border: 1px solid #ccc;
     padding: 20px;
     .title,.address-info,.order-info{
       line-height: 40px;
