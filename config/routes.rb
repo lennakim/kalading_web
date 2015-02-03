@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     collection do
       get 'about_us'
       get 'knowledge'
-      get '/:slug', action: 'show'
+      get '/:tag_id/:slug', action: 'show', as: 'slug'
+      get '/:tag_id', action: 'posts_list', as: 'list'
     end
   end
 

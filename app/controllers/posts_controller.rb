@@ -1,28 +1,28 @@
 class PostsController < ApplicationController
+
+  before_action :set_tag_and_menu
+
   inherit_resources
 
+  # def show
+  #   @post = Post.find_by slug: params[:slug]
+  #   show!
+  # end
+
   def show
-    @post = Post.find_by slug: params[:slug]
-    show!
+    @posts = Post.where slug: params[:slug]
   end
 
-  def about_us
-    @posts = Post.tagged_with("关于我们")
-    if id = params[:id]
-      @post = Post.find params[:id]
-    else
-      @post = @posts.first
-    end
+  def posts_list
+    @posts = Post.tagged_with(@tag)
+    render "show"
   end
 
-  def knowledge
-    @posts = Post.tagged_with("用车知识")
-    if id = params[:id]
-      @post = Post.find params[:id]
-    else
-      @post = @posts.first
-    end
+  def set_tag_and_menu
+    @tag = ActsAsTaggableOn::Tag.find params[:tag_id]
+    @title = @tag.name
+    @root_tag = Post.tagged_with(@title).first.tag_list.first
+    @tag_list = Post.tagged_with(@root_tag).map(&:tag_list).map{|e| e[1]}.uniq.map{ |name| ActsAsTaggableOn::Tag.find_by name: name }
   end
 
-
-end
+  end

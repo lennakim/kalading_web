@@ -1,0 +1,5 @@
+<% posts.each do |post| %>
+  <div class="post-item">
+    <%= link_to post.title, slug_posts_path(tag_id: @tag.id, slug: post.slug) %>
+  </div>
+<% end %>
