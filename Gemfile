@@ -4,6 +4,7 @@ gem 'rails', '4.1.4'
 
 # db
 gem 'mysql2'
+gem 'redis-namespace'
 
 # assets
 gem 'bootstrap-sass', '~> 3.3.1'
