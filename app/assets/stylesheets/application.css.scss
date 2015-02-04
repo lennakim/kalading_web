@@ -1,6 +1,6 @@
 // libs
 @import "compass";
-@import "compass/reset";
+// @import "compass/reset";
 @import "classic";
 @import "classic.date";
 @import "classic.time";
@@ -55,7 +55,6 @@ body{
 header.navbar{
   width: 100%;
   background: #fff;
-  height: 80px;
   margin-bottom: -1px;
   box-shadow: 0 1px 6px #eee;
   .container{
@@ -318,13 +317,19 @@ header.navbar{
     text-align: center;
     li{
       float: left;
-      width: 20%;
+      width: 14%;
       height: 40px;
       margin-left: 5%;
       line-height: 40px;
       font-size: 18px;
       color: #a0a0a0;
       background-repeat: no-repeat;
+    }
+    .line{
+      margin: 18px 0 0;
+      height: 1px;
+      width: 7%;
+      border: 1px solid #ddd;
     }
     .selected{
       color: $title;

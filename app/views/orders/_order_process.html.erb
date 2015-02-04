@@ -1,6 +1,9 @@
 <ul class="process">
   <li class="car-type <%= "selected" if params[:action] == "select_car" %>">选择车型</li>
+  <li class="line"></li>
   <li class="service <%= "selected" if params[:action] == "select_item" %>">选择服务</li>
+  <li class="line"></li>
   <li class="info <%= "selected" if params[:action] == "place_order" %>">填写信息</li>
+  <li class="line"></li>
   <li class="success <%= "selected" if params[:action] == "success" %>">预定成功</li>
 </ul>
