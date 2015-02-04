@@ -11,12 +11,14 @@
 
     <%= render "menu" %>
 
-    <div class="col-md-9 content">
       <% if @posts.count == 1 %>
-        <%= render "post_content", post: @posts.first %>
+        <div class="col-md-9 content">
+          <%= render "post_content", post: @posts.first %>
+        </div>
       <% else %>
-        <%= render "posts_list", posts: @posts %>
+        <div class="col-md-9 lists">
+          <%= render "posts_list", posts: @posts %>
+        </div>
       <% end %>
-    </div>
   </div>
 </div>
