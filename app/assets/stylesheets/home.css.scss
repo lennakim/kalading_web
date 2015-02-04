@@ -1,9 +1,10 @@
+
 @import "mixins/button";
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ff7b3a;
-$title: #3d3d3d;
+$title: #716154;
 $bac: #fff;
 .bac-orange{
   background: $bac-orange;
@@ -20,6 +21,9 @@ $bac: #fff;
 .carousel-inner > .item > img, .carousel-inner > .item > a > img{
 	display: inline;
 }
+.more{
+	color: #ee7800;
+}
 .index{
 	position: relative;
 	min-width: 1400px;
@@ -31,21 +35,26 @@ $bac: #fff;
 	.select-car{
     	background: white;
 		position: absolute;
-		top: 3%;
-		right: 18%;
+		top: 1%;
+		right: 13%;
 		@include box-sizing(border-box);
 		width: 267px;
 		padding: 15px 0;
 		opacity: 0.9;
 		border-radius: 4px;
 		text-align: center;
+		a{
+			color: #333;
+			font-size: 12px;
+			text-decoration: underline;
+		}
 		.btn{
-			width: 90px;
-			margin: 10px 0;
-      @include button;
-      padding: 0;
-      line-height: 35px;
-      height: 38px;
+		  width: 90px;
+		  margin: 10px 0;
+	      @include button;
+	      padding: 0;
+	      line-height: 35px;
+	      height: 38px;
 		}
 		.form-group{
 			margin: 25px 0;
@@ -109,9 +118,9 @@ $bac: #fff;
 	.product,.maintain-process,.guest,.menu{
 		min-width: 1140px;
 	}
-	.product,.maintain-process,.guest{
+	.product,.maintain-process,.guest,.knowlege,.menu,.award,.area{
 		padding: 45px 0;
-		border-bottom: 2px solid #e4e4e4;
+		border-bottom: 1px solid #ddd;
 		.title{
 			margin: 0 0 40px;
 			text-align: center;
@@ -124,7 +133,7 @@ $bac: #fff;
 		}
 	}
 	.product{
-		background: #fbfbfb;
+		background: #FEF9F5;
 		.maintain-item{
 			dl{
 				position: relative;
@@ -201,16 +210,20 @@ $bac: #fff;
 	}
 	.maintain-process{
 		.number{
-			line-height: 60px;
+			line-height: 42px;
 			li{
 				float: left;
-				width: 24%;
-				span,var{
+				width: 16%;
+				span{
 					float: left;
-					background: #907c6c;
+					background: #f29e4a;
+				}
+				var{
+					float: left;
+					background: #f8d3ad;
 				}
 				span{
-					width: 28%;
+					width: 29%;
 					margin: 0 5%;
 					border-radius: 30px;
 					color: #fff;
@@ -218,87 +231,232 @@ $bac: #fff;
 					font-size: 22px;
 				}
 				var{
-					width: 58%;
+					width: 60%;
 					height: 2px;
 					margin-top: 14%;
 				}
 			}
 			.last{
-				width: 8%;
+				width: 6%;
 				span{
-					width: 80%;
+					width: 78%;
 				}
 			}
 			.shot{
-				width: 10%;
+				width: 7%;
 				span{
 					width: 10px;
 					height: 10px;
 					padding: 10px;
-					margin: 24% 8% 0;
+					margin: 18% 8% 0;
 				}
 				var{
-					width: 54%;
-					margin-top: 34%;
+					width: 52%;
+					margin-top: 32%;
 				}
 			}
 		}
 		.item{
 			overflow: hidden;
-			width: 74%;
+			width: 76%;
 			margin: 0 auto;
 			li{
 				float: left;
-				width: 22%;
+				width: 13%;
 				margin-right: 4%;
 				text-align: center;
 				font-size: 16px;
+				&:first-child{
+					margin-left: 10px;
+				}
 				&:last-child{
 					margin: 0;
 				}
 				h4{
-					margin: 25px 0;
+					margin: 12px 0;
 					color: #666666;
-					font-size: 18px;
+					font-size: 16px;
 				}
 				span{
 					color: #888888;
+					font-size: 12px;
 				}
 			}
 		}
 	}
+	.knowlege{
+		overflow: hidden;
+		.left,.right{
+			overflow: hidden;
+		}
+		.des{
+			float: left;
+			width: 70%;
+			line-height: 28px;
+			text-indent: 2em;
+			font-size: 12px;
+			color: #666;
+		}
+		h4{
+			font-size: 14px;
+			font-weight: bold;
+			color: #333;
+		}
+		img{
+			float: left;
+			width: 24%;
+			margin-bottom: 34px;
+		}
+		.k1{
+			margin-left: 5%;
+		}
+		.k2{
+			margin-right: 5%;
+		}
+	}
 	.menu{
 		overflow: hidden;
-		padding: 0 10%;
 		border-bottom: 2px solid #e4e4e4;
+		ul{
+			overflow: hidden;
+		}
+		p{
+			text-indent: 2em;
+			line-height: 25px;
+			font-size: 12px;
+			color: #666;
+		}
 		li{
 			position: relative;
 			float: left;
 			width: 33%;
 			min-width: 170px;
 			height: 200px;
-			margin: 60px 0;
 			background-repeat: no-repeat;
 			background-size: 100%;
 			background-position: 50%;
-			font-size: 22px;
+			font-size: 14px;
 			color: #8a8a8a;
 			text-align: center;
 			a{
 				display: block;
 				width: 100%;
-				color: #666666;
+				margin-top: 14px;
 				text-decoration: none;
+			}
+			&:nth-child(1){
+				a{
+					color: #61b894;
+				}
+			}
+			&:nth-child(2){
+				a{
+					color: #ee7800;
+				}
+			}
+			&:nth-child(3){
+				a{
+					color: #70c6ef;
+				}
+			}
+		}
+	}
+	.award{
+		overflow: hidden;
+		dl{
+			position: relative;
+			float: left;
+			width: 48%;
+			margin: 10px 1%;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			dt{
+				height: 240px;
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+			&:nth-child(1){
+				dt{
+					background-image: image-url('award/w1.jpg');
+				}
+			}
+			&:nth-child(2){
+				dt{
+					background-image: image-url('award/w2.jpg');
+				}
+			}
+			&:nth-child(3){
+				dt{
+					background-image: image-url('award/w3.jpg');
+				}
+			}
+			&:nth-child(4){
+				dt{
+					background-image: image-url('award/w4.jpg');
+				}
+			}
+			dd{
+				line-height: 25px;
+				padding: 4% 14%;
+				background: #f3eee9;
+        		height: 110px;
+				.num{
+					position: absolute;
+					top: 232px;
+					left: 10%;
+					display: block;
+					width: 40px;
+					height: 40px;
+					line-height: 40px;
+					background-image: image-url('num.png');
+					background-size: 100%;
+					background-repeat: no-repeat;
+					text-align: center;
+					color: #fff;
+					font-size: 12px;
+				}
+				p{
+					font-size: 12px;
+					text-indent: 2em;
+				}
 			}
 		}
 	}
 	.guest{
-		border-bottom: 0;
 		ul{
 			li{
 				float: left;
 				width: 20%;
 				text-align: center;
+			}
+		}
+	}
+	.area{
+		overflow: hidden;
+		border-bottom: 0;
+		ul,img{
+			float: left;
+		}
+		ul{
+			width: 50%;
+		}
+		img{
+			width: 46%;
+			margin-right: 4%;
+		}
+		li{
+			overflow: hidden;
+			line-height: 40px;
+			span{
+				float: left;
+				width: 90%;
+				font-size: 12px;
+			}
+			.tit{
+				float: left;
+				width: 10%;
+				font-size: 14px;
+				color: #ee7800;
 			}
 		}
 	}

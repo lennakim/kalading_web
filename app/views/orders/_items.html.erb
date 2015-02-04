@@ -5,7 +5,7 @@
 <div class="form-horizontal item-list">
 
   <div class="form-group">
-    <label class="col-sm-1 control-label">价格: </label>
+    <label class="col-sm-1 control-label">价格：</label>
     <div class="col-sm-11">
       <span class="price"></span>元
       <!-- <span class="price original"></span>
@@ -50,17 +50,23 @@
                 <% part_items.each_with_index do |item, index| %>
                   <% unless item["quantity"] == 0 %>
                     <!-- 专门给易道活动的-->
-                    <% if activity && ['yidao-bmt-1', 'yidao-bmt-2', 'yidao-bmt-3'].include?(activity.name) %>
+                    <% if activity && ['yi-dao-yi-wan-smt-1', 'yi-dao-yi-wan-smt-2', 'yi-dao-yi-wan-smt-3'].include?(activity.name) %>
                       <% if part_name == "机油" %>
+                        <!-- 机油 -->
                         <% item = yidao_filter(part_items, activity).first %>
-
                         <% if item %>
                           <%= render "item", name: part_name, item: item, selected: select_index == index %>
                         <% end %>
 
                         <% break %>
+                      <% elsif part_name == "机滤" %>
+                        <!-- 机滤 -->
+
+                        <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                        <% break %>
 
                       <% else %>
+                        <!-- 其他选项 -->
                         <%= render "item", name: part_name, item: item, selected: select_index == index %>
                       <% end %>
 

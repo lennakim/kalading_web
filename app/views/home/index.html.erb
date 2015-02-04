@@ -30,7 +30,8 @@
   </div>
   <div class="select-car">
     <%= render "shared/select_car" %>
-    <a id="next_step" class="btn btn-default">下一步</a>
+    <a id="next_step" class="btn btn-default">立即预约</a>
+    <%= link_to "没找到车型？", no_car_type_orders_path %>
   </div>
   <div class="container">
     <div class="product">
@@ -84,55 +85,226 @@
         <li><span title="1">1</span><var></var></li>
         <li><span title="2">2</span><var></var></li>
         <li><span title="3">3</span><var></var></li>
-        <li class="last"><span title="4">4</span></li>
+        <li><span title="4">4</span><var></var></li>
+        <li><span title="5">5</span><var></var></li>
+        <li class="last"><span title="6">6</span></li>
         <li class="shot"><var></var><span></span></li>
       </ul>
       <ul class="item">
         <li>
-        <h4 title="提交订单">提交订单</h4>
-        <span>您可以在产品与服务专栏按照流程提交您的订单</span>
+          <h4 title="提交订单">预定服务</h4>
+          <span>您可以通过官网、微信服务号、服务热线、预订服务</span>
         </li>
         <li>
-        <h4 title="等待客服确认">等待客服确认</h4>
-        <span>当您的订单提交成功后我们的客服会及时与您联系</span>
+          <h4 title="等待客服确认">订单审核</h4>
+          <span>订单预订成功后，客服会通过电话或者短信审核确认</span>
         </li>
         <li>
-        <h4 title="技师上门服务">技师上门服务</h4>
-        <span>我们的小卡技师会根据您提供的地址上门服务</span>
+          <h4 title="技师上门服务">技师上门</h4>
+          <span>我们的小卡技师会提前预约，给您的爱车进行上门服务</span>
         </li>
         <li>
-        <h4 title="订单完成">订单完成</h4>
-        <span>订单完成后，可到个人中心收取您的车辆检查报告</span>
+          <h4 title="订单完成">保养检测</h4>
+          <span>服务包括保养服务或滤芯服务，并有全车32项安全检查</span>
+        </li>
+        <li>
+          <h4 title="订单完成">订单完成</h4>
+          <span>当小卡技师为您服务完毕后，您可以进行现场结账</span>
+        </li>
+        <li>
+          <h4 title="订单完成">检测报告</h4>
+          <span>订单完成后，您可以到微信/网站的个人中心，查看车检报告</span>
         </li>
       </ul>
     </div>
-    <ul class="menu">
-      <li class="pm">
-        <%= image_tag("pm25.png", :class=> "picc")%>
-        <%#= link_to "PM2.5滤芯", '', target: "_blank", :title => "PM2.5滤芯" %>
-        <a title="PM2.5滤芯">PM2.5滤芯</a>
-      </li>
-      <li class="know">
-        <%= image_tag("knowlege.png", :class=> "picc")%>
-        <%#= link_to "用车知识", '', target: "_blank", :title => "用车知识" %>
-        <!-- post_page_path(id: 12) -->
-        <a title="用车知识">用车知识</a>
-      </li>
-      <li class="report">
-        <%= image_tag("report.png", :class=> "picc")%>
-        <%#= link_to "车检报告", '', target: "_blank", :title => "车检报告" %>
-        <a title="车检报告">车检报告</a>
-      </li>
-    </ul>
+    <div class="knowlege">
+      <h3 class="title" title="知识普及">知识普及</h3>
+      <div class="content">
+        <div class="left">
+          <div class="des">
+            <h4>卡拉丁车用空调滤清器——车内雾霾终极解决方案</h4>
+            <p>
+              PM2.5指细颗粒物指环境空气中空气动力学当量直径小于等于 2.5 微米的颗粒物。它能较长时间悬浮于空气中，与较粗的大气颗粒物相比，PM2.5粒径小，面积大，活性强，易附带有毒、有害物质（例如，重金属、微生物等），且在大气中的停留时间长、输送距离远，对人体健康和大气环境质量的影响更大。
+            </p>
+            <p>
+              卡拉丁车用空调滤清器PM2.5过滤效果最高可达99%，无论车外空气环境多恶劣，都能让车内PM2.5浓度在50以内，达国家一级优良空气标准...
+              <%= link_to "查看更多>>", '#',:class=>'more' %>
+            </p>
+          </div>
+          <%= image_tag("k1.png", :class=> "k1")%>
+        </div>
+        <div class="right">
+          <%= image_tag("k2.png", :class=> "k2")%>
+          <div class="des">
+            <h4>卡拉汽车上门保养——您的车辆保养专家</h4>
+            <p>
+              汽车保养是指根据车辆各部位不同材料所需的保养条件，采用不同性质的专用护理材料和产品，对汽车进行全新的保养护理的工艺过程。
+            </p>
+            <p>
+              掌握一定的汽车保养常识是车主用车的基本技能，在日常生活中，通常随着驾龄的延长，大家对汽车保养的了解也随之加深，很多大小问题可以及时发现，以便快速解决。
+            </p>
+            <p>
+              卡拉丁有最专业的技术，给您带去最好的保养服务，点击查看更多学习更多保养知识...
+              <%= link_to "查看更多>>", '#',:class=>'more' %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <h3 class="title" title="关于我们">关于我们</h3>
+      <div class="content">
+        <ul>
+          <li class="pm">
+            <%= image_tag("about1.png", :class=> "picc")%>
+            <%#= link_to "PM2.5滤芯", '', target: "_blank", :title => "PM2.5滤芯" %>
+          </li>
+          <li class="know">
+            <%= image_tag("about2.png", :class=> "picc")%>
+            <%#= link_to "用车知识", '', target: "_blank", :title => "用车知识" %>
+            <!-- post_page_path(id: 12) -->
+          </li>
+          <li class="report">
+            <%= image_tag("about3.png", :class=> "picc")%>
+            <%#= link_to "车检报告", '', target: "_blank", :title => "车检报告" %>
+          </li>
+        </ul>
+        <p>
+          卡拉丁，成立于2012年，是一家通过汽车养护技术研发与创新，并与移动互联网技术平台相结合，为广大汽车用户提供便捷养护服务的创新型汽车后市场服务提供商。卡拉丁是我国首家提出并形成规模化的上门汽车保养服务商，是汽车保养O2O理念的践行者。
+        </p>
+        <p>
+          “便捷、专注、可靠”是卡拉丁的服务理念。卡拉丁人以“价值、分享、责任”为创业理念，为用户创造价值，让员工分享成长，力所能及地贡献社会。
+        </p>
+        <p>
+          上门汽车保养、上门汽车安全检测、上门更换车用防霾空调滤清器是卡拉丁现有三大标准化产品。卡拉丁自主研发的防霾空调滤芯，安装后防霾效果达95%+，让车内空气质量可达到国家一级标准。
+          <%= link_to "查看更多>>", '#',:class=>'more'  %>
+        </p>
+      </div>
+    </div>
+    <div class="award">
+      <h3 class="title" title="获奖展示">获奖展示</h3>
+      <div class="content">
+        <dl>
+          <dt></dt>
+          <dd>
+            <p>
+            获得创业家评选的最值得投资的服务业O2O公司TOP10之一，
+            我们给用户节约的去4S店保养的时间，更重要的是我们保养报价要比4S店低30%-50%...
+              <%= link_to "查看更多>>", '#',:class=>'more'  %>
+            </p>
+            <span class="num">No.1</span>
+          </dd>
+        </dl>
+        <dl>
+          <dt></dt>
+          <dd>
+            <p>
+            卡拉丁是国内最先提出汽车上门保养的概念并付诸实现的公司，
+            自主研发的活性炭空调滤清器PM2.5过滤效果达95%，达到国家一级优良空气标注...
+              <%= link_to "查看更多>>", '#',:class=>'more'  %>
+            </p>
+            <span class="num">No.2</span>
+          </dd>
+        </dl>
+        <dl>
+          <dt></dt>
+          <dd>
+            <p>
+            在“2014年度风云榜”中，卡拉丁获得”最佳创业公司”称号，卡拉丁也是国内最早进入上门保养行业的服务商...
+              <%= link_to "查看更多>>", '#',:class=>'more'  %>
+            </p>
+            <span class="num">No.3</span>
+          </dd>
+        </dl>
+        <dl>
+          <dt></dt>
+          <dd>
+            <p>
+            在2014年世界O2O博览会上，卡拉丁获得2014年全球最具影响力O2O出行类应用奖...
+              <%= link_to "查看更多>>", '#', :class=>'more'  %>
+            </p>
+            <span class="num">No.4</span>
+          </dd>
+        </dl>
+      </div>
+    </div>
     <div class="guest">
       <h3 class="title" title="集团客户">集团客户</h3>
       <ul class="content">
-        <li title="平安保险"><%= image_tag("picc.png", :class=> "picc")%></li>
-        <li title="太平保险"><%= image_tag("d.png", :class=> "d")%></li>
-        <li title=""><%= image_tag("m.png", :class=> "m")%></li>
-        <li title=""><%= image_tag("axa.png", :class=> "axa")%></li>
-        <li title=""><%= image_tag("blue.png", :class=> "blue")%></li>
+        <li title="平安保险">
+          <a href="/users/guest">
+            <%= image_tag("picc.png", :class=> "picc")%>
+          </a>
+        </li>
+        <li title="太平保险">
+          <a href="/users/guest">
+            <%= image_tag("d.png", :class=> "d")%>
+          </a>
+        </li>
+        <li title="">
+          <a href="/users/guest">
+            <%= image_tag("m.png", :class=> "m")%>
+          </a>
+        </li>
+        <li title="">
+          <a href="/users/guest">
+            <%= image_tag("axa.png", :class=> "axa")%>
+          </a>
+        </li>
+        <li title="">
+          <a href="/users/guest">
+            <%= image_tag("blue.png", :class=> "blue")%>
+          </a>
+        </li>
       </ul>
+    </div>
+    <div class="area">
+      <h3 class="title" title="服务区域">服务区域</h3>
+      <div class="content">
+        <%= image_tag("map.png")%>
+        <ul>
+          <li>
+            <a class="tit" href="/users/area">北京</a>
+            <span>五环内及通州主城区、石景山、天通苑、回龙观、上地、亦庄</span>
+          </li>
+          <li>
+            <a class="tit" href="/users/area">天津</a>
+            <span>
+              主城（含和平区、河东区、河西区、河北区、南开区、红桥区）；塘沽区、开发区、保税区；东丽区全境、津南区
+            </span>
+          </li>
+          <li>
+            <a class="tit" href="/users/area">上海</a>
+            <span>
+              外环线以内
+            </span>
+          </li>
+          <li>
+            <a class="tit" href="/users/area">深圳</a>
+            <span>
+              南山区、福田区、罗湖区
+            </span>
+          </li>
+          <li>
+            <a class="tit" href="/users/area">广州</a>
+            <span>
+              东西南北环即外环线以内区域
+            </span>
+          </li>
+          <li>
+            <a class="tit" href="/users/area">成都</a>
+            <span>
+              绕城高速以内，高新区及龙泉驿区部分区域
+            </span>
+          </li>
+          <li>
+            <a class="tit" href="/users/area">西安</a>
+            <span>
+              市区三环以内，另包含:长安区大学城以北，东至神州六路，西至西太路
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

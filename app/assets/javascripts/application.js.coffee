@@ -27,6 +27,16 @@ window.Kalading =
 
 $ ->
 
+  #header nav address
+  $('.nav .address a').click ->
+    $("#select_city_modal").modal()
+
+  $('#select_city_modal').on 'click','.city', ->
+    text = $(@).text()
+    $('.nav .address span.city').text(text)
+
+
+
   if !$.cookie('set_city_manually')
     $("#select_city_modal").modal()
 
@@ -41,12 +51,18 @@ $ ->
   $('#next_step').click ->
     id = $('#car_style option:selected').data 'id'
     type = $('.select-car-page').data('type') || 'bmt'
-    Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
+
+    if id
+
+      Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
+    else
+      return alert "请先选择车辆"
+
 
   # select car
-  $('#car_style').chained('#car_type, #car_name')
   $('#car_type').chained('#car_name')
-
+  $('#car_style').chained('#car_type')
+  #
   # select service address
   $("#service_districts").chained("#service_cities")
   $('#service_districts').on 'change', (e) ->

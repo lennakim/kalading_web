@@ -6,7 +6,7 @@
         <option value="">选择品牌</option>
 
         <% @cars_info.each do |car| %>
-          <option value="<%= car['name'] %>">
+          <option value="<%= car['name'].strip %>">
             <%= car['name'] %>
           </option>
         <% end %>
@@ -21,8 +21,8 @@
         <option value="">选择系列</option>
         <% @cars_info.each do |car| %>
           <% car['ams'].each do |type| %>
-            <option value="<%= type['name'] %>" class="<%= car['name'] %>">
-              <%= type['name'] %>
+            <option value="<%= type['name'].strip %>" class="<%= car['name'].strip %>">
+              <%= type['name'].strip %>
             </option>
           <% end %>
         <% end %>
@@ -38,8 +38,8 @@
         <% @cars_info.each do |car| %>
           <% car['ams'].each do |type| %>
             <% type['asms'].each do |style| %>
-              <option value="<%= style['name'] %>" data-id="<%= style['_id'] %>" class="<%= car['name'] %>\<%= type['name'] %>">
-                <%= style['name'] %>
+              <option value="<%= style['name'].strip %>" data-id="<%= style['_id'] %>" class="<%= type['name'].strip %>">
+                <%= style['name'].strip %>
               </option>
             <% end %>
           <% end %>

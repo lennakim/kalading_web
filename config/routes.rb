@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :posts
+  resources :posts do
+    collection do
+      get 'about_us'
+      get 'knowledge'
+      get '/:slug', action: 'show'
+    end
+  end
 
   resources :wx, controller: :weixin  do
     get 'transform', on: :collection

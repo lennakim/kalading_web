@@ -1,0 +1,9 @@
+<div class="col-md-3">
+  <ul class='menu'>
+    <% @posts.each do |post| %>
+      <li class='<%= @post == post ? "active" : '' %>'>
+        <%= link_to post.title, about_us_posts_path(id: post)  %>
+      </li>
+    <% end %>
+  </ul>
+</div>
