@@ -6,7 +6,7 @@ class CitiesController < ApplicationController
       current_user.set_city city
     end
 
-    cookies[:city_id] = city.id
-    cookies[:set_city_manually] = true
+    cookies[:city_id] = { value: city.id, expires: 360.days.from_now }
+    cookies[:set_city_manually] = { value: true, expires: 360.days.from_now }
   end
 end

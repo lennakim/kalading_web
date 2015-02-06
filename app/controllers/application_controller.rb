@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 
   def set_city
     city_id = current_user_city || extract_from_ip || default_city.id
-    cookies[:city_id] = city_id
+    cookies[:city_id] = { value: city_id, expires: 360.days.from_now }
   end
 
   def current_city_name

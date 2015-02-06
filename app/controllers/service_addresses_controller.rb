@@ -6,7 +6,8 @@ class ServiceAddressesController < ApplicationController
       address = current_user.service_addresses.create permitted_params[:service_address]
       current_user.set_default_address address
     else
-      cookies[:address] = { value: params[:service_address][:detail], expires: 30.days.from_now }
+      address = ServiceAddress.new(permitted_params[:service_address])
+      cookies[:address] = { value: address.full_address, expires: 30.days.from_now }
     end
     render "create"
   end

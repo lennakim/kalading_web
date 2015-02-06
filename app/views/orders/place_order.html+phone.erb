@@ -8,7 +8,7 @@
 
   <%= form_tag 'submit', id: "place_order_form", remote: true do %>
 
-    <%= hidden_field_tag(:city_id, current_city_id) %>
+    <%# <%= hidden_field_tag(:city_id, current_city_id) %>
     <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
 
     <fieldset>

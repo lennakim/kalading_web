@@ -188,13 +188,14 @@ class OrdersController < ApplicationController
       return render js: "$('#add_address_modal').modal();"
     end
 
+    city_name = params[:address][/.+?市/][0..-2]
+    city = City.find_by(name: city_name)
+
     if !signed_in? && !(vcode && !vcode.expired?)
       return render js: "alert('请填写正确的验证码')"
     end
 
     parts = params[:parts] ? params[:parts].values : []
-
-    Rails.logger.info
 
     if !params[:serve_date].present?
       return render js: "alert('请填写正确的服务日期')"
@@ -217,7 +218,7 @@ class OrdersController < ApplicationController
         "reciept_type"      => params[:reciept_type],
         "reciept_title"     => params[:reciept_title],
         "client_comment"    => params[:client_comment],
-        "city_id"           => params[:city_id],
+        "city_id"           => city.system_id, #params[:city_id]
         "car_id"            => params[:car_id],
         "registration_date" => params[:registration_date],
         "engine_num"        => params[:engine_num],
