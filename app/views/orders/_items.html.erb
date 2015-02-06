@@ -50,7 +50,7 @@
                 <% part_items.each_with_index do |item, index| %>
                   <% unless item["quantity"] == 0 %>
                     <!-- 专门给易道活动的-->
-                    <% if activity && ['yi-dao-yi-wan-smt-1', 'yi-dao-yi-wan-smt-2', 'yi-dao-yi-wan-smt-3'].include?(activity.name) %>
+                    <% if activity && ['yi-dao-yi-wan-smt-1', 'yi-dao-yi-wan-smt-2', 'yi-dao-yi-wan-smt-3', 'gan-ji-smt-1', 'gan-ji-smt-2', 'gan-ji-smt-3'].include?(activity.name) %>
                       <% if part_name == "机油" %>
                         <!-- 机油 -->
                         <% item = yidao_filter(part_items, activity).first %>
