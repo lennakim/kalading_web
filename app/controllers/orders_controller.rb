@@ -122,6 +122,8 @@ class OrdersController < ApplicationController
     @parts = params["order"]["parts"]
     @city_capacity = Order.city_capacity current_city_id
 
+    @auto = Auto.find_by id: params[:auto_id]
+
     activity = Activity.find_by id: params[:act]
 
     payload = {
@@ -198,9 +200,9 @@ class OrdersController < ApplicationController
       return render js: "alert('请填写正确的服务日期')"
     end
 
-    if !params[:registration_date].present?
-      return render js: "alert('请填写正确的车辆注册日期')"
-    end
+    # if !params[:registration_date].present?
+    #   return render js: "alert('请填写正确的车辆注册日期')"
+    # end
 
     payload = {
       parts: parts,

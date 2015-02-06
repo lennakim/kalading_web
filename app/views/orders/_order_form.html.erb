@@ -7,6 +7,7 @@
   </div>
 
   <hr>
+
   <p class='title order-info'>订单信息</p>
   <% unless signed_in? %>
     <div class="info-group form-group">
@@ -59,39 +60,11 @@
     </div>
     <div class="info-con form-inline">
       <select name="car_location" class="form-control car_location">
-        <option value="京">京</option>
-        <option value="沪">沪</option>
-        <option value="津">津</option>
-        <option value="渝">渝</option>
-        <option value="浙">浙</option>
-        <option value="苏">苏</option>
-        <option value="粤">粤</option>
-        <option value="闽">闽</option>
-        <option value="湘">湘</option>
-        <option value="鄂">鄂</option>
-        <option value="辽">辽</option>
-        <option value="吉">吉</option>
-        <option value="黑">黑</option>
-        <option value="冀">冀</option>
-        <option value="豫">豫</option>
-        <option value="鲁">鲁</option>
-        <option value="陕">陕</option>
-        <option value="甘">甘</option>
-        <option value="青">青</option>
-        <option value="新">新</option>
-        <option value="晋">晋</option>
-        <option value="川">川</option>
-        <option value="黔">黔</option>
-        <option value="皖">皖</option>
-        <option value="赣">赣</option>
-        <option value="云">云</option>
-        <option value="蒙">蒙</option>
-        <option value="桂">桂</option>
-        <option value="藏">藏</option>
-        <option value="宁">宁</option>
-        <option value="琼">琼</option>
+        <% car_location.each do |location| %>
+          <option value="<%= location %>" <%= "selected" if location == @auto.try(:license_location) %>><%= location %></option>
+        <% end %>
       </select>
-      <%= text_field_tag(:car_num, '', minlength: 6, maxlength: 6, required: true, placeholder: '车牌后六位', class: 'form-control') %>
+      <%= text_field_tag(:car_num, @auto.try(:license_number), minlength: 6, maxlength: 6, required: true, placeholder: '车牌后六位', class: 'form-control') %>
     </div>
   </div>
 
@@ -124,6 +97,7 @@
     </div>
   </div>
 
+  <!-- 去掉非必选项
   <div class="info-group form-group">
 
     <div id="registed_date_picker"></div>
@@ -154,6 +128,8 @@
       <%= text_field_tag(:vin,'', class: 'form-control') %>
     </div>
   </div>
+
+  -->
 
   <hr>
 

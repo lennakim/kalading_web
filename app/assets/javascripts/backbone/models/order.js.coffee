@@ -11,7 +11,12 @@ class Kalading.Models.Order extends Backbone.Model
 
   submit: ->
     csrf_token = $("meta[name='csrf-token']").attr('content')
-    data = {order: @attributes, authenticity_token: csrf_token, act: URI().search(true)['act']}
+    data = {
+      order: @attributes,
+      authenticity_token: csrf_token,
+      act: URI().search(true)['act'],
+      auto_id: URI().search(true)['auto_id']
+    }
 
     if @isValid()
       $.form('/orders/place_order', data).submit()
