@@ -8,10 +8,19 @@ module OrdersHelper
     case activity.name
     when "yi-dao-yi-wan-smt-1" # low
       items.select{ |ele| ele["number"] =~ /金嘉护/ }
+    when "gan-ji-smt-1"
+      items.select{ |ele| ele["number"] =~ /金嘉护/ }
+
     when "yi-dao-yi-wan-smt-2" # mid
       items.select{ |ele| ele["number"] =~ /磁护/ }
+    when "gan-ji-smt-2"
+      items.select{ |ele| ele["number"] =~ /磁护/ }
+
     when "yi-dao-yi-wan-smt-3" # top
       items.select{ |ele| ele["brand"] == "美孚" }
+    when "gan-ji-smt-3"
+      items.select{ |ele| ele["brand"] == "美孚" }
+
     end
   end
 
