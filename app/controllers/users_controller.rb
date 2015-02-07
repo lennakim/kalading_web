@@ -1,28 +1,24 @@
 class UsersController < ApplicationController
 
+  before_action :need_login, only: [:orders, :maintain_histories_list, :maintain_history, :settings, :update, :cars, :balance]
+
   def index
     redirect_to action: :orders
   end
 
   def orders
-    return redirect_to root_path(login: 1) unless signed_in?
     @orders = Order.get_orders_of current_user.phone_number
   end
 
   def maintain_histories_list
-
-    return redirect_to root_path(login: 1) unless signed_in?
-
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
   end
 
   def maintain_history
-    return redirect_to root_path(login: 1) unless signed_in?
     @maintain_history = Order.api_maintain_find params[:id]
   end
 
   def settings
-    return redirect_to root_path(login: 1) unless signed_in?
     @cities = Order.cities
   end
 
@@ -32,13 +28,21 @@ class UsersController < ApplicationController
   end
 
   def cars
-    return redirect_to root_path(login: 1) unless signed_in?
     @cars_info = Order.cars_data current_city_id
     @auto_id = params[:auto_id]
     @maintain_histories = Order.maintain_report login_phone_num: current_user.phone_number, car_id: params[:car_id], car_num: params[:car_num]
   end
 
   def balance
+  end
+
+  private
+
+  def need_login
+    unless signed_in?
+      session[:from_path] = request.fullpath
+      return redirect_to root_path(login: 1)
+    end
   end
 
   def permitted_params

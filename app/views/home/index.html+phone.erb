@@ -26,17 +26,10 @@
     </a> -->
   </div>
   <div class="personal-maintain">
-    <% if signed_in? %>
-      <ul class="personal">
-        <li><a href="/users/orders">我的订单</a></li>
-        <li><a href="/users/maintain_histories_list">保养记录</a></li>
-      </ul>
-    <% else %>
-      <ul id="login_btn" class="personal">
-        <li>我的订单</li>
-        <li>保养记录</li>
-      </ul>
-    <% end %>
+    <ul class="personal">
+      <li><%= link_to "我的订单", orders_users_path %></li>
+      <li><%= link_to "保养记录", maintain_histories_list_users_path %></li>
+    </ul>
     <p class="maintain-address" title="保养地点:<%= current_city_name %>">保养地点：
       <span id="current_city">
         <%= current_city_name %>

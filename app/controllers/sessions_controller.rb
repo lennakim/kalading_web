@@ -22,7 +22,12 @@ class SessionsController < ApplicationController
 
     if user
       sign_in user
-      redirect_to orders_users_path
+
+      if path = session[:from_path]
+        redirect_to path
+      else
+        redirect_to orders_users_path
+      end
     else
       redirect_to root_path(login: 1)
     end

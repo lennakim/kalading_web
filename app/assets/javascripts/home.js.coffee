@@ -1,9 +1,4 @@
 $ ->
-  $("#login_btn").on "click", (e) ->
-    e.preventDefault()
-    e.stopPropagation()
-
-    $('#login_modal').modal()
 
   if $('.home-page').length > 0
     $('.home-page').css({'min-Width':$(window).width()}).siblings('.navbar,.footer').css({'min-Width':$(window).width()}).find('.container').css({'min-Width':'1170px'})
@@ -26,7 +21,7 @@ $ ->
         $("#totop").fadeIn(1000)
       else
         $("#totop").fadeOut(1000)
-    
+
     $("#totop").click ->
         $('body,html').animate({scrollTop:0},1000)
         return false
