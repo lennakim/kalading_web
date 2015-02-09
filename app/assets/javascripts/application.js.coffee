@@ -27,6 +27,9 @@ window.Kalading =
 
 $ ->
 
+  $("#login_btn").click ->
+    $("#login_modal").modal()
+
   #header nav address
   $('.nav .address a').click ->
     $("#select_city_modal").modal()
