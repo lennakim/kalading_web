@@ -22,9 +22,7 @@ class PublicAccount < ActiveRecord::Base
 
   def get_access_token
     client = weixin_client
-    token = client.get_access_token
-    self.access_token = token
-    token
+    client.get_access_token
   end
 
   def get_jsapi_ticket
