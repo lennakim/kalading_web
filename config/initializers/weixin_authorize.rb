@@ -1,4 +1,4 @@
-namespace = "kalading_web:weixin_authorize"
+namespace = "kalading_web_weixin:weixin_authorize"
 redis = Redis.new(:host => "127.0.0.1", :port => "6379", :db => 15)
 
 exist_keys = redis.keys("#{namespace}:*")
