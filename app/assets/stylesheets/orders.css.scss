@@ -367,11 +367,35 @@ $title-gray: #787878;
         display: none;
       }
     }
+    .find-vin{
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      margin: 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+      cursor: hand;
+      &:hover{
+        background: #ccc;
+        color: #fff;
+      }
+    }
     .spe{
       margin: 0 40px;
     }
   }
+  .vin-con{
+    display: none;
+    position: absolute;
+    top: 204px;
+    left: 400px;
+    padding: 0;
+    width: 200px;
+    height: 194px;
+  }
   .orders-content{
+    position: relative;
     margin-bottom: 20px;
     padding: 20px;
     .title,.address-info,.order-info{

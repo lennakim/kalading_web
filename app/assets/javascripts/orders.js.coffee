@@ -66,6 +66,13 @@ $ ->
 
   if $(".place-order-page,.place-order-phone").length > 0
 
+    $('.find-vin').on "mouseover", ->
+      $('.vin-con').css({'display':'block'})
+    $('.find-vin').on "mouseout", ->
+      $('.vin-con').css({'display':'none'})
+
+
+
     $("#place_order_form").on "ajax:beforeSend", ->
       $("#submit_form_button").attr('disabled', true)
 
