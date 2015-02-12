@@ -286,6 +286,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    wx_pay (0.0.2)
+      activesupport (~> 4)
+      rest-client (~> 1.7)
     yajl-ruby (1.2.1)
 
 PLATFORMS
@@ -339,3 +342,4 @@ DEPENDENCIES
   unicorn
   weixin_authorize!
   weixin_rails_middleware!
+  wx_pay

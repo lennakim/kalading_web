@@ -173,12 +173,12 @@ ActiveRecord::Schema.define(version: 20150202021404) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "account_secret_key"
-    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "access_token"
     t.string   "jsapi_ticket"
     t.datetime "token_expires_at"
@@ -271,6 +271,8 @@ ActiveRecord::Schema.define(version: 20150202021404) do
   end
 
   create_table "users", force: true do |t|
+    t.integer  "subscribe"
+    t.datetime "subscribe_time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
