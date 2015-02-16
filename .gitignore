@@ -21,3 +21,5 @@ config/secrets.yml
 .vagrant/
 /public/assets
 /public/uploads
+*.rdb
+*.DS_Store

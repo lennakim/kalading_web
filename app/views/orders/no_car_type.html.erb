@@ -54,7 +54,19 @@
             <input title="车辆排量" name="car_pl" class="phone_num form-control" placeholder="例:1.6T/l">
           </div>
         </div>
-
+        <div class="info-group form-group">
+          <div class="info-title">
+            <var class="star">*</var>
+            <%= label_tag(:name, "VIN号：") %>
+          </div>
+          <div class="info-con">
+            <input title="VIN" name="vin_num" class="vin_num form-control">
+          </div>
+          <div class="info-con find-vin">?</div>
+        </div>
+        <div class="vin-con">
+          <%= image_tag("vin.png")%>
+        </div>
         <% unless signed_in? %>
           <div class="info-group form-group">
             <div class="info-title">
