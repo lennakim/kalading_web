@@ -19,7 +19,7 @@ module OrdersHelper
     when "yi-dao-yi-wan-smt-3" # top
       items.select{ |ele| ele["brand"] == "美孚" }
     when "gan-ji-smt-3"
-      items.select{ |ele| ele["brand"] == "美孚" }
+      items.select{ |ele| ele["number"] =~ /极护/ }
 
     end
   end
