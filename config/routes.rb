@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
   resources :sessions do
     get 'callback',  on: :collection
+    post 'wechat_pay', on: :collection
     delete 'destroy', on: :collection
   end
 
