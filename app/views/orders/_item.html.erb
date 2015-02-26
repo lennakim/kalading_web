@@ -1,3 +1,4 @@
 <% brand = item["brand"] %>
 <% number = item["number"] %>
-<option data-item-name="<%= name %>" data-brand="<%= brand %>" data-number="<%= number %>" <%= selected_attr(selected) %>><%= display_item_name name, brand, number %></option>
+<option data-item-name="<%= name %>" data-brand="<%= brand %>" data-number="<%= number %>" <%= selected_attr(selected) %>><%= display_item_name name, brand, number %>  [￥<%= item["price"]%>]</option>
+
