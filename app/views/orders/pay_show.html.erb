@@ -1,0 +1,12 @@
+<h3>Goods</h3>
+<%= form_for :param, :url => pay_orders_path(@param) do |f|%>
+  <ul>
+    <li>body:<%= @param[:body] %></li>
+    <li>out_trade_no:<%= @param[:out_trade_no] %></li>
+    <li>total_fee:<%= @param[:total_fee] %></li>
+    <li>spbill_create_ip:<%= @param[:spbill_create_ip] %></li>
+    <li>notify_url:<%= @param[:notify_url] %></li>
+    <li>trade_type:<%= @param[:trade_type] %></li>
+  </ul>
+  <%= f.button :submit, value: "提交订单", class: "btn btn-primary" %>
+<% end %>
