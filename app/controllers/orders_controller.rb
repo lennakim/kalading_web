@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
   def pay_show
     @param = {
       body: '测试商品',
-      out_trade_no: 't4567',
+      out_trade_no: 't5555',
       total_fee: 1,
       spbill_create_ip: '127.0.0.1',
-      notify_url: 'http://ohcoder.pagekite.me/sessions/wechat_pay/',
+      notify_url: 'http://ohcoder.pagekite.me/sessions/wechat_pay',
       trade_type: 'NATIVE'
     }
   end
@@ -14,16 +14,17 @@ class OrdersController < ApplicationController
   def pay
     param = {
       body: '测试商品',
-      out_trade_no: 't4567',
+      out_trade_no: 't5555',
       total_fee: 1,
       spbill_create_ip: '127.0.0.1',
-      notify_url: 'http://ohcoder.pagekite.me/sessions/wechat_pay/',
+      notify_url: 'http://ohcoder.pagekite.me/sessions/wechat_pay',
       trade_type: 'NATIVE'
     }
     r = WxPay::Service.invoke_unifiedorder param
 
     if r.success?
       Rails.logger.info("-"*50)
+      Rails.logger.info(r)
       redirect_to r["code_url"]
     else
       Rails.logger.info("@"*50)
