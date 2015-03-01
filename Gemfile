@@ -45,6 +45,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git"
 gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
 gem 'wx_pay'
+gem 'rqrcode'
+gem 'rqrcode_png'
 gem 'simple_form'
 gem 'cocoon'
 
