@@ -3,6 +3,14 @@
     <%= resource.title %>
   </h1>
 
+  <hr>
+
+  预览地址：
+
+  <%= link_to slug_posts_path(resource.tags.last.id, resource.slug), slug_posts_path(resource.tags.last.id, resource.slug) %>
+
+  <hr>
+
   <div class="tags">
     <% resource.tag_list.each do |tag| %>
       <%= tag %> |

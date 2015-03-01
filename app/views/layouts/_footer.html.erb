@@ -24,26 +24,28 @@
     </div>
     <div class="bottom-nav">
       <ul>
-        <li class="title">服务支持</li>
+        <li class="title">产品与服务</li>
         <li>
-          <%= link_to "售后政策", '#'  %>
+          <%= link_to "服务说明", slug_posts_path(7, 'services') %>
         </li>
         <li>
-          <%= link_to "产品保障", '#' %>
+          <%= link_to "售后政策", slug_posts_path(6, 'terms') %>
         </li>
         <li>
-          <%= link_to "服务说明", '#' %>
-        </li>
-        <li>
-          <%= link_to "联系我们", '#'  %>
+          <%= link_to "产品保障", slug_posts_path(16, 'guarantee') %>
         </li>
       </ul>
       <ul>
-        <li class="title">特色服务</li>
+        <li class="title">关于我们</li>
         <li>
-          <%= link_to "集团客户服务", '#' %>
+          <%= link_to "公司简介", slug_posts_path(12, 'profile') %>
         </li>
-        <li>到店服务</li>
+        <li>
+          <%= link_to "集团客户", slug_posts_path(14, 'clients') %>
+        </li>
+        <li>
+          <%= link_to "联系我们", slug_posts_path(10, 'contact')  %>
+        </li>
       </ul>
       <ul>
         <li class="title">关注我们</li>

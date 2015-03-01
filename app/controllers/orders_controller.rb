@@ -190,7 +190,6 @@ class OrdersController < ApplicationController
         "car_location"      => params[:car_location],
         "car_num"           => params[:car_num],
         "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
-        "pay_type"          => params[:pay_type],
         "client_comment"    => "#{params[:brand]} #{params[:year]} #{params[:car_pl]}",
         "city_id"           => params[:city_id],
         "registration_date" => params[:registration_date]
@@ -245,15 +244,12 @@ class OrdersController < ApplicationController
         "car_location"      => params[:car_location],
         "car_num"           => params[:car_num],
         "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
-        "pay_type"          => params[:pay_type],
         "reciept_type"      => params[:reciept_type],
         "reciept_title"     => params[:reciept_title],
         "client_comment"    => params[:client_comment],
         "city_id"           => city.system_id, #params[:city_id]
         "car_id"            => params[:car_id],
-        "registration_date" => params[:registration_date],
-        "engine_num"        => params[:engine_num],
-        "vin"               => params[:vin],
+        # "registration_date" => params[:registration_date],
         "discount"          => params[:discount]
       }
     }
