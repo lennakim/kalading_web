@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def wechat_pay
+  def notify
     result = Hash.from_xml(request.body.read)["xml"]
      if WxPay::Sign.verify?(result)
        render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
