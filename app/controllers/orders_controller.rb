@@ -3,8 +3,8 @@ class OrdersController < ApplicationController
   def pay_show
     @param = {
       body: '测试商品',
-      out_trade_no: 't8888',
-      total_fee: 1,
+      out_trade_no: 't77',
+      total_fee: '1',
       spbill_create_ip: '121.42.155.108',
       notify_url: 'http://staging.kalading.com/sessions/notify',
       trade_type: 'NATIVE'
@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
   def pay
     param = {
       body: '测试商品',
-      out_trade_no: 't8888',
-      total_fee: 1,
+      out_trade_no: 't77',
+      total_fee: '1',
       spbill_create_ip: '121.42.155.108',
       notify_url: 'http://staging.kalading.com/sessions/notify',
       trade_type: 'NATIVE'
