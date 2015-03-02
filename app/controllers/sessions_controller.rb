@@ -40,7 +40,13 @@ class SessionsController < ApplicationController
     account = PublicAccount.find_by name: params[:name]
     client = account.weixin_client
     sns_info = client.get_oauth_access_token params[:code]
-    expires_in = sns_info.result["expires_in"].seconds.from_now.utc
+
+    if sns_info
+      expires_in = sns_info.result["expires_in"].seconds.from_now.utc
+    else
+      return
+    end
+
     cookies[:USERAUTH] = {
       value: sns_info.result["openid"],
       expires: 30.days.from_now
