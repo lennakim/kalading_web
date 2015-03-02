@@ -33,6 +33,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def wechat_pay
+    result = Hash.from_xml(request.body.read)["xml"]
+     if WxPay::Sign.verify?(result)
+       render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
+     else
+       render :xml => { return_code: "SUCCESS", return_msg: "签名失败" }.to_xml(root: 'xml', dasherize: false)
+     end
+  end
+
   def callback
     # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
     # Here got four params: params[:code], params[:state], params[:name], params[:go]

@@ -1,5 +1,37 @@
 class OrdersController < ApplicationController
 
+  def pay_show
+    @param = {
+      body: '测试商品',
+      out_trade_no: 't888',
+      total_fee: 1,
+      spbill_create_ip: '121.42.155.108',
+      notify_url: 'http://staging.kalading.com/sessions/wechat_pay',
+      trade_type: 'NATIVE'
+    }
+  end
+
+  def pay
+    param = {
+      body: '测试商品',
+      out_trade_no: 't888',
+      total_fee: 1,
+      spbill_create_ip: '121.42.155.108',
+      notify_url: 'http://staging.kalading.com/sessions/wechat_pay',
+      trade_type: 'NATIVE'
+    }
+    r = WxPay::Service.invoke_unifiedorder param
+
+    if r.success?
+      Rails.logger.info("-"*50)
+      Rails.logger.info(r)
+      redirect_to r["code_url"]
+    else
+      Rails.logger.info("@"*50)
+      redirect_to pay_show_orders_path
+    end
+  end
+
   def validate_preferential_code
     code = params[:code]
     car_id = params["car_id"]
