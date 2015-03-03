@@ -43,8 +43,9 @@ Rails.application.routes.draw do
       post 'no_preferential'
       get  'no_car_type'
       post 'submit_no_car_order'
-      get 'pay_show'
+      get  'pay_show'
       post 'pay'
+      post 'notify'
     end
   end
 

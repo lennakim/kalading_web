@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
       redirect_to root_path(login: 1)
     end
   end
-
+=begin
   def notify
     result = Hash.from_xml(request.body.read)["xml"]
      if WxPay::Sign.verify?(result)
@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
        render :xml => { return_code: "SUCCESS", return_msg: "签名失败" }.to_xml(root: 'xml', dasherize: false)
      end
   end
-
+=end
   def callback
     # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
     # Here got four params: params[:code], params[:state], params[:name], params[:go]
