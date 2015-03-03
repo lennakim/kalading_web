@@ -1,5 +1,51 @@
 class OrdersController < ApplicationController
 
+  def pay_show
+    @param = {
+      body: '测试商品',
+      out_trade_no: 'test555',
+      total_fee: 1,
+      spbill_create_ip: '115.28.84.90',
+      notify_url: 'http://kalading.com/sessions/notify',
+      trade_type: 'NATIVE'
+    }
+  end
+
+  def pay
+    param = {
+      body: '测试商品',
+      out_trade_no: 'test555',
+      total_fee: 1,
+      spbill_create_ip: '115.28.84.90',
+      notify_url: 'http://kalading.com/sessions/notify',
+      trade_type: 'NATIVE'
+    }
+    r = WxPay::Service.invoke_unifiedorder param
+
+    if r.success?
+      Rails.logger.info("-"*50)
+      Rails.logger.info(r)
+      redirect_to r["code_url"]
+    else
+      Rails.logger.info("@"*50)
+      redirect_to pay_show_orders_path
+    end
+  end
+
+  def notify
+=begin
+    result = Hash.from_xml(request.body.read)["xml"]
+     if WxPay::Sign.verify?(result)
+       render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
+     else
+       render :xml => { return_code: "SUCCESS", return_msg: "签名失败" }.to_xml(root: 'xml', dasherize: false)
+     end
+=end
+    Rails.logger.info("+"*100)
+
+    render plain: "OK"
+  end
+
   def validate_preferential_code
     code = params[:code]
     car_id = params["car_id"]

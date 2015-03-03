@@ -43,6 +43,9 @@ Rails.application.routes.draw do
       post 'no_preferential'
       get  'no_car_type'
       post 'submit_no_car_order'
+      get  'pay_show'
+      post 'pay'
+      get 'notify'
     end
   end
 
@@ -67,6 +70,7 @@ Rails.application.routes.draw do
 
   resources :sessions do
     get 'callback',  on: :collection
+    get 'notify', on: :collection
     delete 'destroy', on: :collection
   end
 
