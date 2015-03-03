@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
   def pay_show
     @param = {
       body: '测试商品',
-      out_trade_no: 't777',
+      out_trade_no: 't111',
       total_fee: 1,
       spbill_create_ip: '121.42.155.108',
-      notify_url: 'http://staging.kalading.com/orders/notify',
+      notify_url: 'http://staging.kalading.com/sessions/notify',
       trade_type: 'NATIVE'
     }
   end
@@ -14,10 +14,10 @@ class OrdersController < ApplicationController
   def pay
     param = {
       body: '测试商品',
-      out_trade_no: 't777',
+      out_trade_no: 't111',
       total_fee: 1,
       spbill_create_ip: '121.42.155.108',
-      notify_url: 'http://staging.kalading.com/orders/notify',
+      notify_url: 'http://staging.kalading.com/sessions/notify',
       trade_type: 'NATIVE'
     }
     r = WxPay::Service.invoke_unifiedorder param
