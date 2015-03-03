@@ -45,7 +45,6 @@ Rails.application.routes.draw do
       post 'submit_no_car_order'
       get 'pay_show'
       post 'pay'
-      post 'notify'
     end
   end
 
