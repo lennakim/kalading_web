@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       body: '测试商品',
       out_trade_no: 'test666',
       total_fee: 1,
-      spbill_create_ip: '115.28.84.90',
+      spbill_create_ip: '121.42.155.108',
       notify_url: 'http://staging.kalading.com/sessions/notify',
       trade_type: 'NATIVE'
     }
