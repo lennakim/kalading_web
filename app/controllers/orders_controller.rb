@@ -32,17 +32,6 @@ class OrdersController < ApplicationController
     end
   end
 
-=begin
-  def notify
-      result = Hash.from_xml(request.body.read)["xml"]
-       if WxPay::Sign.verify?(result)
-         render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
-       else
-         render :xml => { return_code: "SUCCESS", return_msg: "签名失败" }.to_xml(root: 'xml', dasherize: false)
-       end
-  end
-=end
-
   def validate_preferential_code
     code = params[:code]
     car_id = params["car_id"]
