@@ -42,6 +42,8 @@ class OrdersController < ApplicationController
      end
 =end
     Rails.logger.info("+"*100)
+
+    render plain: "OK"
   end
 
   def validate_preferential_code
