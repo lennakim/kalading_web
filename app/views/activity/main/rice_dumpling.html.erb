@@ -12,15 +12,16 @@
 	<%= image_tag("activity/rice_dumpling/btn.png", class: "btn") %>
 	<p>
 	  	<%= image_tag("activity/rice_dumpling/title1.png", class: "title1") %></br>
-	  	用手指拖住元宵，尽你最大力量的拉开，让元宵在屏幕上弹灰尘吧~，我不会跟你说方向和距离的重要性的！
+	  	用手指拖住元宵，尽你最大力量的拉开，让卡拉丁大元宵在屏幕上尽情大战雾霾怪吧~我不会跟你说方向和距离的重要性的！
 	</p>
   </div>
   <div class="gamepage hidden">
   	<canvas id='canvas'></canvas>
-
+	
 	<%= image_tag("activity/rice_dumpling/bj.png", class: "bj") %>
 	<%= image_tag("activity/rice_dumpling/ball.png", class: "ball") %>
 	<%= image_tag("activity/rice_dumpling/dirt.png", class: "dirt") %>
+	<%= image_tag("activity/rice_dumpling/line.png", class: "line") %>
 
     <%= audio_tag("activity/rice_dumpling/media/bgm.mp3", id: "bgm") %>
     <%= audio_tag("activity/rice_dumpling/media/d.MP3", id: "d") %>
@@ -29,11 +30,16 @@
   	<div class="share_bac"></div>
   	<div class="share_con">
   		<%= image_tag("activity/rice_dumpling/share_bj.png", class: "share_bj") %>
-  		<span class="clearedDirts"></span>
+  		<div class="result">
+  			<p class="des">你成功用卡拉丁大元宵击败了</p>
+  			<p class="clearedDirts"></p>
+  			<p class="des">只雾霾怪</p>
+  		</div>
 		<span class="restart">重玩</span>
 		<span class="share_to">分享</span>	
   	</div>
   	<div class="share_to_bac hidden"></div>
   	<%= image_tag("activity/rice_dumpling/share_title.png", class: "share_title") %>
   </div>
+  <div id="data" data-imageUrl="<%= image_url('activity/papago/thumbnail.jpg') %>" data-musicUrl="activity/rice_dumpling/media/bgm.mp3" data-linkUrl=""></div>
 </div>

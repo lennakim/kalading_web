@@ -42,6 +42,10 @@
 		img{
 			display: none;
 		}
+		.line{
+			position: absolute;
+			height: 0; 
+		}
 	}
 	.sharePage{
 		position: absolute;
@@ -54,10 +58,17 @@
 		.share_con{
 			position: absolute;
 			top: 0;
-			.clearedDirts{
+			.result{
 				position: absolute;
-				top: 33%;
-				left: 45%;
+				top: 28%;
+				left: 15%;
+				width: 70%;
+				line-height: 40px;
+				font-size: 22px;
+				text-align: center;
+				color: #f07b6a;
+			}
+			.clearedDirts{
 				font-size: 30px;
 			}
 			.share_bj{

@@ -70,12 +70,24 @@ window.onload = function() {
   //橡皮擦
   drawBall(context, ball.x, ball.y);
 
+  $('.line').css({'left':ball.x+ball.width,'top':ball.y+ball.width});
+
+  var lineTimer = setInterval(function(){
+    $('.line').animate({height:"50px"},500,function(){
+      $('.line').animate({height:"0"});
+    });
+  },1000)
+
+
   function startEvent() {
       event.preventDefault();
       var touch = event.touches[0];
       startX = touch.pageX;
       startY = touch.pageY;
       bgm.pause();
+
+      $('.line').css({'display':'none'});
+      clearInterval(lineTimer);
   }
 
   function moveEvent() {
@@ -86,7 +98,8 @@ window.onload = function() {
       moveX = endX - startX;
       moveY = endY - startY;
 
-
+      $('.line').css({'display':'none'});
+      clearInterval(lineTimer);
   }
   
   function endEvent() {
@@ -301,31 +314,26 @@ window.onload = function() {
       drawBall(cxt, ball.x, ball.y);  
   }
 
+  var imageUrl = $("#data").data('imageUrl');
+  var musicUrl = $("#data").data('musicUrl');
+  var linkUrl = $("#data").data('linkUrl');
   wx.onMenuShareTimeline({
-    title: '', // 分享标题
-    link: '', // 分享链接
-    imgUrl: '', // 分享图标
-    success: function () { 
-        // 用户确认分享后执行的回调函数
-    },
-    cancel: function () { 
-        // 用户取消分享后执行的回调函数
-    }
-});
+    title: '大元宵大战雾霾怪！',
+    link: linkUrl,
+    imgUrl: imageUrl,
+    success: function () { },
+    cancel: function () { }
+  });
 
   wx.onMenuShareAppMessage({
-    title: '', // 分享标题
-    desc: '', // 分享描述
-    link: '', // 分享链接
-    imgUrl: '', // 分享图标
-    type: '', // 分享类型,music、video或link，不填默认为link
-    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-    success: function () { 
-        // 用户确认分享后执行的回调函数
-    },
-    cancel: function () { 
-        // 用户取消分享后执行的回调函数
-    }
+    title: '大元宵大战雾霾怪！',
+    desc: '我用卡拉丁大元宵击败了'+$('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
+    link: linkUrl,
+    imgUrl: imageUrl,
+    type: 'music', // 分享类型,music、video或link，不填默认为link
+    dataUrl: musicUrl, // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () { },
+    cancel: function () { }
   });
 
 }
