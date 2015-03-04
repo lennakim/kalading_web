@@ -378,8 +378,6 @@ window.onload = function() {
   var nonceStr = $("#data").data('noncestr')
   var appId = $("#data").data('appid')
 
-  var count = ""
-
   wx.config({
     appId: appId,
     timestamp: timestamp,
@@ -390,29 +388,27 @@ window.onload = function() {
 
   wx.ready(function(){
 
-    wx.onMenuShareTimeline({
-      title: '大元宵大战雾霾怪！',
-      desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
-      link: linkUrl,
-      imgUrl: imageUrl,
-      success: function () { },
-      cancel: function () { },
-      trigger: function(){
-        count = $('.clearedDirts').text()
-      }
-    });
+    var count = $('.clearedDirts').text()
 
-    wx.onMenuShareAppMessage({
-      title: '大元宵大战雾霾怪！',
-      desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
-      link: linkUrl,
-      imgUrl: imageUrl,
-      success: function () { },
-      cancel: function () { },
-      trigger: function(){
-        count = $('.clearedDirts').text()
-      }
-    });
+    $('.share_to').click(function(){
+      wx.onMenuShareTimeline({
+        title: '大元宵大战雾霾怪！',
+        desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
+        link: linkUrl,
+        imgUrl: imageUrl,
+        success: function () { },
+        cancel: function () { }
+      });
 
+      wx.onMenuShareAppMessage({
+        title: '大元宵大战雾霾怪！',
+        desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
+        link: linkUrl,
+        imgUrl: imageUrl,
+        success: function () { },
+        cancel: function () { }
+      });
+
+    })
   });
 }
