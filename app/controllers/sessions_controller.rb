@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
     sns_info = client.get_oauth_access_token params[:code]
     result_expires = sns_info.result["expires_in"]
 
-    return unless result_expires
+    return redirect_to root_path(login: 1) unless result_expires
 
     expires_in = result_expires.seconds.from_now.utc
 
