@@ -369,7 +369,6 @@ window.onload = function() {
   }
 
   var imageUrl = $("#data").data('imageUrl');
-  var musicUrl = $("#data").data('musicUrl');
 
   var linkUrl = $("#data").data('linkUrl');
 
