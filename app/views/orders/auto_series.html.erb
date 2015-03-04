@@ -1,4 +1,4 @@
-<% cache [params[:id], current_city_id] do %>
+<% cache [params[:id], current_city_id, params[:auto_id], params[:act]] do %>
 
   <% series = Order.auto_series params[:id], current_city_id %>
 

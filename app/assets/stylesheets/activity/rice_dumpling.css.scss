@@ -44,7 +44,7 @@
 		}
 		.line{
 			position: absolute;
-			height: 0; 
+			height: 0;
 		}
 	}
 	.sharePage{
@@ -112,4 +112,7 @@
 			width: 100%;
 		}
 	}
+}
+a:link[title="站长统计"]{
+  display: none;
 }
