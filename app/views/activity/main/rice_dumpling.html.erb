@@ -17,7 +17,7 @@
   </div>
   <div class="gamepage hidden">
   	<canvas id='canvas'></canvas>
-	
+
 	<%= image_tag("activity/rice_dumpling/bg.png", class: "bj") %>
 	<%= image_tag("activity/rice_dumpling/ball.png", class: "ball") %>
 	<%= image_tag("activity/rice_dumpling/dirt.png", class: "dirt") %>
@@ -39,16 +39,23 @@
   			<p>
   				<span>击败了全国</span>
   				<span class="percent"></span>
-  				<span>%的玩家</span>	
+  				<span>%的玩家</span>
   			</p>
   		</div>
   		<%= image_tag("activity/rice_dumpling/share_to.png", class: "share_to") %>
   		<%= image_tag("activity/rice_dumpling/restart.png", class: "restart") %>
 		<span class="restart_tit">重玩</span>
-		<span class="share_to_tit">分享</span>	
+		<span class="share_to_tit">分享</span>
   	</div>
   	<div class="share_to_bac hidden"></div>
   	<%= image_tag("activity/rice_dumpling/share_title.png", class: "share_title") %>
   </div>
-  <div id="data" data-imageUrl="<%= image_url('activity/papago/thumbnail.jpg') %>" data-musicUrl="activity/rice_dumpling/media/bgm.mp3" data-linkUrl=""></div>
+
+  <% pa = PublicAccount.find_by(name: 'kaladingcom') %>
+  <% url = request.original_url %>
+
+  <% result = pa.get_signature(url) %>
+
+  <div id="data" data-imageUrl="<%= image_url('activity/papago/thumbnail.jpg') %>" data-musicUrl="activity/rice_dumpling/media/bgm.mp3" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>" data-linkUrl="<%= url %>"></div>
+
 </div>

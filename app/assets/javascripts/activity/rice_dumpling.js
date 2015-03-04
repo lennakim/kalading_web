@@ -341,6 +341,20 @@ window.onload = function() {
 
   var linkUrl = $("#data").data('linkUrl');
 
+  var signature = $("#data").data('signature')
+  var timestamp = $("#data").data('timestamp')
+  var nonceStr = $("#data").data('noncestr')
+  var appId = $("#data").data('appid')
+
+
+  wx.config({
+    appId: appId,
+    timestamp: timestamp,
+    nonceStr: nonceStr,
+    signature: signature,
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+  })
+
   wx.ready(function(){
 
     wx.onMenuShareTimeline({
@@ -357,8 +371,8 @@ window.onload = function() {
       desc: '我用卡拉丁大元宵击败了'+ $('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
       link: linkUrl,
       imgUrl: imageUrl,
-      type: 'music', // 分享类型,music、video或link，不填默认为link
-      dataUrl: musicUrl, // 如果type是music或video，则要提供数据链接，默认为空
+      // type: 'music', // 分享类型,music、video或link，不填默认为link
+      // dataUrl: musicUrl, // 如果type是music或video，则要提供数据链接，默认为空
       success: function () { },
       cancel: function () { }
     });
