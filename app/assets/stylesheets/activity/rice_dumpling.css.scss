@@ -35,7 +35,7 @@
 			padding: 0 5%;
 			line-height: 30px;
 			color: #fff;
-			font-size: 18px;
+			font-size: 14px;
 		}
 	}
 	.gamepage{
@@ -53,7 +53,7 @@
 		.share_bac{
 			filter:alpha(opacity=50);
 			opacity:0.5;
-			background: #fff;
+			background: #000;
 		}
 		.share_con{
 			position: absolute;
@@ -63,12 +63,12 @@
 				top: 28%;
 				left: 15%;
 				width: 70%;
-				line-height: 40px;
-				font-size: 22px;
+				line-height: 30px;
+				font-size: 16px;
 				text-align: center;
 				color: #f07b6a;
 			}
-			.clearedDirts{
+			.clearedDirts,.percent{
 				font-size: 30px;
 			}
 			.share_bj{
@@ -81,20 +81,20 @@
 				position: absolute;
 				top: 52%;
 				width: 25%;
-				padding-top: 90px;
+			}
+			.share_to_tit,.restart_tit{
+				position: absolute;
+				top: 65%;
+				width: 25%;
 				text-align: center;
 				font-size: 22px;
-				background-repeat: no-repeat; 
-				background-size: 100%;
 				color: #f07b6a;
 			}
-			.share_to{
+			.share_to,.share_to_tit{
 				right: 16%;
-				background-image: image-url('activity/rice_dumpling/share_to.png');
 			}
-			.restart{
+			.restart,.restart_tit{
 				left: 16%;
-				background-image: image-url('activity/rice_dumpling/restart.png');
 			}
 		}
 		.share_to_bac{
