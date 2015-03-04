@@ -359,7 +359,7 @@ window.onload = function() {
 
   var imageUrl = $("#data").data('imageurl');
 
-  var linkUrl = $("#data").data('linkUrl');
+  var linkUrl = $("#data").data('linkurl');
 
   var signature = $("#data").data('signature')
   var timestamp = $("#data").data('timestamp')
