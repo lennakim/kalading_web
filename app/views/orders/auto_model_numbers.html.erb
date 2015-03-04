@@ -1,5 +1,5 @@
 <% type = params[:type] || 'bmt' %>
-<% cache [type, params[:id], current_city_id] do %>
+<% cache [type, params[:id], current_city_id, params[:auto_id], params[:act]] do %>
 
   <% auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, type %>
 
