@@ -1,7 +1,7 @@
 #= require jquery
 #= require jquery.turbolinks
-#= require jquery_ujs
 #= require turbolinks
+#= require jquery_ujs
 #= require jquery.chained.remote.min
 #= require jquery.form
 #= require jquery.validate.min
@@ -55,7 +55,6 @@ $ ->
     type = $('.select-car-page').data('type') || 'bmt'
 
     if id
-
       Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
     else
       return alert "请先选择车辆"

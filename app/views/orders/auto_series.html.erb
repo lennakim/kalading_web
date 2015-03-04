@@ -1,20 +1,22 @@
-<% content_for :javascripts do %>
-  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
-<% end %>
+<% cache [params[:id], current_city_id] do %>
 
-<div class="auto-series-phone phone-page">
-  <% if @series.length>0 %>
-	<% @series.each do |car_type| %>
-	  <div class="carinfo list clearfix" >
-		<div class="car-type pull-left">
-      <%= link_to car_type['name'], auto_model_numbers_orders_path(id: car_type['_id'], act: params[:act], type: params[:type]) %>
-		</div>
-		<div class="arrow glyphicon glyphicon-chevron-right pull-right"></div>
-	  </div>
-	<% end %>
-  <% else %>
-	<div class="blank">
-	    暂无此车型
-	</div>
-  <% end %>
-</div>
+  <% series = Order.auto_series params[:id], current_city_id %>
+
+  <div class="auto-series-phone phone-page">
+    <% if series.length > 0 %>
+      <% series.each do |car_type| %>
+        <div class="carinfo list clearfix" >
+          <div class="car-type pull-left">
+            <%= link_to car_type['name'], auto_model_numbers_orders_path(id: car_type['_id'], act: params[:act], type: params[:type]) %>
+          </div>
+          <div class="arrow glyphicon glyphicon-chevron-right pull-right">
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="blank">
+        暂无此车型
+      </div>
+    <% end %>
+  </div>
+<% end %>

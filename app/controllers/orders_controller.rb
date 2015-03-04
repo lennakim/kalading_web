@@ -68,16 +68,12 @@ class OrdersController < ApplicationController
   end
 
   def auto_brands
-    @brands = Order.auto_brands current_city_id
   end
 
   def auto_series
-    @series = Order.auto_series params[:id], current_city_id
   end
 
   def auto_model_numbers
-    type = params[:type] || 'bmt'
-    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, type
   end
 
   def select_car
@@ -106,12 +102,24 @@ class OrdersController < ApplicationController
       end
 
       if last_select_car.present?
-        @last_select_car = Auto.api_find last_select_car
+        cache_key = "#{last_select_car}/car_info"
+        @last_select_car = Rails.cache.fetch(cache_key)
+
+        if !@last_select_car
+          @last_select_car = Auto.api_find last_select_car
+          Rails.cache.write(cache_key, @last_select_car)
+        end
       end
 
       type = params[:type]
       # @cars_info = Order.cars_data current_city_id, type
-      @result = Order.items_for car_id, current_city_id, type
+
+      cache_key = "#{car_id}/#{current_city_id}/#{type}/result"
+      @result = Rails.cache.fetch(cache_key)
+      if !@result
+        @result = Order.items_for car_id, current_city_id, type
+        Rails.cache.write(cache_key, @result)
+      end
 
     else
       return redirect_to auto_brands_orders_path(act: params[:act], type: params[:type])
