@@ -346,6 +346,7 @@ window.onload = function() {
   var nonceStr = $("#data").data('noncestr')
   var appId = $("#data").data('appid')
 
+  var count = ""
 
   wx.config({
     appId: appId,
@@ -359,22 +360,26 @@ window.onload = function() {
 
     wx.onMenuShareTimeline({
       title: '大元宵大战雾霾怪！',
-      desc: '我用卡拉丁大元宵击败了'+ $('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
+      desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
       link: linkUrl,
       imgUrl: imageUrl,
       success: function () { },
-      cancel: function () { }
+      cancel: function () { },
+      trigger: function(){
+        count = $('.clearedDirts').text()
+      }
     });
 
     wx.onMenuShareAppMessage({
       title: '大元宵大战雾霾怪！',
-      desc: '我用卡拉丁大元宵击败了'+ $('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
+      desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
       link: linkUrl,
       imgUrl: imageUrl,
-      // type: 'music', // 分享类型,music、video或link，不填默认为link
-      // dataUrl: musicUrl, // 如果type是music或video，则要提供数据链接，默认为空
       success: function () { },
-      cancel: function () { }
+      cancel: function () { },
+      trigger: function(){
+        count = $('.clearedDirts').text()
+      }
     });
 
   });
