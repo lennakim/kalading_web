@@ -10,7 +10,7 @@ window.onload = function() {
   var ball = {
       width: ballW,
       height: ballH,
-      x: document.body.clientWidth/2-ballW,
+      x: document.body.clientWidth/2-ballW/2,
       y: document.body.clientHeight/2,
       r: Math.random() * 80 + 30,
       vx: 0,
@@ -43,7 +43,7 @@ window.onload = function() {
 
   var timer;
 
-  var lastnum ,sumnum;
+  var lastnum ,sumnum,val,percent;
 
   var canvas = document.getElementById('canvas');
   canvas.width = document.body.clientWidth;
@@ -110,7 +110,7 @@ window.onload = function() {
           timer = setInterval(function() {
               updateBall(context, canvas.width, canvas.height);
               render(context);
-          }, 10);
+          }, 30);
       }
   }
 
@@ -250,11 +250,15 @@ window.onload = function() {
               lastnum = $('.clearedDirts').text();
             }
             sumnum = Object.keys(clearedDirts).length;
+            val = parseInt(sumnum-lastnum);
+
             $('.clearedDirts').attr('data-sumnum',sumnum);
-            $('.clearedDirts').text(sumnum-lastnum);
+            $('.clearedDirts').text(val);
 
           }else{
             $('.clearedDirts').text(Object.keys(clearedDirts).length);
+            val = Object.keys(clearedDirts).length;
+            percent(val);
           }
 
           var width = document.documentElement.clientWidth;
@@ -262,6 +266,26 @@ window.onload = function() {
           $('.sharePage').removeClass('hidden');
           $('.sharePage,.share_bac,.share_con,.share_to_bac').css({'width':width,'height':height});
       }
+  }
+
+
+  function percent(val){
+    if(val<=50){
+      percent = 10;
+    }
+    else if(val>50 && val<=70){
+      percent = 58;
+    }
+    else if(val>70 && val<=90){
+      percent = 88;
+    }
+    else if(val>90 && val<=110){
+      percent = 93;
+    }
+    else if(val>110 && val<=150){
+      percent = 99;
+    }
+    $('.percent').text(percent);
   }
 
   
@@ -285,7 +309,7 @@ window.onload = function() {
 
 
     //橡皮擦
-    drawBall(context, ball.x, ball.y);
+    drawBall(context, document.body.clientWidth/2-ballW/2, document.body.clientHeight/2);
 
     canvas.addEventListener("touchstart", startEvent, false);
 
