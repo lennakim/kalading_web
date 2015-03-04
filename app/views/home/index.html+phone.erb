@@ -1,67 +1,68 @@
-<% content_for :javascripts do %>
-  <%= javascript_include_tag "home", 'data-turbolinks-track' => true %>
-<% end %>
+<% cache "home_phone" do %>
+  <% content_for :javascripts do %>
+    <%= javascript_include_tag "home", 'data-turbolinks-track' => true %>
+  <% end %>
 
-<div class="home-phone phone-page">
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <!-- <li data&#45;target="#carousel&#45;example&#45;generic" data&#45;slide&#45;to="1"></li> -->
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa856bd80cf155131&redirect_uri=http%3A%2F%2Fkalading.com%2Fsessions%2Fcallback%3Fname%3Dkaladingcom%26go%3Dact_papago&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect" target="_blank"><%= image_tag("slider1.jpg")%></a>
+  <div class="home-phone phone-page">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <!-- <li data&#45;target="#carousel&#45;example&#45;generic" data&#45;slide&#45;to="1"></li> -->
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa856bd80cf155131&redirect_uri=http%3A%2F%2Fkalading.com%2Fsessions%2Fcallback%3Fname%3Dkaladingcom%26go%3Dact_papago&response_type=code&scope=snsapi_userinfo&state=weixin#wechat_redirect" target="_blank"><%= image_tag("slider1.jpg")%></a>
+        </div>
+        <!-- <div class="item"> -->
+        <!--   <a href="http://m.ayibang.com/bigcoupon?source=kalading" target="_blank"><%= image_tag("slider2.jpg")%></a> -->
+        <!-- </div> -->
       </div>
-      <!-- <div class="item"> -->
-      <!--   <a href="http://m.ayibang.com/bigcoupon?source=kalading" target="_blank"><%= image_tag("slider2.jpg")%></a> -->
-      <!-- </div> -->
+      <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a> -->
     </div>
-    <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a> -->
-  </div>
-  <div class="personal-maintain">
-    <ul class="personal">
-      <li><%= link_to "我的订单", orders_users_path %></li>
-      <li><%= link_to "保养记录", maintain_histories_list_users_path %></li>
-    </ul>
-    <p class="maintain-address" title="保养地点:<%= current_city_name %>">保养地点：
-      <span id="current_city">
-        <%= current_city_name %>
-      </span>
-    </p>
-  </div>
-  <div class="promise">
-  	<h3>为什么选择上门保养</h3>
-    <div class="pros">
-      <dl title="100%正品配件">
-        <dt>100</dt>
-        <dd>%</dd>
-        <dd class="des">正品配件</dd>
-      </dl>
-      <dl title="24小时上门服务">
-        <dt>24</dt>
-        <dd>h预约</dd>
-        <dd class="des">上门服务</dd>
-      </dl>
-      <dl title="200万责任险">
-        <dt>200</dt>
-        <dd>万</dd>
-        <dd class="des">责任险</dd>
-      </dl>
-      <dl title="365天全年无休">
-        <dt>365</dt>
-        <dd>天</dd>
-        <dd class="des">全年无休</dd>
-      </dl>
+    <div class="personal-maintain">
+      <ul class="personal">
+        <li><%= link_to "我的订单", orders_users_path %></li>
+        <li><%= link_to "保养记录", maintain_histories_list_users_path %></li>
+      </ul>
+      <p class="maintain-address" title="保养地点:<%= current_city_name %>">保养地点：
+        <span id="current_city">
+          <%= current_city_name %>
+        </span>
+      </p>
     </div>
+    <div class="promise">
+      <h3>为什么选择上门保养</h3>
+      <div class="pros">
+        <dl title="100%正品配件">
+          <dt>100</dt>
+          <dd>%</dd>
+          <dd class="des">正品配件</dd>
+        </dl>
+        <dl title="24小时上门服务">
+          <dt>24</dt>
+          <dd>h预约</dd>
+          <dd class="des">上门服务</dd>
+        </dl>
+        <dl title="200万责任险">
+          <dt>200</dt>
+          <dd>万</dd>
+          <dd class="des">责任险</dd>
+        </dl>
+        <dl title="365天全年无休">
+          <dt>365</dt>
+          <dd>天</dd>
+          <dd class="des">全年无休</dd>
+        </dl>
+      </div>
 
-    <a class="btn btn-default order_button" href="/orders/select_car_item">立即预约</a>
+      <a class="btn btn-default order_button" href="/orders/select_car_item">立即预约</a>
 
   </div>
   <div class="maintain-intro">
@@ -135,65 +136,66 @@
           <p>杭州：滨江区、江干区、上城区、下城区、西湖区、拱墅区、西溪阿里园区</p>
       	</li>
       </ul>
+      </div>
+      <div class="service-process">
+        <h3 class="title"><span>服务流程</span></h3>
+        <ul>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第一步：预订服务→审核订单→技师提前一天与您确认服务时间。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第二步：小卡技师到达与您约定的服务地点。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第三步：小卡技师跟您确认服务项目及所用配件。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第四步：为您的爱车进行车辆检查及施工单确认签字。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第五步：小卡技师布置施工现场、安全防护及架设录像设备。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第六步：小卡技师为您爱车进行现场保养项目施工。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第七步：小卡技师为您进行全车32项安全监测并录入APP。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第八步：您验收服务项目及施工质量。</span>
+          </li>
+          <li class="module-item">
+            <var class="point1"></var>
+            <span>第九步：结算费用并提供相关票据。</span>
+          </li>
+        </ul>
+      </div>
+      <div class="others">
+        <h3 class="title"><span>其他信息</span></h3>
+        <ul>
+          <li class="module-item">
+            <var class="point"></var>关注卡拉丁微信服务号“<span class="orange">kaladingcom</span>”，有专业客服帮您答疑关于车的其他问题。
+          </li>
+          <li class="module-item">
+            <var class="point"></var>关注<span class="orange">@卡拉丁</span>微博，参与互动，即时获得优惠信息。
+          </li>
+          <li class="module-item">
+            <var class="point"></var>如您想找人工客服解决问题，请拨打：<span class="orange">400-006-8181</span>
+          </li>
+          <li class="img-item">
+            <%= image_tag("2weima.jpg",:class => 'photo')%>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="service-process">
-    	<h3 class="title"><span>服务流程</span></h3>
-    	<ul>
-    	  <li class="module-item">
-          <var class="point1"></var>
-          <span>第一步：预订服务→审核订单→技师提前一天与您确认服务时间。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第二步：小卡技师到达与您约定的服务地点。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第三步：小卡技师跟您确认服务项目及所用配件。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	 	  <span>第四步：为您的爱车进行车辆检查及施工单确认签字。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第五步：小卡技师布置施工现场、安全防护及架设录像设备。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第六步：小卡技师为您爱车进行现场保养项目施工。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第七步：小卡技师为您进行全车32项安全监测并录入APP。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第八步：您验收服务项目及施工质量。</span>
-    	  </li>
-    	  <li class="module-item">
-          <var class="point1"></var>
-    	  	<span>第九步：结算费用并提供相关票据。</span>
-    	  </li>
-    	</ul>
-    </div>
-    <div class="others">
-      <h3 class="title"><span>其他信息</span></h3>
-      <ul>
-        <li class="module-item">
-          <var class="point"></var>关注卡拉丁微信服务号“<span class="orange">kaladingcom</span>”，有专业客服帮您答疑关于车的其他问题。
-        </li>
-        <li class="module-item">
-          <var class="point"></var>关注<span class="orange">@卡拉丁</span>微博，参与互动，即时获得优惠信息。
-        </li>
-        <li class="module-item">
-          <var class="point"></var>如您想找人工客服解决问题，请拨打：<span class="orange">400-006-8181</span>
-        </li>
-        <li class="img-item">
-          <%= image_tag("2weima.jpg",:class => 'photo')%>
-        </li>
-      </ul>
-    </div>
+    <%= image_tag("totop.png",:id => 'totop')%>
   </div>
-  <%= image_tag("totop.png",:id => 'totop')%>
-</div>
+<% end %>

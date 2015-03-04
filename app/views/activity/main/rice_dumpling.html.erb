@@ -1,0 +1,61 @@
+<%= content_for :assets do %>
+  <%= stylesheet_link_tag    'activity/rice_dumpling', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'activity/activity', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'activity/rice_dumpling', 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="rice_dumpling">
+  <div class="startPage">
+  	<%= image_tag("activity/rice_dumpling/bj.png",width:"100%", class: "bac") %>
+	<%= image_tag("activity/rice_dumpling/ball.png", class: "ball") %>
+	<%= image_tag("activity/rice_dumpling/title.png", class: "title") %>
+	<%= image_tag("activity/rice_dumpling/btn.png", class: "btn") %>
+	<p>
+	  	<%= image_tag("activity/rice_dumpling/title1.png", class: "title1") %></br>
+	  	用手指拖住元宵，尽你最大力量的拉开，让卡拉丁大元宵在屏幕上尽情大战雾霾怪吧~我不会跟你说方向和距离的重要性的！
+	</p>
+  </div>
+  <div class="gamepage hidden">
+  	<canvas id='canvas'></canvas>
+
+	<%= image_tag("activity/rice_dumpling/bg.png", class: "bj") %>
+	<%= image_tag("activity/rice_dumpling/ball.png", class: "ball") %>
+	<%= image_tag("activity/rice_dumpling/dirt.png", class: "dirt") %>
+	<%= image_tag("activity/rice_dumpling/line.png", class: "line") %>
+
+    <%= audio_tag("activity/rice_dumpling/media/bgm.mp3", id: "bgm",loop: true) %>
+    <%= audio_tag("activity/rice_dumpling/media/d.MP3", id: "d") %>
+  </div>
+  <div class="sharePage hidden">
+  	<div class="share_bac"></div>
+  	<div class="share_con">
+  		<%= image_tag("activity/rice_dumpling/share_bj.png", class: "share_bj") %>
+  		<div class="result">
+  			<p class="des">卡拉丁大元宵成功击败</p>
+  			<p>
+  				<span class="clearedDirts"></span>
+  				<span>只雾霾怪</span>
+  			</p>
+  			<p>
+  				<span>击败了全国</span>
+  				<span class="percent"></span>
+  				<span>%的玩家</span>
+  			</p>
+  		</div>
+  		<%= image_tag("activity/rice_dumpling/restart.png", class: "share_to") %>
+  		<%= image_tag("activity/rice_dumpling/share_to.png", class: "restart") %>
+		<span class="restart_tit">重玩</span>
+		<span class="share_to_tit">分享</span>
+  	</div>
+  	<div class="share_to_bac hidden"></div>
+  	<%= image_tag("activity/rice_dumpling/share_title.png", class: "share_title") %>
+  </div>
+
+  <% pa = PublicAccount.find_by(name: 'kaladingcom') %>
+  <% url = request.original_url %>
+
+  <% result = pa.get_signature(url) %>
+
+  <div id="data" data-imageUrl="<%= image_url('activity/rice_dumpling/thumbnail.jpg') %>" data-musicUrl="activity/rice_dumpling/media/bgm.mp3" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>" data-linkUrl="<%= url %>"></div>
+
+</div>
