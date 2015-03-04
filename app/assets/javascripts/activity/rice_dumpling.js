@@ -251,7 +251,7 @@ window.onload = function() {
             }
             sumnum = Object.keys(clearedDirts).length;
             val = parseInt(sumnum-lastnum);
-            console.log(val)
+            
             $('.clearedDirts').attr('data-sumnum',sumnum);
             $('.clearedDirts').text(val);
 
@@ -298,6 +298,7 @@ window.onload = function() {
               percent = 100;
             }
             $('.percent').text(percent);
+            
           }
 
 
