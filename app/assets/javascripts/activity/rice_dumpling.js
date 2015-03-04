@@ -6,12 +6,12 @@ window.onload = function() {
 
 
   var ballH = Math.random()*10+25;
-  var ballW = ballH*1.6;
+  var ballW = ballH*1.3;
   var ball = {
       width: ballW,
       height: ballH,
-      x: document.body.clientWidth/2-ballW/2,
-      y: document.body.clientHeight/2,
+      x: $(window).width()/2-ballW/2,
+      y: $(window).height()/2,
       r: Math.random() * 80 + 30,
       vx: 0,
       vy: 0
@@ -46,8 +46,8 @@ window.onload = function() {
   var lastnum ,sumnum,val,percent;
 
   var canvas = document.getElementById('canvas');
-  canvas.width = document.body.clientWidth;
-  canvas.height = document.body.clientHeight;
+  canvas.width = $(window).width();
+  canvas.height = $(window).height();
   if (canvas.getContext('2d')) {
       var context = canvas.getContext('2d');
   } else {
@@ -205,24 +205,6 @@ window.onload = function() {
     }
   }
 
-  function percent(val){
-    if(val<=50){
-      percent = 10;
-    }
-    if(val>50 && val<=70){
-      percent = 58;
-    }
-    if(val>70 && val<=90){
-      percent = 88;
-    }
-    if(val>90 && val<=110){
-      percent = 93;
-    }
-    if(val>110 && val<=150){
-      percent = 99;
-    }
-    $('.percent').text(percent);
-  }
 
   //更新球速和坐标
   function updateBall(cxt, canvasWidth, canvasHeight) {
@@ -269,24 +251,27 @@ window.onload = function() {
             }
             sumnum = Object.keys(clearedDirts).length;
             val = parseInt(sumnum-lastnum);
-            console.log(val)
+            
             $('.clearedDirts').attr('data-sumnum',sumnum);
             $('.clearedDirts').text(val);
 
             if(val<=50){
               percent = 10;
             }
-            if(val>50 && val<=70){
+            else if(val>50 && val<=70){
               percent = 58;
             }
-            if(val>70 && val<=90){
+            else if(val>70 && val<=90){
               percent = 88;
             }
-            if(val>90 && val<=110){
+            else if(val>90 && val<=110){
               percent = 93;
             }
-            if(val>110 && val<=150){
+            else if(val>110 && val<=150){
               percent = 99;
+            }
+            else if(val>150){
+              percent = 100;
             }
             $('.percent').text(percent);
 
@@ -297,19 +282,23 @@ window.onload = function() {
             if(val<=50){
               percent = 10;
             }
-            if(val>50 && val<=70){
+            else if(val>50 && val<=70){
               percent = 58;
             }
-            if(val>70 && val<=90){
+            else if(val>70 && val<=90){
               percent = 88;
             }
-            if(val>90 && val<=110){
+            else if(val>90 && val<=110){
               percent = 93;
             }
-            if(val>110 && val<=150){
+            else if(val>110 && val<=150){
               percent = 99;
             }
+            else if(val>150){
+              percent = 100;
+            }
             $('.percent').text(percent);
+
           }
 
 
@@ -368,7 +357,7 @@ window.onload = function() {
       drawBall(cxt, ball.x, ball.y);
   }
 
-  var imageUrl = $("#data").data('imageUrl');
+  var imageUrl = $("#data").data('imageurl');
 
   var linkUrl = $("#data").data('linkUrl');
 
