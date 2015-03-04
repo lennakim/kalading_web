@@ -6,7 +6,7 @@ window.onload = function() {
 
 
   var ballH = Math.random()*10+25;
-  var ballW = ballH*1.6;
+  var ballW = ballH*1.1;
   var ball = {
       width: ballW,
       height: ballH,
