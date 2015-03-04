@@ -1,5 +1,51 @@
 class OrdersController < ApplicationController
 
+  def pay_show
+    @param = {
+      body: '测试商品',
+      out_trade_no: 'test666',
+      total_fee: 1,
+      spbill_create_ip: '121.42.155.108',
+      notify_url: 'http://staging.kalading.com/sessions/notify',
+      trade_type: 'NATIVE'
+    }
+  end
+
+  def pay
+    param = {
+      body: '测试商品',
+      out_trade_no: 'test666',
+      total_fee: 1,
+      spbill_create_ip: '121.42.155.108',
+      notify_url: 'http://staging.kalading.com/sessions/notify',
+      trade_type: 'NATIVE'
+    }
+    r = WxPay::Service.invoke_unifiedorder param
+
+    if r.success?
+      Rails.logger.info("-"*50)
+      Rails.logger.info(r)
+      redirect_to r["code_url"]
+    else
+      Rails.logger.info("@"*50)
+      redirect_to pay_show_orders_path
+    end
+  end
+
+  def notify
+=begin
+    result = Hash.from_xml(request.body.read)["xml"]
+     if WxPay::Sign.verify?(result)
+       render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
+     else
+       render :xml => { return_code: "SUCCESS", return_msg: "签名失败" }.to_xml(root: 'xml', dasherize: false)
+     end
+=end
+    Rails.logger.info("+"*100)
+
+    render plain: "OK"
+  end
+
   def validate_preferential_code
     code = params[:code]
     car_id = params["car_id"]
@@ -22,16 +68,12 @@ class OrdersController < ApplicationController
   end
 
   def auto_brands
-    @brands = Order.auto_brands current_city_id
   end
 
   def auto_series
-    @series = Order.auto_series params[:id], current_city_id
   end
 
   def auto_model_numbers
-    type = params[:type] || 'bmt'
-    @auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, type
   end
 
   def select_car
@@ -60,12 +102,24 @@ class OrdersController < ApplicationController
       end
 
       if last_select_car.present?
-        @last_select_car = Auto.api_find last_select_car
+        cache_key = "#{last_select_car}/car_info"
+        @last_select_car = Rails.cache.fetch(cache_key)
+
+        if !@last_select_car
+          @last_select_car = Auto.api_find last_select_car
+          Rails.cache.write(cache_key, @last_select_car)
+        end
       end
 
       type = params[:type]
       # @cars_info = Order.cars_data current_city_id, type
-      @result = Order.items_for car_id, current_city_id, type
+
+      cache_key = "#{car_id}/#{current_city_id}/#{type}/result"
+      @result = Rails.cache.fetch(cache_key)
+      if !@result
+        @result = Order.items_for car_id, current_city_id, type
+        Rails.cache.write(cache_key, @result)
+      end
 
     else
       return redirect_to auto_brands_orders_path(act: params[:act], type: params[:type])
