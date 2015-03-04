@@ -205,6 +205,24 @@ window.onload = function() {
     }
   }
 
+  function percent(val){
+    if(val<=50){
+      percent = 10;
+    }
+    if(val>50 && val<=70){
+      percent = 58;
+    }
+    if(val>70 && val<=90){
+      percent = 88;
+    }
+    if(val>90 && val<=110){
+      percent = 93;
+    }
+    if(val>110 && val<=150){
+      percent = 99;
+    }
+    $('.percent').text(percent);
+  }
 
   //更新球速和坐标
   function updateBall(cxt, canvasWidth, canvasHeight) {
@@ -251,41 +269,55 @@ window.onload = function() {
             }
             sumnum = Object.keys(clearedDirts).length;
             val = parseInt(sumnum-lastnum);
-
+            console.log(val)
             $('.clearedDirts').attr('data-sumnum',sumnum);
             $('.clearedDirts').text(val);
+
+            if(val<=50){
+              percent = 10;
+            }
+            if(val>50 && val<=70){
+              percent = 58;
+            }
+            if(val>70 && val<=90){
+              percent = 88;
+            }
+            if(val>90 && val<=110){
+              percent = 93;
+            }
+            if(val>110 && val<=150){
+              percent = 99;
+            }
+            $('.percent').text(percent);
 
           }else{
             $('.clearedDirts').text(Object.keys(clearedDirts).length);
             val = Object.keys(clearedDirts).length;
-            percent(val);
+
+            if(val<=50){
+              percent = 10;
+            }
+            if(val>50 && val<=70){
+              percent = 58;
+            }
+            if(val>70 && val<=90){
+              percent = 88;
+            }
+            if(val>90 && val<=110){
+              percent = 93;
+            }
+            if(val>110 && val<=150){
+              percent = 99;
+            }
+            $('.percent').text(percent);
           }
+
 
           var width = document.documentElement.clientWidth;
           var height = $('.gamepage').height();
           $('.sharePage').removeClass('hidden');
           $('.sharePage,.share_bac,.share_con,.share_to_bac').css({'width':width,'height':height});
       }
-  }
-
-
-  function percent(val){
-    if(val<=50){
-      percent = 10;
-    }
-    else if(val>50 && val<=70){
-      percent = 58;
-    }
-    else if(val>70 && val<=90){
-      percent = 88;
-    }
-    else if(val>90 && val<=110){
-      percent = 93;
-    }
-    else if(val>110 && val<=150){
-      percent = 99;
-    }
-    $('.percent').text(percent);
   }
 
 
