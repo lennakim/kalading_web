@@ -251,7 +251,7 @@ window.onload = function() {
             }
             sumnum = Object.keys(clearedDirts).length;
             val = parseInt(sumnum-lastnum);
-            
+
             $('.clearedDirts').attr('data-sumnum',sumnum);
             $('.clearedDirts').text(val);
 
@@ -375,6 +375,22 @@ window.onload = function() {
   })
 
   wx.ready(function(){
+
+    wx.onMenuShareTimeline({
+      title: '大元宵大战雾霾怪！',
+      link: linkUrl,
+      imgUrl: imageUrl,
+      success: function () { },
+      cancel: function () { }
+    });
+
+    wx.onMenuShareAppMessage({
+      title: '大元宵大战雾霾怪！',
+      link: linkUrl,
+      imgUrl: imageUrl,
+      success: function () { },
+      cancel: function () { }
+    });
 
     $('.share_to').click(function(){
 
