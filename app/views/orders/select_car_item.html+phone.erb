@@ -2,7 +2,7 @@
   <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-<% cache [params[:car_id], current_city_id, params[:type], params[:auto_id]] do %>
+<% cache [params[:car_id], current_city_id, params[:type], params[:auto_id], params[:act]] do %>
   <div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>" data-act="<%= params[:act] %>">
     <div role="tabpanel">
       <ul class="nav nav-tabs" role="tablist" id="myTab">
