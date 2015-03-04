@@ -6,12 +6,12 @@ window.onload = function() {
 
 
   var ballH = Math.random()*10+25;
-  var ballW = ballH*1.1;
+  var ballW = ballH*1.3;
   var ball = {
       width: ballW,
       height: ballH,
-      x: document.body.clientWidth/2-ballW/2,
-      y: document.body.clientHeight/2,
+      x: $(window).width()/2-ballW/2,
+      y: $(window).height()/2,
       r: Math.random() * 80 + 30,
       vx: 0,
       vy: 0
@@ -46,8 +46,8 @@ window.onload = function() {
   var lastnum ,sumnum,val,percent;
 
   var canvas = document.getElementById('canvas');
-  canvas.width = document.body.clientWidth;
-  canvas.height = document.body.clientHeight;
+  canvas.width = $(window).width();
+  canvas.height = $(window).height();
   if (canvas.getContext('2d')) {
       var context = canvas.getContext('2d');
   } else {
@@ -298,7 +298,7 @@ window.onload = function() {
               percent = 100;
             }
             $('.percent').text(percent);
-            
+
           }
 
 
