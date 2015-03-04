@@ -1,4 +1,5 @@
-<% cache current_city_id do %>
+<% cache [current_city_id, params[:auto_id], params[:act]] do %>
+
   <% brands = Order.auto_brands current_city_id %>
   <% content_for :javascripts do %>
     <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
