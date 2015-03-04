@@ -388,9 +388,10 @@ window.onload = function() {
 
   wx.ready(function(){
 
-    var count = $('.clearedDirts').text()
-
     $('.share_to').click(function(){
+
+      var count = $('.clearedDirts').text()
+
       wx.onMenuShareTimeline({
         title: '大元宵大战雾霾怪！',
         desc: '我用卡拉丁大元宵击败了'+ count +'只雾霾怪，快来挑战我吧',
