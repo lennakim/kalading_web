@@ -368,7 +368,7 @@ window.onload = function() {
       drawBall(cxt, ball.x, ball.y);
   }
 
-  var imageUrl = $("#data").data('imageUrl');
+  var imageUrl = $("#data").data('imageurl');
 
   var linkUrl = $("#data").data('linkUrl');
 
