@@ -288,6 +288,9 @@ window.onload = function() {
             if(val>110 && val<=150){
               percent = 99;
             }
+            else{
+              percent = 100;
+            }
             $('.percent').text(percent);
 
           }else{
@@ -308,6 +311,9 @@ window.onload = function() {
             }
             if(val>110 && val<=150){
               percent = 99;
+            }
+            else{
+              percent = 100;
             }
             $('.percent').text(percent);
           }
