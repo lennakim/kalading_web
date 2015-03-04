@@ -101,7 +101,7 @@ window.onload = function() {
       $('.line').css({'display':'none'});
       clearInterval(lineTimer);
   }
-  
+
   function endEvent() {
       if (moveX || moveY) {
           d.play();
@@ -126,12 +126,12 @@ window.onload = function() {
           x: 10 + Math.random() * canvas.width,
           y: 10 + Math.random() * canvas.height,
           width: dirtW,
-          height: dirtW 
+          height: dirtW
       }
       dirts[adirt.x + adirt.width/2] = adirt;
   }
 
-  
+
   function drawDirts(cxt){
       for(var i = 0;i<Math.random()*50+100;i++){
           aDirt(cxt);
@@ -171,8 +171,8 @@ window.onload = function() {
   function isInRect(pos,ballX,ballY) {
       var x = pos.x,
         y = pos.y;
-      
-      if (x > ballX-3 && x < ballX + ball.width+3 && y > ballY-3 && y < ballY + ball.height+3) {  
+
+      if (x > ballX-3 && x < ballX + ball.width+3 && y > ballY-3 && y < ballY + ball.height+3) {
           clearedDirts[pos.x] = pos.x;
           finalDirts[pos.x] = dirtPos.filter(function(item, index){
               return item.x == pos.x;
@@ -243,7 +243,7 @@ window.onload = function() {
       if (Math.abs(ball.vx) < 3) {
           clearInterval(timer);
           if($('.clearedDirts').text()!=''){
-         
+
             if($('.clearedDirts').attr('data-sumnum')){
               lastnum = $('.clearedDirts').attr('data-sumnum');
             }else{
@@ -264,7 +264,7 @@ window.onload = function() {
       }
   }
 
-  
+
 
 
   $('.restart').click(function(){
@@ -311,29 +311,35 @@ window.onload = function() {
 
       //drawDirts(cxt);
       updateDirt(cxt);
-      drawBall(cxt, ball.x, ball.y);  
+      drawBall(cxt, ball.x, ball.y);
   }
 
   var imageUrl = $("#data").data('imageUrl');
   var musicUrl = $("#data").data('musicUrl');
+
   var linkUrl = $("#data").data('linkUrl');
-  wx.onMenuShareTimeline({
-    title: '大元宵大战雾霾怪！',
-    link: linkUrl,
-    imgUrl: imageUrl,
-    success: function () { },
-    cancel: function () { }
-  });
 
-  wx.onMenuShareAppMessage({
-    title: '大元宵大战雾霾怪！',
-    desc: '我用卡拉丁大元宵击败了'+$('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
-    link: linkUrl,
-    imgUrl: imageUrl,
-    type: 'music', // 分享类型,music、video或link，不填默认为link
-    dataUrl: musicUrl, // 如果type是music或video，则要提供数据链接，默认为空
-    success: function () { },
-    cancel: function () { }
-  });
+  wx.ready(function(){
 
+    wx.onMenuShareTimeline({
+      title: '大元宵大战雾霾怪！',
+      desc: '我用卡拉丁大元宵击败了'+ $('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
+      link: linkUrl,
+      imgUrl: imageUrl,
+      success: function () { },
+      cancel: function () { }
+    });
+
+    wx.onMenuShareAppMessage({
+      title: '大元宵大战雾霾怪！',
+      desc: '我用卡拉丁大元宵击败了'+ $('.clearedDirts').text()+'只雾霾怪，快来挑战我吧',
+      link: linkUrl,
+      imgUrl: imageUrl,
+      type: 'music', // 分享类型,music、video或link，不填默认为link
+      dataUrl: musicUrl, // 如果type是music或video，则要提供数据链接，默认为空
+      success: function () { },
+      cancel: function () { }
+    });
+
+  });
 }
