@@ -49,10 +49,14 @@ class SessionsController < ApplicationController
 
     account = PublicAccount.find_by name: params[:name]
     client = account.weixin_client
+
+    callback_url = client.authorize_url \
+      callback_sessions_url(name: params[:name], go: params[:go]), "snsapi_userinfo"
+
     sns_info = client.get_oauth_access_token params[:code]
     result_expires = sns_info.result["expires_in"]
 
-    return redirect_to root_path(login: 1) unless result_expires
+    return redirect_to callback_url unless result_expires
 
     expires_in = result_expires.seconds.from_now.utc
 
