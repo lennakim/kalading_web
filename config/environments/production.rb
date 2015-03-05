@@ -81,6 +81,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 使用 qiniu 镜像存储assets
-  config.action_controller.asset_host = "http://7x2w04.com1.z0.glb.clouddn.com/assets"
+  config.action_controller.asset_host = "http://7x2w04.com1.z0.glb.clouddn.com"
 end
 
