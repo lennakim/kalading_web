@@ -79,5 +79,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_controller.asset_host = "http://7x2w04.com1.z0.glb.clouddn.com"
 end
 
