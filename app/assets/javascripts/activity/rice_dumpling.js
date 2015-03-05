@@ -397,7 +397,7 @@ window.onload = function() {
       var count = $('.clearedDirts').text()
 
       wx.onMenuShareTimeline({
-        title: '哼唧！我用卡拉丁大元宵击败了'+ count +'只雾霾怪，领先全国' + percent + '的玩家, 快来挑战我吧！',
+        title: '哼唧！我用卡拉丁大元宵击败了'+ count +'只雾霾怪，领先全国' + percent + '%的玩家, 快来挑战我吧！',
         link: linkUrl,
         imgUrl: imageUrl,
         success: function () { },
@@ -406,7 +406,7 @@ window.onload = function() {
 
       wx.onMenuShareAppMessage({
         title: '大元宵大战雾霾怪！',
-        desc: '哼唧！我用卡拉丁大元宵击败了'+ count +'只雾霾怪，领先全国' + percent + '的玩家, 快来挑战我吧！',
+        desc: '哼唧！我用卡拉丁大元宵击败了'+ count +'只雾霾怪，领先全国' + percent + '%的玩家, 快来挑战我吧！',
         link: linkUrl,
         imgUrl: imageUrl,
         success: function () { },
