@@ -1,4 +1,4 @@
-<%= cache "select_car" do  %>
+<%= cache [current_city_id, "select_car"] do %>
 
   <% cars_info = Order.cars_data current_city_id %>
 
