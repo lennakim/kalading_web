@@ -116,23 +116,28 @@
         </li>
       </ul>
     </div>
-    <div class="service-address">
-      <h3 class="title"><span>服务区域</span></h3>
-      <ul>
-        <li class="module-item">
-        <var class="point"></var>
-        <span class="con">目前开通服务的城市：<%= City.all.map(&:name).join("、") %></span>
-        </li>
-        <li class="module-item">
-          <var class="point"></var><span>服务地区</span>
 
-          <% City.all.each do |city| %>
-            <p><%= city.name %>：<%= city.district_desc %></p>
-          <% end %>
 
-        </li>
-      </ul>
-    </div>
+    <% cache City.all.map(&:updated_at) do %>
+      <div class="service-address">
+        <h3 class="title"><span>服务区域</span></h3>
+        <ul>
+          <li class="module-item">
+          <var class="point"></var>
+          <span class="con">目前开通服务的城市：<%= City.all.map(&:name).join("、") %></span>
+          </li>
+          <li class="module-item">
+            <var class="point"></var><span>服务地区</span>
+
+            <% City.all.each do |city| %>
+              <p><%= city.name %>：<%= city.district_desc %></p>
+            <% end %>
+
+          </li>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="service-process">
       <h3 class="title"><span>服务流程</span></h3>
       <ul>

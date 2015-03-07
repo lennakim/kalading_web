@@ -260,20 +260,22 @@
         </ul>
       </div>
 
-      <div class="area">
-        <h3 class="title" title="服务区域">服务区域</h3>
-        <div class="content">
-          <%= image_tag("map.png")%>
-          <ul>
-            <% City.all.each do |city| %>
-              <li>
-                <a class="tit" href="#"><%= city.name %></a>
-                <span><%= city.district_desc %></span>
-              </li>
-            <% end %>
-          </ul>
+      <% cache City.all.map(&:updated_at) do %>
+        <div class="area">
+          <h3 class="title" title="服务区域">服务区域</h3>
+          <div class="content">
+            <%= image_tag("map.png")%>
+            <ul>
+              <% City.all.each do |city| %>
+                <li>
+                  <a class="tit" href="#"><%= city.name %></a>
+                  <span><%= city.district_desc %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 
