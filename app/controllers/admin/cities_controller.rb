@@ -4,7 +4,7 @@ class Admin::CitiesController < Admin::MainController
   defaults :resource_class => City, :route_prefix => 'admin'
 
   def permitted_params
-    {:city => params.fetch(:city, {}).permit(:name, :system_id)}
+    {:city => params.fetch(:city, {}).permit(:name, :district_desc, :system_id)}
   end
 
 end
