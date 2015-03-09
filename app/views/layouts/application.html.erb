@@ -18,9 +18,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'layouts/header' %>
+
+  <% cache ["header", current_user.id] do %>
+    <%= render 'layouts/header' %>
+  <% end %>
+
   <%= yield %>
-  <%= render 'layouts/footer' %>
+
+  <% cache "footer" do %>
+    <%= render 'layouts/footer' %>
+  <% end %>
 
   <%= render "shared/select_city_modal" %>
 
