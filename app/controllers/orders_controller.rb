@@ -254,9 +254,9 @@ class OrdersController < ApplicationController
       return render js: "alert('请填写正确的服务日期')"
     end
 
-    # if !params[:registration_date].present?
-    #   return render js: "alert('请填写正确的车辆注册日期')"
-    # end
+    if !params[:registration_date].present?
+      return render js: "alert('请填写正确的车辆注册日期')"
+    end
 
     payload = {
       parts: parts,
@@ -272,7 +272,7 @@ class OrdersController < ApplicationController
         "client_comment"    => params[:client_comment],
         "city_id"           => city.system_id, #params[:city_id]
         "car_id"            => params[:car_id],
-        # "registration_date" => params[:registration_date],
+        "registration_date" => params[:registration_date],
         "discount"          => params[:discount]
       }
     }
