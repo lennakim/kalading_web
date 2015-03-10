@@ -19,7 +19,7 @@
 </head>
 <body>
 
-  <% cache ["header", current_user.try :id] do %>
+  <% cache ["header", current_user.try(:id)] do %>
     <%= render 'layouts/header' %>
   <% end %>
 
