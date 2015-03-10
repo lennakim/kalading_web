@@ -136,6 +136,9 @@ $ ->
       max: new Date(max),
       disable: disabled_date,
       onSet: () ->
+
+        $($("#serve_period option").removeClass('hidden')
+
         date_string = $("#serve_date").val()
         _.each date[date_string], (e, i) ->
           console.log e
