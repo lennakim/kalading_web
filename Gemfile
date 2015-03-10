@@ -60,6 +60,9 @@ gem 'browser'
 # traffic data
 gem 'impressionist'
 
+
+gem 'kaminari' # paginator
+
 group :development, :test do
   gem 'http_logger'
   gem 'pry'
