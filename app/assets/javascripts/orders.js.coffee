@@ -144,6 +144,7 @@ $ ->
           console.log e
           if e == 0
             $($("#serve_period option").get(i)).addClass('hidden')
+        $("#serve_period option:first").attr('selected', true)
 
     })
 
