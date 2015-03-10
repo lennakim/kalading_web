@@ -126,6 +126,8 @@ $ ->
 
       sum == 0
 
+    disabled = disabled[0]
+
     disabled_date = _.map disabled, (e, i) ->
       new Date(e)
 
