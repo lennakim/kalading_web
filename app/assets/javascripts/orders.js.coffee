@@ -120,9 +120,11 @@ $ ->
     max = _.last(_.keys(date))
 
     disabled = _.select _.pairs(date), (e) ->
-      e[1].length == 0
+      sum = _.reduce e[1], (memo, num) ->
+        memo + num
+      , 0
 
-    disabled = disabled[0]
+      sum == 0
 
     disabled_date = _.map disabled, (e, i) ->
       new Date(e)
