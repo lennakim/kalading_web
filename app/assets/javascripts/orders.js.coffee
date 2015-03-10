@@ -127,6 +127,12 @@ $ ->
     disabled_date = _.map disabled, (e, i) ->
       new Date(e)
 
+    time_slot = {
+      "8:00": "8:00 - 12:00",
+      "12:00": "12:00 - 17:00",
+      "17:00": "17:00 - 20:00"
+    }
+
     $('#serve_date').pickadate({
 
       container: '#serve_date_picker',
@@ -137,16 +143,22 @@ $ ->
       disable: disabled_date,
       onSet: () ->
 
-        $("#serve_period option:first").addClass('hidden').attr('disabled', false)
-
+        $("#serve_period").empty()
         date_string = $("#serve_date").val()
 
         _.each date[date_string], (e, i) ->
           console.log e
-          if e == 0
-            $($("#serve_period option").get(i)).addClass('hidden').prop('disabled', true)
 
-        $("#serve_period option").not(".hidden:disabled").first().attr('selected', true)
+          key = Object.keys(time_slot)[i]
+          value = time_slot[key]
+
+          if e != 0
+
+            option = """
+            <option value="#{key}">#{value}</option>
+            """
+
+            $("#serve_period").append($(option))
 
     })
 
