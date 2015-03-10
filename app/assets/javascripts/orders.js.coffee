@@ -137,13 +137,15 @@ $ ->
       disable: disabled_date,
       onSet: () ->
 
-        $("#serve_period option").removeClass('hidden')
+        $("#serve_period option:first").addClass('hidden').attr('disabled', false)
 
         date_string = $("#serve_date").val()
+
         _.each date[date_string], (e, i) ->
           console.log e
           if e == 0
-            $($("#serve_period option").get(i)).addClass('hidden')
+            $($("#serve_period option").get(i)).addClass('hidden').prop('disabled', true)
+
         $("#serve_period option").not(".hidden").first().attr('selected', true)
 
     })
