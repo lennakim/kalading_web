@@ -136,11 +136,11 @@ $ ->
       max: new Date(max),
       disable: disabled_date,
       onSet: () ->
-        # date_string = $("#serve_date").val()
-        # _.each date[date_string], (e, i) ->
-        #   console.log e
-        #   if e == 0
-        #     $("#serve_period option").find(i).addClass('hidden')
+        date_string = $("#serve_date").val()
+        _.each date[date_string], (e, i) ->
+          console.log e
+          if e == 0
+            $("#serve_period option").find(i).addClass('hidden')
 
     })
 
