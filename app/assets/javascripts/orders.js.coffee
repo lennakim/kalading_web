@@ -146,7 +146,7 @@ $ ->
           if e == 0
             $($("#serve_period option").get(i)).addClass('hidden').prop('disabled', true)
 
-        $("#serve_period option").not(".hidden").first().attr('selected', true)
+        $("#serve_period option").not(".hidden:disabled").first().attr('selected', true)
 
     })
 
