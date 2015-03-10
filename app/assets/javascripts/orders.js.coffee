@@ -140,7 +140,7 @@ $ ->
         _.each date[date_string], (e, i) ->
           console.log e
           if e == 0
-            $("#serve_period option").find(i).addClass('hidden')
+            $($("#serve_period option").get(i)).addClass('hidden')
 
     })
 
