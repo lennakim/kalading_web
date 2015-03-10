@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  scope :recent, -> {order(created_at: :desc)}
   has_many :user_authinfos
   has_many :auth_infos, through: :user_authinfos
 

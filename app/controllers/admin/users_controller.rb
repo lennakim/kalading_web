@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::MainController
   protected
 
   def collection
-    @users ||= end_of_association_chain.page(params[:page])
+    end_of_association_chain.recent.page(params[:page])
   end
 
 end
