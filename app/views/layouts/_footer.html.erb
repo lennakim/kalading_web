@@ -1,62 +1,64 @@
-<div class="footer">
-  <div class="container">
-    <div class="promise">
-      <dl title="100%正品配件">
-        <dt>100</dt>
-        <dd>%</dd>
-        <dd class="des">正品配件</dd>
-      </dl>
-      <dl title="24小时预约上门服务">
-        <dt>24</dt>
-        <dd>小时</dd>
-        <dd class="des">预约上门服务</dd>
-      </dl>
-      <dl title="200万责任险">
-        <dt>200</dt>
-        <dd>万</dd>
-        <dd class="des">责任险</dd>
-      </dl>
-      <dl title="365天全年无休">
-        <dt>365</dt>
-        <dd>天</dd>
-        <dd class="des">全年无休</dd>
-      </dl>
-    </div>
-    <div class="bottom-nav">
-      <ul>
-        <li class="title">产品与服务</li>
-        <li>
-          <%= link_to "服务说明", slug_posts_path(7, 'services') %>
-        </li>
-        <li>
-          <%= link_to "售后政策", slug_posts_path(6, 'terms') %>
-        </li>
-        <li>
-          <%= link_to "产品保障", slug_posts_path(16, 'guarantee') %>
-        </li>
-      </ul>
-      <ul>
-        <li class="title">关于我们</li>
-        <li>
-          <%= link_to "公司简介", slug_posts_path(12, 'profile') %>
-        </li>
-        <li>
-          <%= link_to "集团客户", slug_posts_path(14, 'clients') %>
-        </li>
-        <li>
-          <%= link_to "联系我们", slug_posts_path(10, 'contact')  %>
-        </li>
-      </ul>
-      <ul>
-        <li class="title">关注我们</li>
-        <li class="sina" title="新浪微博"><a href="http://weibo.com/u/2394482722" target="_blank">新浪微博</a></li>
-        <li class="chat" title="官方微信"><a href="">官方微信</a></li>
-      </ul>
-      <div class="contact">
-        <h4 class="tel" title="400-006-8181">400-006-8181</h4>
-        <span>仅收市话费，周一至周日8：00-20：00</span>
+<% cache "footer" do %>
+  <div class="footer">
+    <div class="container">
+      <div class="promise">
+        <dl title="100%正品配件">
+          <dt>100</dt>
+          <dd>%</dd>
+          <dd class="des">正品配件</dd>
+        </dl>
+        <dl title="24小时预约上门服务">
+          <dt>24</dt>
+          <dd>小时</dd>
+          <dd class="des">预约上门服务</dd>
+        </dl>
+        <dl title="200万责任险">
+          <dt>200</dt>
+          <dd>万</dd>
+          <dd class="des">责任险</dd>
+        </dl>
+        <dl title="365天全年无休">
+          <dt>365</dt>
+          <dd>天</dd>
+          <dd class="des">全年无休</dd>
+        </dl>
       </div>
-    </div>
+      <div class="bottom-nav">
+        <ul>
+          <li class="title">产品与服务</li>
+          <li>
+            <%= link_to "服务说明", slug_posts_path(7, 'services') %>
+          </li>
+          <li>
+            <%= link_to "售后政策", slug_posts_path(6, 'terms') %>
+          </li>
+          <li>
+            <%= link_to "产品保障", slug_posts_path(16, 'guarantee') %>
+          </li>
+        </ul>
+        <ul>
+          <li class="title">关于我们</li>
+          <li>
+            <%= link_to "公司简介", slug_posts_path(12, 'profile') %>
+          </li>
+          <li>
+            <%= link_to "集团客户", slug_posts_path(14, 'clients') %>
+          </li>
+          <li>
+            <%= link_to "联系我们", slug_posts_path(10, 'contact')  %>
+          </li>
+        </ul>
+        <ul>
+          <li class="title">关注我们</li>
+          <li class="sina" title="新浪微博"><a href="http://weibo.com/u/2394482722" target="_blank">新浪微博</a></li>
+          <li class="chat" title="官方微信"><a href="">官方微信</a></li>
+        </ul>
+        <div class="contact">
+          <h4 class="tel" title="400-006-8181">400-006-8181</h4>
+          <span>仅收市话费，周一至周日8：00-20：00</span>
+        </div>
+      </div>
 
+    </div>
   </div>
-</div>
+<% end %>

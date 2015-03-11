@@ -19,15 +19,11 @@
 </head>
 <body>
 
-  <% cache ["header", current_user.try(:id)] do %>
-    <%= render 'layouts/header' %>
-  <% end %>
+  <%= render 'layouts/header' %>
 
   <%= yield %>
 
-  <% cache "footer" do %>
-    <%= render 'layouts/footer' %>
-  <% end %>
+  <%= render 'layouts/footer' %>
 
   <%= render "shared/select_city_modal" %>
 
