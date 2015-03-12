@@ -13,6 +13,14 @@ $ ->
 
       $.get "/users/cars.js?car_id=#{ id }&car_num=#{ car_num }"
 
+    $(".orders").on "click", ".order .comment > .del > a", (e) ->
+      e.stopPropagation()
+      e.preventDefault()
+
+      id = $(@).data('order')
+
+      $("#cancel_modal").modal()
+
     $(".orders").on "click", ".order .comment > .cmt > a", (e) ->
       e.stopPropagation()
       e.preventDefault()
@@ -27,6 +35,8 @@ $ ->
       e.stopPropagation()
 
       $("#select_car_modal").modal()
+
+
 
   $('#comment_modal').on 'hidden.bs.modal', ->
     $(@).find(".btn").removeClass('disabled').removeClass('active')
