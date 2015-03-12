@@ -1,10 +1,8 @@
 <div class="orders">
   <% if @orders && @orders.length > 0 %>
 
-    <% cache [:orders, @orders.first["id"]] do %>
-      <% @orders.each do |order| %>
-        <%= render "order_item", order: order %>
-      <% end %>
+    <% @orders.each do |order| %>
+      <%= render "order_item", order: order %>
     <% end %>
 
   <% else %>
