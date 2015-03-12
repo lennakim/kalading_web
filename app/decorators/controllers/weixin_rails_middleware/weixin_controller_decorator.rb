@@ -20,10 +20,10 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def response_text_message(options={})
       handle_recv_messages @weixin_message
 
-      if !Time.now.hour.in?(8..19)
-        reply_text_message("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
+      if Time.now.hour.in?(8..19)
+        reply_transfer_customer_service_message(@weixin_message.Content)
       else
-        reply_text_message("").to_s
+        reply_text_message("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
       end
 
     end
@@ -47,7 +47,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
       handle_recv_messages @weixin_message
-      reply_image_message(generate_image(@media_id))
+      # reply_image_message(generate_image(@media_id))
     end
 
     # <Title><![CDATA[公众平台官网链接]]></Title>
@@ -58,7 +58,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # @desc  = @weixin_message.Description
     # @url   = @weixin_message.Url
       handle_recv_messages @weixin_message
-      reply_text_message("回复链接信息")
+      # reply_text_message("回复链接信息")
     end
 
     # <MediaId><![CDATA[media_id]]></MediaId>
@@ -68,7 +68,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @format   = @weixin_message.Format
       # 如果开启了语音翻译功能，@keyword则为翻译的结果
       # reply_text_message("回复语音信息: #{@keyword}")
-      reply_voice_message(generate_voice(@media_id))
+      # reply_voice_message(generate_voice(@media_id))
     end
 
     # <MediaId><![CDATA[media_id]]></MediaId>
@@ -77,7 +77,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       # 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
       @thumb_media_id = @weixin_message.ThumbMediaId
-      reply_text_message("回复视频信息")
+      # reply_text_message("回复视频信息")
     end
 
     def response_event_message(options={})
