@@ -1,7 +1,7 @@
 @import "compass";
 @import "compass/reset";
 @import "mixins/button";
-
+@import "mixins/radio";
 
 $orange: #ff9933;
 $grey: #c4c4c4;
@@ -346,6 +346,8 @@ $grey: #c4c4c4;
 }
 
 #cancel_modal{
+  @include radio();
+
   .modal-header{
     padding: 0px 15px 0 15px;
 
