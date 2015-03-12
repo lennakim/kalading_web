@@ -32,6 +32,32 @@ $border-yellow: #fdae1e;
 $font-gray: #626262;
 $border-gray: #e4e4e4;
 
+// custom html input tags
+input[type="checkbox"]:checked + label {
+
+}
+
+input[type="radio"]{
+  display: none;
+}
+input[type="radio"] + label span{
+  display:inline-block;
+  width:18px;
+  height:18px;
+  margin:-2px 0px 0 0;
+  vertical-align:middle;
+  background:image-url("check_radio.png") -38px top no-repeat;
+  cursor:pointer;
+}
+input[type="radio"]:checked + label span{
+  background:image-url("check_radio.png") -57px top no-repeat;
+}
+// .... END ....
+
+
+
+
+
 a:link[title="站长统计"]{
   display: none;
 }
