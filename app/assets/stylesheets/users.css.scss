@@ -344,6 +344,19 @@ $grey: #c4c4c4;
     margin: 10px 0;
   }
 }
+
+#cancel_modal{
+  .reasons{
+
+    li{
+      width: 100%;
+    }
+  }
+
+  #other_reason{
+  }
+}
+
 #comment_modal{
   .comment-tags{
     // padding: 5px 50px;

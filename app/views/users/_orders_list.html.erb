@@ -1,8 +1,12 @@
 <div class="orders">
-  <% if @orders %>
-    <% @orders.each do |order| %>
-      <%= render "order_item", order: order %>
+  <% if @orders && @orders.length > 0 %>
+
+    <% cache [:orders, @orders.first["id"]] do %>
+      <% @orders.each do |order| %>
+        <%= render "order_item", order: order %>
+      <% end %>
     <% end %>
+
   <% else %>
     <p>呀~您还没有预定过我们的服务呢~</p>
     <p>赶紧去首页下单吧！</p>
