@@ -36,6 +36,30 @@ $ ->
 
       $("#select_car_modal").modal()
 
+  $("#cancel_modal").on 'click', 'input[type=radio]', ->
+    if $(@).attr('id') == "other_reason"
+      $(".textarea").slideDown()
+    else
+      $(".textarea").slideUp()
+
+  $("#cancel_modal_cancel").click ->
+    $("#cancel_modal").modal('hide')
+
+  $("#cancel_modal_submit").click ->
+    radio = $("#cancel_modal input[type=radio]:checked")
+
+    if radio.attr('id') == "other_reason"
+      submit_content = $.trim $('.textarea textarea').val()
+    else
+      submit_content = $.trim radio.closest('li').find('div:first label').text()
+
+    $.ajax
+
+
+
+  $("#cancel_modal").on "hidden.bs.modal", ->
+    $('.textarea').val('').hide()
+    $('#cancel_modal input[type=radio]').prop('checked', false)
 
 
   $('#comment_modal').on 'hidden.bs.modal', ->

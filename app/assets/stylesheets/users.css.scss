@@ -380,6 +380,7 @@ $grey: #c4c4c4;
     }
     .textarea{
       margin-top: 15px;
+      display: none;
     }
     hr {
       margin-top: 15px;
@@ -387,9 +388,11 @@ $grey: #c4c4c4;
   }
   .modal-footer{
     border-top: 0 none;
-  }
 
-  #other_reason{
+    .btn-done{
+      background-color: #ee7800;
+      color: white;
+    }
   }
 }
 

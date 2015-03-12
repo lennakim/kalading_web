@@ -12,7 +12,7 @@
         <li class='pull-left'>
           <div class="pull-left">
             <label for="reason1">
-              我不想买了
+              我不想预约了
             </label>
           </div>
 
@@ -51,7 +51,7 @@
         <li class='pull-left'>
           <div class="pull-left">
             <label for="reason4">
-              其他原因
+              预约地址不合适
             </label>
           </div>
 
@@ -60,18 +60,31 @@
             <label for="reason4"><span></span></label>
           </div>
         </li>
+
+        <li class='pull-left'>
+          <div class="pull-left">
+            <label for="other_reason">
+              其他原因
+            </label>
+          </div>
+
+          <div class="pull-right">
+            <input type="radio" name="reason" id="other_reason">
+            <label for="other_reason"><span></span></label>
+          </div>
+        </li>
       </ul>
 
       <div class="textarea">
-        <textarea id="other_reason" class="form-control" rows="3">
+        <textarea class="form-control" rows="3">
         </textarea>
       </div>
 
     </div>
 
     <div class="modal-footer">
-        <a href="#" class="btn btn-default" role="button">取消</a>
-        <a href="#" class="btn btn-default" role="button">确定</a>
+      <a href="#" class="btn btn-default" role="button" id="cancel_modal_cancel">取消</a>
+      <a href="#" class="btn btn-done" role="button" id="cancel_modal_submit">确定</a>
     </div>
   </div>
 </div>
