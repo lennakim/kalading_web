@@ -215,7 +215,8 @@ class OrdersController < ApplicationController
         "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
         "client_comment"    => "#{params[:brand]} #{params[:year]} #{params[:car_pl]}",
         "city_id"           => params[:city_id],
-        "registration_date" => params[:registration_date]
+        "registration_date" => params[:registration_date],
+        "vin"               => params[:vin_num]
       }
     }
 
