@@ -126,10 +126,8 @@ $ ->
 
       sum == 0
 
-    disabled = disabled[0]
-
     disabled_date = _.map disabled, (e, i) ->
-      new Date(e)
+      new Date(e[0])
 
     time_slot = {
       "8:00": "8:00 - 12:00",
