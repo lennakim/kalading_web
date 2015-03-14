@@ -173,6 +173,9 @@ $ ->
       selectYears: true
     })
 
+    $.validator.addMethod "regx", (value, element, regexpr) ->
+      regexpr.test(value)
+    ,  "车牌号不合法"
 
     $("#place_order_form").validate
 
@@ -217,6 +220,13 @@ $ ->
         registration_date:
           required: true
           date: true
+
+        car_num:
+          required: true
+          minlength: 6
+          maxlength: 6
+          regx: /^[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/
+
 
       messages:
         name: "请输入姓名"
