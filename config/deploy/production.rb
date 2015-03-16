@@ -25,7 +25,7 @@ set :stage, :production
 set :branch, 'master'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/kaladingcom"
 set :rails_env, :production
-set :unicorn_worker_count, 10
+set :unicorn_worker_count, 8
 # config file
 set :enable_ssl, false
 
