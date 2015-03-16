@@ -26,6 +26,13 @@
       <td><%= resource.products.map(&:title).join(' | ')%></td>
     </tr>
 
+    <% resource.products.each do |product| %>
+      <tr>
+        <td>微信下单链接(<%= product.title %>)</td>
+        <td><%= select_car_item_orders_url(type: product.slug, act: resource.id) %></td>
+      </tr>
+    <% end %>
+
     <tr>
       <td>活动链接</td>
       <td><%= link_to "#{activity_url(resource.name)}", activity_path(resource.name), target: '_blank' %></td>
