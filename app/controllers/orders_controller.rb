@@ -259,6 +259,10 @@ class OrdersController < ApplicationController
       return render js: "alert('请填写正确的车辆注册日期')"
     end
 
+    if !(params[:serve_date] && params[:serve_period])
+      return render js: "alert('请选择正确的服务时间')"
+    end
+
     payload = {
       parts: parts,
       info: {
