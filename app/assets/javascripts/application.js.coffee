@@ -19,6 +19,8 @@
 #= require users
 #= require service_addresses
 #
+#= require fastclick
+#
 #= require_self
 
 window.Kalading =
@@ -26,6 +28,10 @@ window.Kalading =
   Models: {}
 
 $ ->
+
+  # fastclick init
+
+  FastClick.attach(document.body)
 
   $("#login_btn").click ->
     $("#login_modal").modal()
