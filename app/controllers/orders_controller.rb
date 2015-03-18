@@ -282,11 +282,8 @@ class OrdersController < ApplicationController
       }
     }
 
-    if activity = Activity.find_by_preferential_code(params[:discount])
-      from = activity.from
-    end
-
-    payload[:info]["user_type_id"] = from if from
+    activity = params[:act] && Activity.find_by_id(params[:act])
+    payload[:info]["user_type_id"] = activity.from if activity
 
     result = Order.submit params[:car_id], payload
     if result["result"] == "succeeded"

@@ -177,6 +177,7 @@
 
   <% if params[:act] && activity = Activity.find_by(id: params[:act]) %>
     <input type="hidden" name="discount" value="<%= activity.preferential_code %>">
+    <input type="hidden" name="act" value="<%= params[:act] %>">
   <% else %>
     <div class="info-group form-group">
       <div class="info-title">
