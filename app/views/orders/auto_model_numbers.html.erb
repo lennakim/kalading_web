@@ -1,14 +1,13 @@
-<% type = params[:type] || 'bmt' %>
-<% cache [type, params[:id], current_city_id, params[:auto_id], params[:act]] do %>
+<% cache [params[:type], params[:id], current_city_id, params[:auto_id], params[:act]] do %>
 
-  <% auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, type %>
+  <% auto_model_numbers = Order.auto_model_numbers params[:id], current_city_id, params[:type] %>
 
   <div class="auto-model-phone phone-page">
     <% if auto_model_numbers.length>0 %>
     <% auto_model_numbers.each do |car_model| %>
       <div class="carinfo list clearfix">
         <div class="car-model pull-left" model_id="<%= car_model['_id']%>" >
-          <%= link_to car_model['name'], select_car_item_orders_path(car_id: car_model['_id'], type: 'bmt', act: params[:act], type: params[:type]) %>
+          <%= link_to car_model['name'], select_car_item_orders_path(car_id: car_model['_id'], act: params[:act], type: params[:type]) %>
 
         </div>
         <div class="arrow glyphicon glyphicon-chevron-right pull-right">

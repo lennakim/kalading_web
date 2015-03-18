@@ -1,4 +1,4 @@
-<% cache [current_city_id, params[:auto_id], params[:act]] do %>
+<% cache [current_city_id, params[:auto_id], params[:act], params[:type]] do %>
 
   <% brands = Order.auto_brands current_city_id %>
   <% content_for :javascripts do %>
