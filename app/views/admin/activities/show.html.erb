@@ -22,6 +22,11 @@
     </tr>
 
     <tr>
+      <td>客户类型</td>
+      <td><%= resource.from %></td>
+    </tr>
+
+    <tr>
       <td>适用服务(产品)</td>
       <td><%= resource.products.map(&:title).join(' | ')%></td>
     </tr>

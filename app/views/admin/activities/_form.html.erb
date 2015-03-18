@@ -36,6 +36,11 @@
         </tr>
 
         <tr>
+          <td>客户类型</td>
+          <td><%= f.text_field :from %></td>
+        </tr>
+
+        <tr>
           <td>适用服务(产品)</td>
           <td>
             <% Product.all.each do |product| %>
