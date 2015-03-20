@@ -7,21 +7,89 @@ Things you may want to cover:
 
 * Ruby version
 
+<<<<<<< HEAD
 * System dependencies
 
 * Configuration
+=======
+4 前端*
+assets precompile -- application.js / application.css
+
+Rails 4 concerns -- refactoring
+>>>>>>> 78f8944... README
 
 * Database creation
 
 * Database initialization
 
+<<<<<<< HEAD
 * How to run the test suite
+=======
+Rails 4  variant
+show.html.erb
+show.html+phone.erb
+
+1 城市方面
+application_controller #current_city #current_city_id #current_city_name
+>>>>>>> 78f8944... README
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
 * ...
+
+branch coder
+commit
+push
+gco new
+git merge coder
+push new
+
+cap staging deploy   staging.kalading.com
+
+
+///// branches
+
+1 master  -- kalading.com
+
+2 staging (过度)
+
+3 new --- staging.kalading.com
+
+4....
+
+5 wechat_pay
+6 papago
+7 coupon
+
+steps:
+gco staging
+gco -b mobile_home
+
+branch: mobile_home
+
+commit commit commit push  mobile_home
+
+gco new, git merge mobile_home
+gp origin new
+cap staging deploy  staging.kalading.com
+
+---> bitbucket  小功能
+pr mobile_home -- staging
+
+gco staging
+git merge mobile_home
+
+----> bitbucket  完整的功能， 上线之前
+pr  master -- staging
+
+
+
+
+
+////
+acts-as-taggable-on
 
 
 Please feel free to use a different markup language if you do not plan to run
