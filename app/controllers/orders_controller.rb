@@ -291,8 +291,6 @@ class OrdersController < ApplicationController
       # find_or_create user
       user = current_user
 
-      user = current_user
-
       unless signed_in?
         user = User.find_or_create_by(phone_number: vcode.phone_num)
         sign_in user
