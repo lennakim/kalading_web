@@ -1,0 +1,69 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+<% @cars %>
+<div class="select_car_by_initial phone-page">
+  <div class="cars_list">
+    <% cars_info = @cars.group_by{ |car| car["pinyin"].slice(0, 1) } %>
+    <% cars_info.each_key do |key,cars| %> 
+      <p class="letter" id='<%= key.upcase %>' >
+        <%= key.upcase %>
+      </p> 
+      <% cars = cars_info[key] %> 
+      <% cars.each do |car| %>  
+        <ul class="brand">
+          <li class="brand_title">
+            <%= car['name'] %>
+          </li>
+          <ul class="serie hidden">
+            <% brands = car['ams'] %>
+            <% brands.each do |brand| %>
+              <li class="serie_title">
+                <%= brand['name'] %>
+              </li>
+              <ul class="model hidden" style="color:orange">
+                <% series = brand['asms'] %>
+                <% series.each do |serie| %>
+                  <li data-id="<%= serie['_id'] %>">
+                    <%= serie['name'] %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </ul>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+  <ul class="crumbs">
+    <li><a href="#A">A</a></li>
+    <li><a href="#B">B</a></li>
+    <li><a href="#C">C</a></li>
+    <li><a href="#D">D</a></li>
+    <li><a href="#E">E</a></li>
+    <li><a href="#F">F</a></li>
+    <li><a href="#G">G</a></li>
+    <li><a href="#H">H</a></li>
+    <li><a href="#I">I</a></li>
+    <li><a href="#J">J</a></li>
+    <li><a href="#K">K</a></li>
+    <li><a href="#L">L</a></li>
+    <li><a href="#M">M</a></li>
+    <li><a href="#N">N</a></li>
+    <li><a href="#O">O</a></li>
+    <li><a href="#P">P</a></li>
+    <li><a href="#Q">Q</a></li>
+    <li><a href="#R">R</a></li>
+    <li><a href="#S">S</a></li>
+    <li><a href="#T">T</a></li>
+    <li><a href="#U">U</a></li>
+    <li><a href="#V">V</a></li>
+    <li><a href="#W">W</a></li>
+    <li><a href="#X">X</a></li>
+    <li><a href="#Y">Y</a></li>
+    <li><a href="#Z">Z</a></li>
+  </ul>
+
+  
+
+</div>

@@ -76,6 +76,12 @@ class OrdersController < ApplicationController
   def auto_model_numbers
   end
 
+  def select_car_by_initial
+    @cars = Order.cars_data current_city_id
+    
+    pp @cars
+  end
+
   def select_car
     type = params[:type]
 

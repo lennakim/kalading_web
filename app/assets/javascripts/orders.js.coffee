@@ -8,6 +8,23 @@
 
 $ ->
 
+  if $(".select_car_by_initial").length > 0
+    $('.brand').on 'click','.brand_title', ->
+      $('html,body').animate({scrollTop: '0px'}, 500);
+      $(@).parent().siblings().find('li').removeClass('active')
+      $(@).addClass('active')
+
+      $('.serie').addClass('hidden')
+      $(@).siblings('.serie').removeClass('hidden').animate({'left':'25%'},500)
+
+    $('.serie').on 'click','.serie_title', ->
+      $(@).siblings('.serie_title').removeClass('active')
+      $(@).addClass('active')
+
+      $('.model').addClass('hidden')
+      $(@).next('.model').removeClass('hidden')
+
+
   if $(".items-select-page").length > 0
     items_view = new Kalading.Views.Items
     # items_view.recoverSelectors()

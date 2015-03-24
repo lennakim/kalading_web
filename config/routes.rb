@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get 'success'
       get 'order_status'
 
+      get 'select_car_by_initial'
       get 'select_car_item'
       get 'auto_brands'
       get 'auto_series'
