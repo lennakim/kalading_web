@@ -34,9 +34,9 @@ class Order
       ServerApi.call "get", "cities"
     end
 
-    def cancel id
+    def cancel id, content
       payload = {
-        order: { state: 8, cancel_reason: '有事先不做了' }
+        order: { state: 8, cancel_reason: content }
       }
       ServerApi.call "put", "orders", { entry_id: id, body: payload }
     end

@@ -319,7 +319,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    data = Order.cancel params[:id]
+    data = Order.cancel params[:id], params[:reason]
     @id = params[:id]
     @order = Order.find params[:id]
     if data["result"] == "ok"

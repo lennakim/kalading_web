@@ -13,6 +13,15 @@ $ ->
 
       $.get "/users/cars.js?car_id=#{ id }&car_num=#{ car_num }"
 
+    $(".orders").on "click", ".order .comment > .del > a", (e) ->
+      e.stopPropagation()
+      e.preventDefault()
+
+      id = $(@).data('order')
+
+      $("#cancel_modal_submit").data('id', id)
+      $("#cancel_modal").modal()
+
     $(".orders").on "click", ".order .comment > .cmt > a", (e) ->
       e.stopPropagation()
       e.preventDefault()
@@ -27,6 +36,50 @@ $ ->
       e.stopPropagation()
 
       $("#select_car_modal").modal()
+
+  $("#cancel_modal").on 'click', 'input[type=radio]', ->
+
+    $("#cancel_modal_submit").removeClass('disabled')
+
+    if $(@).attr('id') == "other_reason"
+      $(".textarea").slideDown()
+    else
+      $(".textarea").slideUp()
+
+  $("#cancel_modal_cancel").click (e)->
+    e.stopPropagation()
+    e.preventDefault()
+    $("#cancel_modal").modal('hide')
+
+  $(".textarea").on "keyup", ->
+    $(@).removeClass('has-error')
+
+  $("#cancel_modal_submit").click (e) ->
+
+    e.stopPropagation()
+    e.preventDefault()
+
+    radio = $("#cancel_modal input[type=radio]:checked")
+
+    if radio.attr('id') == "other_reason"
+      submit_content = $.trim $('.textarea textarea').val()
+    else
+      submit_content = $.trim radio.closest('li').find('div:first label').text()
+
+    id = $("#cancel_modal_submit").data('id')
+    url = "/orders/#{id}.js"
+    data = { reason: submit_content }
+    if submit_content
+      $.ajax({url: url, type: 'DELETE', data: data})
+    else
+      $(".textarea").addClass('has-error')
+
+
+  $("#cancel_modal").on "hidden.bs.modal", ->
+    $('.textarea').hide().find('textarea').val('')
+    $('#cancel_modal input[type=radio]').prop('checked', false)
+    $("#cancel_modal_submit").addClass('disabled')
+
 
   $('#comment_modal').on 'hidden.bs.modal', ->
     $(@).find(".btn").removeClass('disabled').removeClass('active')
