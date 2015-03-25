@@ -84,39 +84,44 @@
         </div>
       <% end %>
 
-      <div class="item">
-        <div class="part-checkbox pull-left">
-          <input type="checkbox" disabled checked>
+      <% part_name = parts[0].keys[0] %>
+      <% if part_name != '电瓶' %>
+        <div class="item">
+          <div class="part-checkbox pull-left">
+            <input type="checkbox" disabled checked>
+          </div>
+
+          <div class="col-sm-11">
+            <label class="col-sm-2">
+              服务费
+              <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
+            </label>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+  <% part_name = parts[0].keys[0] %>
+  <% if part_name != '电瓶' %>
+    <div class="form-group">
+      <label class="col-sm-1 control-label">其他：</label>
+      <div class="other col-sm-11">
+
+        <div class="pull-left" style='width: 20px'>
+          <input type="checkbox" id="no_parts">
         </div>
 
-        <div class="col-sm-11">
-          <label class="col-sm-2">
-            服务费
-            <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
+        <div class="pull-left col-sm-11">
+          <label class='col-sm-4' for="no_parts">
+            已有配件，仅购买上门服务
           </label>
         </div>
-      </div>
 
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-1 control-label">其他：</label>
-
-    <div class="other col-sm-11">
-
-      <div class="pull-left" style='width: 20px'>
-        <input type="checkbox" id="no_parts">
-      </div>
-
-      <div class="pull-left col-sm-11">
-        <label class='col-sm-4' for="no_parts">
-          已有配件，仅购买上门服务
-        </label>
       </div>
     </div>
-
-  </div>
+  <% end %>
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">

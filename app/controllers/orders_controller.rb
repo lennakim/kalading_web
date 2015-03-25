@@ -263,8 +263,17 @@ class OrdersController < ApplicationController
       return render js: "alert('请选择正确的服务时间')"
     end
 
+    if params[:type] == 'pm25'
+      service_type = 0
+    elsif params[:type] == 'btm' || params[:type] == 'smt'
+      service_type = 1
+    elsif params[:type] == 'bty'
+      service_type = 2
+    end
+
     payload = {
       parts: parts,
+      service_type: service_type,
       info: {
         "address"           => params[:address],
         "name"              => params[:name],

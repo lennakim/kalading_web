@@ -74,6 +74,14 @@
                   <span class="smt <%= "selected" if type == "smt" %>">小保养</span>
                 </div>
               <% end %>
+
+              <% if !via_act || types.include?('bty') %>
+                <div class="service-item" data-type="bty">
+                  <input type="radio" name="service" <%= "checked" if type == "bty" %>>
+                  <span class="smt <%= "selected" if type == "bty" %>">电瓶</span>
+                </div>
+              <% end %>
+
             </div>
             <h4 class="item-title">选择配件</h4>
             <div class="orders-con <%= type %>-con content">
