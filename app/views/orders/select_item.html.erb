@@ -13,6 +13,7 @@
         <li class="<%= "selected" if type == "pm25" %>"><%= link_to "PM2.5滤芯更换", select_item_orders_path(car_id: params[:car_id], type: "pm25") %></li>
         <li class="<%= "selected" if type == "bmt" %>"><%= link_to "大保养", select_item_orders_path(car_id: params[:car_id], type: "bmt") %></li>
         <li class="<%= "selected" if type == "smt" %>"><%= link_to "小保养", select_item_orders_path(car_id: params[:car_id], type: "smt") %></li>
+        <li class="<%= "selected" if type == "bty" %>"><%= link_to "电瓶", select_item_orders_path(car_id: params[:car_id], type: "bty") %></li>
       </ul>
       <div class="orders-con <%= type %>-con">
         <%= render "items", type: type %>

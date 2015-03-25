@@ -10,6 +10,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  server_uri: "http://intranet.kalading.com"
 
 test:
   <<: *defaults

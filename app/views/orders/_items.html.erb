@@ -23,14 +23,14 @@
 
       <% parts = @result["applicable_parts"] %>
       <% to_next_step = false %>
-
+      
       <% filter_parts(parts, type).each do |part|  %>
         <div class="item clearfix">
           <% part_name = part.keys[0] %>
           <% part_items = part.values[0] %>
           <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
           <% to_next_step ||= !no_items %>
-
+          
           <div class="part-checkbox pull-left">
             <% if no_items %>
               <input type="checkbox" class='part-selector' disabled>
@@ -67,6 +67,7 @@
 
                       <% else %>
                         <!-- 其他选项 -->
+                        
                         <%= render "item", name: part_name, item: item, selected: select_index == index %>
                       <% end %>
 
@@ -79,6 +80,7 @@
               </select>
             <% end %>
           </div>
+          
         </div>
       <% end %>
 
