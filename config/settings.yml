@@ -15,6 +15,7 @@ defaults: &defaults
     - "17710191420" # jianan
     - "18612621540" # shooter
     - "17600810530" # river
+    - "18611494397" # zhoumin
 
   editors:
     - "13810313046" # sally
