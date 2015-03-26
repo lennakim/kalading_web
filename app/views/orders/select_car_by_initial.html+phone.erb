@@ -24,8 +24,8 @@
               <ul class="model hidden" style="color:orange">
                 <% series = brand['asms'] %>
                 <% series.each do |serie| %>
-                  <li data-id="<%= serie['_id'] %>">
-                    <%= serie['name'] %>
+                  <li>
+                    <%= link_to serie['name'], select_car_item_orders_path(car_id: serie['_id'], act: params[:act], type: params[:type]) %>
                   </li>
                 <% end %>
               </ul>

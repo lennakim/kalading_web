@@ -17,12 +17,19 @@ $ ->
       $('.serie').addClass('hidden')
       $(@).siblings('.serie').removeClass('hidden').animate({'left':'25%'},500)
 
+    flag = 0
     $('.serie').on 'click','.serie_title', ->
-      $(@).siblings('.serie_title').removeClass('active')
-      $(@).addClass('active')
+      if flag == 0
+        $(@).addClass('active')
+        $(@).next('.model').removeClass('hidden')
+        flag = 1
+      else
+        $(@).removeClass('active')
+        $(@).next('.model').addClass('hidden')
+        flag = 0
 
-      $('.model').addClass('hidden')
-      $(@).next('.model').removeClass('hidden')
+    $('.crumbs').on 'click','li', ->
+      $('.serie').addClass('hidden')
 
 
   if $(".items-select-page").length > 0

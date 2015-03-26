@@ -967,6 +967,7 @@ $title-gray: #787878;
 }
 
 .select_car_by_initial{
+  $orange: #fcad5e;
   position: relative;
   overflow: hidden;
   .cars_list{
@@ -995,22 +996,35 @@ $title-gray: #787878;
       z-index: 99;
       width: 65%;
       height: 100%;
-      line-height: 50px;
+      line-height: 30px;
       border-left: 1px solid #ccc;
       background: #fff;
       .serie_title{
         padding: 5%;
         border-top: 1px solid #ccc;
+        background-image: image-url('right_btn.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: 8%;
+      }
+      .active{
+        border-left: 3px solid $orange; 
+        background-image: image-url('down_btn.png');
       }
     }
     .model{
-      padding-left: 5%;
+      padding-left: 8%;
       border-top: 1px solid #ccc;
       li{
+        line-height: 40px;
+        padding-left: 5%;
         border-bottom: 1px solid #ccc;
         overflow: hidden; 
         text-overflow: ellipsis;
         white-space: nowrap;
+        a{
+          color: $orange;
+        }
         &:last-child{
           border: 0;
         }
@@ -1020,8 +1034,7 @@ $title-gray: #787878;
       display: none;
     }
     .active{
-      border-left: 3px solid red;
-      
+      border-left: 3px solid $orange; 
     }
   }
   .crumbs{
@@ -1036,7 +1049,7 @@ $title-gray: #787878;
     font-weight: bold;
     li a{
       margin: 2% 0;
-      color: red;
+      color: $orange;
     }
   }
 }
