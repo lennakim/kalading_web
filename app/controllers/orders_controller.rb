@@ -300,8 +300,6 @@ class OrdersController < ApplicationController
       # find_or_create user
       user = current_user
 
-      user = current_user
-
       unless signed_in?
         user = User.find_or_create_by(phone_number: vcode.phone_num)
         sign_in user
@@ -328,7 +326,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    data = Order.cancel params[:id]
+    data = Order.cancel params[:id], params[:reason]
     @id = params[:id]
     @order = Order.find params[:id]
     if data["result"] == "ok"

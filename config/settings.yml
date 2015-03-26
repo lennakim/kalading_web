@@ -8,6 +8,18 @@ defaults: &defaults
 
   baidu_ak: "227c2a3806aae1804f15cff021674ef9"
 
+  # roles
+  administrators:
+    - "15666300899" # congteng
+    - "15901003277" # coder
+    - "17710191420" # jianan
+    - "18612621540" # shooter
+    - "17600810530" # river
+    - "18611494397" # zhoumin
+
+  editors:
+    - "13810313046" # sally
+
 development:
   <<: *defaults
   #server_uri: "http://intranet.kalading.com"
