@@ -29,18 +29,18 @@
 
     <% if filtered_parts.count == 0 %>
       <div class="item clearfix">
-       很抱歉，暂无该服务
+       很抱歉，暂时无配件
       </div>
     <% else %>
 
     <% filtered_parts.each do |part|  %>
       <div class="item clearfix">
-        
+
         <% part_name = part.keys[0] %>
         <% part_items = part.values[0] %>
         <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
         <% to_next_step ||= !no_items %>
-        
+
         <div class="part-checkbox pull-left">
 
           <% if no_items %>
@@ -78,7 +78,7 @@
 
                     <% else %>
                       <!-- 其他选项 -->
-                      
+
                       <%= render "item", name: part_name, item: item, selected: select_index == index %>
                     <% end %>
 
@@ -91,13 +91,13 @@
             </select>
           <% end %>
         </div>
-        
+
       </div>
     <% end %>
 
     <% end %>
 
-    
+
     <% if type != 'bty' %>
       <div class="item">
         <div class="part-checkbox pull-left">
@@ -134,7 +134,7 @@
       </div>
     </div>
   <% end %>
-  
+
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
