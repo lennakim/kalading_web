@@ -2,109 +2,121 @@
 
 <h4><%= @result['name'] %></h4>
 
+<% activity = nil unless defined? activity %>
+<% parts = @result["applicable_parts"] %>
+<% to_next_step = false %>
+
+<% filtered_parts = filter_parts(parts, type) %>
+
 <div class="form-horizontal item-list">
 
-  <div class="form-group">
-    <label class="col-sm-1 control-label">价格：</label>
-    <div class="col-sm-11">
-      <span class="price"></span>元
-      <!-- <span class="price original"></span>
-      <span class="now">xxx元</span> -->
-      <!-- <var class="reason reason1"></var> -->
-      <!-- <var class="reason reason2"></var> -->
+  <% if filtered_parts.count != 0 %>
+    <div class="form-group">
+      <label class="col-sm-1 control-label">价格：</label>
+      <div class="col-sm-11">
+        <span class="price"></span>元
+        <!-- <span class="price original"></span>
+        <span class="now">xxx元</span> -->
+        <!-- <var class="reason reason1"></var> -->
+        <!-- <var class="reason reason2"></var> -->
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="form-group">
     <label class="col-sm-1 control-label">项目：</label>
     <div class="col-sm-11 item-box">
 
-      <% activity = nil unless defined? activity %>
+    <% if filtered_parts.count == 0 %>
+      <div class="item clearfix">
+       很抱歉，暂无该服务
+      </div>
+    <% else %>
 
-      <% parts = @result["applicable_parts"] %>
-      <% to_next_step = false %>
-      
-      <% filter_parts(parts, type).each do |part|  %>
-        <div class="item clearfix">
-          <% part_name = part.keys[0] %>
-          <% part_items = part.values[0] %>
-          <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
-          <% to_next_step ||= !no_items %>
-          
-          <div class="part-checkbox pull-left">
-            <% if no_items %>
-              <input type="checkbox" class='part-selector' disabled>
-            <% else %>
-              <input type="checkbox" class='part-selector' checked>
-            <% end %>
-          </div>
+    <% filtered_parts.each do |part|  %>
+      <div class="item clearfix">
+        
+        <% part_name = part.keys[0] %>
+        <% part_items = part.values[0] %>
+        <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
+        <% to_next_step ||= !no_items %>
+        
+        <div class="part-checkbox pull-left">
 
-          <div class="">
-            <label class='col-sm-1'><%= part_name %></label>
-            <% if no_items %>
-              <input type="text" value="暂时缺货" class="part no-part form-control" disabled>
-            <% else %>
-              <select class="part form-control">
-                <% select_index = selected_item_index(default_parts(@result), part_items)  %>
+          <% if no_items %>
+            <input type="checkbox" class='part-selector' disabled>
+          <% else %>
+            <input type="checkbox" class='part-selector' checked>
+          <% end %>
+        </div>
 
-                <% part_items.each_with_index do |item, index| %>
-                  <% unless item["quantity"] == 0 %>
-                    <!-- 专门给易道活动的-->
-                    <% if activity && ['yi-dao-yi-wan-smt-1', 'yi-dao-yi-wan-smt-2', 'yi-dao-yi-wan-smt-3', 'gan-ji-smt-1', 'gan-ji-smt-2', 'gan-ji-smt-3'].include?(activity.name) %>
-                      <% if part_name == "机油" %>
-                        <!-- 机油 -->
-                        <% item = yidao_filter(part_items, activity).first %>
-                        <% if item %>
-                          <%= render "item", name: part_name, item: item, selected: select_index == index %>
-                        <% end %>
+        <div class="">
+          <label class='col-sm-1'><%= part_name %></label>
+          <% if no_items %>
+            <input type="text" value="暂时缺货" class="part no-part form-control" disabled>
+          <% else %>
+            <select class="part form-control">
+              <% select_index = selected_item_index(default_parts(@result), part_items)  %>
 
-                        <% break %>
-                      <% elsif part_name == "机滤" %>
-                        <!-- 机滤 -->
-
-                        <%= render "item", name: part_name, item: item, selected: select_index == index %>
-                        <% break %>
-
-                      <% else %>
-                        <!-- 其他选项 -->
-                        
+              <% part_items.each_with_index do |item, index| %>
+                <% unless item["quantity"] == 0 %>
+                  <!-- 专门给易道活动的-->
+                  <% if activity && ['yi-dao-yi-wan-smt-1', 'yi-dao-yi-wan-smt-2', 'yi-dao-yi-wan-smt-3', 'gan-ji-smt-1', 'gan-ji-smt-2', 'gan-ji-smt-3'].include?(activity.name) %>
+                    <% if part_name == "机油" %>
+                      <!-- 机油 -->
+                      <% item = yidao_filter(part_items, activity).first %>
+                      <% if item %>
                         <%= render "item", name: part_name, item: item, selected: select_index == index %>
                       <% end %>
 
-                    <% else %>
+                      <% break %>
+                    <% elsif part_name == "机滤" %>
+                      <!-- 机滤 -->
 
                       <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                      <% break %>
+
+                    <% else %>
+                      <!-- 其他选项 -->
+                      
+                      <%= render "item", name: part_name, item: item, selected: select_index == index %>
                     <% end %>
+
+                  <% else %>
+
+                    <%= render "item", name: part_name, item: item, selected: select_index == index %>
                   <% end %>
                 <% end %>
-              </select>
-            <% end %>
-          </div>
-          
+              <% end %>
+            </select>
+          <% end %>
         </div>
-      <% end %>
+        
+      </div>
+    <% end %>
 
-      <% part_name = parts[0].keys[0] %>
-      <% if part_name != '电瓶' %>
-        <div class="item">
-          <div class="part-checkbox pull-left">
-            <input type="checkbox" disabled checked>
-          </div>
+    <% end %>
 
-          <div class="col-sm-11">
-            <label class="col-sm-2">
-              服务费
-              <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
-            </label>
-          </div>
+    
+    <% if type != 'bty' %>
+      <div class="item">
+        <div class="part-checkbox pull-left">
+          <input type="checkbox" disabled checked>
         </div>
-      <% end %>
+
+        <div class="col-sm-11">
+          <label class="col-sm-2">
+            服务费
+            <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
+          </label>
+        </div>
+      </div>
+    <% end %>
 
     </div>
   </div>
 
-  <% part_name = parts[0].keys[0] %>
-  <% if part_name != '电瓶' %>
+  <% if type != 'bty' %>
     <div class="form-group">
       <label class="col-sm-1 control-label">其他：</label>
       <div class="other col-sm-11">
@@ -122,6 +134,7 @@
       </div>
     </div>
   <% end %>
+  
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
@@ -133,3 +146,4 @@
     </div>
   </div>
 </div>
+

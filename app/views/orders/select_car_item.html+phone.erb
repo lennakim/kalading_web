@@ -75,11 +75,13 @@
                 </div>
               <% end %>
 
-              <% if !via_act || types.include?('bty') %>
-                <div class="service-item" data-type="bty">
-                  <input type="radio" name="service" <%= "checked" if type == "bty" %>>
-                  <span class="smt <%= "selected" if type == "bty" %>">电瓶</span>
-                </div>
+              <% if current_city_name == "北京" %>
+                <% if !via_act || types.include?('bty') %>
+                  <div class="service-item" data-type="bty">
+                    <input type="radio" name="service" <%= "checked" if type == "bty" %>>
+                    <span class="smt <%= "selected" if type == "bty" %>">电瓶</span>
+                  </div>
+                <% end %>
               <% end %>
 
             </div>
@@ -93,7 +95,11 @@
             </div>
             <div class="submit-con">
               <span>当前费用:
-                <span class="result-price"></span>元
+              	<% parts = @result["applicable_parts"] %>
+              	<% filtered_parts = filter_parts(parts, type) %>
+              	<% if filtered_parts.count != 0 %>
+                  <span class="result-price"></span>元
+                <% end %>
               </span>
               <p>支持现金、刷卡支付</p>
             </div>
