@@ -1044,20 +1044,19 @@ $title-gray: #787878;
     }
   }
   .crumbs{
+  	overflow: auto;
     position: fixed;
     right: 0;
     top: 0;
-    padding: 12% 0;
     width: 10%;
     height: 100%;
+    padding: 5% 0;
     background: #fff;
     text-align: center;
     font-weight: bold;
     li {
-      line-height: 26px;
-      a{
-        color: $orange;
-      }
+      line-height: 24px;
+      color: $orange;
     }
   }
 }
