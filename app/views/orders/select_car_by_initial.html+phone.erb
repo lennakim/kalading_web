@@ -6,7 +6,7 @@
   <div class="cars_list">
     <% cars_info = @cars.group_by{ |car| car["pinyin"].slice(0, 1) } %>
     <% cars_info.each_key do |key,cars| %> 
-      <p class="letter" id='<%= key %>' >
+      <p class="letter" id='<%= key %>'>
         <%= key.upcase %>
       </p> 
       <% cars = cars_info[key] %> 
@@ -17,18 +17,24 @@
           </li>
           <ul class="serie hidden">
             <% brands = car['ams'] %>
-            <% brands.each do |brand| %>
-              <li class="serie_title">
-                <%= brand['name'] %>
+            <%if brands.count != 0%>
+              <% brands.each do |brand| %>
+                <li class="serie_title">
+                  <%= brand['name'] %>
+                </li>
+                <ul class="model hidden" style="color:orange">
+                  <% series = brand['asms'] %>
+                  <% series.each do |serie| %>
+                    <li>
+                      <%= link_to serie['name'], select_car_item_orders_path(car_id: serie['_id'], act: params[:act], type: params[:type]) %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            <% else %>
+              <li class="no_brands">
+                很抱歉，该品牌暂时没有可保养车型
               </li>
-              <ul class="model hidden" style="color:orange">
-                <% series = brand['asms'] %>
-                <% series.each do |serie| %>
-                  <li>
-                    <%= link_to serie['name'], select_car_item_orders_path(car_id: serie['_id'], act: params[:act], type: params[:type]) %>
-                  </li>
-                <% end %>
-              </ul>
             <% end %>
           </ul>
         </ul>
@@ -37,8 +43,8 @@
   </div>
   <ul class="crumbs">
     <% cars_info.each_key do |key,cars| %>
-      <li>
-        <a href="#<%= key %>"> <%= key.upcase %> </a>
+      <li class="<%= key %>">
+        <%= key.upcase %>
       </li>
     <% end %> 
   </ul>

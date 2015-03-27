@@ -17,8 +17,6 @@ $ ->
       if $(@).next('.serie').find('li').length != 0
         $('.serie').addClass('hidden')
         $(@).siblings('.serie').removeClass('hidden').animate({'left':'25%'},500)
-      else
-        $('.serie').addClass('hidden')
 
 
     flag = 0
@@ -34,6 +32,13 @@ $ ->
 
     $('.crumbs').on 'click','li', ->
       $('.serie').addClass('hidden')
+      classname = $(@).attr('class')
+      $('.letter').each ->
+        id = $(@).attr('id')
+        if classname == id
+          height = $('#'+id).offset().top
+          $('html,body').animate({scrollTop: height}, 500);
+         
 
 
   if $(".items-select-page").length > 0

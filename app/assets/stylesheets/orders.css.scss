@@ -1010,6 +1010,9 @@ $title-gray: #787878;
         background-position: right;
         background-size: 8%;
       }
+      .no_brands{
+      	padding: 30% 25%;
+      }
       .active{
         border-left: 3px solid $orange; 
         background-image: image-url('down_btn.png');
@@ -1051,7 +1054,7 @@ $title-gray: #787878;
     text-align: center;
     font-weight: bold;
     li {
-      line-height: 24px;
+      line-height: 26px;
       a{
         color: $orange;
       }
