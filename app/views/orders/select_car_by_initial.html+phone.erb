@@ -6,7 +6,7 @@
   <div class="cars_list">
     <% cars_info = @cars.group_by{ |car| car["pinyin"].slice(0, 1) } %>
     <% cars_info.each_key do |key,cars| %> 
-      <p class="letter" id='<%= key.upcase %>' >
+      <p class="letter" id='<%= key %>' >
         <%= key.upcase %>
       </p> 
       <% cars = cars_info[key] %> 
@@ -36,9 +36,16 @@
     <% end %>
   </div>
   <ul class="crumbs">
-    <% letter = ('A'..'Z').to_a %>
-    <% letter.each do |num| %>
-      <li><a href="#<%= num %>"><%= num %></a></li>
-    <% end %>
+    <% cars_info.each_key do |key,cars| %>
+      <li>
+        <a href="#<%= key %>"> <%= key.upcase %> </a>
+      </li>
+    <% end %> 
   </ul>
+  <!--<ul class="crumbs">
+    <%# letter = ('A'..'Z').to_a %>
+    <%# letter.each do |num| %>
+      <li><a href="#<%#= num %>"><%#= num %></a></li>
+    <%# end %>
+  </ul>-->
 </div>

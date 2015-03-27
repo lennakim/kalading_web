@@ -78,8 +78,6 @@ class OrdersController < ApplicationController
 
   def select_car_by_initial
     @cars = Order.cars_data current_city_id
-    
-    pp @cars
   end
 
   def select_car

@@ -990,7 +990,8 @@ $title-gray: #787878;
       }
     }
     .serie{
-      position: absolute;
+      overflow: auto;
+      position: fixed;
       top: 0;
       left: 100%;
       z-index: 99;
@@ -1047,9 +1048,11 @@ $title-gray: #787878;
     background: #fff;
     text-align: center;
     font-weight: bold;
-    li a{
-      margin: 2% 0;
-      color: $orange;
+    li {
+      line-height: 24px;
+      a{
+        color: $orange;
+      }
     }
   }
 }
