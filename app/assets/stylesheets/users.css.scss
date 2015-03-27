@@ -370,6 +370,9 @@ $grey: #c4c4c4;
     padding-bottom: 0;
     border-bottom: 0 none;
     .reasons{
+      .radio-btn{
+        width: 10%;
+      }
       li{
         width: 100%;
         height: 30px;
