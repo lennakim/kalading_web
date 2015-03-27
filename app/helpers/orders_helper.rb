@@ -73,7 +73,9 @@ module OrdersHelper
     elsif type == 'smt'
       parts.select{ |part| ["机油", "机滤"].include?(part.keys.first) }
     elsif type == 'bmt'
-      parts
+      parts.select{ |part| ["空气滤清器","空调滤清器","机油", "机滤"].include?(part.keys.first) }
+    elsif type == 'bty'
+      parts.select{ |part| ["电瓶"].include?(part.keys.first) }
     end
   end
 

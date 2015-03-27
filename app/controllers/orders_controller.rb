@@ -267,8 +267,17 @@ class OrdersController < ApplicationController
       return render js: "alert('请选择正确的服务时间')"
     end
 
+    if params[:type] == 'pm25'
+      service_type = 0
+    elsif params[:type] == 'btm' || params[:type] == 'smt'
+      service_type = 1
+    elsif params[:type] == 'bty'
+      service_type = 2
+    end
+
     payload = {
       parts: parts,
+      service_type: service_type,
       info: {
         "address"           => params[:address],
         "name"              => params[:name],
@@ -293,8 +302,6 @@ class OrdersController < ApplicationController
     if result["result"] == "succeeded"
 
       # find_or_create user
-      user = current_user
-
       user = current_user
 
       unless signed_in?
@@ -323,7 +330,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    data = Order.cancel params[:id]
+    data = Order.cancel params[:id], params[:reason]
     @id = params[:id]
     @order = Order.find params[:id]
     if data["result"] == "ok"

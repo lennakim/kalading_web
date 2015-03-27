@@ -1,4 +1,5 @@
 @import "mixins/button";
+@import "mixins/checkbox";
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
@@ -62,6 +63,7 @@ $title-gray: #787878;
 
         .part-checkbox{
           width: 20px;
+
         }
 
         .part{
