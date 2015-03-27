@@ -370,6 +370,14 @@ $grey: #c4c4c4;
     padding-bottom: 0;
     border-bottom: 0 none;
     .reasons{
+
+      .reason-content{
+        width: 80%;
+        label{
+          width: 100%;
+        }
+      }
+
       .radio-btn{
         width: 10%;
       }
