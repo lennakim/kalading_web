@@ -13,6 +13,7 @@ $ ->
       #$('html,body').animate({scrollTop: '0px'}, 500);
       $(@).parent().siblings().find('li').removeClass('active')
       $(@).addClass('active')
+      $('.model').addClass('hidden')
 
       if $(@).next('.serie').find('li').length != 0
         $('.serie').addClass('hidden')
@@ -32,6 +33,7 @@ $ ->
 
     $('.crumbs').on 'click','li', ->
       $('.serie').addClass('hidden')
+      $('.brand_title').removeClass('active')
       classname = $(@).attr('class')
       $('.letter').each ->
         id = $(@).attr('id')

@@ -4,7 +4,7 @@
 <% @cars %>
 <div class="select_car_by_initial phone-page">
   <div class="cars_list">
-    <% cars_info = @cars.group_by{ |car| car["pinyin"].slice(0, 1) } %>
+    <% cars_info = @cars.group_by{ |car| car["initial"].slice(0, 1) } %>
     <% cars_info.each_key do |key,cars| %> 
       <p class="letter" id='<%= key %>'>
         <%= key.upcase %>
@@ -13,7 +13,8 @@
       <% cars.each do |car| %>  
         <ul class="brand">
           <li class="brand_title">
-            <%= car['name'] %>
+            <img class="logo" src="<%= car['logo'] %>" >
+            <span class="title_con"><%= car['name'] %></span>
           </li>
           <ul class="serie hidden">
             <% brands = car['ams'] %>

@@ -981,13 +981,20 @@ $title-gray: #787878;
       background: #eee;
     }
     .brand{
-      line-height: 45px;
       border-bottom: 1px solid #ccc;
       background: #fff;
       .brand_title{
+      	overflow: hidden;
+      	line-height: 45px;
         padding: 0 10px;
         &:last-child{
           border: 0;
+        }
+        .logo,.title_con{
+		  float: left;
+        }
+        .logo{
+          width: 20%;
         }
       }
     }
