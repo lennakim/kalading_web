@@ -100,10 +100,6 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 关注公众账号
       def handle_subscribe_event
-        if @keyword.present?
-          # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
-          return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
-        end
         account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
         account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
         reply_text_message("感谢关注小卡！为您的爱车提供便捷·专注·可靠的机油三滤保养服务！【九块九趴趴走】活动火热进行中！点击右下角【最新活动】即可预定哦~任何问题请回复或拨打400-006-8181~")
