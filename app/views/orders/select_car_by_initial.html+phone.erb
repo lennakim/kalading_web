@@ -1,0 +1,58 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+<% end %>
+<% @cars %>
+<div class="select_car_by_initial phone-page">
+  <div class="cars_list">
+    <% cars_info = @cars.group_by{ |car| car["initial"].slice(0, 1) } %>
+    <% cars_info.each_key do |key,cars| %> 
+      <p class="letter" id='<%= key %>'>
+        <%= key.upcase %>
+      </p> 
+      <% cars = cars_info[key] %> 
+      <% cars.each do |car| %>  
+        <ul class="brand">
+          <li class="brand_title">
+            <img class="logo" src="<%= car['logo'] %>" >
+            <span class="title_con"><%= car['name'] %></span>
+          </li>
+          <ul class="serie hidden">
+            <% brands = car['ams'] %>
+            <%if brands.count != 0%>
+              <% brands.each do |brand| %>
+                <li class="serie_title">
+                  <%= brand['name'] %>
+                </li>
+                <ul class="model hidden" style="color:orange">
+                  <% series = brand['asms'] %>
+                  <% series.each do |serie| %>
+                    <li>
+                      <%= link_to serie['name'], select_car_item_orders_path(car_id: serie['_id'], act: params[:act], type: params[:type]) %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            <% else %>
+              <li class="no_brands">
+                很抱歉，该品牌暂时没有可保养车型
+              </li>
+            <% end %>
+          </ul>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+  <ul class="crumbs">
+    <% cars_info.each_key do |key,cars| %>
+      <li class="<%= key %>">
+        <%= key.upcase %>
+      </li>
+    <% end %> 
+  </ul>
+  <!--<ul class="crumbs">
+    <%# letter = ('A'..'Z').to_a %>
+    <%# letter.each do |num| %>
+      <li><a href="#<%#= num %>"><%#= num %></a></li>
+    <%# end %>
+  </ul>-->
+</div>

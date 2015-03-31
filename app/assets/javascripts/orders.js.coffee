@@ -8,6 +8,48 @@
 
 $ ->
 
+  if $(".select_car_by_initial").length > 0
+    
+    $('.brand').on 'click','.brand_title', ->
+      
+      $(@).parent().siblings().find('li').removeClass('active')
+      $(@).addClass('active')
+      $('.model').addClass('hidden')
+
+      $('.serie').addClass('hidden')
+      $('.title_con').removeClass('hidden')
+      if $(@).next('.serie').find('li').length != 0
+        $(@).siblings('.serie').removeClass('hidden').animate({'left':'30%'},500,->
+          $('.logo').addClass('logo_active')
+          $('.title_con').addClass('title_active')
+        )
+        
+
+    flag = 0
+    $('.serie').on 'click','.serie_title', ->
+      if flag == 0
+        $(@).addClass('active')
+        $(@).next('.model').removeClass('hidden')
+        flag = 1
+      else
+        $(@).removeClass('active')
+        $(@).next('.model').addClass('hidden')
+        flag = 0
+
+    $('.crumbs').on 'click','li', ->
+      $('.logo').removeClass('logo_active')
+      $('.title_con').removeClass('title_active')
+      $('.serie').addClass('hidden')
+      $('.brand_title').removeClass('active')
+      classname = $(@).attr('class')
+      $('.letter').each ->
+        id = $(@).attr('id')
+        if classname == id
+          height = $('#'+id).offset().top
+          $('html,body').animate({scrollTop: height}, 500);
+         
+
+
   if $(".items-select-page").length > 0
     items_view = new Kalading.Views.Items
     # items_view.recoverSelectors()
