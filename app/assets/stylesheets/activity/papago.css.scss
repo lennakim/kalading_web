@@ -147,84 +147,8 @@ body{
 			width: 40%;
 		}
 	}
-	.form-con{
-		width: 100%;
-		height: 270px;
-		background: #ffc122;
-		.field{
-			overflow: hidden;
-			width: 80%;
-			height: 40px;
-			margin: 5px auto;
-		}
-		.phone_num{
-			margin-bottom: 10px;
-			height: 35px;
-			line-height: 30px;
-		}
-		.verification_code,.get_code{
-			float: left;
-		}
-		.verification_code{
-			width: 45%;
-			height: 37px;
-			margin-right: 5%;
-		}
-		.get_code{
-			width: 50%;
-		}
-		.next_button{
-			width: 100%;
-		}
-		.disable{
-			height: 34px;
-			background: #a54f31;
-			box-shadow: 0 2px 0 #c85f3f;
-		}
-	}
-	.discount-con{
-		position: relative;
-		width: 100%;
-		background: #ffc122;
-		.use_button{
-			position: absolute;
-			top: 110px;
-			left: 30%;
-			width: 40%;
-			height: 35px;
-			line-height: 35px;
-			border: 0;
-			background: #ff9d1e;
-			box-shadow: 0 4px 0 #d8871b;
-			color: #fff;
-			text-align: center;
-		}
-		.discount{
-			margin-top: 30px;
-		}
-		.money{
-			position: absolute;
-			top: -30px;
-			left: 1%;
-			display: block;
-			width: 98%;
-		}
-		.translate-cloud{
-			animation:translate-cloud-animate 1s linear infinite;
-			-webkit-animation:translate-cloud-animate 1s linear infinite;
-		}
-		.packet{
-			margin-top: 98px;
-		}
-	}
 }
-.bac{
-	position: fixed;
-	top: 0;
-	width: 100%;
-	background: #000;
-	opacity: 0.8;
-}
+
 .active{
 	position: relative;
 	height: 268px;
@@ -250,36 +174,6 @@ body{
 		text-align: center;	
 		font-size: 16px;
 		color: #598837;
-	}
-}
-.point{
-	position: fixed;
-	top: 0;
-}
-.msg{
-	position: fixed;
-	top: 25%;
-	left: 8%;
-	width: 84%;
-	border-radius: 5px;
-	padding: 0 7% 10%;
-	background: #fff;
-	color: #5c5c5c;
-	.title{
-		text-align: center;
-		color: #ea6f45;
-	}
-	p{
-		margin-bottom: 29px;
-		font-size: 16px;
-	}
-	.share_button{
-		width: 100%;
-	}
-	.closebtn{
-		position: fixed;
-		right: 5%;
-		top: 22%;
 	}
 }
 @media screen and (min-device-width: 360px){

@@ -25,41 +25,10 @@
         <%= image_tag("activity/papago/price.png",width:"100%", class: "price") %>
 
       </div>
-    <div class="form-con">
-      <%= image_tag("activity/papago/car.png",width:"100%", class: "car translate-car") %>
-      <div class="field">
-        <input title="手机号" class="phone_num form-control" id="phone_num" placeholder="手机号">
-      </div>
-      <div class="field">
-        <input title="验证码" class="verification_code form-control" placeholder="验证码" id="verification_code"/>
-        <button title="点击获取验证码" class='get_code orange' id="get_code">发送验证码</button>
-      </div>
-      <div class="field">
-        <button title="下一步" id="next_button" class="next_button orange">下一步</button>
-      </div>
     </div>
-    <!--<div class="discount-con hidden">
-        <%#= image_tag("activity/papago/discount.png",width:"100%", class: "discount") %>
-        <%#= image_tag("activity/papago/money.png",width:"100%", class: "money translate-money") %>
-        <%#= image_tag("activity/papago/packet.png",width:"100%", class: "packet") %>
-      <%#= link_to "立即使用", select_car_item_orders_path(act: activity.id, type: 'pm25'), id: 'use_button', class: 'use_button' %>
-      </div>
-    </div>-->
     <div class="active">
       <p class="rule">每天10:00~17:00 200个名额限时抢！</p>
-      <p class="active_btn">立即获得雾霾券</p>
-    </div>
-    <div class="bac hidden"></div>
-    <%= image_tag("activity/papago/point.png",width:"100%", class: "point hidden") %>
-    <div class="msg hidden">
-      <h3 class="title">温馨提示</h3>
-      <p>
-        恭喜您！成功加入卡粉行列！现在就差最后一步了！点击朋友圈右上角按钮
-        <%= image_tag("activity/papago/share.png",width:"10%", class: "share") %>
-        分享朋友圈即可享受9块9终身换啦！
-      </p>
-      <button title="朕知道了" class="share_button orange">朕知道了</button>
-      <%= image_tag("activity/papago/close.png",width:"10%", class: "closebtn") %>
+      <%= link_to "立即获得雾霾券", select_car_by_initial_orders_path(act: activity.id, type: 'bmt'), id: 'active_btn', class: 'active_btn' %>
     </div>
   </div>
 <% end %>
