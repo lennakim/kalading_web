@@ -151,6 +151,8 @@ class OrdersController < ApplicationController
     car_id = params["order"]["car_id"]
     parts = params["order"]["parts"].try :values
 
+    type = params["type"]
+
     activity = Activity.find_by id: params[:act]
 
     payload = {
@@ -161,7 +163,7 @@ class OrdersController < ApplicationController
       payload[:discount] = activity.preferential_code
     end
 
-    result = Order.refresh_price car_id, current_city_id, payload
+    result = Order.refresh_price car_id, current_city_id, payload, type
     render json: { result: result }
   end
 
