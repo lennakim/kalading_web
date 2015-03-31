@@ -18,8 +18,8 @@
         <%= image_tag("activity/papago/ball.png", class: "ball translate-ball") %>
         <%= image_tag("activity/papago/chat.png", class: "chat translate-chat") %>
 
-        <%= image_tag("activity/papago/title1.png",width:"100%", class: "title1") %>
-        <%= image_tag("activity/papago/title2.png",width:"100%", class: "title2") %>
+        <%= image_tag("activity/papago/tit1.png",width:"100%", class: "title1") %>
+        <%= image_tag("activity/papago/tit2.png",width:"100%", class: "title2") %>
 
         <%= image_tag("activity/papago/spring.png",width:"100%", class: "spring") %>
         <%= image_tag("activity/papago/price.png",width:"100%", class: "price") %>
@@ -28,7 +28,7 @@
     </div>
     <div class="active">
       <p class="rule">每天10:00~17:00 200个名额限时抢！</p>
-      <%= link_to "立即获得雾霾券", select_car_by_initial_orders_path(act: activity.id, type: 'bmt'), id: 'active_btn', class: 'active_btn' %>
+      <%#= link_to "立即获得雾霾券", select_car_by_initial_orders_path(act: activity.id, type: 'bmt'), id: 'active_btn', class: 'active_btn' %>
     </div>
   </div>
 <% end %>
