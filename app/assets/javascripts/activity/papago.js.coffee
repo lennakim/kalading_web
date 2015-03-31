@@ -27,7 +27,7 @@ $ ->
   #   jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
 
   showRedPacket = ->
-    $('.active, .rule, .form-con').addClass('hidden')
+    $('.form-con').addClass('hidden')
     $('.discount-con').removeClass('hidden')
 
   showMessage = ->
