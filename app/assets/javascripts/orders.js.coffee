@@ -9,16 +9,21 @@
 $ ->
 
   if $(".select_car_by_initial").length > 0
+    
     $('.brand').on 'click','.brand_title', ->
-      #$('html,body').animate({scrollTop: '0px'}, 500);
+      
       $(@).parent().siblings().find('li').removeClass('active')
       $(@).addClass('active')
       $('.model').addClass('hidden')
 
+      $('.serie').addClass('hidden')
+      $('.title_con').removeClass('hidden')
       if $(@).next('.serie').find('li').length != 0
-        $('.serie').addClass('hidden')
-        $(@).siblings('.serie').removeClass('hidden').animate({'left':'25%'},500)
-
+        $(@).siblings('.serie').removeClass('hidden').animate({'left':'30%'},500,->
+          $('.logo').addClass('logo_active')
+          $('.title_con').addClass('title_active')
+        )
+        
 
     flag = 0
     $('.serie').on 'click','.serie_title', ->
@@ -32,6 +37,8 @@ $ ->
         flag = 0
 
     $('.crumbs').on 'click','li', ->
+      $('.logo').removeClass('logo_active')
+      $('.title_con').removeClass('title_active')
       $('.serie').addClass('hidden')
       $('.brand_title').removeClass('active')
       classname = $(@).attr('class')
