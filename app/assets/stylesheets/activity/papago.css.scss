@@ -1,26 +1,54 @@
 @import "activity/activity";
 body{
-  background: #ffc122;
+  background: #2bc089;
 }
-@keyframes translate-car-animate{
+@keyframes translate-ball-animate{
   0%{transform:translateY(-2px);}
   50%{transform:translateY(2px);}
   100%{transform:translateY(-2px);}
 }
-@-webkit-keyframes translate-car-animate{
+@-webkit-keyframes translate-ball-animate{
   0%{-webkit-transform:translateY(-2px);}
   50%{-webkit-transform:translateY(2px);}
   100%{-webkit-transform:translateY(-2px);}
 }
-@keyframes translate-money-animate{
+@keyframes translate-cloud-animate{
   0%{transform:translateX(-2px);}
   50%{transform:translateX(2px);}
   100%{transform:translateX(-2px);}
 }
-@-webkit-keyframes translate-money-animate{
+@-webkit-keyframes translate-cloud-animate{
   0%{-webkit-transform:translateX(-2px);}
   50%{-webkit-transform:translateX(2px);}
   100%{-webkit-transform:translateX(-2px);}
+}
+@keyframes translate-chat-animate{
+  0%{
+  	transform:translateX(-2px);
+  	transform:translateY(2px);
+  }
+  50%{
+  	transform:translateX(2px);
+  	transform:translateY(-2px);
+  }
+  100%{
+  	transform:translateX(-2px);
+  	transform:translateY(2px);
+  }
+}
+@-webkit-keyframes translate-chat-animate{
+  0%{
+  	-webkit-transform:translateX(-2px);
+  	-webkit-transform:translateY(2px);
+  }
+  50%{
+  	-webkit-transform:translateX(2px);
+  	-webkit-transform:translateY(-2px);
+  }
+  100%{
+  	-webkit-transform:translateX(-2px);
+  	-webkit-transform:translateY(2px);
+  }
 }
 @keyframes translate-moveleft{
   0%{transform:translateX(300px);}
@@ -55,180 +83,97 @@ body{
 		overflow: hidden;
 		position: relative;
 		width: 100%;
-		height: 234px;
-		background-image: image-url("activity/papago/tit_bac.png");
-		background-size: 100%;
-		background-repeat: no-repeat;
+		height: 315px;
+		background: #2bc089;
+		.cloud1,.cloud2,.ball,.spring,.price{
+			position: absolute;
+		}
+		.cloud1,.cloud2,.ball{
+			width: 10%;
+		}
+		.cloud1{
+			top: 20px;
+			right: 100px;
+		}
+		.cloud2{
+			top: 50px;
+			right: 50px;
+		}
+		.ball{
+			top: 26px;
+			right: 75px;
+		}
+		.chat{
+			width: 30%;
+			position: absolute;
+			top: 15px;
+			left: 15px;
+		}
+		.translate-cloud1{
+			animation:translate-cloud-animate 2s linear infinite;
+			-webkit-animation:translate-cloud-animate 2s linear infinite;
+		}
+		.translate-cloud2{
+			animation:translate-cloud-animate 2s linear infinite 0.5s;
+			-webkit-animation:translate-cloud-animate 2s linear infinite 0.5s;
+		}
+		.translate-ball{
+			animation:translate-ball-animate 2s linear infinite;
+			-webkit-animation:translate-ball-animate 2s linear infinite;
+		}
+		.translate-chat{
+			animation:translate-chat-animate 1s linear infinite;
+			-webkit-animation:translate-chat-animate 1s linear infinite;
+		}
+
 		.title1{
 			position: absolute;
 			left: 100%;
-      top: 50px;
+      		top: 100px;
 		}
 		.title2{
 			position: absolute;
 			left: -100%;
-      top: 50px;
+      		top: 170px;
 		}
-	}
-	.form-con{
-		width: 100%;
-		height: 270px;
-		background: #ffc122;
-		.field{
-			overflow: hidden;
-			width: 80%;
-			height: 40px;
-			margin: 5px auto;
+		.spring{
+			top: 27%;
+			right: 45px;
+			width: 30%;
 		}
-		.phone_num{
-			margin-bottom: 10px;
-			height: 35px;
-			line-height: 30px;
-		}
-		.verification_code,.get_code{
-			float: left;
-		}
-		.verification_code{
-			width: 45%;
-			height: 37px;
-			margin-right: 5%;
-		}
-		.get_code{
-			width: 50%;
-		}
-		.next_button{
-			width: 100%;
-		}
-		.disable{
-			height: 34px;
-			background: #a54f31;
-			box-shadow: 0 2px 0 #c85f3f;
-		}
-	}
-	.discount-con{
-		position: relative;
-		width: 100%;
-		background: #ffc122;
-		.use_button{
-			position: absolute;
-			top: 110px;
-			left: 30%;
+		.price{
+			top: 84%;
+			left: 40px;
 			width: 40%;
-			height: 35px;
-			line-height: 35px;
-			border: 0;
-			background: #ff9d1e;
-			box-shadow: 0 4px 0 #d8871b;
-			color: #fff;
-			text-align: center;
-		}
-		.discount{
-			margin-top: 30px;
-		}
-		.money{
-			position: absolute;
-			top: -30px;
-			left: 1%;
-			display: block;
-			width: 98%;
-		}
-		.translate-money{
-			animation:translate-money-animate 1s linear infinite;
-			-webkit-animation:translate-money-animate 1s linear infinite;
-		}
-		.packet{
-			margin-top: 98px;
 		}
 	}
 }
-.bac{
-	position: fixed;
-	top: 0;
-	width: 100%;
-	background: #000;
-	opacity: 0.8;
-}
-.active,.rule{
-	position: relative;
-}
-.active_tit1,.rule_tit1{
-	position: absolute;
-	top: 0;
-}
-.translate-car{
-	animation:translate-car-animate 1s linear infinite;
-	-webkit-animation:translate-car-animate 1s linear infinite;
-}
-.active_con,.rule_con{
-	line-height: 25px;
-	font-size: 16px;
-	color: #fff;
-	p{
-		overflow: hidden;
-		margin: 0 auto;
-		.right,span{
-			float: left;
-		}
-		.right{
-			margin-top: 5px;
-		}
-		span{
-			width: 90%;
-		}
-	}
-}
+
 .active{
-	background: #ffc122;
-	.active_con{
-		height: 200px;
-		background: #96cb3b;
-		p{
-			width: 98%;
-		}
+	position: relative;
+	height: 268px;
+	background-image: image-url('activity/papago/foot.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	.rule{
+		position: absolute;
+		top: 30%;
+		left: 15%;
+		width: 125px;
+		color: #fff768;
 	}
-}
-.rule{
-	background: #96cb3b;
-	.rule_con{
-		background: #2eb6aa;
-		padding-bottom: 30px;
-		p{
-			width: 82%;
-		}
-		.marklogo{
-			position: absolute;
-			bottom: 0;
-		}
-	}
-}
-.point{
-	position: fixed;
-	top: 0;
-}
-.msg{
-	position: fixed;
-	top: 25%;
-	left: 8%;
-	width: 84%;
-	border-radius: 5px;
-	padding: 0 7% 10%;
-	background: #fff;
-	color: #5c5c5c;
-	.title{
-		text-align: center;
-		color: #ea6f45;
-	}
-	p{
-		margin-bottom: 29px;
+	.active_btn{
+		position: absolute;
+		top: 50%;
+		left: 15%;
+		margin: 0;
+		border-radius: 5px;
+		width: 70%;
+		line-height: 50px;
+		background: #fff768;
+		text-align: center;	
 		font-size: 16px;
-	}
-	.share_button{
-		width: 100%;
-	}
-	.closebtn{
-		position: fixed;
-		right: 5%;
-		top: 22%;
+		color: #598837;
 	}
 }
 @media screen and (min-device-width: 360px){
