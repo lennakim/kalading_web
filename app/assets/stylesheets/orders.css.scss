@@ -1,4 +1,5 @@
 @import "mixins/button";
+@import "mixins/checkbox";
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
@@ -62,6 +63,7 @@ $title-gray: #787878;
 
         .part-checkbox{
           width: 20px;
+
         }
 
         .part{
@@ -962,6 +964,125 @@ $title-gray: #787878;
       display: block;
       width: 100%;
       color: #000;
+    }
+  }
+}
+
+.select_car_by_initial{
+  $orange: #fcad5e;
+  position: relative;
+  overflow: hidden;
+  .cars_list{
+    float: left;
+    width: 90%;
+    .letter{
+      line-height: 35px;
+      padding: 0 30px;
+      background: #eee;
+    }
+    .brand{
+      border-bottom: 1px solid #ccc;
+      background: #fff;
+      .brand_title{
+      	position: relative;
+      	overflow: hidden;
+      	height: 60px;
+      	line-height: 60px;
+        &:last-child{
+          border: 0;
+        }
+      }
+
+      .logo,.title_con{
+	    float: left;
+      }
+      .logo{
+        width: 15%;
+	    margin: 5% 7%;
+      }
+      .logo_active{
+      	margin: 5px 9% 0;
+      }
+      .title_active{
+      	position: absolute;
+		top: 35px;
+		left: 6px;
+		display: block;
+		width: 30%;
+		line-height: 20px;
+		text-align: center;
+		overflow: hidden; 
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 12px;
+      }
+    }
+    .serie{
+      overflow: auto;
+      position: fixed;
+      top: 0;
+      left: 100%;
+      z-index: 99;
+      width: 60%;
+      height: 100%;
+      line-height: 30px;
+      border-left: 1px solid #ccc;
+      background: #fff;
+      .serie_title{
+        padding: 5%;
+        border-top: 1px solid #ccc;
+        background-image: image-url('right_btn.png');
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: 8%;
+      }
+      .no_brands{
+      	padding: 30% 25%;
+      }
+      .active{
+        border-left: 3px solid $orange; 
+        background-image: image-url('down_btn.png');
+      }
+    }
+    .model{
+      padding-left: 8%;
+      border-top: 1px solid #ccc;
+      li{
+        line-height: 40px;
+        padding-left: 5%;
+        border-bottom: 1px solid #ccc;
+        overflow: hidden; 
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        a{
+          color: $orange;
+        }
+        &:last-child{
+          border: 0;
+        }
+      }
+    }
+    .hidden{
+      display: none;
+    }
+    .active{
+      border-left: 3px solid $orange; 
+    }
+  }
+  .crumbs{
+  	overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    padding: 5% 0;
+    background: #fff;
+    text-align: center;
+    font-weight: bold;
+    li {
+      line-height: 24px;
+      color: $orange;
     }
   }
 }

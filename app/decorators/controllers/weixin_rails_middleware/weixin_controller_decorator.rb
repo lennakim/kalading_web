@@ -25,11 +25,13 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
   private
 
+    def auto_msg
+      "感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^"
+    end
+
     def response_text_message(options={})
       handle_recv_messages @weixin_message
-
-      auto_response("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
-
+      auto_response(auto_msg)
     end
 
     # <Location_X>23.134521</Location_X>
@@ -52,7 +54,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
       handle_recv_messages @weixin_message
-      auto_response("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
+      auto_response(auto_msg)
       # reply_image_message(generate_image(@media_id))
     end
 
@@ -64,7 +66,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     # @desc  = @weixin_message.Description
     # @url   = @weixin_message.Url
       handle_recv_messages @weixin_message
-      auto_response("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
+      auto_response(auto_msg)
       # reply_text_message("回复链接信息")
     end
 
@@ -74,10 +76,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @format   = @weixin_message.Format
       # 如果开启了语音翻译功能，@keyword则为翻译的结果
-      auto_response("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
-
-      # reply_text_message("回复语音信息: #{@keyword}")
-      # reply_voice_message(generate_voice(@media_id))
+      auto_response(auto_msg)
     end
 
     # <MediaId><![CDATA[media_id]]></MediaId>
@@ -86,8 +85,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       # 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
       @thumb_media_id = @weixin_message.ThumbMediaId
-      auto_response("感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^")
-
+      auto_response(auto_msg)
       # reply_text_message("回复视频信息")
     end
 
@@ -100,13 +98,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 关注公众账号
       def handle_subscribe_event
-        if @keyword.present?
-          # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
-          return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
-        end
         account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
         account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
-        reply_text_message("感谢关注小卡！为您的爱车提供便捷·专注·可靠的机油三滤保养服务！【九块九趴趴走】活动火热进行中！点击右下角【最新活动】即可预定哦~任何问题请回复或拨打400-006-8181~")
+        reply_text_message(auto_msg)
       end
 
       # 取消关注

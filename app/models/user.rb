@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   validates :phone_number, uniqueness: true
   before_create :generate_token
 
+  def role
+    return "editor" if Settings.editors.include?(phone_number)
+    return "administrator" if Settings.administrators.include?(phone_number)
+    return "customer"
+  end
+
   def add_auto order_info
     auto = autos.find_or_create_by \
       license_location: order_info["car_location"],
