@@ -463,6 +463,42 @@ $bac: #fff;
 	}
 }
 .home-phone{
+  .items{
+  	overflow: hidden;
+  	padding: 2% 3%;
+  	.left,.right{
+		float: left;
+		width: 49%;
+		height: 260px;
+		margin-right: 2%;
+		&:nth-child(even){
+  			margin-right: 0;
+  		}
+  	}
+  	.pm25,.maintain,.expect,.defined{
+  		border-radius: 5px;
+  		margin-bottom: 6px;
+  	}
+  	.pm25,.defined{
+  		height: 53%;
+  	}
+  	.maintain,.expect{
+  		height: 42%;
+  	}
+  	.pm25{ 
+		background: #8c97cb;
+  	}
+  	.maintain{
+		background: #84ccc9;
+  	}
+  	.expect{
+		background: #7ecef4;
+  	}
+  	.defined{
+		background: #f8b551;
+  	}
+  }
+
   .personal-maintain{
   	overflow: hidden;
   	color: #676767;
