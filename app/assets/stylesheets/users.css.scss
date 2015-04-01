@@ -345,6 +345,32 @@ $grey: #c4c4c4;
   }
 }
 #comment_modal{
+  .comment-stars{
+    overflow: hidden;
+    li{
+      float: left;
+      width: 18%;
+      margin: 20px 1%;
+      background-repeat: no-repeat;
+      background-size: 60%;
+      background-position: 60% 6px; 
+      &:nth-child(1){
+        background-image: image-url('star5.png');
+      }
+      &:nth-child(2){
+        background-image: image-url('star4.png');
+      }
+      &:nth-child(3){
+        background-image: image-url('star3.png');
+      }
+      &:nth-child(4){
+        background-image: image-url('star2.png');
+      }
+      &:nth-child(5){
+        background-image: image-url('star1.png');
+      }
+    }
+  }
   .comment-tags{
     // padding: 5px 50px;
     .tags{
