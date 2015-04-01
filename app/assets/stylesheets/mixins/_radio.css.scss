@@ -1,0 +1,19 @@
+@mixin radio(){
+  input[type="radio"]{
+    display: none;
+  }
+  input[type="radio"] + label span{
+    display:inline-block;
+    width:18px;
+    height:18px;
+    margin:-2px 0px 0 0;
+    vertical-align:middle;
+    // 18 * 3 + 3
+    background:image-url("check_radio.png") -57px top no-repeat;
+    cursor:pointer;
+  }
+  input[type="radio"]:checked + label span{
+    // 18 * 4 + 4
+    background:image-url("check_radio.png") -76px top no-repeat;
+  }
+}

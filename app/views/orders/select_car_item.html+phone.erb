@@ -15,7 +15,7 @@
         <div role="tabpanel" class="tab-pane active" id="home">
           <div class="quick-select">
             <h4 class="item-title my-car-title">我的快捷车辆</h4>
-            <%= link_to " + 重新选择", auto_brands_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
+            <%= link_to " + 重新选择", select_car_by_initial_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
 
             <div class="car-content content clearfix">
 
@@ -74,6 +74,16 @@
                   <span class="smt <%= "selected" if type == "smt" %>">小保养</span>
                 </div>
               <% end %>
+
+              <% if current_city_name == "北京" %>
+                <% if !via_act || types.include?('bty') %>
+                  <div class="service-item" data-type="bty">
+                    <input type="radio" name="service" <%= "checked" if type == "bty" %>>
+                    <span class="smt <%= "selected" if type == "bty" %>">电瓶</span>
+                  </div>
+                <% end %>
+              <% end %>
+
             </div>
             <h4 class="item-title">选择配件</h4>
             <div class="orders-con <%= type %>-con content">
@@ -85,7 +95,11 @@
             </div>
             <div class="submit-con">
               <span>当前费用:
-                <span class="result-price"></span>元
+              	<% parts = @result["applicable_parts"] %>
+              	<% filtered_parts = filter_parts(parts, type) %>
+              	<% if filtered_parts.count != 0 %>
+                  <span class="result-price"></span>元
+                <% end %>
               </span>
               <p>支持现金、刷卡支付</p>
             </div>
