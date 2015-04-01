@@ -478,6 +478,43 @@ $bac: #fff;
   	.pm25,.maintain,.expect,.defined{
   		border-radius: 5px;
   		margin-bottom: 6px;
+  		padding: 10px;
+  		color: #fff;
+  		
+  		.tit{
+  			font-size: 14px;
+  		}
+  		.con{
+  			font-size: 10px;
+  		}
+  	}
+  	.pm25,.defined{
+		img{
+			display: block;
+			width: 30%;
+			margin: 0 auto;
+			padding: 10px 0;
+		}
+		p{
+			width: 90%;
+			margin: 0 auto;
+		}
+  	}
+  	.maintain,.expect{
+  		overflow: hidden;
+  		img,p{
+			float: left;
+  		}
+  		img{
+  			width: 30%;
+  			margin: 8% 8% 8% 6%;
+  		}
+  		p{
+			width: 56%;
+  		}
+		.tit{
+			margin-top: 25px;
+		}
   	}
   	.pm25,.defined{
   		height: 53%;
