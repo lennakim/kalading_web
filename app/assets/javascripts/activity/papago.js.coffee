@@ -5,6 +5,23 @@ $ ->
   $('.title1').animate {'left':'0'}, 500, ->
     $('.title2').animate({'left':'0'},500)
 
+
+  signature = $("#data").data('signature')
+  timestamp = $("#data").data('timestamp')
+  nonceStr = $("#data").data('noncestr')
+  appId = $("#data").data('appid')
+  thumbnail = $("#data").data('thumbnail')
+  link = $("#data").data('url')
+  sharable = false
+  shared = $.cookie('shared')
+
+  wx.config
+    appId: appId
+    timestamp: timestamp
+    nonceStr: nonceStr
+    signature: signature
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+
   wx.ready ->
 
     alert 'go'
@@ -25,21 +42,6 @@ $ ->
 
   #$('.bac').css({'height':$(window).height()})
 
-  # signature = $("#data").data('signature')
-  # timestamp = $("#data").data('timestamp')
-  # nonceStr = $("#data").data('noncestr')
-  # appId = $("#data").data('appid')
-  # thumbnail = $("#data").data('thumbnail')
-  # link = $("#data").data('url')
-  # sharable = false
-  # shared = $.cookie('shared')
-
-  # wx.config
-  #   appId: appId
-  #   timestamp: timestamp
-  #   nonceStr: nonceStr
-  #   signature: signature
-  #   jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
 
   #showRedPacket = ->
     #$('.active, .rule, .form-con').addClass('hidden')
