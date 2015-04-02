@@ -24,8 +24,6 @@ $ ->
 
   wx.ready ->
 
-    alert 'go'
-
     wx.onMenuShareTimeline
       title: '九块九限时抢'
       desc: '每天200张！戳进来抢！'
