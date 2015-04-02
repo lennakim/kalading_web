@@ -1,0 +1,11 @@
+<div class="container">
+  <%= form_for [:admin, @message]  do |f| %>
+    <%= f.label :keyword %>
+    <%= f.text_field :keyword %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+  <%= link_to "返回", admin_reply_messages_path %>
+</div>
+
