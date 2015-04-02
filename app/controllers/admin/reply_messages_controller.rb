@@ -1,43 +1,10 @@
 class Admin::ReplyMessagesController < Admin::MainController
-  def index
-    @messages = ReplyMessage.all
-  end
+  inherit_resources
 
-  def new
-    @message = ReplyMessage.new
-  end
-
-  def create
-    @message = ReplyMessage.new(reply_params)
-    @message.msg_type = "text"
-    if @message.save
-      redirect_to admin_reply_messages_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @message = ReplyMessage.find(params[:id])
-  end
-
-  def update
-    @message = ReplyMessage.find(params[:id])
-    if @message.update_attributes reply_params
-      redirect_to admin_reply_messages_path
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @message = ReplyMessage.find(params[:id])
-    redirect_to admin_reply_messages_path if @message.destroy
-  end
+  actions :all, :except => [ :show ]
 
   private
-
-  def reply_params
-    params.require(:reply_message).permit(:content, :keyword)
+  def permitted_params
+    params.permit(:reply_message => [:content, :keyword, :msg_type])
   end
 end

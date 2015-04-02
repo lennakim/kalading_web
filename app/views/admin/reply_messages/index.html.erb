@@ -11,13 +11,13 @@
     </thead>
 
     <tbody>
-      <% @messages.each do |msg| %>
+      <% collection.each do |msg| %>
         <tr>
           <td><%= msg.keyword %></td>
           <td><%= msg.msg_type %></td>
           <td><%= msg.content %></td>
           <td><%= link_to "编辑", edit_admin_reply_message_path(msg.id) %></td>
-          <td><%= link_to "删除", admin_reply_message_path(msg.id), method: :delete, data:{ confirm: '你特么确定?'} %></td>
+          <td><%= link_to "删除", admin_reply_message_path(msg.id), method: :delete, data:{ confirm: '你特么确定要删除我吗?'} %></td>
         </tr>
       <% end %>
     </tbody>
