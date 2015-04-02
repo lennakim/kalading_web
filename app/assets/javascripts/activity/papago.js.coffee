@@ -5,6 +5,19 @@ $ ->
   $('.title1').animate {'left':'0'}, 500, ->
     $('.title2').animate({'left':'0'},500)
 
+  wx.ready ->
+
+    wx.onMenuShareTimeline
+      title: '九块九限时抢'
+      desc: '每天200张！戳进来抢！'
+
+    wx.onMenuShareAppMessage
+      title: '九块九限时抢'
+      desc: '每天200张！戳进来抢！'
+
+  wx.error (res) ->
+    alert '出错啦! 请刷新重试~'
+
   #$('.closebtn, .share_button').click ->
     #hideMessage()
 
@@ -46,41 +59,6 @@ $ ->
   #hideMessage()
   #showRedPacket()
 
-
-  # wx.ready ->
-  #
-  #   wx.onMenuShareTimeline
-  #     title: '爱车新年无霾劵！每天500张，戳进来抢！'
-  #     link: link
-  #     imgUrl: thumbnail
-  #     desc: '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！'
-  #     success: ->
-  #       if sharable
-  #         hideMessage()
-  #         showRedPacket()
-  #         $.cookie('shared', true, { expires: 365 })
-  #     cancel: ->
-  #       if sharable
-  #         showMessage()
-  #
-  #   wx.onMenuShareAppMessage
-  #     title: '爱车新年无霾劵！每天500张，戳进来抢！'
-  #     desc: '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！'
-  #     link: link
-  #     imgUrl: thumbnail
-  #     type: ''
-  #     dataUrl: ''
-  #     success: ->
-  #       if sharable
-  #         hideMessage()
-  #         showRedPacket()
-  #         $.cookie('shared', true, { expires: 365 })
-  #     cancel: ->
-  #       if sharable
-  #         showMessage()
-  #
-  # wx.error (res) ->
-  #   alert '出错啦! 请刷新重试~'
   #
   # $('#get_code').click ->
   #   phone_num = $('#phone_num').val()
