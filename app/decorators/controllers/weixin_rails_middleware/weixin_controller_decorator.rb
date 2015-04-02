@@ -8,22 +8,27 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     render xml: send("response_#{@weixin_message.MsgType}_message", {})
   end
 
-  def handle_recv_messages msg
-    account = PublicAccount.find_by(account_id: msg.ToUserName)
-    message = account.recv_messages.new
-    message.set_info msg
-    message.save
-  end
-
-  def auto_response(msg)
-    if Time.now.hour.in?(8..21)
-      reply_transfer_customer_service_message
-    else
-      reply_text_message(msg)
-    end
-  end
-
   private
+
+    def handle_recv_messages msg
+      account = PublicAccount.find_by(account_id: msg.ToUserName)
+      message = account.recv_messages.new
+      message.set_info msg
+      message.save
+    end
+
+    def auto_response(msg, keyword = nil)
+      if Time.now.hour.in?(8..21)
+        auto_msg = ReplyMessage.find(keyword)
+        if auto_msg
+          reply_text_message(auto_msg)
+        else
+          reply_transfer_customer_service_message
+        end
+      else
+        reply_text_message(msg)
+      end
+    end
 
     def auto_msg
       "感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^"
@@ -31,7 +36,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       handle_recv_messages @weixin_message
-      auto_response(auto_msg)
+      auto_response(auto_msg, @keyword)
     end
 
     # <Location_X>23.134521</Location_X>
@@ -116,7 +121,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 扫描带参数二维码事件: 2. 用户已关注时的事件推送
       def handle_scan_event
-        reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
+        reply_text_message(auto_msg)
+        # reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
       end
 
       def handle_location_event # 上报地理位置事件
