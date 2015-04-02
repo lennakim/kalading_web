@@ -1,0 +1,44 @@
+<%= title '爱车新年无霾劵！每天500张，戳进来抢！' %>
+<%= meta_description '预订卡拉丁【PM2.5空调滤芯】直接抵扣原价，仅需支付9块9，并有机会享每年三次免费滤芯更换哦！' %>
+
+<%= content_for :assets do %>
+  <%= stylesheet_link_tag    'activity/papago', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'activity/papago', 'data-turbolinks-track' => true %>
+<% end %>
+
+<% activity = Activity.find_by name: 'papago' %>
+<% current_openid = cookies[:USERAUTH] %>
+
+<% cache [activity.id] do %>
+  <div class="papago">
+    <div class="login-form">
+      <div class="form-tit">
+        <%= image_tag("activity/papago/cloud1.png", class: "cloud1 translate-cloud1") %>
+        <%= image_tag("activity/papago/cloud2.png", class: "cloud2 translate-cloud2") %>
+        <%= image_tag("activity/papago/ball.png", class: "ball translate-ball") %>
+        <%= image_tag("activity/papago/chat.png", class: "chat translate-chat") %>
+
+        <%= image_tag("activity/papago/tit1.png",width:"100%", class: "title1") %>
+        <%= image_tag("activity/papago/tit2.png",width:"100%", class: "title2") %>
+
+        <%= image_tag("activity/papago/spring.png",width:"100%", class: "spring") %>
+        <%= image_tag("activity/papago/price.png",width:"100%", class: "price") %>
+
+      </div>
+    </div>
+    <div class="active">
+      <p class="rule">每天10:00~17:00 200个名额限时抢！</p>
+      <%= link_to "现在就去抢！", select_car_by_initial_orders_path(act: activity.id, type: 'bmt'), id: 'active_btn', class: 'active_btn' %>
+    </div>
+  </div>
+<% end %>
+
+<% pa = PublicAccount.find_by(name: 'kaladingcom') %>
+
+<% url = request.original_url %>
+
+<% callback_url = pa.weixin_client.authorize_url(callback_sessions_url(name: pa.name, go: "act_#{activity.name}", share_openid: current_openid), "snsapi_userinfo") %>
+
+<% result = pa.get_signature(url) %>
+<div id="data" data-signature="<%= result[0] %>" data-timestamp="<%= result[1] %>" data-noncestr="<%= result[2] %>" data-appid="<%= pa.appid %>" data-thumbnail="<%= image_url('activity/papago/thumbnail.jpg') %>" data-url="<%= callback_url %>"></div>
+
