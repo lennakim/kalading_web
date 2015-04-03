@@ -6,7 +6,6 @@ class Admin::ReplyMessagesController < Admin::MainController
   def create
     account = PublicAccount.find_by(name:"kaladingcom")
     account.reply_messages.create permitted_params[:reply_message]
-    create!
   end
 
   private
