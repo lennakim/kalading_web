@@ -18,17 +18,18 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     end
 
     def auto_response(msg, keyword = nil)
-      if Time.now.hour.in?(8..21)
+
         account = PublicAccount.find_by(account_id: @weixin_message.ToUserName)
         auto_msg = account.reply_messages.find_by(keyword: @keyword).content
         if auto_msg
           reply_text_message(auto_msg)
         else
-          reply_transfer_customer_service_message
+          if Time.now.hour.in?(8..21)
+            reply_transfer_customer_service_message
+          else
+            reply_text_message(msg)
+          end
         end
-      else
-        reply_text_message(msg)
-      end
     end
 
     def auto_msg
