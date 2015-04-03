@@ -3,6 +3,12 @@ class Admin::ReplyMessagesController < Admin::MainController
 
   actions :all, :except => [ :show ]
 
+  def create
+    account = PublicAccount.find_by(name:"kaladingcom")
+    account.reply_messages.create permitted_params[:reply_message]
+    create!
+  end
+
   private
   def permitted_params
     params.permit(:reply_message => [:content, :keyword, :msg_type])
