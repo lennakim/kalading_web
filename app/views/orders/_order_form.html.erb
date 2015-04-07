@@ -174,9 +174,9 @@
       </div>
     </div>
   </div>
-  
-  <input type="hidden" name="type" value="<%= params[:type] %>">
-  
+
+  <input id="service_type" type="hidden" name="type" value="<%= params[:type] %>">
+
   <% if params[:act] && activity = Activity.find_by(id: params[:act]) %>
     <input type="hidden" name="discount" value="<%= activity.preferential_code %>">
     <input type="hidden" name="act" value="<%= params[:act] %>">
