@@ -9,9 +9,9 @@
 $ ->
 
   if $(".select_car_by_initial").length > 0
-    
+
     $('.brand').on 'click','.brand_title', ->
-      
+
       $(@).parent().siblings().find('li').removeClass('active')
       $(@).addClass('active')
       $('.model').addClass('hidden')
@@ -23,7 +23,7 @@ $ ->
           $('.logo').addClass('logo_active')
           $('.title_con').addClass('title_active')
         )
-        
+
 
     flag = 0
     $('.serie').on 'click','.serie_title', ->
@@ -47,7 +47,7 @@ $ ->
         if classname == id
           height = $('#'+id).offset().top
           $('html,body').animate({scrollTop: height}, 500);
-         
+
 
 
   if $(".items-select-page").length > 0
@@ -141,10 +141,11 @@ $ ->
 
       car_id = $("#car_id").val()
       code = $("#preferential_code").val()
+      type = $("#service_type").val()
 
       parts = $('#item_table').data("parts")
 
-      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts }
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts, type: type }
 
     $('#no_preferential').on "click", (e) ->
       e.preventDefault()
@@ -152,11 +153,12 @@ $ ->
 
       $("#yes_preferential").removeClass('active')
       $(@).addClass('active')
+      type = $("#service_type").val()
 
       car_id = $("#car_id").val()
       parts = $('#item_table').data("parts")
 
-      $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
+      $.post "/orders/no_preferential", { car_id: car_id, parts: parts, type: type }
 
     date = $('#serve_date').data('cc')
     min = _.first(_.keys(date))

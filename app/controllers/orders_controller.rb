@@ -51,20 +51,24 @@ class OrdersController < ApplicationController
     car_id = params["car_id"]
     @parts = params["parts"].try :values
 
+    type = params["type"]
+
     payload = {
       parts: @parts,
       discount: code
     }
-    @result = Order.refresh_price car_id, current_city_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload, type
   end
 
   def no_preferential
     car_id = params["car_id"]
     @parts = params["parts"].values
+    type = params["type"]
+
     payload = {
       parts: @parts
     }
-    @result = Order.refresh_price car_id, current_city_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload, type
   end
 
   def auto_brands
@@ -186,6 +190,8 @@ class OrdersController < ApplicationController
 
     activity = Activity.find_by id: params[:act]
 
+    type = params["type"]
+
     payload = {
       parts: @parts
     }
@@ -195,7 +201,7 @@ class OrdersController < ApplicationController
     end
 
     @cities = Order.cities
-    @result = Order.refresh_price car_id, current_city_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload, type
   end
 
   def no_car_type
