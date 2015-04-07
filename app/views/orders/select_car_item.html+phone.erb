@@ -54,33 +54,14 @@
             <h4 class="item-title service-type-title">服务类型</h4>
             <div class="content">
 
-              <% if !via_act || types.include?('pm25') %>
-                <div class="service-item" data-type="pm25">
-                  <input type="radio" name="service" <%= "checked" if type == "pm25" %>>
-                  <span class="pm25 <%= "selected" if type == "pm25" %>">PM2.5滤芯更换</span>
-                </div>
-              <% end %>
-
-              <% if !via_act || types.include?('bmt') %>
-                <div class="service-item" data-type="bmt">
-                  <input type="radio" name="service" <%= "checked" if type == "bmt" %>>
-                  <span class="bmt <%= "selected" if type == "bmt" %>">大保养</span>
-                </div>
-              <% end %>
-
-              <% if !via_act || types.include?('smt') %>
-                <div class="service-item" data-type="smt">
-                  <input type="radio" name="service" <%= "checked" if type == "smt" %>>
-                  <span class="smt <%= "selected" if type == "smt" %>">小保养</span>
-                </div>
-              <% end %>
-
-              <% if current_city_name == "北京" %>
-                <% if !via_act || types.include?('bty') %>
-                  <div class="service-item" data-type="bty">
-                    <input type="radio" name="service" <%= "checked" if type == "bty" %>>
-                    <span class="smt <%= "selected" if type == "bty" %>">电瓶</span>
-                  </div>
+              <% Product.all.each do |product| %>
+                <% if product_available? product %>
+                  <% if !via_act || types.include?(product.slug) %>
+                    <div class="service-item" data-type="<%= product.slug%>">
+                      <input type="radio" name="service" <%= "checked" if type == product.slug %>>
+                      <span class="<%= product.slug %> <%= "selected" if type == product.slug %>"><%= product.title %></span>
+                    </div>
+                  <% end %>
                 <% end %>
               <% end %>
 

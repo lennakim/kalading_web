@@ -113,22 +113,6 @@ ActiveRecord::Schema.define(version: 20150403031920) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
-  create_table "create_pay_infos", force: true do |t|
-    t.string   "transaction_id"
-    t.string   "out_trade_no"
-    t.integer  "total_fee"
-    t.datetime "time_end"
-    t.string   "trade_type"
-    t.string   "fee_type"
-    t.string   "bank_type"
-    t.string   "result_code"
-    t.integer  "auth_info_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "create_pay_infos", ["auth_info_id"], name: "index_create_pay_infos_on_auth_info_id", using: :btree
-
   create_table "diymenus", force: true do |t|
     t.integer  "public_account_id"
     t.integer  "parent_id"
@@ -171,6 +155,7 @@ ActiveRecord::Schema.define(version: 20150403031920) do
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "pay_infos", force: true do |t|
+    t.integer  "auth_info_id"
     t.string   "transaction_id"
     t.string   "out_trade_no"
     t.integer  "total_fee"
@@ -179,13 +164,9 @@ ActiveRecord::Schema.define(version: 20150403031920) do
     t.string   "fee_type"
     t.string   "bank_type"
     t.string   "result_code"
-    t.integer  "auth_info_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "pay_infos", ["auth_info_id"], name: "index_pay_infos_on_auth_info_id", using: :btree
-  add_index "pay_infos", ["transaction_id"], name: "index_pay_infos_on_transaction_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -208,12 +189,12 @@ ActiveRecord::Schema.define(version: 20150403031920) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
-    t.string   "account_secret_key"
-    t.string   "account_token"
     t.string   "access_token"
     t.string   "jsapi_ticket"
     t.datetime "token_expires_at"
