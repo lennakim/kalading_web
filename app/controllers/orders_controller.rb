@@ -271,7 +271,7 @@ class OrdersController < ApplicationController
 
     if params[:type] == 'pm25'
       service_type = 0
-    elsif params[:type] == 'btm' || params[:type] == 'smt'
+    elsif params[:type] == 'bmt' || params[:type] == 'smt'
       service_type = 1
     elsif params[:type] == 'bty'
       service_type = 2
