@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411090701) do
+ActiveRecord::Schema.define(version: 20150411133951) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -235,8 +235,6 @@ ActiveRecord::Schema.define(version: 20150411090701) do
   add_index "recv_messages", ["msg_id"], name: "index_recv_messages_on_msg_id", unique: true, using: :btree
 
   create_table "reply_articles", force: true do |t|
-    t.string   "article_count"
-    t.text     "articles"
     t.string   "title"
     t.string   "description"
     t.string   "picurl"
