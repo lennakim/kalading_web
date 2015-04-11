@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411085551) do
+ActiveRecord::Schema.define(version: 20150411090701) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -252,15 +252,9 @@ ActiveRecord::Schema.define(version: 20150411085551) do
     t.string   "msg_type"
     t.text     "content"
     t.string   "media_id"
-    t.string   "title"
-    t.text     "description"
     t.string   "music_url"
     t.string   "hq_music_url"
     t.string   "thumb_media_id"
-    t.integer  "article_count"
-    t.text     "articles"
-    t.string   "pic_url"
-    t.string   "url"
     t.integer  "public_account_id"
     t.string   "keyword"
     t.datetime "created_at"
