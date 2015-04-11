@@ -1,5 +1,6 @@
 class ReplyMessage < ActiveRecord::Base
   belongs_to :public_account
+  has_many :reply_articles
 
   validates_uniqueness_of :keyword
   validates :keyword, :msg_type, :content,  presence:true
