@@ -5,9 +5,9 @@
         <h2><%= pluralize(resource.errors.count, "error") %> prohibited this admin_activity from being saved:</h2>
 
         <ul>
-        <% resource.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
         </ul>
       </div>
     <% end %>
@@ -22,15 +22,12 @@
 
         <tr>
           <td>消息类型</td>
-          <td><%= select_tag(:msg_type, options_for_select([["text","text"], ["news", "news"]], 1)) %></td>
+          <td><%= f.select(:msg_type, options_for_select([["text","text"], ["news", "news"]], 1)) %></td>
         </tr>
 
         <tr>
           <td>内容</td>
-          <!--<td><%#= f.text_area :content %></td>-->
-          <div class="form-group">
             <td><%= f.cktext_area :content, id: 'content', ckeditor: {language: 'zh-cn'} %></td>
-          </div>
         </tr>
 
         <tr>
