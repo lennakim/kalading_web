@@ -1,0 +1,31 @@
+<div class="container">
+  <%= form_for [:admin, @reply_message, @reply_message.reply_articles.build] do |f| %>
+
+    <div class="form-group">
+      <label>图文消息标题</label>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label>图片链接(点击上传图片)</label>
+      <%= f.file_field :pic, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label>图文消息跳转链接</label>
+      <%= f.text_field :url, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label>图文消息描述</label>
+      <%= f.text_area :description, class: 'form-control', rows: '6' %>
+    </div>
+
+    <div class="submit-btn">
+        <%= f.submit '保存' , class: 'btn btn-default' %>
+    </div>
+
+  <% end %>
+
+  <%= link_to "返回", admin_reply_message_path(@reply_message) %>
+</div>
