@@ -41,8 +41,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def generate_news(articles)
       news = Array.new
       hosts_url = "http://staging.kalading.com"
-      pic_url = article.pic.url + hosts_url
       articles.each do |article|
+        pic_url = article.pic.url + hosts_url
         news.push(generate_article(article.title, article.description, pic_url, article.url))
       end
       news
