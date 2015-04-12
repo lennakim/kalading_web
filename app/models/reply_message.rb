@@ -14,4 +14,8 @@ class ReplyMessage < ActiveRecord::Base
     content
   end
 
+  def reply_news_message
+    reply_articles.all
+  end
+
 end
