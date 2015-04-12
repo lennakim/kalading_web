@@ -1,3 +1,22 @@
+<% @reply_message.reply_articles.each do |article| %>
+  <div class="form-group">
+    <label>图文消息标题</label>
+    <%= article.title %>
+  </div>
+  <div class="form-group">
+    <label>图片链接</label>
+    <%= article.pic.url %>
+  </div>
+  <div class="form-group">
+    <label>图文消息跳转链接</label>
+    <%= article.url %>
+  </div>
+  <div class="form-group">
+    <label>图文消息描述</label>
+    <%= article.description %>
+  </div>
+<% end %>
+
 <%= form_for [:admin, @reply_message, @reply_message.reply_articles.build] do |f| %>
 
   <div class="form-group">
@@ -7,7 +26,7 @@
 
   <div class="form-group">
     <label>图片链接(点击上传图片)</label>
-    <%= f.file_field :photo, class: 'form-control' %>
+    <%= f.file_field :pic, class: 'form-control' %>
   </div>
 
   <div class="form-group">

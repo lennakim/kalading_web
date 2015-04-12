@@ -1,5 +1,5 @@
 class ReplyArticle < ActiveRecord::Base
   belongs_to :reply_message
-  mount_uploader :picurl, PhotoUploader
+  mount_uploader :pic, PhotoUploader
 
 end
