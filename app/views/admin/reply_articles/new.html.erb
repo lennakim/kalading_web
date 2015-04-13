@@ -7,12 +7,12 @@
     </div>
 
     <div class="form-group">
-      <label>图片链接(点击上传图片)</label>
+      <label>图片链接(点击上传图片)注：支持JPG、PNG格式，较好的效果为大图360*200，小图200*200。同时发送多篇文章的大图只显示第一篇文章，第二篇文章及以后只显示小图</label>
       <%= f.file_field :pic, class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <label>图文消息跳转链接</label>
+      <label>图文消息跳转链接（例如：http://www.kalading.com）</label>
       <%= f.text_field :url, class: 'form-control' %>
     </div>
 
