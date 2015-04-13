@@ -23,9 +23,9 @@ class Admin::ReplyArticlesController < Admin::MainController
   def create
     @reply_message = ReplyMessage.find params[:reply_message_id]
     @reply_article = @reply_message.reply_articles.new
-    @reply_article.title = article_params.title
-    @reply_article.description = article.destription
-    @reply_article.pic = article.pic
+    @reply_article.title = article_params[:title]
+    @reply_article.description = article_params[:destription]
+    @reply_article.pic = article_params[:pic]
     if @reply_article.save!
       redirect_to admin_reply_message_path(@reply_message)
     else
