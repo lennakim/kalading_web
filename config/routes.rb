@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'doc/v2'
+
   mount WeixinRailsMiddleware::Engine, at: "/"
   mount Ckeditor::Engine => '/ckeditor'
+
+  mount Base => '/api' #api
 
   resources :posts do
     collection do
