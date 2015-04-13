@@ -986,8 +986,8 @@ $title-gray: #787878;
       .brand_title{
       	position: relative;
       	overflow: hidden;
-      	height: 60px;
-      	line-height: 60px;
+      	height: 65px;
+      	line-height: 65px;
         &:last-child{
           border: 0;
         }
@@ -1005,13 +1005,13 @@ $title-gray: #787878;
       }
       .title_active{
       	position: absolute;
-		top: 35px;
-		left: 6px;
-		display: block;
-		width: 30%;
-		line-height: 20px;
-		text-align: center;
-		overflow: hidden; 
+    		top: 40px;
+    		left: 6px;
+    		display: block;
+    		width: 30%;
+    		line-height: 20px;
+    		text-align: center;
+    		overflow: hidden; 
         text-overflow: ellipsis;
         white-space: nowrap;
         font-size: 12px;
