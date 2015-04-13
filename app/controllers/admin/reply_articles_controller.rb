@@ -22,8 +22,15 @@ class Admin::ReplyArticlesController < Admin::MainController
 
   def create
     @reply_message = ReplyMessage.find params[:reply_message_id]
-    @reply_article = @reply_message.reply_articles.create(article_params)
-    redirect_to admin_reply_message_path(@reply_message)
+    @reply_article = @reply_message.reply_articles.new
+    @reply_article.title = article_params.title
+    @reply_article.description = article.destription
+    @reply_article.pic = article.pic
+    if @reply_article.save!
+      redirect_to admin_reply_message_path(@reply_message)
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -37,6 +44,6 @@ class Admin::ReplyArticlesController < Admin::MainController
   private
 
   def article_params
-    params.require(:reply_article).permit(:title, :description, :pic, :url)
+    params.require(:reply_article).permit(:title, :description, :pic, :url, :pic_cache)
   end
 end
