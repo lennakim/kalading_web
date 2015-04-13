@@ -23,6 +23,8 @@ class Admin::ReplyArticlesController < Admin::MainController
   def create
     @reply_message = ReplyMessage.find params[:reply_message_id]
     @reply_article = @reply_message.reply_articles.create(article_params)
+    uploader = AvatarUploader.new
+    uploader.store!(article_params[:pic])
     redirect_to admin_reply_message_path(@reply_message)
   end
 
