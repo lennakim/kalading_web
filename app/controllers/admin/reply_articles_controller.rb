@@ -37,6 +37,6 @@ class Admin::ReplyArticlesController < Admin::MainController
   private
 
   def article_params
-    params.require(:reply_article).permit(:title, :description, :pic, :url, :pic_cache)
+    params.require(:reply_article).permit(:title, :description, :pic, :url)
   end
 end
