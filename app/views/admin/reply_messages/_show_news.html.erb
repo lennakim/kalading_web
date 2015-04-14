@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>消息标题</th>
+      <th>图片链接</th>
+      <th>跳转链接</th>
+      <th>消息描述</th>
+      <th>编辑</th>
+      <th>删除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reply_message.reply_articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.pic.url %></td>
+        <td><%= article.url %></td>
+        <td><%= article.description %></td>
+        <td><%= link_to "修改", edit_admin_reply_message_reply_article_path(@reply_message.id, article.id) %></td>
+        <td><%= link_to "删除", admin_reply_message_reply_article_path(@reply_message, article.id), method: :delete, data:{ confirm: '你特么确定要删除我吗?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

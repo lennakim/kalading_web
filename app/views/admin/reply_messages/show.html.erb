@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="form-group">
+    <label>关键字：</label>
+    <%= @reply_message.keyword %>
+  </div>
+
+  <div class="form-group">
+    <label>类型：</label>
+    <%= @reply_message.msg_type %>
+  </div>
+
+  <% if @reply_message.msg_type == 'text' %>
+    <%= render 'text_form' %>
+  <% elsif @reply_message.msg_type == 'news' %>
+    <%= render 'show_news' %>
+    <%= link_to "添加", new_admin_reply_message_reply_article_path(@reply_message.id) %> |
+  <% end %>
+
+  <%= link_to "返回", admin_reply_messages_path %>
+</div>
+
