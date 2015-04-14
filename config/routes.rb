@@ -98,7 +98,9 @@ Rails.application.routes.draw do
     end
     resources :qrcodes
     resources :weixin
-    resources :reply_messages
+    resources :reply_messages do
+      resources :reply_articles
+    end
   end
 
   namespace :activity do
