@@ -36,18 +36,26 @@ $ ->
   if $("#comment_modal").length > 0
     $('.submit-comment button.orange-btn').click (e)->
       e.preventDefault()
-      if $('.comment-tags .active').length > 0
-        $(@).addClass('disabled')
 
-        tags = _.map $('.comment-tags .active > input'), (e, i) ->
-          e.value
+      id = $(@).data('id')
+      score = $('.comment-stars input:checked').val()
+      desc = $('#comment_con').text()
 
-        id = $(@).data('id')
-        score = $('.comment-tags .tag.good .btn.active').length - $('.comment-tags .tag.bad .btn.active').length
+      $.post "/v2/evaluation", { order_id: id, score: score, desc: desc }
 
-        $.post "/orders/#{ id }/comment", { tags: tags, score: score }
-      else
-        alert "请选择评价标签"
+
+      #if $('.comment-tags .active').length > 0
+        #$(@).addClass('disabled')
+
+        #tags = _.map $('.comment-tags .active > input'), (e, i) ->
+          #e.value
+
+        #id = $(@).data('id')
+        #score = $('.comment-tags .tag.good .btn.active').length - $('.comment-tags .tag.bad .btn.active').length
+
+        #$.post "/orders/#{ id }/comment", { tags: tags, score: score }
+      #else
+        #alert "请选择评价标签"
 
   $('.orders').on "click", ".order .order-status a", (e) ->
     e.preventDefault()

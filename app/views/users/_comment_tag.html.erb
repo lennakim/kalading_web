@@ -20,27 +20,29 @@
         </li>
       </ul>
       
-      <% good_tags = ["客服预约环节流畅", "技师提前联系", "准时到达服务现场", "耐心等候", "着装整洁", "操作技术熟练", "主动讲解沟通", "机油、配件品质无误", "准确完成全部检测", "按时完成", "会向朋友推荐"] %>
+      <%# good_tags = ["客服预约环节流畅", "技师提前联系", "准时到达服务现场", "耐心等候", "着装整洁", "操作技术熟练", "主动讲解沟通", "机油、配件品质无误", "准确完成全部检测", "按时完成", "会向朋友推荐"] %>
 
-      <% bad_tags = ["客服预约体验不好", "技师未提前联系", "技师迟到", "不够耐心", "仪容仪表不整洁", "操作不熟练", "服务态度不好", "配件携带错误", "服务超时", "服务漏项", "不会推荐给朋友"] %>
+      <%# bad_tags = ["客服预约体验不好", "技师未提前联系", "技师迟到", "不够耐心", "仪容仪表不整洁", "操作不熟练", "服务态度不好", "配件携带错误", "服务超时", "服务漏项", "不会推荐给朋友"] %>
 
-      <% good_tags.each_with_index do |tag, index| %>
-        <div class="comment-tags">
+      <%# good_tags.each_with_index do |tag, index| %>
+        <!-- <div class="comment-tags">
           <div class="tags clearfix" data-toggle="buttons">
             <div class="tag good pull-left">
               <label class="btn btn-default">
-                <input type="radio" value="<%= tag %>"><%= tag %>
+                <input type="radio" value="<%#= tag %>"><%#= tag %>
               </label>
             </div>
 
             <div class="tag bad pull-left">
               <label class="btn btn-default">
-                <input type="radio" value="<%= bad_tags[index] %>"> <%= bad_tags[index] %>
+                <input type="radio" value="<%#= bad_tags[index] %>"> <%#= bad_tags[index] %>
               </label>
             </div>
           </div>
-        </div>
-      <% end %>
+        </div> -->
+      <%# end %>
+  
+      <%= text_area "comment", "con", "cols" => 77, "rows" => 6 %>
 
       <div class="submit-comment">
         <button class='btn btn-default orange-btn'>提交评价</button>
