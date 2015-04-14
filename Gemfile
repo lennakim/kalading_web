@@ -91,3 +91,11 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
 end
+
+# api
+gem 'grape'
+gem 'grape-entity'
+gem 'grape-jbuilder'
+gem 'swagger-ui_rails'
+gem 'grape-swagger-rails'
+gem 'rack-cors'
