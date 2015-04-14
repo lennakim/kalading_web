@@ -1,4 +1,18 @@
 <div class="container">
+  <ul>
+    注意事项：
+    <li>
+      每个关键字对应的图文消息最多不要超过八篇，超过之后公众号将不会有回复。
+    </li>
+    <li>
+      图文消息回复的大图为第一篇图文消息的图片，后面的消息图片为小图。
+    </li>
+    <li>
+      图文消息保存成功之后，再次点击此图文消息修改按钮可进行图片预览。
+    </li>
+  </ul>
+
+
   <%= form_for [:admin, @reply_message, @reply_message.reply_articles.build], html: { multipart: true } do |f| %>
 
     <div class="form-group">

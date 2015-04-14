@@ -29,7 +29,9 @@ test:
 
 staging:
   <<: *defaults
+  domain: "http://staging.kalading.com"
 
 production:
   <<: *defaults
   server_uri: "http://intranet.kalading.com"
+  domain: "http://kalading.com"
