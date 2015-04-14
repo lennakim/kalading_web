@@ -23,7 +23,6 @@ class Admin::ReplyArticlesController < Admin::MainController
   def create
     @reply_message = ReplyMessage.find params[:reply_message_id]
     @reply_article = @reply_message.reply_articles.create(article_params)
-    File.write(@reply_article.pic.current_path, article_params[:pic])
     redirect_to admin_reply_message_path(@reply_message)
   end
 
