@@ -14,12 +14,10 @@
 #= require URI
 #= require nprogress
 #= require nprogress-turbolinks
-#= require swagger-ui
 #
 #= require home
 #= require users
 #= require service_addresses
-#= require doc
 #
 #= require fastclick
 #
