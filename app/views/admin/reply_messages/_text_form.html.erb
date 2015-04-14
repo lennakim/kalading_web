@@ -1,0 +1,12 @@
+<%= form_for [:admin, @reply_message] do |f| %>
+
+  <div class="form-group">
+    <label>内容：</label>
+    <%= f.text_area :content, rows:10, class: 'form-control' %>
+  </div>
+
+  <div class="submit-btn">
+      <%= f.submit '保存' , class: 'btn btn-default' %>
+  </div>
+
+<% end %>

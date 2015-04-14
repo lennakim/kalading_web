@@ -38,17 +38,8 @@ class PublicAccount < ActiveRecord::Base
     signature = Digest::SHA1.hexdigest("jsapi_ticket=#{jsapi_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}")
     return signature, timestamp, noncestr
   end
-=begin
-  def get_wechat_pay_sign product_id
-    appid = "wxa856bd80cf155131"
-    appkey = "242qbCJX91R56uZXNpj3H1dD4AqPLunl"
-    noncestr = SecureRandom.hex[0..16]
-    productid = product_id
-    timestamp = Time.now.to_i.to_s
-    sign = Digest::SHA1.hexdigest("appid=#{appid}&appkey=#{appkey}&noncestr=#{noncestr}&productid=#{productid}&timestamp=#{timestamp}")
-    return sign, noncestr, timestamp
-  end
-=end
+
+
   def build_menu
     Jbuilder.encode do |json|
       json.button (parent_menus) do |menu|

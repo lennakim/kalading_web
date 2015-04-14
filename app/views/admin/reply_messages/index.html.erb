@@ -4,19 +4,19 @@
       <tr>
         <th>关键字</th>
         <th>类型</th>
-        <th>内容</th>
-        <th>编辑</th>
+        <th>修改关键字</th>
+        <th>回复消息</th>
         <th>删除</th>
       </tr>
     </thead>
 
     <tbody>
-      <% collection.each do |msg| %>
+      <% @reply_messages.each do |msg| %>
         <tr>
           <td><%= msg.keyword %></td>
           <td><%= msg.msg_type %></td>
-          <td><%= msg.content %></td>
-          <td><%= link_to "编辑", edit_admin_reply_message_path(msg.id) %></td>
+          <td><%= link_to "修改", edit_admin_reply_message_path(msg.id) %></td>
+          <td><%= link_to "编辑", admin_reply_message_path(msg.id) %></td>
           <td><%= link_to "删除", admin_reply_message_path(msg.id), method: :delete, data:{ confirm: '你特么确定要删除我吗?'} %></td>
         </tr>
       <% end %>

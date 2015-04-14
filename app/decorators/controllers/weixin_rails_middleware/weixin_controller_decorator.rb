@@ -20,16 +20,31 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def auto_response(msg, keyword = nil)
 
         account = PublicAccount.find_by(account_id: @weixin_message.ToUserName)
-        auto_msg = account.reply_messages.find_by(keyword: @keyword)
-        if auto_msg
-          reply_text_message(auto_msg.content)
+        reply_msg = account.reply_messages.find_by(keyword: @keyword)
+
+        if reply_msg
+          case reply_msg.msg_type
+          when "text"
+            reply_text_message(reply_msg.reply_message)
+          when 'news'
+            reply_news_message(generate_news(reply_msg.reply_message))
+          end
         else
-          if Time.now.hour.in?(8..21)
+          if Time.now.hour.in?(8..20)
             reply_transfer_customer_service_message
           else
             reply_text_message(msg)
           end
         end
+    end
+
+    def generate_news(articles)
+      news = Array.new
+      articles.each do |article|
+        pic_url = Settings.domain + article.pic.url
+        news.push(generate_article(article.title, article.description, pic_url, article.url))
+      end
+      news
     end
 
     def auto_msg
