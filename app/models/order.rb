@@ -11,7 +11,8 @@ class Order
     end
 
     def comments
-      ServerApi.call "get", "/api/v2/evaluations"
+      # ServerApi.call "get", "/api/v2/evaluations"
+      []
     end
 
     def auto_brands city_id
