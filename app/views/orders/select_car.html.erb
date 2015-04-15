@@ -53,18 +53,25 @@
       <div class="comment-module bac-white">
         <h3 class="comment-title module-title">用户评价</h3>
         <div class="comment-con">
-          <% Order.comments.first(5).each do |comment| %>
+          <% Order.comments['data'].each do |comment| %>
             <dl>
               <dt>
               <h3>
-                <% phone = comment['phone_num'] %>
+                <% phone = comment['user_phone'] %>
                 <% phone[3..6] = "****" %>
                 <%= phone %>
               </h3>
-                <span class="time"><%= comment['evaluation_time'] %></span>
+                <div class="score" value="<%= score = comment['score'] %>">
+                  <% score.to_i.times.each do |i| %>
+                    <%= image_tag("star2.gif") %>
+                  <% end %>
+                </div>
+                <span class="time">
+                  <%= comment['created_at'] %>
+                </span>
               </dt>
               <dd>
-                <%= comment['evaluation_tags'].join(', ') %>
+                <%= comment['desc'] %>
               </dd>
             </dl>
           <% end %>

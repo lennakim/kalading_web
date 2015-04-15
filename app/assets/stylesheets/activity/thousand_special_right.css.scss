@@ -1,0 +1,15 @@
+@import "activity/activity";
+.thousand_special_right{
+	position: relative;
+	#next_step{
+		display: block;
+		position: absolute;
+		top: 210px;
+		left: 16%;
+		width: 66%;
+		font-weight: bold;
+		text-align: center;
+		color: #c83a0f;
+		font-size: 20px;
+	}
+}

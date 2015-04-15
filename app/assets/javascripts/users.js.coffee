@@ -87,20 +87,39 @@ $ ->
 
 
   if $("#comment_modal").length > 0
+    $('.comment-stars').on 'mouseover','img', ->
+      index = $(@).index()
+      $(@).addClass('active').siblings().removeClass('active')
+      $('.comment-stars img').each ->
+        if $(@).index() <= index
+          $(@).attr('src','/assets/star2.gif')
+        else
+          $(@).attr('src','/assets/star1.gif')
+
+
+
     $('.submit-comment button.orange-btn').click (e)->
       e.preventDefault()
-      if $('.comment-tags .active').length > 0
-        $(@).addClass('disabled')
 
-        tags = _.map $('.comment-tags .active > input'), (e, i) ->
-          e.value
+      id = $(@).data('id')
+      score = $('.comment-stars .active').attr('value')
+      desc = $('#comment_con').val()
 
-        id = $(@).data('id')
-        score = $('.comment-tags .tag.good .btn.active').length - $('.comment-tags .tag.bad .btn.active').length
+      $.post "/orders/#{ id }/comment", { score: score, desc: desc }
 
-        $.post "/orders/#{ id }/comment", { tags: tags, score: score }
-      else
-        alert "请选择评价标签"
+
+      #if $('.comment-tags .active').length > 0
+        #$(@).addClass('disabled')
+
+        #tags = _.map $('.comment-tags .active > input'), (e, i) ->
+          #e.value
+
+        #id = $(@).data('id')
+        #score = $('.comment-tags .tag.good .btn.active').length - $('.comment-tags .tag.bad .btn.active').length
+
+        #$.post "/orders/#{ id }/comment", { tags: tags, score: score }
+      #else
+        #alert "请选择评价标签"
 
   $('.orders').on "click", ".order .order-status a", (e) ->
     e.preventDefault()
