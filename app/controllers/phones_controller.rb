@@ -25,7 +25,11 @@ class PhonesController < ApplicationController
   end
 
   def send_verification_code
-    last_code = VerificationCode.where(phone_num: params[:phone_num]).order(:created_at).last
+    last_code = VerificationCode.where(phone_num: params[:phone_num]).order("created_at desc").first
+
+    Rails.logger.info '-' * 30
+    Rails.logger.info last_code
+    Rails.logger.info Time.now - last_code.created_at < 1.minute
 
     if last_code && (Time.now - last_code.created_at < 1.minute)
       return render json: { success: true }
