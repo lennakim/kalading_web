@@ -59,7 +59,6 @@ class Order
     end
 
     def refresh_price car_id, city_id, payload, type = "bmt"
-
       if type == 'pm25'
         service_type = 0
       elsif type == 'btm' || type == 'smt'
