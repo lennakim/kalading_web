@@ -27,7 +27,7 @@ class PhonesController < ApplicationController
   def send_verification_code
     last_code = VerificationCode.where(phone_num: params[:phone_num]).last
 
-    if last_code && last_code.created_at > 1.minutes.ago
+    if last_code && last_code.created_at > 1.minutes.since
       return render json: { success: true }
     end
 
