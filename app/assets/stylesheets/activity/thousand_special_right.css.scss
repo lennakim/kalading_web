@@ -1,32 +1,17 @@
 @import "activity/activity";
 .thousand_special_right{
 	position: relative;
-	.con{
-		height: 500px;
-		padding: 0 6%;
-		background: #c83a0f;
-		color: #fff;
-		#next_step{
-			display: block;
-			margin: 0 auto;
-			margin-bottom: 40px;
-			width: 80%;
-			height: 50px;
-			line-height: 50px;
-			border-radius: 5px;
-			text-align: center;
-			color: #c83a0f;
-			background: #ffe87c;
-			box-shadow: 0 5px 0 #e9a250;
-			font-size: 20px;
-			font-weight: bold;
-		}
-		p{
-			font-weight: 200;
-		}
-	}
-	.ribbon{
+	#next_step{
+		display: block;
 		position: absolute;
-		top: 0;
+		top: 210px;
+		left: 16%;
+		font-size: 20px;
+		font-weight: bold;
+		width: 66%;
+		text-align: center;
+		color: #c83a0f;
+		font-size: 20px;
+		font-weight: bold;
 	}
 }
