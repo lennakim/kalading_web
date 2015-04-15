@@ -25,6 +25,12 @@ class PhonesController < ApplicationController
   end
 
   def send_verification_code
+    last_code = VerificationCode.find_by phone_num: params[:phone_num]
+
+    if last_code && last_code.created_at > 1.minutes.ago
+      return render json: { success: true }
+    end
+
     vcode = VerificationCode.create phone_num: params[:phone_num]
     success = vcode.valid? && vcode.send_sms
 
