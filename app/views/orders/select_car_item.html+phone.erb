@@ -15,7 +15,7 @@
         <div role="tabpanel" class="tab-pane active" id="home">
           <div class="quick-select">
             <h4 class="item-title my-car-title">我的快捷车辆</h4>
-            <%= link_to " + 重新选择", auto_brands_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
+            <%= link_to " + 重新选择", select_car_by_initial_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
 
             <div class="car-content content clearfix">
 
@@ -54,26 +54,17 @@
             <h4 class="item-title service-type-title">服务类型</h4>
             <div class="content">
 
-              <% if !via_act || types.include?('pm25') %>
-                <div class="service-item" data-type="pm25">
-                  <input type="radio" name="service" <%= "checked" if type == "pm25" %>>
-                  <span class="pm25 <%= "selected" if type == "pm25" %>">PM2.5滤芯更换</span>
-                </div>
+              <% Product.all.each do |product| %>
+                <% if product_available? product %>
+                  <% if !via_act || types.include?(product.slug) %>
+                    <div class="service-item" data-type="<%= product.slug%>">
+                      <input type="radio" name="service" <%= "checked" if type == product.slug %>>
+                      <span class="<%= product.slug %> <%= "selected" if type == product.slug %>"><%= product.title %></span>
+                    </div>
+                  <% end %>
+                <% end %>
               <% end %>
 
-              <% if !via_act || types.include?('bmt') %>
-                <div class="service-item" data-type="bmt">
-                  <input type="radio" name="service" <%= "checked" if type == "bmt" %>>
-                  <span class="bmt <%= "selected" if type == "bmt" %>">大保养</span>
-                </div>
-              <% end %>
-
-              <% if !via_act || types.include?('smt') %>
-                <div class="service-item" data-type="smt">
-                  <input type="radio" name="service" <%= "checked" if type == "smt" %>>
-                  <span class="smt <%= "selected" if type == "smt" %>">小保养</span>
-                </div>
-              <% end %>
             </div>
             <h4 class="item-title">选择配件</h4>
             <div class="orders-con <%= type %>-con content">
@@ -85,7 +76,11 @@
             </div>
             <div class="submit-con">
               <span>当前费用:
-                <span class="result-price"></span>元
+              	<% parts = @result["applicable_parts"] %>
+              	<% filtered_parts = filter_parts(parts, type) %>
+              	<% if filtered_parts.count != 0 %>
+                  <span class="result-price"></span>元
+                <% end %>
               </span>
               <p>支持现金、刷卡支付</p>
             </div>

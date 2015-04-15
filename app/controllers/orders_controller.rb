@@ -51,20 +51,24 @@ class OrdersController < ApplicationController
     car_id = params["car_id"]
     @parts = params["parts"].try :values
 
+    type = params["type"]
+
     payload = {
       parts: @parts,
       discount: code
     }
-    @result = Order.refresh_price car_id, current_city_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload, type
   end
 
   def no_preferential
     car_id = params["car_id"]
     @parts = params["parts"].values
+    type = params["type"]
+
     payload = {
       parts: @parts
     }
-    @result = Order.refresh_price car_id, current_city_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload, type
   end
 
   def auto_brands
@@ -74,6 +78,10 @@ class OrdersController < ApplicationController
   end
 
   def auto_model_numbers
+  end
+
+  def select_car_by_initial
+    @cars = Order.cars_data current_city_id
   end
 
   def select_car
@@ -122,7 +130,7 @@ class OrdersController < ApplicationController
       end
 
     else
-      return redirect_to auto_brands_orders_path(act: params[:act], type: params[:type])
+      return redirect_to select_car_by_initial_orders_path(act: params[:act], type: params[:type])
     end
   end
 
@@ -143,6 +151,8 @@ class OrdersController < ApplicationController
     car_id = params["order"]["car_id"]
     parts = params["order"]["parts"].try :values
 
+    type = params["type"]
+
     activity = Activity.find_by id: params[:act]
 
     payload = {
@@ -153,7 +163,7 @@ class OrdersController < ApplicationController
       payload[:discount] = activity.preferential_code
     end
 
-    result = Order.refresh_price car_id, current_city_id, payload
+    result = Order.refresh_price car_id, current_city_id, payload, type
     render json: { result: result }
   end
 
@@ -176,6 +186,8 @@ class OrdersController < ApplicationController
 
     activity = Activity.find_by id: params[:act]
 
+    type = params["type"]
+
     payload = {
       parts: @parts
     }
@@ -185,7 +197,7 @@ class OrdersController < ApplicationController
     end
 
     @cities = Order.cities
-    @result = Order.refresh_price car_id, current_city_id, payload
+    @result = Order.refresh_price car_id, current_city_id, payload, type
   end
 
   def no_car_type
@@ -259,8 +271,17 @@ class OrdersController < ApplicationController
       return render js: "alert('请选择正确的服务时间')"
     end
 
+    if params[:type] == 'pm25'
+      service_type = 0
+    elsif params[:type] == 'bmt' || params[:type] == 'smt'
+      service_type = 1
+    elsif params[:type] == 'bty'
+      service_type = 2
+    end
+
     payload = {
       parts: parts,
+      service_type: service_type,
       info: {
         "address"           => params[:address],
         "name"              => params[:name],
@@ -285,8 +306,6 @@ class OrdersController < ApplicationController
     if result["result"] == "succeeded"
 
       # find_or_create user
-      user = current_user
-
       user = current_user
 
       unless signed_in?
@@ -315,7 +334,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    data = Order.cancel params[:id]
+    data = Order.cancel params[:id], params[:reason]
     @id = params[:id]
     @order = Order.find params[:id]
     if data["result"] == "ok"

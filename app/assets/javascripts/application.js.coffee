@@ -40,11 +40,6 @@ $ ->
   $('.nav .address a').click ->
     $("#select_city_modal").modal()
 
-  $('#select_city_modal').on 'click','.city', ->
-    text = $(@).text()
-    $('.nav .address span.city').text(text)
-
-
   if !$.cookie('set_city_manually')
     $("#select_city_modal").modal()
 
@@ -85,15 +80,14 @@ $ ->
 
     $("#select_city_modal").modal()
 
-  $("#change_city").on "click", (e) ->
+  $(".cities .city").on "click", (e) ->
     e.stopPropagation()
     e.preventDefault()
 
-    if $('#select_city_modal .cities .active').length > 0
-      $(@).addClass('disabled')
-      id = $("#select_city_modal .cities .active input").val()
+    $(@).addClass('disabled')
+    id = $(@).find("input").val()
 
-      $.post("/cities/#{ id }/set")
+    $.post("/cities/#{ id }/set")
 
 
   # select address

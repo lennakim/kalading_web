@@ -4,6 +4,10 @@ module OrdersHelper
     ["京", "沪", "津", "渝", "浙", "苏", "粤", "闽", "湘", "鄂", "辽", "吉", "黑", "冀", "豫", "鲁", "陕", "甘", "青", "新", "晋", "川", "黔", "皖", "赣", "云", "蒙", "桂", "藏", "宁", "琼"]
   end
 
+  def product_available? product
+    product.cities.map(&:name).include? current_city_name
+  end
+
   def yidao_filter items, activity
     case activity.name
     when "yi-dao-yi-wan-smt-1" # low
@@ -73,7 +77,9 @@ module OrdersHelper
     elsif type == 'smt'
       parts.select{ |part| ["机油", "机滤"].include?(part.keys.first) }
     elsif type == 'bmt'
-      parts
+      parts.select{ |part| ["空气滤清器","空调滤清器","机油", "机滤"].include?(part.keys.first) }
+    elsif type == 'bty'
+      parts.select{ |part| ["电瓶"].include?(part.keys.first) }
     end
   end
 

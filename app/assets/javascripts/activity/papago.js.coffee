@@ -5,10 +5,10 @@ $ ->
   $('.title1').animate {'left':'0'}, 500, ->
     $('.title2').animate({'left':'0'},500)
 
-  $('.closebtn, .share_button').click ->
-    hideMessage()
+  #$('.closebtn, .share_button').click ->
+    #hideMessage()
 
-  $('.bac').css({'height':$(window).height()})
+  #$('.bac').css({'height':$(window).height()})
 
   # signature = $("#data").data('signature')
   # timestamp = $("#data").data('timestamp')
@@ -26,25 +26,25 @@ $ ->
   #   signature: signature
   #   jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
 
-  showRedPacket = ->
-    $('.active, .rule, .form-con').addClass('hidden')
-    $('.discount-con').removeClass('hidden')
+  #showRedPacket = ->
+    #$('.active, .rule, .form-con').addClass('hidden')
+    #$('.discount-con').removeClass('hidden')
 
-  showMessage = ->
-    $('.point, .msg, .bac').removeClass('hidden')
-    $('body').css({'overflow':'hidden'})
+  #showMessage = ->
+    #$('.point, .msg, .bac').removeClass('hidden')
+    #$('body').css({'overflow':'hidden'})
 
-  hideMessage = ->
-    $('.point, .msg,.bac').addClass('hidden')
+  #hideMessage = ->
+    #$('.point, .msg,.bac').addClass('hidden')
 
-    $('body').css({'overflow': 'auto'})
+    #$('body').css({'overflow': 'auto'})
 
   # if shared
   #   showRedPacket()
 
 
-  hideMessage()
-  showRedPacket()
+  #hideMessage()
+  #showRedPacket()
 
 
   # wx.ready ->

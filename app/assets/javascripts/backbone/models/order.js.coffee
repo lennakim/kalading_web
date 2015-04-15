@@ -15,14 +15,18 @@ class Kalading.Models.Order extends Backbone.Model
       order: @attributes,
       authenticity_token: csrf_token,
       act: URI().search(true)['act'],
-      auto_id: URI().search(true)['auto_id']
+      auto_id: URI().search(true)['auto_id'],
+      type: URI().search(true)['type']
     }
 
     if @isValid()
       $.form('/orders/place_order', data).submit()
 
   loadPrice: ->
-    data = {order: @attributes, act: URI().search(true)['act']}
+    data =
+      order: @attributes
+      act: URI().search(true)['act']
+      type: URI().search(true)['type']
 
     order = @
 

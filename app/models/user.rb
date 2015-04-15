@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   validates :phone_number, uniqueness: true
   before_create :generate_token
 
+  def role
+    return "editor" if Settings.editors.include?(phone_number)
+    return "administrator" if Settings.administrators.include?(phone_number)
+    return "customer"
+  end
+
   def add_auto order_info
     auto = autos.find_or_create_by \
       license_location: order_info["car_location"],
@@ -32,10 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def set_default_address address
-    if address
-      self.default_address_id = address.id
-      save
-    end
+    self.update(default_address_id: address.id) if address
   end
 
   def default_address
@@ -45,10 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def set_city city
-    if id
-      self.city = city
-      save
-    end
+    self.update(city: city) if id
   end
 
   def update_user
@@ -67,4 +67,8 @@ class User < ActiveRecord::Base
     end while User.where(token: self.token).exists?
   end
 
+  def generate_expires_at
+    # TODO 简单处理 不会过期
+    self.expires_at = 1.years.from_now
+  end
 end

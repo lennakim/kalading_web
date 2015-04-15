@@ -34,9 +34,9 @@ class Order
       ServerApi.call "get", "cities"
     end
 
-    def cancel id
+    def cancel id, content
       payload = {
-        order: { state: 8, cancel_reason: '有事先不做了' }
+        order: { state: 8, cancel_reason: content }
       }
       ServerApi.call "put", "orders", { entry_id: id, body: payload }
     end
@@ -54,11 +54,20 @@ class Order
     end
 
     def items_for car_id, city_id, type = "bmt"
-      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id, "#{type}" => true } {[]}
+
+      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id } {[]}
     end
 
-    def refresh_price car_id, city_id, payload
-      ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, city_id: city_id, body: payload }
+    def refresh_price car_id, city_id, payload, type = "bmt"
+      if type == 'pm25'
+        service_type = 0
+      elsif type == 'btm' || type == 'smt'
+        service_type = 1
+      elsif type == 'bty'
+        service_type = 2
+      end
+
+      ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, city_id: city_id, body: payload, service_type: service_type }
     end
 
     def submit car_id, payload
