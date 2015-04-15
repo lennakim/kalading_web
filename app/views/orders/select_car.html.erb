@@ -55,7 +55,7 @@
         <div class="comment-con">
           <% comments = Order.comments %>
 
-          <% if comments %>
+          <% if comments.length > 0 %>
             <% comments['data'].each do |comment| %>
               <dl>
                 <dt>
