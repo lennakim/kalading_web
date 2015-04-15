@@ -31,7 +31,6 @@ set :unicorn_worker_count, 1
 set :enable_ssl, false
 
 
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
