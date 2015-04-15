@@ -34,14 +34,25 @@ $ ->
 
 
   if $("#comment_modal").length > 0
+    $('.comment-stars').on 'mouseover','img', ->
+      index = $(@).index()
+      $(@).addClass('active').siblings().removeClass('active')
+      $('.comment-stars img').each ->
+        if $(@).index() <= index
+          $(@).attr('src','/assets/star2.gif')
+        else
+          $(@).attr('src','/assets/star1.gif')
+
+
+
     $('.submit-comment button.orange-btn').click (e)->
       e.preventDefault()
 
       id = $(@).data('id')
-      score = $('.comment-stars input:checked').val()
-      desc = $('#comment_con').text()
+      score = $('.comment-stars .active').attr('value')
+      desc = $('#comment_con').val()
 
-      $.post "/v2/evaluation", { order_id: id, score: score, desc: desc }
+      $.post "/orders/#{ id }/comment", { score: score, desc: desc }
 
 
       #if $('.comment-tags .active').length > 0

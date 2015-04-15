@@ -85,9 +85,11 @@ class Order
       ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
     end
 
-    def comment order_id, payload
-      ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
+    def comment order_id, desc, score
+      #ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
+      ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
+
   end
 
 end
