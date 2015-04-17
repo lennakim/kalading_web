@@ -100,32 +100,36 @@
             </div>
           <% end %>
         </div>
-        <div role="tabpanel" class="tab-pane" id="messages">
+        <% comments = Order.comments['data'] %>
 
-          <% Order.comments['data'].each do |comment| %>
-              <dl class='comment-item'>
+        <% cache ["comments", comments.first['created_at']] do %>
 
-                <dt>
-                <h3>
-                  <% phone = comment['user_phone'] %>
-                  <% phone[3..6] = "****" %>
-                  <%= phone %>
-                </h3>
-                  <div class="score" value="<%= score = comment['score'] %>">
-                    <% score.to_i.times.each do |i| %>
-                      <%= image_tag("star2.gif") %>
-                    <% end %>
-                  </div>
-                  <span class="time">
-                    <%= comment['created_at'] %>
-                  </span>
-                </dt>
-                <dd>
-                  <%= comment['desc'] %>
-                </dd>
-              </dl>
-          <% end %>
-        </div>
+          <div role="tabpanel" class="tab-pane" id="messages">
+            <% Order.comments['data'].each do |comment| %>
+                <dl class='comment-item'>
+
+                  <dt>
+                  <h3>
+                    <% phone = comment['user_phone'] %>
+                    <% phone[3..6] = "****" %>
+                    <%= phone %>
+                  </h3>
+                    <div class="score" value="<%= score = comment['score'] %>">
+                      <% score.to_i.times.each do |i| %>
+                        <%= image_tag("star2.gif") %>
+                      <% end %>
+                    </div>
+                    <span class="time">
+                      <%= comment['created_at'] %>
+                    </span>
+                  </dt>
+                  <dd>
+                    <%= comment['desc'] %>
+                  </dd>
+                </dl>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
