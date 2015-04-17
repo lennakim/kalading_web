@@ -416,9 +416,10 @@ $grey: #c4c4c4;
 
 #comment_modal{
   .comment-stars{
-    width: 100px;
+    width: 160px;
     margin: 20px auto;
     img{
+      width: 16%;
       cursor: pointer;
       cursor: hand;
     }

@@ -93,9 +93,9 @@ $ ->
       $(@).addClass('active').siblings().removeClass('active')
       $('.comment-stars img').each ->
         if $(@).index() <= index
-          $(@).attr('src','/assets/star2.gif')
+          $(@).attr('src','/assets/star2.png')
         else
-          $(@).attr('src','/assets/star1.gif')
+          $(@).attr('src','/assets/star1.png')
 
     $('.comment-stars').on 'mouseover','img', select_star
       
