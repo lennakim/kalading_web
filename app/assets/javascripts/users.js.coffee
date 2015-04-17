@@ -87,7 +87,8 @@ $ ->
 
 
   if $("#comment_modal").length > 0
-    $('.comment-stars').on 'mouseover','img', ->
+
+    select_star = ->
       index = $(@).index()
       $(@).addClass('active').siblings().removeClass('active')
       $('.comment-stars img').each ->
@@ -96,6 +97,9 @@ $ ->
         else
           $(@).attr('src','/assets/star1.gif')
 
+    $('.comment-stars').on 'mouseover','img', select_star
+      
+    $('.comment-stars').on 'click','img', select_star
 
 
     $('.submit-comment button.orange-btn').click (e)->
