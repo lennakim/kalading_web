@@ -101,7 +101,10 @@
           <% end %>
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">
-          <% Order.comments.first(5).each do |comment| %>
+
+          <% comments = Order.comments %>
+
+          <% comments.first(5).each do |comment| %>
 
               <dl class='comment-item'>
                 <dt>
@@ -110,10 +113,10 @@
                   <% phone[3..6] = "****" %>
                   <%= phone %>
                 </h3>
-                <span class="time"><%= comment['evaluation_time'] %></span>
+                <span class="time"><%= comment['created_at'] %></span>
                 </dt>
               <dd>
-                <%= comment['evaluation_tags'].join(', ') %>
+                <%= comment['desc'] %>
               </dd>
             </dl>
 
