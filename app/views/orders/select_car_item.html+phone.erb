@@ -102,7 +102,7 @@
         </div>
         <% comments = Order.comments['data'] %>
 
-        <% cache ["comments", comments.first['created_at']] do %>
+        <% cache ["comments", comments.last['created_at']] do %>
 
           <div role="tabpanel" class="tab-pane" id="messages">
             <% Order.comments['data'].each do |comment| %>
