@@ -140,7 +140,7 @@ class OrdersController < ApplicationController
     @id = params[:id]
     @order = Order.find params[:id]
 
-    if data && data["result"] == "ok"
+    if data && data["code"] == 0
       render "comment"
     else
       render js: "alert('评价失败')"

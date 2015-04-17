@@ -15,9 +15,6 @@ class CitiesController < ApplicationController
     city = City.find_by(name: city_name)
     city_capacity = Order.city_capacity city.system_id
 
-    pp '-' * 30
-    pp city_capacity
-
     render json: city_capacity
   end
 end
