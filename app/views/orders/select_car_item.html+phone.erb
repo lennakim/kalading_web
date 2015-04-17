@@ -106,6 +106,8 @@
 
           <% comments.first(5).each do |comment| %>
 
+            <% if comment === Hash %>
+
               <dl class='comment-item'>
                 <dt>
                 <h3>
@@ -113,12 +115,16 @@
                   <% phone[3..6] = "****" %>
                   <%= phone %>
                 </h3>
-                <span class="time"><%= comment['created_at'] %></span>
+                <span class="time">
+                  <%= comment['created_at'] %>
+                </span>
                 </dt>
               <dd>
                 <%= comment['desc'] %>
               </dd>
             </dl>
+
+          <% end %>
 
         <% end %>
         </div>
