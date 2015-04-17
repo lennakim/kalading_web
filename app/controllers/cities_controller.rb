@@ -9,4 +9,15 @@ class CitiesController < ApplicationController
     cookies[:city_id] = { value: city.id, expires: 360.days.from_now }
     cookies[:set_city_manually] = { value: true, expires: 360.days.from_now }
   end
+
+  def city_capacity
+    city_name = params[:address][/.+?市/][0..-2]
+    city = City.find_by(name: city_name)
+    city_capacity = Order.city_capacity city.system_id
+
+    pp '-' * 30
+    pp city_capacity
+
+    render json: city_capacity
+  end
 end
