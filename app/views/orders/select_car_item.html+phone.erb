@@ -102,11 +102,7 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">
 
-          <% comments = Order.comments %>
-
-          <% comments.first(5).each do |comment| %>
-
-            <% if comment === Hash %>
+          <% Order.comments['data'].first(5).each do |comment| %>
 
               <dl class='comment-item'>
                 <dt>
@@ -123,8 +119,6 @@
                 <%= comment['desc'] %>
               </dd>
             </dl>
-
-          <% end %>
 
         <% end %>
         </div>
