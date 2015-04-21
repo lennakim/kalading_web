@@ -14,9 +14,7 @@ module V2
       header['Access-Control-Request-Method'] = '*'
     end
 
-    get "test" do
-      {test: :ok}
-    end
+    mount Users
 
     add_swagger_documentation base_path: "/api", api_version: 'v2', mount_path: 'doc.json'
   end
