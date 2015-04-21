@@ -18,6 +18,11 @@ $title-gray: #787878;
     color: #666;
     font-size: 16px;
   }
+  .item{
+    label{
+      width: 100px;
+    }
+  }
   .item-list{
     overflow: hidden;
     line-height: 40px;
