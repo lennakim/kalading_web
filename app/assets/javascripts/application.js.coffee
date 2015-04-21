@@ -80,15 +80,11 @@ $ ->
 
     $("#select_city_modal").modal()
 
-  $(".cities .city").on "click", (e) ->
+  $("#change_city").on "click", (e) ->
     e.stopPropagation()
     e.preventDefault()
-
-    $(@).addClass('disabled')
-    id = $(@).find("input").val()
-
+    id = $('.cities label.active input').val()
     $.post("/cities/#{ id }/set")
-
 
   # select address
   $(".addresses .add > a.btn").on "click", (e)->
