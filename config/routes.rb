@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'doc/v2'
+
   mount WeixinRailsMiddleware::Engine, at: "/"
   mount Ckeditor::Engine => '/ckeditor'
+
+  mount Base => '/api' #api
 
   resources :posts do
     collection do
@@ -18,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :cities do
     post 'set'
+    get 'city_capacity', on: :collection
   end
 
   resources :orders do
@@ -94,6 +99,9 @@ Rails.application.routes.draw do
     end
     resources :qrcodes
     resources :weixin
+    resources :reply_messages do
+      resources :reply_articles
+    end
   end
 
   namespace :activity do

@@ -23,7 +23,10 @@ class Kalading.Models.Order extends Backbone.Model
       $.form('/orders/place_order', data).submit()
 
   loadPrice: ->
-    data = {order: @attributes, act: URI().search(true)['act']}
+    data =
+      order: @attributes
+      act: URI().search(true)['act']
+      type: URI().search(true)['type']
 
     order = @
 

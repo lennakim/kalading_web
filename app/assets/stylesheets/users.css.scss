@@ -415,6 +415,18 @@ $grey: #c4c4c4;
 }
 
 #comment_modal{
+  .comment-stars{
+    width: 160px;
+    margin: 20px auto;
+    img{
+      width: 16%;
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
+  #comment_con{
+    width: 100%;
+  }
   .comment-tags{
     // padding: 5px 50px;
     .tags{

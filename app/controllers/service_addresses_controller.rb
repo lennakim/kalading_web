@@ -19,7 +19,7 @@ class ServiceAddressesController < ApplicationController
   def set_default
     if signed_in?
       current_user.set_default_address ServiceAddress.find(params[:service_address_id])
-      render js: "alert('设置成功')"
+      render "set_default"
     else
       render js: "alert('设置失败')"
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318060159) do
+ActiveRecord::Schema.define(version: 20150413090720) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -154,6 +154,25 @@ ActiveRecord::Schema.define(version: 20150318060159) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}, using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
+  create_table "pay_infos", force: true do |t|
+    t.string   "transaction_id"
+    t.string   "out_trade_no"
+    t.string   "total_fee"
+    t.datetime "time_end"
+    t.string   "trade_type"
+    t.string   "fee_type"
+    t.string   "bank_type"
+    t.string   "result_code"
+    t.integer  "auth_info_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cash_fee"
+    t.string   "return_code"
+  end
+
+  add_index "pay_infos", ["auth_info_id"], name: "index_pay_infos_on_auth_info_id", using: :btree
+  add_index "pay_infos", ["transaction_id"], name: "index_pay_infos_on_transaction_id", using: :btree
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -175,12 +194,12 @@ ActiveRecord::Schema.define(version: 20150318060159) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "account_secret_key"
-    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "access_token"
     t.string   "jsapi_ticket"
     t.datetime "token_expires_at"
@@ -215,24 +234,32 @@ ActiveRecord::Schema.define(version: 20150318060159) do
 
   add_index "recv_messages", ["msg_id"], name: "index_recv_messages_on_msg_id", unique: true, using: :btree
 
+  create_table "reply_articles", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "pic"
+    t.string   "url"
+    t.integer  "reply_message_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reply_articles", ["reply_message_id"], name: "index_reply_articles_on_reply_message_id", using: :btree
+
   create_table "reply_messages", force: true do |t|
     t.string   "msg_type"
     t.text     "content"
     t.string   "media_id"
-    t.string   "title"
-    t.text     "description"
     t.string   "music_url"
     t.string   "hq_music_url"
     t.string   "thumb_media_id"
-    t.integer  "article_count"
-    t.text     "articles"
-    t.string   "pic_url"
-    t.string   "url"
     t.integer  "public_account_id"
     t.string   "keyword"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "reply_messages", ["keyword"], name: "index_reply_messages_on_keyword", using: :btree
 
   create_table "service_addresses", force: true do |t|
     t.string   "city"
@@ -281,6 +308,7 @@ ActiveRecord::Schema.define(version: 20150318060159) do
     t.integer  "default_address_id"
     t.string   "username"
     t.string   "invoice_title"
+    t.datetime "expires_at"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree

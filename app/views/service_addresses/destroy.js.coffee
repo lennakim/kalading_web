@@ -1,1 +1,2 @@
-$(".addresses .current_addresses").html $("<%= escape_javascript(render('service_addresses/addresses')) %>")
+$(".addresses .current_addresses").replaceWith $("<%= escape_javascript(render('service_addresses/addresses')) %>")
+ajax_set_city()

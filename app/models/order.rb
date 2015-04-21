@@ -11,7 +11,7 @@ class Order
     end
 
     def comments
-      ServerApi.call "get", "order_evaluation_list"
+      ServerApi.call "get", "/api/v2/evaluations"
     end
 
     def auto_brands city_id
@@ -55,19 +55,19 @@ class Order
 
     def items_for car_id, city_id, type = "bmt"
 
-	  if type == 'pm25'
-        service_type = 0
-      elsif type == 'btm' || type == 'smt'
-      	service_type = 1
-      elsif type == 'bty'
-      	service_type = 2
-      end
-
-      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id, "service_type" => type } {[]}
+      ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id } {[]}
     end
 
-    def refresh_price car_id, city_id, payload
-      ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, city_id: city_id, body: payload }
+    def refresh_price car_id, city_id, payload, type = "bmt"
+      if type == 'pm25'
+        service_type = 0
+      elsif type == 'btm' || type == 'smt'
+        service_type = 1
+      elsif type == 'bty'
+        service_type = 2
+      end
+
+      ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, city_id: city_id, body: payload, service_type: service_type }
     end
 
     def submit car_id, payload
@@ -94,9 +94,11 @@ class Order
       ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
     end
 
-    def comment order_id, payload
-      ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
+    def comment order_id, desc, score
+      #ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
+      ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
+
   end
 
 end

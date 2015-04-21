@@ -1,7 +1,7 @@
 #= require jquery
 #= require jquery.turbolinks
-#= require jquery_ujs
 #= require turbolinks
+#= require jquery_ujs
 #= require bootstrap-sprockets
 #= require cocoon
 #= require_self

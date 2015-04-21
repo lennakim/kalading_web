@@ -9,9 +9,9 @@
 $ ->
 
   if $(".select_car_by_initial").length > 0
-    
+
     $('.brand').on 'click','.brand_title', ->
-      
+
       $(@).parent().siblings().find('li').removeClass('active')
       $(@).addClass('active')
       $('.model').addClass('hidden')
@@ -23,7 +23,7 @@ $ ->
           $('.logo').addClass('logo_active')
           $('.title_con').addClass('title_active')
         )
-        
+
 
     flag = 0
     $('.serie').on 'click','.serie_title', ->
@@ -46,8 +46,8 @@ $ ->
         id = $(@).attr('id')
         if classname == id
           height = $('#'+id).offset().top
-          $('html,body').animate({scrollTop: height}, 500);
-         
+          $('html,body').animate({scrollTop: height}, 500)
+
 
 
   if $(".items-select-page").length > 0
@@ -141,10 +141,11 @@ $ ->
 
       car_id = $("#car_id").val()
       code = $("#preferential_code").val()
+      type = $("#service_type").val()
 
       parts = $('#item_table').data("parts")
 
-      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts }
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts, type: type }
 
     $('#no_preferential').on "click", (e) ->
       e.preventDefault()
@@ -152,60 +153,73 @@ $ ->
 
       $("#yes_preferential").removeClass('active')
       $(@).addClass('active')
+      type = $("#service_type").val()
 
       car_id = $("#car_id").val()
       parts = $('#item_table').data("parts")
 
-      $.post "/orders/no_preferential", { car_id: car_id, parts: parts }
+      $.post "/orders/no_preferential", { car_id: car_id, parts: parts, type: type }
 
-    date = $('#serve_date').data('cc')
-    min = _.first(_.keys(date))
-    max = _.last(_.keys(date))
+    @ajax_set_city = ->
+      address = $('.current_addresses input[name=address]:checked').val()
+      $.get "/cities/city_capacity.json?address=#{address}", (data) ->
+        set_serve_date data
 
-    disabled = _.select _.pairs(date), (e) ->
-      sum = _.reduce e[1], (memo, num) ->
-        memo + num
-      , 0
+    set_serve_date = (date) ->
 
-      sum == 0
+      min = _.first(_.keys(date))
+      max = _.last(_.keys(date))
 
-    disabled_date = _.map disabled, (e, i) ->
-      new Date(e[0])
+      disabled = _.select _.pairs(date), (e) ->
+        sum = _.reduce e[1], (memo, num) ->
+          memo + num
+        , 0
 
-    time_slot = {
-      "8:00": "8:00 - 12:00",
-      "12:00": "12:00 - 17:00",
-      "17:00": "17:00 - 20:00"
-    }
+        sum == 0
 
-    $('#serve_date').pickadate({
+      disabled_date = _.map disabled, (e, i) ->
+        new Date(e[0])
 
-      container: '#serve_date_picker',
+      time_slot = {
+        "8:00": "8:00 - 12:00",
+        "12:00": "12:00 - 17:00",
+        "17:00": "17:00 - 20:00"
+      }
 
-      format: 'yyyy-mm-dd',
-      min: new Date(min),
-      max: new Date(max),
-      disable: disabled_date,
-      onSet: () ->
+      $input = $('#serve_date').pickadate({
 
-        $("#serve_period").empty()
-        date_string = $("#serve_date").val()
+        container: '#serve_date_picker',
 
-        _.each date[date_string], (e, i) ->
-          console.log e
+        format: 'yyyy-mm-dd',
+        min: new Date(min),
+        max: new Date(max),
+        onSet: () ->
 
-          key = Object.keys(time_slot)[i]
-          value = time_slot[key]
+          $("#serve_period").empty()
+          date_string = $("#serve_date").val()
 
-          if e != 0
+          _.each date[date_string], (e, i) ->
+            console.log e
 
-            option = """
-            <option value="#{key}">#{value}</option>
-            """
+            key = Object.keys(time_slot)[i]
+            value = time_slot[key]
 
-            $("#serve_period").append($(option))
+            if e != 0
+              option = """
+                <option value="#{key}">#{value}</option>
+              """
 
-    })
+              $("#serve_period").append($(option))
+
+      })
+
+      picker = $input.pickadate('picker')
+      picker.set('enable', true)
+      picker.set('disable', disabled_date)
+      picker.clear()
+
+
+    set_serve_date $('#serve_date').data('cc')
 
     $('#registration_date').pickadate({
       container: '#registed_date_picker',
