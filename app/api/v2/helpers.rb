@@ -10,6 +10,20 @@ module V2
     def template_path(path)
       env['api.tilt.template'] = "v2/views/#{path}"
     end
+
+    def current_user
+      request = Grape::Request.new(env)
+      headers = request.headers # 从grape中获取header数据
+      token = headers['X-Token'].to_s
+
+      @current_user = User.find_by(token: token)
+    end
+
+    def authenticate!
+      if current_user.nil?
+        raise AuthorizationError
+      end
+    end
   end
 
 #######
