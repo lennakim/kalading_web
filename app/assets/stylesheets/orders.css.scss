@@ -1023,8 +1023,8 @@ $title-gray: #787878;
       .brand_title{
       	position: relative;
       	overflow: hidden;
-      	height: 65px;
-      	line-height: 65px;
+      	height: 70px;
+      	line-height: 70px;
         &:last-child{
           border: 0;
         }
@@ -1042,7 +1042,7 @@ $title-gray: #787878;
       }
       .title_active{
       	position: absolute;
-    		top: 40px;
+    		top: 45px;
     		left: 6px;
     		display: block;
     		width: 30%;
