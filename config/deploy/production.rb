@@ -31,20 +31,16 @@ set :enable_ssl, false
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-
-  desc 'Restart application'
   task :restart do
-    # Reload unicorn with capistrano3-unicorn hook
-    # needs to be before "on roles()"
-    invoke 'unicorn:reload'
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-    end
+    invoke 'unicorn:restart'
   end
+end
 
-  after :finishing, 'deploy:cleanup'
-  before :finishing, 'deploy:restart'
-  after 'deploy:rollback', 'deploy:restart'
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:legacy_restart'
+  end
 end
 
 # Custom SSH Options

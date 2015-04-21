@@ -135,16 +135,12 @@ class OrdersController < ApplicationController
   end
 
   def comment
-    data = Order.comment params[:id], {
-      evaluation_tags: params[:tags],
-      evaluation_score: params[:score],
-      evaluation_time: Time.now.to_s
-    }
+    data = Order.comment params[:id], params[:desc], params[:score]
 
     @id = params[:id]
     @order = Order.find params[:id]
 
-    if data && data["result"] == "ok"
+    if data && data["code"] == 0
       render "comment"
     else
       render js: "alert('评价失败')"

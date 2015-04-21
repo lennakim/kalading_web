@@ -35,7 +35,7 @@
   // 有些 data 是延时获取的，这时候应该支持传入 callback
   Wechat.prototype._data = function(data, name) {
     if(!data) return {};
-    
+
     var tmp = {};
 
     for(var p in data) {
@@ -94,7 +94,7 @@
 
       return WeixinJSBridge.call(direct, callback);
     }
-    
+
     // Email 直接处理
     if(name === 'email') return WeixinJSBridge.invoke('sendEmail', this._data(data, name), callback);
 
@@ -136,7 +136,7 @@
   // 创建唯一实例
   var entry =  function() {
     return wx.on.apply(wx, arguments);
-  };  
+  };
 
   //spm3 和 cortex 6.x 已经支持自动构建成module
   if (typeof exports !== 'undefined' && module.exports) {
@@ -149,7 +149,7 @@
     //浏览器端直接运行
     global.wechat = global.wechat || entry;
   }
-  
+
   if(typeof WeixinJSBridge === 'undefined'){
     if(doc.addEventListener) {
       doc.addEventListener('WeixinJSBridgeReady', ready, false);

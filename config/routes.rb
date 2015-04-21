@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :cities do
     post 'set'
+    get 'city_capacity', on: :collection
   end
 
   resources :orders do
