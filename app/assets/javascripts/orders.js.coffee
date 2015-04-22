@@ -10,6 +10,12 @@ $ ->
 
   if $(".select_car_by_initial").length > 0
 
+
+    $('.brand_title .logo').each ->
+      imgSrc = $(this).attr('data-src')
+      $(this).attr('src',imgSrc)
+
+
     $('.brand').on 'click','.brand_title', ->
 
       $(@).parent().siblings().find('li').removeClass('active')
