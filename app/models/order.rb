@@ -42,7 +42,8 @@ class Order
     end
 
     def find id
-      ServerApi.call "get", "orders", { entry_id: id }
+      # ServerApi.call "get", "orders", { entry_id: id }
+      ServerApi.call "get", "api/v2/orders", { entry_id: id }
     end
 
     def cars_data city_id, type = "bmt"

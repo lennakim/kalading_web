@@ -1,7 +1,7 @@
 <div class="order" id="order_<%= order["id"] %>">
   <div class="top clearfix">
     <div class="datetime pull-left">
-      <%= order["serve_datetime"] %>
+      <%= link_to order["serve_datetime"], order_path(order["id"]) %>
     </div>
     <div class="number pull-left">
       订单号: <%= order['seq'] %>

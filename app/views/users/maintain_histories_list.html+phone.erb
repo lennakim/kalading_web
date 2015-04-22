@@ -1,15 +1,15 @@
 <% if !@maintain_orders.empty? %>
-	<div class="maintain-histories-list-phone phone-page">
-	  <h3 class="my-maintain-title item-title">我的保养记录</h3>
-	  <div class="my-maintain-con">
-	    <% @maintain_orders.each do |order| %>
-		  <dl>
-		    <dt><%= order['serve_datetime'] %></dt>
-		    <dd><a href="/users/maintain_history?id=<%= order['id'] %>"><%= order['car_num'] %></a></dd>
-		  </dl>
-	    <% end %>
-	  </div>
-	</div>
+  <div class="maintain-histories-list-phone phone-page">
+  <h3 class="my-maintain-title item-title">我的保养记录</h3>
+  <div class="my-maintain-con">
+    <% @maintain_orders.each do |order| %>
+      <dl>
+      <dt><%= order['serve_datetime'] %></dt>
+      <dd><a href="/users/maintain_history?id=<%= order['id'] %>"><%= order['car_num'] %></a></dd>
+    </dl>
+  <% end %>
+  </div>
+</div>
 <% else %>
   <div class="blank">您还没有保养记录~</div>
 <% end %>

@@ -7,6 +7,15 @@ $orange: #ff9933;
 $grey: #c4c4c4;
 
 .user-info{
+
+  .phone-header{
+    background: white;
+  }
+
+  .orders-list{
+    margin-top: 60px;
+  }
+
   .title{
     color: #3d3d3d;
     font-size: 24px;
@@ -161,8 +170,6 @@ $grey: #c4c4c4;
         padding: 20px;
         @include border-radius(3px);
 
-        margin-bottom: 20px;
-
         .top{
           color: #c1c1c1;
           font-size: 16px;
@@ -247,6 +254,35 @@ $grey: #c4c4c4;
             }
           }
         }
+      }
+    }
+  }
+
+  .section{
+    background: white;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+
+    .cell{
+      padding: 10px 10px 10px 10px;
+      border-bottom: 1px solid #eee;
+      &:last-child{
+        border-bottom: 0 none;
+      }
+      &.table-cell{
+        padding-left: 0;
+      }
+      .table{
+        td{
+          border-top: 0 none;
+        }
+        tr.sum{
+          border-top: 1px solid #eee;
+        }
+      }
+      .line{
+
       }
     }
   }

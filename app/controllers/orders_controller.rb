@@ -325,6 +325,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    id = params[:id]
+    @order = Order.find(id)['data']
   end
 
   def success

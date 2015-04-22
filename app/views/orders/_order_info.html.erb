@@ -1,0 +1,82 @@
+<div class="inner">
+  <div class="section order-state">
+    <div class='cell'>
+      <div class="line">
+        订单号: <%= @order['seq'] %>
+      </div>
+      <div class="line">
+        订单状态: <%= @order['state'] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="section order-detail">
+    <div class="cell">
+      <div class="line clearfix">
+        <div class="pull-left">
+          <%= @order['name'] %>
+        </div>
+
+        <div class="pull-right">
+          <%= @order['phone_num'] %>
+        </div>
+      </div>
+      <div class="line">
+        <%= @order['address'] %>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="line">
+        <%= @order['brand_full_name'] %>
+      </div>
+
+      <div class="line">
+        车牌号: <%= @order['license_place'] %>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="line">
+        服务时间: 2014-06-18 13:00-15:00
+      </div>
+    </div>
+
+    <!-- <div class="cell"> -->
+    <!--   <div class="line"> -->
+    <!--     下次保养时间: 2015&#45;01&#45;14 -->
+    <!--   </div> -->
+    <!-- </div> -->
+  </div>
+
+  <div class="section part-list">
+    <div class="cell table-cell">
+      <table class='table'>
+
+        <% @order['parts'].each do |part| %>
+          <tr>
+            <td><%= part['part_brand_name'] %></td>
+            <td>￥<%= part['price'] %></td>
+          </tr>
+        <% end %>
+
+        <tr class='sum'>
+          <td>实付款(含服务费)</td>
+          <td>￥<%= @order['total_price'] %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="cell">
+      支付方式: <%= @order['pay_type'] %>
+    </div>
+  </div>
+
+  <% if engineer = @order['engineer'] %>
+    <div class="section">
+      <div class="cell">技师信息xxxxx</div>
+    </div>
+  <% end %>
+</div>
