@@ -40,6 +40,9 @@ $ ->
   $('.nav .address a').click ->
     $("#select_city_modal").modal()
 
+  $('.nav .wechat a').click ->
+    $("#qrcode_modal").modal()
+
   if !$.cookie('set_city_manually')
     $("#select_city_modal").modal()
 
