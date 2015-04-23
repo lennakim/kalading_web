@@ -15,8 +15,8 @@
 
     <div class="pull-left">
       <div class="order-title">
-        <%#= image_tag("",width:"100%", class: "logo") %>
-        <%= order["auto_model"] %>
+        <% auto_name = "#{order['brand_name']} #{order['model_name']} #{order['model_engine_displacement']}" %>
+        <%= link_to auto_name, order_path(order["id"]) %>
       </div>
 
       <div class="items">
