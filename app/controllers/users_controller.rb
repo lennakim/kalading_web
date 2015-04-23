@@ -7,12 +7,7 @@ class UsersController < ApplicationController
   end
 
   def orders
-<<<<<<< HEAD
-    pp current_user.phone_number
-    @orders = Order.get_orders_of current_user.phone_number
-=======
     @orders = Order.get_orders_of(current_user.phone_number)['data']
->>>>>>> 30d56cbd3dc60b520a6db680f2267d824af44796
   end
 
   def order_detail
