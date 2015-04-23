@@ -11,7 +11,7 @@
   <div class="order-detail clearfix">
 
     <img class="logo pull-left" src="<%= order['brand_logo'] %>">
-    <div class="cont pull-left">
+    <div class="cont pull-right">
       <div class="order-title">
         <% auto_name = "#{order['brand_name']} #{order['model_name']} #{order['model_engine_displacement']}" %>
         <%= link_to auto_name, order_path(order["id"]) %>
