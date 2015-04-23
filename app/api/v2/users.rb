@@ -8,6 +8,9 @@ module V2
       end
       post "send_verification_sms" do
         phone = params[:phone]
+
+        raise SmsIntervaLError unless VerificationCode.interval?(phone)
+
         vcode = VerificationCode.create(phone_num: phone)
         result = vcode.valid? && vcode.send_sms
         status(200)

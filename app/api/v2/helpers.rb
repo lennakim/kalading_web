@@ -57,6 +57,12 @@ module V2
     end
   end
 
+  class SmsIntervaLError < Error
+    def initialize
+      super code: 1004, text: 'sms time interval is too short', status: 403
+    end
+  end
+
   class ResourceNotFoundError < Error
     def initialize
       super code: 2001, text: 'resource not found', status: 404
