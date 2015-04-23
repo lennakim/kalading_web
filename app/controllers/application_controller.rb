@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   #
 
   def sign_in user
-    cookies[:LGT] = { value: user.update_user, expires: 30.days.from_now }
+    cookies[:LGT] = { value: user.token, expires: 30.days.from_now }
   end
 
   def signed_in?
