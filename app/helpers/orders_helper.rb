@@ -39,6 +39,18 @@ module OrdersHelper
     true
   end
 
+  def state_name state_str
+    mapping = {
+      "未支付"   => %w-未支付-,
+      "等待分配" => %w-未审核 已审核-,
+      "等待服务" => %w-分配技师-,
+      "已完成"   => %w-已评价 未评价 服务完成-,
+      "已取消"   => %w-已取消-
+    }
+    index = mapping.values.index{|arr| arr.include?(state_str)}
+    mapping.keys[index]
+  end
+
   def order_statuses order
     status = order["state"]
 
