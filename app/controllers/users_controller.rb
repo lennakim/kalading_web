@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def order_detail
-
   end
 
   def maintain_histories_list
