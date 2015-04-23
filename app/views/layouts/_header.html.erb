@@ -28,19 +28,15 @@
       </div>
       <nav class="collapse navbar-collapse bs-navbar-collapse">
         <div class="nav navbar-nav">
+
           <div class="dropdown address" title="服务地址">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
             <span class="val">
               <span class="city"><%= current_city_name %></span>
               <span class="caret"></span>
             </span>
-
-            <!-- <ul class="dropdown-menu" role="menu">
-              <%# City.all.each do |city| %>
-                <li><%#= city.name %></li>
-              <%# end %>
-            </ul> -->
           </div>
+
           <div class="dropdown personal" title="个人中心">
             <% if signed_in? %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -87,7 +83,3 @@
     </div>
   </header>
 <% end %>
-
-<script>
-  $('.dropdown-toggle').dropdown()
-</script>
