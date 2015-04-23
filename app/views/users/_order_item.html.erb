@@ -4,16 +4,14 @@
     <div class="datetime pull-left">
       保养时间：<%= order["serve_datetime"] %>
     </div>
-    <!-- <div class="number pull-left">
-      订单号：<%#= order['seq'] %>
-    </div> -->
     <div class="state pull-left">
       <%= state_name order_state_str %>
     </div>
   </div>
   <div class="order-detail clearfix">
 
-    <div class="pull-left">
+    <img class="logo pull-left" src="<%= order['brand_logo'] %>">
+    <div class="cont pull-left">
       <div class="order-title">
         <% auto_name = "#{order['brand_name']} #{order['model_name']} #{order['model_engine_displacement']}" %>
         <%= link_to auto_name, order_path(order["id"]) %>
@@ -23,7 +21,7 @@
         <% order["parts"].each do |part| %>
           <div class="item">
             <div class="type pull-left">
-              [<%= part["part_brand_name"] %>] <%= part["number"] %>
+              [<%= part["part_type_name"] %>] <%= part["part_brand_name"] %>
             </div>
             <div class="price pull-left">
               ￥<%= part["price"] %>
@@ -38,7 +36,7 @@
     <div class="order-price pull-left">
       实付：
       <span class="price-num">
-        ￥<%= order["total_price"] %>
+        ￥ <%= order["total_price"] %>
       </span>
     </div>
 
