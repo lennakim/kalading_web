@@ -1,7 +1,7 @@
 <div class="orders">
-  <% if @orders && @orders.length > 0 %>
+  <% if @orders['data'] && @orders.length > 0 %>
 
-    <% @orders.each do |order| %>
+    <% @orders['data'].each do |order| %>
       <%= render "order_item", order: order %>
     <% end %>
 

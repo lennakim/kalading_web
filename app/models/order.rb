@@ -75,8 +75,12 @@ class Order
       ServerApi.call "post", "auto_maintain_order", { entry_id: car_id, body: payload }
     end
 
-    def get_orders_of phone_num = nil, client_id = nil, page = 1, per = 1000
-      ServerApi.call "get", "orders", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
+    # def get_orders_of phone_num = nil, client_id = nil, page = 1, per = 1000
+    #   ServerApi.call "get", "orders", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
+    # end
+
+    def get_orders_of phone_num = nil
+      ServerApi.call "get", "api/v2/orders", { phone: phone_num }
     end
 
     def maintain_histories_of phone_num = nil, client_id = nil, page = 1, per = 1000
