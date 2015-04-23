@@ -1,5 +1,9 @@
 <div class="orders">
+<<<<<<< HEAD
   <% if @orders['data'] && @orders.length > 0 %>
+=======
+  <% if @orders.length > 0 %>
+>>>>>>> 30d56cbd3dc60b520a6db680f2267d824af44796
 
     <% @orders['data'].each do |order| %>
       <%= render "order_item", order: order %>
