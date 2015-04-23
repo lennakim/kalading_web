@@ -71,4 +71,8 @@ class User < ActiveRecord::Base
     # TODO 简单处理 不会过期
     self.expires_at = 1.years.from_now
   end
+
+  def login_info
+    { id: id, token: token }
+  end
 end

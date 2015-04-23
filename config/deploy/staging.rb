@@ -23,7 +23,7 @@ set :ssh_options, {
 }
 
 set :stage, :staging
-set :branch, 'new'
+set :branch, ENV['BR'] || 'new'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/kaladingcom"
 set :rails_env, :staging
 set :unicorn_worker_count, 1
