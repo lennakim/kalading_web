@@ -18,18 +18,22 @@
     <div class="pull-left">
       <div class="order-title">
         <%#= image_tag("",width:"100%", class: "logo") %>
+<<<<<<< HEAD
         <%= link_to order["auto_model"], order_path(order["id"]) %> 
+=======
+        <%= order["auto_model"] %> 上门保养
+>>>>>>> 7d64bf80c709850de9aad5d179be66c769a58af8
       </div>
 
       <div class="items">
         <% order["parts"].each do |part| %>
           <div class="item">
             <div class="type pull-left">
-              [<%= part["type"] %>] <%= part["brand"] %> 
+              [<%= part["type"] %>] <%= part["brand"] %>
             </div>
             <div class="price pull-left">
               <%= part["price"] %>￥
-            </div> 
+            </div>
           </div>
         <% end %>
       </div>
@@ -41,7 +45,7 @@
       实付：
       <span class="price-num">
         ￥ <%= order["price"] %>
-      </span> 
+      </span>
     </div>
 
     <div class="comment pull-right">
@@ -60,8 +64,6 @@
       </div>
     </div>
   </div>
-  
-
 
   <div class="status hidden clearfix">
     <% statuses = order_statuses(order) %>
