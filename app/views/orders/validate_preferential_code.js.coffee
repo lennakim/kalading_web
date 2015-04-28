@@ -1,5 +1,6 @@
 <% if error = @result['discount']['error'] %>
-  alert '<%= error %>'
+  # alert '<%= error %>'
+  alert '优惠券错误'
 <% else %>
   $("#item_table").replaceWith $("<%= escape_javascript(render('offer_table')) %>")
   $("#final_price").text("<%= @result['price'] %>")
