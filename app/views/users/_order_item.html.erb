@@ -1,3 +1,5 @@
+<%= order %>
+
 <% order_state, order_state_str = order['state'].split('-') %>
 <div class="order" id="order_<%= order["id"] %>">
   <div class="top clearfix">
@@ -41,16 +43,19 @@
     </div>
 
     <div class="comment pull-right">
+      
       <% if can_cancel?(order) %>
         <div class="del">
           <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
         </div>
       <% end %>
+      
       <% if can_comment?(order) %>
         <div class="cmt">
           <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
         </div>
       <% end %>
+
       <div class="order-status">
         <%= link_to "订单状态", "#", class: "btn btn-default" %>
       </div>

@@ -30,13 +30,11 @@ module OrdersHelper
 
   def can_cancel? order
     ["未审核", "未分配", "未预约", "已预约"].include? order['state'].split('-')[1]
-    true
   end
 
   def can_comment? order
     state_str = order["state"].split('-')[1]
-    ["服务完成", "已回访", "已交接"].include?(state_str) && order["evaluated"] == 0
-    true
+    ["服务完成", "已回访", "已交接"].include?(state_str) && !order["commented"]
   end
 
   def state_name state_str
