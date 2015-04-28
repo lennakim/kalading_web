@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   mount Base => '/api' #api
 
+  resources :home do
+    get 'new_index', on: :collection
+  end
+
   resources :posts do
     collection do
       get 'about_us'

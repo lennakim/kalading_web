@@ -1,0 +1,21 @@
+// libs
+@import "compass";
+@import "compass/reset";
+@import "classic";
+@import "classic.date";
+@import "classic.time";
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$nprogress-color: #f57e56;
+$nprogress-height: 2px;
+$nprogress-zindex: 10100;
+
+@import "nprogress";
+@import "nprogress-bootstrap";
+
+a:link[title="站长统计"]{
+  display: none;
+}
+
