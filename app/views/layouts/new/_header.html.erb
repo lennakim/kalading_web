@@ -1,9 +1,61 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="...">
-      </a>
+<nav class="toggle">
+  <div class="kld-header">
+    <div class="kld-header-wrap">
+      <div class="kld-header-logo">
+        <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img"></a>
+      </div>
+      <div class="kld-header-log">
+        <div id="_unlogin" class="kld-header-login" style="display: block;">
+          <a href="javascript:window.location.href = _login">登录</a>
+        </div>
+        <div id="_islogin" class="kld-header-logout" style="display: none;">
+          <a href="https://member.kalading.com/uc/webjsp/member/detail" id="mzCustName"></a> | <a href="javascript:window.location.href = 'http://www.kalading.com/accounts/logout?useruri='+encodeURIComponent(window.location.href);">退出</a>
+        </div>
+      </div>
+      <ul class="kld-header-link">
+        <li>
+          <a href="http://store.kld.com/">在线商店</a>
+        </li>
+        <li id="kld-header-link-product" class="kld-header-link-product">
+          <a href="" class="kld-header-link-product-a" onclick="return false;">产品</a>
+        </li>
+        <li>
+          <a href="http://www.flyme.cn" target="_blank">Flyme</a>
+        </li>
+        <li>
+          <a href="http://service.meizu.com/index.html">服务</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="kld-header-sub" class="kld-header-sub" style="">
+    <div class="kld-header-wrap-sub">
+      <ul class="kld-header-sub-products" style="padding-left: 490px;">
+        <li class="kld-header-sub-product">
+          <a href="http://www.kalading.com/products/meilan/fun.html" style="opacity: 1;">
+            <div class="kld-header-sub-img"><img data-src="http://www2.res.meizu.com/zh_cn/images/common/meilan.png" data-src-2x="http://www2.res.meizu.com/zh_cn/images/common/meilan@2x.png" alt="魅蓝 logo 图" src="http://www2.res.meizu.com/zh_cn/images/common/meilan@2x.png"></div>
+            <p class="kld-header-sub-desc">魅蓝</p>
+          </a>
+        </li>
+        <li class="kld-header-sub-product">
+          <a href="http://www.meizu.com/products/meilannote/fun.html" style="opacity: 1;">
+            <div class="kld-header-sub-img"><img data-src="http://www2.res.meizu.com/zh_cn/images/common/meilannote.png" data-src-2x="http://www2.res.meizu.com/zh_cn/images/common/meilannote@2x.png" alt="魅蓝 note logo 图" src="http://www2.res.meizu.com/zh_cn/images/common/meilannote@2x.png"></div>
+            <p class="kld-header-sub-desc">魅蓝 note</p>
+          </a>
+        </li>
+        <li class="kld-header-sub-product">
+          <a href="http://www.meizu.com/products/mx4pro/fun.html" style="opacity: 1;">
+            <div class="kld-header-sub-img"><img data-src="http://www2.res.meizu.com/zh_cn/images/common/mx4pro.png" data-src-2x="http://www2.res.meizu.com/zh_cn/images/common/mx4pro@2x.png" alt="MX4 Pro logo 图" src="http://www2.res.meizu.com/zh_cn/images/common/mx4pro@2x.png"></div>
+            <p class="kld-header-sub-desc">MX4 Pro</p>
+          </a>
+        </li>
+        <li class="kld-header-sub-product">
+          <a href="http://www.meizu.com/products/mx4/fun.html" style="opacity: 1;">
+            <div class="kld-header-sub-img"><img data-src="http://www2.res.meizu.com/zh_cn/images/common/mx4.png" data-src-2x="http://www2.res.meizu.com/zh_cn/images/common/mx4@2x.png" alt="MX4 logo 图" src="http://www2.res.meizu.com/zh_cn/images/common/mx4@2x.png"></div>
+            <p class="kld-header-sub-desc">MX4</p>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
