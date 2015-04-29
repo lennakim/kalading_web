@@ -87,15 +87,23 @@ $ ->
 
 
   if $("#comment_modal").length > 0
+    $('.comment-stars img').each ->
+      $(@).attr('src',$(@).attr('data-src'))
 
     select_star = ->
       index = $(@).index()
       $(@).addClass('active').siblings().removeClass('active')
+
       $('.comment-stars img').each ->
         if $(@).index() <= index
-          $(@).attr('src','/assets/star2.png')
+          $(@).addClass('hid')
+          $('.star1.hid').addClass('hidden').next().removeClass('hidden')
         else
-          $(@).attr('src','/assets/star1.png')
+          num = $(@).index()
+          if $('.comment-stars img').eq(num).hasClass('star1')
+            $(@).removeClass('hidden').next().addClass('hidden')
+        
+          
 
     $('.comment-stars').on 'mouseover','img', select_star
       
