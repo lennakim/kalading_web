@@ -87,8 +87,6 @@ $ ->
 
 
   if $("#comment_modal").length > 0
-    $('.comment-stars img').each ->
-      $(@).attr('src',$(@).attr('data-src'))
 
     select_star = ->
       index = $(@).index()
