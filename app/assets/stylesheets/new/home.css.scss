@@ -1,4 +1,5 @@
 @import "compass";
+$main-orange: #e94609;
 
 nav{
 
@@ -91,45 +92,61 @@ nav{
       text-decoration: none;
     }
 
-    .kld-header-wrap{
+    #carousel-example-generic{
+      img{
+        width: 100%;
+      }
+    }
 
-      width: 1040px;
+
+    .kld-header-wrap{
+      position: absolute;
+      top: 0;
+      width: 100%;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 5%;
       overflow: hidden;
+      color: #fff;
+  
+      .kld-header-logo,.kld-header-log,.kld-header-link{
+        float: left;
+      }
 
       .kld-header-logo{
-        display: inline;
-        float: left;
-        padding: 30px 0;
-
+        width: 35%;
+        margin: 20px 0;
+        .kld-header-logo-img,.kld-header-logo-slogan{
+          float: left;
+        }
         .kld-header-logo-img{
+            width: 145px;
+            margin-right: 25px;
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-image: image-url('new-index/line.png');
+        }
+        .kld-header-logo-slogan{
+          width: 25%;
+          font-size: 12px;
+        }
+        .address{
+          margin: 14px 0;
+        }
+      }
+
+      .kld-header-link{
+        width: 60%;
+        a{
           display: block;
-          width: 114px;
-          height: 20px;
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-image: image-url('logo1.png');
+          padding: 31px 22px 30px 22px;
+          &:hover{
+            color: $main-orange;
+          }
         }
       }
 
       .kld-header-log{
-        display: inline;
-        float: right;
-        padding: 32px 0 0 30px;
-        text-align: right;
-        font-size: 12px;
-      }
-
-      .kld-header-link{
-        display: inline;
-        float: right;
-        overflow: hidden;
-
-        a{
-          display: block;
-          padding: 31px 22px 30px 22px;
-        }
+        margin: 35px 0;
       }
     }
 
@@ -144,3 +161,152 @@ nav{
     }
   }
 }
+
+.new-index{
+  position: relative;
+  padding: 0 8%;
+  .wrench{
+    position: absolute;
+    top: -60px;
+    z-index: 999;
+  }
+  .con{
+    width: 78%;
+    margin-left: 22%;
+    .product,.activity,.service{
+      padding: 20px 0;
+      .tit{
+        color: #8f8f8f;
+      }
+    }
+    .product,.activity{
+      border-bottom: 1px solid #ccc;
+      color: $main-orange;
+      ul{
+        margin-top: 20px;
+        li{
+          float: left;
+        }
+      }
+    }
+    .product{
+      .tit{
+        .rank{
+          display: none;
+        }
+      } 
+      ul{
+        li{
+            position: relative;
+            width: 20%;
+            min-width: 140px;
+            margin-top: 20px;
+          .key{
+            position: absolute;
+            top: -30px;
+            padding: 0 12px;
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+          }
+          .pic2{
+            padding-top: 10px;
+          }
+          p{
+            margin: 0;
+          }
+        }
+        .special{
+          text-align: center;
+          .customer-num{
+            margin-bottom: 10px;
+          }
+          .rank{
+            font-size: 20px;
+          }
+          .num{
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    .activity{
+      ul{
+        li{
+          width: 22%;
+          margin-right: 4%;
+          border-radius: 4px;
+          background: #ccc;
+          text-align: center;
+          &:last-child{
+            margin: 0;
+          }
+          p{
+            margin: 0;
+            padding: 6px 0;
+            border-radius: 0 0 4px 4px;
+            background: #b4b4b4;
+            color: #fff;
+            &:hover{
+              background: #e77449;
+              cursor: pointer;
+              cursor: hand;
+            }
+          }
+        }
+      }
+    }
+    .service{
+      color: #666666;
+      ul{
+        float: left;
+        width: 25%;
+      }
+      .tit{
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1070px){
+  .new-index{
+    .con{
+      margin-left: 25%;
+      .product{
+        ul{
+          li{
+            width: 25%;
+          }
+          .special{
+            display: none;
+          }
+        }
+        .tit{
+          overflow: hidden;
+          span,p{
+            float: left;
+          }
+          p{
+            margin-left: 15%;
+          }
+          .rank{
+            display: block;
+            margin-bottom: 0;
+            line-height: 30px;
+            font-size: 16px;
+            color: $main-orange;
+          }
+          .num{
+            font-size: 26px;
+          }
+        } 
+      } 
+    } 
+  } 
+
+}
+

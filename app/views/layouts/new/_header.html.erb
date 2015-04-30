@@ -1,15 +1,40 @@
 <nav class="">
   <div class="kld-header">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= image_tag("new-index/banner.jpg")%>
+        </div>
+        <div class="item">
+          <%= image_tag("new-index/banner.jpg")%>
+        </div>
+        <div class="item">
+          <%= image_tag("new-index/banner.jpg")%>
+        </div>
+        <div class="item">
+          <%= image_tag("new-index/banner.jpg")%>
+        </div>
+      </div>
+    </div>
+
     <div class="kld-header-wrap">
       <div class="kld-header-logo">
-        <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img"></a>
-      </div>
-      <div class="kld-header-log">
-        <div id="_unlogin" class="kld-header-login" style="display: block;">
-          <a href="javascript:window.location.href = _login">登录</a>
+        <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img">
+          <%= image_tag("new-index/logo.png")%>
+        </a>
+        <div class="kld-header-logo-slogan">
+          <p>爱车新理念</p>
+          <p>自在新生活</p>
         </div>
-        <div id="_islogin" class="kld-header-logout" style="display: none;">
-          <a href="https://member.kalading.com/uc/webjsp/member/detail" id="mzCustName"></a> | <a href="javascript:window.location.href = 'http://www.kalading.com/accounts/logout?useruri='+encodeURIComponent(window.location.href);">退出</a>
+        <div class="dropdown address" title="服务地址">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+          <span class="val">
+            <span class="city"><%= current_city_name %></span>
+            <span class="caret"></span>
+          </span>
         </div>
       </div>
       <ul class="kld-header-link">
@@ -34,6 +59,14 @@
           <a href="http://service.meizu.com/index.html">联系我们</a>
         </li>
       </ul>
+      <div class="kld-header-log">
+        <div id="_unlogin" class="kld-header-login" style="display: block;">
+          <a href="javascript:window.location.href = _login">登录</a>
+        </div>
+        <div id="_islogin" class="kld-header-logout" style="display: none;">
+          <a href="https://member.kalading.com/uc/webjsp/member/detail" id="mzCustName"></a> | <a href="javascript:window.location.href = 'http://www.kalading.com/accounts/logout?useruri='+encodeURIComponent(window.location.href);">退出</a>
+        </div>
+      </div>
     </div>
   </div>
   <div id="kld-header-sub" class="kld-header-sub" style="">
