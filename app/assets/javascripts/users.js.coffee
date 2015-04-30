@@ -5,8 +5,7 @@ $ ->
 
   if $('.user-info').length > 0
 
-
-    if ('.phone-page').length > 0
+    if $('.phone-page').length > 0
       $('.user-info').on 'click', '.order-detail', (e) ->
         e.preventDefault()
         e.stopPropagation()
