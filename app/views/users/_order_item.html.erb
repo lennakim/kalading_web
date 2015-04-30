@@ -21,7 +21,7 @@
         <% order["parts"].each do |part| %>
           <div class="item">
             <div class="type pull-left">
-              [<%= part["part_type_name"] %>] <%= part["part_brand_name"] %>
+              [<%= part["type"] %>] <%= part["brand"] %>
             </div>
             <div class="price pull-left">
               ￥<%= part["price"] %>
