@@ -14,3 +14,6 @@
 #= require URI
 #= require nprogress
 #= require nprogress-turbolinks
+
+#= require new/home
+#= require new/orders

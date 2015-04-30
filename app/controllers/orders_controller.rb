@@ -32,6 +32,22 @@ class OrdersController < ApplicationController
     end
   end
 
+  def new
+    render layout: "new"
+  end
+
+  def new_car_select
+    render layout: "new"
+  end
+
+  def new_service_select
+    render layout: "new"
+  end
+
+  def new_info_submit
+    render layout: "new"
+  end
+
   def notify
 =begin
     result = Hash.from_xml(request.body.read)["xml"]

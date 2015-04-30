@@ -35,6 +35,10 @@ Rails.application.routes.draw do
     end
 
     collection do
+      get 'new_car_select'
+      get 'new_service_select'
+      get 'new_info_submit'
+
       get 'select_car'
       get 'select_item'
       get 'success'
