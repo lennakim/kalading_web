@@ -5,12 +5,14 @@ $ ->
 
   if $('.user-info').length > 0
 
-    $('.user-info').on 'click', '.order-detail', (e) ->
-      e.preventDefault()
-      e.stopPropagation()
-      id = $(@).data('id')
 
-      Turbolinks.visit("/orders/#{ id }")
+    if ('.phone-page').length > 0
+      $('.user-info').on 'click', '.order-detail', (e) ->
+        e.preventDefault()
+        e.stopPropagation()
+        id = $(@).data('id')
+
+        Turbolinks.visit("/orders/#{ id }")
 
 
     $('.content').on "click", ".select-car input[name=car_brand]", (e) ->
