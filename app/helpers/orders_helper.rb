@@ -50,7 +50,7 @@ module OrdersHelper
   end
 
   def order_statuses order
-    status = order["state"]
+    status = order["state"].split('-')[1]
 
     # 提交订单     0
     # 等待客服确认 2 / 客服已确认  3

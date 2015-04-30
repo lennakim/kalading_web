@@ -58,8 +58,15 @@
 
         <% @order['parts'].each do |part| %>
           <tr>
-            <td><%= part['part_brand_name'] %></td>
+            <td><%= "#{ part['brand'] } #{ part['type'] }" %></td>
             <td class='right'>￥<%= part['price'] %></td>
+          </tr>
+        <% end %>
+
+        <% @order['service_types'].each do |service| %>
+          <tr>
+            <td><%= service['name'] %>服务费</td>
+            <td class='right'>￥<%= service['price'] %></td>
           </tr>
         <% end %>
 
