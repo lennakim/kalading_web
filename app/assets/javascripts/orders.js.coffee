@@ -171,8 +171,13 @@ $ ->
 
     set_serve_date = (date) ->
 
-      min = _.first(_.keys(date))
-      max = _.last(_.keys(date))
+      activity_id = $("#activity_id").val()
+
+      min = new Date(_.first(_.keys(date)))
+      max = new Date(_.last(_.keys(date)))
+
+      if activity_id == '140'
+        max = new Date(2015, 5, 30)
 
       disabled = _.select _.pairs(date), (e) ->
         sum = _.reduce e[1], (memo, num) ->
@@ -195,8 +200,8 @@ $ ->
         container: '#serve_date_picker',
 
         format: 'yyyy-mm-dd',
-        min: new Date(min),
-        max: new Date(max),
+        min: min,
+        max: max,
         onSet: () ->
 
           $("#serve_period").empty()
