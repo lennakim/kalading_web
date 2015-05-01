@@ -139,7 +139,11 @@
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
       <% if to_next_step %>
-        <button type="submit" class="btn btn-default order_button">下一步</button>
+        <% if (activity.id == 140) && (Time.now.hour != 10) %>
+          <button type="submit" class="btn btn-default order_button haiwan-disabled">下一步</button>
+        <% else %>
+          <button type="submit" class="btn btn-default order_button">下一步</button>
+        <% end %>
       <% else %>
         <button disabled type="submit" class="btn btn-default order_button">下一步</button>
       <% end %>
