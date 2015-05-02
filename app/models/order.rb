@@ -99,6 +99,10 @@ class Order
       ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
 
+    def haiwan_capacity
+      ServerApi.call "get", "api/v2/haiwanshiyou_remain_capacity", {}
+    end
+
   end
 
 end

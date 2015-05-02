@@ -8,6 +8,17 @@ module OrdersHelper
     product.cities.map(&:name).include? current_city_name
   end
 
+  def custom_activity
+    ['yi-dao-yi-wan-smt-1',
+     'yi-dao-yi-wan-smt-2',
+     'yi-dao-yi-wan-smt-3',
+     'gan-ji-smt-1',
+     'gan-ji-smt-2',
+     'gan-ji-smt-3',
+     'gulf-oil-50'
+    ]
+  end
+
   def yidao_filter items, activity
     case activity.name
     when "yi-dao-yi-wan-smt-1" # low
@@ -25,6 +36,8 @@ module OrdersHelper
     when "gan-ji-smt-3"
       items.select{ |ele| ele["number"] =~ /极护/ }
 
+    when 'gulf-oil-50'
+      items.select{ |ele| ele["brand"] =~ /海湾/ }
     end
   end
 
