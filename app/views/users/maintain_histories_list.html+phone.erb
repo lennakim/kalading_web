@@ -3,15 +3,20 @@
     <%= render "shared/header", title: "我的保养记录" %>
 
     <div class="maintains-list">
+
       <% if !@maintain_orders.empty? %>
 
         <div class="section">
           <% @maintain_orders.each do |mtain| %>
             <div class="cell">
-
-              <%= link_to mtain['serve_datetime'], maintain_history_users_path(id: mtain['id']) %>
-
-              <%=  %>
+              <%= link_to maintain_history_users_path(id: mtain['id']) do %>
+                <div class="line">
+                  <%= mtain['car_name']  %>
+                </div>
+                <div class="line">
+                  <%= "#{ mtain['car_num'] } #{ mtain['serve_datetime'] }" %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>

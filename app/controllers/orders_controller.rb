@@ -137,8 +137,7 @@ class OrdersController < ApplicationController
   def comment
     data = Order.comment params[:id], params[:desc], params[:score]
 
-    @id = params[:id]
-    @order = Order.find params[:id]
+    @order = Order.find(params[:id])['data']
 
     if data && data["code"] == 0
       render "comment"

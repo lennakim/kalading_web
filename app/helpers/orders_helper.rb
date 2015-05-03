@@ -34,7 +34,7 @@ module OrdersHelper
 
   def can_comment? order
     state_str = order["state"].split('-')[1]
-    ["服务完成", "已回访", "已交接"].include?(state_str) && !order["commented"]
+    ["服务完成", "已回访", "已交接"].include?(state_str) && !order["evaluated"]
   end
 
   def state_name state_str
