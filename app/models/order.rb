@@ -42,7 +42,8 @@ class Order
     end
 
     def find id
-      ServerApi.call "get", "orders", { entry_id: id }
+      # ServerApi.call "get", "orders", { entry_id: id }
+      ServerApi.call "get", "api/v2/orders", { entry_id: id }
     end
 
     def cars_data city_id, type = "bmt"
@@ -75,7 +76,8 @@ class Order
     end
 
     def get_orders_of phone_num = nil, client_id = nil, page = 1, per = 1000
-      ServerApi.call "get", "orders", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
+      # ServerApi.call "get", "orders", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
+      ServerApi.call "get", "api/v2/orders", { phone: phone_num  }
     end
 
     def maintain_histories_of phone_num = nil, client_id = nil, page = 1, per = 1000

@@ -5,6 +5,15 @@ $ ->
 
   if $('.user-info').length > 0
 
+    if $('.phone-page').length > 0
+      $('.user-info').on 'click', '.order-detail', (e) ->
+        e.preventDefault()
+        e.stopPropagation()
+        id = $(@).data('id')
+
+        Turbolinks.visit("/orders/#{ id }")
+
+
     $('.content').on "click", ".select-car input[name=car_brand]", (e) ->
       e.stopPropagation()
 
@@ -104,7 +113,7 @@ $ ->
           
 
     $('.comment-stars').on 'mouseover','img', select_star
-      
+
     $('.comment-stars').on 'click','img', select_star
 
 

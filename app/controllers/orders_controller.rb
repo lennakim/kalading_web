@@ -137,8 +137,7 @@ class OrdersController < ApplicationController
   def comment
     data = Order.comment params[:id], params[:desc], params[:score]
 
-    @id = params[:id]
-    @order = Order.find params[:id]
+    @order = Order.find(params[:id])['data']
 
     if data && data["code"] == 0
       render "comment"
@@ -325,6 +324,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    id = params[:id]
+    @order = Order.find(id)['data']
   end
 
   def success
@@ -335,8 +336,7 @@ class OrdersController < ApplicationController
 
   def destroy
     data = Order.cancel params[:id], params[:reason]
-    @id = params[:id]
-    @order = Order.find params[:id]
+    @order = Order.find(params[:id])['data']
     if data["result"] == "ok"
       render "destroy"
     else
