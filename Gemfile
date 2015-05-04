@@ -58,8 +58,8 @@ gem 'browser'
 # traffic data
 gem 'impressionist'
 
-
 gem 'kaminari' # paginator
+gem 'gon' # Your Rails variables in your JS
 
 group :development, :test do
   gem 'http_logger'

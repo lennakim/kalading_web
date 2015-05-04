@@ -141,6 +141,11 @@ GEM
       activesupport (>= 3.0.4)
     execjs (2.2.2)
     fssm (0.2.10)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     grape (0.11.0)
       activesupport
       builder
@@ -278,6 +283,7 @@ GEM
       redis-store (~> 1.1.0)
     redis-store (1.1.4)
       redis (>= 2.2)
+    request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rest-client (1.7.2)
@@ -365,6 +371,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
   exception_notification
+  gon
   grape
   grape-entity
   grape-jbuilder

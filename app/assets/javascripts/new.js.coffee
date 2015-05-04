@@ -15,5 +15,7 @@
 #= require nprogress
 #= require nprogress-turbolinks
 
+#= require underscore
+
 #= require new/home
 #= require new/orders
