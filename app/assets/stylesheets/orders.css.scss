@@ -7,6 +7,66 @@ $font-gray: #dedede;
 $font-orange: #ec8721;
 $title-gray: #787878;
 
+.car-content{
+  padding: 0;
+}
+
+.no-parts-available{
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.panel-group.custom{
+  margin: 0;
+  border-bottom: 1px solid #eee;
+
+  &.disabled{
+    a.selected-part{
+      color: #ccc;
+    }
+  }
+
+  .panel{
+
+    font-size: 16px;
+
+    &.quick-cars-select{
+      font-size: 14px;
+    }
+
+    .panel-heading, .panel-collapse{
+      padding: 0;
+      a{
+        float: left;
+        width: 100%;
+        line-height: 30px;
+      }
+    }
+
+    .panel-heading{
+      padding: 10px;
+      padding-left: 20px;
+    }
+    .panel-collapse{
+      padding: 0px;
+
+      .list-group{
+        .list-group-item{
+          padding: 10px;
+          padding-left: 20px;
+          background: #fffaec;
+          line-height: 30px;
+          a{
+            color: #6C6C6C;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 .orders-con{
   padding: 0 20px;
   border-radius: 4px;
@@ -101,9 +161,9 @@ $title-gray: #787878;
       }
     }
   }
-  .order_button{
-    @include button;
-  }
+}
+.order_button{
+  @include button;
 }
 .select-car-page,.items-select-page{
   .comment-module,.service-module,.orders-situation{
@@ -631,12 +691,6 @@ $title-gray: #787878;
   .my-car-title{
     border-bottom: 1px solid #ccc;
   }
-  .my-car-title:before{
-    content: image-url('my-car.png');
-  }
-  .service-type-title:before{
-    content: image-url('service-type.png');
-  }
   #myTab{
     position: fixed;
     top: 0;
@@ -700,9 +754,6 @@ $title-gray: #787878;
   }
   .price,.now,.reason{
     float: left;
-  }
-  .car-content{
-    padding: 0 20px;
   }
   .orders{
     .content{
@@ -1048,7 +1099,7 @@ $title-gray: #787878;
     		width: 30%;
     		line-height: 20px;
     		text-align: center;
-    		overflow: hidden; 
+    		overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         font-size: 12px;
@@ -1077,7 +1128,7 @@ $title-gray: #787878;
       	padding: 30% 25%;
       }
       .active{
-        border-left: 3px solid $orange; 
+        border-left: 3px solid $orange;
         background-image: image-url('down_btn.png');
       }
     }
@@ -1088,7 +1139,7 @@ $title-gray: #787878;
         line-height: 40px;
         padding-left: 5%;
         border-bottom: 1px solid #ccc;
-        overflow: hidden; 
+        overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         a{
@@ -1103,7 +1154,7 @@ $title-gray: #787878;
       display: none;
     }
     .active{
-      border-left: 3px solid $orange; 
+      border-left: 3px solid $orange;
     }
   }
   .crumbs{

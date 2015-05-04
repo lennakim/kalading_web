@@ -1,5 +1,5 @@
 <% content_for :javascripts do %>
-  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "mobile/orders", 'data-turbolinks-track' => true %>
 <% end %>
 
 <% cache [params[:car_id], current_city_id, params[:type], params[:auto_id], params[:act]] do %>
@@ -14,26 +14,39 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
           <div class="quick-select">
-            <h4 class="item-title my-car-title">我的快捷车辆</h4>
+            <h4 class="item-title my-car-title">我的车辆</h4>
             <%= link_to " + 重新选择", select_car_by_initial_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
 
             <div class="car-content content clearfix">
+              <div class="panel-group custom" role="tablist">
+                <div class="panel quick-cars-select">
+                  <div class="panel-heading clearfix" role="tab" id="select_car_header">
+                      <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_cars" aria-expanded="false" aria-controls="select_cars">
+                        <% if @last_select_car %>
+                          <%= @last_select_car.brand %>
+                          <%= @last_select_car.series %>
+                          <%= @last_select_car.model_number %>
+                        <% end %>
+                      </a>
+                      <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a></h4>
+                  </div>
+                  <div id="select_cars" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
+                    <% if signed_in? %>
+                      <ul class="list-group">
+                        <% current_user.autos.each do |auto| %>
+                          <li class="list-group-item clearfix">
 
-              <% if signed_in? %>
+                          <%= link_to "#{auto.brand} #{auto.series} #{auto.model_number}", select_car_item_orders_path(act: params[:act], type: params[:type], car_id: auto.system_id) %>
 
-                <% if @last_select_car %>
-                  <%= render "shared/car_item", auto: @last_select_car %>
-                <% end %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    <% end %>
 
-                <% current_user.autos.each do |auto| %>
-                  <%= render "shared/car_item", auto: auto %>
-                <% end %>
+                  </div>
+                </div>
+              </div>
 
-              <% else %>
-                <% if @last_select_car %>
-                  <%= render "shared/car_item", auto: @last_select_car %>
-                <% end %>
-              <% end %>
             </div>
           </div>
 
@@ -67,18 +80,18 @@
 
             </div>
             <h4 class="item-title">选择配件</h4>
-            <div class="orders-con <%= type %>-con content">
+            <div class="items-area">
               <% if car_id %>
                 <%= render "items", type: type, activity: activity %>
               <% else %>
-                  <span class="spe">请先选择车辆和保养类型</span>
+                <span class="spe">请先选择车辆和保养类型</span>
               <% end %>
             </div>
             <div class="submit-con">
               <span>当前费用:
-              	<% parts = @result["applicable_parts"] %>
-              	<% filtered_parts = filter_parts(parts, type) %>
-              	<% if filtered_parts.count != 0 %>
+                <% parts = @result["applicable_parts"] %>
+                <% filtered_parts = filter_parts(parts, type) %>
+                <% if filtered_parts.count != 0 %>
                   <span class="result-price"></span>元
                 <% end %>
               </span>
