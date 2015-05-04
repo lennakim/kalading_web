@@ -1,1 +1,16 @@
-new car select
+<%= Gon::Base.render_data({}) %>
+
+<div class="select-car-area">
+  <% if last_select_car %>
+    <%= render "quick_select_car" %>
+  <% else %>
+    <%= render "select_car" %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  var autos = gon.autos['data']
+  _.each(autos, function(auto) {
+    console.log(auto['initial'])
+  })
+</script>
