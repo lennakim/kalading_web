@@ -33,7 +33,7 @@ module ServerApi
         RestClient.get(url, content_type: 'json') :
         RestClient.send(method, url, args[:body].to_json, content_type: 'json')
 
-      JSON.parse result
+        JSON.parse result
     rescue Exception => e
       fail.call e
     end

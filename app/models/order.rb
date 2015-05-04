@@ -99,6 +99,17 @@ class Order
       ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
 
+    ########################### 新交互使用的api  20150504 #####################
+
+    # 获取汽车信息
+    def autos
+      ServerApi.call "get", "/api/v2/autos"
+    end
+
+    # 获取具体车型信息
+    def auto_models model_id
+      ServerApi.call "get", "/api/v2/auto_models", { id: model_id }
+    end
   end
 
 end
