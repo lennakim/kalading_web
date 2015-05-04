@@ -17,3 +17,9 @@
 
 #= require new/home
 #= require new/orders
+
+$ ->
+  $('.kld-header-link').on 'mouseover','li', ->
+    $(@).addClass('selected').siblings().removeClass('selected')
+    $('.sub').addClass('hide')
+    $('.selected').find('.sub').removeClass('hide')
