@@ -1,0 +1,58 @@
+<% order_state, order_state_str = order['state'].split('-') %>
+<div class="order" id="order_<%= order["id"] %>">
+  <div class="top clearfix">
+    <div class="datetime pull-left">
+      保养时间：<%= order["serve_datetime"] %>
+    </div>
+    <div class="state pull-left">
+      <%= state_name order_state_str %>
+    </div>
+  </div>
+  <div class="order-detail clearfix" data-id="<%= order['id'] %>">
+    <img class="logo pull-left" src="<%= order['brand_logo'] %>">
+    <div class="cont pull-right">
+      <div class="order-title">
+        <% auto_name = "#{order['brand_name']} #{order['model_name']} #{order['model_engine_displacement']}" %>
+        <%= link_to auto_name, order_path(order["id"]) %>
+      </div>
+
+      <div class="items">
+        <% order["parts"].each do |part| %>
+          <div class="item">
+            <div class="type pull-left">
+              [<%= part["type"] %>] <%= part["brand"] %>
+            </div>
+            <div class="price pull-left">
+              ￥<%= part["price"] %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom clearfix">
+    <div class="order-price pull-left">
+      实付：
+      <span class="price-num">
+        ￥ <%= order["total_price"] %>
+      </span>
+    </div>
+
+    <div class="comment pull-right">
+
+      <% if can_cancel?(order) %>
+        <div class="del">
+          <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+        </div>
+      <% end %>
+
+      <% if can_comment?(order) %>
+        <div class="cmt">
+          <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

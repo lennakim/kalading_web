@@ -8,6 +8,17 @@ module OrdersHelper
     product.cities.map(&:name).include? current_city_name
   end
 
+  def custom_activity
+    ['yi-dao-yi-wan-smt-1',
+     'yi-dao-yi-wan-smt-2',
+     'yi-dao-yi-wan-smt-3',
+     'gan-ji-smt-1',
+     'gan-ji-smt-2',
+     'gan-ji-smt-3',
+     'gulf-oil-50'
+    ]
+  end
+
   def yidao_filter items, activity
     case activity.name
     when "yi-dao-yi-wan-smt-1" # low
@@ -25,21 +36,34 @@ module OrdersHelper
     when "gan-ji-smt-3"
       items.select{ |ele| ele["number"] =~ /极护/ }
 
+    when 'gulf-oil-50'
+      items.select{ |ele| ele["brand"] =~ /海湾/ }
     end
   end
 
   def can_cancel? order
-    status = order["state"]
-    ["未审核", "未分配", "未预约", "已预约"].include? status
+    ["未审核", "未分配", "未预约", "已预约"].include? order['state'].split('-')[1]
   end
 
   def can_comment? order
-    status = order["state"]
-    ["服务完成", "已回访", "已交接"].include?(status) && order["evaluated"] == 0
+    state_str = order["state"].split('-')[1]
+    ["服务完成", "已回访", "已交接"].include?(state_str) && !order["evaluated"]
+  end
+
+  def state_name state_str
+    mapping = {
+      "未支付"   => %w-未支付-,
+      "等待分配" => %w-未审核 已审核-,
+      "等待服务" => %w-已预约-,
+      "已完成"   => %w-已评价 未评价 服务完成 已交接 已回访-,
+      "已取消"   => %w-已取消-
+    }
+    index = mapping.values.index{|arr| arr.include?(state_str)}
+    mapping.keys[index]
   end
 
   def order_statuses order
-    status = order["state"]
+    status = order["state"].split('-')[1]
 
     # 提交订单     0
     # 等待客服确认 2 / 客服已确认  3
@@ -48,7 +72,12 @@ module OrdersHelper
     #
     # 0: 未审核， 1：审核失败，2：未分配，3：未预约，4：已预约，5：服务完成，6：已交接，7：已回访，8：已取消，9：用户咨询, 10: 取消待审核
 
-    content = [[nil, "提交订单"], ["等待客服确认", "客服已确认"], ["等待技师预约", "技师已预约"], ["等待上门服务", "订单完成"] ]
+    content = [
+      [nil, "提交订单"],
+      ["等待客服确认", "客服已确认"],
+      ["等待技师预约", "技师已预约"],
+      ["等待上门服务", "订单完成"]
+    ]
 
     statuses = {
       "未审核"     => [[1], [0], [0], [0]],
