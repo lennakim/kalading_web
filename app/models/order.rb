@@ -103,12 +103,12 @@ class Order
 
     # 获取汽车信息
     def autos
-      ServerApi.call "get", "/api/v2/autos"
+      ServerApi.call "get", "api/v2/autos"
     end
 
     # 获取具体车型信息
     def auto_models model_id
-      ServerApi.call "get", "/api/v2/auto_models", { id: model_id }
+      ServerApi.call "get", "api/v2/auto_models/#{model_id}"
     end
   end
 
