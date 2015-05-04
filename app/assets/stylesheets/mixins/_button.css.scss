@@ -25,7 +25,7 @@
   }
 
   &.disabled{
-    // @include box-shadow(none);
+    @include box-shadow(none);
     opacity: 0.6;
   }
 }
