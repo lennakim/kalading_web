@@ -9,8 +9,18 @@
 </div>
 
 <script type="text/javascript">
-  var autos = gon.autos['data']
+(function() {
+  var autos = gon.autos['data'];
+
   _.each(autos, function(auto) {
-    console.log(auto['initial'])
-  })
+    $(".car-item").append("<span class='car-index'>" + auto['initial'] + "</span> ");
+    });
+
+  $(".car-index").click(function(){
+    alert("希特勒")
+  });
+
+
+})();
+
 </script>

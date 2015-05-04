@@ -1,0 +1,12 @@
+.car-item {
+  margin-left: 50px;
+
+  .car-index {  //索引
+    float: left;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    color: red;
+    cursor: pointer;
+  }
+}
