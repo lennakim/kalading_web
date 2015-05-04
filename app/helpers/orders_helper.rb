@@ -55,7 +55,7 @@ module OrdersHelper
       "未支付"   => %w-未支付-,
       "等待分配" => %w-未审核 已审核-,
       "等待服务" => %w-已预约-,
-      "已完成"   => %w-已评价 未评价 服务完成-,
+      "已完成"   => %w-已评价 未评价 服务完成 已交接 已回访-,
       "已取消"   => %w-已取消-
     }
     index = mapping.values.index{|arr| arr.include?(state_str)}
