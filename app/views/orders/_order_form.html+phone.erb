@@ -1,80 +1,62 @@
 <div class="orders-content form-horizontal">
 
   <div class="address clearfix">
-
     <%= render "shared/select_address" %>
-
   </div>
 
   <div class="order-info">
 
     <div class="section">
-
       <div class="cell">
-        <div class="line">
-          <% unless signed_in? %>
-            <div class="info-group form-group">
-              <div class="info-title">
-                <var class="star">*</var>
-                <%= label_tag(:phone_num, "手机号：") %>
-              </div>
-              <div class="info-con">
-                <%= text_field_tag(:phone_num, "", required: true, minlength: 11, maxlength: 11, class: 'phone_num form-control', placeholder: "11位手机号") %>
-              </div>
+        <% unless signed_in? %>
+          <div class="info-group form-group">
+            <div class="info-title">
+              <var class="star">*</var>
+              <%= label_tag(:phone_num, "手机号：") %>
             </div>
-            <div class="info-group form-group">
-              <div class="info-title">
-                <var class="star">*</var>
-                <%= label_tag(:verification_code, "验证手机：") %>
-              </div>
-              <div class="info-con form-inline">
-                <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
+            <div class="">
+              <%= text_field_tag(:phone_num, "", required: true, minlength: 11, maxlength: 11, class: 'phone_num form-control', placeholder: "11位手机号") %>
+            </div>
+          </div>
+          <div class="info-group form-group">
+            <div class="info-title">
+              <var class="star">*</var>
+              <%= label_tag(:verification_code, "验证手机：") %>
+            </div>
+            <div class="form-inline">
+              <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
 
-                <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
+              <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
 
-              </div>
             </div>
-          <% else %>
-            <div class="info-group form-group">
-              <div class="info-title">
-                <var class="star">*</var>
-                <%= label_tag(:phone_num, "手机号：") %>
-              </div>
-              <div class="info-con">
-                <input title="手机号" name="phone_num" class="phone_num form-control" value="<%= current_user.phone_number %>" readonly>
-              </div>
+          </div>
+        <% else %>
+          <div class="info-group form-group">
+            <div class="">
+              <input title="手机号" name="phone_num" class="phone_num form-control" value="<%= current_user.phone_number %>" readonly>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
 
       <div class="cell">
 
-        <div class="line">
-          <div class="info-group form-group">
-            <div class="info-title">
-              <var class="star">*</var>
-              <%= label_tag(:name, "姓名：") %>
-            </div>
-            <div class="info-con">
-              <%= text_field_tag(:name, current_user.try(:username), :required => true, class: 'form-control', placeholder: "姓名") %>
-            </div>
+        <div class="info-group form-group">
+          <div class="">
+            <%= text_field_tag(:name, current_user.try(:username), :required => true, class: 'form-control', placeholder: "姓名") %>
           </div>
         </div>
       </div>
     </div>
 
 
+    <div id="date_picker"></div>
     <div class="section">
 
       <div class="cell">
 
         <div class="info-group form-group">
-          <div class="info-title">
-            <var class="star">*</var>
-            <%= label_tag("车牌号：") %>
-          </div>
-          <div class="info-con form-inline">
+          <div class="form-inline">
             <select name="car_location" class="form-control car_location">
               <% car_location.each do |location| %>
                 <option value="<%= location %>" <%= "selected" if location == @auto.try(:license_location) %>><%= location %></option>
@@ -84,21 +66,14 @@
           </div>
         </div>
 
-
-
       </div>
 
       <div class="cell">
 
-
         <div class="info-group form-group">
-          <div id="serve_date_picker"></div>
-          <div class="info-title">
-            <var class="star">*</var>
-            <%= label_tag(:serve_date, "服务时间：") %>
-          </div>
-          <div class="info-con form-inline">
-            <%= text_field_tag(:serve_date, '', required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
+          <!-- <div id="serve_date_picker"></div> -->
+          <div class="form-inline">
+            <%= text_field_tag(:serve_date, '', required: true, class: 'form-control', "data-cc" => @city_capacity.to_json, placeholder: "服务日期") %>
             <select id="serve_period" name="serve_period" class='form-control'>
               <option value="8:00">8:00 - 12:00</option>
               <option value="12:00">12:00 - 17:00</option>
@@ -106,22 +81,13 @@
             </select>
           </div>
         </div>
-
       </div>
 
       <div class="cell">
-
-
         <div class="info-group form-group">
-
-          <div id="registed_date_picker"></div>
-
-          <div class="info-title">
-            <var class="star">*</var>
-            <%= label_tag(:registration_date, "车辆注册时间：") %>
-          </div>
-          <div class="info-con">
-            <%= text_field_tag(:registration_date, '', required: true, class: 'form-control') %>
+          <!-- <div id="registed_date_picker"></div> -->
+          <div class="">
+            <%= text_field_tag(:registration_date, '', required: true, class: 'form-control', placeholder: '车辆注册日期') %>
           </div>
         </div>
 
@@ -144,59 +110,16 @@
 
 
     <div class="section">
-
       <div class="cell">
-
         <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag("发票：") %>
-          </div>
-          <div class="info-con">
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default active" id="no_invoice">
-                <input type="radio" name="reciept_type" value='0' autocomplete="off" checked> 不要
-              </label>
-              <label class="btn btn-default" id="yes_invoice">
-                <input type="radio" autocomplete="off"> 需要
-              </label>
-            </div>
+          <div class="">
+            <%= text_field_tag(:reciept_title, "", placeholder: '发票 公司/个人', class: 'form-control') %>
           </div>
         </div>
-
-
-        <div class="info-group form-group">
-          <div id="invoice_info" class="collapse">
-            <div class="info-title">
-              <%= label_tag("详细信息：") %>
-            </div>
-
-            <div class="input-group reciept-detail col-sm-6">
-
-              <span class="input-group-addon">
-                <label>
-                  <input type="radio" value='1' name="reciept_type" autocomplete="off"> 个人
-                </label>
-              </span>
-
-              <span class="input-group-addon">
-                <label>
-                  <input type="radio" value='2' name="reciept_type" autocomplete="off"> 单位
-                </label>
-              </span>
-
-              <input type="text" class='form-control' name="reciept_title" placeholder="发票抬头">
-            </div>
-          </div>
-        </div>
-
-
       </div>
-
-
     </div>
 
     <div class="section">
-
 
       <div class="cell">
 
@@ -206,54 +129,44 @@
 
           <input type="hidden" name="discount" value="<%= activity.preferential_code %>">
           <input type="hidden" id="activity_id" name="act" value="<%= params[:act] %>">
+
         <% else %>
-          <div class="info-group form-group">
-            <div class="info-title">
-              <%= label_tag("优惠券：") %>
-            </div>
 
-            <div class="info-con">
-              <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default active" id="no_preferential">
-                  <input type="radio" autocomplete="off" checked> 无
-                </label>
-                <label class="btn btn-default" id="yes_preferential">
-                  <input type="radio" autocomplete="off"> 有
-                </label>
-              </div>
+          <!-- <div class="info&#45;group form&#45;group"> -->
+          <!--  -->
+          <!--   <div class=""> -->
+          <!--     <div class="btn&#45;group" data&#45;toggle="buttons"> -->
+          <!--       <label class="btn btn&#45;default active" id="no_preferential"> -->
+          <!--         <input type="radio" autocomplete="off" checked> 无 -->
+          <!--       </label> -->
+          <!--       <label class="btn btn&#45;default" id="yes_preferential"> -->
+          <!--         <input type="radio" autocomplete="off"> 有 -->
+          <!--       </label> -->
+          <!--     </div> -->
+          <!--   </div> -->
+          <!--  -->
+          <!-- </div> -->
+
+          <div class="info-group form-group">
+
+            <div class="form-inline">
+              <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
+              <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
+              <%= link_to "取消", "#", class: "btn btn-default hidden", id: "no_preferential" %>
             </div>
           </div>
 
-          <div class="info-group form-group">
-            <div id="preferential_info" class="collapse">
-              <div class="info-title">
-                <%= label_tag("详细信息：") %>
-              </div>
-
-              <div class="info-con form-inline">
-                <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
-                <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
-              </div>
-            </div>
-          </div>
         <% end %>
 
       </div>
-
-
     </div>
 
 
-
     <div class="section">
-
       <div class="cell">
         <div class="info-group form-group">
-          <div class="info-title">
-            <%= label_tag(:client_comment, "备注：") %>
-          </div>
-          <div class="info-con">
-            <%= text_area_tag(:client_comment, '', class: 'form-control') %>
+          <div class="">
+            <%= text_area_tag(:client_comment, '', class: 'form-control', placeholder: '备注') %>
 
           </div>
         </div>

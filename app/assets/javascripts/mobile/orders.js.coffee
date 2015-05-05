@@ -84,10 +84,10 @@ $ ->
     $("#yes_invoice").on "click", (e) ->
       $('#invoice_info').collapse('show')
 
-    $('#no_preferential').on "click", (e) ->
-      $('#preferential_info').collapse('hide')
-    $("#yes_preferential").on "click", (e) ->
-      $('#preferential_info').collapse('show')
+    # $('#no_preferential').on "click", (e) ->
+    #   $('#preferential_info').collapse('hide')
+    # $("#yes_preferential").on "click", (e) ->
+    #   $('#preferential_info').collapse('show')
 
     $("#validate_preferential").on "click", (e) ->
       e.preventDefault()
@@ -149,7 +149,9 @@ $ ->
 
       $input = $('#serve_date').pickadate({
 
-        container: '#serve_date_picker',
+        container: '#date_picker',
+
+        editable: true,
 
         format: 'yyyy-mm-dd',
         min: min,
@@ -182,7 +184,10 @@ $ ->
     set_serve_date $('#serve_date').data('cc')
 
     $('#registration_date').pickadate({
-      container: '#registed_date_picker',
+      container: '#date_picker',
+
+      editable: true,
+
       max: true,
       today: 'Today',
       format: 'yyyy-mm-dd',

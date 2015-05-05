@@ -858,7 +858,6 @@ $title-gray: #787878;
       }
     }
     li.list-group-item{
-
       .address-item-detail{
         width: 90%;
         a{
@@ -928,6 +927,7 @@ $title-gray: #787878;
   #serve_period,
   #preferential_code,
   #validate_preferential,
+  #no_preferential,
   .info-title,
   .info-title{
     float: left;
@@ -960,7 +960,7 @@ $title-gray: #787878;
   #preferential_code{
     width: 65%;
   }
-  #validate_preferential{
+  #validate_preferential, #no_preferential{
     width: 30%;
     margin-left: 5%;
   }

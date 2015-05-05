@@ -41,11 +41,11 @@
           </td>
         </tr>
         <tr class="service-price">
-          <td colspan="4">服务费：<%= @result['service_price'] %></td>
+          <td colspan="3">服务费：<%= @result['service_price'] %></td>
         </tr>
         <% if @result['discount'] && !@result['discount']['error'] %>
           <tr>
-            <td colspan='3'>
+            <td colspan='2'>
               <%= @result['discount']['name'] %>
             </td>
             <td class='result'>
@@ -56,7 +56,6 @@
       </tbody>
       <tfoot></tfoot>
     </table>
-
 
   </div>
 

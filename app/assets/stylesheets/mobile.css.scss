@@ -510,3 +510,22 @@ header.navbar{
       }
     }
 }
+
+.form-group.has-error{
+  input.form-control:focus, select.form-control:focus{
+    @include box-shadow(0 0);
+  }
+}
+
+input.form-control, select.form-control, textarea.form-control{
+  @include border-radius(0 0);
+  border: 0 none;
+  border-top: 0 none;
+  @include box-shadow(0 0);
+  border-bottom: 1px solid #ccc;
+  &:focus{
+    border-color: 0 none;
+    border-bottom: 1px solid #878787;
+    @include box-shadow(0 0);
+  }
+}

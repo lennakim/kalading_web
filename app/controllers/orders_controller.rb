@@ -48,16 +48,21 @@ class OrdersController < ApplicationController
 
   def validate_preferential_code
     code = params[:code]
-    car_id = params["car_id"]
-    @parts = params["parts"].try :values
+    if code.present?
+      car_id = params["car_id"]
+      @parts = params["parts"].try :values
 
-    type = params["type"]
+      type = params["type"]
 
-    payload = {
-      parts: @parts,
-      discount: code
-    }
-    @result = Order.refresh_price car_id, current_city_id, payload, type
+      payload = {
+        parts: @parts,
+        discount: code
+      }
+
+      @result = Order.refresh_price car_id, current_city_id, payload, type
+    else
+      render js: "alert('优惠码不能为空')"
+    end
   end
 
   def no_preferential
@@ -278,6 +283,12 @@ class OrdersController < ApplicationController
       service_type = 2
     end
 
+    if !params[:reciept_title]
+      reciept_type = 0
+    else
+      reciept_type = 1
+    end
+
     payload = {
       parts: parts,
       service_type: service_type,
@@ -288,8 +299,10 @@ class OrdersController < ApplicationController
         "car_location"      => params[:car_location],
         "car_num"           => params[:car_num],
         "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
-        "reciept_type"      => params[:reciept_type],
+
+        "reciept_type"      => reciept_type,
         "reciept_title"     => params[:reciept_title],
+
         "client_comment"    => params[:client_comment],
         "city_id"           => city.system_id, #params[:city_id]
         "car_id"            => params[:car_id],
