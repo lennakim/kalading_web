@@ -377,7 +377,7 @@ $main-orange: #e94609;
 	}
 	.no_car_type{
 		height: 750px;
-		background-size: 100% 100%; 
+		background-size: 100% 100%;
 		.items{
 			margin-bottom: 20px;
 		}
@@ -445,37 +445,13 @@ $main-orange: #e94609;
 }
 
 
-.car-item {
-  margin-left: 50px;
+// 微调整
+.brand-list > li {
+	float: left;
 
-  .car-index {  //索引
-    float: left;
-    width: 40px;
-    height: 20px;
-    line-height: 20px;
-    color: red;
-    cursor: pointer;
-  }
-}
+	img {
+  	width: 40px;
+    height: 30px;
+	}
 
-.car-item :after {
-  display: table-cell;
-  clear: both;
-}
-
-.auto {
-  width: 1000px;
-  height: 60px;
-
-  .car-show {
-    width: 100px;
-    height: 50px;
-
-    float: left;
-
-    img {
-      width: 40px;
-      height: 30px;
-    }
-  }
 }

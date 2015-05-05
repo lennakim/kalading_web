@@ -96,10 +96,10 @@ $ ->
 generateCarIndex = (autos)->
   _.each autos, (auto)->
     $.jStorage.set("auto-#{auto['initial']}", auto['autos']) #将单条 数据存储
-    $("ul.crumbs").append("<li><a href='javascript:;'>#{auto['initial']}</a></li>")
+    $("ul.crumbs").append("<li class='cursor'><a href='javascript:;'>#{auto['initial']}</a></li>")
 
 generateCarBrand = (letter) ->
   brands = $.jStorage.get("auto-#{letter}")
   _.each brands, (brand)->
-    str = "<li><img src='#{brand['logo']}'/></li> <span>#{brand['name']}</span>"
+    str = "<li class='cursor'><img src='#{brand['logo']}'/> <span>#{brand['name']}</span></li>"
     $("ul.brand-list").append(str)
