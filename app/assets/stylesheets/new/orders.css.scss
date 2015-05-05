@@ -11,8 +11,13 @@ $main-orange: #e94609;
   100%{-webkit-transform:translateY(-2px);}
 }
 
+.cursor{
+	cursor: pointer;
+	cursor: hand;
+}
+
 #new-car-select{
-	.first,.second,.third{
+	.first,.second,.third,.no_car_type{
 		position: relative;
 		background-image: image-url('new-order/bac.png');
 		background-repeat: no-repeat; 
@@ -21,11 +26,16 @@ $main-orange: #e94609;
 			top: 100px;
 			left: 10%;
 			width: 80%;
+			.prev{
+				margin: 0 20px;
+				color: $main-orange;
+			}
 			.tit{
 				position: absolute;
-			    top: 25px;
+			    top: 34px;
 			    right: 25px;
 			    color: #fff;
+			    font-size: 16px;
 			}
 			.maintain-items{
 			    position: absolute;
@@ -56,7 +66,7 @@ $main-orange: #e94609;
 		    -webkit-animation:translate-next-animate 2s linear infinite;
 		}
 	}
-	.second,.third{
+	.second,.third,.no_car_type{
 		.title{
 	    	padding: 25px 0;
 	    	margin-top: 0;
@@ -80,7 +90,7 @@ $main-orange: #e94609;
 		    	span{
 		    		float: left;
 				    width: 30%;
-				    margin: 0 10px;
+				    margin: 0 1%;
 				    text-align: center;
 					background-image: image-url('new-order/bac-gray.png'); 
 					background-repeat: no-repeat;
@@ -208,8 +218,8 @@ $main-orange: #e94609;
 		    }
 	    	.series-list{
 	    		li{
-				    width: 13%;
-  					margin: 20px 15px 0 0;
+				    width: 19%;
+  					margin: 20px 1% 0 0;
   					&:nth-child(7n){
 				    	margin-right: 0;
 				    }
@@ -218,7 +228,7 @@ $main-orange: #e94609;
 	    	.model-list{
 	    		li{
 				    width: 24%;
-  					margin: 20px 13px 0 0;
+  					margin: 20px 1% 0 0;
   					&:nth-child(4n){
 				    	margin-right: 0;
 				    }
@@ -238,8 +248,6 @@ $main-orange: #e94609;
 					border: 1px solid #ccc;
 					border-radius: 2px;
 					text-align: center;
-					cursor: pointer;
-					cursor: hand;
 				}
 		    }
 		    .left{
@@ -354,6 +362,73 @@ $main-orange: #e94609;
 			      color: #ef4f24;
 			    }
 		    }
+		}
+	}
+	.no_car_type{
+		height: 750px;
+		background-size: 100% 100%; 
+		.items{
+			margin-bottom: 20px;
+		}
+		.left,.center,.right{
+			float: left;
+			width: 33%;
+			min-width: 330px;
+			.info-group{
+				height: 60px;
+				padding: 5px 0;
+				line-height: 34px;
+				.star{
+					color: $main-orange;
+				}
+			}
+			.info-title,.info-con{
+				float: left;
+			}
+			.info-title{
+				width: 30%;
+  				text-align: right;
+			}
+			.info-con{
+				width: 60%;
+				margin-left: 5px;
+				input{
+					width: 100%;
+					border: 1px solid #ccc;
+				    border-radius: 2px;
+				    padding: 0 5px;
+				}
+				.verification_code{
+					width: 97px;
+				}
+				#car_num{
+					width: 147px;
+				}
+				#serve_date{
+					width: 152px;
+				}
+				#get_code{
+					border: 0;
+					background: #eebf8f;
+					color: #fff;
+				}
+			}
+			.submit{
+				width: 170px;
+			    line-height: 35px;
+			    border-radius: 5px;
+			    border: 1px solid #ccc;
+			    margin-left: 50%;
+			    text-align: center;
+			    &:hover{
+			    	border: 1px solid $main-orange;
+			    	color: $main-orange;
+			    }
+			}
+			.active{
+				background: $main-orange;
+				color: #fff;
+			}
 		}
 	}
 }

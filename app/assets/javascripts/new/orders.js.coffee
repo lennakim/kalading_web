@@ -29,10 +29,11 @@ $ ->
 
   #------删除已选品牌 跳转回选品牌------
   $('.selected-name .remove').click ->
-  	$('.items').addClass('hide').eq(0).removeClass('hide')
+  	$('.first .items').addClass('hide').eq(0).removeClass('hide')
   	$('.select-series,.select-model').removeClass('active')
 
-  #------删除已选车系 跳转回选车系------
+
+  #------删除已选车系 或 点击上一步 跳转回选车系------
   $('.selected-series-name .remove').click ->
   	$('.first .items').addClass('hide').eq(1).removeClass('hide')
   	$('.select-model').removeClass('active')
@@ -48,7 +49,18 @@ $ ->
     $('.second').addClass('hide')
     $('.third').removeClass('hide')
 
+  #-----未找到车型------
+  $('.undefined-car').click ->
+  	$('.first,.second,.third').addClass('hide')
+  	$('.no_car_type').removeClass('hide')
 
+
+  #-----返回上一步------
+  $('.second .prev').click ->
+  	$('.first').removeClass('hide').next().addClass('hide')
+
+  $('.third .prev').click ->
+  	$('.second').removeClass('hide').next().addClass('hide')
 
 
 

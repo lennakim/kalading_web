@@ -22,11 +22,11 @@
 						</ul>
 					</div>
 					<ul class="brand-list clearfix">
-						<li>
+						<li class="cursor">
 							<img src="">
 							<span>奥迪</span>
 						</li>
-						<li>
+						<li class="cursor">
 							<img src="">
 							<span>宝马</span>
 						</li>
@@ -37,17 +37,17 @@
 						<h4>已选车型：</h4>
 						<div class="selected-name">
 							<span class="name"></span>
-							<p class="remove"></p>	
+							<p class="remove cursor"></p>	
 						</div>
 					</div>
 					<ul class="series-list clearfix">
-						<li>A1</li>
-						<li>A2</li>
-						<li>A3</li>
-						<li>A4</li>
-						<li>A2</li>
-						<li>A3</li>
-						<li>A4</li>
+						<li class="cursor">A1</li>
+						<li class="cursor">A2</li>
+						<li class="cursor">A3</li>
+						<li class="cursor">A4</li>
+						<li class="cursor">A2</li>
+						<li class="cursor">A3</li>
+						<li class="cursor">A4</li>
 					</ul>
 				</div>
 				<div class="items hide">
@@ -55,7 +55,7 @@
 						<h4>已选车型：</h4>
 						<div class="selected-name">
 							<span class="name"></span>
-							<p class="remove"></p>	
+							<p class="remove cursor"></p>	
 						</div>
 						<div class="selected-series-name">
 							<span class="series"></span>
@@ -63,22 +63,23 @@
 						</div>
 					</div>
 					<ul class="model-list clearfix">
-						<li>1.2 TFSI   2010.08-2014</li>
-						<li>1.2 TFSI   2010.08-2014</li>
-						<li>1.2 TFSI   2010.08-2014</li>
-						<li>1.2 TFSI   2010.08-2014</li>
+						<li class="cursor">1.2 TFSI   2010.08-2014</li>
+						<li class="cursor">1.2 TFSI   2010.08-2014</li>
+						<li class="cursor">1.2 TFSI   2010.08-2014</li>
+						<li class="cursor">1.2 TFSI   2010.08-2014</li>
 					</ul>
 				</div>
 
-				<a class="undefined-car">未找到车型？</a>
+				<a class="undefined-car cursor">未找到车型？</a>
 			</div>
 		</div>
-		<div class="next translate-next"></div>
+		<div class="next translate-next cursor"></div>
 	</div>
 
 	<div class="second hide">
 		<div class="main">
 			<%= image_tag("new-order/second.png", :class => 'tag2')%>
+			<span class="prev cursor">上一步</span>
 			<h4 class="tit">服务内容</h4>
 			<div class="maintain-items">
 				<h4 class="title clearfix">
@@ -87,19 +88,19 @@
 				</h4>
 				<div class="items clearfix">
 					<ul class="left">
-						<li>暂未选择</li>
-						<li>暂未选择</li>
-						<li>暂未选择</li>
-						<li>暂未选择</li>
+						<li class="cursor">暂未选择</li>
+						<li class="cursor">暂未选择</li>
+						<li class="cursor">暂未选择</li>
+						<li class="cursor">暂未选择</li>
 					</ul>
 					<ul class="right">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li class="cursor"></li>
+						<li class="cursor"></li>
+						<li class="cursor"></li>
+						<li class="cursor"></li>
+						<li class="cursor"></li>
+						<li class="cursor"></li>
+						<li class="cursor"></li>
 					</ul>
 				</div>
 			</div>
@@ -110,6 +111,7 @@
 	<div class="third hide">
 		<div class="main">
 			<%= image_tag("new-order/third.png", :class => 'tag2')%>
+			<span class="prev cursor">上一步</span>
 			<h4 class="tit">服务内容</h4>
 			<div class="maintain-items">
 				<h4 class="title clearfix">
@@ -120,7 +122,136 @@
 					<%= render "new_order_form" %>
 					<h4 class='title'>订单信息</h4>
 					<%= render "new_offer_table" %>
-				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="no_car_type hide">
+		<div class="main">
+			<%= image_tag("new-order/first.png", :class => 'tag2')%>
+			<h4 class="tit">服务内容</h4>
+			<div class="maintain-items">
+				<h4 class="title clearfix">
+					<span class="name">请填写以下信息</span>	
+				</h4>
+				<div class="items clearfix">
+					
+				    <div class="left">
+				    	<div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:name, "车辆品牌：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "车辆品牌") %>
+					      </div>
+					    </div>
+
+						<div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:name, "车辆年款：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "车辆年款") %>
+					      </div>
+					    </div>
+
+					    <div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:name, "车辆排量：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "车辆排量") %>
+					      </div>
+					    </div>
+
+					    <div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:name, "VIN号：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "VIN号") %>
+					      </div>
+					    </div>
+				    </div>
+
+					<div class="center">
+						<div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag("车牌号：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <select name="car_location" class="form-control car_location">
+					          <% car_location.each do |location| %>
+					            <option value="<%= location %>" <%= "selected" if location == @auto.try(:license_location) %>><%= location %></option>
+					          <% end %>
+					        </select>
+					        <%= text_field_tag(:car_num, @auto.try(:license_number), minlength: 6, maxlength: 6, required: true, placeholder: '车牌后六位', class: 'form-control') %>
+					      </div>
+					    </div>
+
+					    <div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:name, "手机号：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "手机号") %>
+					      </div>
+					    </div>
+					    
+					    <div class="info-group clearfix">
+					        <div class="info-title clearfix">
+					          <var class="star">*</var>
+					          <%= label_tag(:verification_code, "验证手机：") %>
+					        </div>
+					        <div class="info-con form-inline">
+					          <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
+
+					          <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
+
+					        </div>
+					    </div>
+
+					    <div class="info-group clearfix">
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:name, "姓名：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "姓名") %>
+					      </div>
+					    </div>
+					</div>
+
+				    <div class="right">
+				    	<div class="info-group clearfix">
+					      <div id="serve_date_picker"></div>
+					      <div class="info-title clearfix">
+					        <var class="star">*</var>
+					        <%= label_tag(:serve_date, "服务时间：") %>
+					      </div>
+					      <div class="info-con form-inline">
+					        <%= text_field_tag(:serve_date, '', required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
+					        <select id="serve_period" name="serve_period" class='form-control'>
+					          <!-- <option value="8:00">8:00 &#45; 12:00</option> -->
+					          <!-- <option value="12:00">12:00 &#45; 17:00</option> -->
+					          <!-- <option value="17:00">17:00 &#45; 20:00</option> -->
+					        </select>
+					      </div>
+					    </div>
+					    <div class="info-group clearfix">
+					    	<div class="info-con form-inline">
+					    		<div class="submit cursor">提交信息</div>
+					    	</div>
+					    </div>
+				    </div>
+						
+				</div>
 			</div>
 		</div>
 	</div>
