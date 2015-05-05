@@ -38,7 +38,7 @@ $ ->
   	$('.first .items').addClass('hide').eq(1).removeClass('hide')
   	$('.select-model').removeClass('active')
 
-  
+
   #------跳转到选服务------
   $('.first .model-list').on 'click','li', ->
     $('.first').addClass('hide')
@@ -78,3 +78,28 @@ $ ->
     $('.service-items li').eq(index).text(text).addClass('selected')
 
 
+# order
+  $(".crumbs").on "click", "li", ->
+    $(".brand-list").html("")
+    letter = $(@).find("a").html()
+    generateCarBrand(letter)
+
+  unless $.jStorage.get("autos")?
+    $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
+      console.log("load autos data")
+      $.jStorage.set("autos", data['data'], {TTL: 1000*60*60*24*10}) #本地存储
+      generateCarIndex($.jStorage.get("autos"))
+  else
+    generateCarIndex($.jStorage.get("autos"))
+
+
+generateCarIndex = (autos)->
+  _.each autos, (auto)->
+    $.jStorage.set("auto-#{auto['initial']}", auto['autos']) #将单条 数据存储
+    $("ul.crumbs").append("<li><a href='javascript:;'>#{auto['initial']}</a></li>")
+
+generateCarBrand = (letter) ->
+  brands = $.jStorage.get("auto-#{letter}")
+  _.each brands, (brand)->
+    str = "<li><img src='#{brand['logo']}'/></li> <span>#{brand['name']}</span>"
+    $("ul.brand-list").append(str)

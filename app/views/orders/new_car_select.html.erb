@@ -14,21 +14,18 @@
 						<h4>品牌首字母选择</h4>
 						<span class="hot">热门</span>
 						<ul class="crumbs clearfix">
-						    <% letter = ('A'..'Z').to_a %>
-						    <% letter.each do |num| %>
-						      <li><a href="#<%= num %>"><%= num %></a></li>
-						    <% end %>
+							<!-- <li><a href="#">A</a></li> -->
 						</ul>
 					</div>
 					<ul class="brand-list clearfix">
-						<li class="cursor">
+						<!-- <li class="cursor">
 							<img src="">
 							<span>奥迪</span>
 						</li>
 						<li class="cursor">
 							<img src="">
 							<span>宝马</span>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<div class="items hide">
@@ -138,10 +135,10 @@
 			<h4 class="tit">服务内容</h4>
 			<div class="maintain-items">
 				<h4 class="title clearfix">
-					<span class="name">请填写以下信息</span>	
+					<span class="name">请填写以下信息</span>
 				</h4>
 				<div class="items clearfix">
-					
+
 				    <div class="left">
 				    	<div class="info-group clearfix">
 					      <div class="info-title clearfix">
@@ -209,7 +206,7 @@
 					        <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "手机号") %>
 					      </div>
 					    </div>
-					    
+
 					    <div class="info-group clearfix">
 					        <div class="info-title clearfix">
 					          <var class="star">*</var>
@@ -256,7 +253,7 @@
 					    	</div>
 					    </div>
 				    </div>
-						
+
 				</div>
 			</div>
 		</div>
@@ -275,6 +272,6 @@
   <% if last_select_car %>
     <%= render "quick_select_car" %>
   <% else %>
-    <%= render "select_car" %>
+    <%#= render "select_car" %>
   <% end %>
 </div>

@@ -17,10 +17,11 @@
 
 #= require underscore
 #= require mustache
+#= require jstorage
 
 #= require new/home
 #= require new/orders
 
 
-window.Domain = gon.global.server_uri
+window.API_Domain = gon.global.server_uri
 window.V2 = gon.global.v2

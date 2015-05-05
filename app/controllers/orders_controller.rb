@@ -37,10 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def new_car_select
-    autos = Order.autos
-    gon.autos = autos
-
-    render layout: "new"  #render layout在前 gon不起作用
+    render layout: "new"
   end
 
   def new_service_select
