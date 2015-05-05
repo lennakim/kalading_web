@@ -16,6 +16,7 @@
 #= require nprogress-turbolinks
 
 #= require underscore
+#= require mustache
 
 #= require new/home
 #= require new/orders
