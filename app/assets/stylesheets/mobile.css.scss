@@ -518,6 +518,9 @@ header.navbar{
 }
 
 input.form-control, select.form-control, textarea.form-control{
+  &.date-select{
+    background: #fff;
+  }
   @include border-radius(0 0);
   border: 0 none;
   border-top: 0 none;
