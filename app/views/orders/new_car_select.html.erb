@@ -1,8 +1,82 @@
 <%= Gon::Base.render_data({}) %>
 <div id="new-car-select">
-	<div class="first"></div>
+	<div class="first">
+		<div class="main">
+			<%= image_tag("new-order/first.png", :class => 'tag2')%>
+			<h4 class="tit">服务内容</h4>
+			<div class="maintain-items">
+				<h4 class="title clearfix">
+					<span class="active select-brand">选择品牌</span>
+					<span class="select-series">选择车系</span>
+					<span class="select-model">选择排量与年份</span>	
+				</h4>
+				<div class="items">
+					<div class="initial clearfix">
+						<h4>品牌首字母选择</h4>
+						<span class="hot">热门</span>
+						<ul class="crumbs clearfix">
+						    <% letter = ('A'..'Z').to_a %>
+						    <% letter.each do |num| %>
+						      <li><a href="#<%= num %>"><%= num %></a></li>
+						    <% end %>
+						</ul>
+					</div>
+					<ul class="brand-list clearfix">
+						<li>
+							<img src="">
+							<span>奥迪</span>
+						</li>
+						<li>
+							<img src="">
+							<span>宝马</span>
+						</li>
+					</ul>
+				</div>
+				<div class="items hide">
+					<div class="selected-brand clearfix">
+						<h4>已选车型：</h4>
+						<div class="selected-name">
+							<span class="name"></span>
+							<p class="remove"></p>	
+						</div>
+					</div>
+					<ul class="series-list clearfix">
+						<li>A1</li>
+						<li>A2</li>
+						<li>A3</li>
+						<li>A4</li>
+						<li>A2</li>
+						<li>A3</li>
+						<li>A4</li>
+					</ul>
+				</div>
+				<div class="items hide">
+					<div class="selected-series clearfix">
+						<h4>已选车型：</h4>
+						<div class="selected-name">
+							<span class="name"></span>
+							<p class="remove"></p>	
+						</div>
+						<div class="selected-series-name">
+							<span class="series"></span>
+							<p class="remove"></p>	
+						</div>
+					</div>
+					<ul class="model-list clearfix">
+						<li>1.2 TFSI   2010.08-2014</li>
+						<li>1.2 TFSI   2010.08-2014</li>
+						<li>1.2 TFSI   2010.08-2014</li>
+						<li>1.2 TFSI   2010.08-2014</li>
+					</ul>
+				</div>
 
-	<div class="second">
+				<a class="undefined-car">未找到车型？</a>
+			</div>
+		</div>
+		<div class="next translate-next"></div>
+	</div>
+
+	<div class="second hide">
 		<div class="main">
 			<%= image_tag("new-order/second.png", :class => 'tag2')%>
 			<h4 class="tit">服务内容</h4>
@@ -30,10 +104,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="btn next translate-next"></div>
+		<div class="next translate-next"></div>
 	</div>
 
-	<div class="third">
+	<div class="third hide">
 		<div class="main">
 			<%= image_tag("new-order/third.png", :class => 'tag2')%>
 			<h4 class="tit">服务内容</h4>

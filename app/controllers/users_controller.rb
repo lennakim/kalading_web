@@ -7,11 +7,16 @@ class UsersController < ApplicationController
   end
 
   def orders
-    @orders = Order.get_orders_of current_user.phone_number
+    @orders = Order.get_orders_of(current_user.phone_number)['data']
+  end
+
+  def order_detail
   end
 
   def maintain_histories_list
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
+    # @maintain_orders = Order.maintain_histories_of 15901003277
+    # TODO
   end
 
   def maintain_history

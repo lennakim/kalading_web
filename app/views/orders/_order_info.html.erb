@@ -1,0 +1,115 @@
+<% order_state, order_state_str = @order['state'].split('-') %>
+<% pay_type, pay_type_str = @order['pay_type'].split('-') %>
+
+<div class="inner order" id="order_detail">
+  <div class="section order-state">
+    <div class='cell'>
+      <div class="line">
+        订单号: <%= @order['seq'] %>
+      </div>
+      <div class="line">
+        订单状态: <%= state_name order_state_str %>
+      </div>
+    </div>
+  </div>
+
+  <div class="section order-detail">
+    <div class="cell">
+      <div class="line clearfix">
+        <div class="pull-left">
+          <%= @order['name'] %>
+        </div>
+
+        <div class="pull-right">
+          <%= @order['phone_num'] %>
+        </div>
+      </div>
+      <div class="line">
+        <%= @order['address'] %>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="line">
+        <%= @order['brand_full_name'] %>
+      </div>
+
+      <div class="line">
+        车牌号: <%= @order['license_plate'] %>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="line">
+        服务时间: <%= @order['serve_datetime'] %>
+      </div>
+    </div>
+
+    <!-- <div class="cell"> -->
+    <!--   <div class="line"> -->
+    <!--     下次保养时间: 2015&#45;01&#45;14 -->
+    <!--   </div> -->
+    <!-- </div> -->
+  </div>
+
+  <div class="section part-list">
+    <div class="cell table-cell">
+      <table class='table'>
+
+        <% @order['parts'].each do |part| %>
+          <tr>
+            <td><%= "#{ part['brand'] } #{ part['type'] }" %></td>
+            <td class='right'>￥<%= part['price'] %></td>
+          </tr>
+        <% end %>
+
+        <% @order['service_types'].each do |service| %>
+          <tr>
+            <td><%= service['name'] %>服务费</td>
+            <td class='right'>￥<%= service['price'] %></td>
+          </tr>
+        <% end %>
+
+        <tr class='sum'>
+          <td>实付款(含服务费)</td>
+          <td class='right'>￥<%= @order['total_price'] %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="cell">
+      支付方式: <%= pay_type_str %>
+    </div>
+  </div>
+
+  <% if engineer = @order['engineer'] %>
+    <div class="section">
+      <div class="cell">
+        <div class="line">
+          服务技师: <%= engineer['name'] %>
+        </div>
+        <div class="line">
+          联系方式: <%= engineer['phone_num'] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="section controls">
+    <div class="cell comment">
+      <% if can_cancel?(@order) %>
+        <div class="del">
+          <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
+        </div>
+      <% end %>
+
+      <% if can_comment?(@order) %>
+        <div class="cmt">
+          <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -171,8 +171,10 @@ $ ->
 
     set_serve_date = (date) ->
 
-      min = _.first(_.keys(date))
-      max = _.last(_.keys(date))
+      activity_id = $("#activity_id").val()
+
+      min = new Date(_.first(_.keys(date)))
+      max = new Date(_.last(_.keys(date)))
 
       disabled = _.select _.pairs(date), (e) ->
         sum = _.reduce e[1], (memo, num) ->
@@ -190,30 +192,33 @@ $ ->
         "17:00": "17:00 - 20:00"
       }
 
+
+      if activity_id == '140'
+        max = new Date(2015, 5, 30)
+
       $input = $('#serve_date').pickadate({
 
         container: '#serve_date_picker',
 
         format: 'yyyy-mm-dd',
-        min: new Date(min),
-        max: new Date(max),
+        min: min,
+        max: max,
         onSet: () ->
 
-          $("#serve_period").empty()
-          date_string = $("#serve_date").val()
+          if activity_id != '140'
+            $("#serve_period").empty()
+            date_string = $("#serve_date").val()
 
-          _.each date[date_string], (e, i) ->
-            console.log e
+            _.each date[date_string], (e, i) ->
+              key = Object.keys(time_slot)[i]
+              value = time_slot[key]
 
-            key = Object.keys(time_slot)[i]
-            value = time_slot[key]
+              if e != 0
+                option = """
+                  <option value="#{key}">#{value}</option>
+                """
 
-            if e != 0
-              option = """
-                <option value="#{key}">#{value}</option>
-              """
-
-              $("#serve_period").append($(option))
+                $("#serve_period").append($(option))
 
       })
 

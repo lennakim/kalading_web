@@ -1,8 +1,8 @@
-<div class="my-orders-phone phone-page user-info">
-  <%= render "shared/header", title: "我的订单" %>
+<div class="my-orders-phone phone-page user-info orders">
 
+  <%= render "shared/header", title: "订单详情" %>
   <div class="orders-list">
-    <%= render "users/orders_list" %>
+    <%= render "order_info" %>
   </div>
 </div>
 
@@ -13,3 +13,4 @@
 <div class="modal fade" id="cancel_modal">
   <%= render "users/cancel_modal" %>
 </div>
+
