@@ -20,7 +20,6 @@ class Kalading.Views.Items extends Backbone.View
     @$no_parts = @$("#no_parts")
     @$buy_parts = @$("#buy_parts")
 
-
     @order.set 'price', @$price.data('price')
     @order.set 'car_id', $(".orders").data('car')
     @order.set 'service_price', @$service_price.data('price')
@@ -66,12 +65,14 @@ class Kalading.Views.Items extends Backbone.View
 
 
   resetSelectItems: =>
-    parts = _.map @$(".item-part:not(.disabled) .selected-part"), (el, index) ->
+    parts = _.map @$(".item-part:not(.disabled) .selected-part.selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
 
     @order.set 'parts', parts
 
+    data_json = JSON.stringify(@order.get('parts'))
+    $.cookie('parts', data_json)
 
   chooseParts: (e)=>
 

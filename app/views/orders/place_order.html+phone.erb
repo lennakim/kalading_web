@@ -4,12 +4,12 @@
   <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
 <% end %>
 
-<div class="place-order-phone phone-page" data-city="<%= current_user_city %>" data-car='<%= params["order"]["car_id"] %>'>
+<div class="place-order-phone phone-page" data-city="<%= current_user_city %>" data-car='<%= params["car_id"] %>'>
 
   <%= form_tag 'submit', id: "place_order_form", remote: true do %>
 
     <%# <%= hidden_field_tag(:city_id, current_city_id) %>
-    <%= hidden_field_tag(:car_id, params["order"]["car_id"]) %>
+    <%= hidden_field_tag(:car_id, params["car_id"]) %>
 
     <fieldset>
 

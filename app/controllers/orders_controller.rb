@@ -181,6 +181,29 @@ class OrdersController < ApplicationController
     @result = Order.items_for params[:car_id], current_city_id, type
   end
 
+  def place_order_page
+    car_id = params[:car_id]
+    @parts = JSON.parse cookies["parts"]
+    @city_capacity = Order.city_capacity current_city_id
+
+    # @auto = Auto.find_by id: params[:auto_id]
+
+    activity = Activity.find_by id: params[:act]
+
+    type = params["type"]
+    payload = {
+      parts: @parts
+    }
+    if activity && activity.valid_activity?
+      payload[:discount] = activity.preferential_code
+    end
+
+    @cities = Order.cities
+    @result = Order.refresh_price car_id, current_city_id, payload, type
+
+    render "place_order"
+  end
+
   def place_order
     car_id = params["order"]["car_id"]
     @parts = params["order"]["parts"]
