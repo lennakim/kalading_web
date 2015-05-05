@@ -20,7 +20,7 @@ $main-orange: #e94609;
 	.first,.second,.third,.no_car_type{
 		position: relative;
 		background-image: image-url('new-order/bac.png');
-		background-repeat: no-repeat; 
+		background-repeat: no-repeat;
 		.main{
 			position: absolute;
 			top: 100px;
@@ -50,7 +50,7 @@ $main-orange: #e94609;
 	}
 	.first,.second{
 		height: 750px;
-		background-size: 100% 100%; 
+		background-size: 100% 100%;
 		.maintain-items{
 		    height: 380px;
 		}
@@ -92,12 +92,12 @@ $main-orange: #e94609;
 				    width: 30%;
 				    margin: 0 1%;
 				    text-align: center;
-					background-image: image-url('new-order/bac-gray.png'); 
+					background-image: image-url('new-order/bac-gray.png');
 					background-repeat: no-repeat;
 					font-size: 16px;
 		    	}
 		    	.active{
-		    		background-image: image-url('new-order/bac-orange.png'); 
+		    		background-image: image-url('new-order/bac-orange.png');
 		    		color: #fff;
 		    	}
 		    }
@@ -115,7 +115,7 @@ $main-orange: #e94609;
 					height: 33px;
 					line-height: 25px;
 					margin: 6px 12px 0;
-		    		background-image: image-url('new-order/bac-org2.png'); 
+		    		background-image: image-url('new-order/bac-org2.png');
 		    		background-repeat: no-repeat;
 					text-align: center;
 					color: #fff;
@@ -211,7 +211,7 @@ $main-orange: #e94609;
   						right: -4px;
 		    			width: 16px;
 		    			height: 16px;
-		    			background-image: image-url('new-order/remove.png'); 
+		    			background-image: image-url('new-order/remove.png');
 		    			background-repeat: no-repeat;
 		    		}
 		    	}
@@ -240,7 +240,7 @@ $main-orange: #e94609;
 			background-image: image-url('new-order/nextbtn.png');
 		}
 	}
-	.second{ 
+	.second{
 		.maintain-items{
 		    .left,.right{
 				float: left;
@@ -434,13 +434,6 @@ $main-orange: #e94609;
 }
 
 
-
-
-
-
-
-
-
 .car-item {
   margin-left: 50px;
 
@@ -451,5 +444,27 @@ $main-orange: #e94609;
     line-height: 20px;
     color: red;
     cursor: pointer;
+  }
+}
+
+.car-item :after {
+  display: table-cell;
+  clear: both;
+}
+
+.auto {
+  width: 1000px;
+  height: 60px;
+
+  .car-show {
+    width: 100px;
+    height: 50px;
+
+    float: left;
+
+    img {
+      width: 40px;
+      height: 30px;
+    }
   }
 }

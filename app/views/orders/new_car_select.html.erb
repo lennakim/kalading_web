@@ -1,4 +1,3 @@
-<%= Gon::Base.render_data({}) %>
 <div id="new-car-select">
 	<div class="first">
 		<div class="main">
@@ -8,7 +7,7 @@
 				<h4 class="title clearfix">
 					<span class="active select-brand">选择品牌</span>
 					<span class="select-series">选择车系</span>
-					<span class="select-model">选择排量与年份</span>	
+					<span class="select-model">选择排量与年份</span>
 				</h4>
 				<div class="items">
 					<div class="initial clearfix">
@@ -37,7 +36,7 @@
 						<h4>已选车型：</h4>
 						<div class="selected-name">
 							<span class="name"></span>
-							<p class="remove cursor"></p>	
+							<p class="remove cursor"></p>
 						</div>
 					</div>
 					<ul class="series-list clearfix">
@@ -55,11 +54,11 @@
 						<h4>已选车型：</h4>
 						<div class="selected-name">
 							<span class="name"></span>
-							<p class="remove cursor"></p>	
+							<p class="remove cursor"></p>
 						</div>
 						<div class="selected-series-name">
 							<span class="series"></span>
-							<p class="remove"></p>	
+							<p class="remove"></p>
 						</div>
 					</div>
 					<ul class="model-list clearfix">
@@ -272,20 +271,3 @@
     <%= render "select_car" %>
   <% end %>
 </div>
-
-<script type="text/javascript">
-(function() {
-  var autos = gon.autos['data'];
-
-  _.each(autos, function(auto) {
-    $(".car-item").append("<span class='car-index'>" + auto['initial'] + "</span> ");
-    });
-
-  $(".car-index").click(function(){
-    alert("希特勒")
-  });
-
-
-})();
-
-</script>

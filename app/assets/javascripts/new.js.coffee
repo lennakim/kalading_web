@@ -16,6 +16,11 @@
 #= require nprogress-turbolinks
 
 #= require underscore
+#= require mustache
 
 #= require new/home
 #= require new/orders
+
+
+window.Domain = gon.global.server_uri
+window.V2 = gon.global.v2
