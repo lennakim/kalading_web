@@ -67,20 +67,3 @@
     <%= render "select_car" %>
   <% end %>
 </div>
-
-<script type="text/javascript">
-(function() {
-  var autos = gon.autos['data'];
-
-  _.each(autos, function(auto) {
-    $(".car-item").append("<span class='car-index'>" + auto['initial'] + "</span> ");
-    });
-
-  $(".car-index").click(function(){
-    alert("希特勒")
-  });
-
-
-})();
-
-</script>

@@ -1,2 +1,40 @@
-<div class="car-item">
-</div>
+<script id="car-area" type="x-tmpl-mustache">
+  {{#data}}
+    <div class="car-item" >
+      <span class="car-index">{{ initial }}</span>
+
+      <div class="auto" initial="{{initial}}">
+        {{#autos}}
+        <div class="car-show">
+          <img src="{{logo}}" alt=""/>
+          <span class="auto-name">{{ name }}</span>
+        </div>
+        {{/autos}}
+      </div>
+   </div>
+
+  {{/data}}
+</script>
+
+<div class="car-area"></div>
+
+<script type="text/javascript">
+(function() {
+
+  var autos = gon.autos;
+  var template = $('#car-area').html();
+
+  Mustache.parse(template);
+  var rendered = Mustache.render(template, autos);
+  $('.car-area').html(rendered);
+
+
+  $(".car-index").click(function(){
+    var selector = "[initial='"+  $(this).html() +"']";
+    $(selector).css("display", "black");
+
+  });
+
+})();
+
+</script>

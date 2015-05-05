@@ -15,7 +15,7 @@ $main-orange: #e94609;
 	.second,.third{
 		position: relative;
 		background-image: image-url('new-order/bac.png');
-		background-repeat: no-repeat; 
+		background-repeat: no-repeat;
 		.tit{
 			position: absolute;
 		    top: 25px;
@@ -52,7 +52,7 @@ $main-orange: #e94609;
 	}
 	.second{
 		height: 794px;
-		background-size: 100% 100%; 
+		background-size: 100% 100%;
 		.maintain-items{
 		    height: 380px;
 		    .left,.right{
@@ -209,3 +209,26 @@ $main-orange: #e94609;
     cursor: pointer;
   }
 }
+
+.car-item :after {
+  display: table-cell;
+  clear: both;
+}
+
+.auto {
+	width: 1000px;
+	height: 60px;
+
+	.car-show {
+		width: 100px;
+		height: 50px;
+
+		float: left;
+
+		img {
+			width: 40px;
+			height: 30px;
+	  }
+	}
+}
+
