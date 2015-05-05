@@ -114,7 +114,7 @@ $main-orange: #e94609;
 		    		width: 42px;
 					height: 33px;
 					line-height: 25px;
-					margin: 6px 12px 0;
+					margin: 6px 4px 0;
 		    		background-image: image-url('new-order/bac-org2.png');
 		    		background-repeat: no-repeat;
 					text-align: center;
@@ -258,6 +258,13 @@ $main-orange: #e94609;
 		    		line-height: 40px;
 		    		margin: 20px 0;
 		    	}
+		    	.active{
+		    		color: $main-orange;
+		    		border: 1px solid $main-orange;
+		    	}
+		    	.selected{
+		    		color: $main-orange;
+		    	}
 		    }
 		    .right{
 		    	width: 65%;
@@ -269,8 +276,12 @@ $main-orange: #e94609;
 		    		float: left;
 					width: 42%;
 					height: 35px;
-					line-height: 25px;
+					line-height: 35px;
 					margin: 5px 4%;
+		    	}
+		    	.active{
+		    		color: $main-orange;
+		    		border: 1px solid $main-orange;
 		    	}
 		    }
 		}

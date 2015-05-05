@@ -51,16 +51,30 @@ $ ->
 
   #-----未找到车型------
   $('.undefined-car').click ->
-  	$('.first,.second,.third').addClass('hide')
-  	$('.no_car_type').removeClass('hide')
+    $('.first,.second,.third').addClass('hide')
+    $('.no_car_type').removeClass('hide')
 
 
   #-----返回上一步------
   $('.second .prev').click ->
-  	$('.first').removeClass('hide').next().addClass('hide')
+    $('.first').removeClass('hide').next().addClass('hide')
 
   $('.third .prev').click ->
-  	$('.second').removeClass('hide').next().addClass('hide')
+    $('.second').removeClass('hide').next().addClass('hide')
 
+
+  #-----------选服务----------------------
+
+  #-----服务选项切换------
+  $('.service-items').on 'click','li', ->
+    index = $(@).index()
+    $(@).addClass('active').siblings().removeClass('active')
+    $('.items-list').addClass('hide').eq(index).removeClass('hide')
+
+  #-----选择服务项目中的产品-------
+  $('.items-list').on 'click','li', ->
+    text = $(@).text()
+    index = $(@).addClass('active').siblings().removeClass('active').parents('.items-list').index()-1
+    $('.service-items li').eq(index).text(text).addClass('selected')
 
 
