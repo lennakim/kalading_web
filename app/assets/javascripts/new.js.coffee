@@ -16,7 +16,6 @@
 #= require nprogress-turbolinks
 
 #= require underscore
-#= require mustache
 #= require jstorage
 
 #= require new/home
