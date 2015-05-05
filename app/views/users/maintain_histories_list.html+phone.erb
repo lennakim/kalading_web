@@ -1,15 +1,29 @@
-<% if !@maintain_orders.empty? %>
-	<div class="maintain-histories-list-phone phone-page">
-	  <h3 class="my-maintain-title item-title">我的保养记录</h3>
-	  <div class="my-maintain-con">
-	    <% @maintain_orders.each do |order| %>
-		  <dl>
-		    <dt><%= order['serve_datetime'] %></dt>
-		    <dd><a href="/users/maintain_history?id=<%= order['id'] %>"><%= order['car_num'] %></a></dd>
-		  </dl>
-	    <% end %>
-	  </div>
-	</div>
-<% else %>
-  <div class="blank">您还没有保养记录~</div>
-<% end %>
+  <div class="user-info maintain-histories-list-phone phone-page">
+
+    <%= render "shared/header", title: "我的保养记录" %>
+
+    <div class="maintains-list">
+
+      <% if !@maintain_orders.empty? %>
+
+        <div class="section">
+          <% @maintain_orders.each do |mtain| %>
+            <div class="cell">
+              <%= link_to maintain_history_users_path(id: mtain['id']) do %>
+                <div class="line">
+                  <%= mtain['car_name']  %>
+                </div>
+                <div class="line">
+                  <%= "#{ mtain['car_num'] } #{ mtain['serve_datetime'] }" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+      <% else %>
+        <div class="blank">您还没有保养记录~</div>
+      <% end %>
+    </div>
+
+  </div>

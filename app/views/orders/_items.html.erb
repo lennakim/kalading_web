@@ -61,7 +61,7 @@
               <% part_items.each_with_index do |item, index| %>
                 <% unless item["quantity"] == 0 %>
                   <!-- 专门给易道活动的-->
-                  <% if activity && ['yi-dao-yi-wan-smt-1', 'yi-dao-yi-wan-smt-2', 'yi-dao-yi-wan-smt-3', 'gan-ji-smt-1', 'gan-ji-smt-2', 'gan-ji-smt-3'].include?(activity.name) %>
+                  <% if activity && custom_activity.include?(activity.name) %>
                     <% if part_name == "机油" %>
                       <!-- 机油 -->
                       <% item = yidao_filter(part_items, activity).first %>
@@ -139,9 +139,14 @@
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
       <% if to_next_step %>
-        <button type="submit" class="btn btn-default order_button">下一步</button>
+        <% if activity && (activity.id == 140) && (Time.now.hour < 10) %>
+          <button type="submit" class="btn btn-default order_button haiwan-disabled">下一步</button>
+        <% else %>
+          <button type="submit" class="btn btn-default order_button">下一步</button>
+        <% end %>
       <% else %>
         <button disabled type="submit" class="btn btn-default order_button">下一步</button>
+
       <% end %>
     </div>
   </div>

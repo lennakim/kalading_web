@@ -71,7 +71,11 @@ class Kalading.Views.Items extends Backbone.View
     # @recoverSelectors()
 
   submitOrder: ->
-    @order.submit()
+
+    if $('.order_button').hasClass('haiwan-disabled')
+      alert '感谢您参加海湾和卡拉丁的活动，今天的50个免费名额已经抢完了，明天10点继续开抢！您也可以去官网和微信端自费购买海湾润滑油保养，也有机会赢取大礼！'
+    else
+      @order.submit()
 
   # disableSelectors: ->
   #   @$price.addClass "disabled"

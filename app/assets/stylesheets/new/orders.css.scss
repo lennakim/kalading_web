@@ -12,21 +12,21 @@ $main-orange: #e94609;
 }
 
 #new-car-select{
-	.second,.third{
+	.first,.second,.third{
 		position: relative;
 		background-image: image-url('new-order/bac.png');
 		background-repeat: no-repeat; 
-		.tit{
-			position: absolute;
-		    top: 25px;
-		    right: 25px;
-		    color: #fff;
-		}
 		.main{
 			position: absolute;
 			top: 100px;
 			left: 10%;
 			width: 80%;
+			.tit{
+				position: absolute;
+			    top: 25px;
+			    right: 25px;
+			    color: #fff;
+			}
 			.maintain-items{
 			    position: absolute;
 			    top: 78px;
@@ -35,26 +35,203 @@ $main-orange: #e94609;
 			    padding: 0 40px;
 			    border-radius: 5px;
 			    background: #eeeeee;
-				.title{
-			    	padding: 25px 0;
-			    	margin-top: 0;
-			    	border-bottom: 1px solid #ccc;
-			    }
-			    .name{
-			    	float: left;
-			    }
-			    .price,.address{
-			    	float: right;
-			    	color: $main-orange;
-			    }
 			}
 		}
 	}
-	.second{
-		height: 794px;
+	.first,.second{
+		height: 750px;
 		background-size: 100% 100%; 
 		.maintain-items{
 		    height: 380px;
+		}
+		.next{
+			position: absolute;
+  			bottom: 31px;
+  			left: 48%;
+  			width: 66px;
+			background-repeat: no-repeat;
+		}
+		.translate-next{
+		    animation:translate-next-animate 2s linear infinite;
+		    -webkit-animation:translate-next-animate 2s linear infinite;
+		}
+	}
+	.second,.third{
+		.title{
+	    	padding: 25px 0;
+	    	margin-top: 0;
+	    	border-bottom: 2px solid #e0e0e0;
+	    	.name{
+		    	float: left;
+		    }
+		    .price,.address{
+		    	float: right;
+		    	color: $main-orange;
+		    }
+	    }
+	}
+	.first{
+		.maintain-items{
+		    .title{
+		    	line-height: 40px;
+				margin: 0 auto;
+				padding: 25px 13%;
+				border-bottom: 2px solid #e0e0e0;
+		    	span{
+		    		float: left;
+				    width: 30%;
+				    margin: 0 10px;
+				    text-align: center;
+					background-image: image-url('new-order/bac-gray.png'); 
+					background-repeat: no-repeat;
+					font-size: 16px;
+		    	}
+		    	.active{
+		    		background-image: image-url('new-order/bac-orange.png'); 
+		    		color: #fff;
+		    	}
+		    }
+		    .initial{
+		    	margin: 15px 0;
+		    	h4,.crumbs,.hot{
+		    		float: left;
+		    	}
+		    	h4{
+		    		width: 105px;
+		    		font-size: 14px;
+		    	}
+		    	.hot{
+		    		width: 42px;
+					height: 33px;
+					line-height: 25px;
+					margin: 6px 12px 0;
+		    		background-image: image-url('new-order/bac-org2.png'); 
+		    		background-repeat: no-repeat;
+					text-align: center;
+					color: #fff;
+		    	}
+		    	.crumbs{
+		    		li{
+		    			float: left;
+		    			width: 28px;
+					    margin: 5px 2px;
+  						padding: 3px 0;
+  						border: 1px solid $main-orange;
+  						text-align: center;
+  						&:last-child{
+  							margin-right: 0;
+  						}
+  						a{
+  							color: $main-orange;
+  						}
+		    		}
+		    		.active{
+		    			background: $main-orange;
+		    			a{
+		    				color: #fff;
+		    			}
+		    		}
+		    	}
+		    }
+		    .brand-list,.series-list,.model-list{
+		    	li{
+		    		float: left;
+				    line-height: 40px;
+				    border: 1px solid #ccc;
+				    border-radius: 2px;
+				    text-align: center;
+				    &:hover{
+				    	border: 1px solid $main-orange;
+				    }
+				    span{
+					    float: right;
+					    width: 70%;
+					    text-align: center;
+				    }
+		    	}
+		    	.active{
+		    		background: $main-orange;
+		    		color: #fff;
+		    	}
+		    }
+		    .brand-list{
+		    	li{
+				    width: 15%;
+				    margin: 0 20px 10px 0;
+				    &:nth-child(6n){
+				    	margin-right: 0;
+				    }
+		    	}
+		    }
+		    .undefined-car{
+		    	position: absolute;
+			    bottom: 20px;
+			    right: 25px;
+			    color: #666666;
+		    }
+		    .selected-brand,.selected-series{
+		    	padding: 15px 0;
+		    	border-bottom: 2px solid #e0e0e0;
+		    	h4,.selected-name{
+		    		float: left;
+		    	}
+		    	h4{
+		    		width: 105px;
+		    		font-size: 14px;
+		    	}
+		    	.selected-name,.selected-series-name{
+		    		position: relative;
+		    		float: left;
+		    		width: 140px;
+		    		line-height: 40px;
+		    		margin-right: 20px;
+		    		.name,.series{
+		    			display: block;
+		    			height: 40px;
+						border: 1px solid $main-orange;
+						border-radius: 2px;
+						text-align: center;
+						background: #edddd7;
+						color: $main-orange;
+		    		}
+
+		    		.remove{
+		    			position: absolute;
+		    			top: -4px;
+  						right: -4px;
+		    			width: 16px;
+		    			height: 16px;
+		    			background-image: image-url('new-order/remove.png'); 
+		    			background-repeat: no-repeat;
+		    		}
+		    	}
+		    }
+	    	.series-list{
+	    		li{
+				    width: 13%;
+  					margin: 20px 15px 0 0;
+  					&:nth-child(7n){
+				    	margin-right: 0;
+				    }
+		    	}
+	    	}
+	    	.model-list{
+	    		li{
+				    width: 24%;
+  					margin: 20px 13px 0 0;
+  					&:nth-child(4n){
+				    	margin-right: 0;
+				    }
+		    	}
+	    	}
+		}
+		.next{
+			height: 30px;
+			background-image: image-url('new-order/nextbtn.png');
+		}
+	}
+	.second{ 
+		.maintain-items{
 		    .left,.right{
 				float: left;
 				li{
@@ -90,28 +267,19 @@ $main-orange: #e94609;
 		    }
 		}
 		.next{
-			position: absolute;
-  			bottom: 31px;
-  			left: 48%;
-  			width: 66px;
-  			height: 63px;
+			height: 63px;
 			background-image: image-url('new-order/next.png');
-			background-repeat: no-repeat;
-		}
-		.translate-next{
-		    animation:translate-next-animate 2s linear infinite;
-		    -webkit-animation:translate-next-animate 2s linear infinite;
 		}
 	}
 	.third{
-		height: 1200px;
+		height: 1300px;
 		background-size:  100% 120%;
 		.maintain-items{
-		    height: 1000px;
+		    height: 1040px;
 		    .new-order-form{
 		    	.addr{
 		    		padding-bottom: 20px;
-		    		border-bottom: 1px solid #ccc;
+		    		border-bottom: 2px solid #e0e0e0;
 		    		li{
 		    			line-height: 40px;
 		    			padding: 0 10px;
@@ -137,7 +305,7 @@ $main-orange: #e94609;
 		    	}
 		    	.form{
 		    		padding: 25px 0;
-  					border-bottom: 1px solid #ccc;
+  					border-bottom: 2px solid #e0e0e0;
 		    	}
 		    	.info-group{
 		    		line-height: 40px;
@@ -160,6 +328,7 @@ $main-orange: #e94609;
 		    .new-offer-table{
 			    background: white;
 			    width: 100%;
+			    margin: 25px 0;
 			    border: 1px solid #ccc;
 			    th,td{
 			      width: 22%;
