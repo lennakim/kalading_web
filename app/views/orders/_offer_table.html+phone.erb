@@ -1,0 +1,63 @@
+<div class="section">
+
+  <div class="cell">
+
+    <table id="item_table" data-parts="<%= @parts.to_json %>">
+      <thead>
+        <th>保养项目</th>
+        <th>价格</th>
+        <th>总价</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="item">
+            <% @result['parts'].each_index do |index| %>
+              <% part = @result['parts'][index]%>
+              <p name='items'>
+                [<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
+
+                <%= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
+
+                <%= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
+              </p>
+            <% end %>
+          </td>
+
+          <td>
+            <% @result['parts'].each_index do |index| %>
+              <% part = @result['parts'][index]%>
+            <p>
+            <%= part.values.first.first['price'] %>
+            </p>
+          <% end %>
+          </td>
+          <td class="result">
+            <% if @result['discount'] %>
+              <del class="price original"><%= @result['price_without_discount'] %></del>
+            <% else %>
+              <span class="price"><%= @result['price'] %></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr class="service-price">
+          <td colspan="4">服务费：<%= @result['service_price'] %></td>
+        </tr>
+        <% if @result['discount'] && !@result['discount']['error'] %>
+          <tr>
+            <td colspan='3'>
+              <%= @result['discount']['name'] %>
+            </td>
+            <td class='result'>
+              <%= @result['price'] %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+
+
+  </div>
+
+</div>

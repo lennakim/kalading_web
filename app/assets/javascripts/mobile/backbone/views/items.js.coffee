@@ -57,9 +57,10 @@ class Kalading.Views.Items extends Backbone.View
     $("#buy_parts").parent('.list-group').children('li').removeClass('selected')
     $('#buy_parts').addClass('selected')
 
-    $('.item-part').removeClass('disabled')
-    $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
-    $('#service_fee').collapse('hide')
+    if $('.item-part').hasClass('disabled')
+      $('.item-part').removeClass('disabled')
+      $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
+      $('#service_fee').collapse('hide')
 
     @resetSelectItems()
 
@@ -77,6 +78,8 @@ class Kalading.Views.Items extends Backbone.View
     $part = $(e.currentTarget)
 
     if $part.hasClass('cancel-selected')
+
+      $part.closest('.list-group').children('.list-group-item').removeClass('selected')
 
       selected_part = $part.closest('.panel').find('.selected-part')
       selected_part.removeData('brand').removeData('number').removeClass('selected')

@@ -1,5 +1,5 @@
 <% content_for :javascripts do %>
-  <%= javascript_include_tag "orders", 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "mobile/orders", 'data-turbolinks-track' => true %>
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
   <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
 <% end %>
@@ -14,9 +14,6 @@
     <fieldset>
 
       <%= render "order_form" %>
-
-      <h4 class="item-title">商品详情</h4>
-
       <%= render "offer_table" %>
 
       <div class="submit-con">

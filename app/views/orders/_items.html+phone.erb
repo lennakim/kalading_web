@@ -10,7 +10,6 @@
 <div class="item-list">
 
   <div class="item-box">
-
     <% if filtered_parts.count == 0 %>
       <div class="no-parts-available">
         很抱歉，暂时无配件
@@ -37,9 +36,9 @@
                   </div>
 
                 </a>
-                <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a></h4>
+                <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
               </div>
-              <div id="select_item_<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
+              <div id="select_item_<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_item_header" aria-expanded="true">
                 <ul class="list-group">
                   <% select_index = selected_item_index(default_parts(@result), part_items)  %>
 
@@ -88,7 +87,7 @@
 
   <% if type != 'bty' &&  filtered_parts.count != 0 %>
     <div class="panel-group custom fee" role="tablist">
-      <div class="panel quick-cars-select">
+      <div class="panel quick-fee-select">
         <div class="panel-heading clearfix" role="tab" id="service_fee_header">
             <a class="service-fee selected" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
 
@@ -103,7 +102,7 @@
             </a>
             <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a></h4>
         </div>
-        <div id="service_fee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
+        <div id="service_fee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
 
           <ul class="list-group">
 

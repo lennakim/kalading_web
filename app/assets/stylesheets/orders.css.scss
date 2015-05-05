@@ -686,6 +686,7 @@ $title-gray: #787878;
   .submit{
     position: absolute;
     right: 20px;
+    top: 17px;
     background: #feac5a;
     border: 0;
     border-radius: 5px;
@@ -844,6 +845,36 @@ $title-gray: #787878;
   }
 }
 .place-order-phone{
+
+  .current_addresses{
+    font-size: 14px;
+    .panel-group .panel-heading{
+      a{
+        color: #666;
+        .service-address-detail{
+          margin-left: 15px;
+          width: 60%;
+        }
+      }
+    }
+    li.list-group-item{
+
+      .address-item-detail{
+        width: 90%;
+        a{
+          width: 100%;
+        }
+      }
+
+      &.selected{
+        a{
+          color: #f57e56 !important;
+        }
+      }
+    }
+  }
+
+
   form{
     padding-bottom: 68px;
   }
@@ -863,7 +894,6 @@ $title-gray: #787878;
     content: image-url('order-info-title.png');
   }
   .addresses{
-    padding: 0 15px;
     li{
       padding: 10px;
     }
