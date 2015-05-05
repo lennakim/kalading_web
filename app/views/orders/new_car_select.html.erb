@@ -1,4 +1,64 @@
 <%= Gon::Base.render_data({}) %>
+<div id="new-car-select">
+	<div class="first"></div>
+
+	<div class="second">
+		<div class="main">
+			<%= image_tag("new-order/second.png", :class => 'tag2')%>
+			<h4 class="tit">服务内容</h4>
+			<div class="maintain-items">
+				<h4 class="title clearfix">
+					<span class="name">奥迪(进口) A1 上门保养<%#= @result['name'] %></span>
+					<span class="price">总价：455元</span>
+				</h4>
+				<div class="items clearfix">
+					<ul class="left">
+						<li>暂未选择</li>
+						<li>暂未选择</li>
+						<li>暂未选择</li>
+						<li>暂未选择</li>
+					</ul>
+					<ul class="right">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="btn next translate-next"></div>
+	</div>
+
+	<div class="third">
+		<div class="main">
+			<%= image_tag("new-order/third.png", :class => 'tag2')%>
+			<h4 class="tit">服务内容</h4>
+			<div class="maintain-items">
+				<h4 class="title clearfix">
+					<span class="name">确认地址信息</span>
+					<span class="address">管理地址</span>
+				</h4>
+				<div class="items clearfix">
+					<%= render "new_order_form" %>
+					<h4 class='title'>订单信息</h4>
+					<%= render "new_offer_table" %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
 
 <div class="select-car-area">
   <% if last_select_car %>
