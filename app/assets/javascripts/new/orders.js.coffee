@@ -82,7 +82,17 @@ $ ->
   $(".crumbs").on "click", "li", ->
     $(".brand-list").html("")
     letter = $(@).find("a").html()
+
     generateCarBrand(letter)
+
+  $(".brand-list").on "click", "li", ->
+    letter = $(@).data('letter')
+    brname = $(@).find("span").html()
+    brands = $.jStorage.get("auto-#{letter}")
+
+    brand = _.where(brands, {name: brname})
+    auto_models = brand[0]['auto_models']
+    generateCarModel(auto_models)
 
   unless $.jStorage.get("autos")?
     $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
@@ -93,6 +103,11 @@ $ ->
     generateCarIndex($.jStorage.get("autos"))
 
 
+generateCarModel = (auto_models)->
+  $("ul.series-list").html("")
+  _.each auto_models, (auto_model)->
+    $("ul.series-list").append("<li data-model_id='#{auto_model['id']}' class='cursor'>#{auto_model['name']}</li>")
+
 generateCarIndex = (autos)->
   _.each autos, (auto)->
     $.jStorage.set("auto-#{auto['initial']}", auto['autos']) #将单条 数据存储
@@ -101,5 +116,5 @@ generateCarIndex = (autos)->
 generateCarBrand = (letter) ->
   brands = $.jStorage.get("auto-#{letter}")
   _.each brands, (brand)->
-    str = "<li class='cursor'><img src='#{brand['logo']}'/> <span>#{brand['name']}</span></li>"
+    str = "<li data-letter=#{letter} class='cursor'><img src='#{brand['logo']}'/> <span>#{brand['name']}</span></li>"
     $("ul.brand-list").append(str)
