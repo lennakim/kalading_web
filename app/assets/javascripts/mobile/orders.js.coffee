@@ -141,8 +141,6 @@ $ ->
 
         container: '#date_picker',
 
-        editable: false,
-
         format: 'yyyy-mm-dd',
         min: min,
         max: max,
@@ -170,20 +168,16 @@ $ ->
       picker.set('disable', disabled_date)
       picker.clear()
 
-
-    set_serve_date $('#serve_date').data('cc')
-
     $('#registration_date').pickadate({
       container: '#date_picker',
-
-      editable: false,
-
       max: true,
-      today: 'Today',
       format: 'yyyy-mm-dd',
       selectMonths: true,
-      selectYears: true
+      selectYears: true,
+      close: "关闭"
     })
+
+    set_serve_date $('#serve_date').data('cc')
 
     $.validator.addMethod "regx", (value, element, regexpr) ->
       regexpr.test(value)
@@ -238,7 +232,6 @@ $ ->
           minlength: 6
           maxlength: 6
           regx: /^[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/
-
 
       messages:
         name: "请输入姓名"
