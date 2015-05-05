@@ -94,6 +94,13 @@ $ ->
     auto_models = brand[0]['auto_models']
     generateCarModel(auto_models)
 
+  $(".series-list").on "click", "li", ->
+    model_id = $(@).data('model_id')
+
+    $.get "#{API_Domain}#{V2}/auto_models/#{model_id}.json", (data)->
+      submodels = data['data']
+      generateCarSubModel(submodels)
+
   unless $.jStorage.get("autos")?
     $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
       console.log("load autos data")
@@ -103,10 +110,17 @@ $ ->
     generateCarIndex($.jStorage.get("autos"))
 
 
-generateCarModel = (auto_models)->
+generateCarSubModel = (submodels)->
+  $("ul.model-list").html("")
+  _.each submodels, (submodel)->
+    _.each submodel['submodels'], (sub)->
+      $("ul.model-list").append("<li class='cursor'>#{sub['year_range']} - #{sub['engine_displacement']} </li>")
+
+
+generateCarModel = (models)->
   $("ul.series-list").html("")
-  _.each auto_models, (auto_model)->
-    $("ul.series-list").append("<li data-model_id='#{auto_model['id']}' class='cursor'>#{auto_model['name']}</li>")
+  _.each models, (model)->
+    $("ul.series-list").append("<li data-model_id='#{model['id']}' class='cursor'>#{model['name']}</li>")
 
 generateCarIndex = (autos)->
   _.each autos, (auto)->
