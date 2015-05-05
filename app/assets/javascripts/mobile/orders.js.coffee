@@ -79,16 +79,6 @@ $ ->
     if $('.current_addresses .service-address-detail').length == 0
       $('.add a').click()
 
-    $('#no_invoice').on "click", (e) ->
-      $('#invoice_info').collapse('hide')
-    $("#yes_invoice").on "click", (e) ->
-      $('#invoice_info').collapse('show')
-
-    # $('#no_preferential').on "click", (e) ->
-    #   $('#preferential_info').collapse('hide')
-    # $("#yes_preferential").on "click", (e) ->
-    #   $('#preferential_info').collapse('show')
-
     $("#validate_preferential").on "click", (e) ->
       e.preventDefault()
       e.stopPropagation()
@@ -151,7 +141,7 @@ $ ->
 
         container: '#date_picker',
 
-        editable: true,
+        editable: false,
 
         format: 'yyyy-mm-dd',
         min: min,
@@ -186,7 +176,7 @@ $ ->
     $('#registration_date').pickadate({
       container: '#date_picker',
 
-      editable: true,
+      editable: false,
 
       max: true,
       today: 'Today',
