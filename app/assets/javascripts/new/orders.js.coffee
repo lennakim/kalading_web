@@ -39,15 +39,10 @@ $ ->
   	$('.select-model').removeClass('active')
 
 
-  #------跳转到选服务------
+  #------跳转到选配件服务------
   $('.first .model-list').on 'click','li', ->
-    $('.first').addClass('hide')
-    $('.second').removeClass('hide')
-
-  #------选服务页面 点击下一步 显示下单页面------
-  $('.second .next').click ->
-    $('.second').addClass('hide')
-    $('.third').removeClass('hide')
+    car_id = $(@).data("car_id")
+    window.location.href = "/orders/new_service_select?car_id=#{car_id}"
 
   #-----未找到车型------
   $('.undefined-car').click ->
@@ -97,9 +92,19 @@ $ ->
   $(".series-list").on "click", "li", ->
     model_id = $(@).data('model_id')
 
-    $.get "#{API_Domain}#{V2}/auto_models/#{model_id}.json", (data)->
-      submodels = data['data']
-      generateCarSubModel(submodels)
+    $.ajax({
+        method: "GET",
+        url : "#{API_Domain}#{V2}/auto_models/#{model_id}.json",
+        beforeSend: ->
+          $('.tips').removeClass('hide')
+        ,
+        complete: ->
+          $('.tips').addClass('hide')
+        ,
+        success: (data)->
+          submodels = data['data']
+          generateCarSubModel(submodels)
+      })
 
   unless $.jStorage.get("autos")?
     $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
@@ -114,8 +119,7 @@ generateCarSubModel = (submodels)->
   $("ul.model-list").html("")
   _.each submodels, (submodel)->
     _.each submodel['submodels'], (sub)->
-      $("ul.model-list").append("<li class='cursor'>#{sub['year_range']} - #{sub['engine_displacement']} </li>")
-
+      $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']} - #{sub['engine_displacement']}</li>")
 
 generateCarModel = (models)->
   $("ul.series-list").html("")

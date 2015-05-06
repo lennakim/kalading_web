@@ -1,1 +1,23 @@
-new info submit
+<div id="new-car-select">
+  <div class="third">
+    <div class="prev cursor">
+      <%= link_to "上一步", new_service_select_orders_path %> 
+    </div>
+    <div class="main">
+      <%= image_tag("new-order/third.png", :class => 'tag2')%>
+      
+      <h4 class="tit">服务内容</h4>
+      <div class="maintain-items">
+        <h4 class="title clearfix">
+          <span class="name">确认地址信息</span>
+          <span class="address">管理地址</span>
+        </h4>
+        <div class="items clearfix">
+          <%= render "new_order_form" %>
+          <h4 class='title'>订单信息</h4>
+          <%= render "new_offer_table" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

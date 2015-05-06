@@ -17,6 +17,7 @@
 							<!-- <li><a href="#">A</a></li> -->
 						</ul>
 					</div>
+					<p class="tips hide">小卡技师努力加载中...</p>
 					<ul class="brand-list clearfix">
 						<!-- <li class="cursor">
 							<img src="">
@@ -33,6 +34,7 @@
 							<p class="remove cursor"></p>
 						</div>
 					</div>
+					<p class="tips hide">小卡技师努力加载中...</p>
 					<ul class="series-list clearfix">
 						<!-- <li class="cursor">A1</li> -->
 					</ul>
@@ -49,6 +51,7 @@
 							<p class="remove cursor"></p>
 						</div>
 					</div>
+					<p class="tips hide">小卡技师努力加载中...</p>
 					<ul class="model-list clearfix">
 						<!-- <li class="cursor">1.2 TFSI   2010.08-2014</li> -->
 					</ul>
@@ -57,13 +60,15 @@
 				<a class="undefined-car cursor">未找到车型？</a>
 			</div>
 		</div>
-		<div class="next translate-next cursor"></div>
+		<div class="next translate-next cursor">
+			<%= link_to "下一步", new_service_select_orders_path %>
+		</div>
+
 	</div>
 
 	<div class="second hide">
 		<div class="main">
 			<%= image_tag("new-order/second.png", :class => 'tag2')%>
-			<span class="prev cursor">上一步</span>
 			<h4 class="tit">服务内容</h4>
 			<div class="maintain-items">
 				<h4 class="title clearfix">
@@ -96,13 +101,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="next translate-next cursor"></div>
+		<div class="prev translate-next cursor">上一步</div>
+		<div class="next translate-next cursor">下一步</div>
 	</div>
 
 	<div class="third hide">
 		<div class="main">
 			<%= image_tag("new-order/third.png", :class => 'tag2')%>
-			<span class="prev cursor">上一步</span>
 			<h4 class="tit">服务内容</h4>
 			<div class="maintain-items">
 				<h4 class="title clearfix">
@@ -116,6 +121,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="prev translate-next cursor">上一步</div>
 	</div>
 	<div class="no_car_type hide">
 		<div class="main">

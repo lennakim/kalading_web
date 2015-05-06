@@ -26,10 +26,6 @@ $main-orange: #e94609;
 			top: 100px;
 			left: 10%;
 			width: 80%;
-			.prev{
-				margin: 0 20px;
-				color: $main-orange;
-			}
 			.tit{
 				position: absolute;
 			    top: 34px;
@@ -38,32 +34,57 @@ $main-orange: #e94609;
 			    font-size: 16px;
 			}
 			.maintain-items{
-			    position: absolute;
-			    top: 78px;
-			    left: 35px;
+			    margin: -25px 0 0 35px;
 			    width: 95%;
-			    padding: 0 40px;
+			    padding: 0 40px 40px;
 			    border-radius: 5px;
 			    background: #eeeeee;
 			}
 		}
-	}
-	.first,.second{
-		height: 750px;
-		background-size: 100% 100%;
-		.maintain-items{
-		    height: 380px;
+		.tips{
+			text-align: center;
 		}
-		.next{
+		.prev,.next{
 			position: absolute;
-  			bottom: 31px;
-  			left: 48%;
-  			width: 66px;
+			left: 47%;
+			width: 66px;
+			height: 60px;
 			background-repeat: no-repeat;
+			font-size: 20px;
+			text-align: center;
+			color: #fff;
+			a{
+  				display: block;
+  				height: 100%;
+  				background-repeat: no-repeat;
+				color: #fff;
+				text-decoration: none;
+			}
 		}
 		.translate-next{
 		    animation:translate-next-animate 2s linear infinite;
 		    -webkit-animation:translate-next-animate 2s linear infinite;
+		}
+	}
+	.first,.second{
+		height: 800px;
+		background-size: 100% 100%;
+		.next{
+  			bottom: 31px;
+  			a{	
+				background-image: image-url('new-order/nextbtn.png');
+				background-position: bottom;
+  			}
+		}
+	}
+	.second,.third{
+		.prev{
+  			top: 30px;
+  			left: 48%;
+  			a{
+				padding-top: 32px;
+				background-image: image-url('new-order/prevbtn.png');
+  			}
 		}
 	}
 	.second,.third,.no_car_type{
@@ -83,6 +104,7 @@ $main-orange: #e94609;
 	.first{
 		.maintain-items{
 		    .title{
+		    	max-width: 1080px;
 		    	line-height: 40px;
 				margin: 0 auto;
 				padding: 25px 13%;
@@ -93,6 +115,7 @@ $main-orange: #e94609;
 				    margin: 0 1%;
 				    text-align: center;
 					background-image: image-url('new-order/bac-gray.png');
+					background-size: 100% 100%; 
 					background-repeat: no-repeat;
 					font-size: 16px;
 		    	}
@@ -143,9 +166,17 @@ $main-orange: #e94609;
 		    		}
 		    	}
 		    }
+		    .brand-list{
+		    	max-height: 260px;
+		    	overflow: auto;
+		    }
 		    .brand-list,.series-list,.model-list{
 		    	li{
 		    		float: left;
+		    		overflow: hidden;
+				    text-overflow: ellipsis;
+				    white-space: nowrap;
+				    padding: 0 5px;
 				    line-height: 40px;
 				    border: 1px solid #ccc;
 				    border-radius: 2px;
@@ -155,7 +186,11 @@ $main-orange: #e94609;
 				    }
 				    span{
 					    float: right;
-					    width: 70%;
+					    width: 75%;  
+					    padding-right: 5px;
+					    overflow: hidden;
+					    text-overflow: ellipsis;
+					    white-space: nowrap;
 					    text-align: center;
 				    }
 		    	}
@@ -166,17 +201,18 @@ $main-orange: #e94609;
 		    }
 		    .brand-list{
 		    	li{
-				    width: 15%;
-				    margin: 0 20px 10px 0;
-				    &:nth-child(6n){
-				    	margin-right: 0;
+				    width: 19%;
+				    line-height: 36px;
+				    margin: 0 1% 10px 0;
+				    img{
+				    	max-width: 25%;
+  						max-height: 33px;
+  						padding: 5px;
 				    }
 		    	}
 		    }
 		    .undefined-car{
-		    	position: absolute;
-			    bottom: 20px;
-			    right: 25px;
+		    	float: right;
 			    color: #666666;
 		    }
 		    .selected-brand,.selected-series{
@@ -194,10 +230,14 @@ $main-orange: #e94609;
 		    		float: left;
 		    		width: 140px;
 		    		line-height: 40px;
-		    		margin-right: 20px;
+		    		margin-right: 2%;
 		    		.name,.series{
 		    			display: block;
 		    			height: 40px;
+		    			padding: 0 5px;
+			    		overflow: hidden;
+					    text-overflow: ellipsis;
+					    white-space: nowrap;
 						border: 1px solid $main-orange;
 						border-radius: 2px;
 						text-align: center;
@@ -220,24 +260,14 @@ $main-orange: #e94609;
 	    		li{
 				    width: 19%;
   					margin: 20px 1% 0 0;
-  					&:nth-child(7n){
-				    	margin-right: 0;
-				    }
 		    	}
 	    	}
 	    	.model-list{
 	    		li{
 				    width: 24%;
   					margin: 20px 1% 0 0;
-  					&:nth-child(4n){
-				    	margin-right: 0;
-				    }
 		    	}
 	    	}
-		}
-		.next{
-			height: 30px;
-			background-image: image-url('new-order/nextbtn.png');
 		}
 	}
 	.second{
@@ -284,10 +314,6 @@ $main-orange: #e94609;
 		    		border: 1px solid $main-orange;
 		    	}
 		    }
-		}
-		.next{
-			height: 63px;
-			background-image: image-url('new-order/next.png');
 		}
 	}
 	.third{
@@ -444,14 +470,3 @@ $main-orange: #e94609;
 	}
 }
 
-
-// 微调整
-.brand-list > li {
-	float: left;
-
-	img {
-  	width: 40px;
-    height: 30px;
-	}
-
-}
