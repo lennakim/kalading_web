@@ -27,6 +27,6 @@ class VerificationCode < ActiveRecord::Base
   def self.interval?(phone, interval = 60)
     last_code = VerificationCode.where(phone_num: phone).order("created_at desc").first
 
-    last_code && (Time.now - last_code.created_at > interval )
+    last_code.blank? || (last_code && (Time.now - last_code.created_at > interval))
   end
 end
