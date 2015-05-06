@@ -71,17 +71,10 @@ $ ->
       $.post "/service_addresses/#{ id }/set_default"
 
     $("#place_order_form").on "ajax:beforeSend", (xhr, settings)->
-
-      console.log 'before....'
-      console.log settings
-
       $("#submit_form_button").attr('disabled', true)
 
     $("#place_order_form").on "ajax:complete", ->
-
-      console.log 'complete ....'
       $("#submit_form_button").attr('disabled', false)
-
 
     if $('.current_addresses .service-address-detail').length == 0
       $('.add a').click()
@@ -207,7 +200,18 @@ $ ->
         # element.tooltip
         #   placement: 'left'
         # .tooltip 'show'
+        #
 
+      submitHandler: (form) ->
+        if !$("#serve_date").val()
+          $("#serve_date").closest('.form-group').addClass('has-error')
+          return false
+
+        else if ($("#registration_date").length > 0 && !$("#registration_date").val())
+          $("#registration_date").closest('.form-group').addClass('has-error')
+          return false
+        else
+          $("#place_order_form").trigger 'submit.rails'
 
       rules:
         phone_num:
