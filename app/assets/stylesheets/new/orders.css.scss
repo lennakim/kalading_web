@@ -38,22 +38,18 @@ $main-orange: #e94609;
 			    font-size: 16px;
 			}
 			.maintain-items{
-			    position: absolute;
-			    top: 78px;
-			    left: 35px;
+			    margin: -25px 0 0 35px;
 			    width: 95%;
-			    padding: 0 40px;
+			    padding: 0 40px 40px;
 			    border-radius: 5px;
 			    background: #eeeeee;
 			}
 		}
 	}
 	.first,.second{
-		height: 750px;
+		height: 800px;
 		background-size: 100% 100%;
-		.maintain-items{
-		    height: 380px;
-		}
+
 		.next{
 			position: absolute;
   			bottom: 31px;
@@ -83,6 +79,7 @@ $main-orange: #e94609;
 	.first{
 		.maintain-items{
 		    .title{
+		    	max-width: 1080px;
 		    	line-height: 40px;
 				margin: 0 auto;
 				padding: 25px 13%;
@@ -93,6 +90,7 @@ $main-orange: #e94609;
 				    margin: 0 1%;
 				    text-align: center;
 					background-image: image-url('new-order/bac-gray.png');
+					background-size: 100% 100%; 
 					background-repeat: no-repeat;
 					font-size: 16px;
 		    	}
@@ -143,9 +141,16 @@ $main-orange: #e94609;
 		    		}
 		    	}
 		    }
+		    .brand-list{
+		    	max-height: 260px;
+		    	overflow: auto;
+		    }
 		    .brand-list,.series-list,.model-list{
 		    	li{
 		    		float: left;
+		    		overflow: hidden;
+				    text-overflow: ellipsis;
+				    white-space: nowrap;
 				    line-height: 40px;
 				    border: 1px solid #ccc;
 				    border-radius: 2px;
@@ -155,7 +160,11 @@ $main-orange: #e94609;
 				    }
 				    span{
 					    float: right;
-					    width: 70%;
+					    width: 75%;  
+					    padding-right: 5px;
+					    overflow: hidden;
+					    text-overflow: ellipsis;
+					    white-space: nowrap;
 					    text-align: center;
 				    }
 		    	}
@@ -166,17 +175,18 @@ $main-orange: #e94609;
 		    }
 		    .brand-list{
 		    	li{
-				    width: 15%;
-				    margin: 0 20px 10px 0;
-				    &:nth-child(6n){
-				    	margin-right: 0;
+				    width: 19%;
+				    line-height: 36px;
+				    margin: 0 1% 10px 0;
+				    img{
+				    	max-width: 25%;
+  						max-height: 33px;
+  						padding: 5px;
 				    }
 		    	}
 		    }
 		    .undefined-car{
-		    	position: absolute;
-			    bottom: 20px;
-			    right: 25px;
+		    	float: right;
 			    color: #666666;
 		    }
 		    .selected-brand,.selected-series{
@@ -194,7 +204,7 @@ $main-orange: #e94609;
 		    		float: left;
 		    		width: 140px;
 		    		line-height: 40px;
-		    		margin-right: 20px;
+		    		margin-right: 2%;
 		    		.name,.series{
 		    			display: block;
 		    			height: 40px;
@@ -220,18 +230,12 @@ $main-orange: #e94609;
 	    		li{
 				    width: 19%;
   					margin: 20px 1% 0 0;
-  					&:nth-child(7n){
-				    	margin-right: 0;
-				    }
 		    	}
 	    	}
 	    	.model-list{
 	    		li{
 				    width: 24%;
   					margin: 20px 1% 0 0;
-  					&:nth-child(4n){
-				    	margin-right: 0;
-				    }
 		    	}
 	    	}
 		}
@@ -444,14 +448,3 @@ $main-orange: #e94609;
 	}
 }
 
-
-// 微调整
-.brand-list > li {
-	float: left;
-
-	img {
-  	width: 40px;
-    height: 30px;
-	}
-
-}
