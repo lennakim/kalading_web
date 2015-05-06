@@ -4,6 +4,7 @@ class Kalading.Views.Items extends Backbone.View
 
   events:
     "click .list-group-item > .item": "chooseParts"
+    "click .item-switch": "openItemSelectors"
     "click .order_button": "submitOrder"
     "click #no_parts": "disableParts"
     "click #buy_parts": "enableParts"
@@ -28,6 +29,11 @@ class Kalading.Views.Items extends Backbone.View
 
     @resetSelectItems()
     @order.loadPrice()
+
+  openItemSelectors: (e) ->
+    $('.item-switch-list.collapse.in').collapse('hide')
+    $(e.currentTarget).closest('.item-part').find('.collapse').collapse('show')
+
 
   disableParts: (e)->
     $("#no_parts").parent('.list-group').children('li').removeClass('selected')
@@ -73,11 +79,9 @@ class Kalading.Views.Items extends Backbone.View
     @order.set 'parts', parts
 
   chooseParts: (e)=>
-
     $part = $(e.currentTarget)
 
     if $part.hasClass('cancel-selected')
-
       $part.closest('.list-group').children('.list-group-item').removeClass('selected')
 
       selected_part = $part.closest('.panel').find('.selected-part')

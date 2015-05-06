@@ -26,12 +26,10 @@
           <div class="panel-group custom item-part" role="tablist">
             <div class="panel">
               <div class="panel-heading clearfix" role="tab" id="select_item_header_<%= i %>">
-
                 <% recommend_part = @result['parts'].select{ |k, v| k.keys[0] == part_name }[0].values[0][0] %>
 
                 <% if recommend_part %>
-                  <a class="selected-part selected" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>" data-number="<%= recommend_part['number'] %>" data-brand="<%= recommend_part['brand'] %>">
-
+                  <a class="selected-part selected item-switch" data-toggle="collapse" aria-expanded="false" aria-controls="select_item_<%= i %>" data-number="<%= recommend_part['number'] %>" data-brand="<%= recommend_part['brand'] %>">
                     <div class="pull-left part-name" data-name="<%= part_name %>">
                       <%= display_item_name part_name, recommend_part['brand'], recommend_part['number'] %>
                     </div>
@@ -43,7 +41,7 @@
                     </div>
                   </a>
                 <% else %>
-                  <a class="selected-part selected" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>">
+                  <a class="selected-part selected item-switch" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>">
                     <div class="pull-left part-name" data-name="<%= part_name %>">
                       未选择 <%= part_name %>
                     </div>
@@ -54,17 +52,14 @@
                     </div>
                   </a>
                 <% end %>
-
                 <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
               </div>
-              <div id="select_item_<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_item_header" aria-expanded="true">
+
+              <div id="select_item_<%= i %>" class="item-switch-list panel-collapse collapse" role="tabpanel" aria-labelledby="select_item_header" aria-expanded="true">
                 <ul class="list-group">
                   <% select_index = selected_item_index(default_parts(@result), part_items)  %>
-
                   <% part_items.each_with_index do |item, index| %>
-
                     <% if item["quantity"] != 0 %>
-
                       <li class="list-group-item clearfix">
                         <!-- 专门给易道活动的-->
                         <% if activity && custom_activity.include?(activity.name) %>
@@ -108,8 +103,7 @@
     <div class="panel-group custom fee" role="tablist">
       <div class="panel quick-fee-select">
         <div class="panel-heading clearfix" role="tab" id="service_fee_header">
-            <a class="service-fee selected" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
-
+            <a class="service-fee selected item-switch" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
               <div class="pull-left">
                 上门服务费
               </div>
@@ -125,10 +119,9 @@
             </a>
             <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a></h4>
         </div>
-        <div id="service_fee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
+        <div id="service_fee" class="panel-collapse collapse item-switch-list" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
 
           <ul class="list-group">
-
             <li class="list-group-item clearfix" id="buy_parts">
               <div class="pull-left">
                 购买配件，并上门服务
