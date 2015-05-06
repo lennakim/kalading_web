@@ -41,14 +41,7 @@ $ ->
 
   #------跳转到选配件服务------
   $('.first .model-list').on 'click','li', ->
-    # $('.first').addClass('hide')
-    # $('.second').removeClass('hide')
     window.location.href = "/orders/new_service_select"
-
-  #------选服务页面 点击下一步 显示下单页面------
-  $('.second .next').click ->
-    $('.second').addClass('hide')
-    $('.third').removeClass('hide')
 
   #-----未找到车型------
   $('.undefined-car').click ->

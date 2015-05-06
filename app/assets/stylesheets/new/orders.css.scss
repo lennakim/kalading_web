@@ -47,9 +47,16 @@ $main-orange: #e94609;
 			width: 66px;
 			height: 60px;
 			background-repeat: no-repeat;
-			color: #fff;
 			font-size: 20px;
 			text-align: center;
+			color: #fff;
+			a{
+  				display: block;
+  				height: 100%;
+  				background-repeat: no-repeat;
+				color: #fff;
+				text-decoration: none;
+			}
 		}
 		.translate-next{
 		    animation:translate-next-animate 2s linear infinite;
@@ -61,16 +68,20 @@ $main-orange: #e94609;
 		background-size: 100% 100%;
 		.next{
   			bottom: 31px;
-			background-image: image-url('new-order/nextbtn.png');
-			background-position: bottom;
+  			a{	
+				background-image: image-url('new-order/nextbtn.png');
+				background-position: bottom;
+  			}
 		}
 	}
 	.second,.third{
 		.prev{
   			top: 30px;
   			left: 48%;
-			padding-top: 32px;
-			background-image: image-url('new-order/prevbtn.png');
+  			a{
+				padding-top: 32px;
+				background-image: image-url('new-order/prevbtn.png');
+  			}
 		}
 	}
 	.second,.third,.no_car_type{
