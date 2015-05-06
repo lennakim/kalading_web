@@ -11,25 +11,25 @@
         </h4>
         <div class="items clearfix">
           <ul class="left service-items">
-            <% @result['parts'].each do |part| %>
+            <% @result['applicable_parts'].each do |part| %>
               <% if part["机油"].present? %>
-                <li class="cursor active"><%= part["机油"][0]["brand"] %></li>
+                <li data-part="机油" class="cursor active"><%= part["机油"][0]["brand"] %></li>
               <% end %>
 
               <% if part["机滤"].present? %>
-                <li class="cursor active"><%= part["机滤"][0]["brand"] %></li>
+                <li data-part="机滤" class="cursor active"><%= part["机滤"][0]["brand"] %></li>
               <% end %>
 
               <% if part["电瓶"].present? %>
-                <li class="cursor active"><%= part["电瓶"][0]["brand"] %></li>
+                <li data-part="电瓶" class="cursor active"><%= part["电瓶"][0]["brand"] %></li>
               <% end %>
 
               <% if part["空气滤清器"].present? %>
-                <li class="cursor active"><%= part["空气滤清器"][0]["brand"] %></li>
+                <li data-part="空气滤清器" class="cursor active"><%= part["空气滤清器"][0]["brand"] %></li>
               <% end %>
 
               <% if part["空调滤清器"].present? %>
-                <li class="cursor active"><%= part["空调滤清器"][0]["brand"] %></li>
+                <li data-part="空调滤清器" class="cursor active"><%= part["空调滤清器"][0]["brand"] %></li>
               <% end %>
             <% end %>
           </ul>

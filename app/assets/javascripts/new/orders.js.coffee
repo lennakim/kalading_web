@@ -57,22 +57,6 @@ $ ->
   $('.third .prev').click ->
     $('.second').removeClass('hide').next().addClass('hide')
 
-
-  #-----------选服务----------------------
-
-  #-----服务选项切换------
-  $('.service-items').on 'click','li', ->
-    index = $(@).index()
-    $(@).addClass('active').siblings().removeClass('active')
-    $('.items-list').addClass('hide').eq(index).removeClass('hide')
-
-  #-----选择服务项目中的产品-------
-  $('.items-list').on 'click','li', ->
-    text = $(@).text()
-    index = $(@).addClass('active').siblings().removeClass('active').parents('.items-list').index()-1
-    $('.service-items li').eq(index).text(text).addClass('selected')
-
-
 # order
   $(".crumbs").on "click", "li", ->
     $(".brand-list").html("")
@@ -113,6 +97,21 @@ $ ->
       generateCarIndex($.jStorage.get("autos"))
   else
     generateCarIndex($.jStorage.get("autos"))
+
+  #######################new_service_select################
+
+  #-----服务选项切换------
+  $('.service-items').on 'click','li', ->
+    index = $(@).index()
+    $(@).addClass('active').siblings().removeClass('active')
+    $('.items-list').addClass('hide').eq(index).removeClass('hide')
+    console.log(($(@).data("part")))
+
+  #-----选择服务项目中的产品-------
+  $('.items-list').on 'click','li', ->
+    text = $(@).text()
+    index = $(@).addClass('active').siblings().removeClass('active').parents('.items-list').index()-1
+    $('.service-items li').eq(index).text(text).addClass('selected')
 
 
 generateCarSubModel = (submodels)->
