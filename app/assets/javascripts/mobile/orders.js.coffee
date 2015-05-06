@@ -28,7 +28,6 @@ $ ->
           $('.title_con').addClass('title_active')
         )
 
-
     flag = 0
     $('.serie').on 'click','.serie_title', ->
       if flag == 0
@@ -52,13 +51,6 @@ $ ->
           height = $('#'+id).offset().top
           $('html,body').animate({scrollTop: height}, 500)
 
-
-
-  if $(".items-select-page").length > 0
-    items_view = new Kalading.Views.Items
-    # items_view.recoverSelectors()
-
-
   if $(".select-car-phone").length > 0
     items_view = new Kalading.Views.Items
 
@@ -66,39 +58,17 @@ $ ->
       e.preventDefault()
       $(@).tab('show')
 
+  if $('.place-order-phone').length > 0
 
-  if $(".select-car-page").length > 0
-    $('.select-car, .quick-select').click ->
-      $('.select-car, .quick-select').removeClass('selected')
-      $(@).addClass('selected')
+    $(".place-order-phone").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      id =  $(@).data('id')
 
-    $('#to_select_item').click ->
-      $area = $('.select-car-page .selected')
-      if $area.hasClass('select-car')
-        id = $('#car_style option:selected').data('id')
-      else
-        id = $(".quick-select input:radio:checked").data('id')
-        auto_id = $(".quick-select input:radio:checked").data('autoid')
+      $(@).closest('.list-group').find('li.list-group-item').removeClass('selected')
+      $(@).closest('li.list-group-item').addClass('selected')
 
-      type = $('.select-car-page').data('type') || 'bmt'
-
-      unless id
-        return alert "请先选择车辆"
-
-      if auto_id
-        Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }&auto_id=#{ auto_id }")
-      else
-        Turbolinks.visit("/orders/select_item?car_id=#{ id }&type=#{ type }")
-
-
-  if $(".place-order-page,.place-order-phone").length > 0
-
-    $('.find-vin').on "mouseover", ->
-      $('.vin-con').css({'display':'block'})
-    $('.find-vin').on "mouseout", ->
-      $('.vin-con').css({'display':'none'})
-
-
+      $.post "/service_addresses/#{ id }/set_default"
 
     $("#place_order_form").on "ajax:beforeSend", ->
       $("#submit_form_button").attr('disabled', true)
@@ -106,18 +76,8 @@ $ ->
     $("#place_order_form").on "ajax:complete", ->
       $("#submit_form_button").attr('disabled', false)
 
-    if $('.address input').length == 0
+    if $('.current_addresses .service-address-detail').length == 0
       $('.add a').click()
-
-    $('#no_invoice').on "click", (e) ->
-      $('#invoice_info').collapse('hide')
-    $("#yes_invoice").on "click", (e) ->
-      $('#invoice_info').collapse('show')
-
-    $('#no_preferential').on "click", (e) ->
-      $('#preferential_info').collapse('hide')
-    $("#yes_preferential").on "click", (e) ->
-      $('#preferential_info').collapse('show')
 
     $("#validate_preferential").on "click", (e) ->
       e.preventDefault()
@@ -145,9 +105,10 @@ $ ->
       $.post "/orders/no_preferential", { car_id: car_id, parts: parts, type: type }
 
     @ajax_set_city = ->
-      address = $('.current_addresses input[name=address]:checked').val()
-      $.get "/cities/city_capacity.json?address=#{address}", (data) ->
-        set_serve_date data
+      address = $.trim $('.current_addresses .service-address-detail').text()
+      if address
+        $.get "/cities/city_capacity.json?address=#{address}", (data) ->
+          set_serve_date data
 
     set_serve_date = (date) ->
 
@@ -178,7 +139,7 @@ $ ->
 
       $input = $('#serve_date').pickadate({
 
-        container: '#serve_date_picker',
+        container: '#date_picker',
 
         format: 'yyyy-mm-dd',
         min: min,
@@ -207,17 +168,16 @@ $ ->
       picker.set('disable', disabled_date)
       picker.clear()
 
-
-    set_serve_date $('#serve_date').data('cc')
-
     $('#registration_date').pickadate({
-      container: '#registed_date_picker',
+      container: '#date_picker',
       max: true,
-      today: 'Today',
       format: 'yyyy-mm-dd',
       selectMonths: true,
-      selectYears: true
+      selectYears: true,
+      close: "关闭"
     })
+
+    set_serve_date $('#serve_date').data('cc')
 
     $.validator.addMethod "regx", (value, element, regexpr) ->
       regexpr.test(value)
@@ -272,7 +232,6 @@ $ ->
           minlength: 6
           maxlength: 6
           regx: /^[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/
-
 
       messages:
         name: "请输入姓名"
