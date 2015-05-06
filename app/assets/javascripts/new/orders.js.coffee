@@ -98,10 +98,10 @@ $ ->
         method: "GET",
         url : "#{API_Domain}#{V2}/auto_models/#{model_id}.json",
         beforeSend: ->
-          alert("加载")
+          $('.tips').removeClass('hide')
         ,
         complete: ->
-          alert("完成")
+          $('.tips').addClass('hide')
         ,
         success: (data)->
           submodels = data['data']

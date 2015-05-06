@@ -1,7 +1,11 @@
+<div id="new-car-select">
   <div class="third">
+    <div class="prev cursor">
+      <%= link_to "上一步", new_service_select_orders_path %> 
+    </div>
     <div class="main">
       <%= image_tag("new-order/third.png", :class => 'tag2')%>
-      <span class="prev cursor"><%= link_to "上一步", new_service_select_orders_path %> </span>
+      
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">
         <h4 class="title clearfix">
@@ -16,3 +20,4 @@
       </div>
     </div>
   </div>
+</div>
