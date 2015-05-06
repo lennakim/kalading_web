@@ -70,7 +70,7 @@ $ ->
 
       $.post "/service_addresses/#{ id }/set_default"
 
-    $("#place_order_form").on "ajax:beforeSend", ->
+    $("#place_order_form").on "ajax:beforeSend", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)
 
     $("#place_order_form").on "ajax:complete", ->
@@ -87,9 +87,7 @@ $ ->
       code = $("#preferential_code").val()
       type = $("#service_type").val()
 
-      parts = $('#item_table').data("parts")
-
-      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts, type: type }
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, type: type }
 
     $('#no_preferential').on "click", (e) ->
       e.preventDefault()
@@ -195,16 +193,25 @@ $ ->
         # $(element.form).find("label[for=" + element.id + "]")
         #   .removeClass(errorClass)
 
-
       errorPlacement: (error, element) ->
-
         # 不提醒
 
         # element.data('title', error[0].innerText)
         # element.tooltip
         #   placement: 'left'
         # .tooltip 'show'
+        #
 
+      submitHandler: (form) ->
+        if !$("#serve_date").val()
+          $("#serve_date").closest('.form-group').addClass('has-error')
+          return false
+
+        else if ($("#registration_date").length > 0 && !$("#registration_date").val())
+          $("#registration_date").closest('.form-group').addClass('has-error')
+          return false
+        else
+          $("#place_order_form").trigger 'submit.rails'
 
       rules:
         phone_num:

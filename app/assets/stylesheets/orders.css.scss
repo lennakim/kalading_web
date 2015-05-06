@@ -33,6 +33,10 @@ $title-gray: #787878;
     }
   }
 
+  .part-price{
+    margin-right: 10px;
+  }
+
   .panel{
 
     font-size: 16px;
@@ -874,8 +878,7 @@ $title-gray: #787878;
     }
   }
 
-
-  form{
+  .offer-table{
     padding-bottom: 68px;
   }
   .orders-content{
@@ -987,28 +990,30 @@ $title-gray: #787878;
       border-radius: 5px;
     }
   }
-  #item_table{
-    width: 100%;
-    line-height: 15px;
-    font-size: 12px;
-    .item{
-      width: 50%;
-    }
-    p{
-      border-bottom: 1px solid #ccc;
-      &:last-child{
-        border: 0;
-      }
-    }
-    th,tr{
-      line-height: 30px;
-    }
-    th,td{
-      border: 1px solid #ccc;
-      text-align: center;
+}
+
+#item_table{
+  width: 100%;
+  line-height: 15px;
+  font-size: 12px;
+  .item{
+    width: 50%;
+  }
+  p{
+    border-bottom: 1px solid #ccc;
+    &:last-child{
+      border: 0;
     }
   }
+  th,tr{
+    line-height: 30px;
+  }
+  th,td{
+    border: 1px solid #ccc;
+    text-align: center;
+  }
 }
+
 .order-status-phone{
   .order-status{
     .item-title:before{

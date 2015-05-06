@@ -9,27 +9,9 @@ class Kalading.Models.Order extends Backbone.Model
     unless attrs.car_id
       return "car_id should not be blank"
 
-  submit: ->
-
-    console.log @attributes.parts
-    data_json = JSON.stringify(@attributes.parts)
-    $.cookie('order', data_json)
-
-    # csrf_token = $("meta[name='csrf-token']").attr('content')
-    # data = {
-    #   order: @attributes,
-    #   authenticity_token: csrf_token,
-    #   act: URI().search(true)['act'],
-    #   auto_id: URI().search(true)['auto_id'],
-    #   type: URI().search(true)['type']
-    # }
-    #
-    # if @isValid()
-    #   $.form('/orders/place_order', data).submit()
-
   loadPrice: ->
     data =
-      order: @attributes
+      car_id: @attributes['car_id']
       act: URI().search(true)['act']
       type: URI().search(true)['type']
 

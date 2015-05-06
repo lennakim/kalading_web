@@ -6,27 +6,12 @@
 
 <div class="place-order-phone phone-page" data-city="<%= current_user_city %>" data-car='<%= params["car_id"] %>'>
 
-  <%= form_tag 'submit', id: "place_order_form", remote: true do %>
+  <div class="address clearfix">
+    <%= render "shared/select_address" %>
+  </div>
 
-    <%# <%= hidden_field_tag(:city_id, current_city_id) %>
-    <%= hidden_field_tag(:car_id, params["car_id"]) %>
-
-    <fieldset>
-
-      <%= render "order_form" %>
-      <%= render "offer_table" %>
-
-      <div class="submit-con">
-
-        <span>当前费用: <span class="result-price" id="result_price"> <%= @result['price'] %></span>元</span>
-
-        <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default', id: "submit_form_button") %>
-        <p>支持现金、刷卡支付</p>
-      </div>
-    </div>
-    </fieldset>
-  <% end %>
-
+  <%= render "order_form" %>
+  <%= render "offer_table" %>
 </div>
 
 <%= render "shared/add_address_modal" %>
