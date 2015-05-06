@@ -100,6 +100,21 @@ module OrdersHelper
     result["parts"].map{ |part| part.values[0][0]["number"] }
   end
 
+  def get_recommend_part parts, key
+    index = parts.map(&:keys).index([key])
+    curr_parts = parts[index].values[0]
+
+    curr_parts.select{|item| item['recommended'] == 1 && item['quantity'] != 0 }.first || curr_parts.select{ |item|  item['quantity'] != 0}.first
+
+  end
+
+  def recommend_part_index parts, key, recommend_part
+    index = parts.map(&:keys).index([key])
+    curr_parts = parts[index].values[0]
+    curr_parts.index{ |part| part['number'] == recommend_part['number'] }
+
+  end
+
   def filter_parts parts, type
     if type == 'pm25'
       parts.select{ |part| part.keys.first == "空调滤清器" }

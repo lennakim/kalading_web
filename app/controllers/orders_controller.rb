@@ -79,10 +79,11 @@ class OrdersController < ApplicationController
   def validate_preferential_code
     code = params[:code]
     if code.present?
-      car_id = params["car_id"]
-      @parts = params["parts"].try :values
 
       type = params["type"]
+      car_id = params["car_id"]
+
+      @parts = JSON.parse cookies['parts']
 
       payload = {
         parts: @parts,
@@ -97,7 +98,9 @@ class OrdersController < ApplicationController
 
   def no_preferential
     car_id = params["car_id"]
-    @parts = params["parts"].values
+
+    @parts = JSON.parse cookies['parts']
+
     type = params["type"]
 
     payload = {
@@ -145,25 +148,12 @@ class OrdersController < ApplicationController
       end
 
       if last_select_car.present?
-        cache_key = "#{last_select_car}/car_info"
-        @last_select_car = Rails.cache.fetch(cache_key)
-
-        if !@last_select_car
-          @last_select_car = Auto.api_find last_select_car
-          Rails.cache.write(cache_key, @last_select_car)
-        end
+        @last_select_car = Auto.api_find last_select_car
       end
 
       type = params[:type]
-      # @cars_info = Order.cars_data current_city_id, type
 
-      cache_key = "#{car_id}/#{current_city_id}/#{type}/result"
-      @result = Rails.cache.fetch(cache_key)
-      if !@result
-        @result = Order.items_for car_id, current_city_id, type
-        Rails.cache.write(cache_key, @result)
-      end
-
+      @result = Order.items_for2 car_id, current_city_id, type
     else
       return redirect_to select_car_by_initial_orders_path(act: params[:act], type: params[:type])
     end
@@ -182,10 +172,10 @@ class OrdersController < ApplicationController
   end
 
   def refresh_price
-    car_id = params["order"]["car_id"]
-    parts = params["order"]["parts"].try :values
-
+    car_id = params["car_id"]
     type = params["type"]
+
+    parts = JSON.parse cookies['parts']
 
     activity = Activity.find_by id: params[:act]
 
@@ -215,8 +205,6 @@ class OrdersController < ApplicationController
     car_id = params[:car_id]
     @parts = JSON.parse cookies["parts"]
     @city_capacity = Order.city_capacity current_city_id
-
-    # @auto = Auto.find_by id: params[:auto_id]
 
     activity = Activity.find_by id: params[:act]
 
@@ -314,7 +302,13 @@ class OrdersController < ApplicationController
       return render js: "alert('请填写正确的验证码')"
     end
 
-    parts = params[:parts] ? params[:parts].values : []
+    if params[:parts]
+      parts = params[:parts].values
+    elsif cookies['parts']
+      parts = JSON.parse cookies["parts"]
+    else
+      parts = []
+    end
 
     if !params[:serve_date].present?
       return render js: "alert('请填写正确的服务日期')"

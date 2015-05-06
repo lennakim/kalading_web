@@ -3,8 +3,8 @@ class Kalading.Views.Items extends Backbone.View
   el: '.item-list'
 
   events:
-    "change .part": "resetSelectItems"
     "click .list-group-item > .item": "chooseParts"
+    "click .item-switch": "openItemSelectors"
     "click .order_button": "submitOrder"
     "click #no_parts": "disableParts"
     "click #buy_parts": "enableParts"
@@ -29,6 +29,10 @@ class Kalading.Views.Items extends Backbone.View
 
     @resetSelectItems()
     @order.loadPrice()
+
+  openItemSelectors: (e) ->
+    $('.item-switch-list.collapse.in').collapse('hide')
+    $(e.currentTarget).closest('.item-part').find('.collapse').collapse('show')
 
   disableParts: (e)->
     $("#no_parts").parent('.list-group').children('li').removeClass('selected')
@@ -59,27 +63,24 @@ class Kalading.Views.Items extends Backbone.View
     if $('.item-part').hasClass('disabled')
       $('.item-part').removeClass('disabled')
       $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
-      $('#service_fee').collapse('hide')
 
+    $('#service_fee').collapse('hide')
     @resetSelectItems()
-
 
   resetSelectItems: =>
     parts = _.map @$(".item-part:not(.disabled) .selected-part.selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
 
-    @order.set 'parts', parts
-
-    data_json = JSON.stringify(@order.get('parts'))
+    data_json = JSON.stringify(parts)
     $.cookie('parts', data_json)
 
-  chooseParts: (e)=>
+    @order.set 'parts', parts
 
+  chooseParts: (e)=>
     $part = $(e.currentTarget)
 
     if $part.hasClass('cancel-selected')
-
       $part.closest('.list-group').children('.list-group-item').removeClass('selected')
 
       selected_part = $part.closest('.panel').find('.selected-part')
@@ -109,7 +110,6 @@ class Kalading.Views.Items extends Backbone.View
           .children('.part-name').text(display_name).end()
           .children('.part-price').text("￥ #{ price }")
 
-
     $part.closest('.collapse').collapse('hide')
 
     @resetSelectItems()
@@ -121,12 +121,13 @@ class Kalading.Views.Items extends Backbone.View
     @$service_price.text(@order.get('service_price'))
     # @recoverSelectors()
 
-  submitOrder: ->
+  submitOrder: (e) ->
 
     if $('.order_button').hasClass('haiwan-disabled')
       alert '感谢您参加海湾和卡拉丁的活动，今天的50个免费名额已经抢完了，明天10点继续开抢！您也可以去官网和微信端自费购买海湾润滑油保养，也有机会赢取大礼！'
-    else
-      @order.submit()
+
+      e.preventDefault()
+      e.stopPropagation()
 
   # disableSelectors: ->
   #   @$price.addClass "disabled"

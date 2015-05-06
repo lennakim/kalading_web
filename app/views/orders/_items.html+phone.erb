@@ -1,5 +1,6 @@
 <% activity = nil unless defined? activity %>
 <% parts = @result["applicable_parts"] %>
+
 <% to_next_step = false %>
 
 <% filtered_parts = filter_parts(parts, type) %>
@@ -17,51 +18,68 @@
 
         <% part_name = part.keys[0] %>
         <% part_items = part.values[0] %>
-        <% no_items = part_items.sum{ |e| e['quantity'] } == 0 %>
+        <% no_items = part_items.count == 0 %>
         <% to_next_step ||= !no_items %>
 
-        <% if part_items.count > 0 && !no_items %>
+        <% if !no_items %>
 
           <div class="panel-group custom item-part" role="tablist">
             <div class="panel">
               <div class="panel-heading clearfix" role="tab" id="select_item_header_<%= i %>">
-                <a class="selected-part" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>">
-                  <div class="pull-left part-name" data-name="<%= part_name %>">
-                    未选择 <%= part_name %>
-                  </div>
-                  <div class="part-price pull-right">
-                  </div>
-
-                </a>
+                <% if recommend_part = get_recommend_part(parts, part_name) %>
+                  <a class="selected-part selected item-switch" data-toggle="collapse" aria-expanded="false" aria-controls="select_item_<%= i %>" data-number="<%= recommend_part['number'] %>" data-brand="<%= recommend_part['brand'] %>">
+                    <div class="pull-left part-name" data-name="<%= part_name %>">
+                      <%= display_item_name part_name, recommend_part['brand'], recommend_part['number'] %>
+                    </div>
+                    <div class="cursor-down pull-right">
+                      <%= image_tag "cursor-down.png" %>
+                    </div>
+                    <div class="part-price pull-right">
+                      <%= recommend_part['price'] %>
+                    </div>
+                  </a>
+                <% else %>
+                  <a class="selected-part selected item-switch" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>">
+                    <div class="pull-left part-name" data-name="<%= part_name %>">
+                      未选择 <%= part_name %>
+                    </div>
+                    <div class="cursor-down pull-right">
+                      <%= image_tag "cursor-down.png" %>
+                    </div>
+                    <div class="part-price pull-right">
+                    </div>
+                  </a>
+                <% end %>
                 <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
               </div>
-              <div id="select_item_<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_item_header" aria-expanded="true">
+
+              <div id="select_item_<%= i %>" class="item-switch-list panel-collapse collapse" role="tabpanel" aria-labelledby="select_item_header" aria-expanded="true">
                 <ul class="list-group">
-                  <% select_index = selected_item_index(default_parts(@result), part_items)  %>
+
+                  <% select_index = recommend_part_index(parts, part_name, recommend_part) %>
 
                   <% part_items.each_with_index do |item, index| %>
-
                     <% if item["quantity"] != 0 %>
+                      <li class="list-group-item clearfix <%= 'selected' if select_index == index %>">
 
-                      <li class="list-group-item clearfix">
                         <!-- 专门给易道活动的-->
                         <% if activity && custom_activity.include?(activity.name) %>
                           <% if part_name == "机油" %>
                             <!-- 机油 -->
                             <% item = yidao_filter(part_items, activity).first %>
                             <% if item %>
-                              <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                              <%= render "item", name: part_name, item: item %>
                               <% break %>
                             <% end %>
                           <% elsif part_name == "机滤" %>
                             <!-- 机滤 -->
-                            <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                            <%= render "item", name: part_name, item: item %>
                           <% else %>
                             <!-- 其他选项 -->
-                            <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                            <%= render "item", name: part_name, item: item %>
                           <% end %>
                         <% else %>
-                            <%= render "item", name: part_name, item: item, selected: select_index == index %>
+                            <%= render "item", name: part_name, item: item %>
                         <% end %>
                       </li>
                     <% end %>
@@ -86,23 +104,25 @@
     <div class="panel-group custom fee" role="tablist">
       <div class="panel quick-fee-select">
         <div class="panel-heading clearfix" role="tab" id="service_fee_header">
-            <a class="service-fee selected" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
-
+            <a class="service-fee selected item-switch" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
               <div class="pull-left">
                 上门服务费
               </div>
 
-              <div class="pull-right">
+              <div class="cursor-down pull-right">
+                <%= image_tag "cursor-down.png" %>
+              </div>
+
+              <div class="pull-right part-price">
                 ￥ <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
               </div>
 
             </a>
             <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a></h4>
         </div>
-        <div id="service_fee" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
+        <div id="service_fee" class="panel-collapse collapse item-switch-list" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
 
           <ul class="list-group">
-
             <li class="list-group-item clearfix" id="buy_parts">
               <div class="pull-left">
                 购买配件，并上门服务
@@ -134,17 +154,15 @@
       <% car_id = params[:car_id] || @last_select_car.system_id %>
 
       <% if to_next_step %>
+
         <% if activity && (activity.id == 140) && (Time.now.hour < 10) %>
           <%= link_to "下一步", "#", class: 'btn btn-default order_button haiwan-disabled' %>
-
         <% else %>
-
-          <%= link_to "下一步", place_order_page_orders_path(act: params[:act], type: type, car_id: car_id), class: 'btn btn-default order_button ' %>
-
+          <%= link_to "下一步", place_order_page_orders_path(act: params[:act], type: type, car_id: car_id), class: 'btn btn-default order_button' %>
         <% end %>
+
       <% else %>
         <%= link_to "下一步", "#", class: 'btn btn-default order_button disabled' %>
-
       <% end %>
     </div>
   </div>
