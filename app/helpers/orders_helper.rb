@@ -100,6 +100,11 @@ module OrdersHelper
     result["parts"].map{ |part| part.values[0][0]["number"] }
   end
 
+  def get_part parts, key
+    index = parts.map(&:keys).index([key])
+    curr_parts = parts[index].values[0]
+  end
+
   def get_recommend_part parts, key
     index = parts.map(&:keys).index([key])
     curr_parts = parts[index].values[0]

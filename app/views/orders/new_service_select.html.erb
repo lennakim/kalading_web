@@ -11,46 +11,42 @@
         </h4>
         <div class="items clearfix">
           <ul class="left service-items">
-            <% @result['applicable_parts'].each do |part| %>
-              <% if part["机油"].present? %>
-                <li data-part="机油" class="cursor active"><%= part["机油"][0]["brand"] %></li>
-              <% end %>
-
-              <% if part["机滤"].present? %>
-                <li data-part="机滤" class="cursor active"><%= part["机滤"][0]["brand"] %></li>
-              <% end %>
-
-              <% if part["电瓶"].present? %>
-                <li data-part="电瓶" class="cursor active"><%= part["电瓶"][0]["brand"] %></li>
-              <% end %>
-
-              <% if part["空气滤清器"].present? %>
-                <li data-part="空气滤清器" class="cursor active"><%= part["空气滤清器"][0]["brand"] %></li>
-              <% end %>
-
-              <% if part["空调滤清器"].present? %>
-                <li data-part="空调滤清器" class="cursor active"><%= part["空调滤清器"][0]["brand"] %></li>
-              <% end %>
+            <% parts = @result['applicable_parts'] %>
+            <% array = parts.map(&:keys).flatten %>
+            <% array.each do |arr| %>
+              <li data-part="<%= arr %>" class="cursor active"><%= get_recommend_part(parts, arr)["brand"] %></li>
             <% end %>
           </ul>
-          <ul class="right items-list">
-            <li class="cursor">1</li>
-            <li class="cursor">2</li>
+
+        <% array.each_with_index do |arr, inx| %>
+          <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
+            <% get_part(parts, arr).each do |part| %>
+              <li class="cursor"><%= part['brand'] %></li>
+            <% end %>
           </ul>
+        <% end %>
+        <!--
+          <ul class="right items-list">
+              <li class="cursor">1</li>
+              <li class="cursor">2</li>
+          </ul>
+
           <ul class="right items-list hide">
             <li class="cursor">21</li>
             <li class="cursor">22</li>
           </ul>
+
           <ul class="right items-list hide">
             <li class="cursor">31</li>
             <li class="cursor">32</li>
           </ul>
+
           <ul class="right items-list hide">
             <li class="cursor">41</li>
             <li class="cursor">42</li>
           </ul>
-        </div>
-      </div>
+          -->
+       </div>
     </div>
     <div class="prev cursor">
       <%= link_to "上一步", new_car_select_orders_path %>
