@@ -34,7 +34,6 @@ class Kalading.Views.Items extends Backbone.View
     $('.item-switch-list.collapse.in').collapse('hide')
     $(e.currentTarget).closest('.item-part').find('.collapse').collapse('show')
 
-
   disableParts: (e)->
     $("#no_parts").parent('.list-group').children('li').removeClass('selected')
     $("#no_parts").addClass('selected')

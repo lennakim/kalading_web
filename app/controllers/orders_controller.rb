@@ -123,7 +123,7 @@ class OrdersController < ApplicationController
 
       type = params[:type]
 
-      @result = Order.items_for car_id, current_city_id, type
+      @result = Order.items_for2 car_id, current_city_id, type
     else
       return redirect_to select_car_by_initial_orders_path(act: params[:act], type: params[:type])
     end

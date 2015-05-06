@@ -58,6 +58,10 @@ class Order
       ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id } {[]}
     end
 
+    def items_for2 car_id, city_id, type = "bmt"
+      ServerApi.call "get", "auto_maintain_order2", { entry_id: car_id, city_id: city_id } {[]}
+    end
+
     def refresh_price car_id, city_id, payload, type = "bmt"
       if type == 'pm25'
         service_type = 0
