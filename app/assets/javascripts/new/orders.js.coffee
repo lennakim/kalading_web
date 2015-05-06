@@ -98,9 +98,22 @@ $ ->
   $(".series-list").on "click", "li", ->
     model_id = $(@).data('model_id')
 
-    $.get "#{API_Domain}#{V2}/auto_models/#{model_id}.json", (data)->
-      submodels = data['data']
-      generateCarSubModel(submodels)
+    # $.get "#{API_Domain}#{V2}/auto_models/#{model_id}.json", (data)->
+      # submodels = data['data']
+      # generateCarSubModel(submodels)
+    $.ajax({
+        method: "GET",
+        url : "#{API_Domain}#{V2}/auto_models/#{model_id}.json",
+        beforeSend: ->
+          alert("加载")
+        ,
+        complete: ->
+          alert("完成")
+        ,
+        success: (data)->
+          submodels = data['data']
+          generateCarSubModel(submodels)
+      })
 
   unless $.jStorage.get("autos")?
     $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
