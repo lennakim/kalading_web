@@ -55,7 +55,6 @@ class Order
     end
 
     def items_for car_id, city_id, type = "bmt"
-
       ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id } {[]}
     end
 

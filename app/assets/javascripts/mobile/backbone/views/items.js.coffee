@@ -58,7 +58,8 @@ class Kalading.Views.Items extends Backbone.View
     if $('.item-part').hasClass('disabled')
       $('.item-part').removeClass('disabled')
       $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
-      $('#service_fee').collapse('hide')
+
+    $('#service_fee').collapse('hide')
     @resetSelectItems()
 
   resetSelectItems: =>
@@ -105,7 +106,6 @@ class Kalading.Views.Items extends Backbone.View
           .data('brand', brand).data('number', number).data('name', name)
           .children('.part-name').text(display_name).end()
           .children('.part-price').text("￥ #{ price }")
-
 
     $part.closest('.collapse').collapse('hide')
 

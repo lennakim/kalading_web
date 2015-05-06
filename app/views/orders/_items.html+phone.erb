@@ -1,5 +1,6 @@
 <% activity = nil unless defined? activity %>
 <% parts = @result["applicable_parts"] %>
+
 <% to_next_step = false %>
 
 <% filtered_parts = filter_parts(parts, type) %>
@@ -25,18 +26,35 @@
           <div class="panel-group custom item-part" role="tablist">
             <div class="panel">
               <div class="panel-heading clearfix" role="tab" id="select_item_header_<%= i %>">
-                <a class="selected-part" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>">
-                  <div class="pull-left part-name" data-name="<%= part_name %>">
-                    未选择 <%= part_name %>
-                  </div>
 
-                  <div class="cursor-down pull-right">
-                    <%= image_tag "cursor-down.png" %>
-                  </div>
+                <% recommend_part = @result['parts'].select{ |k, v| k.keys[0] == part_name }[0].values[0][0] %>
 
-                  <div class="part-price pull-right">
-                  </div>
-                </a>
+                <% if recommend_part %>
+                  <a class="selected-part selected" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>" data-number="<%= recommend_part['number'] %>" data-brand="<%= recommend_part['brand'] %>">
+
+                    <div class="pull-left part-name" data-name="<%= part_name %>">
+                      <%= display_item_name part_name, recommend_part['brand'], recommend_part['number'] %>
+                    </div>
+                    <div class="cursor-down pull-right">
+                      <%= image_tag "cursor-down.png" %>
+                    </div>
+                    <div class="part-price pull-right">
+                      <%= recommend_part['price'] %>
+                    </div>
+                  </a>
+                <% else %>
+                  <a class="selected-part selected" data-toggle="collapse" href="#select_item_<%= i %>" aria-expanded="false" aria-controls="select_item_<%= i %>">
+                    <div class="pull-left part-name" data-name="<%= part_name %>">
+                      未选择 <%= part_name %>
+                    </div>
+                    <div class="cursor-down pull-right">
+                      <%= image_tag "cursor-down.png" %>
+                    </div>
+                    <div class="part-price pull-right">
+                    </div>
+                  </a>
+                <% end %>
+
                 <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
               </div>
               <div id="select_item_<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_item_header" aria-expanded="true">

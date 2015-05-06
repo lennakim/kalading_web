@@ -118,25 +118,12 @@ class OrdersController < ApplicationController
       end
 
       if last_select_car.present?
-        cache_key = "#{last_select_car}/car_info"
-        @last_select_car = Rails.cache.fetch(cache_key)
-
-        if !@last_select_car
-          @last_select_car = Auto.api_find last_select_car
-          Rails.cache.write(cache_key, @last_select_car)
-        end
+        @last_select_car = Auto.api_find last_select_car
       end
 
       type = params[:type]
-      # @cars_info = Order.cars_data current_city_id, type
 
-      cache_key = "#{car_id}/#{current_city_id}/#{type}/result"
-      @result = Rails.cache.fetch(cache_key)
-      if !@result
-        @result = Order.items_for car_id, current_city_id, type
-        Rails.cache.write(cache_key, @result)
-      end
-
+      @result = Order.items_for car_id, current_city_id, type
     else
       return redirect_to select_car_by_initial_orders_path(act: params[:act], type: params[:type])
     end
