@@ -1,20 +1,37 @@
 <div id="new-car-select">
   <div class="second">
     <div class="main">
-      <%= image_tag("new-order/second.png", :class => 'tag2')%>
-      
+      <%= image_tag("new-order/second.png", class: 'tag2')%>
+
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">
         <h4 class="title clearfix">
-          <span class="name">奥迪(进口) A1 上门保养<%#= @result['name'] %></span>
-          <span class="price">总价：455元</span>
+          <span class="name"> <%= @result['name'] %></span>
+          <span class="price">总价：<%= @result['price'] %>元</span>
         </h4>
         <div class="items clearfix">
           <ul class="left service-items">
-            <li class="active cursor">暂未选择</li>
-            <li class="cursor">暂未选择</li>
-            <li class="cursor">暂未选择</li>
-            <li class="cursor">暂未选择</li>
+            <% @result['parts'].each do |part| %>
+              <% if part["机油"].present? %>
+                <li class="cursor active"><%= part["机油"][0]["brand"] %></li>
+              <% end %>
+
+              <% if part["机滤"].present? %>
+                <li class="cursor active"><%= part["机滤"][0]["brand"] %></li>
+              <% end %>
+
+              <% if part["电瓶"].present? %>
+                <li class="cursor active"><%= part["电瓶"][0]["brand"] %></li>
+              <% end %>
+
+              <% if part["空气滤清器"].present? %>
+                <li class="cursor active"><%= part["空气滤清器"][0]["brand"] %></li>
+              <% end %>
+
+              <% if part["空调滤清器"].present? %>
+                <li class="cursor active"><%= part["空调滤清器"][0]["brand"] %></li>
+              <% end %>
+            <% end %>
           </ul>
           <ul class="right items-list">
             <li class="cursor">1</li>

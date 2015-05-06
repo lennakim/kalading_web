@@ -22,7 +22,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  server_uri: "http://intranet.kalading.com"
+  server_uri: "http://staging.kalading.com:81"
 
 test:
   <<: *defaults
