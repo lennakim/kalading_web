@@ -39,10 +39,11 @@ $ ->
   	$('.select-model').removeClass('active')
 
 
-  #------跳转到选服务------
+  #------跳转到选配件服务------
   $('.first .model-list').on 'click','li', ->
-    $('.first').addClass('hide')
-    $('.second').removeClass('hide')
+    # $('.first').addClass('hide')
+    # $('.second').removeClass('hide')
+    window.location.href = "/orders/new_service_select"
 
   #------选服务页面 点击下一步 显示下单页面------
   $('.second .next').click ->
