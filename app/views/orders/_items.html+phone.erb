@@ -57,7 +57,6 @@
                 <ul class="list-group">
 
                   <% select_index = recommend_part_index(parts, part_name, recommend_part) %>
-
                   <% part_items.each_with_index do |item, index| %>
                     <% if item["quantity"] != 0 %>
                       <li class="list-group-item clearfix <%= 'selected' if select_index == index %>">
@@ -106,7 +105,7 @@
         <div class="panel-heading clearfix" role="tab" id="service_fee_header">
             <a class="service-fee selected item-switch" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
               <div class="pull-left">
-                上门服务费
+                购买配件，并上门服务
               </div>
 
               <div class="cursor-down pull-right">
@@ -123,7 +122,7 @@
         <div id="service_fee" class="panel-collapse collapse item-switch-list" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
 
           <ul class="list-group">
-            <li class="list-group-item clearfix" id="buy_parts">
+            <li class="list-group-item selected clearfix" id="buy_parts">
               <div class="pull-left">
                 购买配件，并上门服务
               </div>

@@ -77,34 +77,38 @@
               <div class="panel-group custom" role="tablist">
                 <div class="panel">
                   <div class="panel-heading clearfix" role="tab" id="select_type_header">
-                      <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_mt_type" aria-expanded="false" aria-controls="select_mt_type">
+                    <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_mt_type" aria-expanded="false" aria-controls="select_mt_type">
 
-                        <div class="pull-left">
-                          <%= Product.find_by(slug: type).title %>
-                        </div>
+                      <div class="pull-left">
+                        <%= Product.find_by(slug: type).title %>
+                      </div>
 
+                      <% if types.length > 1 %>
                         <div class="cursor-down pull-right">
                           <%= image_tag "cursor-down.png" %>
                         </div>
+                      <% end %>
 
-                      </a>
-                      <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
+                    </a>
+                    <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
                   </div>
                   <div id="select_mt_type" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
 
-                    <ul class="list-group">
-                      <% Product.all.each do |product| %>
-                        <% if product_available? product %>
-                          <% if !via_act || types.include?(product.slug) %>
-                            <li class="list-group-item clearfix">
-                              <%= link_to select_car_item_orders_path(act: params[:act], type: product.slug, car_id: params[:car_id]) do %>
-                                <span class="<%= product.slug %> <%= "selected" if type == product.slug %>"><%= product.title %></span>
-                              <% end %>
-                            </li>
+                    <% if types.length > 1 %>
+                      <ul class="list-group">
+                        <% Product.all.each do |product| %>
+                          <% if product_available? product %>
+                            <% if !via_act || types.include?(product.slug) %>
+                              <li class="list-group-item clearfix">
+                                <%= link_to select_car_item_orders_path(act: params[:act], type: product.slug, car_id: params[:car_id]) do %>
+                                  <span class="<%= product.slug %> <%= "selected" if type == product.slug %>"><%= product.title %></span>
+                                <% end %>
+                              </li>
+                            <% end %>
                           <% end %>
                         <% end %>
-                      <% end %>
-                    </ul>
+                      </ul>
+                    <% end %>
                   </div>
                 </div>
               </div>
