@@ -1,0 +1,19 @@
+<div class="addresses">
+
+  <div class="section">
+
+    <%= render "service_addresses/addresses" %>
+
+    <div class="cell clearfix">
+      <div class="add pull-right">
+        <a class='btn btn-default'>
+          <% if signed_in? || !cookies[:address] %>
+            添加
+          <% else %>
+            切换
+          <% end %>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -64,16 +64,21 @@ class OrdersController < ApplicationController
 
   def validate_preferential_code
     code = params[:code]
-    car_id = params["car_id"]
-    @parts = params["parts"].try :values
+    if code.present?
+      car_id = params["car_id"]
+      @parts = params["parts"].try :values
 
-    type = params["type"]
+      type = params["type"]
 
-    payload = {
-      parts: @parts,
-      discount: code
-    }
-    @result = Order.refresh_price car_id, current_city_id, payload, type
+      payload = {
+        parts: @parts,
+        discount: code
+      }
+
+      @result = Order.refresh_price car_id, current_city_id, payload, type
+    else
+      render js: "alert('优惠码不能为空')"
+    end
   end
 
   def no_preferential
@@ -192,6 +197,29 @@ class OrdersController < ApplicationController
     @result = Order.items_for params[:car_id], current_city_id, type
   end
 
+  def place_order_page
+    car_id = params[:car_id]
+    @parts = JSON.parse cookies["parts"]
+    @city_capacity = Order.city_capacity current_city_id
+
+    # @auto = Auto.find_by id: params[:auto_id]
+
+    activity = Activity.find_by id: params[:act]
+
+    type = params["type"]
+    payload = {
+      parts: @parts
+    }
+    if activity && activity.valid_activity?
+      payload[:discount] = activity.preferential_code
+    end
+
+    @cities = Order.cities
+    @result = Order.refresh_price car_id, current_city_id, payload, type
+
+    render "place_order"
+  end
+
   def place_order
     car_id = params["order"]["car_id"]
     @parts = params["order"]["parts"]
@@ -294,6 +322,12 @@ class OrdersController < ApplicationController
       service_type = 2
     end
 
+    if !params[:reciept_title]
+      reciept_type = 0
+    else
+      reciept_type = 1
+    end
+
     payload = {
       parts: parts,
       service_type: service_type,
@@ -304,8 +338,10 @@ class OrdersController < ApplicationController
         "car_location"      => params[:car_location],
         "car_num"           => params[:car_num],
         "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
-        "reciept_type"      => params[:reciept_type],
+
+        "reciept_type"      => reciept_type,
         "reciept_title"     => params[:reciept_title],
+
         "client_comment"    => params[:client_comment],
         "city_id"           => city.system_id, #params[:city_id]
         "car_id"            => params[:car_id],
