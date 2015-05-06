@@ -114,11 +114,7 @@
             </div>
             <h4 class="item-title">选择配件</h4>
             <div class="items-area">
-              <% if car_id %>
-                <%= render "items", type: type, activity: activity %>
-              <% else %>
-                <span class="spe">请先选择车辆和保养类型</span>
-              <% end %>
+              <%= render "items", type: type, activity: activity %>
             </div>
             <div class="submit-con">
               <span>当前费用:
@@ -134,34 +130,30 @@
         </div>
 
         <% comments = Order.comments['data'] %>
-
-        <% cache ["comments", comments.first['created_at']] do %>
-          <div role="tabpanel" class="tab-pane" id="messages">
-            <% Order.comments['data'].each do |comment| %>
-                <dl class='comment-item'>
-
-                  <dt>
-                  <h3>
-                    <% phone = comment['user_phone'] %>
-                    <% phone[3..6] = "****" %>
-                    <%= phone %>
-                  </h3>
-                    <div class="score" value="<%= score = comment['score'] %>">
-                      <% score.to_i.times.each do |i| %>
-                        <%= image_tag("star2.gif") %>
-                      <% end %>
-                    </div>
-                    <span class="time">
-                      <%= comment['created_at'] %>
-                    </span>
-                  </dt>
-                  <dd>
-                    <%= comment['desc'] %>
-                  </dd>
-                </dl>
-            <% end %>
-          </div>
-        <% end %>
+        <div role="tabpanel" class="tab-pane" id="messages">
+          <% comments.each do |comment| %>
+              <dl class='comment-item'>
+                <dt>
+                <h3>
+                  <% phone = comment['user_phone'] %>
+                  <% phone[3..6] = "****" %>
+                  <%= phone %>
+                </h3>
+                  <div class="score" value="<%= score = comment['score'] %>">
+                    <% score.to_i.times.each do |i| %>
+                      <%= image_tag("star2.gif") %>
+                    <% end %>
+                  </div>
+                  <span class="time">
+                    <%= comment['created_at'] %>
+                  </span>
+                </dt>
+                <dd>
+                  <%= comment['desc'] %>
+                </dd>
+              </dl>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

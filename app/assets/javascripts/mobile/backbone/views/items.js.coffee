@@ -3,7 +3,6 @@ class Kalading.Views.Items extends Backbone.View
   el: '.item-list'
 
   events:
-    "change .part": "resetSelectItems"
     "click .list-group-item > .item": "chooseParts"
     "click .order_button": "submitOrder"
     "click #no_parts": "disableParts"
@@ -60,19 +59,17 @@ class Kalading.Views.Items extends Backbone.View
       $('.item-part').removeClass('disabled')
       $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
       $('#service_fee').collapse('hide')
-
     @resetSelectItems()
-
 
   resetSelectItems: =>
     parts = _.map @$(".item-part:not(.disabled) .selected-part.selected"), (el, index) ->
       brand: $(el).data('brand')
       number: $(el).data('number')
 
-    @order.set 'parts', parts
-
-    data_json = JSON.stringify(@order.get('parts'))
+    data_json = JSON.stringify(parts)
     $.cookie('parts', data_json)
+
+    @order.set 'parts', parts
 
   chooseParts: (e)=>
 
@@ -121,12 +118,13 @@ class Kalading.Views.Items extends Backbone.View
     @$service_price.text(@order.get('service_price'))
     # @recoverSelectors()
 
-  submitOrder: ->
+  submitOrder: (e) ->
 
     if $('.order_button').hasClass('haiwan-disabled')
       alert '感谢您参加海湾和卡拉丁的活动，今天的50个免费名额已经抢完了，明天10点继续开抢！您也可以去官网和微信端自费购买海湾润滑油保养，也有机会赢取大礼！'
-    else
-      @order.submit()
+
+      e.preventDefault()
+      e.stopPropagation()
 
   # disableSelectors: ->
   #   @$price.addClass "disabled"

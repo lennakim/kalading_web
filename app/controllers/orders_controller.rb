@@ -49,10 +49,11 @@ class OrdersController < ApplicationController
   def validate_preferential_code
     code = params[:code]
     if code.present?
-      car_id = params["car_id"]
-      @parts = params["parts"].try :values
 
       type = params["type"]
+      car_id = params["car_id"]
+
+      @parts = JSON.parse cookies['parts']
 
       payload = {
         parts: @parts,
@@ -67,7 +68,9 @@ class OrdersController < ApplicationController
 
   def no_preferential
     car_id = params["car_id"]
-    @parts = params["parts"].values
+
+    @parts = JSON.parse cookies['parts']
+
     type = params["type"]
 
     payload = {
@@ -152,10 +155,10 @@ class OrdersController < ApplicationController
   end
 
   def refresh_price
-    car_id = params["order"]["car_id"]
-    parts = params["order"]["parts"].try :values
-
+    car_id = params["car_id"]
     type = params["type"]
+
+    parts = JSON.parse cookies['parts']
 
     activity = Activity.find_by id: params[:act]
 
@@ -185,8 +188,6 @@ class OrdersController < ApplicationController
     car_id = params[:car_id]
     @parts = JSON.parse cookies["parts"]
     @city_capacity = Order.city_capacity current_city_id
-
-    # @auto = Auto.find_by id: params[:auto_id]
 
     activity = Activity.find_by id: params[:act]
 
@@ -284,7 +285,13 @@ class OrdersController < ApplicationController
       return render js: "alert('请填写正确的验证码')"
     end
 
-    parts = params[:parts] ? params[:parts].values : []
+    if params[:parts]
+      parts = params[:parts].values
+    elsif cookies['parts']
+      parts = JSON.parse cookies["parts"]
+    else
+      parts = []
+    end
 
     if !params[:serve_date].present?
       return render js: "alert('请填写正确的服务日期')"

@@ -29,9 +29,13 @@
                   <div class="pull-left part-name" data-name="<%= part_name %>">
                     未选择 <%= part_name %>
                   </div>
-                  <div class="part-price pull-right">
+
+                  <div class="cursor-down pull-right">
+                    <%= image_tag "cursor-down.png" %>
                   </div>
 
+                  <div class="part-price pull-right">
+                  </div>
                 </a>
                 <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
               </div>
@@ -92,7 +96,11 @@
                 上门服务费
               </div>
 
-              <div class="pull-right">
+              <div class="cursor-down pull-right">
+                <%= image_tag "cursor-down.png" %>
+              </div>
+
+              <div class="pull-right part-price">
                 ￥ <span class='service-price' data-price="<%= @result['service_price'] %>"><%= @result['service_price'] %></span>
               </div>
 
@@ -134,17 +142,15 @@
       <% car_id = params[:car_id] || @last_select_car.system_id %>
 
       <% if to_next_step %>
+
         <% if activity && (activity.id == 140) && (Time.now.hour < 10) %>
           <%= link_to "下一步", "#", class: 'btn btn-default order_button haiwan-disabled' %>
-
         <% else %>
-
-          <%= link_to "下一步", place_order_page_orders_path(act: params[:act], type: type, car_id: car_id), class: 'btn btn-default order_button ' %>
-
+          <%= link_to "下一步", place_order_page_orders_path(act: params[:act], type: type, car_id: car_id), class: 'btn btn-default order_button' %>
         <% end %>
+
       <% else %>
         <%= link_to "下一步", "#", class: 'btn btn-default order_button disabled' %>
-
       <% end %>
     </div>
   </div>

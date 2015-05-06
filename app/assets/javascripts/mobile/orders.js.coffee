@@ -70,11 +70,18 @@ $ ->
 
       $.post "/service_addresses/#{ id }/set_default"
 
-    $("#place_order_form").on "ajax:beforeSend", ->
+    $("#place_order_form").on "ajax:beforeSend", (xhr, settings)->
+
+      console.log 'before....'
+      console.log settings
+
       $("#submit_form_button").attr('disabled', true)
 
     $("#place_order_form").on "ajax:complete", ->
+
+      console.log 'complete ....'
       $("#submit_form_button").attr('disabled', false)
+
 
     if $('.current_addresses .service-address-detail').length == 0
       $('.add a').click()
@@ -87,9 +94,7 @@ $ ->
       code = $("#preferential_code").val()
       type = $("#service_type").val()
 
-      parts = $('#item_table').data("parts")
-
-      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, parts: parts, type: type }
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, type: type }
 
     $('#no_preferential').on "click", (e) ->
       e.preventDefault()
@@ -195,9 +200,7 @@ $ ->
         # $(element.form).find("label[for=" + element.id + "]")
         #   .removeClass(errorClass)
 
-
       errorPlacement: (error, element) ->
-
         # 不提醒
 
         # element.data('title', error[0].innerText)
