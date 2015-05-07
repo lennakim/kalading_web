@@ -117,29 +117,17 @@ class Kalading.Views.Items extends Backbone.View
     @enableParts()
 
   render: ->
-    # console.log 'render price'
     @$price.text(@order.get('price'))
     @$service_price.text(@order.get('service_price'))
-    # @recoverSelectors()
 
   submitOrder: (e) ->
-
     if $('.order_button').hasClass('haiwan-disabled')
       alert '感谢您参加海湾和卡拉丁的活动，今天的50个免费名额已经抢完了，明天10点继续开抢！您也可以去官网和微信端自费购买海湾润滑油保养，也有机会赢取大礼！'
 
       e.preventDefault()
       e.stopPropagation()
-
-  # disableSelectors: ->
-  #   @$price.addClass "disabled"
-  #   @$checkboxes.attr('disabled', true)
-  #   @$order_button.attr('disabled', true).addClass('disabled')
-
-  # recoverSelectors: ->
-  #   @$price.removeClass "disabled"
-  #   if !@$no_parts.prop('checked')
-  #     @$checkboxes.attr('disabled', false)
-  #   @$order_button.attr('disabled', false).removeClass('disabled')
+    else
+      $('.order_button').addClass('disabled')
 
   errorHandler: ->
     # alert '服务器错误...请稍后再试'
