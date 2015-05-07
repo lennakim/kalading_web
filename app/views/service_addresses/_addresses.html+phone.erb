@@ -4,28 +4,13 @@
     <div class="panel quick-address-select">
       <div class="panel-heading clearfix" role="tab" id="select_addr_header">
         <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_addr" aria-expanded="false" aria-controls="select_addr">
-          <% if current_user && current_user.default_address %>
+          <% if user_default_address %>
             <div class="pull-left">
               服务地址:
             </div>
-
             <div class="pull-left service-address-detail">
-              <%= current_user.default_address.full_address %>
+              <%= user_default_address %>
             </div>
-
-            <div class="cursor-down pull-right">
-              <%= image_tag "cursor-down.png" %>
-            </div>
-
-          <% elsif curr_address = cookies[:address] %>
-            <div class="pull-left">
-              服务地址:
-            </div>
-
-            <div class="pull-left service-address-detail">
-              <%= curr_address %>
-            </div>
-
           <% else %>
             <div class="pull-left">
               暂无服务地址，请添加
