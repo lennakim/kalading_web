@@ -46,7 +46,8 @@ module OrdersHelper
       "机油" => "oil",
       "机滤" => "filter",
       "空调滤清器" => "air-filter",
-      "空气滤清器" => "air-cleaner"
+      "空气滤清器" => "air-cleaner",
+      "电瓶" => "battery"
     }[part_name]
   end
 
