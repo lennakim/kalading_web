@@ -24,7 +24,30 @@
 #= require new/orders
 
 $ ->
-  $('.kld-header-link').on 'mouseover','li', ->
+  $('.kld-header-link').on 'mouseenter','li', ->
     $(@).addClass('selected').siblings().removeClass('selected')
-    $('.sub').addClass('hide')
-    $('.selected').find('.sub').removeClass('hide')
+    #$('.sub').stop().stop().animate({'height':'0'})
+    $('.selected').find('.sub').stop().animate({'height':'100px'},500)
+    
+    $('.kld-header-wrap').addClass('toggle')
+    $('.logo').addClass('hide')
+    $('.logored').removeClass('hide')
+
+  $('.sub').mouseleave ->
+    $(@).stop().animate({'height':'0'})
+    $('.kld-header-wrap').animate({'':''},500, ->
+    	$(@).removeClass('toggle')
+	    $('.logo').removeClass('hide')
+	    $('.logored').addClass('hide')
+    )
+
+
+  $('.product').on 'mouseover','li', ->
+    $(@).find('.key,.pic2').removeClass('hide')
+    $(@).find('.pic1').addClass('hide')
+    
+  $('.product').on 'mouseout','li', ->
+    $(@).find('.key,.pic2').addClass('hide')
+    $(@).find('.pic1').removeClass('hide')
+
+    

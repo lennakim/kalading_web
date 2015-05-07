@@ -208,15 +208,6 @@
             <div>
                 <%= image_tag("new-index/banner.jpg")%>
             </div>
-            <div> 
-                <%= image_tag("new-index/banner.jpg")%>
-            </div>
-            <div> 
-                <%= image_tag("new-index/banner.jpg")%>
-            </div>
-            <div>
-                <%= image_tag("new-index/banner.jpg")%>
-            </div>
         </div> 
     </div>
 
@@ -224,7 +215,8 @@
     <div class="kld-header-wrap">
       <div class="kld-header-logo">
         <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img">
-          <%= image_tag("new-index/logo.png")%>
+          <%= image_tag("new-index/logo.png",:class => 'logo')%>
+          <%= image_tag("new-index/logo-red.png",:class => 'logored hide')%>
         </a>
         <div class="kld-header-logo-slogan">
           <p>爱车新理念</p>
@@ -245,28 +237,36 @@
         <li class="products <%= "active" if params[:action] == "new_car_select" %>">
           <a href="" class="" onclick="return false;">预约服务</a>
 
-          <div class="sub hide">
+          <div class="sub">
             <!-- <div class="bac"></div> -->
-            <ul class="clearfix">
+            <ul class="product clearfix">
               <li>
-                <p class="key hide">大保养</p>
-                <%= image_tag("new-index/bmt1.png",:class => 'pic1')%>
-                <%= image_tag("new-index/bmt2.png",:class => 'pic2 hide')%>
+                <a href="">
+                  <p class="key hide">大保养</p>
+                  <%= image_tag("new-index/bmt1.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/bmt2.png",:class => 'pic2 hide')%>
+                </a>
               </li>
               <li>
-                <p class="key hide">小保养</p>
-                <%= image_tag("new-index/smt1.png",:class => 'pic1')%>
-                <%= image_tag("new-index/smt2.png",:class => 'pic2 hide')%>
+                <a href="">
+                  <p class="key hide">小保养</p>
+                  <%= image_tag("new-index/smt1.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/smt2.png",:class => 'pic2 hide')%>
+                </a>
               </li>
               <li>
-                <p class="key hide">PM2.5</p> 
-                <%= image_tag("new-index/pm25.png",:class => 'pic1')%>
-                <%= image_tag("new-index/pm252.png",:class => 'pic2 hide')%>
+                <a href="">
+                  <p class="key hide">PM2.5</p> 
+                  <%= image_tag("new-index/pm25.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/pm252.png",:class => 'pic2 hide')%>
+                </a>
               </li>
               <li>
-                <p class="key hide">换电瓶</p> 
-                <%= image_tag("new-index/battery1.png",:class => 'pic1')%>
-                <%= image_tag("new-index/battery2.png",:class => 'pic2 hide')%>
+                <a href="">
+                  <p class="key hide">换电瓶</p> 
+                  <%= image_tag("new-index/battery1.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/battery2.png",:class => 'pic2 hide')%>
+                </a>
               </li>
               <li class="special">
                 <%= image_tag("new-index/customer-num.png",:class => 'customer-num')%>
