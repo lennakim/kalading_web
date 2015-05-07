@@ -37,7 +37,7 @@ a:link[title="站长统计"]{
 }
 
 body{
-  background: #FEF9F5;
+  background: #f5f5f5;
 
   font: 14px/1.5 arial, "Microsoft Yahei", "Hiragino Sans GB", sans-serif !important;
 }
@@ -377,10 +377,10 @@ header.navbar{
 
 .phone-page{
   .item-title{
-    padding: 2px 20px;
+    padding: 2px 10px;
     background: #f7f4f3;
     color: #999999;
-    font-size: 12px;
+    font-size: 14px;
   }
   .item-title:before{
     margin-right: 5px;
@@ -512,23 +512,34 @@ header.navbar{
 }
 
 .form-group.has-error{
+  input, select{
+    border-color: #e94609;
+    color: #e94609;
+  }
   input.form-control:focus, select.form-control:focus{
     @include box-shadow(0 0);
+    border-color: #e94609;
+    color: #e94609;
   }
 }
 
 input.form-control, select.form-control, textarea.form-control{
+  &[readonly=true]{
+    background: #f3f3f3;
+    color: #ccc;
+  }
   &.date-select{
     background: #fff;
   }
-  @include border-radius(0 0);
+  @include border-radius(3px);
   border: 0 none;
   border-top: 0 none;
-  @include box-shadow(0 0);
-  border-bottom: 1px solid #ccc;
+  @include box-shadow(inset 0px 1px 2px rgba(0, 0, 0, 0.1));
+  border: 1px solid #f5f5f5;
+  color: #333;
   &:focus{
     border-color: 0 none;
-    border-bottom: 1px solid #878787;
+    border: 1px solid #bdddec;
     @include box-shadow(0 0);
   }
 }
