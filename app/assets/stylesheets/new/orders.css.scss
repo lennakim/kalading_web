@@ -103,6 +103,12 @@ $main-orange: #e94609;
 	    }
 	}
 	.quick_select_car{
+		.carousel-control.left,.carousel-control.right{
+			width: 0;
+		}
+		.carousel-indicators{
+			bottom: -30px;
+		}
 		.add-car{
 			float: right;
 			text-decoration: underline;
@@ -114,19 +120,24 @@ $main-orange: #e94609;
 		.car-item{
 			float: left;
 			width: 21%;
+			height: 230px;
 			margin: 0 2%;
 			padding: 20px;
 			border: 1px solid #ccc;
 			border-radius: 5px;
 			color: #666666;
 			text-align: center;
-			img{
-				margin-bottom: 20px; 
+			.img{
+				line-height: 135px;
+			}
+			&:hover{
+				border: 1px solid $main-orange;
 			}
 		}
-		.active{
+		.selected{
 			border: 1px solid $main-orange;
-			color: $main-orange;
+			background: $main-orange;
+			color: #fff;
 		}
 		.undefined-car{
 	    	float: right;

@@ -1,11 +1,5 @@
 $ ->
 
-  $(".flexslider").flexslider ->
-    slideshowSpeed: 4000, 
-    animationSpeed: 400, 
-    touch: true 
-
-
   #------选车型---------
 
   #------首字母搜索------
@@ -62,6 +56,12 @@ $ ->
 
   $('.third .prev').click ->
     $('.second').removeClass('hide').next().addClass('hide')
+
+
+  #快捷车辆
+  $('.cars-list').on 'click','.car-item', ->
+    $('.car-item').removeClass('selected')
+    $(@).addClass('selected')
 
 # order
   $(".crumbs").on "click", "li", ->

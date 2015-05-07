@@ -1,3 +1,72 @@
 <div class="new-car-select">
-	快捷车辆
+	<div class="quick_select_car">
+		<div class="main">
+			<%= image_tag("new-order/first.png", :class => 'tag2')%>
+			<h4 class="tit">服务内容</h4>
+			<div class="maintain-items">
+				<h4 class="title">
+					<span>您有以下快捷车辆</span>
+					<span class="add-car">添加车辆</span>
+				</h4>
+				<div class="items">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				      <ol class="carousel-indicators">
+				        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				      </ol>
+				      <div class="carousel-inner" role="listbox">
+				        <div class="item active">
+				            <div class="cars-list clearfix">
+								<div class="car-item">
+									<p class="img">
+										<%= image_tag("new-order/first.png", :class => 'tag2')%>
+									</p>
+									<p class="brand-series-model">
+										标致 207 2007款 207   1.4 手动 16V
+									</p>
+								</div>
+								<div class="car-item">
+									<p class="img">
+										<%= image_tag("new-index/logo.png", :class => 'tag2')%>
+									</p>
+									<p class="brand-series-model">
+										标致 207 2007款 207   1.4 手动 16V
+									</p>
+								</div>
+								<div class="car-item">
+									<p class="img">
+										<%= image_tag("new-order/first.png", :class => 'tag2')%>
+									</p>
+									<p class="brand-series-model">
+										标致 207 2007款 207   1.4 手动 16V
+									</p>
+								</div>
+								<div class="car-item">
+									<p class="img">
+										<%= image_tag("new-order/first.png", :class => 'tag2')%>
+									</p>
+									<p class="brand-series-model">
+										标致 207 2007款 207   1.4 手动 16V
+									</p>
+								</div>
+							</div>
+				        </div>
+				      </div>
+				      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				        <span class="sr-only">Previous</span>
+				      </a>
+				      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				        <span class="sr-only">Next</span>
+				      </a>
+				    </div>
+				</div>
+				<a class="undefined-car cursor">未找到车型？</a>
+			</div>
+		</div>
+		<div class="next translate-next cursor">
+			<%= link_to "下一步", new_service_select_orders_path %>
+		</div>
+	</div>
 </div>
