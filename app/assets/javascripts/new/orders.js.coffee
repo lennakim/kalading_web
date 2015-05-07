@@ -1,5 +1,11 @@
 $ ->
 
+  $(".flexslider").flexslider ->
+    slideshowSpeed: 4000, 
+    animationSpeed: 400, 
+    touch: true 
+
+
   #------选车型---------
 
   #------首字母搜索------

@@ -3,6 +3,7 @@
 #= require turbolinks
 #= require jquery_ujs
 #= require jquery.chained.remote.min
+#= require jquery.flexslider-min
 #= require jquery.form
 #= require jquery.validate.min
 #= require jquery.cookie
@@ -24,3 +25,4 @@
 
 window.API_Domain = gon.global.server_uri
 window.V2 = gon.global.v2
+
