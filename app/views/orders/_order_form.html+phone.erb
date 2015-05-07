@@ -1,7 +1,11 @@
 <%= form_tag 'submit', id: "place_order_form", remote: true do %>
 
   <%= hidden_field_tag(:car_id, params["car_id"]) %>
-  <%= hidden_field_tag(:address, current_user.default_address.full_address, id: :selected_address) %>
+  <% if current_user %>
+    <%= hidden_field_tag(:address, current_user.default_address.full_address, id: :selected_address) %>
+  <% else %>
+    <%= hidden_field_tag(:address, "", id: :selected_address) %>
+  <% end %>
 
   <fieldset>
 
