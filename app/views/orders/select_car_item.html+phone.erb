@@ -63,7 +63,7 @@
           <% activity = Activity.find_by(id: params[:act]) %>
           <% via_act = activity && activity.valid_activity? %>
           <% if via_act %>
-            <% types = activity.products.map &:slug %>
+            <% types = activity.products.map(&:slug) %>
             <% if !types.include?(type) %>
               <% type = types.first %>
             <% end %>
@@ -78,23 +78,21 @@
                 <div class="panel">
                   <div class="panel-heading clearfix" role="tab" id="select_type_header">
                     <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_mt_type" aria-expanded="false" aria-controls="select_mt_type">
-
                       <div class="pull-left">
                         <%= Product.find_by(slug: type).title %>
                       </div>
 
-                      <% if types.length > 1 %>
+                      <% if !via_act || (via_act && types.length > 1) %>
                         <div class="cursor-down pull-right">
                           <%= image_tag "cursor-down.png" %>
                         </div>
                       <% end %>
-
                     </a>
                     <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
                   </div>
                   <div id="select_mt_type" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
 
-                    <% if types.length > 1 %>
+                    <% if !via_act || (via_act && types.length > 1) %>
                       <ul class="list-group">
                         <% Product.all.each do |product| %>
                           <% if product_available? product %>
