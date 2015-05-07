@@ -1,5 +1,13 @@
 module OrdersHelper
 
+  def user_default_address
+    if current_user && current_user.default_address
+      current_user.default_address.full_address
+    else
+      cookies[:address]
+    end
+  end
+
   def car_location
     ["京", "沪", "津", "渝", "浙", "苏", "粤", "闽", "湘", "鄂", "辽", "吉", "黑", "冀", "豫", "鲁", "陕", "甘", "青", "新", "晋", "川", "黔", "皖", "赣", "云", "蒙", "桂", "藏", "宁", "琼"]
   end
