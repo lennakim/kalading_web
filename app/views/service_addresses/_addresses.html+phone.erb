@@ -8,9 +8,16 @@
             <div class="pull-left">
               服务地址:
             </div>
+
             <div class="pull-left service-address-detail">
               <%= user_default_address %>
             </div>
+
+            <% if signed_in? && current_user.service_addresses.length > 0 %>
+              <div class="cursor-down pull-right">
+                <%= image_tag "cursor-down.png" %>
+              </div>
+            <% end %>
           <% else %>
             <div class="pull-left">
               暂无服务地址，请添加
@@ -23,6 +30,7 @@
         <% if signed_in? %>
 
           <% addresses = current_user.service_addresses %>
+
           <% if addresses && addresses.length > 0 %>
             <ul class="list-group">
               <% addresses.each do |service_address| %>
