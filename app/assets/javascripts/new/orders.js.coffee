@@ -1,7 +1,3 @@
-#= require underscore
-#= require backbone
-#= require backbone_rails_sync
-#= require backbone_datalink
 #= require ./backbone/models/order
 #= require ./backbone/views/service_select
 #= require_self

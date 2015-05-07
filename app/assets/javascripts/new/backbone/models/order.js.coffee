@@ -1,4 +1,8 @@
-class Kalading.Models.Order extends Backbone.Model
+window.App =
+  Views: {}
+  Models: {}
+
+class App.Models.Order extends Backbone.Model
 
   initialize: ->
     @on("change:parts", @loadPrice)

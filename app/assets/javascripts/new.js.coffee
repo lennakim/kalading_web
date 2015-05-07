@@ -15,13 +15,15 @@
 #= require nprogress
 #= require nprogress-turbolinks
 
-#= require underscore
 #= require jstorage
+
+#= require underscore
+#= require backbone
+#= require backbone_rails_sync
+#= require backbone_datalink
 
 #= require new/home
 #= require new/orders
 
-
 window.API_Domain = gon.global.server_uri
 window.V2 = gon.global.v2
-

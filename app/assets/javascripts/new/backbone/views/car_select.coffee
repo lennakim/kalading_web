@@ -1,1 +1,1 @@
-class Kalading.Views.CarSelect extends Backbone.View
+class App.Views.CarSelect extends Backbone.View

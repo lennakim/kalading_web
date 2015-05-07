@@ -1,1 +1,1 @@
-class Kalading.Views.ServiceSelect extends Backbone.View
+class App.Views.ServiceSelect extends Backbone.View
