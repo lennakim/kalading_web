@@ -3,11 +3,11 @@ class ServiceAddressesController < ApplicationController
 
   def create
     if signed_in?
-      address = current_user.service_addresses.create permitted_params[:service_address]
+      @address = current_user.service_addresses.create permitted_params[:service_address]
       current_user.set_default_address address
     else
-      address = ServiceAddress.new(permitted_params[:service_address])
-      cookies[:address] = { value: address.full_address, expires: 30.days.from_now }
+      @address = ServiceAddress.new(permitted_params[:service_address])
+      cookies[:address] = { value: @address.full_address, expires: 30.days.from_now }
     end
     render "create"
   end

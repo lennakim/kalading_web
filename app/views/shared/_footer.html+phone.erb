@@ -1,0 +1,32 @@
+<div class="tab-menu clearfix">
+  <div class="item pull-left">
+    <%= link_to '/' do %>
+      <div class="icon">
+        <%= image_tag "phone-home/home.png" %>
+      </div>
+      <div class="title">
+        首页
+      </div>
+    <% end %>
+  </div>
+  <div class="item pull-left">
+    <%= link_to orders_users_path do %>
+      <div class="icon">
+        <%= image_tag "phone-home/order.png" %>
+      </div>
+      <div class="title">
+        我的订单
+      </div>
+    <% end %>
+  </div>
+  <div class="item pull-left">
+    <%= link_to maintain_histories_list_users_path do %>
+      <div class="icon">
+        <%= image_tag "phone-home/me.png" %>
+      </div>
+      <div class="title">
+        保养记录
+      </div>
+    <% end %>
+  </div>
+</div>
