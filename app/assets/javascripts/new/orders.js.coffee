@@ -101,6 +101,7 @@ $ ->
   #######################new_service_select################
 
   #-----服务选项切换------
+  $('.service-items li:first-child').addClass('active')
   $('.service-items').on 'click','li', ->
     index = $(@).index()
     $(@).addClass('active').siblings().removeClass('active')

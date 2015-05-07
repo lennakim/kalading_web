@@ -14,17 +14,17 @@
             <% parts = @result['applicable_parts'] %>
             <% array = parts.map(&:keys).flatten %>
             <% array.each do |arr| %>
-              <li data-part="<%= arr %>" class="cursor active"><%= get_recommend_part(parts, arr)["brand"] %></li>
+              <li data-part="<%= arr %>" class="cursor selected"><%= get_recommend_part(parts, arr)["brand"] %></li>
             <% end %>
           </ul>
 
-        <% array.each_with_index do |arr, inx| %>
-          <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
-            <% get_part(parts, arr).each do |part| %>
-              <li class="cursor"><%= part['brand'] %></li>
-            <% end %>
-          </ul>
-        <% end %>
+          <% array.each_with_index do |arr, inx| %>
+            <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
+              <% get_part(parts, arr).each do |part| %>
+                <li class="cursor"><%= part['brand'] %></li>
+              <% end %>
+            </ul>
+          <% end %>
         <!--
           <ul class="right items-list">
               <li class="cursor">1</li>
@@ -46,7 +46,8 @@
             <li class="cursor">42</li>
           </ul>
           -->
-       </div>
+        </div>
+      </div>
     </div>
     <div class="prev cursor">
       <%= link_to "上一步", new_car_select_orders_path %>
