@@ -32,6 +32,14 @@ $ ->
 
   FastClick.attach(document.body)
 
+  $(".items a").on 'click', (e) ->
+    e.stopPropagation()
+    type = $(@).closest('.item').data('type')
+
+    unless _.contains available_service, type
+      e.preventDefault()
+      alert '当前城市暂未开通此项服务'
+
   $("#login_btn").click ->
     $("#login_modal").modal()
 

@@ -6,7 +6,6 @@
 <% filtered_parts = filter_parts(parts, type) %>
 
 <div class="item-list">
-
   <div class="item-box">
     <% if filtered_parts.count == 0 %>
       <div class="no-parts-available">
@@ -28,6 +27,10 @@
               <div class="panel-heading clearfix" role="tab" id="select_item_header_<%= i %>">
                 <% if recommend_part = get_recommend_part(parts, part_name) %>
                   <a class="selected-part selected item-switch" data-toggle="collapse" aria-expanded="false" aria-controls="select_item_<%= i %>" data-number="<%= recommend_part['number'] %>" data-brand="<%= recommend_part['brand'] %>">
+
+                    <div class="item-type pull-left item-icons-<%= item_icon_mapping(part_name) %>">
+                    </div>
+
                     <div class="pull-left part-name" data-name="<%= part_name %>">
                       <%= display_item_name part_name, recommend_part['brand'], recommend_part['number'] %>
                     </div>
@@ -35,7 +38,7 @@
                       <%= image_tag "cursor-down.png" %>
                     </div>
                     <div class="part-price pull-right">
-                      <%= recommend_part['price'] %>
+                      ￥ <%= recommend_part['price'] %>
                     </div>
                   </a>
                 <% else %>
@@ -57,7 +60,6 @@
                 <ul class="list-group">
 
                   <% select_index = recommend_part_index(parts, part_name, recommend_part) %>
-
                   <% part_items.each_with_index do |item, index| %>
                     <% if item["quantity"] != 0 %>
                       <li class="list-group-item clearfix <%= 'selected' if select_index == index %>">
@@ -99,14 +101,17 @@
     <% end %>
   </div>
 
-
   <% if type != 'bty' &&  filtered_parts.count != 0 %>
     <div class="panel-group custom fee" role="tablist">
       <div class="panel quick-fee-select">
         <div class="panel-heading clearfix" role="tab" id="service_fee_header">
             <a class="service-fee selected item-switch" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
-              <div class="pull-left">
-                上门服务费
+
+              <div class="item-type pull-left item-icons-service">
+              </div>
+
+              <div class="pull-left service-name">
+                购买配件，并上门服务
               </div>
 
               <div class="cursor-down pull-right">
@@ -123,7 +128,7 @@
         <div id="service_fee" class="panel-collapse collapse item-switch-list" role="tabpanel" aria-labelledby="select_fee_header" aria-expanded="true">
 
           <ul class="list-group">
-            <li class="list-group-item clearfix" id="buy_parts">
+            <li class="list-group-item selected clearfix" id="buy_parts">
               <div class="pull-left">
                 购买配件，并上门服务
               </div>
@@ -167,4 +172,3 @@
     </div>
   </div>
 </div>
-

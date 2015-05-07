@@ -2,96 +2,96 @@
   <%= javascript_include_tag "mobile/orders", 'data-turbolinks-track' => true %>
 <% end %>
 
-<% cache [params[:car_id], current_city_id, params[:type], params[:auto_id], params[:act]] do %>
-  <div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>" data-act="<%= params[:act] %>">
-    <div role="tabpanel">
-      <ul class="nav nav-tabs" role="tablist" id="myTab">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">订单评价</a></li>
-      </ul>
+<div class="select-car-phone phone-page" data-autoid="<%= params[:auto_id] %>" data-act="<%= params[:act] %>">
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">立即预约</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">订单评价</a></li>
+    </ul>
 
-      <div class="tab-content">
+    <div class="tab-content">
 
-        <div role="tabpanel" class="tab-pane active" id="home">
-          <div class="quick-select">
-            <h4 class="item-title my-car-title">我的车辆</h4>
-            <%= link_to " + 重新选择", select_car_by_initial_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <div class="quick-select">
+          <h4 class="item-title my-car-title">我的车辆</h4>
+          <%= link_to " + 重新选择", select_car_by_initial_orders_path(act: params[:act], type: params[:type]), class: 'add-car' %>
 
-            <div class="car-content content clearfix">
-              <div class="panel-group custom" role="tablist">
-                <div class="panel quick-cars-select">
-                  <div class="panel-heading clearfix" role="tab" id="select_car_header">
-                      <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_cars" aria-expanded="false" aria-controls="select_cars">
+          <div class="car-content content clearfix">
+            <div class="panel-group custom" role="tablist">
+              <div class="panel quick-cars-select">
+                <div class="panel-heading clearfix" role="tab" id="select_car_header">
+                    <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_cars" aria-expanded="false" aria-controls="select_cars">
 
-                        <div class="pull-left">
-                          <% if @last_select_car %>
-                            <%= @last_select_car.brand %>
-                            <%= @last_select_car.series %>
-                            <%= @last_select_car.model_number %>
-                          <% end %>
+                      <div class="pull-left">
+                        <% if @last_select_car %>
+                          <%= @last_select_car.brand %>
+                          <%= @last_select_car.series %>
+                          <%= @last_select_car.model_number %>
+                        <% end %>
+                      </div>
+
+                      <% if signed_in? && current_user.autos.count > 0 %>
+                        <div class="cursor-down pull-right">
+                          <%= image_tag "cursor-down.png" %>
                         </div>
+                      <% end %>
+                    </a>
+                    <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
+                </div>
+                <div id="select_cars" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
+                  <% if signed_in? && current_user.autos.count > 0 %>
+                    <ul class="list-group">
+                      <% current_user.autos.each do |auto| %>
+                        <li class="list-group-item clearfix">
 
-                        <% if signed_in? && current_user.autos.count > 0 %>
-                          <div class="cursor-down pull-right">
-                            <%= image_tag "cursor-down.png" %>
-                          </div>
-                        <% end %>
-                      </a>
-                      <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
-                  </div>
-                  <div id="select_cars" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
-                    <% if signed_in? && current_user.autos.count > 0 %>
-                      <ul class="list-group">
-                        <% current_user.autos.each do |auto| %>
-                          <li class="list-group-item clearfix">
+                        <%= link_to "#{auto.brand} #{auto.series} #{auto.model_number}", select_car_item_orders_path(act: params[:act], type: params[:type], car_id: auto.system_id) %>
 
-                          <%= link_to "#{auto.brand} #{auto.series} #{auto.model_number}", select_car_item_orders_path(act: params[:act], type: params[:type], car_id: auto.system_id) %>
-
-                          </li>
-                        <% end %>
-                      </ul>
-                    <% end %>
-                  </div>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <% type = (params[:type] == nil || params[:type] == "") ? "bmt" : params[:type] %>
-          <% car_id = params[:car_id] || @last_select_car.system_id %>
+        <% type = params[:type].blank? ? "bmt" : params[:type] %>
+        <% car_id = params[:car_id] || @last_select_car.system_id %>
 
-          <% activity = Activity.find_by(id: params[:act]) %>
-          <% via_act = activity && activity.valid_activity? %>
-          <% if via_act %>
-            <% types = activity.products.map &:slug %>
-            <% if !types.include?(type) %>
-              <% type = types.first %>
-            <% end %>
-            <% code = activity.preferential_code %>
-          <%end %>
+        <% activity = Activity.find_by(id: params[:act]) %>
+        <% via_act = activity && activity.valid_activity? %>
+        <% if via_act %>
+          <% types = activity.products.map(&:slug) %>
+          <% if !types.include?(type) %>
+            <% type = types.first %>
+          <% end %>
+          <% code = activity.preferential_code %>
+        <%end %>
 
-          <div class="orders bac-white" data-car="<%= car_id %>" data-type="<%= type %>">
-            <h4 class="item-title service-type-title">服务类型</h4>
-            <div class="">
+        <div class="orders bac-white" data-car="<%= car_id %>" data-type="<%= type %>">
+          <h4 class="item-title service-type-title">服务类型</h4>
+          <div class="">
 
-              <div class="panel-group custom" role="tablist">
-                <div class="panel">
-                  <div class="panel-heading clearfix" role="tab" id="select_type_header">
-                      <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_mt_type" aria-expanded="false" aria-controls="select_mt_type">
+            <div class="panel-group custom" role="tablist">
+              <div class="panel">
+                <div class="panel-heading clearfix" role="tab" id="select_type_header">
+                  <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_mt_type" aria-expanded="false" aria-controls="select_mt_type">
+                    <div class="pull-left">
+                      <%= Product.find_by(slug: type).title %>
+                    </div>
 
-                        <div class="pull-left">
-                          <%= Product.find_by(slug: type).title %>
-                        </div>
+                    <% if !via_act || (via_act && types.length > 1) %>
+                      <div class="cursor-down pull-right">
+                        <%= image_tag "cursor-down.png" %>
+                      </div>
+                    <% end %>
+                  </a>
+                  <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
+                </div>
+                <div id="select_mt_type" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
 
-                        <div class="cursor-down pull-right">
-                          <%= image_tag "cursor-down.png" %>
-                        </div>
-
-                      </a>
-                      <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
-                  </div>
-                  <div id="select_mt_type" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
-
+                  <% if !via_act || (via_act && types.length > 1) %>
                     <ul class="list-group">
                       <% Product.all.each do |product| %>
                         <% if product_available? product %>
@@ -105,57 +105,57 @@
                         <% end %>
                       <% end %>
                     </ul>
-                  </div>
+                  <% end %>
                 </div>
               </div>
+            </div>
 
-            </div>
-            <h4 class="item-title">选择配件</h4>
-            <div class="items-area">
-              <%= render "items", type: type, activity: activity %>
-            </div>
-            <div class="submit-con">
-              <span>当前费用:
-                <% parts = @result["applicable_parts"] %>
-                <% filtered_parts = filter_parts(parts, type) %>
-                <% if filtered_parts.count != 0 %>
-                  <span class="result-price"></span>元
-                <% end %>
-              </span>
-              <p>支持现金、刷卡支付</p>
-            </div>
+          </div>
+          <h4 class="item-title">选择配件</h4>
+          <div class="items-area">
+            <%= render "items", type: type, activity: activity %>
+          </div>
+          <div class="submit-con">
+            <span>当前费用:
+              <% parts = @result["applicable_parts"] %>
+              <% filtered_parts = filter_parts(parts, type) %>
+              <% if filtered_parts.count != 0 %>
+                <span class="result-price"></span>元
+              <% end %>
+            </span>
+            <p>支持现金、刷卡支付</p>
           </div>
         </div>
+      </div>
 
-        <% comments = Order.comments['data'] %>
-        <div role="tabpanel" class="tab-pane" id="messages">
-          <% comments.each do |comment| %>
-              <dl class='comment-item'>
-                <dt>
-                <h3>
-                  <% phone = comment['user_phone'] %>
-                  <% phone[3..6] = "****" %>
-                  <%= phone %>
-                </h3>
-                  <div class="score" value="<%= score = comment['score'] %>">
-                    <% score.to_i.times.each do |i| %>
-                      <%= image_tag("star2.gif") %>
-                    <% end %>
-                  </div>
-                  <span class="time">
-                    <%= comment['created_at'] %>
-                  </span>
-                </dt>
-                <dd>
-                  <%= comment['desc'] %>
-                </dd>
-              </dl>
-          <% end %>
-        </div>
+      <% comments = Order.comments['data'] %>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <% comments.each do |comment| %>
+          <dl class='comment-item'>
+            <dt>
+            <h3>
+              <% phone = comment['user_phone'] %>
+              <% phone[3..6] = "****" %>
+              <%= phone %>
+            </h3>
+              <div class="score" value="<%= score = comment['score'] %>">
+                <% score.to_i.times.each do |i| %>
+                  <%= image_tag("star2.gif") %>
+                <% end %>
+              </div>
+              <span class="time">
+                <%= comment['created_at'] %>
+              </span>
+            </dt>
+            <dd>
+              <%= comment['desc'] %>
+            </dd>
+          </dl>
+        <% end %>
       </div>
     </div>
   </div>
-<% end %>
+</div>
 
 <script>
   $(function(){
