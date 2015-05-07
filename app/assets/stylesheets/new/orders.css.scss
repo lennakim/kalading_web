@@ -5,6 +5,7 @@ $main-orange: #e94609;
   50%{transform:translateY(2px);}
   100%{transform:translateY(-2px);}
 }
+
 @-webkit-keyframes translate-next-animate{
   0%{-webkit-transform:translateY(-2px);}
   50%{-webkit-transform:translateY(2px);}
@@ -55,16 +56,16 @@ $main-orange: #e94609;
 			text-align: center;
 			color: #fff;
 			a{
-  				display: block;
-  				height: 100%;
-  				background-repeat: no-repeat;
+  			display: block;
+  			height: 100%;
+  			background-repeat: no-repeat;
 				color: #fff;
 				text-decoration: none;
 			}
 		}
 		.translate-next{
-		    animation:translate-next-animate 2s linear infinite;
-		    -webkit-animation:translate-next-animate 2s linear infinite;
+			animation:translate-next-animate 2s linear infinite;
+		  -webkit-animation:translate-next-animate 2s linear infinite;
 		}
 	}
 	.first,.second,.quick_select_car{
@@ -72,7 +73,7 @@ $main-orange: #e94609;
 		background-size: 100% 100%;
 		.next{
   			bottom: 31px;
-  			a{	
+  			a{
 				background-image: image-url('new-order/nextbtn.png');
 				background-position: bottom;
   			}
@@ -144,6 +145,7 @@ $main-orange: #e94609;
 		    color: #666666;
 	    }
 	}
+	// new_car_select 20150507
 	.first{
 		.maintain-items{
 		    .title{
@@ -157,10 +159,10 @@ $main-orange: #e94609;
 				    width: 30%;
 				    margin: 0 1%;
 				    text-align: center;
-					background-image: image-url('new-order/bac-gray.png');
-					background-size: 100% 100%; 
-					background-repeat: no-repeat;
-					font-size: 16px;
+						background-image: image-url('new-order/bac-gray.png');
+						background-size: 100% 100%;
+						background-repeat: no-repeat;
+						font-size: 16px;
 		    	}
 		    	.active{
 		    		background-image: image-url('new-order/bac-orange.png');
@@ -178,13 +180,13 @@ $main-orange: #e94609;
 		    	}
 		    	.hot{
 		    		width: 42px;
-					height: 33px;
-					line-height: 25px;
-					margin: 6px 4px 0;
+						height: 33px;
+						line-height: 25px;
+						margin: 6px 4px 0;
 		    		background-image: image-url('new-order/bac-org2.png');
 		    		background-repeat: no-repeat;
-					text-align: center;
-					color: #fff;
+						text-align: center;
+						color: #fff;
 		    	}
 		    	.crumbs{
 		    		li{
@@ -229,7 +231,7 @@ $main-orange: #e94609;
 				    }
 				    span{
 					    float: right;
-					    width: 75%;  
+					    width: 75%;
 					    padding-right: 5px;
 					    overflow: hidden;
 					    text-overflow: ellipsis;
@@ -281,11 +283,11 @@ $main-orange: #e94609;
 			    		overflow: hidden;
 					    text-overflow: ellipsis;
 					    white-space: nowrap;
-						border: 1px solid $main-orange;
-						border-radius: 2px;
-						text-align: center;
-						background: #edddd7;
-						color: $main-orange;
+							border: 1px solid $main-orange;
+							border-radius: 2px;
+							text-align: center;
+							background: #edddd7;
+							color: $main-orange;
 		    		}
 
 		    		.remove{
@@ -313,16 +315,18 @@ $main-orange: #e94609;
 	    	}
 		}
 	}
+
+	// new_service_select 20150507
 	.second{
 		.maintain-items{
-		    .left,.right{
+			.left,.right{
 				float: left;
 				li{
 					border: 1px solid #ccc;
 					border-radius: 2px;
 					text-align: center;
 				}
-		    }
+		  }
 		    .left{
 		    	width: 30%;
 		    	margin-right: 5%;
@@ -330,6 +334,10 @@ $main-orange: #e94609;
 		    		height: 40px;
 		    		line-height: 40px;
 		    		margin: 20px 0;
+		    		.undo {
+						  width: 84%;
+						  background-color: $main-orange;
+						}
 		    	}
 		    	.active{
 		    		color: $main-orange;
@@ -347,18 +355,26 @@ $main-orange: #e94609;
 				background: #fff;
 		    	li{
 		    		float: left;
-					width: 42%;
-					height: 35px;
-					line-height: 35px;
-					margin: 5px 4%;
+						width: 42%;
+						height: 35px;
+						line-height: 35px;
+						margin: 5px 4%;
 		    	}
+		    	.undo {
+						  width: 84%;
+						  background-color: $main-orange;
+						}
 		    	.active{
 		    		color: $main-orange;
 		    		border: 1px solid $main-orange;
 		    	}
 		    }
+        .items-list-small {
+					min-height: 50px;
+		    }
 		}
 	}
+	//
 	.third{
 		height: 1350px;
 		background-size:  100% 120%;
