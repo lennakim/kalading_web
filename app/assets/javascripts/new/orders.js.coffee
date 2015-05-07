@@ -4,6 +4,9 @@
 
 $ ->
 
+  if $(".second").length >= 1
+    service_select = new App.Views.ServiceSelect
+
   #------选车型---------
 
   #------首字母搜索------
@@ -112,18 +115,6 @@ $ ->
 
   #-----服务选项切换------
   $('.service-items li:first-child').addClass('active')
-  $('.service-items').on 'click','li', ->
-    index = $(@).index()
-    $(@).addClass('active').siblings().removeClass('active')
-    $('.items-list').addClass('hide').eq(index).removeClass('hide')
-    console.log(($(@).data("part")))
-
-  #-----选择服务项目中的产品-------
-  $('.items-list').on 'click','li', ->
-    text = $(@).text()
-    index = $(@).addClass('active').siblings().removeClass('active').parents('.items-list').index()-1
-    $('.service-items li').eq(index).text(text).addClass('selected')
-
 
 generateCarSubModel = (submodels)->
   $("ul.model-list").html("")
