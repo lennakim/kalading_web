@@ -7,7 +7,7 @@
       <div class="maintain-items">
         <h4 class="title clearfix">
           <span class="name"> <%= @result['name'] %></span>
-          <span class="price">总价：<b class="price_ele"><%= @result['price'] %></b>元</span>
+          <span class="price">总价：<b class="price_ele"><%= @result['price'] %></b> 元</span>
         </h4>
         <div class="items clearfix">
           <ul class="left service-items">
@@ -17,9 +17,16 @@
               <% item = get_recommend_part(parts, arr) %>
               <li data-part="<%= arr %>" class="cursor selected">
                 <%= display_item_name(arr, item["brand"], item['number']) %>
-                ￥<%= item['price']  %>
+                ￥ <b class="price_ele"><%= item['price'] %></b>
               </li>
             <% end %>
+              <div class="other">
+                <li data-part="o2o" class="cursor selected active">
+                  上门服务费
+                  ￥ <b>150.0</b>
+                </li>
+              </div>
+
           </ul>
 
           <% array.each_with_index do |arr, inx| %>
@@ -27,9 +34,13 @@
               <% get_part(parts, arr).each do |part| %>
                 <li class="cursor">
                   <%= display_item_name(arr, part['brand'], part['number']) %>
-                  ￥<%= part["price"] %>
+                  ￥<b class="price_ele"><%= part["price"] %></b>
                 </li>
               <% end %>
+
+              <div class="other">
+                <li class="cursor">取消</li>
+              </div>
             </ul>
           <% end %>
         <!--
