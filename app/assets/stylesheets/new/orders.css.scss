@@ -317,7 +317,7 @@ $main-orange: #e94609;
 		}
 	}
 	.third{
-		height: 1300px;
+		height: 1350px;
 		background-size:  100% 120%;
 		.maintain-items{
 		    height: 1040px;
@@ -399,6 +399,18 @@ $main-orange: #e94609;
 			      color: #ef4f24;
 			    }
 		    }
+		}
+		.submit{
+			position: absolute;
+			bottom: 5%;
+			right: 10%;
+			margin: 0 22px;
+			width: 130px;
+			line-height: 35px;
+			background: $main-orange;
+			border-radius: 5px;
+			text-align: center;
+			color: #fff;
 		}
 	}
 	.no_car_type{
