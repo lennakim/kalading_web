@@ -28,6 +28,10 @@
               <div class="panel-heading clearfix" role="tab" id="select_item_header_<%= i %>">
                 <% if recommend_part = get_recommend_part(parts, part_name) %>
                   <a class="selected-part selected item-switch" data-toggle="collapse" aria-expanded="false" aria-controls="select_item_<%= i %>" data-number="<%= recommend_part['number'] %>" data-brand="<%= recommend_part['brand'] %>">
+
+                    <div class="item-type pull-left item-icons-<%= item_icon_mapping(part_name) %>">
+                    </div>
+
                     <div class="pull-left part-name" data-name="<%= part_name %>">
                       <%= display_item_name part_name, recommend_part['brand'], recommend_part['number'] %>
                     </div>
@@ -104,7 +108,11 @@
       <div class="panel quick-fee-select">
         <div class="panel-heading clearfix" role="tab" id="service_fee_header">
             <a class="service-fee selected item-switch" style='font-size: 16px;' data-toggle="collapse" href="#service_fee" aria-expanded="false" aria-controls="service_fee">
-              <div class="pull-left">
+
+              <div class="item-type pull-left item-icons-service">
+              </div>
+
+              <div class="pull-left service-name">
                 购买配件，并上门服务
               </div>
 

@@ -51,7 +51,7 @@ class Kalading.Views.Items extends Backbone.View
       $part.children('.part-name').text("未选择 #{ name }")
 
     $('.item-part .list-group-item').removeClass('selected')
-    $(".service-fee").addClass('selected').children('.pull-left').text('已有配件, 仅购买上门服务')
+    $(".service-fee").addClass('selected').children('.service-name').text('已有配件, 仅购买上门服务')
 
     $('#service_fee').collapse('hide')
 
@@ -63,7 +63,7 @@ class Kalading.Views.Items extends Backbone.View
 
     if $('.item-part').hasClass('disabled')
       $('.item-part').removeClass('disabled')
-      $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
+      $(".service-fee").addClass('selected').children('.service-name').text('购买配件，并上门服务')
 
     $('#service_fee.in').collapse('hide')
     @resetSelectItems()

@@ -41,6 +41,15 @@ module OrdersHelper
     end
   end
 
+  def item_icon_mapping part_name
+    {
+      "机油" => "oil",
+      "机滤" => "filter",
+      "空调滤清器" => "air-filter",
+      "空气滤清器" => "air-cleaner"
+    }[part_name]
+  end
+
   def can_cancel? order
     ["未审核", "未分配", "未预约", "已预约"].include? order['state'].split('-')[1]
   end

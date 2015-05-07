@@ -1,5 +1,8 @@
 @import "mixins/button";
 @import "mixins/checkbox";
+@import "item-icons/*.png";
+
+@include all-item-icons-sprites;
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
@@ -52,6 +55,12 @@ $title-gray: #787878;
         width: 100%;
         line-height: 30px;
       }
+    }
+
+    .item-type{
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
     }
 
     .panel-heading{
@@ -873,6 +882,8 @@ $title-gray: #787878;
     }
   }
 }
+
+
 .place-order-phone{
 
   .current_addresses{
