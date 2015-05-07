@@ -39,7 +39,7 @@
                       <%= image_tag "cursor-down.png" %>
                     </div>
                     <div class="part-price pull-right">
-                      <%= recommend_part['price'] %>
+                      ￥ <%= recommend_part['price'] %>
                     </div>
                   </a>
                 <% else %>
@@ -101,7 +101,6 @@
       <% end %>
     <% end %>
   </div>
-
 
   <% if type != 'bty' &&  filtered_parts.count != 0 %>
     <div class="panel-group custom fee" role="tablist">
