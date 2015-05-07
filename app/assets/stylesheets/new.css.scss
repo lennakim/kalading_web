@@ -65,11 +65,25 @@ nav{
     li{
       float: left;
     }
-    #carousel-example-generic{
-      img{
-        width: 100%;
+    #slider1_container{
+      position: relative; 
+      width: 980px;
+      height: 430px; 
+      overflow: hidden;
+      .content{
+        // cursor: move; 
+        position: absolute; 
+        left: 0px; 
+        top: 0px; 
+        width: 980px; 
+        height: 430px;
+        overflow: hidden;
+        img{
+          width: 100%;
+        }
       }
     }
+
     .kld-header-wrap{
       position: absolute;
       top: 0;

@@ -64,14 +64,11 @@ $main-orange: #e94609;
             margin-top: 20px;
           .key{
             position: absolute;
-            top: -30px;
-            padding: 0 12px;
+            top: -20px;
+            padding: 0 25px;
             margin: 0;
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
-          }
-          .pic2{
-            padding-top: 10px;
           }
           p{
             margin: 0;
@@ -106,10 +103,12 @@ $main-orange: #e94609;
             margin: 0;
             padding: 6px 0;
             border-radius: 0 0 4px 4px;
-            background: #b4b4b4;
+            background: #000;
+            opacity: 0.2;
             color: #fff;
             &:hover{
-              background: #e77449;
+              background: $main-orange;
+              opacity: 0.7;
               cursor: pointer;
               cursor: hand;
             }

@@ -1,4 +1,9 @@
 #= require jquery
+
+#= require jssor
+#= require jssor.slider
+#= require slider
+
 #= require jquery.turbolinks
 #= require turbolinks
 #= require jquery_ujs
