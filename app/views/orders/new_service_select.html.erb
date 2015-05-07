@@ -14,14 +14,21 @@
             <% parts = @result['applicable_parts'] %>
             <% array = parts.map(&:keys).flatten %>
             <% array.each do |arr| %>
-              <li data-part="<%= arr %>" class="cursor selected"><%= get_recommend_part(parts, arr)["brand"] %></li>
+              <% item = get_recommend_part(parts, arr) %>
+              <li data-part="<%= arr %>" class="cursor selected">
+                <%= display_item_name(arr, item["brand"], item['number']) %>
+                ￥<%= item['price']  %>
+              </li>
             <% end %>
           </ul>
 
           <% array.each_with_index do |arr, inx| %>
             <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
               <% get_part(parts, arr).each do |part| %>
-                <li class="cursor"><%= part['brand'] %></li>
+                <li class="cursor">
+                  <%= display_item_name(arr, part['brand'], part['number']) %>
+                  ￥<%= part["price"] %>
+                </li>
               <% end %>
             </ul>
           <% end %>
