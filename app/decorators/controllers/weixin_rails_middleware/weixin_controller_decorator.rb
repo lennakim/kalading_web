@@ -36,7 +36,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           reply_transfer_customer_service_message
           return
         else
-          reply_text_message(account.reply_messages.find_by(keyword: "auto_reply_msg").reply_message)
+          msg = account.reply_message.find_by(keyword: "auto_reply_msg")
+          reply_text_message(msg.reply_message)
         end
       end
     end
