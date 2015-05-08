@@ -17,25 +17,28 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       message.save
     end
 
-    def auto_response(msg, keyword = nil)
+    def auto_response(keyword, account_id)
 
-        account = PublicAccount.find_by(account_id: @weixin_message.ToUserName)
-        reply_msg = account.reply_messages.find_by(keyword: @keyword)
+      # auto_reply_msg 是默认自动回复的信息， 消息类型:text
+      # follow_reply_msg 是关注后自动回复的信息，消息类型:text
+      account = PublicAccount.find_by(account_id: account_id)
+      reply_msg = account.reply_messages.find_by(keyword: keyword)
 
-        if reply_msg
-          case reply_msg.msg_type
-          when "text"
-            reply_text_message(reply_msg.reply_message)
-          when 'news'
-            reply_news_message(generate_news(reply_msg.reply_message))
-          end
-        else
-          if Time.now.hour.in?(8..20)
-            reply_transfer_customer_service_message
-          else
-            reply_text_message(msg)
-          end
+      if reply_msg
+        case reply_msg.msg_type
+        when "text"
+          reply_text_message(reply_msg.reply_message)
+        when "news"
+          reply_news_message(generate_news(reply_msg.reply_message))
         end
+      else
+        if Time.now.hour.in?(8..20)
+          reply_transfer_customer_service_message
+          return
+        else
+          reply_text_message(account.reply_messages.find_by(keyword: "auto_reply_msg").reply_message)
+        end
+      end
     end
 
     def generate_news(articles)
@@ -47,13 +50,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       news
     end
 
-    def auto_msg
-      "感谢您对小卡的关注！点击右下角【最新活动】预定九块九更换防PM2.5空调滤芯服务哦！上门汽车保养·就找卡拉丁！任何问题请回复或拨打400-006-8181，如果客服MM没有及时回复，请多多包涵哦^^"
-    end
-
     def response_text_message(options={})
       handle_recv_messages @weixin_message
-      auto_response(auto_msg, @keyword)
+      auto_response(@keyword, @weixin_message.ToUserName)
     end
 
     # <Location_X>23.134521</Location_X>
@@ -122,7 +121,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       def handle_subscribe_event
         account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
         account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
-        reply_text_message(auto_msg)
+        auto_response("follow_reply_msg", @weixin_message.ToUserName)
       end
 
       # 取消关注
