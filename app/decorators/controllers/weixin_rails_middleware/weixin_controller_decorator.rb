@@ -120,7 +120,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       # 关注公众账号
       def handle_subscribe_event
         account = PublicAccount.find_by(account_id:@weixin_message.ToUserName)
-        account.auth_infos.create(provider:"weixin", uid:@weixin_message.FromUserName)
+        account.auth_infos.create(provider:"weixin",
+                                  uid:@weixin_message.FromUserName)
+
         auto_response("follow_reply_msg", @weixin_message.ToUserName)
       end
 
