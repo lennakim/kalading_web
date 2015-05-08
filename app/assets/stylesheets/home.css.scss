@@ -496,12 +496,12 @@ $bac: #fff;
 .home-phone{
 
   .carousel{
-    height: 215px;
+    min-height: 200px;
 
     .item{
       a img{
-        height: 215px;
-        width: auto;
+        width: 100%;
+
       }
     }
   }
