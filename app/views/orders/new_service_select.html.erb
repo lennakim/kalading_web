@@ -15,7 +15,7 @@
             <% array = parts.map(&:keys).flatten %>
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr) %>
-              <li data-part="<%= arr %>" class="cursor selected">
+              <li data-price="<%= item['price'] %>" data-part="<%= arr %>" class="cursor selected">
                 <%= display_item_name(arr, item["brand"], item['number']) %>
                 ￥ <b class="price_ele"><%= item['price'] %></b>
               </li>
@@ -31,7 +31,7 @@
           <% array.each_with_index do |arr, inx| %>
             <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
               <% get_part(parts, arr).each do |part| %>
-                <li class="cursor">
+                <li data-price="<%= part["price"] %>" class="cursor">
                   <%= display_item_name(arr, part['brand'], part['number']) %>
                   ￥<b class="price_ele"><%= part["price"] %></b>
                 </li>
