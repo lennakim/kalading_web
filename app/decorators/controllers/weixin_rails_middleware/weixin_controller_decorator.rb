@@ -34,7 +34,6 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       else
         if Time.now.hour.in?(8..20)
           reply_transfer_customer_service_message
-          return
         else
           msg = account.reply_message.find_by(keyword: "auto_reply_msg")
           reply_text_message(msg.reply_message)
