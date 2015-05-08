@@ -47,6 +47,9 @@ $main-orange: #e94609;
         margin-top: 20px;
         li{
           float: left;
+          a{
+            color: $main-orange;
+          }
         }
       }
     }
@@ -65,7 +68,7 @@ $main-orange: #e94609;
           .key{
             position: absolute;
             top: -20px;
-            padding: 0 25px;
+            padding: 0 20px;
             margin: 0;
             font-size: 18px;
             font-weight: bold;
