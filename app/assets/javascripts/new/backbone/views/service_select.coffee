@@ -6,18 +6,16 @@ class App.Views.ServiceSelect extends Backbone.View
     "click .service-items > li": "switchLeft"
     "click .items-list > li ": "switchRight"
     "click .undo ": "undoParts"
+    "click .all-undo": "undoAllParts"
 
   initialize: ->
     @order = new App.Models.Order
 
-    @$left = @$("ul.left > li")
-    @$right = @$("ul.right > li")
-    @$parts = @$("li.cursor")
     @$total_price = @$(".total_price") #selector
     @$service_price = @$(".service_price") #selector
 
     @order.set 'price', @$total_price.data('price')
-    @order.set 'car_id', ""
+    @order.set 'car_id', @$el.data("car")
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
@@ -37,12 +35,32 @@ class App.Views.ServiceSelect extends Backbone.View
   switchRight: (e) =>
     self = $(e.target)
     text = self.text()
-    index = self.addClass('active').siblings().removeClass('active').parents('.items-list').index()-1
-    @$('.service-items li').eq(index).text(text).addClass('selected')
+    part = self.data('part')
+    brand = self.attr('brand')
+    number = self.attr('number')
+    point = $("ul.service-items>li[data-part='#{part}']")
+    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").text(text)
+    @resetSelectItems()
 
   undoParts: (e) =>
     self = $(e.target)
     part = self.parents("ul.items-list").data('part')
-
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.html("未选择")
+    point.addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
+
+    @resetSelectItems()
+
+  undoAllParts: (e) =>
+    $("ul.service-items >li").addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
+    @resetSelectItems()
+
+  resetSelectItems: =>
+    parts = _.map $(".service-items > li:not(.disabled)"), (ele, index) ->
+      brand: $(ele).attr('brand')
+      number: $(ele).attr('number')
+
+    data_json = JSON.stringify(parts)
+    $.cookie('parts', data_json)
+
+    @order.set 'parts', parts
+

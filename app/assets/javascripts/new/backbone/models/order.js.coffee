@@ -5,7 +5,7 @@ window.App =
 class App.Models.Order extends Backbone.Model
 
   initialize: ->
-    @on("click:li.cursor", @loadPrice)
+    @on("change:parts", @loadPrice)
 
   validate: (attrs, options) ->
     unless attrs.car_id
