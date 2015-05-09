@@ -25,8 +25,14 @@ input.form-control, select.form-control, textarea.form-control{
   background: #eeeeee;
   @include box-shadow(0px 0px);
   @include border-radius(0px);
-  &#verification_code{
+  &#verification_code, &#preferential_code{
     width: 83px;
+  }
+  &#car_num{
+    width: 121px;
+  }
+  &#client_comment{
+    width: 172px;
   }
 }
 

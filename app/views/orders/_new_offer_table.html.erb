@@ -1,4 +1,4 @@
-<table class="new-offer-table" data-parts="<%#= @parts.to_json %>">
+<table class="new-offer-table">
   <thead>
     <th>商品名称</th>
     <th>保养项目</th>
@@ -7,52 +7,54 @@
   </thead>
 
   <tbody>
+
+  <tr>
+  <td><%= @result %></td>
+  </tr>
     <tr>
       <td>
-        <%#= @result['name'] %>
+        <%= @result['name'] %>
       </td>
       <td class="item">
-        <%# @result['parts'].each_index do |index| %>
-          <%# part = @result['parts'][index]%>
+        <% @result['parts'].each_index do |index| %>
+          <% part = @result['parts'][index]%>
           <p name='items'>
-            [<%#= part.keys.first %>]<%#= part.values.first.first['brand'] %>
-
-            <%#= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
-
-            <%#= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
+            [<%= part.keys.first %>]<%= part.values.first.first['brand'] %>
+            <%= hidden_field_tag("parts[#{index}][brand]", part.values.first.first['brand']) %>
+            <%= hidden_field_tag("parts[#{index}][number]", part.values.first.first['number']) %>
           </p>
-        <%# end %>
+        <% end %>
       </td>
 
       <td>
-        <%# @result['parts'].each_index do |index| %>
-          <%# part = @result['parts'][index]%>
+        <% @result['parts'].each_index do |index| %>
+          <% part = @result['parts'][index]%>
         <p>
-        <%#= part.values.first.first['price'] %>
+        <%= part.values.first.first['price'] %>
         </p>
-      <%# end %>
+      <% end %>
       </td>
       <td class="result">
-        <%# if @result['discount'] %>
-          <del class="price original"><%#= @result['price_without_discount'] %></del>
-        <%# else %>
-          <span class="price"><%#= @result['price'] %></span>
-        <%# end %>
+        <% if @result['discount'] %>
+          <del class="price original"><%= @result['price_without_discount'] %></del>
+        <% else %>
+          <span class="price"><%= @result['price'] %></span>
+        <% end %>
       </td>
     </tr>
     <tr class="service-price">
-      <td colspan="4">服务费：<%#= @result['service_price'] %></td>
+      <td colspan="4">服务费：<%= @result['service_price'] %></td>
     </tr>
-    <%# if @result['discount'] && !@result['discount']['error'] %>
+    <% if @result['discount'] && !@result['discount']['error'] %>
       <tr>
         <td colspan='3'>
-          <%#= @result['discount']['name'] %>
+          <%= @result['discount']['name'] %>
         </td>
         <td class='result'>
-          <%#= @result['price'] %>
+          <%= @result['price'] %>
         </td>
       </tr>
-    <%# end %>
+    <% end %>
   </tbody>
   <tfoot></tfoot>
 </table>
