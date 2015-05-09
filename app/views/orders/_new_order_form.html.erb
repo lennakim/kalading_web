@@ -1,5 +1,7 @@
 <div class="new-order-form">
 
+  <%= hidden_field_tag(:car_id, params["car_id"]) %>
+
   <div class="addresses">
     <div class="addr">
       <%= render "service_addresses/addresses" %>

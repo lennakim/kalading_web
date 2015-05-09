@@ -124,7 +124,6 @@ $ ->
       else
         $('.addr .edit').addClass('hide')
 
-
     $('.addresses').on 'change', '.service-address-item input[type=radio]', (e) ->
       id = $(@).data('id')
 
