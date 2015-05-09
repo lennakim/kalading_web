@@ -1038,17 +1038,17 @@ $title-gray: #787878;
 	    margin: 5% 7%;
       }
       .logo_active{
-      	margin: 5px 9% 0;
+      	margin: 5px 5% 0;
       }
       .title_active{
       	position: absolute;
     		top: 45px;
-    		left: 6px;
+    		left: -4px;
     		display: block;
     		width: 30%;
     		line-height: 20px;
     		text-align: center;
-    		overflow: hidden; 
+    		overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         font-size: 12px;
@@ -1060,7 +1060,7 @@ $title-gray: #787878;
       top: 0;
       left: 100%;
       z-index: 99;
-      width: 60%;
+      width: 69%;
       height: 100%;
       line-height: 30px;
       border-left: 1px solid #ccc;
@@ -1077,7 +1077,7 @@ $title-gray: #787878;
       	padding: 30% 25%;
       }
       .active{
-        border-left: 3px solid $orange; 
+        border-left: 3px solid $orange;
         background-image: image-url('down_btn.png');
       }
     }
@@ -1088,9 +1088,9 @@ $title-gray: #787878;
         line-height: 40px;
         padding-left: 5%;
         border-bottom: 1px solid #ccc;
-        overflow: hidden; 
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
         a{
           color: $orange;
         }
@@ -1103,7 +1103,7 @@ $title-gray: #787878;
       display: none;
     }
     .active{
-      border-left: 3px solid $orange; 
+      border-left: 3px solid $orange;
     }
   }
   .crumbs{
