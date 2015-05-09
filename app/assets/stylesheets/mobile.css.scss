@@ -34,6 +34,10 @@ a:link[title="站长统计"]{
   display: none;
 }
 
+a:hover, a:focus{
+  text-decoration: none !important;
+}
+
 body{
   background: #f5f5f5;
 
