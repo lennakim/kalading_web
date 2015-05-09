@@ -48,21 +48,29 @@ class OrdersController < ApplicationController
 
   def validate_preferential_code
     code = params[:code]
-    car_id = params["car_id"]
-    @parts = params["parts"].try :values
+    if code.present?
 
-    type = params["type"]
+      type = params["type"]
+      car_id = params["car_id"]
 
-    payload = {
-      parts: @parts,
-      discount: code
-    }
-    @result = Order.refresh_price car_id, current_city_id, payload, type
+      @parts = JSON.parse cookies['parts']
+
+      payload = {
+        parts: @parts,
+        discount: code
+      }
+
+      @result = Order.refresh_price car_id, current_city_id, payload, type
+    else
+      render js: "alert('优惠码不能为空')"
+    end
   end
 
   def no_preferential
     car_id = params["car_id"]
-    @parts = params["parts"].values
+
+    @parts = JSON.parse cookies['parts']
+
     type = params["type"]
 
     payload = {
@@ -110,25 +118,12 @@ class OrdersController < ApplicationController
       end
 
       if last_select_car.present?
-        cache_key = "#{last_select_car}/car_info"
-        @last_select_car = Rails.cache.fetch(cache_key)
-
-        if !@last_select_car
-          @last_select_car = Auto.api_find last_select_car
-          Rails.cache.write(cache_key, @last_select_car)
-        end
+        @last_select_car = Auto.api_find last_select_car
       end
 
       type = params[:type]
-      # @cars_info = Order.cars_data current_city_id, type
 
-      cache_key = "#{car_id}/#{current_city_id}/#{type}/result"
-      @result = Rails.cache.fetch(cache_key)
-      if !@result
-        @result = Order.items_for car_id, current_city_id, type
-        Rails.cache.write(cache_key, @result)
-      end
-
+      @result = Order.items_for2 car_id, current_city_id, type
     else
       return redirect_to select_car_by_initial_orders_path(act: params[:act], type: params[:type])
     end
@@ -147,10 +142,10 @@ class OrdersController < ApplicationController
   end
 
   def refresh_price
-    car_id = params["order"]["car_id"]
-    parts = params["order"]["parts"].try :values
-
+    car_id = params["car_id"]
     type = params["type"]
+
+    parts = JSON.parse cookies['parts']
 
     activity = Activity.find_by id: params[:act]
 
@@ -174,6 +169,27 @@ class OrdersController < ApplicationController
     end
 
     @result = Order.items_for params[:car_id], current_city_id, type
+  end
+
+  def place_order_page
+    car_id = params[:car_id]
+    @parts = JSON.parse cookies["parts"]
+    @city_capacity = Order.city_capacity current_city_id
+
+    activity = Activity.find_by id: params[:act]
+
+    type = params["type"]
+    payload = {
+      parts: @parts
+    }
+    if activity && activity.valid_activity?
+      payload[:discount] = activity.preferential_code
+    end
+
+    @cities = Order.cities
+    @result = Order.refresh_price car_id, current_city_id, payload, type
+
+    render "place_order"
   end
 
   def place_order
@@ -256,7 +272,13 @@ class OrdersController < ApplicationController
       return render js: "alert('请填写正确的验证码')"
     end
 
-    parts = params[:parts] ? params[:parts].values : []
+    if params[:parts]
+      parts = params[:parts].values
+    elsif cookies['parts']
+      parts = JSON.parse cookies["parts"]
+    else
+      parts = []
+    end
 
     if !params[:serve_date].present?
       return render js: "alert('请填写正确的服务日期')"
@@ -278,6 +300,12 @@ class OrdersController < ApplicationController
       service_type = 2
     end
 
+    if !params[:reciept_title]
+      reciept_type = 0
+    else
+      reciept_type = 1
+    end
+
     payload = {
       parts: parts,
       service_type: service_type,
@@ -288,8 +316,10 @@ class OrdersController < ApplicationController
         "car_location"      => params[:car_location],
         "car_num"           => params[:car_num],
         "serve_datetime"    => "#{params[:serve_date]} #{params[:serve_period]}",
-        "reciept_type"      => params[:reciept_type],
+
+        "reciept_type"      => reciept_type,
         "reciept_title"     => params[:reciept_title],
+
         "client_comment"    => params[:client_comment],
         "city_id"           => city.system_id, #params[:city_id]
         "car_id"            => params[:car_id],

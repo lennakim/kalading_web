@@ -1,11 +1,98 @@
 @import "mixins/button";
 @import "mixins/checkbox";
+@import "item-icons/*.png";
+
+@include all-item-icons-sprites;
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
 $font-gray: #dedede;
 $font-orange: #ec8721;
 $title-gray: #787878;
+
+.cursor-down{
+  img{
+    width: 15px;
+  }
+}
+
+.car-content{
+  padding: 0;
+}
+
+.no-parts-available{
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.panel-group.custom{
+  margin: 0;
+  border-bottom: 1px solid #eee;
+
+  &.disabled{
+    a.selected-part{
+      color: #ccc;
+    }
+  }
+
+  .part-price{
+    margin-right: 10px;
+  }
+
+  .panel{
+
+    font-size: 16px;
+
+    &.quick-cars-select{
+      font-size: 14px;
+    }
+
+    .panel-heading, .panel-collapse{
+      padding: 0;
+      a{
+        float: left;
+        width: 100%;
+        line-height: 30px;
+      }
+    }
+
+    .item-type{
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
+
+    .panel-heading{
+      padding: 10px;
+      padding-left: 10px;
+    }
+    .panel-collapse{
+      padding: 0px;
+
+      .list-group{
+        .list-group-item{
+
+          &.selected{
+            color: #f57e56;
+          }
+          padding: 10px;
+          margin-left: 20px;
+          // background: #fffaec;
+          line-height: 30px;
+          a{
+            color: #6C6C6C;
+            font-size: 14px;
+          }
+
+          color: #6C6C6C;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
 
 .orders-con{
   padding: 0 20px;
@@ -101,9 +188,9 @@ $title-gray: #787878;
       }
     }
   }
-  .order_button{
-    @include button;
-  }
+}
+.order_button{
+  // @include button;
 }
 .select-car-page,.items-select-page{
   .comment-module,.service-module,.orders-situation{
@@ -266,8 +353,17 @@ $title-gray: #787878;
     .orders-con{
       border: 1px solid #ddd;
       .order_button{
-        margin: 20px 0;
-        @include button;
+        // margin: 20px 0;
+        // @include button;
+        // position: absolute;
+        // right: 14px;
+        // top: 14px;
+        // background: #e94609;
+        // border: 0;
+        // @include border-radius(3px);
+        // color: #fff;
+        // height: 40px;
+        // width: 100px;
       }
     }
   }
@@ -614,28 +710,25 @@ $title-gray: #787878;
     color: #999;
   }
   .result-price{
-    color: #f57e56;
+    color: #e94609;
     font-size: 22px;
   }
   .submit{
     position: absolute;
-    right: 20px;
-    background: #feac5a;
+    right: 14px;
+    top: 14px;
+    background: #e94609;
     border: 0;
-    border-radius: 5px;
+    @include border-radius(3px);
     color: #fff;
+    height: 40px;
+    width: 100px;
   }
 }
 .select-car-phone{
   line-height: 35px;
   .my-car-title{
     border-bottom: 1px solid #ccc;
-  }
-  .my-car-title:before{
-    content: image-url('my-car.png');
-  }
-  .service-type-title:before{
-    content: image-url('service-type.png');
   }
   #myTab{
     position: fixed;
@@ -644,7 +737,7 @@ $title-gray: #787878;
     width: 100%;
     background: #fff;
     li{
-      width: 33%;
+      width: 50%;
       text-align: center;
       font-size: 16px;
       a{
@@ -701,16 +794,13 @@ $title-gray: #787878;
   .price,.now,.reason{
     float: left;
   }
-  .car-content{
-    padding: 0 20px;
-  }
   .orders{
     .content{
       padding-left: 20px;
     }
     .service-item{
-      padding: 5px 10px;
-      border-bottom: 1px solid #eee;
+      // padding: 5px 10px;
+      // border-bottom: 1px solid #eee;
       &:last-child{
         border: 0;
       }
@@ -725,26 +815,32 @@ $title-gray: #787878;
       margin: 0 auto;
     }
     .btn{
+      color: white;
       position: fixed;
-      bottom: 25px;
-      right: 20px;
       z-index: 9999;
-      line-height: 20px;
+      line-height: 30px;
       margin: 0;
+
+      right: 14px;
+      bottom: 14px;
+      background: #e94609;
+      border: 0;
+      @include border-radius(3px);
+      color: #fff;
+      height: 40px;
+      width: 100px;
     }
   }
   .quick-select{
     position: relative;
     .add-car{
       position: absolute;
-      top: 10px;
-      right: 20px;
+      top: 5px;
+      right: 0px;
       line-height: 30px;
-      background: #feac5a;
       padding: 0 10px;
-      border-radius: 4px;
       font-size: 12px;
-      color: #fff;
+      color: #e94609;
     }
     .car{
       margin: 10px 0;
@@ -786,8 +882,38 @@ $title-gray: #787878;
     }
   }
 }
+
+
 .place-order-phone{
-  form{
+
+  .current_addresses{
+    font-size: 14px;
+    .panel-group .panel-heading{
+      a{
+        color: #333;
+        .service-address-detail{
+          margin-left: 15px;
+          width: 60%;
+        }
+      }
+    }
+    li.list-group-item{
+      .address-item-detail{
+        width: 90%;
+        a{
+          width: 100%;
+        }
+      }
+
+      &.selected{
+        a{
+          color: #f57e56 !important;
+        }
+      }
+    }
+  }
+
+  .offer-table{
     padding-bottom: 68px;
   }
   .orders-content{
@@ -806,7 +932,6 @@ $title-gray: #787878;
     content: image-url('order-info-title.png');
   }
   .addresses{
-    padding: 0 15px;
     li{
       padding: 10px;
     }
@@ -829,7 +954,7 @@ $title-gray: #787878;
     }
   }
   .info-group{
-    padding: 5px 25px;
+    padding: 5px 15px;
     margin-bottom: 0;
     line-height: 35px;
   }
@@ -841,6 +966,7 @@ $title-gray: #787878;
   #serve_period,
   #preferential_code,
   #validate_preferential,
+  #no_preferential,
   .info-title,
   .info-title{
     float: left;
@@ -873,7 +999,7 @@ $title-gray: #787878;
   #preferential_code{
     width: 65%;
   }
-  #validate_preferential{
+  #validate_preferential, #no_preferential{
     width: 30%;
     margin-left: 5%;
   }
@@ -899,28 +1025,30 @@ $title-gray: #787878;
       border-radius: 5px;
     }
   }
-  #item_table{
-    width: 100%;
-    line-height: 15px;
-    font-size: 12px;
-    .item{
-      width: 50%;
-    }
-    p{
-      border-bottom: 1px solid #ccc;
-      &:last-child{
-        border: 0;
-      }
-    }
-    th,tr{
-      line-height: 30px;
-    }
-    th,td{
-      border: 1px solid #ccc;
-      text-align: center;
+}
+
+#item_table{
+  width: 100%;
+  line-height: 15px;
+  font-size: 12px;
+  .item{
+    width: 50%;
+  }
+  p{
+    border-bottom: 1px solid #ccc;
+    &:last-child{
+      border: 0;
     }
   }
+  th,tr{
+    line-height: 30px;
+  }
+  th,td{
+    border: 1px solid #ccc;
+    text-align: center;
+  }
 }
+
 .order-status-phone{
   .order-status{
     .item-title:before{
