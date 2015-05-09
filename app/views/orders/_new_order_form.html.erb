@@ -1,15 +1,18 @@
 <div class="new-order-form">
-  <div class="addr">
-    <ul class="clearfix">
-      <li>
-        <input type="radio" name="address">
-        <span>北京市朝阳区亚运村</span>
-        <span class="edit hide">修改本地址</span>
-      </li>
-    </ul>
-    <p class="add cursor"> + 添加新的地址</p>
+
+  <div class="addresses">
+    <div class="addr">
+      <%= render "service_addresses/addresses" %>
+      <p class="add cursor">
+        <a>
+          + 添加新的地址
+        </a>
+      </p>
+    </div>
   </div>
+
   <h4 class='title'>订单信息</h4>
+
   <div class="form">
     <% unless signed_in? %>
       <div class="info-group clearfix">
@@ -26,11 +29,10 @@
           <var class="star">*</var>
           <%= label_tag(:verification_code, "验证手机：") %>
         </div>
+
         <div class="info-con form-inline">
           <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
-
           <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
-
         </div>
       </div>
     <% else %>

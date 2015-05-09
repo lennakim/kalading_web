@@ -4,6 +4,8 @@
 
 $ ->
 
+
+
   if $(".second").length >= 1
     service_select = new App.Views.ServiceSelect
 
@@ -90,18 +92,18 @@ $ ->
     model_id = $(@).data('model_id')
 
     $.ajax({
-        method: "GET",
-        url : "#{API_Domain}#{V2}/auto_models/#{model_id}.json",
-        beforeSend: ->
-          $('.tips').removeClass('hide')
-        ,
-        complete: ->
-          $('.tips').addClass('hide')
-        ,
-        success: (data)->
-          submodels = data['data']
-          generateCarSubModel(submodels)
-      })
+      method: "GET",
+      url : "#{API_Domain}#{V2}/auto_models/#{model_id}.json",
+      beforeSend: ->
+        $('.tips').removeClass('hide')
+      ,
+      complete: ->
+        $('.tips').addClass('hide')
+      ,
+      success: (data)->
+        submodels = data['data']
+        generateCarSubModel(submodels)
+    })
 
   unless $.jStorage.get("autos")?
     $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
@@ -110,6 +112,196 @@ $ ->
       generateCarIndex($.jStorage.get("autos"))
   else
     generateCarIndex($.jStorage.get("autos"))
+
+  # order form page
+
+  if $('.new-order-form').length > 0
+    $('#address_manage').on 'click', (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      if $('.addr .edit').hasClass('hide')
+        $('.addr .edit').removeClass('hide')
+      else
+        $('.addr .edit').addClass('hide')
+
+
+    $('.addresses').on 'change', '.service-address-item input[type=radio]', (e) ->
+
+      console.log 111
+
+      id = $(@).data('id')
+
+      $('.service-address-item').removeClass('selected')
+      $(@).closest('.service-address-item').addClass('selected')
+
+      $.post "/service_addresses/#{ id }/set_default"
+
+
+    @ajax_set_city = ->
+      address = $.trim $('.current_addresses .service-address-detail').text()
+      if address
+        $.get "/cities/city_capacity.json?address=#{address}", (data) ->
+          set_serve_date data
+
+    set_serve_date = (date) ->
+
+      activity_id = $("#activity_id").val()
+
+      min = new Date(_.first(_.keys(date)))
+      max = new Date(_.last(_.keys(date)))
+
+      disabled = _.select _.pairs(date), (e) ->
+        sum = _.reduce e[1], (memo, num) ->
+          memo + num
+        , 0
+
+        sum == 0
+
+      disabled_date = _.map disabled, (e, i) ->
+        new Date(e[0])
+
+      time_slot = {
+        "8:00": "8:00 - 12:00",
+        "12:00": "12:00 - 17:00",
+        "17:00": "17:00 - 20:00"
+      }
+
+
+      if activity_id == '140'
+        max = new Date(2015, 5, 30)
+
+      $input = $('#serve_date').pickadate({
+
+        container: '#date_picker',
+
+        format: 'yyyy-mm-dd',
+        min: min,
+        max: max,
+        onSet: () ->
+
+          if activity_id != '140'
+            $("#serve_period").empty()
+            date_string = $("#serve_date").val()
+
+            _.each date[date_string], (e, i) ->
+              key = Object.keys(time_slot)[i]
+              value = time_slot[key]
+
+              if e != 0
+                option = """
+                  <option value="#{key}">#{value}</option>
+                """
+
+                $("#serve_period").append($(option))
+
+      })
+
+      picker = $input.pickadate('picker')
+      picker.set('enable', true)
+      picker.set('disable', disabled_date)
+      picker.clear()
+
+    $('#registration_date').pickadate({
+      container: '#date_picker',
+      max: true,
+      format: 'yyyy-mm-dd',
+      selectMonths: true,
+      selectYears: true,
+      close: "关闭"
+    })
+
+    set_serve_date $('#serve_date').data('cc')
+
+    $.validator.addMethod "regx", (value, element, regexpr) ->
+      regexpr.test(value)
+    ,  "车牌号不合法"
+
+    $("#place_order_form").validate
+
+      highlight: (element, errorClass, validClass) ->
+        $(element).closest('.form-group').addClass('has-error')
+        # $(element.form).find("label[for=" + element.id + "]")
+        #   .addClass(errorClass)
+
+      unhighlight: (element, errorClass, validClass) ->
+        $(element).closest('.form-group').removeClass('has-error')
+        # $(element.form).find("label[for=" + element.id + "]")
+        #   .removeClass(errorClass)
+
+      errorPlacement: (error, element) ->
+        # 不提醒
+
+        # element.data('title', error[0].innerText)
+        # element.tooltip
+        #   placement: 'left'
+        # .tooltip 'show'
+        #
+
+      submitHandler: (form) ->
+        if !$("#serve_date").val()
+          $("#serve_date").closest('.form-group').addClass('has-error')
+          return false
+
+        else if ($("#registration_date").length > 0 && !$("#registration_date").val())
+          $("#registration_date").closest('.form-group').addClass('has-error')
+          return false
+        else
+          return true
+
+      rules:
+        phone_num:
+          required: true
+          number: true
+          minlength: 11
+          maxlength: 11
+
+        verification_code:
+          required: true
+          number: true
+          minlength: 6
+          maxlength: 6
+
+        serve_date:
+          required: true
+          date: true
+
+        registration_date:
+          required: true
+          date: true
+
+        car_num:
+          required: true
+          minlength: 6
+          maxlength: 6
+          regx: /^[a-zA-Z]{1}[a-zA-Z_0-9]{5}$/
+
+      messages:
+        name: "请输入姓名"
+        address: "请输入详细地址"
+        verification_code: "请输入正确的短信验证码"
+
+        phone_num:
+          required: "请输入手机号码"
+          minlength: "请输入11位手机号码"
+          maxlength: "请输入11位手机号码"
+          number: "手机号码应为数字"
+
+        car_num:
+          required: "请输入车牌号码"
+          minlength: "请输入车牌后6位"
+          maxlength: "请输入车牌后6位"
+
+        serve_date:
+          required: "请选择服务时间"
+
+        registration_date:
+          required: "请选择车辆注册时间"
+
+
+
+
+
 
   #######################new_service_select################
 
@@ -137,3 +329,6 @@ generateCarBrand = (letter) ->
   _.each brands, (brand)->
     str = "<li data-letter=#{letter} class='cursor'><img src='#{brand['logo']}'/> <span>#{brand['name']}</span></li>"
     $("ul.brand-list").append(str)
+
+
+

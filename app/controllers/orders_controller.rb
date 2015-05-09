@@ -59,6 +59,10 @@ class OrdersController < ApplicationController
   end
 
   def new_info_submit
+
+    @cities = Order.cities
+    @city_capacity = Order.city_capacity current_city_id
+
     render layout: "new"
   end
 

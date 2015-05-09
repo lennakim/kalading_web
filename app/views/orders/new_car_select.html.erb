@@ -1,69 +1,69 @@
 <div class="new-car-select">
-	<div class="first">
-		<div class="main">
-			<%= image_tag("new-order/first.png", :class => 'tag2')%>
-			<h4 class="tit">服务内容</h4>
-			<div class="maintain-items">
-				<h4 class="title clearfix">
-					<span class="active select-brand">选择品牌</span>
-					<span class="select-series">选择车系</span>
-					<span class="select-model">选择排量与年份</span>
-				</h4>
-				<div class="items">
-					<div class="initial clearfix">
-						<h4>品牌首字母选择</h4>
-						<span class="hot">热门</span>
-						<ul class="crumbs clearfix">
-							<!-- <li><a href="#">A</a></li> -->
-						</ul>
-					</div>
-					<p class="tips hide">小卡技师努力加载中...</p>
-					<ul class="brand-list clearfix">
-						<!-- <li class="cursor">
-							<img src="">
-							<span>奥迪</span>
-						</li>
-					-->
-					</ul>
-				</div>
-				<div class="items hide">
-					<div class="selected-brand clearfix">
-						<h4>已选车型：</h4>
-						<div class="selected-name">
-							<span class="name"></span>
-							<p class="remove cursor"></p>
-						</div>
-					</div>
-					<p class="tips hide">小卡技师努力加载中...</p>
-					<ul class="series-list clearfix">
-						<!-- <li class="cursor">A1</li> -->
-					</ul>
-				</div>
-				<div class="items hide">
-					<div class="selected-series clearfix">
-						<h4>已选车型：</h4>
-						<div class="selected-name">
-							<span class="name"></span>
-							<p class="remove cursor"></p>
-						</div>
-						<div class="selected-series-name">
-							<span class="series"></span>
-							<p class="remove cursor"></p>
-						</div>
-					</div>
-					<p class="tips hide">小卡技师努力加载中...</p>
-					<ul class="model-list clearfix">
-						<!-- <li class="cursor">1.2 TFSI   2010.08-2014</li> -->
-					</ul>
-				</div>
+  <div class="first">
+    <div class="main">
+      <%= image_tag("new-order/first.png", :class => 'tag2')%>
+      <h4 class="tit">服务内容</h4>
+      <div class="maintain-items">
+        <h4 class="title clearfix">
+          <span class="active select-brand">选择品牌</span>
+          <span class="select-series">选择车系</span>
+          <span class="select-model">选择排量与年份</span>
+        </h4>
+        <div class="items">
+          <div class="initial clearfix">
+            <h4>品牌首字母选择</h4>
+            <span class="hot">热门</span>
+            <ul class="crumbs clearfix">
+              <!-- <li><a href="#">A</a></li> -->
+            </ul>
+          </div>
+          <p class="tips hide">小卡技师努力加载中...</p>
+          <ul class="brand-list clearfix">
+            <!-- <li class="cursor">
+              <img src="">
+              <span>奥迪</span>
+            </li>
+          -->
+          </ul>
+        </div>
+        <div class="items hide">
+          <div class="selected-brand clearfix">
+            <h4>已选车型：</h4>
+            <div class="selected-name">
+              <span class="name"></span>
+              <p class="remove cursor"></p>
+            </div>
+          </div>
+          <p class="tips hide">小卡技师努力加载中...</p>
+          <ul class="series-list clearfix">
+            <!-- <li class="cursor">A1</li> -->
+          </ul>
+        </div>
+        <div class="items hide">
+          <div class="selected-series clearfix">
+            <h4>已选车型：</h4>
+            <div class="selected-name">
+              <span class="name"></span>
+              <p class="remove cursor"></p>
+            </div>
+            <div class="selected-series-name">
+              <span class="series"></span>
+              <p class="remove cursor"></p>
+            </div>
+          </div>
+          <p class="tips hide">小卡技师努力加载中...</p>
+          <ul class="model-list clearfix">
+            <!-- <li class="cursor">1.2 TFSI   2010.08-2014</li> -->
+          </ul>
+        </div>
 
-				<a class="undefined-car cursor">未找到车型？</a>
-			</div>
-		</div>
-		<div class="next translate-next cursor">
-			<%= link_to "下一步", new_service_select_orders_path %>
-		</div>
-	</div>
+        <a class="undefined-car cursor">未找到车型？</a>
+      </div>
+    </div>
+    <div class="next translate-next cursor">
+      <%= link_to "下一步", new_service_select_orders_path %>
+    </div>
+  </div>
 </div>
 
 
@@ -79,7 +79,7 @@
 <div class="select-car-area">
   <% if last_select_car %>
     <%= render "quick_select_car" %>
-  <% else %>
+<% else %>
     <%#= render "select_car" %>
-  <% end %>
+<% end %>
 </div>

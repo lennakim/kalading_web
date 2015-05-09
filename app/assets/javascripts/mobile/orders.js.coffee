@@ -211,8 +211,6 @@ $ ->
           $("#registration_date").closest('.form-group').addClass('has-error')
           return false
         else
-
-          # $("#place_order_form").trigger 'submit.rails'
           return true
 
       rules:
