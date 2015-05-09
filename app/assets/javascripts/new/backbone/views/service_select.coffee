@@ -21,6 +21,8 @@ class App.Views.ServiceSelect extends Backbone.View
     @listenTo(@order, 'sync', @render)
     @listenTo(@order, 'error', @errorHandler)
 
+    @resetSelectItems() #初始化的时候把数据塞入 cookie
+
   render: ->
     @$total_price.text(@order.get('price')) #渲染
     @$service_price.text(@order.get('service_price')) #渲染
