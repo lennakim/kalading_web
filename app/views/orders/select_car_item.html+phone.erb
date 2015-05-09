@@ -78,7 +78,7 @@
                 <div class="panel-heading clearfix" role="tab" id="select_type_header">
                   <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_mt_type" aria-expanded="false" aria-controls="select_mt_type">
                     <div class="pull-left">
-                      <%= Product.find_by(slug: type).title %>
+                      <%= Product.find_by(slug: type).try(:title) %>
                     </div>
 
                     <% if !via_act || (via_act && types.length > 1) %>

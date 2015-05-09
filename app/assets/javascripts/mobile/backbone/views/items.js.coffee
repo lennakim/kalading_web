@@ -25,6 +25,8 @@ class Kalading.Views.Items extends Backbone.View
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
+    # model对象触发了 sync 事件, 则刷新当前view对象
+
     @listenTo(@order, 'error', @errorHandler)
 
     @resetSelectItems()
