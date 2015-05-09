@@ -43,8 +43,11 @@ class OrdersController < ApplicationController
   end
 
   def new_service_select
-    car_id = params[:car_id] || last_select_car
+    car_id = cookies["car_id"] || last_select_car
     type = params[:type]
+
+    #保存用户最近选择的车型
+    Auto.find_or_create_by(user: current_user, system_id: car_id)
 
     if car_id.present?
       save_last_select_car car_id # cookie 保存选车id
@@ -60,7 +63,7 @@ class OrdersController < ApplicationController
 
   def new_info_submit
 
-    car_id = params[:car_id]
+    car_id = cookies["car_id"]
     @parts = JSON.parse cookies["parts"]
     @city_capacity = Order.city_capacity current_city_id
 

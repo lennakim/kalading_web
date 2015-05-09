@@ -1,5 +1,5 @@
 <div class="new-car-select">
-  <div class="second" data-car="<%= params[:car_id] %>">
+  <div class="second">
     <div class="main">
       <%= image_tag("new-order/second.png", class: 'tag2')%>
 
@@ -62,7 +62,7 @@
       <%= link_to "上一步", new_car_select_orders_path %>
     </div>
     <div class="next translate-next cursor">
-      <%= link_to "下一步", new_info_submit_orders_path(car_id: params[:car_id]) %>
+      <%= link_to "下一步", new_info_submit_orders_path %>
     </div>
   </div>
 

@@ -50,7 +50,8 @@ $ ->
   #------跳转到选配件服务------
   $('.first .model-list').on 'click','li', ->
     car_id = $(@).data("car_id")
-    window.location.href = "/orders/new_service_select?car_id=#{car_id}"
+    $.cookie('car_id', car_id)
+    window.location.href = "/orders/new_service_select"
 
   #-----未找到车型------
   $('.undefined-car').click ->

@@ -15,7 +15,7 @@ class App.Views.ServiceSelect extends Backbone.View
     @$service_price = @$(".service_price") #selector
 
     @order.set 'price', @$total_price.data('price')
-    @order.set 'car_id', @$el.data("car")
+    @order.set 'car_id', $.cookie('car_id')
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
