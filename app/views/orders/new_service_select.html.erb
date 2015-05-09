@@ -1,5 +1,5 @@
 <div class="new-car-select">
-  <div class="second">
+  <div class="second" data-car="<%= params[:car_id] %>">
     <div class="main">
       <%= image_tag("new-order/second.png", class: 'tag2')%>
 
@@ -15,11 +15,13 @@
             <% array = parts.map(&:keys).flatten %>
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr) %>
-              <li data-price="<%= item['price'] %>" data-part="<%= arr %>" class="cursor selected">
+
+              <li data-part="<%= arr %>" data-brand="<%= item['brand']%>" data-number="<%= item['number']%>" class="cursor selected">
                 <%= display_item_name(arr, item["brand"], item['number']) %>
-                ￥ <b class="price_ele"><%= item['price'] %></b>
+                ￥<%= item['price'] %>
               </li>
             <% end %>
+
               <div class="other">
                 <li data-part="service_price" class="cursor selected active">
                   上门服务费
@@ -31,9 +33,9 @@
           <% array.each_with_index do |arr, inx| %>
             <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
               <% get_part(parts, arr).each do |part| %>
-                <li data-price="<%= part["price"] %>" class="cursor">
+                <li data-part="<%= arr %>" data-brand="<%=part['brand']%>" data-number="<%=part['number']%>" class="cursor">
                   <%= display_item_name(arr, part['brand'], part['number']) %>
-                  ￥<b class=""><%= part["price"] %></b>
+                  ￥<%= part["price"] %>
                 </li>
               <% end %>
 

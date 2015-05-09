@@ -5,21 +5,27 @@ window.App =
 class App.Models.Order extends Backbone.Model
 
   initialize: ->
-    @on("click:li.cursor", @loadPrice)
+    @on("change:parts", @loadPrice)
 
   validate: (attrs, options) ->
     unless attrs.car_id
       return "car_id should not be blank"
 
   loadPrice: ->
+    alert(1)
     data =
       car_id: @attributes['car_id']
       act: URI().search(true)['act']
       type: URI().search(true)['type']
 
+    car_id=  @attributes['car_id']
+    act=  URI().search(true)['act']
+    type= URI().search(true)['type']
+    alert("#{car_id} #{act} #{type}")
+
     order = @
 
-    if @isValid()
+    if true #@isValid()
       $.ajax
         type: 'post',
         url: '/orders/refresh_price',

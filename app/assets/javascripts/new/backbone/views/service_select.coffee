@@ -17,7 +17,7 @@ class App.Views.ServiceSelect extends Backbone.View
     @$service_price = @$(".service_price") #selector
 
     @order.set 'price', @$total_price.data('price')
-    @order.set 'car_id', ""
+    @order.set 'car_id', @$el.data("car")
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
@@ -37,12 +37,28 @@ class App.Views.ServiceSelect extends Backbone.View
   switchRight: (e) =>
     self = $(e.target)
     text = self.text()
-    index = self.addClass('active').siblings().removeClass('active').parents('.items-list').index()-1
-    @$('.service-items li').eq(index).text(text).addClass('selected')
+    part = self.data('part')
+    brand = self.data('brand')
+    number = self.data('number')
+    point = $("ul.service-items>li[data-part='#{part}']")
+    point.attr('data-brand', brand).attr('data-number', number).addClass('selected').text(text)
+
+    @resetSelectItems()
 
   undoParts: (e) =>
     self = $(e.target)
     part = self.parents("ul.items-list").data('part')
-
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.html("未选择")
+    point.addClass('disabled').attr('data-brand', '').attr('data-number', '').html("未选择")
+
+  resetSelectItems: =>
+    parts = _.map @$(".service-items > li"), (el, index) ->
+      brand: $(el).data('brand')
+      number: $(el).data('number')
+
+    data_json = JSON.stringify(parts)
+    alert(data_json)
+    $.cookie('kld-parts', data_json)
+
+    @order.set 'parts', parts
+
