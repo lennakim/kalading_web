@@ -6,6 +6,7 @@ class App.Views.ServiceSelect extends Backbone.View
     "click .service-items > li": "switchLeft"
     "click .items-list > li ": "switchRight"
     "click .undo ": "undoParts"
+    "click .all-undo": "undoAllParts"
 
   initialize: ->
     @order = new App.Models.Order
@@ -50,6 +51,10 @@ class App.Views.ServiceSelect extends Backbone.View
     point = $("ul.service-items>li[data-part='#{part}']")
     point.addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
 
+    @resetSelectItems()
+
+  undoAllParts: (e) =>
+    $("ul.service-items >li").addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
     @resetSelectItems()
 
   resetSelectItems: =>
