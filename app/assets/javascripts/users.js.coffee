@@ -109,8 +109,7 @@ $ ->
           num = $(@).index()
           if $('.comment-stars img').eq(num).hasClass('star1')
             $(@).removeClass('hidden').next().addClass('hidden')
-        
-          
+
 
     $('.comment-stars').on 'mouseover','img', select_star
 
@@ -153,4 +152,3 @@ $ ->
 
   $("#maintain_report_modal").on "shown.bs.modal", ->
     $(".modal-backdrop").css('height', 2000)
-

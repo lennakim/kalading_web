@@ -1,5 +1,13 @@
 module OrdersHelper
 
+  def user_default_address
+    if current_user && current_user.default_address
+      current_user.default_address.full_address
+    else
+      cookies[:address]
+    end
+  end
+
   def car_location
     ["京", "沪", "津", "渝", "浙", "苏", "粤", "闽", "湘", "鄂", "辽", "吉", "黑", "冀", "豫", "鲁", "陕", "甘", "青", "新", "晋", "川", "黔", "皖", "赣", "云", "蒙", "桂", "藏", "宁", "琼"]
   end
@@ -39,6 +47,16 @@ module OrdersHelper
     when 'gulf-oil-50'
       items.select{ |ele| ele["brand"] =~ /海湾/ }
     end
+  end
+
+  def item_icon_mapping part_name
+    {
+      "机油" => "oil",
+      "机滤" => "filter",
+      "空调滤清器" => "air-filter",
+      "空气滤清器" => "air-cleaner",
+      "电瓶" => "battery"
+    }[part_name]
   end
 
   def can_cancel? order
@@ -98,6 +116,21 @@ module OrdersHelper
 
   def default_parts result
     result["parts"].map{ |part| part.values[0][0]["number"] }
+  end
+
+  def get_recommend_part parts, key
+    index = parts.map(&:keys).index([key])
+    curr_parts = parts[index].values[0]
+
+    curr_parts.select{|item| item['recommended'] == 1 && item['quantity'] != 0 }.first || curr_parts.select{ |item|  item['quantity'] != 0}.first
+
+  end
+
+  def recommend_part_index parts, key, recommend_part
+    index = parts.map(&:keys).index([key])
+    curr_parts = parts[index].values[0]
+    curr_parts.index{ |part| part['number'] == recommend_part['number'] }
+
   end
 
   def filter_parts parts, type
