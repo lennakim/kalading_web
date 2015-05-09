@@ -11,9 +11,6 @@ class App.Views.ServiceSelect extends Backbone.View
   initialize: ->
     @order = new App.Models.Order
 
-    @$left = @$("ul.left > li")
-    @$right = @$("ul.right > li")
-    @$parts = @$("li.cursor")
     @$total_price = @$(".total_price") #selector
     @$service_price = @$(".service_price") #selector
 
