@@ -5,7 +5,6 @@
 $ ->
 
 
-
   if $(".second").length >= 1
     service_select = new App.Views.ServiceSelect
 
@@ -127,15 +126,35 @@ $ ->
 
 
     $('.addresses').on 'change', '.service-address-item input[type=radio]', (e) ->
-
-      console.log 111
-
       id = $(@).data('id')
 
       $('.service-address-item').removeClass('selected')
       $(@).closest('.service-address-item').addClass('selected')
 
       $.post "/service_addresses/#{ id }/set_default"
+
+    $("#validate_preferential").on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      car_id = $("#car_id").val()
+      code = $("#preferential_code").val()
+      type = $("#service_type").val()
+
+      $.post "/orders/validate_preferential_code", { code: code, car_id: car_id, type: type }
+
+    $('#no_preferential').on "click", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      $("#yes_preferential").removeClass('active')
+      $(@).addClass('active')
+      type = $("#service_type").val()
+
+      car_id = $("#car_id").val()
+      parts = $('#item_table').data("parts")
+
+      $.post "/orders/no_preferential", { car_id: car_id, parts: parts, type: type }
 
 
     @ajax_set_city = ->
@@ -145,7 +164,6 @@ $ ->
           set_serve_date data
 
     set_serve_date = (date) ->
-
       activity_id = $("#activity_id").val()
 
       min = new Date(_.first(_.keys(date)))
@@ -172,8 +190,7 @@ $ ->
         max = new Date(2015, 5, 30)
 
       $input = $('#serve_date').pickadate({
-
-        container: '#date_picker',
+        # container: '#date_picker',
 
         format: 'yyyy-mm-dd',
         min: min,
@@ -203,7 +220,7 @@ $ ->
       picker.clear()
 
     $('#registration_date').pickadate({
-      container: '#date_picker',
+      # container: '#date_picker',
       max: true,
       format: 'yyyy-mm-dd',
       selectMonths: true,

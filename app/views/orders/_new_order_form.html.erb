@@ -31,7 +31,7 @@
         </div>
 
         <div class="info-con form-inline">
-          <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
+          <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "验证码") %>
           <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
         </div>
       </div>
@@ -88,23 +88,8 @@
       </div>
     </div>
 
-    <!-- <div class="info-group clearfix">
-      <div class="info-title">
-        <var class="star">*</var>
-        <%#= label_tag(:pay_type, "付款方式：") %>
-      </div>
-      <div class="info-con form-inline">
-        <select id="pay_type" name="pay_type" class='form-control'>
-          <option value="0">现金</option>
-          <option value="1">刷卡</option>
-        </select>
-      </div>
-    </div> -->
-
     <div class="info-group clearfix">
-
       <div id="registed_date_picker"></div>
-
       <div class="info-title clearfix">
         <var class="star">*</var>
         <%= label_tag(:registration_date, "车辆注册时间：") %>
@@ -114,41 +99,12 @@
       </div>
     </div>
 
-    <!-- 去掉非必选项
-
-    <div class="info-group clearfix">
-      <div class="info-title">
-        <%= label_tag(:engine_num, "发动机号码：") %>
-      </div>
-      <div class="info-con form-inline">
-        <%= text_field_tag(:engine_num,'', class: "form-control") %>
-      </div>
-    </div>
-
-    <div class="info-group clearfix">
-      <div class="info-title">
-        <%= label_tag(:vin, "VIN：") %>
-      </div>
-      <div class="info-con form-inline">
-        <%= text_field_tag(:vin,'', class: 'form-control') %>
-      </div>
-    </div>
-
-    -->
-
     <div class="info-group clearfix">
       <div class="info-title">
         <%= label_tag("发票：") %>
       </div>
       <div class="info-con form-inline">
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-default active" id="no_invoice">
-            <input type="radio" name="reciept_type" value='0' autocomplete="off" checked> 不要
-          </label>
-          <label class="btn btn-default" id="yes_invoice">
-            <input type="radio" autocomplete="off"> 需要
-          </label>
-        </div>
+        <%= text_field_tag(:reciept_title, "", placeholder: '发票抬头(公司/个人)', class: 'form-control') %>
       </div>
     </div>
 
@@ -181,38 +137,21 @@
 
     <% if params[:act] && activity = Activity.find_by(id: params[:act]) %>
       <input type="hidden" name="discount" value="<%= activity.preferential_code %>">
-      <input type="hidden" name="act" value="<%= params[:act] %>">
+      <input type="hidden" id="activity_id" name="act" value="<%= params[:act] %>">
+
     <% else %>
-      <div class="info-group clearfix">
+      <div class="info-group form-group">
         <div class="info-title">
           <%= label_tag("优惠券：") %>
         </div>
-
-        <div class="info-con form-inline">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default active" id="no_preferential">
-              <input type="radio" autocomplete="off" checked> 无
-            </label>
-            <label class="btn btn-default" id="yes_preferential">
-              <input type="radio" autocomplete="off"> 有
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="info-group clearfix">
-        <div id="preferential_info" class="collapse">
-          <div class="info-title">
-            <%= label_tag("详细信息：") %>
-          </div>
-
-          <div class="info-con form-inline">
-            <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
-            <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
-          </div>
+        <div class="form-inline">
+          <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
+          <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
+          <%= link_to "取消", "#", class: "btn btn-default hidden", id: "no_preferential" %>
         </div>
       </div>
     <% end %>
+
 
     <div class="info-group clearfix">
       <div class="info-title">

@@ -1,3 +1,6 @@
+
+@import 'compass';
+
 $main-orange: #e94609;
 
 @keyframes translate-next-animate{
@@ -16,6 +19,33 @@ $main-orange: #e94609;
   cursor: pointer;
   cursor: hand;
 }
+
+
+input.form-control, select.form-control, textarea.form-control{
+  background: #eeeeee;
+  @include box-shadow(0px 0px);
+  @include border-radius(0px);
+  &#verification_code{
+    width: 83px;
+  }
+}
+
+a#get_code, a#validate_preferential, a#no_preferential{
+  @include border-radius(0px);
+  background: #eebf8f;
+  border: 0 none;
+  color: white;
+  width: 85px;
+  padding: 0;
+  text-align: center;
+  height: 34px;
+  line-height: 34px;
+}
+
+label{
+  color: #666666;
+}
+
 
 .new-car-select{
   .first,.second,.third,.no_car_type,.quick_select_car{
