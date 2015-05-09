@@ -23,7 +23,7 @@ $ ->
       $('.serie').addClass('hidden')
       $('.title_con').removeClass('hidden')
       if $(@).next('.serie').find('li').length != 0
-        $(@).siblings('.serie').removeClass('hidden').animate({'left':'30%'},500,->
+        $(@).siblings('.serie').removeClass('hidden').animate({'left':'23%'},500,->
           $('.logo').addClass('logo_active')
           $('.title_con').addClass('title_active')
         )
