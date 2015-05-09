@@ -2,8 +2,7 @@ class Kalading.Models.Order extends Backbone.Model
 
   initialize: ->
     @on("change:parts", @loadPrice)
-    #parts change 事件 会调用loadPrice
-    #shooter的第一感觉是放在view中
+    #parts 是属性 parts一被修改 就会触发 loadPrice事件
 
   validate: (attrs, options) ->
     # unless attrs.price

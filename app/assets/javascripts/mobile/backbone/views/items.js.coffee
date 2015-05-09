@@ -79,6 +79,8 @@ class Kalading.Views.Items extends Backbone.View
     $.cookie('parts', data_json)
 
     @order.set 'parts', parts
+    # @on("change:parts", @loadPrice)
+    # parts 只要修改就会触发 loadPrice
 
   chooseParts: (e)=>
     $part = $(e.currentTarget)
