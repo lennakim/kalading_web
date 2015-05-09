@@ -16,7 +16,9 @@
 
         <h4 class="title clearfix">
           <span class="name">确认地址信息</span>
-          <a href='#' class="address-manage" id="address_manage">管理地址</a>
+          <% if signed_in? %>
+            <a href='#' class="address-manage" id="address_manage">管理地址</a>
+          <% end %>
         </h4>
 
         <div class="items clearfix">

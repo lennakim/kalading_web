@@ -36,6 +36,16 @@
 
     <!-- 未登录-->
 
+    <li class="service-address-item selected">
+      <label>
+        <input type="radio" name="address" value="<%= cookies[:address] %>" checked>
+
+        <span class='address-name'>
+          <%= cookies[:address] %>
+        </span>
+      </label>
+    </li>
+
   <% end %>
 </ul>
 

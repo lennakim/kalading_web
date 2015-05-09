@@ -35,7 +35,6 @@
             <ul class="list-group">
               <% addresses.each do |service_address| %>
                 <li class="list-group-item clearfix <%= "selected" if service_address == current_user.default_address %>">
-
                   <div class="pull-left address-item-detail">
                     <a href="#" data-id="<%= service_address.id %>" class="pull-left">
                       <%= service_address.full_address %>
