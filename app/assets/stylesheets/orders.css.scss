@@ -1166,12 +1166,12 @@ $title-gray: #787878;
 	    margin: 5% 7%;
       }
       .logo_active{
-      	margin: 5px 9% 0;
+      	margin: 5px 5% 0;
       }
       .title_active{
       	position: absolute;
     		top: 45px;
-    		left: 6px;
+    		left: -4px;
     		display: block;
     		width: 30%;
     		line-height: 20px;
@@ -1188,7 +1188,7 @@ $title-gray: #787878;
       top: 0;
       left: 100%;
       z-index: 99;
-      width: 60%;
+      width: 69%;
       height: 100%;
       line-height: 30px;
       border-left: 1px solid #ccc;
@@ -1217,8 +1217,8 @@ $title-gray: #787878;
         padding-left: 5%;
         border-bottom: 1px solid #ccc;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
         a{
           color: $orange;
         }

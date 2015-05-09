@@ -97,19 +97,22 @@
     </div>
   <% end %>
 
-  <div class="section controls">
-    <div class="cell comment">
-      <% if can_cancel?(@order) %>
-        <div class="del">
-          <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
-        </div>
-      <% end %>
+  <% if can_cancel?(@order) || can_comment?(@order) %>
 
-      <% if can_comment?(@order) %>
-        <div class="cmt">
-          <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
-        </div>
-      <% end %>
+    <div class="section controls">
+      <div class="cell comment">
+        <% if can_cancel?(@order) %>
+          <div class="del">
+            <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
+          </div>
+        <% end %>
+
+        <% if can_comment?(@order) %>
+          <div class="cmt">
+            <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

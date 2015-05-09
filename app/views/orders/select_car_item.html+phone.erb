@@ -135,8 +135,10 @@
             <dt>
             <h3>
               <% phone = comment['user_phone'] %>
-              <% phone[3..6] = "****" %>
-              <%= phone %>
+              <% if phone.present? %>
+                <% phone[3..6] = "****" %>
+                <%= phone %>
+              <% end %>
             </h3>
               <div class="score" value="<%= score = comment['score'] %>">
                 <% score.to_i.times.each do |i| %>
