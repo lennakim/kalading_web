@@ -12,20 +12,14 @@ class App.Models.Order extends Backbone.Model
       return "car_id should not be blank"
 
   loadPrice: ->
-    alert(1)
     data =
       car_id: @attributes['car_id']
       act: URI().search(true)['act']
       type: URI().search(true)['type']
 
-    car_id=  @attributes['car_id']
-    act=  URI().search(true)['act']
-    type= URI().search(true)['type']
-    alert("#{car_id} #{act} #{type}")
-
     order = @
 
-    if true #@isValid()
+    if @isValid()
       $.ajax
         type: 'post',
         url: '/orders/refresh_price',

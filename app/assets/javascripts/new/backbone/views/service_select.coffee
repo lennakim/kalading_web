@@ -38,27 +38,27 @@ class App.Views.ServiceSelect extends Backbone.View
     self = $(e.target)
     text = self.text()
     part = self.data('part')
-    brand = self.data('brand')
-    number = self.data('number')
+    brand = self.attr('brand')
+    number = self.attr('number')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.attr('data-brand', brand).attr('data-number', number).addClass('selected').text(text)
-
+    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").text(text)
     @resetSelectItems()
 
   undoParts: (e) =>
     self = $(e.target)
     part = self.parents("ul.items-list").data('part')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.addClass('disabled').attr('data-brand', '').attr('data-number', '').html("未选择")
+    point.addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
+
+    @resetSelectItems()
 
   resetSelectItems: =>
-    parts = _.map @$(".service-items > li"), (el, index) ->
-      brand: $(el).data('brand')
-      number: $(el).data('number')
+    parts = _.map $(".service-items > li:not(.disabled)"), (ele, index) ->
+      brand: $(ele).attr('brand')
+      number: $(ele).attr('number')
 
     data_json = JSON.stringify(parts)
-    alert(data_json)
-    $.cookie('kld-parts', data_json)
+    $.cookie('parts', data_json)
 
     @order.set 'parts', parts
 
