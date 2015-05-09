@@ -111,7 +111,7 @@
                   <dt>
                   <h3>
                     <% phone = comment['user_phone'] %>
-                    <% if phone %>
+                    <% if phone.present? %>
                       <% phone[3..6] = "****" %>
                       <%= phone %>
                     <% end %>
