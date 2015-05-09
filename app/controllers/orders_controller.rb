@@ -39,15 +39,16 @@ class OrdersController < ApplicationController
   def new_car_select
     unless browser.mobile? ;  end
 
+    if car_id = cookies["car_id"] || last_select_car
+      @auto = Auto.find_by_api(car_id)
+    end
+
     render layout: "new"
   end
 
   def new_service_select
     car_id = cookies["car_id"] || last_select_car
     type = params[:type]
-
-    #保存用户最近选择的车型
-    Auto.find_or_create_by(user: current_user, system_id: car_id)
 
     if car_id.present?
       save_last_select_car car_id # cookie 保存选车id

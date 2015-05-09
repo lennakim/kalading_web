@@ -66,20 +66,8 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
 <div class="select-car-area">
-  <% if last_select_car %>
-    <%= render "quick_select_car" %>
-<% else %>
-    <%#= render "select_car" %>
-<% end %>
+  <% if @auto.present? %>
+    <%= render "quick_select_car", auto: @auto %>
+  <% end %>
 </div>
