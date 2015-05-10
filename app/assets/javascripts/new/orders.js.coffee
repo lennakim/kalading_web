@@ -115,6 +115,10 @@ $ ->
   # order form page
 
   if $('.new-order-form').length > 0
+
+    $("#place_order_form").on "ajax:before", (xhr, settings)->
+      $("#submit_form_button").attr('disabled', true)
+
     $('#address_manage').on 'click', (e) ->
       e.preventDefault()
       e.stopPropagation()
@@ -236,12 +240,12 @@ $ ->
     $("#place_order_form").validate
 
       highlight: (element, errorClass, validClass) ->
-        $(element).closest('.form-group').addClass('has-error')
+        $(element).closest('.form-inline').addClass('has-error')
         # $(element.form).find("label[for=" + element.id + "]")
         #   .addClass(errorClass)
 
       unhighlight: (element, errorClass, validClass) ->
-        $(element).closest('.form-group').removeClass('has-error')
+        $(element).closest('.form-inline').removeClass('has-error')
         # $(element.form).find("label[for=" + element.id + "]")
         #   .removeClass(errorClass)
 
@@ -256,11 +260,11 @@ $ ->
 
       submitHandler: (form) ->
         if !$("#serve_date").val()
-          $("#serve_date").closest('.form-group').addClass('has-error')
+          $("#serve_date").closest('.form-inline').addClass('has-error')
           return false
 
         else if ($("#registration_date").length > 0 && !$("#registration_date").val())
-          $("#registration_date").closest('.form-group').addClass('has-error')
+          $("#registration_date").closest('.form-inline').addClass('has-error')
           return false
         else
           return true

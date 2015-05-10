@@ -36,6 +36,19 @@ input.form-control, select.form-control, textarea.form-control{
   }
 }
 
+.form-group.has-error{
+  input, select{
+    border-color: #e94609;
+    color: #e94609;
+  }
+  input.form-control:focus, select.form-control:focus{
+    @include box-shadow(0 0);
+    border-color: #e94609;
+    color: #e94609;
+  }
+}
+
+
 a#get_code, a#validate_preferential, a#no_preferential{
   @include border-radius(0px);
   background: #eebf8f;
@@ -499,7 +512,7 @@ label{
           border: 1px solid #ccc;
         }
         th{
-          background: #f9f6f1;
+          background: #d6d6d6;
         }
         td{
           line-height: 40px;
