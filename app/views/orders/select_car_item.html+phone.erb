@@ -120,7 +120,12 @@
               <% parts = @result["applicable_parts"] %>
               <% filtered_parts = filter_parts(parts, type) %>
               <% if filtered_parts.count != 0 %>
+
+                <del class='origin-price hide'>
+                </del>
+
                 <span class="result-price"></span>元
+
               <% end %>
             </span>
             <p>支持现金、刷卡支付</p>

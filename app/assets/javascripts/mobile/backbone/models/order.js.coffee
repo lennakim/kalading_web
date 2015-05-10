@@ -24,6 +24,7 @@ class Kalading.Models.Order extends Backbone.Model
         data: data,
         success: (data) ->
           order.set 'price', data['result']['price']
+          order.set 'origin_price', data['result']['price_without_discount']
           order.set 'service_price', data['result']['service_price']
           order.trigger 'sync'
         error: (data) ->
