@@ -39,11 +39,15 @@ class OrdersController < ApplicationController
   def new_car_select
     unless browser.mobile? ;  end
 
+    if car_id = cookies["car_id"] || last_select_car
+      @auto = Auto.find_by_api(car_id)
+    end
+
     render layout: "new"
   end
 
   def new_service_select
-    car_id = params[:car_id] || last_select_car
+    car_id = cookies["car_id"] || last_select_car
     type = params[:type]
 
     if car_id.present?
@@ -60,7 +64,7 @@ class OrdersController < ApplicationController
 
   def new_info_submit
 
-    car_id = params[:car_id]
+    car_id = cookies["car_id"]
     @parts = JSON.parse cookies["parts"]
     @city_capacity = Order.city_capacity current_city_id
 

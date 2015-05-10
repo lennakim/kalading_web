@@ -18,12 +18,15 @@
 				        <div class="item active">
 				            <div class="cars-list clearfix">
 								<div class="car-item">
-									<p class="img">
-										<%= image_tag("new-order/first.png", :class => 'tag2')%>
-									</p>
-									<p class="brand-series-model">
-										标致 207 2007款 207   1.4 手动 16V
-									</p>
+									<a href="<%= new_service_select_orders_path %>">
+										<p class="img">
+											<%= image_tag(auto['pictures'][0]['url'], :class => 'tag2') if auto['pictures'][0] %>
+										</p>
+										<p class="brand-series-model">
+											<%= auto['full_name'] %>
+											<!-- 标致 207 2007款 207   1.4 手动 16V -->
+										</p>
+									</a>
 								</div>
 								<div class="car-item">
 									<p class="img">
