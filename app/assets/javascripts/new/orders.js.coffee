@@ -43,9 +43,9 @@ $ ->
     window.location.href = "/orders/new_service_select"
 
   #-----未找到车型------
-  $('.undefined-car').click ->
-    $('.first,.second,.third').addClass('hide')
-    $('.no_car_type').removeClass('hide')
+  # $('.undefined-car').click ->
+  #   $('.first,.second,.third').addClass('hide')
+  #   $('.no_car_type').removeClass('hide')
 
   #-----返回上一步------
   $('.second .prev').click ->
