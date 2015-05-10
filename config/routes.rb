@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       get 'cars'
       get 'balance'
       get 'settings'
+      get 'get_user_info'
     end
   end
 

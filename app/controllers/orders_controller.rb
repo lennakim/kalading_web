@@ -179,6 +179,11 @@ class OrdersController < ApplicationController
     activity = Activity.find_by id: params[:act]
 
     type = params["type"]
+
+    if signed_in?
+      @user_info = Order.user_orders(current_user.phone_number, car_id).first
+    end
+
     payload = {
       parts: @parts
     }
