@@ -60,6 +60,10 @@ $ ->
     $('.car-item').removeClass('selected')
     $(@).addClass('selected')
 
+  #######################new_service_select################
+
+  #-----服务选项切换------
+  $('.service-items li:first-child').addClass('active')
 
   # order form page
 
@@ -266,9 +270,3 @@ $ ->
 
         registration_date:
           required: "请选择车辆注册时间"
-
-
-  #######################new_service_select################
-
-  #-----服务选项切换------
-  $('.service-items li:first-child').addClass('active')
