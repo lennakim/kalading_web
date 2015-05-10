@@ -121,6 +121,12 @@ class Kalading.Views.Items extends Backbone.View
     @enableParts()
 
   render: ->
+
+    if @order.get('price') != @order.get('origin_price')
+      $('.origin-price').text(@order.get('origin_price')).removeClass('hide')
+    else
+      $('.origin-price').text('').addClass('hide') unless $('.origin-price').hasClass('hide')
+
     @$price.text(@order.get('price'))
     @$service_price.text(@order.get('service_price'))
 
