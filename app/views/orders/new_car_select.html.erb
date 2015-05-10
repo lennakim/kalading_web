@@ -1,5 +1,10 @@
 <div class="new-car-select">
-  <div class="first">
+  <% if @auto.present? %>
+    <%= render "quick_select_car", auto: @auto %>
+  <% end %>
+
+<!-- select car -->
+  <div class="first <%= @auto.present? ? 'hide' : '' %>">
     <div class="main">
       <%= image_tag("new-order/first.png", :class => 'tag2')%>
       <h4 class="tit">服务内容</h4>
@@ -63,10 +68,6 @@
       <%= link_to "下一步", new_service_select_orders_path %>
     </div>
   </div>
+<!-- select car end  -->
 </div>
 
-<div class="select-car-area">
-  <% if @auto.present? %>
-    <%= render "quick_select_car", auto: @auto %>
-  <% end %>
-</div>
