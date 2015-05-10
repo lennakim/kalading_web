@@ -74,6 +74,18 @@ $ ->
 
             $("select.car_location option[value=#{car_location}]").attr('selected', true)
             $("#car_num").val(car_num)
+            if $(".service-address-detail").length == 0
+              service_location = data['address']
+              $("#selected_address").val(service_location)
+              $.cookie('address', service_location)
+              $('#select_addr_header a').html """
+                <div class="pull-left">
+                  服务地址:
+                </div>
+                <div class="pull-left service-address-detail">
+                  #{ service_location }
+                </div>
+              """
 
 
     $(".place-order-phone").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
@@ -92,8 +104,8 @@ $ ->
     # $("#place_order_form").on "ajax:complete", ->
     #   $("#submit_form_button").attr('disabled', false)
 
-    if $('.current_addresses .service-address-detail').length == 0
-      $('.add a').click()
+    # if $('.current_addresses .service-address-detail').length == 0
+    #   $('.add a').click()
 
     $("#validate_preferential").on "click", (e) ->
       e.preventDefault()
