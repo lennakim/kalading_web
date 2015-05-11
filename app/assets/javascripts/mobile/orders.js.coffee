@@ -70,11 +70,11 @@ $ ->
 
       $.post "/service_addresses/#{ id }/set_default"
 
-    $("#place_order_form").on "ajax:beforeSend", (xhr, settings)->
+    $("#place_order_form").on "ajax:before", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)
-
-    $("#place_order_form").on "ajax:complete", ->
-      $("#submit_form_button").attr('disabled', false)
+    #
+    # $("#place_order_form").on "ajax:complete", ->
+    #   $("#submit_form_button").attr('disabled', false)
 
     if $('.current_addresses .service-address-detail').length == 0
       $('.add a').click()
@@ -211,7 +211,7 @@ $ ->
           $("#registration_date").closest('.form-group').addClass('has-error')
           return false
         else
-          $("#place_order_form").trigger 'submit.rails'
+          return true
 
       rules:
         phone_num:

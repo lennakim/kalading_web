@@ -1,4 +1,3 @@
-<div class="new-car-select">
 	<div class="quick_select_car">
 		<div class="main">
 			<%= image_tag("new-order/first.png", :class => 'tag2')%>
@@ -6,7 +5,7 @@
 			<div class="maintain-items">
 				<h4 class="title">
 					<span>您有以下快捷车辆</span>
-					<span class="add-car">添加车辆</span>
+					<span class="add-car cursor">添加车辆</span>
 				</h4>
 				<div class="items">
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -18,12 +17,15 @@
 				        <div class="item active">
 				            <div class="cars-list clearfix">
 								<div class="car-item">
-									<p class="img">
-										<%= image_tag("new-order/first.png", :class => 'tag2')%>
-									</p>
-									<p class="brand-series-model">
-										标致 207 2007款 207   1.4 手动 16V
-									</p>
+									<a href="<%= new_service_select_orders_path %>">
+										<p class="img">
+											<%= image_tag(auto['pictures'][0]['url'], :class => 'tag2') if auto['pictures'][0] %>
+										</p>
+										<p class="brand-series-model">
+											<%= auto['full_name'] %>
+											<!-- 标致 207 2007款 207   1.4 手动 16V -->
+										</p>
+									</a>
 								</div>
 								<div class="car-item">
 									<p class="img">
@@ -62,11 +64,10 @@
 				      </a>
 				    </div>
 				</div>
-				<a class="undefined-car cursor">未找到车型？</a>
+        <%= link_to "未找到车型？", no_car_type_orders_path, class: "undefined-car cursor" %>
 			</div>
 		</div>
 		<div class="next translate-next cursor">
 			<%= link_to "下一步", new_service_select_orders_path %>
 		</div>
 	</div>
-</div>

@@ -28,8 +28,18 @@ body{
   // background: lightblue;
 }
 
-
 .hide {
   display: none;
 }
 
+#add_address_modal{
+  .address-inputs{
+    padding-top: 20px;
+  }
+  .add-address{
+    padding-left: 10px;
+  }
+}
+.tangram-suggestion-main{
+  z-index: 2000;
+}

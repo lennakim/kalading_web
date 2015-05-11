@@ -1,5 +1,8 @@
 @import "mixins/button";
 @import "mixins/checkbox";
+@import "item-icons/*.png";
+
+@include all-item-icons-sprites;
 
 $bac-orange: #ff9934;
 $border-orange: #ef7337;
@@ -54,22 +57,36 @@ $title-gray: #787878;
       }
     }
 
+    .item-type{
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
+
     .panel-heading{
       padding: 10px;
-      padding-left: 20px;
+      padding-left: 10px;
     }
     .panel-collapse{
       padding: 0px;
 
       .list-group{
         .list-group-item{
+
+          &.selected{
+            color: #f57e56;
+          }
           padding: 10px;
-          padding-left: 20px;
-          background: #fffaec;
+          margin-left: 20px;
+          // background: #fffaec;
           line-height: 30px;
           a{
             color: #6C6C6C;
+            font-size: 14px;
           }
+
+          color: #6C6C6C;
+          font-size: 14px;
         }
       }
     }
@@ -173,7 +190,7 @@ $title-gray: #787878;
   }
 }
 .order_button{
-  @include button;
+  // @include button;
 }
 .select-car-page,.items-select-page{
   .comment-module,.service-module,.orders-situation{
@@ -336,8 +353,17 @@ $title-gray: #787878;
     .orders-con{
       border: 1px solid #ddd;
       .order_button{
-        margin: 20px 0;
-        @include button;
+        // margin: 20px 0;
+        // @include button;
+        // position: absolute;
+        // right: 14px;
+        // top: 14px;
+        // background: #e94609;
+        // border: 0;
+        // @include border-radius(3px);
+        // color: #fff;
+        // height: 40px;
+        // width: 100px;
       }
     }
   }
@@ -684,17 +710,19 @@ $title-gray: #787878;
     color: #999;
   }
   .result-price{
-    color: #f57e56;
+    color: #e94609;
     font-size: 22px;
   }
   .submit{
     position: absolute;
-    right: 20px;
-    top: 17px;
-    background: #feac5a;
+    right: 14px;
+    top: 14px;
+    background: #e94609;
     border: 0;
-    border-radius: 5px;
+    @include border-radius(3px);
     color: #fff;
+    height: 40px;
+    width: 100px;
   }
 }
 .select-car-phone{
@@ -789,11 +817,18 @@ $title-gray: #787878;
     .btn{
       color: white;
       position: fixed;
-      bottom: 25px;
-      right: 20px;
       z-index: 9999;
-      line-height: 20px;
+      line-height: 30px;
       margin: 0;
+
+      right: 14px;
+      bottom: 14px;
+      background: #e94609;
+      border: 0;
+      @include border-radius(3px);
+      color: #fff;
+      height: 40px;
+      width: 100px;
     }
   }
   .quick-select{
@@ -801,13 +836,11 @@ $title-gray: #787878;
     .add-car{
       position: absolute;
       top: 5px;
-      right: 20px;
+      right: 0px;
       line-height: 30px;
-      background: #feac5a;
       padding: 0 10px;
-      border-radius: 4px;
       font-size: 12px;
-      color: #fff;
+      color: #e94609;
     }
     .car{
       margin: 10px 0;
@@ -849,13 +882,15 @@ $title-gray: #787878;
     }
   }
 }
+
+
 .place-order-phone{
 
   .current_addresses{
     font-size: 14px;
     .panel-group .panel-heading{
       a{
-        color: #666;
+        color: #333;
         .service-address-detail{
           margin-left: 15px;
           width: 60%;
@@ -919,7 +954,7 @@ $title-gray: #787878;
     }
   }
   .info-group{
-    padding: 5px 25px;
+    padding: 5px 15px;
     margin-bottom: 0;
     line-height: 35px;
   }
@@ -1131,12 +1166,12 @@ $title-gray: #787878;
 	    margin: 5% 7%;
       }
       .logo_active{
-      	margin: 5px 9% 0;
+      	margin: 5px 5% 0;
       }
       .title_active{
       	position: absolute;
     		top: 45px;
-    		left: 6px;
+    		left: -4px;
     		display: block;
     		width: 30%;
     		line-height: 20px;
@@ -1153,7 +1188,7 @@ $title-gray: #787878;
       top: 0;
       left: 100%;
       z-index: 99;
-      width: 60%;
+      width: 69%;
       height: 100%;
       line-height: 30px;
       border-left: 1px solid #ccc;
@@ -1182,8 +1217,8 @@ $title-gray: #787878;
         padding-left: 5%;
         border-bottom: 1px solid #ccc;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
         a{
           color: $orange;
         }

@@ -1,32 +1,51 @@
-<div class="current_addresses">
+<ul class="clearfix current_addresses">
+
   <% if signed_in? %>
+    <!-- 登陆的 -->
+
     <% addresses = current_user.service_addresses %>
 
     <% if addresses && addresses.length > 0 %>
+      <!-- 有地址 -->
       <% addresses.each do |service_address| %>
-        <div class="radio">
+        <li class="service-address-item <%= "selected" if service_address == current_user.default_address %>">
+
           <label>
             <input type="radio" name="address" value="<%= service_address.full_address %>" data-id="<%= service_address.id %>" <%= "checked" if service_address == current_user.default_address %>>
-            <%= service_address.full_address %>
+
+            <span class='address-name'>
+              <%= service_address.full_address %>
+            </span>
           </label>
-          <%= link_to "", service_address_path(service_address), remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "确认删除吗?" } %>
-        </div>
+
+          <span class="edit hide">
+            <%= link_to "", service_address_path(service_address), remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "确认删除吗?" } %>
+            <!-- 修改本地址 -->
+          </span>
+        </li>
       <% end %>
     <% else %>
-      请选择服务地址
-    <% end %>
+      <!-- 没地址 -->
 
+      <span class="address-name">
+        暂无服务地址，请添加
+      </span>
+
+    <% end %>
   <% else %>
-    <% if address = cookies[:address] %>
-      <div class="radio">
-        <label>
-          <input type="radio" name="address" value="<%= address %>"checked>
-          <%= address %>
-        </label>
-      </div>
-    <% else %>
-      请选择服务地址
-    <% end %>
-  <% end %>
 
-</div>
+    <!-- 未登录-->
+
+    <li class="service-address-item selected">
+      <label>
+        <input type="radio" name="address" value="<%= cookies[:address] %>" checked>
+
+        <span class='address-name'>
+          <%= cookies[:address] %>
+        </span>
+      </label>
+    </li>
+
+  <% end %>
+</ul>
+

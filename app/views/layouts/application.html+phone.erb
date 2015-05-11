@@ -33,6 +33,9 @@
   <% end %>
 
   <script>
+
+available_service = [<%= raw City.find(current_user_city).products.map(&:slug).map{|name| %-"#{name}"- }.join(', ') %>];
+
     <% if signed_in? %>
       var current_user_id = <%= current_user.id %>;
     <% else %>

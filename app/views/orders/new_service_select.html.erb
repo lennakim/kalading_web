@@ -7,7 +7,7 @@
       <div class="maintain-items">
         <h4 class="title clearfix">
           <span class="name"> <%= @result['name'] %></span>
-          <span class="price">总价：<%= @result['price'] %>元</span>
+          <span class="price">总价：<b class="total_price"><%= @result['price'] %></b> 元</span>
         </h4>
         <div class="items clearfix">
           <ul class="left service-items">
@@ -15,42 +15,44 @@
             <% array = parts.map(&:keys).flatten %>
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr) %>
-              <li data-part="<%= arr %>" class="cursor selected">
+
+              <li data-part="<%= arr %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected">
                 <%= display_item_name(arr, item["brand"], item['number']) %>
-                ￥<%= item['price']  %>
+                ￥<%= item['price'] %>
               </li>
             <% end %>
+
+              <div class="other">
+                <li data-part="service_price" class="cursor selected active">
+                  上门服务费
+                  ￥ <b class="service_price"><%= @result['service_price'] %></b>
+                </li>
+              </div>
           </ul>
 
           <% array.each_with_index do |arr, inx| %>
             <ul data-part="<%= arr %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
               <% get_part(parts, arr).each do |part| %>
-                <li class="cursor">
+                <li data-part="<%= arr %>" brand="<%=part['brand']%>" number="<%=part['number']%>" class="cursor">
                   <%= display_item_name(arr, part['brand'], part['number']) %>
                   ￥<%= part["price"] %>
                 </li>
               <% end %>
+
+              <div class="other">
+                <li class="cursor undo">取消</li>
+              </div>
             </ul>
           <% end %>
+
+          <ul class="right items-list-small">
+            <li class="cursor all-undo">已有配件, 仅收上门费</li>
+            <li class="cursor undo">取消</li>
+          </ul>
         <!--
           <ul class="right items-list">
               <li class="cursor">1</li>
               <li class="cursor">2</li>
-          </ul>
-
-          <ul class="right items-list hide">
-            <li class="cursor">21</li>
-            <li class="cursor">22</li>
-          </ul>
-
-          <ul class="right items-list hide">
-            <li class="cursor">31</li>
-            <li class="cursor">32</li>
-          </ul>
-
-          <ul class="right items-list hide">
-            <li class="cursor">41</li>
-            <li class="cursor">42</li>
           </ul>
           -->
         </div>

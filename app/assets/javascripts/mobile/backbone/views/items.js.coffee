@@ -25,6 +25,8 @@ class Kalading.Views.Items extends Backbone.View
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
+    # model对象触发了 sync 事件, 则刷新当前view对象
+
     @listenTo(@order, 'error', @errorHandler)
 
     @resetSelectItems()
@@ -51,7 +53,8 @@ class Kalading.Views.Items extends Backbone.View
       $part.children('.part-name').text("未选择 #{ name }")
 
     $('.item-part .list-group-item').removeClass('selected')
-    $(".service-fee").addClass('selected').children('.pull-left').text('已有配件, 仅购买上门服务')
+    $(".service-fee").addClass('selected').children('.service-name').text('已有配件, 仅购买上门服务')
+
     $('#service_fee').collapse('hide')
 
     @resetSelectItems()
@@ -62,9 +65,9 @@ class Kalading.Views.Items extends Backbone.View
 
     if $('.item-part').hasClass('disabled')
       $('.item-part').removeClass('disabled')
-      $(".service-fee").addClass('selected').children('.pull-left').text('购买配件，并上门服务')
+      $(".service-fee").addClass('selected').children('.service-name').text('购买配件，并上门服务')
 
-    $('#service_fee').collapse('hide')
+    $('#service_fee.in').collapse('hide')
     @resetSelectItems()
 
   resetSelectItems: =>
@@ -76,6 +79,8 @@ class Kalading.Views.Items extends Backbone.View
     $.cookie('parts', data_json)
 
     @order.set 'parts', parts
+    # @on("change:parts", @loadPrice)
+    # parts 只要修改就会触发 loadPrice
 
   chooseParts: (e)=>
     $part = $(e.currentTarget)
@@ -116,29 +121,23 @@ class Kalading.Views.Items extends Backbone.View
     @enableParts()
 
   render: ->
-    # console.log 'render price'
+
+    if @order.get('price') != @order.get('origin_price')
+      $('.origin-price').text(@order.get('origin_price')).removeClass('hide')
+    else
+      $('.origin-price').text('').addClass('hide') unless $('.origin-price').hasClass('hide')
+
     @$price.text(@order.get('price'))
     @$service_price.text(@order.get('service_price'))
-    # @recoverSelectors()
 
   submitOrder: (e) ->
-
     if $('.order_button').hasClass('haiwan-disabled')
       alert '感谢您参加海湾和卡拉丁的活动，今天的50个免费名额已经抢完了，明天10点继续开抢！您也可以去官网和微信端自费购买海湾润滑油保养，也有机会赢取大礼！'
 
       e.preventDefault()
       e.stopPropagation()
-
-  # disableSelectors: ->
-  #   @$price.addClass "disabled"
-  #   @$checkboxes.attr('disabled', true)
-  #   @$order_button.attr('disabled', true).addClass('disabled')
-
-  # recoverSelectors: ->
-  #   @$price.removeClass "disabled"
-  #   if !@$no_parts.prop('checked')
-  #     @$checkboxes.attr('disabled', false)
-  #   @$order_button.attr('disabled', false).removeClass('disabled')
+    else
+      $('.order_button').addClass('disabled')
 
   errorHandler: ->
     # alert '服务器错误...请稍后再试'

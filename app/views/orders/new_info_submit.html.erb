@@ -1,17 +1,26 @@
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
+  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
+<% end %>
+
 <div class="new-car-select">
-  <div class="third">
+  <div class="third clearfix">
     <div class="prev cursor">
-      <%= link_to "上一步", new_service_select_orders_path %> 
+      <%= link_to "上一步", new_service_select_orders_path %>
     </div>
     <div class="main">
       <%= image_tag("new-order/third.png", :class => 'tag2')%>
-      
+
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">
+
         <h4 class="title clearfix">
           <span class="name">确认地址信息</span>
-          <span class="address">管理地址</span>
+          <% if signed_in? %>
+            <a href='#' class="address-manage" id="address_manage">管理地址</a>
+          <% end %>
         </h4>
+
         <div class="items clearfix">
           <%= render "new_order_form" %>
           <h4 class='title'>订单信息</h4>
@@ -20,6 +29,8 @@
       </div>
       <p class="submit">提交订单</p>
     </div>
-    
   </div>
 </div>
+</div>
+
+<%= render "shared/add_address_modal" %>
