@@ -1,9 +1,4 @@
 <% cache ["home-phone", current_city_name] do %>
-
-  <% content_for :javascripts do %>
-  <%= javascript_include_tag "home", 'data-turbolinks-track' => true %>
-  <% end %>
-
   <div class="home-phone phone-page">
 
     <div class="home-header">
@@ -30,43 +25,38 @@
       </div>
     </div>
 
-    <div class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
-        <li data-target="#carousel-example-generic" data-slide-to="3" ></li>
-        <li data-target="#carousel-example-generic" data-slide-to="4" ></li>
-        <!-- <li data&#45;target="#carousel&#45;example&#45;generic" data&#45;slide&#45;to="4" ></li> -->
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <a href="#">
-            <%= image_tag("phone-home/banner/kld.jpg")%>
-          </a>
-        </div>
-        <div class="item">
-          <a href="/activities/thousand_special_right" target="_blank">
-            <%= image_tag("phone-home/banner/thousand.jpg")%>
-          </a>
-        </div>
-        <div class="item">
-          <a href="activities/papago" target="_blank">
-            <%= image_tag("phone-home/banner/papago.jpg")%>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <%= image_tag("phone-home/banner/battery.jpg")%>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <%= image_tag("activity/tiantian/mobile-banner.jpg")%>
-          </a>
-        </div>
-      </div>
-    </div>
+
+  <div class="carousel slide flexslider">
+    <ul class="slides">
+      <li>
+        <a href="#">
+          <%= image_tag("phone-home/banner/kld.jpg")%>
+        </a>
+      </li>
+      <li>
+        <a href="/activities/thousand_special_right" target="_blank">
+          <%= image_tag("phone-home/banner/thousand.jpg")%>
+        </a>
+      </li>
+      <li>
+        <a href="activities/papago" target="_blank">
+          <%= image_tag("phone-home/banner/papago.jpg")%>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <%= image_tag("phone-home/banner/battery.jpg")%>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <%= image_tag("activity/tiantian/mobile-banner.jpg")%>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
 
     <div class="items clearfix">
       <div class="left">
