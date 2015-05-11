@@ -60,10 +60,16 @@ $ ->
     $('.car-item').removeClass('selected')
     $(@).addClass('selected')
 
-  # add_car
+  # 添加车辆
   $("span.add-car").click ->
     $(".quick_select_car").addClass('hide')
     $(".first").removeClass('hide')
+
+  # 未找到车型
+  $(".undefined-car").click ->
+    $(".no_car_type").removeClass("hide")
+    $(".first").addClass("hide")
+    $(".quick_select_car").addClass("hide")
 
   #######################new_service_select################
 
