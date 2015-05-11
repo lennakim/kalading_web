@@ -3,49 +3,49 @@
       <%= image_tag("new-order/first.png", :class => 'tag2')%>
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">
+      <%= form_for(submit_no_car_order_orders_path) do |f| %>
         <h4 class="title clearfix">
           <span class="name">请填写以下信息</span>
         </h4>
         <div class="items clearfix">
-
             <div class="left">
               <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:name, "车辆品牌：") %>
+                  <%= f.label(:name, "车辆品牌：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "车辆品牌") %>
+                  <%= f.text_field(:name, required: true, class: 'form-control', placeholder: "车辆品牌") %>
                 </div>
               </div>
 
             <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:name, "车辆年款：") %>
+                  <%= f.label(:name, "车辆年款：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "车辆年款") %>
+                  <%= f.text_field(:name, required: true, class: 'form-control', placeholder: "车辆年款") %>
                 </div>
               </div>
 
               <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:name, "车辆排量：") %>
+                  <%= f.label(:name, "车辆排量：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "车辆排量") %>
+                  <%= f.text_field(:name, required: true, class: 'form-control', placeholder: "车辆排量") %>
                 </div>
               </div>
 
               <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:name, "VIN号：") %>
+                  <%= f.label(:name, "VIN号：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "VIN号") %>
+                  <%= f.text_field(:name, required: true, class: 'form-control', placeholder: "VIN号") %>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag("车牌号：") %>
+                  <%= f.label("车牌号：") %>
                 </div>
                 <div class="info-con form-inline">
                   <select name="car_location" class="form-control car_location">
@@ -69,20 +69,20 @@
               <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:name, "手机号：") %>
+                  <%= f.label(:name, "手机号：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "手机号") %>
+                  <%= f.text_field(:name, required: true, class: 'form-control', placeholder: "手机号") %>
                 </div>
               </div>
 
               <div class="info-group clearfix">
                   <div class="info-title clearfix">
                     <var class="star">*</var>
-                    <%= label_tag(:verification_code, "验证手机：") %>
+                    <%= f.label(:verification_code, "验证手机：") %>
                   </div>
                   <div class="info-con form-inline">
-                    <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
+                    <%= f.text_field(:verification_code, required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control', placeholder: "6位验证码") %>
 
                     <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
 
@@ -92,23 +92,23 @@
               <div class="info-group clearfix">
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:name, "姓名：") %>
+                  <%= f.label(:name, "姓名：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:name, :required => true, class: 'form-control', placeholder: "姓名") %>
+                  <%= f.text_field(:name, required: true, class: 'form-control', placeholder: "姓名") %>
                 </div>
               </div>
           </div>
 
-            <div class="right">
+          <div class="right">
               <div class="info-group clearfix">
                 <div id="serve_date_picker"></div>
                 <div class="info-title clearfix">
                   <var class="star">*</var>
-                  <%= label_tag(:serve_date, "服务时间：") %>
+                  <%= f.label(:serve_date, "服务时间：") %>
                 </div>
                 <div class="info-con form-inline">
-                  <%= text_field_tag(:serve_date, '', required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
+                  <%= f.text_field(:serve_date, required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
                   <select id="serve_period" name="serve_period" class='form-control'>
                     <!-- <option value="8:00">8:00 &#45; 12:00</option> -->
                     <!-- <option value="12:00">12:00 &#45; 17:00</option> -->
@@ -118,12 +118,14 @@
               </div>
               <div class="info-group clearfix">
                 <div class="info-con form-inline">
-                  <div class="submit cursor">提交信息</div>
+                  <div class="submit cursor">
+                    <input type="submit" value="提交信息">
+                  </div>
                 </div>
               </div>
-            </div>
-
+          </div>
         </div>
+      <% end %>
       </div>
     </div>
   </div>
