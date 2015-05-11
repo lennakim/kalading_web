@@ -20,7 +20,11 @@
 </head>
 
 <body>
-  <%= render 'layouts/new/header' %>
+  <% if params[:action] == "new_index" %>
+    <%= render 'layouts/new/header' %>
+  <% else %>
+    <%= render 'layouts/new/header_others' %>
+  <% end %>
   <%= yield %>
   <%= render 'layouts/new/footer' %>
 

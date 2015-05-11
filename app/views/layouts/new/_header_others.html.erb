@@ -1,0 +1,72 @@
+<nav class="header-others">
+  <div class="kld-header">
+    <div class="kld-header-wrap">
+      <div class="kld-header-logo">
+        <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img">
+          <%= image_tag("new-index/logo.png")%>
+        </a>
+        <div class="kld-header-logo-slogan">
+          <p>爱车新理念</p>
+          <p>自在新生活</p>
+        </div>
+        <div class="dropdown address" title="服务地址">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+          <span class="val">
+            <span class="city"><%= current_city_name %></span>
+            <span class="caret"></span>
+          </span>
+        </div>
+      </div>
+      <ul class="kld-header-link">
+        <li class="home <%= "active" if params[:action] == "new_index" %>">
+          <a href="http://www.flyme.cn" target="_blank">首页</a>
+        </li>
+        <li class="products <%= "active" if params[:action] == "new_car_select" %>">
+          <a href="" class="" onclick="return false;">预约服务</a>
+
+          <div class="sub hide">
+            <div class="bac"></div>
+            <ul class="clearfix">
+              <li>
+                <a href="">大保养</a>
+              </li>
+              <li>
+                <a href="">小保养</a>
+              </li>
+              <li>
+                <a href="">PM2.5</a>
+              </li>
+              <li>
+                <a href="">换电瓶</a>
+              </li>
+            </ul>
+          </div>
+
+        </li>
+        <li class="service <%= "active" if params[:action] == "new_service_select" %>">
+          <a href="http://www.flyme.cn" target="_blank">服务内容</a>
+        </li>
+        <li class="team">
+          <a href="">城市团队</a>
+        </li>
+
+        <li class="about">
+          <a href="">关于我们</a>
+        </li>
+
+        <li class="contact">
+          <a href="">联系我们</a>
+        </li>
+      </ul>
+      <div class="kld-header-log">
+        <div id="_unlogin" class="kld-header-login" style="display: block;">
+          <a href="javascript:window.location.href = _login">登录</a>
+        </div>
+        <div id="_islogin" class="kld-header-logout" style="display: none;">
+          <a href="" id="mzCustName"></a> | <a href=");">退出</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</nav>

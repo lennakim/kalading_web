@@ -1,29 +1,20 @@
-<nav class="">
+<nav class="header">
   <div class="kld-header">
-    <!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <%= image_tag("new-index/banner.jpg")%>
-        </div>
-        <div class="item">
-          <%= image_tag("new-index/banner.jpg")%>
-        </div>
-        <div class="item">
-          <%= image_tag("new-index/banner.jpg")%>
-        </div>
-        <div class="item">
-          <%= image_tag("new-index/banner.jpg")%>
-        </div>
-      </div>
-    </div> -->
+
+    <ul class="cb-slideshow">
+      <li><span>Image 01</span><div><h3>汽车上门保养</h3></div></li>
+      <li><span>Image 02</span><div><h3>汽车上门保养</h3></div></li>
+      <li><span>Image 03</span><div><h3>汽车上门保养</h3></div></li>
+      <li><span>Image 04</span><div><h3>汽车上门保养</h3></div></li>
+      <li><span>Image 05</span><div><h3>汽车上门保养</h3></div></li>
+      <li><span>Image 06</span><div><h3>汽车上门保养</h3></div></li>
+    </ul>
 
     <div class="kld-header-wrap">
       <div class="kld-header-logo">
         <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img">
-          <%= image_tag("new-index/logo.png")%>
+          <%= image_tag("new-index/logo.png",:class => 'logo')%>
+          <%= image_tag("new-index/logo-red.png",:class => 'logored hide')%>
         </a>
         <div class="kld-header-logo-slogan">
           <p>爱车新理念</p>
@@ -38,25 +29,65 @@
         </div>
       </div>
       <ul class="kld-header-link">
-        <li>
+        <li class="home <%= "active" if params[:action] == "new_index" %>">
           <a href="http://www.flyme.cn" target="_blank">首页</a>
         </li>
-        <li id="kld-header-link-product" class="kld-header-link-product">
-          <a href="" class="kld-header-link-product-a" onclick="return false;">预约服务</a>
+        <li class="products <%= "active" if params[:action] == "new_car_select" %>">
+          <a href="" class="" onclick="return false;">预约服务</a>
+
+          <div class="sub">
+            <!-- <div class="bac"></div> -->
+            <ul class="product clearfix">
+              <li>
+                <a href="">
+                  <p class="key hide">大保养</p>
+                  <%= image_tag("new-index/bmt1.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/bmt2.png",:class => 'pic2 hide')%>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <p class="key hide">小保养</p>
+                  <%= image_tag("new-index/smt1.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/smt2.png",:class => 'pic2 hide')%>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <p class="key hide">PM2.5</p> 
+                  <%= image_tag("new-index/pm25.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/pm252.png",:class => 'pic2 hide')%>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <p class="key hide">换电瓶</p> 
+                  <%= image_tag("new-index/battery1.png",:class => 'pic1')%>
+                  <%= image_tag("new-index/battery2.png",:class => 'pic2 hide')%>
+                </a>
+              </li>
+              <li class="special">
+                <%= image_tag("new-index/customer-num.png",:class => 'customer-num')%>
+                <p class="rank"><span>第</span><span class="num">232323</span><span>位</span></p>
+                <p>感谢您的信赖</p>
+              </li>
+            </ul>
+          </div>
+
         </li>
-        <li>
+        <li class="service <%= "active" if params[:action] == "new_service_select" %>">
           <a href="http://www.flyme.cn" target="_blank">服务内容</a>
         </li>
-        <li>
-          <a href="http://service.meizu.com/index.html">城市团队</a>
+        <li class="team">
+          <a href="">城市团队</a>
         </li>
 
-        <li>
-          <a href="http://service.meizu.com/index.html">关于我们</a>
+        <li class="about">
+          <a href="">关于我们</a>
         </li>
 
-        <li>
-          <a href="http://service.meizu.com/index.html">联系我们</a>
+        <li class="contact">
+          <a href="">联系我们</a>
         </li>
       </ul>
       <div class="kld-header-log">
@@ -64,11 +95,12 @@
           <a href="javascript:window.location.href = _login">登录</a>
         </div>
         <div id="_islogin" class="kld-header-logout" style="display: none;">
-          <a href="https://member.kalading.com/uc/webjsp/member/detail" id="mzCustName"></a> | <a href="javascript:window.location.href = 'http://www.kalading.com/accounts/logout?useruri='+encodeURIComponent(window.location.href);">退出</a>
+          <a href="" id="mzCustName"></a> | <a href=");">退出</a>
         </div>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
   <div id="kld-header-sub" class="kld-header-sub" style="">
     <div class="kld-header-wrap-sub">
       <ul class="kld-header-sub-products" style="padding-left: 490px;">
@@ -91,4 +123,7 @@
       </ul>
     </div>
   </div>
+=======
+  
+>>>>>>> new_home
 </nav>
