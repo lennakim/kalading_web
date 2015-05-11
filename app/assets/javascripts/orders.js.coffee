@@ -23,7 +23,7 @@ $ ->
       $('.serie').addClass('hidden')
       $('.title_con').removeClass('hidden')
       if $(@).next('.serie').find('li').length != 0
-        $(@).siblings('.serie').removeClass('hidden').animate({'left':'30%'},500,->
+        $(@).siblings('.serie').removeClass('hidden').animate({'left':'23%'},500,->
           $('.logo').addClass('logo_active')
           $('.title_con').addClass('title_active')
         )
@@ -65,26 +65,6 @@ $ ->
     $('#myTab a').click (e) ->
       e.preventDefault()
       $(@).tab('show')
-
-    $('.quick-select').on 'click','input:radio', ->
-      car_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('id')
-      auto_id = $('.quick-select input:radio:checked').parent().siblings('.btn').data('autoid')
-      type = if $('.orders').data('type') then $('.orders').data('type') else 'bmt'
-      act = $(".select-car-phone").data('act')
-
-      Turbolinks.visit("/orders/select_car_item?car_id=#{car_id}&auto_id=#{auto_id}&type=#{type}&act=#{act}")
-
-      $('.select-car-phone').attr('data-autoid', auto_id)
-
-    $('.content').on 'click', '.service-item', (e) ->
-
-      car_id = if $('.orders').data('car') ? $('.orders').data('car') then $('.orders').data('car') ? $('.orders').data('car') else $('.quick-select input:radio:checked').parent().siblings('.btn').data('id')
-
-      act = $(".select-car-phone").data('act')
-      auto_id = $('.select-car-phone').data('autoid')
-      type = $(@).data('type')
-
-      Turbolinks.visit "/orders/select_car_item?car_id=#{car_id}&auto_id=#{auto_id}&type=#{type}&act=#{act}"
 
 
   if $(".select-car-page").length > 0

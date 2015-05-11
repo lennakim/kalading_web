@@ -41,6 +41,10 @@ class Order
       ServerApi.call "put", "orders", { entry_id: id, body: payload }
     end
 
+    def user_orders phone_num, car_id
+      ServerApi.call "get", "orders", { login_phone_num: phone_num, auto_submodel: car_id }
+    end
+
     def find id
       # ServerApi.call "get", "orders", { entry_id: id }
       ServerApi.call "get", "api/v2/orders", { entry_id: id }
@@ -55,8 +59,11 @@ class Order
     end
 
     def items_for car_id, city_id, type = "bmt"
-
       ServerApi.call "get", "auto_maintain_order", { entry_id: car_id, city_id: city_id } {[]}
+    end
+
+    def items_for2 car_id, city_id, type = "bmt"
+      ServerApi.call "get", "auto_maintain_order2", { entry_id: car_id, city_id: city_id } {[]}
     end
 
     def refresh_price car_id, city_id, payload, type = "bmt"

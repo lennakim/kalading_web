@@ -1,0 +1,13 @@
+<% brand = item["brand"] %>
+<% number = item["number"] %>
+<% price = item["price"] %>
+
+<div class="item clearfix" data-price="<%= price %>" data-display-name="<%= display_item_name name, brand, number %>" data-name="<%= name %>" data-brand="<%= brand %>" data-number="<%= number %>">
+  <div class="item-name pull-left">
+    <%= display_item_name name, brand, number %>
+  </div>
+
+  <div class="item-price pull-right">
+    ￥<%= price %>
+  </div>
+</div>

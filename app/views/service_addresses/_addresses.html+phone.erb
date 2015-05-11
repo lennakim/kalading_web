@@ -1,0 +1,62 @@
+<div class="current_addresses">
+
+  <div class="panel-group custom" role="tablist">
+    <div class="panel quick-address-select">
+      <div class="panel-heading clearfix" role="tab" id="select_addr_header">
+        <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_addr" aria-expanded="false" aria-controls="select_addr">
+
+          <% backend_address = @user_info ? @user_info['address'] : "" %>
+
+          <% if backend_address.present? || user_default_address.present? %>
+            <div class="pull-left">
+              服务地址:
+            </div>
+
+            <div class="pull-left service-address-detail">
+              <% if backend_address.present? %>
+                <%= backend_address %>
+              <% else %>
+                <%= user_default_address %>
+              <% end %>
+            </div>
+
+            <% if signed_in? && current_user.service_addresses.length > 0 %>
+              <div class="cursor-down pull-right">
+                <%= image_tag "cursor-down.png" %>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="pull-left">
+              暂无服务地址，请添加
+            </div>
+          <% end %>
+        </a>
+      </div>
+      <div id="select_addr" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
+        <% if signed_in? %>
+
+          <% addresses = current_user.service_addresses %>
+
+          <% if addresses && addresses.length > 0 %>
+            <ul class="list-group">
+              <% addresses.each do |service_address| %>
+                <li class="list-group-item clearfix <%= "selected" if service_address == current_user.default_address %>">
+
+                  <div class="pull-left address-item-detail">
+                    <a href="#" data-id="<%= service_address.id %>" class="pull-left">
+                      <%= service_address.full_address %>
+                    </a>
+                  </div>
+
+                  <div class="pull-right">
+                    <%= link_to "", service_address_path(service_address), remote: true, class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "确认删除吗?" } %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,7 @@ $grey: #c4c4c4;
 
   .orders-list, .maintains-list{
     margin-top: 60px;
+    padding-bottom: 50px;
   }
 
   .title{
@@ -257,46 +258,47 @@ $grey: #c4c4c4;
       }
     }
   }
+}
 
-  .section{
-    background: white;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+.section{
+  background: white;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
 
-    color: #666666;
+  color: #666666;
 
-    &.controls{
-      text-align: right;
+  &.controls{
+    text-align: right;
+  }
+
+  .cell{
+    padding: 10px 20px 10px 10px;
+    border-bottom: 1px solid #eee;
+    &:last-child{
+      border-bottom: 0 none;
     }
-
-    .cell{
-      padding: 10px 20px 10px 10px;
-      border-bottom: 1px solid #eee;
-      &:last-child{
-        border-bottom: 0 none;
-      }
-      &.table-cell{
-        padding-left: 0;
-        padding-right: 10px;
-      }
-      .table{
-        td{
-          border-top: 0 none;
-          &.right{
-            text-align: right;
-          }
-        }
-        tr.sum{
-          border-top: 1px solid #eee;
+    &.table-cell{
+      padding-left: 0;
+      padding-right: 10px;
+    }
+    .table{
+      td{
+        border-top: 0 none;
+        &.right{
+          text-align: right;
         }
       }
-      .line{
-
+      tr.sum{
+        border-top: 1px solid #eee;
       }
+    }
+    .line{
+
     }
   }
 }
+
 
 #add_address_modal{
   .modal-header{
@@ -529,17 +531,6 @@ $grey: #c4c4c4;
 
 .addresses{
   .add {
-
-  }
-}
-.addresses{
-  .add {
-
-  }
-}
-.addresses{
-  .add {
-    padding-top: 20px;
     .orange-btn{
       @include button();
       height: 30px;

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get 'auto_brands'
       get 'auto_series'
       get 'auto_model_numbers'
+      get 'place_order_page'
 
       post 'refresh_price'
       post 'place_order'
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
       get 'cars'
       get 'balance'
       get 'settings'
+      get 'get_user_info'
     end
   end
 

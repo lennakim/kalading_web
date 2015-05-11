@@ -6,8 +6,25 @@ class UsersController < ApplicationController
     redirect_to action: :orders
   end
 
+  def get_user_info
+    phone_num = params[:phone_num]
+    code = params[:code]
+    car_id = params[:car_id]
+
+    vcode = VerificationCode.find_by(phone_num: phone_num, code: code)
+
+    if vcode && !vcode.expired?
+      user_info = Order.user_orders(phone_num, car_id).first
+      render json: user_info
+    else
+      render json: {error: 'nothing'}
+    end
+  end
+
   def orders
-    @orders = Order.get_orders_of(current_user.phone_number)['data']
+    # @orders = Order.get_orders_of(current_user.phone_number)['data']
+    @orders = Order.get_orders_of('13501319000')['data']
+
   end
 
   def order_detail
