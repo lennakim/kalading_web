@@ -37,7 +37,7 @@ $ ->
 
     $('.flexslider').flexslider
       animation: "slide",
-      animationLoop: false,
+      animationLoop: true,
       itemWidth: '100%',
       direction: false,
       itemMargin: 0
