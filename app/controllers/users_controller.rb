@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   before_action :need_login, only: [:orders, :maintain_histories_list, :maintain_history, :settings, :update, :cars, :balance]
 
+
+  layout "new"
+
   def index
     redirect_to action: :orders
   end
