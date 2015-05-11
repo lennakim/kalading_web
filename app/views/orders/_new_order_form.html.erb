@@ -156,21 +156,23 @@
         </div>
       <% end %>
 
-
       <div class="info-group clearfix">
         <div class="info-title">
           <%= label_tag(:client_comment, "备注：") %>
         </div>
         <div class="info-con form-inline">
           <%= text_area_tag(:client_comment, '', class: 'form-control') %>
-
         </div>
       </div>
     </div>
   </div>
 
+
+  <h4 class='title'>订单信息</h4>
+  <%= render "new_offer_table" %>
+
   <div class="submit-con">
-  <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default', id: "submit_form_button") %>
+    <%= submit_tag("提交订单",:class => 'submit bac-white btn btn-default', id: "submit_form_button") %>
   </div>
 
 <% end %>

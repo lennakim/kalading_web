@@ -26,26 +26,28 @@
       <% end %>
     <% else %>
       <!-- 没地址 -->
-
       <span class="address-name">
         暂无服务地址，请添加
       </span>
-
     <% end %>
   <% else %>
-
     <!-- 未登录-->
+    <% if cookies[:address].present? %>
+      <li class="service-address-item selected">
+        <label>
+          <input type="radio" name="address" value="<%= cookies[:address] %>" checked>
 
-    <li class="service-address-item selected">
-      <label>
-        <input type="radio" name="address" value="<%= cookies[:address] %>" checked>
-
-        <span class='address-name'>
-          <%= cookies[:address] %>
-        </span>
-      </label>
-    </li>
-
+          <span class='address-name'>
+            <%= cookies[:address] %>
+          </span>
+        </label>
+      </li>
+    <% else %>
+      <span class="address-name">
+        暂无服务地址，请添加
+      </span>
+    <% end %>
   <% end %>
 </ul>
+
 
