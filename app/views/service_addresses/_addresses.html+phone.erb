@@ -4,7 +4,7 @@
     <div class="panel quick-address-select">
       <div class="panel-heading clearfix" role="tab" id="select_addr_header">
         <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_addr" aria-expanded="false" aria-controls="select_addr">
-          <% if user_default_address %>
+          <% if user_default_address.present? %>
             <div class="pull-left">
               服务地址:
             </div>

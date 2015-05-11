@@ -17,17 +17,14 @@
         <h4 class="title clearfix">
           <span class="name">确认地址信息</span>
           <% if signed_in? %>
-            <a href='#' class="address-manage" id="address_manage">管理地址</a>
+            <a href='#' class="address-manage pull-right" id="address_manage">管理地址</a>
           <% end %>
         </h4>
 
         <div class="items clearfix">
           <%= render "new_order_form" %>
-          <h4 class='title'>订单信息</h4>
-          <%= render "new_offer_table" %>
         </div>
       </div>
-      <p class="submit">提交订单</p>
     </div>
   </div>
 </div>

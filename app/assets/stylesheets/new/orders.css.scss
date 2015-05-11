@@ -116,7 +116,7 @@ label{
 		height: 800px;
 		background-size: 100% 100%;
 		.next{
-  			a{	
+  			a{
 				background-image: image-url('new-order/nextbtn.png');
 				background-position: bottom;
   			}
@@ -202,7 +202,7 @@ label{
 				    margin: 0 1%;
 				    text-align: center;
 					background-image: image-url('new-order/bac-gray.png');
-					background-size: 100% 100%; 
+					background-size: 100% 100%;
 					background-repeat: no-repeat;
 					font-size: 16px;
 		    	}
@@ -273,7 +273,7 @@ label{
 				    }
 				    span{
 					    float: right;
-					    width: 75%;  
+					    width: 75%;
 					    padding-right: 5px;
 					    overflow: hidden;
 					    text-overflow: ellipsis;
@@ -413,6 +413,10 @@ label{
 		    		padding-bottom: 20px;
 		    		border-bottom: 2px solid #e0e0e0;
 		    		li{
+              &.selected{
+                background: #edddd7;
+                border: 1px solid $main-orange;
+              }
 		    			line-height: 40px;
 		    			padding: 0 10px;
 		    			border-radius: 4px;
@@ -427,6 +431,9 @@ label{
 						background: #edddd7;
 		    		}
 			    	.add{
+              a{
+                color: #bdbdbd;
+              }
 			    		width: 120px;
 						padding: 5px 10px;
 						margin: 0 30px;
