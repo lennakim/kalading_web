@@ -497,12 +497,25 @@ $bac: #fff;
 
   .carousel{
     min-height: 200px;
+    margin-bottom: 10px;
+    border: 0 none;
+
+    ul.slides li{
+      margin: 0;
+    }
 
     .item{
       a img{
         width: 100%;
 
       }
+    }
+
+    .flex-control-nav{
+      bottom: 0px;
+    }
+    .flex-direction-nav{
+      display: none;
     }
   }
 
