@@ -18,23 +18,18 @@ $main-orange: #e94609;
 
 .new-car-select{
 	.first,.second,.third,.no_car_type,.quick_select_car{
-		position: relative;
 		background-image: image-url('new-order/bac.png');
 		background-repeat: no-repeat;
 		.main{
-			position: absolute;
-			top: 100px;
-			left: 10%;
-			width: 80%;
+			padding: 100px 10% 20px;
 			.tit{
-				position: absolute;
-			    top: 34px;
-			    right: 25px;
+				float: right;
+  				margin: 45px;
 			    color: #fff;
 			    font-size: 16px;
 			}
 			.maintain-items{
-			    margin: -25px 0 0 35px;
+			    margin: -15px 0 0 35px;
 			    width: 95%;
 			    padding: 0 40px 40px;
 			    border-radius: 5px;
@@ -71,7 +66,6 @@ $main-orange: #e94609;
 		height: 800px;
 		background-size: 100% 100%;
 		.next{
-  			bottom: 31px;
   			a{	
 				background-image: image-url('new-order/nextbtn.png');
 				background-position: bottom;
@@ -444,10 +438,8 @@ $main-orange: #e94609;
 		    }
 		}
 		.submit{
-			position: absolute;
-			bottom: 5%;
-			right: 10%;
-			margin: 0 22px;
+			float: right;
+  			margin: 20px 20px;
 			width: 130px;
 			line-height: 35px;
 			background: $main-orange;
