@@ -5,11 +5,9 @@
 
 $ ->
 
-  if $(".first").length >= 1 #调用Backbone
-    car_select = new App.Views.CarSelect
+  car_select = new App.Views.CarSelect #调用Backbone
 
-  if $(".second").length >= 1
-    service_select = new App.Views.ServiceSelect
+  service_select = new App.Views.ServiceSelect
 
   #------选车型---------
 
@@ -36,12 +34,6 @@ $ ->
   	$('.select-model').removeClass('active')
 
 
-  #------跳转到选配件服务------
-  $('.first .model-list').on 'click','li', ->
-    car_id = $(@).data("car_id")
-    $.cookie('car_id', car_id)
-    window.location.href = "/orders/new_service_select"
-
   #-----未找到车型------
   # $('.undefined-car').click ->
   #   $('.first,.second,.third').addClass('hide')
@@ -59,6 +51,20 @@ $ ->
   $('.cars-list').on 'click','.car-item', ->
     $('.car-item').removeClass('selected')
     $(@).addClass('selected')
+    car_id = $(@).data("car_id")
+    ele = $(@).parents(".quick_select_car").find(".next")
+    ele.find("a").attr("car_id", car_id)
+
+  $(".next[mark='new_car_select']").click ->
+    ele = $(@).find("a")
+    link = ele.data("link")
+    car_id = ele.attr("car_id")
+
+    if car_id?
+      window.location.href = "#{link}?car_id=#{car_id}"
+    else
+      alert("請選擇車輛")
+
 
   # 添加车辆
   $("span.add-car").click ->
@@ -70,6 +76,7 @@ $ ->
     $(".no_car_type").removeClass("hide")
     $(".first").addClass("hide")
     $(".quick_select_car").addClass("hide")
+
 
   #######################new_service_select################
 

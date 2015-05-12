@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   mount Base => '/api' #api
 
+  resources :static_pages
+
   resources :home do
     get 'new_index', on: :collection
   end
