@@ -48,8 +48,9 @@
         }
         .right-part{
           width: 45%;
-          img{
+          img.man{
             width: 100%;
+            @include border-top-right-radius(5px);
           }
           .test32{
             font-size: 32px;
