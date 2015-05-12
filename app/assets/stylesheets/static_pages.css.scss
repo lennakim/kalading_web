@@ -1,3 +1,39 @@
-// Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.main{
+  padding: 66px 10% 20px;
+  .content{
+    margin: -15px 0 0 35px;
+    width: 95%;
+    border-radius: 5px;
+    background: #eeeeee;
+    padding: 40px;
+    padding-bottom: 10px;
+    .item{
+      margin-bottom: 30px;
+      width: 100%;
+      .l{
+
+        width: 50%;
+
+        &.odd{
+          margin-top: 70px;
+          margin-left: -37px;
+        }
+
+        &.even{
+          margin-top: 70px;
+          margin-right: -37px;
+          text-align: right;
+        }
+        .title  {
+          font-size: 36px;
+          font-weight: bold;
+        }
+        .desc{
+          font-size: 16px;
+        }
+
+      }
+    }
+  }
+
+}
