@@ -4,67 +4,68 @@
 <% end %>
 <%= title "个人信息" %>
 
-<div class="container user-info i">
+<div class="user-info i">
+  <div class="container">
+    <!-- <div class="row">
+      <div class="col-md-12 title">
+        个人信息
+      </div>
+    </div> -->
 
-  <div class="row">
-    <div class="col-md-12 title">
-      个人信息
-    </div>
-  </div>
+    <div class="row">
+      <%= render "users/menu" %>
+      <div class="col-md-9 content">
+        <div class="info">
+          <%= form_for current_user, html: {class: 'form-horizontal'} do |f| %>
 
-  <div class="row">
-    <%= render "users/menu" %>
-    <div class="col-md-9 content">
-      <div class="info">
-        <%= form_for current_user, html: {class: 'form-horizontal'} do |f| %>
+            <div class="address">
+              <div class="header">
+                常用服务地址
+              </div>
 
-          <div class="address">
-            <div class="header">
-              常用服务地址
+              <%= render "shared/select_address" %>
             </div>
 
-            <%= render "shared/select_address" %>
-          </div>
-
-          <div class="settings">
-            <div class="header">
-              个人信息
-            </div>
-            <div class="form-group">
-              <label for="username" class="col-sm-2 control-label">姓名</label>
-              <div class="col-sm-4">
-                <%= f.text_field :username, class: 'form-control' %>
+            <div class="settings">
+              <div class="header">
+                个人信息
+              </div>
+              <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-4">
+                  <%= f.text_field :username, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="phonenum" class="col-sm-2 control-label">手机号码</label>
+                <div class="col-sm-4">
+                  <%= f.text_field :phone_number, class: 'form-control', disabled: true %>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="phonenum" class="col-sm-2 control-label">手机号码</label>
-              <div class="col-sm-4">
-                <%= f.text_field :phone_number, class: 'form-control', disabled: true %>
+
+            <div class="invoice">
+              <div class="header">
+                常用发票信息
+              </div>
+
+              <div class="form-group">
+                <label for="invoice_info" class="col-sm-2 control-label">发票抬头</label>
+                <div class="col-sm-4">
+                  <%= f.text_field :invoice_title, class: 'form-control' %>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="invoice">
-            <div class="header">
-              常用发票信息
-            </div>
-
-            <div class="form-group">
-              <label for="invoice_info" class="col-sm-2 control-label">发票抬头</label>
-              <div class="col-sm-4">
-                <%= f.text_field :invoice_title, class: 'form-control' %>
+            <div class="save-btn">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default">保存</button>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="save-btn">
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">保存</button>
-              </div>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

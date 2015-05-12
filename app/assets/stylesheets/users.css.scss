@@ -6,281 +6,265 @@
 $orange: #ff9933;
 $grey: #c4c4c4;
 
-.user-info{
-  .user-info-main{
-    padding: 50px 0;
-    .items{
-
-    }
-  }
-}
 
 
 
 
 
 
+// .user-info{
 
+//   .phone-header{
+//     background: white;
+//   }
 
+//   .orders-list, .maintains-list{
+//     margin-top: 60px;
+//     padding-bottom: 50px;
+//   }
 
+//   .title{
+//     color: #3d3d3d;
+//     font-size: 24px;
+//     font-weight: bold;
+//     height: 84px;
+//     line-height: 84px;
+//   }
+//   .menu{
+//     widhth: 100%;
 
+//     @include border-radius(3px);
+//     border: 1px solid #c3b8b5;
 
+//     li{
 
+//       background: #f5f5f5;
 
+//       a{
+//         font-size: 18px;
+//         color: #CDCDCD;
+//         text-decoration: none;
 
-.user-info{
+//         float: left;
+//         width: 100%;
+//       }
 
-  .phone-header{
-    background: white;
-  }
+//       height: 44px;
+//       line-height: 44px;
+//       padding-left: 15px;
 
-  .orders-list, .maintains-list{
-    margin-top: 60px;
-    padding-bottom: 50px;
-  }
+//       border-bottom: 1px solid #c3b8b5;
 
-  .title{
-    color: #3d3d3d;
-    font-size: 24px;
-    font-weight: bold;
-    height: 84px;
-    line-height: 84px;
-  }
-  .menu{
-    widhth: 100%;
+//       &:last-child{
+//         border-bottom: 0 none;
+//       }
 
-    @include border-radius(3px);
-    border: 1px solid #c3b8b5;
+//       &.active{
+//         a{
+//           color: #666;
 
-    li{
+//         }
+//         background: #ffffff;
+//       }
+//     }
+//   }
 
-      background: #f5f5f5;
+//   .content{
 
-      a{
-        font-size: 18px;
-        color: #CDCDCD;
-        text-decoration: none;
+//     .info{
+//       background: white;
+//       border: 1px solid #e4e4e4;
 
-        float: left;
-        width: 100%;
-      }
+//       @include border-radius(3px);
 
-      height: 44px;
-      line-height: 44px;
-      padding-left: 15px;
+//       .address, .settings, .invoice{
+//         padding: 20px;
+//         border-bottom: 1px solid #e4e4e4;
+//       }
 
-      border-bottom: 1px solid #c3b8b5;
+//       .invoice{
+//         border-bottom: 0 none;
+//       }
+//       .save-btn{
+//         padding: 20px;
+//         button{
+//           @include button();
+//         }
+//       }
+//     }
 
-      &:last-child{
-        border-bottom: 0 none;
-      }
+//     .header{
+//       color: #666666;
+//       font-size: 20px;
+//       font-weight: bold;
+//     }
 
-      &.active{
-        a{
-          color: #666;
+//     .maintain-histories{
+//       margin-top: 20px;
+//       background: white;
+//       padding: 20px;
+//       border: 1px solid #e4e4e4;
+//       @include border-radius(3px);
+//       min-height: 300px;
 
-        }
-        background: #ffffff;
-      }
-    }
-  }
+//       .cards{
+//         margin-top: 20px;
+//         .card{
+//           border: 2px solid #f0f0f0;
+//           margin-bottom: 20px;
+//           .serve-datetime{
+//             padding: 8px 20px;
+//             font-size: 16px;
+//             color: #c1c1c1;
+//             border-bottom: 1px solid #f0f0f0;
+//           }
+//           .report{
+//             padding: 10px 20px;
 
-  .content{
+//             .full-name{
+//               font-size: 12px;
+//               color: #787878;
+//             }
 
-    .info{
-      background: white;
-      border: 1px solid #e4e4e4;
+//             .car-num{
+//               color: #666666;
+//               font-size: 16px;
+//             }
+//             .show{
+//               text-align: center;
+//               a{
+//                 @include button();
+//                 height: 30px;
+//                 font-size: 14px;
+//                 padding: 5px 20px;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
 
-      @include border-radius(3px);
+//     .select-car{
+//       background: white;
+//       padding: 20px;
+//       border: 1px solid #e4e4e4;
+//       @include border-radius(3px);
 
-      .address, .settings, .invoice{
-        padding: 20px;
-        border-bottom: 1px solid #e4e4e4;
-      }
+//       .cars{
+//         margin-top: 8px;
+//         font-size: 18px;
+//         .car{
+//           padding-left: 0;
+//           margin-bottom: 10px;
 
-      .invoice{
-        border-bottom: 0 none;
-      }
-      .save-btn{
-        padding: 20px;
-        button{
-          @include button();
-        }
-      }
-    }
+//           .content{
+//             padding: 10px;
+//             table.table{
+//               margin-bottom: 0;
+//               td{
+//                 border-top: 0 none;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     .orders{
+//       .order{
+//         background: white;
+//         border: 1px solid #e4e4e4;
 
-    .header{
-      color: #666666;
-      font-size: 20px;
-      font-weight: bold;
-    }
+//         padding: 20px;
+//         @include border-radius(3px);
 
-    .maintain-histories{
-      margin-top: 20px;
-      background: white;
-      padding: 20px;
-      border: 1px solid #e4e4e4;
-      @include border-radius(3px);
-      min-height: 300px;
+//         .top{
+//           color: #c1c1c1;
+//           font-size: 16px;
 
-      .cards{
-        margin-top: 20px;
-        .card{
-          border: 2px solid #f0f0f0;
-          margin-bottom: 20px;
-          .serve-datetime{
-            padding: 8px 20px;
-            font-size: 16px;
-            color: #c1c1c1;
-            border-bottom: 1px solid #f0f0f0;
-          }
-          .report{
-            padding: 10px 20px;
+//           border-bottom: 1px solid #e4e4e4;
+//           padding-bottom: 15px;
 
-            .full-name{
-              font-size: 12px;
-              color: #787878;
-            }
+//           .datetime{
+//             margin-right: 30px;
+//           }
+//         }
+//         .order-detail{
+//           padding: 15px;
+//           .order-title{
+//             font-size: 20px;
+//             color: #787878;
+//             width: 490px;
+//           }
+//           .items{
+//             margin-top: 15px;
+//             margin-right: 20px;
+//             .item{
+//               color: #787878;
+//               font-size: 16px;
+//               line-height: 25px;
+//             }
+//           }
+//           .order-price{
+//             color: #ec8721;
+//             font-size: 24px;
+//             height: 50px;
+//             width: 200px;
+//           }
+//         }
 
-            .car-num{
-              color: #666666;
-              font-size: 16px;
-            }
-            .show{
-              text-align: center;
-              a{
-                @include button();
-                height: 30px;
-                font-size: 14px;
-                padding: 5px 20px;
-              }
-            }
-          }
-        }
-      }
-    }
+//         .comment{
+//           margin-top: 5px;
+//           text-align: center;
+//           .cmt a{
+//             font-size: 14px;
+//           }
+//           .order-status{
+//             a{
+//               font-size: 14px;
+//               color: #99999;
+//               &:hover{
+//                 color: #787878;
+//               }
+//             }
+//           }
+//           .del,.cmt,.order-status{
+//             float: left;
+//             margin: 0 5px;
+//           }
+//         }
 
-    .select-car{
-      background: white;
-      padding: 20px;
-      border: 1px solid #e4e4e4;
-      @include border-radius(3px);
+//         .status{
+//           padding: 20px;
+//           padding-bottom: 0;
+//           border-top: 1px solid #e4e4e4;
+//           text-align: center;
+//           .content{
+//             font-size: 16px;
+//             color: #666666;
 
-      .cars{
-        margin-top: 8px;
-        font-size: 18px;
-        .car{
-          padding-left: 0;
-          margin-bottom: 10px;
-
-          .content{
-            padding: 10px;
-            table.table{
-              margin-bottom: 0;
-              td{
-                border-top: 0 none;
-              }
-            }
-          }
-        }
-      }
-    }
-    .orders{
-      .order{
-        background: white;
-        border: 1px solid #e4e4e4;
-
-        padding: 20px;
-        @include border-radius(3px);
-
-        .top{
-          color: #c1c1c1;
-          font-size: 16px;
-
-          border-bottom: 1px solid #e4e4e4;
-          padding-bottom: 15px;
-
-          .datetime{
-            margin-right: 30px;
-          }
-        }
-        .order-detail{
-          padding: 15px;
-          .order-title{
-            font-size: 20px;
-            color: #787878;
-            width: 490px;
-          }
-          .items{
-            margin-top: 15px;
-            margin-right: 20px;
-            .item{
-              color: #787878;
-              font-size: 16px;
-              line-height: 25px;
-            }
-          }
-          .order-price{
-            color: #ec8721;
-            font-size: 24px;
-            height: 50px;
-            width: 200px;
-          }
-        }
-
-        .comment{
-          margin-top: 5px;
-          text-align: center;
-          .cmt a{
-            font-size: 14px;
-          }
-          .order-status{
-            a{
-              font-size: 14px;
-              color: #99999;
-              &:hover{
-                color: #787878;
-              }
-            }
-          }
-          .del,.cmt,.order-status{
-            float: left;
-            margin: 0 5px;
-          }
-        }
-
-        .status{
-          padding: 20px;
-          padding-bottom: 0;
-          border-top: 1px solid #e4e4e4;
-          text-align: center;
-          .content{
-            font-size: 16px;
-            color: #666666;
-
-            .number{
-              display: inline-block;
-              width: 30px;
-              height: 30px;
-              @include border-radius(50%);
-              line-height: 30px;
-              background: #f4f4f4;
-            }
-            .ct{
-              margin-top: 8px;
-            }
-            &.highlight{
-              color: #2c698c;
-              .number{
-                background: #bfd2dc;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+//             .number{
+//               display: inline-block;
+//               width: 30px;
+//               height: 30px;
+//               @include border-radius(50%);
+//               line-height: 30px;
+//               background: #f4f4f4;
+//             }
+//             .ct{
+//               margin-top: 8px;
+//             }
+//             &.highlight{
+//               color: #2c698c;
+//               .number{
+//                 background: #bfd2dc;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 .section{
   background: white;
