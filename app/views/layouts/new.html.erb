@@ -26,8 +26,10 @@
     <%= render 'layouts/new/header_others' %>
   <% end %>
   <%= yield %>
+
   <%= render 'layouts/new/footer' %>
 
+  <%= render "shared/select_city_modal" %>
 
   <!-- if not signed in -->
   <% unless signed_in? %>

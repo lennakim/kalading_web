@@ -65,10 +65,14 @@ label{
   color: #666666;
 }
 
+.static-page{
+  background-image: image-url('new-order/bac.png');
+  min-height: 600px;
+}
 
 .new-car-select{
 	margin-top: -90px;
-	.first,.second,.third,.no_car_type,.quick_select_car{
+	.first, .second, .third, .no_car_type, .quick_select_car{
 		padding-top: 90px;
 		background-image: image-url('new-order/bac.png');
 		background-repeat: no-repeat;

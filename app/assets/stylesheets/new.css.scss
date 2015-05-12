@@ -5,6 +5,7 @@
 @import "classic";
 @import "classic.date";
 @import "classic.time";
+@import "mixins/button";
 
 @import "demo";
 
@@ -68,16 +69,16 @@ nav{
       float: left;
     }
     #slider1_container{
-      position: relative; 
+      position: relative;
       width: 980px;
-      height: 430px; 
+      height: 430px;
       overflow: hidden;
       .content{
-        // cursor: move; 
-        position: absolute; 
-        left: 0px; 
-        top: 0px; 
-        width: 980px; 
+        // cursor: move;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 980px;
         height: 430px;
         overflow: hidden;
         img{
@@ -102,7 +103,7 @@ nav{
       margin: 0 auto;
       padding: 0 5%;
       color: #fff;
-  
+
       .kld-header-logo,.kld-header-log,.kld-header-link{
         float: left;
       }
@@ -125,7 +126,10 @@ nav{
           font-size: 12px;
         }
         .address{
-          margin: 14px 0;
+          width: 100px;
+          margin-left: 264px;
+          margin-top: 12px;
+
         }
       }
 
@@ -134,7 +138,7 @@ nav{
         line-height: 30px;
         text-align: center;
         li{
-          width: 16%;
+          width: 14%;
         }
         a{
           display: block;
@@ -339,7 +343,7 @@ nav{
     animation-delay: 30s;
 }
 /* Animation for the slideshow images */
-@-webkit-keyframes imageAnimation { 
+@-webkit-keyframes imageAnimation {
   0% {
       opacity: 0;
       -webkit-animation-timing-function: ease-in;
@@ -359,7 +363,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@-moz-keyframes imageAnimation { 
+@-moz-keyframes imageAnimation {
   0% {
       opacity: 0;
       -moz-animation-timing-function: ease-in;
@@ -379,7 +383,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@-o-keyframes imageAnimation { 
+@-o-keyframes imageAnimation {
   0% {
       opacity: 0;
       -o-animation-timing-function: ease-in;
@@ -399,7 +403,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@-ms-keyframes imageAnimation { 
+@-ms-keyframes imageAnimation {
   0% {
       opacity: 0;
       -ms-animation-timing-function: ease-in;
@@ -419,7 +423,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@keyframes imageAnimation { 
+@keyframes imageAnimation {
   0% {
       opacity: 0;
       animation-timing-function: ease-in;
@@ -440,7 +444,7 @@ nav{
   100% { opacity: 0 }
 }
 /* Animation for the title */
-@-webkit-keyframes titleAnimation { 
+@-webkit-keyframes titleAnimation {
   0% {
       opacity: 0;
       -webkit-transform: translateY(200px);
@@ -460,7 +464,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@-moz-keyframes titleAnimation { 
+@-moz-keyframes titleAnimation {
   0% {
       opacity: 0;
       -moz-transform: translateY(200px);
@@ -480,7 +484,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@-o-keyframes titleAnimation { 
+@-o-keyframes titleAnimation {
   0% {
       opacity: 0;
       -o-transform: translateY(200px);
@@ -500,7 +504,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@-ms-keyframes titleAnimation { 
+@-ms-keyframes titleAnimation {
   0% {
       opacity: 0;
       -ms-transform: translateY(200px);
@@ -520,7 +524,7 @@ nav{
   }
   100% { opacity: 0 }
 }
-@keyframes titleAnimation { 
+@keyframes titleAnimation {
   0% {
       opacity: 0;
       transform: translateY(200px);
@@ -544,10 +548,10 @@ nav{
 .no-cssanimations .cb-slideshow li span{
   opacity: 1;
 }
-@media screen and (max-width: 1140px) { 
+@media screen and (max-width: 1140px) {
   .cb-slideshow li div h3 { font-size: 100px }
 }
-@media screen and (max-width: 600px) { 
+@media screen and (max-width: 600px) {
   .cb-slideshow li div h3 { font-size: 50px }
 }
 
@@ -572,7 +576,7 @@ nav{
 
 
 .header-others{
-	
+
 	.kld-header{
 	  height: 90px;
     a{
@@ -582,7 +586,7 @@ nav{
     .bac{
       height: 90px;
       background: #e94609;
-      opacity: 0.8; 
+      opacity: 0.8;
     }
     .kld-header-wrap{
       .kld-header-logo{
@@ -681,3 +685,82 @@ nav{
 .tangram-suggestion-main{
   z-index: 2000;
 }
+
+#select_city_modal{
+
+  .cities{
+    padding: 20px;
+    padding-bottom: 0;
+
+    .city{
+      margin-right: 20px;
+      margin-bottom: 20px;
+
+      input[type='radio']{
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none;
+      }
+    }
+  }
+
+  .submit{
+    text-align: center;
+    .submit_button{
+      width: 100px;
+      margin: 10px 0;
+      background-color: #e6e6e6;
+    }
+  }
+
+  .change-city{
+    margin-top: 15px;
+    text-align: center;
+    .orange-btn{
+      @include button();
+    }
+  }
+}
+#login_modal{
+  .modal-body{
+    overflow: hidden;
+  }
+  .phone_num{
+    margin: 10px 0;
+  }
+  .verification_code{
+    float: left;
+    width: 50% !important;
+  }
+  .get_code{
+    float: left;
+    width: 45%;
+    margin-left: 5%;
+
+    @include border-radius(0px !important);
+    background: #eebf8f;
+    border: 0 none;
+    color: white;
+    width: 45%;
+    padding: 0;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+
+  }
+  .get_code,.submit_button{
+    line-height: 30px;
+    border: 0;
+    border-radius: 4px;
+  }
+  .login{
+    width: 100px;
+    margin: 0 auto;
+  }
+  .submit_button{
+    width: 100%;
+    margin: 10px 0;
+    background-color: #e6e6e6;
+  }
+}
+
