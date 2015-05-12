@@ -7,33 +7,114 @@
     background: #eeeeee;
     padding: 40px;
     padding-bottom: 10px;
-    .item{
-      margin-bottom: 30px;
-      width: 100%;
-      .l{
 
-        width: 50%;
+    &.fuwuliucheng{
+      .item{
+        margin-bottom: 30px;
+        width: 100%;
+        .l{
+          width: 50%;
+          &.odd{
+            margin-top: 70px;
+            margin-left: -37px;
+          }
 
-        &.odd{
-          margin-top: 70px;
-          margin-left: -37px;
+          &.even{
+            margin-top: 70px;
+            margin-right: -37px;
+            text-align: right;
+          }
+          .title  {
+            font-size: 36px;
+            font-weight: bold;
+          }
+          .desc{
+            font-size: 16px;
+          }
         }
-
-        &.even{
-          margin-top: 70px;
-          margin-right: -37px;
-          text-align: right;
-        }
-        .title  {
-          font-size: 36px;
-          font-weight: bold;
-        }
-        .desc{
-          font-size: 16px;
-        }
-
       }
     }
-  }
 
+    &.jiyoujilv{
+      padding-right: 0;
+      padding-top: 0;
+      padding-bottom: 50px;
+
+      .jiyou, .jilv{
+
+        .left-part{
+          width: 53%;
+          margin-top: 40px;
+        }
+        .right-part{
+          width: 45%;
+          img{
+            width: 100%;
+          }
+          .test32{
+            font-size: 32px;
+            text-align: center;
+            color: #e94609;
+            margin-top: 20px;
+          }
+        }
+
+        .jiyou-img, .jilv-img{
+          width: 100px;
+        }
+        .jiyou-content, .jilv-content{
+          width: 423px;
+          margin-left: 20px;
+          font-size: 14px;
+          .highlight{
+            font-size: 20px;
+            color: #e94609;
+          }
+        }
+        .geng-huan{
+          .desc{
+            text-indent:30px;
+            margin-top: 10px;
+          }
+        }
+        .partners{
+          .icon-list{
+            margin-left: -30px;
+            margin-top: 20px;
+            img{
+              width: 100px;
+              margin-left: 30px;
+            }
+          }
+        }
+        .geng-huan, .partners{
+          margin-top: 15px;
+          .title{
+            font-size: 18px;
+            color: #e94609;
+
+            border-left: 5px solid #e94609;
+            padding-left: 10px;
+          }
+        }
+      }
+
+      .jilv{
+        margin-top: 30px;
+        border-top: 2px dashed #e94609;
+        margin-right: 40px;
+        padding-top: 30px;
+        .left-part{
+          margin-top: 0;
+        }
+        .jilv-content{
+          width: 380px;
+        }
+        .partners{
+          margin-top: 0px;
+        }
+      }
+
+    }
+  }
 }

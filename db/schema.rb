@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413090720) do
+ActiveRecord::Schema.define(version: 20150512070107) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20150413090720) do
     t.string   "vin"
     t.string   "license_location"
     t.string   "license_number"
-    t.string   "logo"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo"
   end
 
   add_index "autos", ["user_id"], name: "index_autos_on_user_id", using: :btree
@@ -156,23 +156,18 @@ ActiveRecord::Schema.define(version: 20150413090720) do
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "pay_infos", force: true do |t|
+    t.integer  "auth_info_id"
     t.string   "transaction_id"
     t.string   "out_trade_no"
-    t.string   "total_fee"
+    t.integer  "total_fee"
     t.datetime "time_end"
     t.string   "trade_type"
     t.string   "fee_type"
     t.string   "bank_type"
     t.string   "result_code"
-    t.integer  "auth_info_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cash_fee"
-    t.string   "return_code"
   end
-
-  add_index "pay_infos", ["auth_info_id"], name: "index_pay_infos_on_auth_info_id", using: :btree
-  add_index "pay_infos", ["transaction_id"], name: "index_pay_infos_on_transaction_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -195,12 +190,12 @@ ActiveRecord::Schema.define(version: 20150413090720) do
   create_table "public_accounts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_secret_key"
+    t.string   "account_token"
     t.string   "account_id"
     t.string   "appid"
     t.string   "appsecret"
     t.string   "name"
-    t.string   "account_secret_key"
-    t.string   "account_token"
     t.string   "access_token"
     t.string   "jsapi_ticket"
     t.datetime "token_expires_at"
