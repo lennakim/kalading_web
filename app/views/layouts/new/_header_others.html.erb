@@ -3,23 +3,24 @@
     <div class="bac"></div>
     <div class="kld-header-wrap">
       <div class="kld-header-logo">
-        <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img">
+        <a href="/" class="kld-header-logo-img">
           <%= image_tag("new-index/logo.png")%>
         </a>
         <div class="kld-header-logo-slogan">
           <%= image_tag("new-index/slogan1.png")%>
         </div>
-        <div class="dropdown address" title="服务地址">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
-          <span class="val">
-            <span class="city"><%= current_city_name %></span>
-            <span class="caret"></span>
-          </span>
+        <div class="address" title="服务地址">
+          <a href="#">
+            <span class="val">
+              <span class="city"><%= current_city_name %></span>
+              <span class="caret"></span>
+            </span>
+          </a>
         </div>
       </div>
       <ul class="kld-header-link">
         <li class="home <%= "active" if params[:action] == "new_index" %>">
-          <a href="http://www.flyme.cn" class="cl-effect-1" target="_blank">首页</a>
+          <a href="/" class="cl-effect-1" target="_blank">首页</a>
         </li>
         <li class="products <%= "active" if params[:action] == "new_car_select" %>">
           <a href=""  class="cl-effect-1" onclick="return false;">预约服务</a>
@@ -96,16 +97,18 @@
         <li class="knowledge">
           <a href="" class="cl-effect-1">用车知识</a>
         </li>
+
+        <li class="log-btn">
+          <% if !signed_in? %>
+            <a href="#" id="login_btn" class="cl-effect-1">
+              登陆
+            </a>
+          <% else %>
+            <a href="#">退出</a>
+          <% end %>
+        </li>
       </ul>
-      <div class="kld-header-log">
-        <div id="_unlogin" class="kld-header-login" style="display: block;">
-          <a href="javascript:window.location.href = _login">登录</a>
-        </div>
-        <div id="_islogin" class="kld-header-logout" style="display: none;">
-          <a href="" id="mzCustName"></a> | <a href=");">退出</a>
-        </div>
-      </div>
     </div>
   </div>
-  
+
 </nav>

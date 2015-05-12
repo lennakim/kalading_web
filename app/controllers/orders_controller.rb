@@ -40,20 +40,21 @@ class OrdersController < ApplicationController
     unless browser.mobile? ;  end
 
     if car_id = cookies["car_id"] || last_select_car
-      @auto = Auto.find_by_api(car_id)
+      @last_select_car = Auto.api_find(car_id)
     end
 
+    @autos = current_user.autos.recent.unshift(@last_select_car) #放在第一個
     render layout: "new"
   end
 
   def new_service_select
-    car_id = cookies["car_id"] || last_select_car
+    @car_id = params[:car_id] || last_select_car
     type = params[:type]
 
-    if car_id.present?
-      save_last_select_car car_id # cookie 保存选车id
+    if @car_id.present?
+      save_last_select_car @car_id # cookie 保存选车id
 
-      @result = Order.items_for2 car_id, current_city_id, type
+      @result = Order.items_for2 @car_id, current_city_id, type
     else
 
     end
@@ -64,7 +65,7 @@ class OrdersController < ApplicationController
 
   def new_info_submit
 
-    car_id = cookies["car_id"]
+    car_id = params["car_id"]
     @parts = JSON.parse cookies["parts"]
     @city_capacity = Order.city_capacity current_city_id
 
