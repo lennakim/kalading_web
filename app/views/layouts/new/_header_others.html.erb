@@ -20,7 +20,7 @@
       </div>
       <ul class="kld-header-link">
         <li class="home <%= "active" if params[:action] == "new_index" %>">
-          <a href="/" class="cl-effect-1" target="_blank">首页</a>
+          <a href="/" class="cl-effect-1">首页</a>
         </li>
         <li class="products <%= "active" if params[:action] == "new_car_select" %>">
           <a href=""  class="cl-effect-1" onclick="return false;">预约服务</a>
@@ -29,23 +29,23 @@
             <div class="subbac"></div>
             <ul class="clearfix">
               <li>
-                <a href="">大保养</a>
+                <%= link_to "机油三滤", new_car_select_orders_path(type: 'bmt'), class: 'order-btn pull-right'%>
               </li>
               <li>
-                <a href="">小保养</a>
+                <%= link_to "机油机滤", new_car_select_orders_path(type: 'smt'), class: 'order-btn pull-right'%>
               </li>
               <li>
-                <a href="">PM2.5</a>
+                <%= link_to "PM2.5空调滤芯", new_car_select_orders_path(type: 'pm25'), class: 'order-btn pull-right'%>
               </li>
               <li>
-                <a href="">换电瓶</a>
+                <%= link_to "更换电瓶", new_car_select_orders_path(type: 'bty'), class: 'order-btn pull-right'%>
               </li>
             </ul>
           </div>
 
         </li>
         <li class="service <%= "active" if params[:action] == "new_service_select" %>">
-          <a href="http://www.flyme.cn" class="cl-effect-1" target="_blank">服务内容</a>
+          <a href="/" class="cl-effect-1" target="_blank">服务内容</a>
 
           <div class="sub2 hide">
             <div class="subbac"></div>
@@ -61,10 +61,10 @@
                 <%= link_to "机油机滤", static_page_path(id: 'ji-you-ji-lv') %>
               </li>
               <li>
-                <a href="">PM2.5</a>
+                <%= link_to "机油机滤", '#' %>
               </li>
               <li>
-                <a href="">换电瓶</a>
+                <%= link_to "更换电瓶", '#' %>
               </li>
             </ul>
           </div>
@@ -96,7 +96,7 @@
           </div>
         </li>
         <li class="knowledge">
-          <a href="" class="cl-effect-1">用车知识</a>
+          <%= link_to "用车知识", slug_posts_path(20, 'knowledge'), class: 'cl-effect-1' %>
         </li>
 
         <li class="log-btn">

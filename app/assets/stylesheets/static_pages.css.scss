@@ -1,5 +1,14 @@
+@import 'mixins/button';
+
 .main{
   padding: 66px 10% 20px;
+
+  .order-btn{
+    @include button;
+    margin-right: 21px;
+    margin-top: 28px;
+  }
+
   .content{
     margin: -15px 0 0 35px;
     width: 95%;
