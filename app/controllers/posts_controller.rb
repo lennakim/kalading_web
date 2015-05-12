@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
   before_action :set_tag_and_menu
 
+  layout "new"
+
   inherit_resources
 
   # def show
