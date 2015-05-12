@@ -126,3 +126,13 @@ $ ->
             else
               alert('请输入正确手机号')
               $('.get_code').removeClass('disable').removeAttr('disabled')
+
+    $("#submit_button").on "click", ->
+      $("#submit_button").addClass('disable').attr('disabled','disabled')
+      phone_num = $("#phone_num").val()
+      verification_code = $("#verification_code").val()
+
+      csrf_token = $("meta[name='csrf-token']").attr('content')
+      data = { phone_num: phone_num, code: verification_code, authenticity_token: csrf_token }
+
+      $.form('/sessions', data).submit()

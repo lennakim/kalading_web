@@ -3,6 +3,20 @@
 .main{
   padding: 66px 10% 20px;
 
+  position: relative;
+
+  .icon{
+    .titles{
+      position: absolute;
+      top: 95px;
+      left: 258px;
+      .title, .sub-title{
+        width: 200px;
+        color: #e94609;
+      }
+    }
+  }
+
   .order-btn{
     @include button;
     margin-right: 21px;
