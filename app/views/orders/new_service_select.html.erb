@@ -2,7 +2,10 @@
   <div class="second">
     <div class="main">
       <%= image_tag("new-order/second.png", class: 'tag2')%>
-
+      
+      <div class="prev cursor">
+        <%= link_to "上一步", new_car_select_orders_path %>
+      </div>
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">
         <h4 class="title clearfix">
@@ -57,12 +60,9 @@
           -->
         </div>
       </div>
-    </div>
-    <div class="prev cursor">
-      <%= link_to "上一步", new_car_select_orders_path %>
-    </div>
-    <div class="next translate-next cursor">
-      <%= link_to "下一步", new_info_submit_orders_path %>
+      <div class="next translate-next cursor">
+        <%= link_to "下一步", new_info_submit_orders_path %>
+      </div>
     </div>
   </div>
 

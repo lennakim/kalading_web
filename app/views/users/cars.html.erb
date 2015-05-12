@@ -1,43 +1,44 @@
 <%= title "车辆信息" %>
 
-<div class="container user-info cars">
-
-  <div class="row">
-    <div class="col-md-12 title">
-      车辆信息
-    </div>
-  </div>
-
-  <div class="row">
-
-    <%= render "users/menu" %>
-    <div class="col-md-9 content">
-      <div class="select-car">
-        <div class="header">
-          选择车辆
-        </div>
-        <div class="cars clearfix">
-
-          <div class="select-cars">
-            <% current_user.autos.each do |auto| %>
-              <%= render "shared/car_item", auto: auto %>
-            <% end %>
-          </div>
-
-
-          <!-- TODO -->
-          <!-- <div class="car pull&#45;left col&#45;sm&#45;3"> -->
-          <!--   <%= link_to "添加车辆", "#", id: "add_car", class: 'btn btn&#45;default' %> -->
-          <!-- </div> -->
-
-        </div>
+<div class="user-info cars">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 title">
+        车辆信息
       </div>
+    </div>
 
-      <div class="maintain-histories">
-        <div class="header">
-          车辆保养记录
+    <div class="row">
+
+      <%= render "users/menu" %>
+      <div class="col-md-9 content">
+        <div class="select-car">
+          <div class="header">
+            选择车辆
+          </div>
+          <div class="cars clearfix">
+
+            <div class="select-cars">
+              <% current_user.autos.each do |auto| %>
+                <%= render "shared/car_item", auto: auto %>
+              <% end %>
+            </div>
+
+
+            <!-- TODO -->
+            <!-- <div class="car pull&#45;left col&#45;sm&#45;3"> -->
+            <!--   <%= link_to "添加车辆", "#", id: "add_car", class: 'btn btn&#45;default' %> -->
+            <!-- </div> -->
+
+          </div>
         </div>
-        <%= render "maintain_report_card" %>
+
+        <div class="maintain-histories">
+          <div class="header">
+            车辆保养记录
+          </div>
+          <%= render "maintain_report_card" %>
+        </div>
       </div>
     </div>
   </div>
