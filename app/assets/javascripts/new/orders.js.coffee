@@ -55,7 +55,7 @@ $ ->
     ele = $(@).parents(".quick_select_car").find(".next")
     ele.find("a").attr("car_id", car_id)
 
-  $('.next').click ->
+  $(".next[mark='new_car_select']").click ->
     ele = $(@).find("a")
     link = ele.data("link")
     car_id = ele.attr("car_id")
