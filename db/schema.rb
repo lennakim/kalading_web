@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150413090720) do
     t.string   "vin"
     t.string   "license_location"
     t.string   "license_number"
+    t.string   "logo"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
