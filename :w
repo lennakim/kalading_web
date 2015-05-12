@@ -1,0 +1,6 @@
+.container{
+  margin-top: 47px;
+    .article-type{
+        padding-left: 20px;
+    }
+}
