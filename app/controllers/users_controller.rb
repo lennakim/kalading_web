@@ -22,9 +22,7 @@ class UsersController < ApplicationController
   end
 
   def orders
-    # @orders = Order.get_orders_of(current_user.phone_number)['data']
-    @orders = Order.get_orders_of('13501319000')['data']
-
+    @orders = Order.get_orders_of(current_user.phone_number)['data']
   end
 
   def order_detail
