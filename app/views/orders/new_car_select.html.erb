@@ -60,8 +60,7 @@
             <!-- <li class="cursor">1.2 TFSI   2010.08-2014</li> -->
           </ul>
         </div>
-
-        <%= link_to "未找到车型？", no_car_type_orders_path, class: "undefined-car cursor" %>
+        <a href="javascript:;" class="undefined-car cursor">未找到车型？</a>
       </div>
     </div>
     <div class="next translate-next cursor">
@@ -69,5 +68,10 @@
     </div>
   </div>
 <!-- select car end  -->
+
+
+<!-- no_car_type -->
+<%= render 'no_car_type' %>
+<!-- no_car_type -->
 </div>
 

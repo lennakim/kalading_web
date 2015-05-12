@@ -14,6 +14,7 @@
 #= require URI
 #= require nprogress
 #= require nprogress-turbolinks
+#= require jquery.flexslider
 #
 #= require home
 #= require users
@@ -31,6 +32,15 @@ $ ->
   # fastclick init
 
   FastClick.attach(document.body)
+
+  if $('.home-phone').length > 0
+
+    $('.flexslider').flexslider
+      animation: "slide",
+      animationLoop: false,
+      itemWidth: '100%',
+      direction: false,
+      itemMargin: 0
 
   $(".items a").on 'click', (e) ->
     e.stopPropagation()

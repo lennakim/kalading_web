@@ -4,13 +4,20 @@
     <div class="panel quick-address-select">
       <div class="panel-heading clearfix" role="tab" id="select_addr_header">
         <a class="" style='font-size: 16px;' data-toggle="collapse" href="#select_addr" aria-expanded="false" aria-controls="select_addr">
-          <% if user_default_address.present? %>
+
+          <% backend_address = @user_info ? @user_info['address'] : "" %>
+
+          <% if backend_address.present? || user_default_address.present? %>
             <div class="pull-left">
               服务地址:
             </div>
 
             <div class="pull-left service-address-detail">
-              <%= user_default_address %>
+              <% if backend_address.present? %>
+                <%= backend_address %>
+              <% else %>
+                <%= user_default_address %>
+              <% end %>
             </div>
 
             <% if signed_in? && current_user.service_addresses.length > 0 %>
@@ -24,7 +31,6 @@
             </div>
           <% end %>
         </a>
-        <a class="anchorjs-link" href="#-collapsible-list-group-"><span class="anchorjs-icon"></span></a>
       </div>
       <div id="select_addr" class="panel-collapse collapse" role="tabpanel" aria-labelledby="select_car_header" aria-expanded="true">
         <% if signed_in? %>

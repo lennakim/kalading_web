@@ -231,6 +231,11 @@ class OrdersController < ApplicationController
     activity = Activity.find_by id: params[:act]
 
     type = params["type"]
+
+    if signed_in?
+      @user_info = Order.user_orders(current_user.phone_number, car_id).first
+    end
+
     payload = {
       parts: @parts
     }
@@ -313,7 +318,7 @@ class OrdersController < ApplicationController
 
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
 
-    if !params[:address]
+    if !params[:address].present?
       return render js: "$('#add_address_modal').modal();"
     end
 
