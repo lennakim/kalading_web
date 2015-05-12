@@ -62,7 +62,7 @@
       <%= link_to "上一步", new_car_select_orders_path %>
     </div>
     <div class="next translate-next cursor">
-      <%= link_to "下一步", new_info_submit_orders_path %>
+      <%= link_to "下一步", new_info_submit_orders_path(car_id: @car_id) %>
     </div>
   </div>
 

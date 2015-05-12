@@ -1,10 +1,10 @@
 <div class="new-car-select">
-  <% if @auto.present? %>
-    <%= render "quick_select_car", auto: @auto %>
+  <% if @autos.length > 0 %>
+    <%= render "quick_select_car", autos: @autos %>
   <% end %>
 
 <!-- select car -->
-  <div class="first <%= @auto.present? ? 'hide' : '' %>">
+  <div class="first <%= @autos.length > 0 ? 'hide' : '' %>">
     <div class="main">
       <%= image_tag("new-order/first.png", :class => 'tag2')%>
       <h4 class="tit">服务内容</h4>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="next translate-next cursor">
-      <%= link_to "下一步", new_service_select_orders_path %>
+      <a href="javascript:;" data-link="<%= new_service_select_orders_path  %>">下一步</a>
     </div>
   </div>
 <!-- select car end  -->

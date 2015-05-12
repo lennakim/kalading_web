@@ -13,47 +13,22 @@
 				        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				      </ol>
-				      <div class="carousel-inner" role="listbox">
-				        <div class="item active">
-				            <div class="cars-list clearfix">
-								<div class="car-item">
-									<a href="<%= new_service_select_orders_path %>">
-										<p class="img">
-											<%= image_tag(auto['pictures'][0]['url'], :class => 'tag2') if auto['pictures'][0] %>
-										</p>
-										<p class="brand-series-model">
-											<%= auto['full_name'] %>
-											<!-- 标致 207 2007款 207   1.4 手动 16V -->
-										</p>
-									</a>
-								</div>
-								<div class="car-item">
-									<p class="img">
-										<%= image_tag("new-index/logo.png", :class => 'tag2')%>
-									</p>
-									<p class="brand-series-model">
-										标致 207 2007款 207   1.4 手动 16V
-									</p>
-								</div>
-								<div class="car-item">
-									<p class="img">
-										<%= image_tag("new-order/first.png", :class => 'tag2')%>
-									</p>
-									<p class="brand-series-model">
-										标致 207 2007款 207   1.4 手动 16V
-									</p>
-								</div>
-								<div class="car-item">
-									<p class="img">
-										<%= image_tag("new-order/first.png", :class => 'tag2')%>
-									</p>
-									<p class="brand-series-model">
-										标致 207 2007款 207   1.4 手动 16V
-									</p>
-								</div>
-							</div>
-				        </div>
-				      </div>
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                 <div class="cars-list clearfix">
+									<% autos.each do |auto| %>
+										<div class="car-item cursor" data-car_id="<%= auto.system_id %>">
+	                     <p class="img">
+	                       <%= image_tag(auto.logo, :class => 'tag2') %>
+	                     </p>
+	                     <p class="brand-series-model">
+	                       <%= auto.full_name %>
+	                     </p>
+	                  </div>
+									<% end %>
+                 </div>
+                </div>
+              </div>
 				      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 				        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				        <span class="sr-only">Previous</span>
@@ -68,6 +43,6 @@
 			</div>
 		</div>
 		<div class="next translate-next cursor">
-			<%= link_to "下一步", new_service_select_orders_path %>
+      <a href="javascript:;" data-link="<%= new_service_select_orders_path %>">下一步</a>
 		</div>
 	</div>
