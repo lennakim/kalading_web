@@ -12,76 +12,23 @@
 						<ul class="slides">
 							<% autos.each do |auto| %>
 								<li>
-									<div class="car-item cursor" data-car_id="<%= auto.system_id %>">
-					                    <p class="img">
-					                       <%= image_tag(auto.logo, :class => 'tag2') %>
-					                    </p>
-					                    <p class="brand-series-model">
-					                       <%= auto.full_name %>
-					                    </p>
-					                </div>
+									<div class="car-item cursor" data-car_id="<%= auto.try(:system_id) %>">
+					        	<p class="img">
+					             <%= image_tag(auto.try(:logo), :class => 'tag2') %>
+					          </p>
+					          <p class="brand-series-model">
+					          	<%= auto.try(:full_name) %>
+					          </p>
+									</div>
 								</li>
 							<% end %>
 						</ul>
 					</div>
-
-
-
-
-
-
-
-
-
-					<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				      <ol class="carousel-indicators">
-				        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				      </ol>
-		              <div class="carousel-inner" role="listbox">
-		                <div class="item active">
-			                <div class="cars-list clearfix">
-								<% autos.each do |auto| %>
-									<div class="car-item cursor" data-car_id="<%= auto.system_id %>">
-					                    <p class="img">
-					                       <%= image_tag(auto.logo, :class => 'tag2') %>
-					                    </p>
-					                    <p class="brand-series-model">
-					                       <%= auto.full_name %>
-					                    </p>
-					                </div>
-								<% end %>
-			                </div>
-		                </div>
-		              </div>
-				      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-				        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				        <span class="sr-only">Previous</span>
-				      </a>
-				      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-				        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				        <span class="sr-only">Next</span>
-				      </a>
-				    </div> -->
 				</div>
-        		<a href="javascript:;" class="undefined-car cursor">未找到车型？</a>
+        	<a href="javascript:;" class="undefined-car cursor">未找到车型？</a>
 			</div>
 		</div>
 		<div mark="new_car_select" class="next translate-next cursor">
-      		<a href="javascript:;" data-link="<%= new_service_select_orders_path %>">下一步</a>
+      	<a href="javascript:;" data-link="<%= new_service_select_orders_path %>">下一步</a>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		$(function() {
-			$(".flexslider").flexslider({
-				animation: "slide",
-				animationLoop: false,
-				itemWidth: 210,
-				itemMargin: 5,
-				minItems: 2,
-				maxItems: 4,
-				//pausePlay: true
-			});
-		});
-	</script>
