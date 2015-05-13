@@ -60,6 +60,7 @@ class App.Views.ServiceSelect extends Backbone.View
 
   undoParts: (e) =>
     self = $(e.target)
+    self.parent(".other").siblings().removeClass("active")
     part = self.parents("ul.items-list").data('part')
     point = $("ul.service-items>li[data-part='#{part}']")
     point.addClass('disabled').attr('brand', '').attr('number', '').html("未选择")

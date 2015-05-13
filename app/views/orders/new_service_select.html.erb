@@ -18,13 +18,11 @@
             <% array = filter_parts(parts, @type)%>
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr.keys[0]) %>
-
               <li data-part="<%= arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected">
                 <%= display_item_name(arr, item["brand"], item['number']) %>
                 ￥<%= item['price'] %>
               </li>
             <% end %>
-
               <div class="other">
                 <li data-part="service_price" class="cursor cto">
                   上门服务费
