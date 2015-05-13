@@ -68,9 +68,10 @@ $ ->
       $('.header .kld-header-wrap').removeClass('toggle')
     )
 
-  $('.header-others .kld-header-link').on 'mouseover','li', ->
-    $('.sub2').addClass('hide')
-    $(@).find('.sub2').removeClass('hide')
+  $('.active .sub2').removeClass('hide')
+  # $('.header-others .kld-header-link').on 'mouseover','li', ->
+  #   $('.sub2').addClass('hide')
+  #   $(@).find('.sub2').removeClass('hide')
 
   # $('.header-others .products,.header-others .service,.header-others .team,.header-others .about').on 'mouseleave', ->
   #   $(@).find('.sub2').addClass('hide')

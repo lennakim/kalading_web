@@ -1,4 +1,4 @@
-<nav class="header-others static-pages">
+<nav class="header-others">
   <div class="kld-header">
     <div class="bac"></div>
     <div class="kld-header-wrap">
@@ -23,7 +23,7 @@
           <a href="/" class="cl-effect-1">首页</a>
         </li>
         <li class="products <%= "active" if params[:action] == "new_car_select" %>">
-          <a href=""  class="cl-effect-1" onclick="return false;">预约服务</a>
+          <a href="/orders/new_car_select"  class="cl-effect-1">预约服务</a>
 
           <div class="sub2 hide">
             <div class="subbac"></div>
@@ -44,8 +44,8 @@
           </div>
 
         </li>
-        <li class="service <%= "active" if params[:action] == "new_service_select" %>">
-          <a href="/" class="cl-effect-1" target="_blank">服务内容</a>
+        <li class="service <%= "active" if params[:action] == "show" %>">
+          <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1" target="_blank">服务内容</a>
 
           <div class="sub2 hide">
             <div class="subbac"></div>
