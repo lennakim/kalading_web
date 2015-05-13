@@ -8,6 +8,7 @@
 @import "mixins/button";
 
 @import "demo";
+@import "flexslider";
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -738,9 +739,6 @@ nav{
   z-index: 2000;
 }
 
-<<<<<<< HEAD
-
-=======
 #select_city_modal{
 
   .cities{
@@ -818,5 +816,4 @@ nav{
     background-color: #e6e6e6;
   }
 }
->>>>>>> 24cfd27304396a7c0b7d1c47eb93f69ec3d7bf54
 
