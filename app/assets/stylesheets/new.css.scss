@@ -162,6 +162,10 @@ nav{
             top: 10px;
             min-width: 400px;
             margin-left: 38%;
+            .special{
+              margin: 0;
+              padding: 0;
+            }
           }
         }
   		  .sub,.sub2{
@@ -600,7 +604,7 @@ nav{
         }
       }
       .kld-header-link{
-        
+
         li{
           .cl-effect-1:before,.cl-effect-1:after {
             display: inline-block;
@@ -712,6 +716,14 @@ nav{
             ul{
               min-width: 100px;
               margin-left: 66%;
+            }
+          }
+        }
+        .log-btn{
+          .sub2{
+            ul{
+              min-width: 300px;
+              margin-left: 64%;
             }
           }
         }
@@ -995,3 +1007,7 @@ nav{
   }
 }
 
+.blank{
+  line-height: 200px;
+  text-align: center;
+}

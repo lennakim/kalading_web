@@ -66,26 +66,18 @@ $ ->
   $('.products').on 'mouseleave', ->
     $(@).find('.sub').stop().animate({'height':'0'},500, ->
       $('.header .kld-header-wrap').removeClass('toggle')
-    )
-
-  $('.active .sub2').removeClass('hide')
-  # $('.header-others .kld-header-link').on 'mouseover','li', ->
-  #   $('.sub2').addClass('hide')
-  #   $(@).find('.sub2').removeClass('hide')
-
-  # $('.header-others .products,.header-others .service,.header-others .team,.header-others .about').on 'mouseleave', ->
-  #   $(@).find('.sub2').addClass('hide')
-
-  $('.sub').on 'mouseleave', ->
-    $(@).stop().animate({'height':'0'},500, ->
-      $(@).removeClass('toggle')
-    )
-    $('.kld-header-wrap').animate({'':''},500, ->
       $('.logo').removeClass('hide')
       $('.logored').addClass('hide')
       $('.slogan1').removeClass('hide')
       $('.slogan2').addClass('hide')
     )
+
+  $('.active .sub2').removeClass('hide')
+
+  # $('.sub').on 'mouseleave', ->
+  #   $(@).stop().animate({'height':'0'},500, ->
+  #     $(@).removeClass('toggle')
+  #   )
 
 
   $('.product').on 'mouseover','li', ->
