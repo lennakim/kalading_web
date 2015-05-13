@@ -821,72 +821,74 @@ nav{
           background: #fdece6;
           color: $main-orange;
         }
-        .con{
-          height: 250px;
-          padding: 30px 0;
-          background: #fff;
-          border-radius: 0 0 3px 3px;
-          .logo,.item-price,.total-price,.more{
-            padding: 20px;
-            height: 100%;
-            border-right: 1px solid #e5e5e5;
-          }
-          .more,.operate{
-            color: #999999;
-          }
-          .logo{
-            width: 20%;
-            text-align: center;
-          }
-          .item-price{
-            width: 40%;
-            color: #666666;
-            .item{
-              line-height: 30px;
-            }
-          }
-          .operate{
-            padding: 20px;
-          }
-          .origin{
-            color: #999999;
-            text-decoration: line-through;
-          }
-          .more{
-            cursor: pointer;
-            cursor: hand;
-            text-align: center;
-            .phone{
-              position: absolute;
-              top: 56%;
-              right: 11%;
-              width: 180px;
-              line-height: 48px;
-              padding: 10px 10px 0;
-              background-image: image-url('new-user/infoborder.png');
-              background-size: 100% 100%;
-              text-align: center;
-            }
-            a{
-              color: #999999;
-            }
-          }
-          .now{
-            padding-right: 20px;
-            background-image: image-url('new-user/privilege.png');
-            background-position: right;
-            background-repeat: no-repeat;
-            font-size: 20px;
-            color: #e94609;
-          }
-        }
       }
     }
   }
 }
+.user-info .con,.orders-detail .order-info{
+  height: 250px;
+  padding: 30px 0;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+  .logo,.item-price,.total-price,.more{
+    padding: 20px;
+    height: 100%;
+    border-right: 1px solid #e5e5e5;
+  }
+  .more,.operate{
+    color: #999999;
+  }
+  .logo{
+    width: 20%;
+    text-align: center;
+  }
+  .item-price{
+    width: 40%;
+    color: #666666;
+    .item{
+      line-height: 30px;
+    }
+  }
+  .operate{
+    padding: 20px;
+  }
+  .origin{
+    color: #999999;
+  }
+  .over{
+    text-decoration: line-through;
+  }
+  .more{
+    cursor: pointer;
+    cursor: hand;
+    text-align: center;
+    .phone{
+      position: absolute;
+      top: 56%;
+      right: 11%;
+      width: 180px;
+      line-height: 48px;
+      padding: 10px 10px 0;
+      background-image: image-url('new-user/infoborder.png');
+      background-size: 100% 100%;
+      text-align: center;
+    }
+    a{
+      color: #999999;
+    }
+  }
+  .now{
+    padding-right: 20px;
+    background-image: image-url('new-user/privilege.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    color: #e94609;
+  }
+}
 
 .orders-detail{
-  height: 1500px;
+  height: 1600px;
   background-image: image-url('new-order/bac.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -918,6 +920,7 @@ nav{
         }
         table{
           width: 100%;
+          border-radius: 2px;
         }
         table,td{
           border: 1px solid #ccc;
@@ -927,6 +930,18 @@ nav{
           padding: 10px;
           &:nth-child(odd){
             width: 10%;
+          }
+        }
+        .order-info{
+          border: 1px solid #dbdbdb;
+          border-radius: 2px;
+          .item-price{
+            width: 60%;
+          }
+          .total-price{
+            width: 15%;
+            border: 0;
+            text-align: center;
           }
         }
       }
