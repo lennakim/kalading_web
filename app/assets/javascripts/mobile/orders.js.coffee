@@ -87,7 +87,6 @@ $ ->
                 </div>
               """
 
-
     $(".place-order-phone").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
       e.preventDefault()
       e.stopPropagation()
