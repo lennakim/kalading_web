@@ -27,4 +27,4 @@ class PostsController < ApplicationController
     @tag_list = Post.tagged_with(@root_tag).map(&:tag_list).map{|e| e[1]}.uniq.map{ |name| ActsAsTaggableOn::Tag.find_by name: name }
   end
 
-  end
+end

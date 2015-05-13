@@ -245,5 +245,127 @@
       }
 
     }
+
+
+
+    &.huandianping{
+      padding-left: 30px;
+      padding-top: 40px;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      .zhouqi{
+        .img-content{
+          margin-left: 15px;
+          width: 88%;
+          .highlight{
+            font-size: 20px;
+            color: #e94609;
+          }
+        }
+      }
+      .description{
+        margin-top: 20px;
+        margin-bottom: 35px;
+        .highlight{
+          width: 100%;
+          font-size: 20px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .genghuan-content{
+          text-indent:25px;
+          margin-top: 20px;
+        }
+      }
+      .dianpingjieshao{
+        border-top: 2px dashed #e94609;
+        .jieshao{
+          width: 100%;
+          margin-top: 35px;
+          margin-bottom: 20px;
+          font-size: 20px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .boshis3, .boshis4, .boshis5{
+          width: 33%;
+          padding-left: 12px;
+          .desc{
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          .adapter{
+            color: #e94609;
+          }
+          .detail-desc{
+            font-size: small;
+            padding-right: 10%;
+            text-align: justify;
+          }
+          .img-content{
+            font-size: small;
+            margin-bottom: 3px;
+            margin-right: -7px;
+            .img-adapter{
+              margin-right: 100px;
+            }
+            .img{
+              width: 10px;
+              height: 10px;
+            }
+          }
+        }
+        .boshis3, .boshis4{
+          border-right: 2px solid lightgray;
+          .detail-desc{
+            margin-bottom: 20px;
+          }
+          .notice{
+            width: 50%;
+            background-color: #e94609;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            color: white;
+          }
+        }
+        .boshis5{
+          .detail-desc{
+            margin-bottom: 37px;
+          }
+          .notice{
+            width: 63%;
+            background-color: #e94609;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            color: white;
+          }
+        }
+
+      }
+    }
+  }
+  .icon-desc{
+    margin-left: 15px;
+    margin-top: 30px;
+    color: red;
+    font-weight: bold;
+    .first-desc{
+      margin-bottom: 2px;
+    }
+    .second-desc{
+      margin-top: 2px;
+    }
   }
 }
