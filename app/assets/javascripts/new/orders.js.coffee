@@ -9,6 +9,13 @@ $ ->
 
   if $(".second").length > 0
     service_select = new App.Views.ServiceSelect
+    #替換 sub2 url
+    uri = URI()
+    car_id = uri.search(true)['car_id']
+    _.each $(".products .sub2 ul").find("a"), (ele)->
+      type =  $(ele).data("type")
+      path = uri.search({car_id: car_id, type: type })
+      $(ele).attr("href", path)
 
   #------选车型---------
 
@@ -60,22 +67,21 @@ $ ->
     ele = $(@).find("a")
     link = ele.data("link")
     car_id = ele.attr("car_id")
-    type = URI().search(true)['type']
+    type = URI().search(true)['type'] || "bmt"
 
     if car_id?
       window.location.href = "#{link}?car_id=#{car_id}&type=#{type}"
     else
       alert("請選擇車輛")
 
-  $(".flexslider").flexslider({
+  $(".flexslider").flexslider
     animation: "slide",
-    animationLoop: false,
-    itemWidth: 210,
-    itemMargin: 5,
-    minItems: 2,
+    animationLoop: false
+    itemWidth: 210
+    itemMargin: 5
+    minItems: 2
     maxItems: 4
-    #pausePlay: true
-  });
+    slideshow: false
 
 
   # 添加车辆

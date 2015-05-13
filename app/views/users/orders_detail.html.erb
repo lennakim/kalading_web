@@ -1,5 +1,3 @@
-<%= @order %>
-
 <div class="orders-detail special">
 	<div class="main">
 	    <%= image_tag("new-order/first.png", :class => 'tag2')%>
@@ -12,39 +10,42 @@
 		      	<table>
 		      		<tr>
 		      			<td>车主信息</td>
-		      			<td>韩梅梅</td>
+		      			<td><%= @order['name'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>车牌号</td>
-		      			<td>京J232323</td>
+		      			<td><%= @order['car_num'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>车辆型号</td>
-		      			<td></td>
+		      			<td><%= @order['auto_model'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>服务地址</td>
-		      			<td></td>
+		      			<td><%= @order['address'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>服务时间</td>
-		      			<td></td>
+		      			<td><%= @order['serve_datetime'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>订单状态</td>
-		      			<td></td>
+		      			<td><%= @order['state'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>技师信息</td>
-		      			<td></td>
+		      			<td>
+		      				姓名：<%= @order['served_engineers'][0]['name'] %>
+		      				手机号：<%= @order['served_engineers'][0]['phone_num'] %>
+		      			</td>
 		      		</tr>
 		      		<tr>
 		      			<td>支付方式</td>
-		      			<td></td>
+		      			<td><%= @order['pay_type'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>发票信息</td>
-		      			<td></td>
+		      			<td><%= @order['reciept_type'] %></td>
 		      		</tr>
 		      		<tr>
 		      			<td>优惠信息</td>
@@ -56,7 +57,28 @@
 		      		</tr>
 		      	</table>
 		      	<h4>订单内容</h4>
-		      	<%#= render "new_order_form" %>
+		      	<div class="order-info clearfix">
+			        <div class="logo pull-left">
+			          <%= image_tag("", :class => 'logoimg')%>
+			          <p><%= @order['auto_model'] %></p>
+			        </div>
+			        <ul class="item-price pull-left">
+			          <% @order["parts"].each do |part| %>
+			            <li class="item clearfix">
+			              <div class="type pull-left">
+			                [<%= part["type"] %>] <%= part["brand"] %>
+			              </div>
+			              <div class="price pull-right">
+			                ￥<%= part["price"] %>
+			              </div>
+			            </li>
+			          <% end %>
+			        </ul>
+			        <div class="total-price pull-left">
+			          <p class="origin <%= "over" if @order['balance_pay'] == 0.0 %>"><%= @order['price'] %></p>
+			          <p class="now"><%= @order['price'] %></p>
+			        </div>
+			    </div>
 		    </div>
 		    <ul class="btns clearfix">
 		    	<li class="cancel pull-left">取消订单</li>

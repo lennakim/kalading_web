@@ -1,16 +1,18 @@
 <div class="main clearfix static-pages">
-  <div class="icon pull-left">
+  <div class="icon">
     <%= image_tag "static_pages/huandianping/icon.png"%>
-  </div>
-  <div class="icon-desc pull-left">
-    <div class="first-desc pull-left">
-      搭电救援
+    <div class="titles">
+      <div class="first-title">
+        搭电救援 + 32项全车安全检测
+      </div>
+      <div class='sub-title'>
+        回收蓄电池
+      </div>
     </div>
-    <br/>
-    <div class="second-desc pull-left">
-      回收蓄电池
-    </div>
+
+    <%= link_to "立即下单", new_car_select_orders_path(type: 'bty'), class: 'order-btn pull-right'%>
   </div>
+
   <div class="content huandianping pull-left">
     <div class="zhouqi pull-left">
       <div class="img pull-left">
