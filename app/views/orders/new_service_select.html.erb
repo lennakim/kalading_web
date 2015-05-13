@@ -4,7 +4,7 @@
       <%= image_tag("new-order/second.png", class: 'tag2')%>
 
       <div class="prev cursor">
-        <%= link_to "上一步", new_car_select_orders_path %>
+        <%= link_to "上一步", new_car_select_orders_path(type: @type) %>
       </div>
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">

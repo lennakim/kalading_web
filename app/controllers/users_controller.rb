@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def orders_detail
     id = params[:id]
-    @order = Order.origin_find id
+    @order = Order.origin_find(id)
   end
 
   def maintain_histories_list

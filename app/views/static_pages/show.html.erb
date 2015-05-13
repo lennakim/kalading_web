@@ -1,13 +1,14 @@
 <div class="static-page special">
-  <% if params[:id] == "fu-wu-liu-cheng" %>
-    <%= render "fu_wu_liu_cheng" %>
-
-  <% elsif params[:id] == "ji-you-ji-lv" %>
-    <%= render "ji_you_ji_lv" %>
-  <% elsif params[:id] == "ji-you-san-lv" %>
-    <%= render "ji_you_san_lv" %>
-
-  <% elsif params[:id] == "geng-huan-dian-ping" %>
-    <%= render "geng_huan_dian_ping" %>
+  <% case @static_pages
+     when "fu-wu-liu-cheng" %>
+      <%= render "fu_wu_liu_cheng" %>
+    <% when "ji-you-ji-lv"  %>
+      <%= render "ji_you_ji_lv"    %>
+    <% when "ji-you-san-lv" %>
+      <%= render "ji_you_san_lv" %>
+    <% when "geng-huan-dian-ping"  %>
+      <%= render "geng_huan_dian_ping" %>
+    <% when "pm25" %>
+      <%= render "pm25" %>
   <% end %>
 </div>

@@ -154,19 +154,6 @@ nav{
             color: $main-orange;
           }
         }
-        .sub{
-          background: #fff;
-          color: $main-orange;
-          ul{
-            top: 10px;
-            min-width: 400px;
-            margin-left: 38%;
-            .special{
-              margin: 0;
-              padding: 0;
-            }
-          }
-        }
   		  .sub,.sub2{
           overflow: hidden;
   		    position: absolute;
@@ -211,6 +198,22 @@ nav{
   			    }
     			}
     		}
+        .sub{
+          background: #fff;
+          color: $main-orange;
+          ul{
+            top: 10px;
+            min-width: 400px;
+            margin-left: 38%;
+            li{
+              width: 100px;
+            }
+            .special{
+              margin: 0;
+              padding: 0;
+            }
+          }
+        }
       }
 
       .kld-header-log{
@@ -233,7 +236,7 @@ nav{
 }
 .cb-slideshow:after {
     content: '';
-    background: transparent url(../images/pattern.png) repeat top left;
+    background: transparent image-url('/assets/pattern.png') repeat top left;
 }
 .cb-slideshow li span {
     width: 100%;
@@ -247,7 +250,7 @@ nav{
     background-repeat: none;
     opacity: 0;
     z-index: 0;
-  -webkit-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     -webkit-animation: imageAnimation 36s linear infinite 0s;
     -moz-animation: imageAnimation 36s linear infinite 0s;
     -o-animation: imageAnimation 36s linear infinite 0s;
@@ -275,85 +278,59 @@ nav{
     line-height: 200px;
   color: #e94609;
 }
+
 .cb-slideshow li:nth-child(1) span {
   background-image: image-url("new-index/banner.jpg");
 }
 
-.cb-slideshow li:nth-child(2) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 6s;
-    -moz-animation-delay: 6s;
-    -o-animation-delay: 6s;
-    -ms-animation-delay: 6s;
-    animation-delay: 6s;
+//  定義方法 animation-delay-n
+@mixin animation-delay-n($n){
+  -webkit-animation-delay:  #{$n*6}s;
+  -moz-animation-delay: #{$n*6}s;
+  -o-animation-delay: #{$n*6}s;
+  -ms-animation-delay: #{$n*6}s;
+  animation-delay: #{$n*6}s;
 }
+
+.cb-slideshow li:nth-child(2) span {
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(1) //調用 animation-delay-n
+}
+
 .cb-slideshow li:nth-child(3) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 12s;
-    -moz-animation-delay: 12s;
-    -o-animation-delay: 12s;
-    -ms-animation-delay: 12s;
-    animation-delay: 12s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(2)
 }
 .cb-slideshow li:nth-child(4) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 18s;
-    -moz-animation-delay: 18s;
-    -o-animation-delay: 18s;
-    -ms-animation-delay: 18s;
-    animation-delay: 18s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(3)
 }
 .cb-slideshow li:nth-child(5) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 24s;
-    -moz-animation-delay: 24s;
-    -o-animation-delay: 24s;
-    -ms-animation-delay: 24s;
-    animation-delay: 24s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(4)
 }
 .cb-slideshow li:nth-child(6) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 30s;
-    -moz-animation-delay: 30s;
-    -o-animation-delay: 30s;
-    -ms-animation-delay: 30s;
-    animation-delay: 30s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(5)
 }
+
+//
 .cb-slideshow li:nth-child(2) div {
-    -webkit-animation-delay: 6s;
-    -moz-animation-delay: 6s;
-    -o-animation-delay: 6s;
-    -ms-animation-delay: 6s;
-    animation-delay: 6s;
+  @include animation-delay-n(1)
 }
 .cb-slideshow li:nth-child(3) div {
-    -webkit-animation-delay: 12s;
-    -moz-animation-delay: 12s;
-    -o-animation-delay: 12s;
-    -ms-animation-delay: 12s;
-    animation-delay: 12s;
+  @include animation-delay-n(2)
 }
 .cb-slideshow li:nth-child(4) div {
-    -webkit-animation-delay: 18s;
-    -moz-animation-delay: 18s;
-    -o-animation-delay: 18s;
-    -ms-animation-delay: 18s;
-    animation-delay: 18s;
+  @include animation-delay-n(3)
 }
 .cb-slideshow li:nth-child(5) div {
-    -webkit-animation-delay: 24s;
-    -moz-animation-delay: 24s;
-    -o-animation-delay: 24s;
-    -ms-animation-delay: 24s;
-    animation-delay: 24s;
+  @include animation-delay-n(4)
 }
 .cb-slideshow li:nth-child(6) div {
-    -webkit-animation-delay: 30s;
-    -moz-animation-delay: 30s;
-    -o-animation-delay: 30s;
-    -ms-animation-delay: 30s;
-    animation-delay: 30s;
+  @include animation-delay-n(5)
 }
+
 /* Animation for the slideshow images */
 @-webkit-keyframes imageAnimation {
   0% {
@@ -847,72 +824,128 @@ nav{
           background: #fdece6;
           color: $main-orange;
         }
-        .con{
-          height: 250px;
-          padding: 30px 0;
-          background: #fff;
-          border-radius: 0 0 3px 3px;
-          .logo,.item-price,.total-price,.more{
-            padding: 20px;
-            height: 100%;
-            border-right: 1px solid #e5e5e5;
-          }
-          .more,.operate{
-            color: #999999;
-          }
-          .logo{
-            width: 20%;
-            text-align: center;
-          }
-          .item-price{
-            width: 40%;
-            color: #666666;
-            .item{
-              line-height: 30px;
-            }
-          }
-          .operate{
-            padding: 20px;
-          }
-          .origin{
-            color: #999999;
-            text-decoration: line-through;
-          }
-          .more{
-            cursor: pointer;
-            cursor: hand;
-            text-align: center;
-            .phone{
-              position: absolute;
-              top: 56%;
-              right: 11%;
-              width: 180px;
-              line-height: 48px;
-              padding: 10px 10px 0;
-              background-image: image-url('new-user/infoborder.png');
-              background-size: 100% 100%;
-              text-align: center;
-            }
-            a{
-              color: #999999;
-            }
-          }
-          .now{
-            padding-right: 20px;
-            background-image: image-url('new-user/privilege.png');
-            background-position: right;
-            background-repeat: no-repeat;
-            font-size: 20px;
-            color: #e94609;
-          }
-        }
       }
     }
   }
 }
+.user-info .con,.orders-detail .order-info{
+  height: 250px;
+  padding: 30px 0;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+  .logo,.item-price,.total-price,.more{
+    padding: 20px;
+    height: 100%;
+    border-right: 1px solid #e5e5e5;
+  }
+  .more,.operate{
+    color: #999999;
+  }
+  .logo{
+    width: 20%;
+    text-align: center;
+  }
+  .item-price{
+    width: 40%;
+    color: #666666;
+    .item{
+      line-height: 30px;
+    }
+  }
+  .operate{
+    padding: 20px;
+  }
+  .origin{
+    color: #999999;
+  }
+  .over{
+    text-decoration: line-through;
+  }
+  .more{
+    cursor: pointer;
+    cursor: hand;
+    text-align: center;
+    .phone{
+      position: absolute;
+      top: 56%;
+      right: 11%;
+      width: 180px;
+      line-height: 48px;
+      padding: 10px 10px 0;
+      background-image: image-url('new-user/infoborder.png');
+      background-size: 100% 100%;
+      text-align: center;
+    }
+    a{
+      color: #999999;
+    }
+  }
+  .now{
+    padding-right: 20px;
+    background-image: image-url('new-user/privilege.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    color: #e94609;
+  }
+}
 
 .orders-detail{
-  height: 1500px;
+  height: 1600px;
+  table{
+    width: 100%;
+    border-radius: 2px;
+  }
+  table,td{
+    border: 1px solid #ccc;
+    line-height: 30px;
+  }
+  td{
+    padding: 10px;
+    &:nth-child(odd){
+      width: 10%;
+    }
+  }
+  .order-info{
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    .item-price{
+      width: 60%;
+    }
+    .total-price{
+      width: 15%;
+      border: 0;
+      text-align: center;
+    }
+  }     
+  .btns{
+    line-height: 35px;
+    margin: 10px 0 0 40%;
+    width: 60%;
+    li{
+      width: 100px;
+      margin: 0 5px;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid #bfbfbf;
+      background: #eeeeee;
+      cursor: pointer;
+      cursor: hand;
+      &:hover{
+        background: $main-orange;
+        color: #fff;
+      }
+    }
+  }
+  .next-order{
+    display: block;
+    padding: 20px;
+    text-align: right;
+    color: #999999;
+  } 
+}
+.orders-detail,.know{
+  height: 1600px;
   background-image: image-url('new-order/bac.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -942,49 +975,40 @@ nav{
         h4{
           color: #333333;
         }
-        table{
-          width: 100%;
-        }
-        table,td{
-          border: 1px solid #ccc;
-          line-height: 30px;
-        }
-        td{
-          padding: 10px;
-          &:nth-child(odd){
-            width: 10%;
-          }
-        }
-      }
-      .btns{
-        line-height: 35px;
-        margin: 10px 0 0 40%;
-        width: 60%;
-        li{
-          width: 100px;
-          margin: 0 5px;
-          text-align: center;
-          border-radius: 4px;
-          border: 1px solid #bfbfbf;
-          background: #eeeeee;
-          cursor: pointer;
-          cursor: hand;
-          &:hover{
-            background: $main-orange;
-            color: #fff;
-          }
-        }
-      }
-      .next-order{
-        display: block;
-        padding: 20px;
-        text-align: right;
-        color: #999999;
       }
     }
   }
 }
-
+.know{
+  li{
+    width: 48%;
+    line-height: 30px;
+    margin: 0 1%;
+    border-bottom: 1px solid #ccc;
+    &:before{
+      float: left;
+      content: '·';
+      width: 25px;
+      margin: 10px;
+      font-size: 100px;
+      color: #dddddd;
+    }
+    a{
+      float: left;
+      line-height: 60px;
+      color: #666666;
+      text-decoration: none;
+    }
+    &:hover{
+      &:before{
+        color: $main-orange;
+      }
+      a{
+        color: $main-orange;
+      }
+    }
+  }
+}
 
 
 
