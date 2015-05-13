@@ -1,13 +1,15 @@
 <div class="orders">
 
-  <% if @orders.length > 0 %>
+  <!-- <%# if @orders.length > 0 %>
 
-    <% @orders.each do |order| %>
-      <%= render "order_item", order: order %>
-    <% end %>
+    <%# @orders.each do |order| %>
+      <%#= render "order_item", order: order %>
+    <%# end %>
 
-  <% else %>
+  <%# else %>
     <p>呀~您还没有预定过我们的服务呢~</p>
     <p>赶紧去首页下单吧！</p>
-  <% end %>
+  <%# end %> -->
+  <%= render "order_item" %>
+
 </div>
