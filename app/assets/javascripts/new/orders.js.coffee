@@ -110,6 +110,46 @@ $ ->
       else
         $('.addr .edit').addClass('hide')
 
+    ####  以下为下单页面城市选择部分  ####
+
+    $("#service_districts").chained("#service_cities")
+    $('#service_districts').on 'change', (e) ->
+      city = $("#service_cities").val()
+      district = $("#service_districts").val()
+      ac.setInputValue "#{city}#{district}"
+
+    # add address modal
+    $("#add_address_modal").on "click", ".add-address > button", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      $(@).addClass('disabled')
+      $modal = $(e.delegateTarget)
+      city = $modal.find('select.city').val()
+      district = $modal.find('select.district').val()
+
+      detail = $modal.find('#address_detail').val()
+      if $.trim(detail) != ""
+        $.post "/service_addresses", { service_address: { city: city, district: district, detail: detail } }
+
+      else
+        $modal.find("#address_detail").closest(".form-group").addClass("has-error")
+
+    $("#add_address_modal").on "hidden.bs.modal", ->
+      $(@).find(".add-address > button").removeClass('disabled')
+
+    $("#address_detail").on "keyup", (e) ->
+      $button = $("#add_address_modal .add-address > button")
+      if e.keyCode == 13 && !$button.hasClass('disabled')
+        $button.trigger "click"
+
+    ####  以上为下单页面城市选择部分  ####
+
+    # select address
+    $(".addresses .add > a").on "click", (e)->
+      e.stopPropagation()
+      e.preventDefault()
+      $("#add_address_modal").modal()
+
     $('.addresses').on 'change', '.service-address-item input[type=radio]', (e) ->
       id = $(@).data('id')
 

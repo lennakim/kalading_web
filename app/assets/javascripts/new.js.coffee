@@ -50,9 +50,9 @@ $ ->
     $.post("/cities/#{ id }/set")
 
   $('.header .kld-header-link').on 'mouseover','li', ->
-  	$(@).addClass('selected').siblings().removeClass('selected')
+    $(@).addClass('selected').siblings().removeClass('selected')
   $('.header .kld-header-link').on 'mouseleave','li', ->
-  	$(@).removeClass('selected')
+    $(@).removeClass('selected')
 
   $('.products').on 'mouseenter', ->
     $('.header .kld-header-wrap').addClass('toggle')

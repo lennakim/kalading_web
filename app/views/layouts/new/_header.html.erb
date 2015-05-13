@@ -73,18 +73,18 @@
               </li>
             </ul>
           </div>
-
         </li>
+
         <li class="service <%= "active" if params[:action] == "new_service_select" %>">
           <a href="#" target="_blank">服务内容</a>
         </li>
+
         <li class="team">
           <a href="">城市团队</a>
         </li>
 
         <li class="about">
           <a href="">关于我们</a>
-
         </li>
 
         <li class="contact">
@@ -97,7 +97,7 @@
             登陆
           </a>
         <% else %>
-          <a href="#">退出</a>
+          <%= link_to "个人中心", orders_users_path, class: 'cl-effect-1' %>
         <% end %>
       </div>
     </div>
