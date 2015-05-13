@@ -1,9 +1,9 @@
-<div class="order" id="order_<%#= order["id"] %>">  
+<div class="order" id="order_<%#= order["id"] %>">
   <ul class="order-list">
     <li class="order-item">
       <div class="top wait clearfix">
         <div class="datetime pull-left">
-          <p class="pull-left">下单时间:2014-4-6<%#= order["serve_datetime"] %></p> 
+          <p class="pull-left">下单时间:2014-4-6<%#= order["serve_datetime"] %></p>
           <p class="pull-left">服务时间:2014-6-7<%#= order["serve_datetime"] %></p>
         </div>
         <div class="status finish pull-right">
@@ -35,7 +35,9 @@
           <p class="now">900元</p>
         </div>
         <div class="more pull-left">
-          <p>订单详情</p>
+          <p>
+          <%= link_to "订单详情", order_path(id: "id") %>
+          </p>
           <p class="technician">技师信息</p>
           <p class="phone hide">王小明：18800191819</p>
         </div>
@@ -62,7 +64,7 @@
 <!-- <div class="order" id="order_<%#= order["id"] %>">
   <div class="top clearfix">
     <div class="datetime pull-left">
-      <span>下单时间:<%#= order["serve_datetime"] %></span> 
+      <span>下单时间:<%#= order["serve_datetime"] %></span>
       <span>服务时间:<%#= order["serve_datetime"] %></span>
     </div>
     <div class="number pull-left">
@@ -86,7 +88,7 @@
             <div class="price pull-left">
               ￥<%#= part["price"] %>
             </div>
-            
+
           </div>
         <%# end %>
       </div>
