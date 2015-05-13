@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @orders = Order.get_orders_of('13501319000')['data']
   end
 
-  def order_detail
+  def orders_detail
   end
 
   def maintain_histories_list

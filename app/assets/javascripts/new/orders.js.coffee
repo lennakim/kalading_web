@@ -67,15 +67,14 @@ $ ->
     else
       alert("請選擇車輛")
 
-  $(".flexslider").flexslider({
+  $(".flexslider").flexslider
     animation: "slide",
-    animationLoop: false,
-    itemWidth: 210,
-    itemMargin: 5,
-    minItems: 2,
+    animationLoop: false
+    itemWidth: 210
+    itemMargin: 5
+    minItems: 2
     maxItems: 4
-    #pausePlay: true
-  });
+    slideshow: false
 
 
   # 添加车辆
