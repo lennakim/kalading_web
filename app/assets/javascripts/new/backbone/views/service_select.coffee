@@ -14,8 +14,8 @@ class App.Views.ServiceSelect extends Backbone.View
     @$total_price = @$(".total_price") #selector
     @$service_price = @$(".service_price") #selector
 
-    @order.set 'price', @$total_price.data('price')
-    @order.set 'car_id', $.cookie('car_id')
+    @order.set 'price',  @$total_price.data('price')
+    @order.set 'car_id', $(".second").data("car_id") #car_id
     @order.set 'service_price', @$service_price.data('price')
 
     @listenTo(@order, 'sync', @render)
@@ -62,6 +62,7 @@ class App.Views.ServiceSelect extends Backbone.View
       number: $(ele).attr('number')
 
     data_json = JSON.stringify(parts)
+
     $.cookie('parts', data_json)
 
     @order.set 'parts', parts
