@@ -48,7 +48,7 @@ $ ->
 
 
   #快捷车辆
-  $('.cars-list').on 'click','.car-item', ->
+  $('.items').on 'click','.car-item', ->
     $('.car-item').removeClass('selected')
     $(@).addClass('selected')
     car_id = $(@).data("car_id")
