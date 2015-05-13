@@ -25,8 +25,12 @@ class App.Models.Order extends Backbone.Model
         url: '/orders/refresh_price',
         data: data,
         success: (data) ->
+          console.log("refresh_price success")
           order.set 'price', data['result']['price']
           order.set 'service_price', data['result']['service_price']
           order.trigger 'sync'
         error: (data) ->
+          console.log("refresh_price error")
           order.trigger 'error'
+    else
+      console.log("data verification error")
