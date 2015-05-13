@@ -26,7 +26,7 @@
             <% end %>
 
               <div class="other">
-                <li data-part="service_price" class="cursor selected active">
+                <li data-part="service_price" class="cursor cto">
                   上门服务费
                   ￥ <b class="service_price"><%= @result['service_price'] %></b>
                 </li>
@@ -48,9 +48,8 @@
             </ul>
           <% end %>
 
-          <ul class="right items-list-small">
+          <ul class="right items-list-small hide">
             <li class="cursor all-undo">已有配件, 仅收上门费</li>
-            <li class="cursor undo">取消</li>
           </ul>
         <!--
           <ul class="right items-list">
