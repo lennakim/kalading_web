@@ -892,6 +892,60 @@ nav{
 
 .orders-detail{
   height: 1600px;
+  table{
+    width: 100%;
+    border-radius: 2px;
+  }
+  table,td{
+    border: 1px solid #ccc;
+    line-height: 30px;
+  }
+  td{
+    padding: 10px;
+    &:nth-child(odd){
+      width: 10%;
+    }
+  }
+  .order-info{
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    .item-price{
+      width: 60%;
+    }
+    .total-price{
+      width: 15%;
+      border: 0;
+      text-align: center;
+    }
+  }     
+  .btns{
+    line-height: 35px;
+    margin: 10px 0 0 40%;
+    width: 60%;
+    li{
+      width: 100px;
+      margin: 0 5px;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid #bfbfbf;
+      background: #eeeeee;
+      cursor: pointer;
+      cursor: hand;
+      &:hover{
+        background: $main-orange;
+        color: #fff;
+      }
+    }
+  }
+  .next-order{
+    display: block;
+    padding: 20px;
+    text-align: right;
+    color: #999999;
+  } 
+}
+.orders-detail,.know{
+  height: 1600px;
   background-image: image-url('new-order/bac.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -921,62 +975,40 @@ nav{
         h4{
           color: #333333;
         }
-        table{
-          width: 100%;
-          border-radius: 2px;
-        }
-        table,td{
-          border: 1px solid #ccc;
-          line-height: 30px;
-        }
-        td{
-          padding: 10px;
-          &:nth-child(odd){
-            width: 10%;
-          }
-        }
-        .order-info{
-          border: 1px solid #dbdbdb;
-          border-radius: 2px;
-          .item-price{
-            width: 60%;
-          }
-          .total-price{
-            width: 15%;
-            border: 0;
-            text-align: center;
-          }
-        }
-      }
-      .btns{
-        line-height: 35px;
-        margin: 10px 0 0 40%;
-        width: 60%;
-        li{
-          width: 100px;
-          margin: 0 5px;
-          text-align: center;
-          border-radius: 4px;
-          border: 1px solid #bfbfbf;
-          background: #eeeeee;
-          cursor: pointer;
-          cursor: hand;
-          &:hover{
-            background: $main-orange;
-            color: #fff;
-          }
-        }
-      }
-      .next-order{
-        display: block;
-        padding: 20px;
-        text-align: right;
-        color: #999999;
       }
     }
   }
 }
-
+.know{
+  li{
+    width: 48%;
+    line-height: 30px;
+    margin: 0 1%;
+    border-bottom: 1px solid #ccc;
+    &:before{
+      float: left;
+      content: '·';
+      width: 25px;
+      margin: 10px;
+      font-size: 100px;
+      color: #dddddd;
+    }
+    a{
+      float: left;
+      line-height: 60px;
+      color: #666666;
+      text-decoration: none;
+    }
+    &:hover{
+      &:before{
+        color: $main-orange;
+      }
+      a{
+        color: $main-orange;
+      }
+    }
+  }
+}
 
 
 
@@ -1083,5 +1115,118 @@ nav{
 
 .maintain-report{
 
+  .report .head{
+    @include border-radius(3px);
+    @include border-bottom-left-radius(0);
+    @include border-bottom-right-radius(0);
+    border: 1px solid #dcdcdc;
+    border-bottom: 0 none;
+    padding-left: 10px;
+    height: 45px;
+    background: #e5e5e5;
+    line-height: 45px;
+    a{
+      font-size: 14px;
+      color: #666666;
+    }
+  }
+
+  .tab-panel{
+    background: white;
+  }
+
+  ul.nav.nav-tabs{
+    border: 0 none;
+    background: white;
+    margin: 0 30px;
+    border-bottom: 2px solid #e5e5e5;
+    li{
+      a{
+        border: 0 none;
+        @include border-radius(0);
+        color: #666666;
+        margin-right: 0;
+        background: white;
+      }
+      &.active{
+        color: #e94609;
+        border-bottom: 4px solid #e94609;
+      }
+    }
+  }
+
   padding: 20px;
+  color: #666666;
+
+  .summary, .appearance, .elements, .others, .tire{
+    padding: 40px;
+    background: white;
+
+    .name{
+      color: #050505;
+      width: 180px;
+    }
+
+    .state{
+      &.on{
+        color: #008012;
+      }
+      &.off{
+        color: #ea4609;
+      }
+    }
+  }
+
+  .appearance, .elements, .others, .tire{
+    ul li{
+      margin-bottom: 10px;
+    }
+  }
+
+  .summary{
+    .big-chart{
+      position: relative;
+      .big-score{
+        font-size: 63px;
+        color: #ee7800;
+        font-weight: 100;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        width: 100%;
+      }
+      .cheliang-score{
+        font-size: 16px;
+        text-align: center;
+        position: absolute;
+        top: 103px;
+        width: 100%;
+      }
+    }
+    .scores{
+      li {
+        margin-bottom: 10px;
+        .name{
+          width: 120px;
+        }
+        .progress{
+          width: 176px;
+          height: 6px;
+          margin-top: 8px;
+          margin-bottom: 8px;
+          border: 1px solid #fcdbaa;
+          background-color: white;
+          @include box-shadow(0 0);
+          .progress-bar{
+            @include background-image(linear-gradient(92deg, #ffe779, #FCB499));
+            background-color: white;
+            @include box-shadow(0 0);
+          }
+        }
+        .score{
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 }
