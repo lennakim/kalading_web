@@ -763,6 +763,48 @@ nav{
     margin: -150px 100px;
     border-radius: 5px;
     background: #eee;
+
+    .maintain-histories{
+      margin-top: 20px;
+
+      .item{
+        height: 63px;
+        background: white;
+        margin-bottom: 20px;
+        line-height: 63px;
+        border: 1px solid #dbdbdb;
+        @include border-radius(2px);
+        .brand{
+          width: 430px;
+          margin-left: 20px;
+        }
+        .servedate{
+          width: 180px;
+          margin-left: 10px;
+        }
+        .btns{
+          margin-right: 20px;
+          a{
+            display: inline-block;
+            border: 1px solid #e94609;
+            @include border-radius(3px);
+            height: 36px;
+            width: 84px;
+            color: #e94609;
+            line-height: 34px;
+            margin-top: 10px;
+            text-align: center;
+            &:hover{
+              text-decoration: none;
+              background: #e94609;
+              color: white;
+            }
+          }
+        }
+      }
+
+    }
+
     .order-list{
       margin: 15px 0;
       border-radius: 3px;
@@ -819,7 +861,7 @@ nav{
             padding: 20px;
           }
           .origin{
-            color: #999999;  
+            color: #999999;
             text-decoration: line-through;
           }
           .more{
@@ -833,14 +875,14 @@ nav{
               width: 180px;
               line-height: 48px;
               padding: 10px 10px 0;
-              background-image: image-url('new-user/infoborder.png'); 
+              background-image: image-url('new-user/infoborder.png');
               background-size: 100% 100%;
               text-align: center;
             }
           }
           .now{
             padding-right: 20px;
-            background-image: image-url('new-user/privilege.png'); 
+            background-image: image-url('new-user/privilege.png');
             background-position: right;
             background-repeat: no-repeat;
             font-size: 20px;

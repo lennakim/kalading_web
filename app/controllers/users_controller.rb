@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def maintain_histories_list
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
-    # @maintain_orders = Order.maintain_histories_of 15901003277
+    @maintain_orders = Order.maintain_histories_of 15901003277
     # TODO
   end
 
