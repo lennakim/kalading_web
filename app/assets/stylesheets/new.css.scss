@@ -722,9 +722,10 @@ nav{
     .order-list{
       margin: 15px 0;
       border-radius: 3px;
-      background: #e5e5e5;
       .order-item{
-        border: 1px solid #ccc;
+        position: relative;
+        margin-bottom: 10px;
+        border: 1px solid #dcdcdc;
         border-radius: 3px;
         .top{
           line-height: 50px;
@@ -734,6 +735,12 @@ nav{
             p{
               margin: 0 20px;
             }
+          }
+          .finish-img{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
           }
         }
         .wait{
@@ -748,7 +755,10 @@ nav{
           .logo,.item-price,.total-price,.more{
             padding: 20px;
             height: 100%;
-            border-right: 1px solid #ccc;
+            border-right: 1px solid #e5e5e5;
+          }
+          .more,.operate{
+            color: #999999;
           }
           .logo{
             width: 20%;
@@ -756,6 +766,7 @@ nav{
           }
           .item-price{
             width: 40%;
+            color: #666666;
             .item{
               line-height: 30px;
             }
@@ -767,9 +778,29 @@ nav{
             color: #999999;  
             text-decoration: line-through;
           }
+          .more{
+            cursor: pointer;
+            cursor: hand;
+            text-align: center;
+            .phone{
+              position: absolute;
+              top: 56%;
+              right: 13%;
+              width: 180px;
+              line-height: 60px;
+              border: 1px solid red;
+              padding: 0 10px;
+              background: #fff;
+              text-align: center;
+            }
+          }
           .now{
+            padding-right: 20px;
+            background-image: image-url('new-user/privilege.png'); 
+            background-position: right;
+            background-repeat: no-repeat;
             font-size: 20px;
-            color: $main-orange;
+            color: #e94609;
           }
         }
       }
