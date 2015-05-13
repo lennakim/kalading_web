@@ -60,7 +60,7 @@ $ ->
     ele = $(@).find("a")
     link = ele.data("link")
     car_id = ele.attr("car_id")
-    type = URI().search(true)['type']
+    type = URI().search(true)['type'] || "bmt"
 
     if car_id?
       window.location.href = "#{link}?car_id=#{car_id}&type=#{type}"
