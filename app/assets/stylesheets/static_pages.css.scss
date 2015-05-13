@@ -161,8 +161,6 @@
             }
           }
         }
-
-
       }
     }
 
@@ -185,6 +183,8 @@
           .title  {
             font-size: 36px;
             font-weight: bold;
+            border-left: 0 none;
+            padding-left: 0px;
           }
           .desc{
             font-size: 16px;
@@ -320,7 +320,7 @@
             }
           }
         }
-        .boshis3, .boshis4{
+        .boshis3, .boshis4, .boshis5{
           border-right: 2px solid lightgray;
           .detail-desc{
             margin-bottom: 20px;
@@ -338,22 +338,11 @@
           }
         }
         .boshis5{
-          .detail-desc{
-            margin-bottom: 37px;
-          }
+          border-right: 0 none;
           .notice{
             width: 63%;
-            background-color: #e94609;
-            border-radius: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 20px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-            color: white;
           }
         }
-
       }
     }
   }
