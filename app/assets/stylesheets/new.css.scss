@@ -25,7 +25,6 @@ $nprogress-zindex: 10100;
 @import "new/posts";
 @import "static_pages";
 
-
 a:link[title="站长统计"]{
   display: none;
 }
@@ -179,7 +178,7 @@ nav{
     				position: absolute;
   		  		li{
   			    	float: left;
-  				    width: 100px;
+  				    width: 125px;
     					margin: 0 10px;
               font-size: 12px;
     					text-align: center;
@@ -726,7 +725,7 @@ nav{
           .sub2{
             ul{
               min-width: 300px;
-              margin-left: 64%;
+              margin-left: 62%;
             }
           }
         }
@@ -1088,4 +1087,9 @@ nav{
 .blank{
   line-height: 200px;
   text-align: center;
+}
+
+.maintain-report{
+
+  padding: 20px;
 }

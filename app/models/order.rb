@@ -50,6 +50,10 @@ class Order
       ServerApi.call "get", "api/v2/orders", { entry_id: id }
     end
 
+    def origin_find id
+      ServerApi.call "get", "orders", { entry_id: id }
+    end
+
     def cars_data city_id, type = "bmt"
       if type == 'pm25'
         ServerApi.call "get", "auto_sms_with_pm25", {city_id: city_id}
