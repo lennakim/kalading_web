@@ -7,16 +7,19 @@ class App.Views.ServiceSelect extends Backbone.View
     "click .items-list > li ": "switchRight"
     "click .undo ": "undoParts"
     "click .all-undo": "undoAllParts"
+    "click .cto": "serviceType"
 
   initialize: ->
     @order = new App.Models.Order
+
+    @service_type =  URI().search(true)['type']
 
     @$total_price = @$(".total_price") #selector
     @$service_price = @$(".service_price") #selector
 
     @order.set 'price',  @$total_price.data('price')
     @order.set 'car_id', $(".second").data("car_id") #car_id
-    @order.set 'service_price', @$service_price.data('price')
+    @order.set 'service_price', @$service_price.data('price') #bty service_price is zero
 
     @listenTo(@order, 'sync', @render)
     @listenTo(@order, 'error', @errorHandler)
@@ -27,8 +30,18 @@ class App.Views.ServiceSelect extends Backbone.View
     @$total_price.text(@order.get('price')) #渲染
     @$service_price.text(@order.get('service_price')) #渲染
 
+  serviceType: (e) =>
+    ele = $(".items-list-small")
+
+    if ele.hasClass("hide")
+      $("ul.right").addClass("hide")
+      ele.removeClass("hide")
+    else
+      ele.addClass("hide")
+
   switchLeft: (e) =>
     # http://stackoverflow.com/a/5680837/1240067
+    $(".items-list-small").addClass("hide") unless $(".items-list-small").hasClass("hide")
     self = $(e.target)
     index = self.index()
     self.addClass('active').siblings().removeClass('active')
@@ -36,6 +49,7 @@ class App.Views.ServiceSelect extends Backbone.View
 
   switchRight: (e) =>
     self = $(e.target)
+    self.addClass("active").siblings().removeClass('active')
     text = self.text()
     part = self.data('part')
     brand = self.attr('brand')

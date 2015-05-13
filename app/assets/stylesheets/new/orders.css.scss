@@ -19,7 +19,10 @@ $main-orange: #e94609;
   cursor: pointer;
   cursor: hand;
 }
-
+.special{
+  margin-top: -90px;
+  padding-top: 140px;
+}
 
 input.form-control, select.form-control, textarea.form-control{
   background: #eeeeee;
@@ -71,10 +74,12 @@ label{
 }
 
 .new-car-select{
-	margin-top: -90px;
+	margin-top: -110px;
 	.first, .second, .third, .no_car_type, .quick_select_car{
-		padding-top: 90px;
-		background-image: image-url('new-order/bac.png');
+		// background-image: image-url('new-order/bac.png');
+
+    background-image: image-url('new-index/background.jpg');
+
 		background-repeat: no-repeat;
 		.main{
 			width: 1030px;
@@ -178,9 +183,12 @@ label{
 		.flexslider{
 			width:100%;
 			margin: 20px 0;
+			.flex-viewport{
+				padding: 20px 0;
+			}
 		}
 		.flex-direction-nav a{
-			background-image: image-url('new-order/arr.png'); 
+			background-image: image-url('new-order/arr.png');
 		}
 		.flex-prev{
 			left: -40px;
@@ -203,6 +211,13 @@ label{
 			text-align: center;
 			.img{
 				line-height: 135px;
+				.car-logo{
+					height: 150px;
+				}
+			}
+			.brand-series-model{
+				height: 40px;
+				overflow: hidden;
 			}
 			&:hover{
 				border: 1px solid $main-orange;
@@ -388,6 +403,7 @@ label{
 		}
 	}
 	.second{
+		height: 1000px;
 		.maintain-items{
 		    .left,.right{
 				li{
@@ -434,10 +450,10 @@ label{
 		}
 	}
 	.third{
-		height: 1450px;
+		min-height: 1500px;
 		background-size:  100% 120%;
 		.maintain-items{
-		    height: 1100px;
+		    min-height: 1200px;
 		    .new-order-form{
 		    	.addr{
 		    		padding-bottom: 20px;

@@ -90,7 +90,17 @@
                     </div>
                 </div>
               <% else %>
-                <%= hidden_field_tag :phone_num, current_user.phone_number %>
+
+                <div class="info-group clearfix">
+                  <div class="info-title clearfix">
+                    <var class="star">*</var>
+                    <%= label_tag(:phone_num, "手机号码") %>
+                  </div>
+                  <div class="info-con form-inline">
+                    <input name="phone_num" class="phone_num form-control" value="<%= current_user.phone_number %>" readonly='true'>
+                  </div>
+                </div>
+
               <% end %>
               <div class="info-group clearfix">
                 <div class="info-title clearfix">
@@ -123,9 +133,9 @@
                 <div class="info-con form-inline">
                   <%= text_field_tag(:serve_date, "", required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
                   <select id="serve_period" name="serve_period" class='form-control'>
-                    <!-- <option value="8:00">8:00 &#45; 12:00</option> -->
-                    <!-- <option value="12:00">12:00 &#45; 17:00</option> -->
-                    <!-- <option value="17:00">17:00 &#45; 20:00</option> -->
+                    <option value="8:00">8:00 - 12:00</option>
+                    <option value="12:00">12:00 - 17:00</option>
+                    <option value="17:00">17:00 - 20:00</option>
                   </select>
                 </div>
               </div>

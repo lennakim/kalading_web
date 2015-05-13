@@ -43,6 +43,8 @@ class OrdersController < ApplicationController
       @last_select_car = Auto.api_find(car_id)
     end
 
+    @city_capacity = Order.city_capacity current_city_id
+
     if signed_in?
       @autos = current_user.autos.recent.unshift(@last_select_car) #放在第一個
     else
@@ -53,12 +55,12 @@ class OrdersController < ApplicationController
 
   def new_service_select
     @car_id = params[:car_id] || last_select_car
-    type = params[:type]
+    @type = params[:type]
 
     if @car_id.present?
       save_last_select_car @car_id # cookie 保存选车id
 
-      @result = Order.items_for2 @car_id, current_city_id, type
+      @result = Order.items_for2 @car_id, current_city_id, @type
     else
 
     end

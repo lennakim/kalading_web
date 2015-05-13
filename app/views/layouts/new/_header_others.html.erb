@@ -1,4 +1,4 @@
-<nav class="header-others static-pages">
+<nav class="header-others">
   <div class="kld-header">
     <div class="bac"></div>
     <div class="kld-header-wrap">
@@ -22,36 +22,35 @@
         <li class="home <%= "active" if params[:action] == "new_index" %>">
           <a href="/" class="cl-effect-1">首页</a>
         </li>
-        <li class="products <%= "active" if params[:action] == "new_car_select" %>">
-          <a href=""  class="cl-effect-1" onclick="return false;">预约服务</a>
+        <li class="products <%= "active" if params[:action] == "new_car_select" || params[:action] == "new_service_select" || params[:action] == "new_info_submit" %>">
+          <a href="/orders/new_car_select"  class="cl-effect-1">预约服务</a>
 
           <div class="sub2 hide">
             <div class="subbac"></div>
             <ul class="clearfix">
               <li>
-                <%= link_to "机油三滤", new_car_select_orders_path(type: 'bmt'), class: 'order-btn'%>
+                <%= link_to "机油三滤", new_car_select_orders_path(type: 'bmt'), class: 'order-btn', "data-type" => "bmt" %>
               </li>
               <li>
-                <%= link_to "机油机滤", new_car_select_orders_path(type: 'smt'), class: 'order-btn'%>
+                <%= link_to "机油机滤", new_car_select_orders_path(type: 'smt'), class: 'order-btn', "data-type" => "smt" %>
               </li>
               <li>
-                <%= link_to "PM2.5空调滤芯", new_car_select_orders_path(type: 'pm25'), class: 'order-btn'%>
+                <%= link_to "PM2.5空调滤芯", new_car_select_orders_path(type: 'pm25'), class: 'order-btn', "data-type" => "pm25" %>
               </li>
               <li>
-                <%= link_to "更换电瓶", new_car_select_orders_path(type: 'bty'), class: 'order-btn'%>
+                <%= link_to "更换电瓶", new_car_select_orders_path(type: 'bty'), class: 'order-btn', "data-type" => "bty" %>
               </li>
             </ul>
           </div>
 
         </li>
-        <li class="service <%= "active" if params[:action] == "new_service_select" %>">
-          <a href="/" class="cl-effect-1" target="_blank">服务内容</a>
+        <li class="service <%= "active" if params[:action] == "show" %>">
+          <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1">服务内容</a>
 
           <div class="sub2 hide">
             <div class="subbac"></div>
             <ul class="clearfix">
               <li>
-                <a href=""></a>
                 <%= link_to "服务流程", static_page_path(id: 'fu-wu-liu-cheng') %>
               </li>
               <li>
@@ -61,16 +60,17 @@
                 <%= link_to "机油机滤", static_page_path(id: 'ji-you-ji-lv') %>
               </li>
               <li>
-                <%= link_to "更换电瓶", '#' %>
+                <%= link_to "更换电瓶", static_page_path(id: 'geng-huan-dian-ping') %>
               </li>
             </ul>
           </div>
         </li>
         <li class="team">
           <a href="" class="cl-effect-1" class="cl-effect-1">城市团队</a>
+
           <div class="sub2 hide">
             <div class="subbac"></div>
-            <ul class="clearfix">
+            <ul>
               <li>
                 <a href="">服务城市</a>
               </li>
@@ -79,6 +79,7 @@
               </li>
             </ul>
           </div>
+
         </li>
 
         <li class="about">
@@ -96,17 +97,31 @@
           <%= link_to "用车知识", slug_posts_path(20, 'knowledge'), class: 'cl-effect-1' %>
         </li>
 
-        <li class="log-btn">
+        <li class="log-btn <%= "active" if params[:action] == "orders" || params[:action] == "maintain_histories_list" || params[:action] == "orders_detail" %>">
           <% if !signed_in? %>
             <a href="#" id="login_btn" class="cl-effect-1">
               登陆
             </a>
           <% else %>
-            <a href="#">退出</a>
+            <%= link_to "个人中心", orders_users_path, class: 'cl-effect-1' %>
+            <div class="sub2 hide">
+              <div class="subbac"></div>
+              <ul class="clearfix">
+                <li>
+                  <%= link_to "我的订单", orders_users_path %>
+                </li>
+                <li>
+                  <%= link_to "保养记录", maintain_histories_list_users_path %>
+                </li>
+                <li>
+                  <%= link_to '登出', sessions_path, method: :delete %>
+                </li>
+              </ul>
+            </div>
+
           <% end %>
         </li>
       </ul>
     </div>
   </div>
-
 </nav>

@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   before_action :need_login, only: [:orders, :maintain_histories_list, :maintain_history, :settings, :update, :cars, :balance]
 
-
   layout "new"
 
   def index
@@ -27,15 +26,16 @@ class UsersController < ApplicationController
   def orders
     # @orders = Order.get_orders_of(current_user.phone_number)['data']
     @orders = Order.get_orders_of('13501319000')['data']
-
   end
 
-  def order_detail
+  def orders_detail
+    id = params[:id]
+    @order = Order.origin_find id
   end
 
   def maintain_histories_list
-    @maintain_orders = Order.maintain_histories_of current_user.phone_number
-    # @maintain_orders = Order.maintain_histories_of 15901003277
+    # @maintain_orders = Order.maintain_histories_of current_user.phone_number
+    @maintain_orders = Order.maintain_histories_of 15901003277
     # TODO
   end
 

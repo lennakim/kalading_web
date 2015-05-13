@@ -50,9 +50,9 @@ $ ->
     $.post("/cities/#{ id }/set")
 
   $('.header .kld-header-link').on 'mouseover','li', ->
-  	$(@).addClass('selected').siblings().removeClass('selected')
+    $(@).addClass('selected').siblings().removeClass('selected')
   $('.header .kld-header-link').on 'mouseleave','li', ->
-  	$(@).removeClass('selected')
+    $(@).removeClass('selected')
 
   $('.products').on 'mouseenter', ->
     $('.header .kld-header-wrap').addClass('toggle')
@@ -63,29 +63,21 @@ $ ->
     $('.slogan1').addClass('hide')
     $('.slogan2').removeClass('hide')
 
-
   $('.products').on 'mouseleave', ->
     $(@).find('.sub').stop().animate({'height':'0'},500, ->
       $('.header .kld-header-wrap').removeClass('toggle')
-    )
-
-  $('.header-others .kld-header-link').on 'mouseover','li', ->
-    $('.sub2').addClass('hide')
-    $(@).find('.sub2').removeClass('hide')
-
-  # $('.header-others .products,.header-others .service,.header-others .team,.header-others .about').on 'mouseleave', ->
-  #   $(@).find('.sub2').addClass('hide')
-
-  $('.sub').on 'mouseleave', ->
-    $(@).stop().animate({'height':'0'},500, ->
-      $(@).removeClass('toggle')
-    )
-    $('.kld-header-wrap').animate({'':''},500, ->
       $('.logo').removeClass('hide')
       $('.logored').addClass('hide')
       $('.slogan1').removeClass('hide')
       $('.slogan2').addClass('hide')
     )
+
+  $('.active .sub2').removeClass('hide')
+
+  # $('.sub').on 'mouseleave', ->
+  #   $(@).stop().animate({'height':'0'},500, ->
+  #     $(@).removeClass('toggle')
+  #   )
 
 
   $('.product').on 'mouseover','li', ->
@@ -95,6 +87,15 @@ $ ->
   $('.product').on 'mouseout','li', ->
     $(@).find('.key,.pic2').addClass('hide')
     $(@).find('.pic1').removeClass('hide')
+
+
+  if $('.user-info').length > 0
+    if $('.status').hasClass('finish')
+      $('.status span').addClass('hide').next().removeClass('hide')
+
+    $('.technician').click ->
+      $('.phone').removeClass('hide')
+
 
 
   # 短信验证码

@@ -4,10 +4,18 @@
 #= require_self
 
 $ ->
+  if $(".first").length > 0
+    car_select = new App.Views.CarSelect #调用Backbone
 
-  car_select = new App.Views.CarSelect #调用Backbone
-
-  service_select = new App.Views.ServiceSelect
+  if $(".second").length > 0
+    service_select = new App.Views.ServiceSelect
+    #替換 sub2 url
+    uri = URI()
+    car_id = uri.search(true)['car_id']
+    _.each $(".products .sub2 ul").find("a"), (ele)->
+      type =  $(ele).data("type")
+      path = uri.search({car_id: car_id, type: type })
+      $(ele).attr("href", path)
 
   #------选车型---------
 
@@ -59,21 +67,21 @@ $ ->
     ele = $(@).find("a")
     link = ele.data("link")
     car_id = ele.attr("car_id")
+    type = URI().search(true)['type'] || "bmt"
 
     if car_id?
-      window.location.href = "#{link}?car_id=#{car_id}"
+      window.location.href = "#{link}?car_id=#{car_id}&type=#{type}"
     else
       alert("請選擇車輛")
 
-  $(".flexslider").flexslider({
+  $(".flexslider").flexslider
     animation: "slide",
-    animationLoop: false,
-    itemWidth: 210,
-    itemMargin: 5,
-    minItems: 2,
+    animationLoop: false
+    itemWidth: 210
+    itemMargin: 5
+    minItems: 2
     maxItems: 4
-    #pausePlay: true
-  });
+    slideshow: false
 
 
   # 添加车辆
@@ -95,7 +103,7 @@ $ ->
 
   # order form page
 
-  if $('.new-order-form').length > 0
+  if $('.new-order-form, .no_car_type').length > 0
 
     $("#place_order_form").on "ajax:before", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)
@@ -108,6 +116,46 @@ $ ->
         $('.addr .edit').removeClass('hide')
       else
         $('.addr .edit').addClass('hide')
+
+    ####  以下为下单页面城市选择部分  ####
+
+    $("#service_districts").chained("#service_cities")
+    $('#service_districts').on 'change', (e) ->
+      city = $("#service_cities").val()
+      district = $("#service_districts").val()
+      ac.setInputValue "#{city}#{district}"
+
+    # add address modal
+    $("#add_address_modal").on "click", ".add-address > button", (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      $(@).addClass('disabled')
+      $modal = $(e.delegateTarget)
+      city = $modal.find('select.city').val()
+      district = $modal.find('select.district').val()
+
+      detail = $modal.find('#address_detail').val()
+      if $.trim(detail) != ""
+        $.post "/service_addresses", { service_address: { city: city, district: district, detail: detail } }
+
+      else
+        $modal.find("#address_detail").closest(".form-group").addClass("has-error")
+
+    $("#add_address_modal").on "hidden.bs.modal", ->
+      $(@).find(".add-address > button").removeClass('disabled')
+
+    $("#address_detail").on "keyup", (e) ->
+      $button = $("#add_address_modal .add-address > button")
+      if e.keyCode == 13 && !$button.hasClass('disabled')
+        $button.trigger "click"
+
+    ####  以上为下单页面城市选择部分  ####
+
+    # select address
+    $(".addresses .add > a").on "click", (e)->
+      e.stopPropagation()
+      e.preventDefault()
+      $("#add_address_modal").modal()
 
     $('.addresses').on 'change', '.service-address-item input[type=radio]', (e) ->
       id = $(@).data('id')
@@ -148,6 +196,7 @@ $ ->
           set_serve_date data
 
     set_serve_date = (date) ->
+
       activity_id = $("#activity_id").val()
 
       min = new Date(_.first(_.keys(date)))
@@ -212,12 +261,15 @@ $ ->
       close: "关闭"
     })
 
+    # 設定 服务时间
     set_serve_date $('#serve_date').data('cc')
 
     $.validator.addMethod "regx", (value, element, regexpr) ->
       regexpr.test(value)
     ,  "车牌号不合法"
 
+
+    ###### js validate ####
     $("#place_order_form").validate
 
       highlight: (element, errorClass, validClass) ->

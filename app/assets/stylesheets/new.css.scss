@@ -25,7 +25,6 @@ $nprogress-zindex: 10100;
 @import "new/posts";
 @import "static_pages";
 
-
 a:link[title="站长统计"]{
   display: none;
 }
@@ -37,6 +36,10 @@ body{
 *{
 	margin: 0;
 	padding: 0;
+}
+.special{
+  margin-top: -90px;
+  padding-top: 140px;
 }
 nav{
   font-size: 14px;
@@ -112,7 +115,7 @@ nav{
 
       .kld-header-logo{
         width: 35%;
-        margin: 20px 0;
+        margin: 25px 0;
         .kld-header-logo-img,.kld-header-logo-slogan{
           float: left;
         }
@@ -158,6 +161,10 @@ nav{
             top: 10px;
             min-width: 400px;
             margin-left: 38%;
+            .special{
+              margin: 0;
+              padding: 0;
+            }
           }
         }
   		  .sub,.sub2{
@@ -171,7 +178,7 @@ nav{
     				position: absolute;
   		  		li{
   			    	float: left;
-  				    width: 100px;
+  				    width: 125px;
     					margin: 0 10px;
               font-size: 12px;
     					text-align: center;
@@ -221,7 +228,7 @@ nav{
     left: 0px;
     z-index: 0;
     width: 100%;
-    height: 570px;
+    height: 680px;
     overflow: hidden;
 }
 .cb-slideshow:after {
@@ -268,7 +275,10 @@ nav{
     line-height: 200px;
   color: #e94609;
 }
-.cb-slideshow li:nth-child(1) span { background-image: image-url("new-index/banner.jpg") }
+.cb-slideshow li:nth-child(1) span {
+  background-image: image-url("new-index/banner.jpg");
+}
+
 .cb-slideshow li:nth-child(2) span {
     background-image: image-url("new-index/banner.jpg");
     -webkit-animation-delay: 6s;
@@ -596,37 +606,79 @@ nav{
         }
       }
       .kld-header-link{
-        .cl-effect-1:before,.cl-effect-1:after {
-          display: inline-block;
-          opacity: 0;
-          -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-          -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-          transition: transform 0.3s, opacity 0.2s;
-        }
 
-        .cl-effect-1:before {
-          margin-right: 10px;
-          content: '[';
-          -webkit-transform: translateX(20px);
-          -moz-transform: translateX(20px);
-          transform: translateX(20px);
-        }
+        li{
+          .cl-effect-1:before,.cl-effect-1:after {
+            display: inline-block;
+            opacity: 0;
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+            -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+            transition: transform 0.3s, opacity 0.2s;
+          }
 
-        .cl-effect-1:after {
-          margin-left: 10px;
-          content: ']';
-          -webkit-transform: translateX(-20px);
-          -moz-transform: translateX(-20px);
-          transform: translateX(-20px);
+          .cl-effect-1:before {
+            margin-right: 10px;
+            content: '[';
+            -webkit-transform: translateX(20px);
+            -moz-transform: translateX(20px);
+            transform: translateX(20px);
+          }
+
+          .cl-effect-1:after {
+            margin-left: 10px;
+            content: ']';
+            -webkit-transform: translateX(-20px);
+            -moz-transform: translateX(-20px);
+            transform: translateX(-20px);
+          }
+          .cl-effect-1:hover::before,
+          .cl-effect-1:hover::after,
+          .cl-effect-1:focus::before,
+          .cl-effect-1:focus::after {
+            opacity: 1;
+            -webkit-transform: translateX(0px);
+            -moz-transform: translateX(0px);
+            transform: translateX(0px);
+          }
         }
-        .cl-effect-1:hover::before,
-        .cl-effect-1:hover::after,
-        .cl-effect-1:focus::before,
-        .cl-effect-1:focus::after {
-          opacity: 1;
-          -webkit-transform: translateX(0px);
-          -moz-transform: translateX(0px);
-          transform: translateX(0px);
+        .active{
+          .cl-effect-1:before,.cl-effect-1:after {
+            display: inline-block;
+            opacity: 1;
+          }
+          .cl-effect-1:before {
+            float: left;
+            margin-left: -10px;
+            content: '[';
+            -webkit-transform: translateX(20px);
+            -moz-transform: translateX(20px);
+            transform: translateX(20px);
+          }
+          .cl-effect-1:hover::before {
+            float: left;
+            margin-left: -10px;
+            content: '[';
+            -webkit-transform: translateX(20px);
+            -moz-transform: translateX(20px);
+            transform: translateX(20px);
+          }
+
+          .cl-effect-1:after {
+            float: right;
+            margin-right: -10px;
+            content: ']';
+            -webkit-transform: translateX(-20px);
+            -moz-transform: translateX(-20px);
+            transform: translateX(-20px);
+          }
+          .cl-effect-1:hover::after {
+            float: right;
+            margin-right: -10px;
+            content: ']';
+            -webkit-transform: translateX(-20px);
+            -moz-transform: translateX(-20px);
+            transform: translateX(-20px);
+          }
         }
         .sub2{
           height: 40px;
@@ -669,6 +721,14 @@ nav{
             }
           }
         }
+        .log-btn{
+          .sub2{
+            ul{
+              min-width: 300px;
+              margin-left: 62%;
+            }
+          }
+        }
         .active{
           a{
             color: #fff;
@@ -681,9 +741,7 @@ nav{
 
 .user-info{
   height: 1000px;
-  margin-top: -90px;
-  padding-top: 140px;
-  background-image: image-url('new-order/bac.png');
+  background-image: image-url('new-index/background.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   .main{
@@ -719,12 +777,55 @@ nav{
     margin: -150px 100px;
     border-radius: 5px;
     background: #eee;
+
+    .maintain-histories{
+      margin-top: 20px;
+
+      .item{
+        height: 63px;
+        background: white;
+        margin-bottom: 20px;
+        line-height: 63px;
+        border: 1px solid #dbdbdb;
+        @include border-radius(2px);
+        .brand{
+          width: 430px;
+          margin-left: 20px;
+        }
+        .servedate{
+          width: 180px;
+          margin-left: 10px;
+        }
+        .btns{
+          margin-right: 20px;
+          a{
+            display: inline-block;
+            border: 1px solid #e94609;
+            @include border-radius(3px);
+            height: 36px;
+            width: 84px;
+            color: #e94609;
+            line-height: 34px;
+            margin-top: 10px;
+            text-align: center;
+            &:hover{
+              text-decoration: none;
+              background: #e94609;
+              color: white;
+            }
+          }
+        }
+      }
+
+    }
+
     .order-list{
       margin: 15px 0;
       border-radius: 3px;
-      background: #e5e5e5;
       .order-item{
-        border: 1px solid #ccc;
+        position: relative;
+        margin-bottom: 10px;
+        border: 1px solid #dcdcdc;
         border-radius: 3px;
         .top{
           line-height: 50px;
@@ -734,6 +835,12 @@ nav{
             p{
               margin: 0 20px;
             }
+          }
+          .finish-img{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
           }
         }
         .wait{
@@ -748,7 +855,10 @@ nav{
           .logo,.item-price,.total-price,.more{
             padding: 20px;
             height: 100%;
-            border-right: 1px solid #ccc;
+            border-right: 1px solid #e5e5e5;
+          }
+          .more,.operate{
+            color: #999999;
           }
           .logo{
             width: 20%;
@@ -756,6 +866,7 @@ nav{
           }
           .item-price{
             width: 40%;
+            color: #666666;
             .item{
               line-height: 30px;
             }
@@ -764,12 +875,35 @@ nav{
             padding: 20px;
           }
           .origin{
-            color: #999999;  
+            color: #999999;
             text-decoration: line-through;
           }
+          .more{
+            cursor: pointer;
+            cursor: hand;
+            text-align: center;
+            .phone{
+              position: absolute;
+              top: 56%;
+              right: 11%;
+              width: 180px;
+              line-height: 48px;
+              padding: 10px 10px 0;
+              background-image: image-url('new-user/infoborder.png');
+              background-size: 100% 100%;
+              text-align: center;
+            }
+            a{
+              color: #999999;
+            }
+          }
           .now{
+            padding-right: 20px;
+            background-image: image-url('new-user/privilege.png');
+            background-position: right;
+            background-repeat: no-repeat;
             font-size: 20px;
-            color: $main-orange;
+            color: #e94609;
           }
         }
       }
@@ -777,7 +911,79 @@ nav{
   }
 }
 
-
+.orders-detail{
+  height: 1500px;
+  background-image: image-url('new-order/bac.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  .main{
+    width: 1030px;
+    margin: 50px auto;
+    .content{
+      margin: -15px 40px;
+      padding: 10px;
+      border-radius: 5px;
+      background: #eee;
+      .top{
+        line-height: 50px;
+        padding: 0 10px;
+        border-radius: 3px 3px 0 0;
+        border: 1px solid #dbdbdb;
+        a{
+          color: #8c8c8c;
+        }
+      }
+      .con{
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #dbdbdb;
+        border-top: 0;
+        border-radius: 0 0 3px 3px;
+        h4{
+          color: #333333;
+        }
+        table{
+          width: 100%;
+        }
+        table,td{
+          border: 1px solid #ccc;
+          line-height: 30px;
+        }
+        td{
+          padding: 10px;
+          &:nth-child(odd){
+            width: 10%;
+          }
+        }
+      }
+      .btns{
+        line-height: 35px;
+        margin: 10px 0 0 40%;
+        width: 60%;
+        li{
+          width: 100px;
+          margin: 0 5px;
+          text-align: center;
+          border-radius: 4px;
+          border: 1px solid #bfbfbf;
+          background: #eeeeee;
+          cursor: pointer;
+          cursor: hand;
+          &:hover{
+            background: $main-orange;
+            color: #fff;
+          }
+        }
+      }
+      .next-order{
+        display: block;
+        padding: 20px;
+        text-align: right;
+        color: #999999;
+      }
+    }
+  }
+}
 
 
 
@@ -878,3 +1084,12 @@ nav{
   }
 }
 
+.blank{
+  line-height: 200px;
+  text-align: center;
+}
+
+.maintain-report{
+
+  padding: 20px;
+}
