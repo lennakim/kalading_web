@@ -16,6 +16,8 @@
 #= require nprogress-turbolinks
 
 #= require jstorage
+#= require jquery.flexslider-min
+#= require jquery.easing.min
 
 #= require underscore
 #= require backbone
