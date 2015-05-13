@@ -785,12 +785,12 @@ nav{
             .phone{
               position: absolute;
               top: 56%;
-              right: 13%;
+              right: 11%;
               width: 180px;
-              line-height: 60px;
-              border: 1px solid red;
-              padding: 0 10px;
-              background: #fff;
+              line-height: 48px;
+              padding: 10px 10px 0;
+              background-image: image-url('new-user/infoborder.png'); 
+              background-size: 100% 100%;
               text-align: center;
             }
           }
