@@ -208,6 +208,13 @@ label{
 			text-align: center;
 			.img{
 				line-height: 135px;
+				.car-logo{
+					height: 150px;
+				}
+			}
+			.brand-series-model{
+				height: 40px;
+				overflow: hidden;
 			}
 			&:hover{
 				border: 1px solid $main-orange;
@@ -443,7 +450,7 @@ label{
 		height: 1500px;
 		background-size:  100% 120%;
 		.maintain-items{
-		    height: 1150px;
+		    height: 1200px;
 		    .new-order-form{
 		    	.addr{
 		    		padding-bottom: 20px;
