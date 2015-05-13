@@ -63,7 +63,6 @@ $ ->
     $('.slogan1').addClass('hide')
     $('.slogan2').removeClass('hide')
 
-
   $('.products').on 'mouseleave', ->
     $(@).find('.sub').stop().animate({'height':'0'},500, ->
       $('.header .kld-header-wrap').removeClass('toggle')
@@ -97,7 +96,7 @@ $ ->
     $(@).find('.pic1').removeClass('hide')
 
 
-  if $('.user-info').length > 0 
+  if $('.user-info').length > 0
     if $('.status').hasClass('finish')
       $('.status span').addClass('hide').next().removeClass('hide')
 

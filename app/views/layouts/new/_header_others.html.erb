@@ -61,7 +61,7 @@
                 <%= link_to "机油机滤", static_page_path(id: 'ji-you-ji-lv') %>
               </li>
               <li>
-                <%= link_to "更换电瓶", '#' %>
+                <%= link_to "更换电瓶", static_page_path(id: 'geng-huan-dian-ping') %>
               </li>
             </ul>
           </div>
@@ -102,7 +102,23 @@
               登陆
             </a>
           <% else %>
-            <a href="#">退出</a>
+
+            <%= link_to "个人中心", orders_users_path, class: 'cl-effect-1' %>
+            <div class="sub2 hide">
+              <div class="subbac"></div>
+              <ul class="clearfix">
+                <li>
+                  <%= link_to "我的订单", orders_users_path %>
+                </li>
+                <li>
+                  <%= link_to "保养记录", maintain_histories_list_users_path %>
+                </li>
+                <li>
+                  <%= link_to '登出', sessions_path, method: :delete %>
+                </li>
+              </ul>
+            </div>
+
           <% end %>
         </li>
       </ul>
