@@ -76,7 +76,10 @@ label{
 .new-car-select{
 	margin-top: -110px;
 	.first, .second, .third, .no_car_type, .quick_select_car{
-		background-image: image-url('new-order/bac.png');
+		// background-image: image-url('new-order/bac.png');
+
+    background-image: image-url('new-index/background.jpg');
+
 		background-repeat: no-repeat;
 		.main{
 			width: 1030px;
@@ -185,7 +188,7 @@ label{
 			}
 		}
 		.flex-direction-nav a{
-			background-image: image-url('new-order/arr.png'); 
+			background-image: image-url('new-order/arr.png');
 		}
 		.flex-prev{
 			left: -40px;

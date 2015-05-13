@@ -276,7 +276,10 @@ nav{
     line-height: 200px;
   color: #e94609;
 }
-.cb-slideshow li:nth-child(1) span { background-image: image-url("new-index/banner.jpg") }
+.cb-slideshow li:nth-child(1) span {
+  background-image: image-url("new-index/banner.jpg");
+}
+
 .cb-slideshow li:nth-child(2) span {
     background-image: image-url("new-index/banner.jpg");
     -webkit-animation-delay: 6s;
@@ -739,7 +742,7 @@ nav{
 
 .user-info{
   height: 1000px;
-  background-image: image-url('new-order/bac.png');
+  background-image: image-url('new-index/background.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   .main{
