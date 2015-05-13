@@ -1,24 +1,39 @@
-<p>
-  前雨刷：
-  <span class='<%= status_class report['front_wiper_desc'] %>'>
-  	<%= front_wiper_desc_mapper report['front_wiper_desc'] %>
-  </span>
-</p>
-<p>
-  后雨刷：
-  <span class='<%= status_class report['back_wiper_desc'] %>'>
-  	<%= back_wiper_desc_mapper report['back_wiper_desc'] %>
-  </span>
-</p>
-<p>
-  灭火器：
-  <span class='<%= status_class report['extinguisher_desc'] %>'>
-  	<%= extinguisher_desc_mapper report['extinguisher_desc'] %>
-  </span>
-</p>
-<p>
-  警示牌：
-  <span class='<%= status_class report['warning_board_desc'] %>'>
-  	<%= warning_board_desc_mapper report['warning_board_desc'] %>
-  </span>
-</p>
+<div class="others">
+  <ul>
+    <li class='clearfix'>
+      <div class="name pull-left">
+        前雨刷
+      </div>
+      <div class="state pull-left <%= status_class report['front_wiper_desc'] %>">
+        <%= front_wiper_desc_mapper report['front_wiper_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        后雨刷
+      </div>
+      <div class="state pull-left <%= status_class report['back_wiper_desc'] %>">
+        <%= back_wiper_desc_mapper report['back_wiper_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        灭火器
+      </div>
+      <div class="state pull-left <%= status_class report['extinguisher_desc'] %>">
+        <%= extinguisher_desc_mapper report['extinguisher_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        警示牌
+      </div>
+      <div class="state pull-left <%= status_class report['warning_board_desc'] %>">
+        <%= warning_board_desc_mapper report['warning_board_desc'] %>
+      </div>
+    </li>
+  </ul>
+</div>

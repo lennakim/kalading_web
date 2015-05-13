@@ -272,34 +272,4 @@ module MaintainHistoriesHelper
     }[key.to_s]
   end
 
-  def chart_num num
-    case num
-    when 0
-      1
-    when 1 ... 30
-      2
-    when 30
-      3
-    when 30 ...40
-      4
-    when 40
-      5
-    when 40 ... 50
-      6
-    when 50
-      7
-    when 50 ... 80
-      8
-    when 80
-      9
-    when 80 ... 90
-      10
-    when 90
-      11
-    when 90 ... 100
-      12
-    when 100
-      13
-    end
-  end
 end
