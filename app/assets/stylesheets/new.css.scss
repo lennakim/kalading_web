@@ -891,6 +891,9 @@ nav{
               background-size: 100% 100%;
               text-align: center;
             }
+            a{
+              color: #999999;
+            }
           }
           .now{
             padding-right: 20px;
@@ -906,7 +909,55 @@ nav{
   }
 }
 
+.orders-detail{
+  height: 1500px;
+  background-image: image-url('new-order/bac.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  .main{
+    width: 1030px;
+    margin: 0 auto;
+    .content{
+      margin: -15px 40px;
+      padding: 10px;
+      border-radius: 5px;
+      background: #eee;
+      .top{
+        line-height: 50px;
+        padding: 0 10px;
+        border-radius: 3px 3px 0 0;
+        border: 1px solid #dbdbdb;
+        a{
+          color: #8c8c8c;
+        }
+      }
+      .con{
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #dbdbdb;
+        border-top: 0;
+        border-radius: 0 0 3px 3px;
+        h4{
+          color: #333333;
+        }
+        table{
+          width: 100%;
+        }
+        table,td{
+          border: 1px solid #ccc;
+          line-height: 30px;
+        }
+        td{
+          padding: 10px;
+          &:nth-child(odd){
+            width: 10%;
+          }
+        }
+      }
+    }
 
+  }
+}
 
 
 

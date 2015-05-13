@@ -418,8 +418,10 @@ class OrdersController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    @order = Order.find(id)['data']
+    # id = params[:id]
+    # @order = Order.find(id)['data']
+
+    render layout: 'new'
   end
 
   def success
