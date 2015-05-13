@@ -85,7 +85,7 @@ label{
 			    font-size: 16px;
 			}
 			.maintain-items{
-			    margin: -15px 0 0 35px;
+			    margin: 85px 0 0 35px;
 			    width: 95%;
 			    padding: 0 40px 40px;
 			    border-radius: 5px;
@@ -96,11 +96,13 @@ label{
 			line-height: 40px;
 			text-align: center;
 		}
+		.tag2{
+			float: left;
+		}
 		.prev,.next{
-			position: absolute;
-			left: 47%;
-			width: 66px;
-			height: 60px;
+			float: left;
+		    width: 64px;
+		    height: 60px;
 			background-repeat: no-repeat;
 			font-size: 20px;
 			text-align: center;
@@ -112,6 +114,12 @@ label{
 				color: #fff;
 				text-decoration: none;
 			}
+		}
+		.prev{
+		    margin-left: 36%;
+		}
+		.next{
+			margin: 20px 47%;
 		}
 		.translate-next{
 		    animation:translate-next-animate 2s linear infinite;
@@ -130,8 +138,6 @@ label{
 	}
 	.second,.third{
 		.prev{
-  			top: 30px;
-  			left: 48%;
   			a{
 				padding-top: 32px;
 				background-image: image-url('new-order/prevbtn.png');
@@ -143,6 +149,9 @@ label{
 	    	padding: 25px 0;
 	    	margin-top: 0;
 	    	border-bottom: 2px solid #e0e0e0;
+	    	.address-manage{
+				color: #666;
+	    	}
 	    	.name{
 		    	float: left;
 		    }
@@ -366,7 +375,6 @@ label{
 	.second{
 		.maintain-items{
 		    .left,.right{
-				float: left;
 				li{
 					border: 1px solid #ccc;
 					border-radius: 2px;
@@ -375,6 +383,7 @@ label{
 		    }
 		    .left{
 		    	width: 30%;
+		    	float: left;
 		    	margin-right: 5%;
 		    	li{
 		    		height: 40px;
@@ -390,6 +399,7 @@ label{
 		    	}
 		    }
 		    .right{
+		    	float: right;
 		    	width: 65%;
 				margin: 20px 0;
 				padding: 20px 30px;
@@ -501,7 +511,6 @@ label{
 		}
 		.submit{
 			float: right;
-  			margin: 20px 20px;
 			width: 130px;
 			line-height: 35px;
 			background: $main-orange;
@@ -511,7 +520,7 @@ label{
 		}
 	}
 	.no_car_type{
-		height: 750px;
+		padding-bottom: 100px;
 		background-size: 100% 100%;
 		.items{
 			margin-bottom: 20px;
@@ -519,7 +528,7 @@ label{
 		.left,.center,.right{
 			float: left;
 			width: 33%;
-			min-width: 330px;
+			min-width: 326px;
 			.info-group{
 				height: 60px;
 				padding: 5px 0;
@@ -545,13 +554,13 @@ label{
 				    padding: 0 5px;
 				}
 				.verification_code{
-					width: 97px;
+					width: 54%;
 				}
 				#car_num{
-					width: 147px;
+					width: 73%;
 				}
 				#serve_date{
-					width: 152px;
+					width: 76%;
 				}
 				#get_code{
 					border: 0;

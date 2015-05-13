@@ -577,7 +577,6 @@ nav{
 
 
 .header-others{
-
 	.kld-header{
 	  height: 90px;
     a{
@@ -661,6 +660,14 @@ nav{
             }
           }
         }
+        .about{
+          .sub2{
+            ul{
+              min-width: 100px;
+              margin-left: 71%;
+            }
+          }
+        }
         .active{
           a{
             color: #fff;
@@ -670,6 +677,51 @@ nav{
     }
 	}
 }
+
+.user-info{
+  margin-top: -90px;
+  padding-top: 140px;
+  background-image: image-url('new-order/bac.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  .user-info-main{
+    padding: 50px 0;
+    .items,.content{
+      float: left;
+    }
+  }
+  .items{
+    width: 12%;
+    height: 200px;
+    line-height: 30px;
+    padding: 20px;
+    background-image: image-url('new-user/border.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    a{
+      color: $main-orange;
+      text-decoration: none;
+      &:hover{
+        padding-left: 30px;
+        color: #fff;
+      }
+    }
+  }
+  .content{
+    width: 86%;
+    min-height: 180px;
+    margin: -150px 120px;
+    border-radius: 5px;
+    background: #eee;
+  }
+}
+
+
+
+
+
+
+
 
 .hide {
   display: none;

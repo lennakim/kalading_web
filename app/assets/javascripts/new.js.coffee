@@ -52,7 +52,7 @@ $ ->
   $('.header .kld-header-link').on 'mouseleave','li', ->
   	$(@).removeClass('selected')
 
-  $('.header .products').on 'mouseenter', ->
+  $('.products').on 'mouseenter', ->
     $('.header .kld-header-wrap').addClass('toggle')
     $(@).find('.sub').stop().animate({'height':'100px'},500)
 
@@ -62,18 +62,19 @@ $ ->
     $('.slogan2').removeClass('hide')
 
 
-  $('.header .products').mouseleave ->
+  $('.products').on 'mouseleave', ->
     $(@).find('.sub').stop().animate({'height':'0'},500, ->
       $('.header .kld-header-wrap').removeClass('toggle')
     )
 
-  $('.header-others .products,.header-others .service,.header-others .team').on 'mouseenter', ->
+  $('.header-others .kld-header-link').on 'mouseover','li', ->
+    $('.sub2').addClass('hide')
     $(@).find('.sub2').removeClass('hide')
 
-  $('.header-others .products,.header-others .service,.header-others .team').on 'mouseleave', ->
-    $(@).find('.sub2').addClass('hide')
+  # $('.header-others .products,.header-others .service,.header-others .team,.header-others .about').on 'mouseleave', ->
+  #   $(@).find('.sub2').addClass('hide')
 
-  $('.header .sub').mouseleave ->
+  $('.sub').on 'mouseleave', ->
     $(@).stop().animate({'height':'0'},500, ->
       $(@).removeClass('toggle')
     )
@@ -125,3 +126,13 @@ $ ->
             else
               alert('请输入正确手机号')
               $('.get_code').removeClass('disable').removeAttr('disabled')
+
+    $("#submit_button").on "click", ->
+      $("#submit_button").addClass('disable').attr('disabled','disabled')
+      phone_num = $("#phone_num").val()
+      verification_code = $("#verification_code").val()
+
+      csrf_token = $("meta[name='csrf-token']").attr('content')
+      data = { phone_num: phone_num, code: verification_code, authenticity_token: csrf_token }
+
+      $.form('/sessions', data).submit()

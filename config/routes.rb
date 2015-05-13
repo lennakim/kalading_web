@@ -84,7 +84,7 @@ Rails.application.routes.draw do
 
   resources :autos
 
-  root to: 'home#index'
+  root to: 'home#new_index'
 
   resources :sessions do
     get 'callback',  on: :collection

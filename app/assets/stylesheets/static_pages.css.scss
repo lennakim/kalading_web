@@ -1,5 +1,28 @@
+@import 'mixins/button';
+
 .main{
   padding: 66px 10% 20px;
+
+  position: relative;
+
+  .icon{
+    .titles{
+      position: absolute;
+      top: 95px;
+      left: 258px;
+      .title, .sub-title{
+        width: 200px;
+        color: #e94609;
+      }
+    }
+  }
+
+  .order-btn{
+    @include button;
+    margin-right: 21px;
+    margin-top: 28px;
+  }
+
   .content{
     margin: -15px 0 0 35px;
     width: 95%;
@@ -48,8 +71,9 @@
         }
         .right-part{
           width: 45%;
-          img{
+          img.man{
             width: 100%;
+            @include border-top-right-radius(5px);
           }
           .test32{
             font-size: 32px;
