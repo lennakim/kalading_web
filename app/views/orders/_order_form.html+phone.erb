@@ -90,7 +90,7 @@
           <div class="cell">
             <div class="info-group form-group">
               <div class="">
-                <%= text_field_tag(:registration_date, '', required: true, class: 'form-control date-select', placeholder: '车辆注册日期') %>
+                <%= text_field_tag(:registration_date, (@user_info ? @user_info['auto_registration_date'] : ''), required: true, class: 'form-control date-select', placeholder: '车辆注册日期') %>
               </div>
             </div>
           </div>
