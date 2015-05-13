@@ -154,19 +154,6 @@ nav{
             color: $main-orange;
           }
         }
-        .sub{
-          background: #fff;
-          color: $main-orange;
-          ul{
-            top: 10px;
-            min-width: 400px;
-            margin-left: 38%;
-            .special{
-              margin: 0;
-              padding: 0;
-            }
-          }
-        }
   		  .sub,.sub2{
           overflow: hidden;
   		    position: absolute;
@@ -211,6 +198,22 @@ nav{
   			    }
     			}
     		}
+        .sub{
+          background: #fff;
+          color: $main-orange;
+          ul{
+            top: 10px;
+            min-width: 400px;
+            margin-left: 38%;
+            li{
+              width: 100px;
+            }
+            .special{
+              margin: 0;
+              padding: 0;
+            }
+          }
+        }
       }
 
       .kld-header-log{
