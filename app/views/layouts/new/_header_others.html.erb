@@ -24,21 +24,20 @@
         </li>
         <li class="products <%= "active" if params[:action] == "new_car_select" %>">
           <a href=""  class="cl-effect-1" onclick="return false;">预约服务</a>
-
           <div class="sub2 hide">
             <div class="subbac"></div>
             <ul class="clearfix">
               <li>
-                <%= link_to "机油三滤", new_car_select_orders_path(type: 'bmt'), class: 'order-btn'%>
+                <%= link_to "机油三滤", new_car_select_orders_path(type: 'bmt'), class: 'order-btn', "data-type" => "bmt" %>
               </li>
               <li>
-                <%= link_to "机油机滤", new_car_select_orders_path(type: 'smt'), class: 'order-btn'%>
+                <%= link_to "机油机滤", new_car_select_orders_path(type: 'smt'), class: 'order-btn', "data-type" => "smt" %>
               </li>
               <li>
-                <%= link_to "PM2.5空调滤芯", new_car_select_orders_path(type: 'pm25'), class: 'order-btn'%>
+                <%= link_to "PM2.5空调滤芯", new_car_select_orders_path(type: 'pm25'), class: 'order-btn', "data-type" => "pm25" %>
               </li>
               <li>
-                <%= link_to "更换电瓶", new_car_select_orders_path(type: 'bty'), class: 'order-btn'%>
+                <%= link_to "更换电瓶", new_car_select_orders_path(type: 'bty'), class: 'order-btn', "data-type" => "bty" %>
               </li>
             </ul>
           </div>
@@ -52,16 +51,16 @@
             <ul class="clearfix">
               <li>
                 <a href=""></a>
-                <%= link_to "服务流程", static_page_path(id: 'fu-wu-liu-cheng') %>
+                <%= link_to "服务流程1", static_page_path(id: 'fu-wu-liu-cheng') %>
               </li>
               <li>
-                <%= link_to "机油三滤", static_page_path(id: 'ji-you-san-lv') %>
+                <%= link_to "服务流程2", static_page_path(id: 'ji-you-san-lv') %>
               </li>
               <li>
-                <%= link_to "机油机滤", static_page_path(id: 'ji-you-ji-lv') %>
+                <%= link_to "服务流程3", static_page_path(id: 'ji-you-ji-lv') %>
               </li>
               <li>
-                <%= link_to "更换电瓶", '#' %>
+                <%= link_to "服务流程4", '#' %>
               </li>
             </ul>
           </div>

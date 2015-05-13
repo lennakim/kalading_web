@@ -11,12 +11,14 @@ class App.Views.ServiceSelect extends Backbone.View
   initialize: ->
     @order = new App.Models.Order
 
+    @service_type =  URI().search(true)['type']
+
     @$total_price = @$(".total_price") #selector
     @$service_price = @$(".service_price") #selector
 
     @order.set 'price',  @$total_price.data('price')
     @order.set 'car_id', $(".second").data("car_id") #car_id
-    @order.set 'service_price', @$service_price.data('price')
+    @order.set 'service_price', @$service_price.data('price') #bty service_price is zero
 
     @listenTo(@order, 'sync', @render)
     @listenTo(@order, 'error', @errorHandler)
@@ -36,6 +38,7 @@ class App.Views.ServiceSelect extends Backbone.View
 
   switchRight: (e) =>
     self = $(e.target)
+    self.addClass("active").siblings().removeClass('active')
     text = self.text()
     part = self.data('part')
     brand = self.attr('brand')

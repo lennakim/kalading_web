@@ -60,9 +60,10 @@ $ ->
     ele = $(@).find("a")
     link = ele.data("link")
     car_id = ele.attr("car_id")
+    type = URI().search(true)['type']
 
     if car_id?
-      window.location.href = "#{link}?car_id=#{car_id}"
+      window.location.href = "#{link}?car_id=#{car_id}&type=#{type}"
     else
       alert("請選擇車輛")
 
