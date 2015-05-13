@@ -43,6 +43,8 @@ class OrdersController < ApplicationController
       @last_select_car = Auto.api_find(car_id)
     end
 
+    @city_capacity = Order.city_capacity current_city_id
+
     if signed_in?
       @autos = current_user.autos.recent.unshift(@last_select_car) #放在第一個
     else
