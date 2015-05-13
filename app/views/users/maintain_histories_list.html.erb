@@ -6,22 +6,28 @@
       <div class="col-md-10 content">
 
         <div class="maintain-histories">
-          <% @maintain_orders.each do |mtain| %>
 
-            <div class="item clearfix">
-              <div class="brand pull-left">
-                <%= mtain['car_name']  %>
-              </div>
+          <% if @maintain_orders.length > 0 %>
 
-              <div class="servedate pull-left">
-                <%= mtain['serve_datetime'] %>
-              </div>
+            <% @maintain_orders.each do |mtain| %>
+              <div class="item clearfix">
+                <div class="brand pull-left">
+                  <%= mtain['car_name']  %>
+                </div>
 
-              <div class="btns pull-right">
-                <%= link_to "检查报告", maintain_history_users_path(id: mtain['id']) %>
+                <div class="servedate pull-left">
+                  <%= mtain['serve_datetime'] %>
+                </div>
+
+                <div class="btns pull-right">
+                  <%= link_to "检查报告", maintain_history_users_path(id: mtain['id']) %>
+                </div>
               </div>
+            <% end %>
+          <% else %>
+            <div class="blank">
+              暂时没有保养记录
             </div>
-
           <% end %>
         </div>
       </div>
