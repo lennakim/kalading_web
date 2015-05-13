@@ -3,7 +3,7 @@
 @import "compass";
 @import "compass/reset";
 @import "classic";
-
+@import "classic.date";
 @import "classic.time";
 @import "mixins/button";
 
@@ -831,14 +831,14 @@ nav{
               width: 180px;
               line-height: 48px;
               padding: 10px 10px 0;
-              background-image: image-url('new-user/infoborder.png'); 
+              background-image: image-url('new-user/infoborder.png');
               background-size: 100% 100%;
               text-align: center;
             }
           }
           .now{
             padding-right: 20px;
-            background-image: image-url('new-user/privilege.png'); 
+            background-image: image-url('new-user/privilege.png');
             background-position: right;
             background-repeat: no-repeat;
             font-size: 20px;
