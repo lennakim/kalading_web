@@ -9,6 +9,13 @@ $ ->
 
   if $(".second").length > 0
     service_select = new App.Views.ServiceSelect
+    #替換 sub2 url
+    uri = URI()
+    car_id = uri.search(true)['car_id']
+    _.each $(".products .sub2 ul").find("a"), (ele)->
+      type =  $(ele).data("type")
+      path = uri.search({car_id: car_id, type: type })
+      $(ele).attr("href", path)
 
   #------选车型---------
 
@@ -60,7 +67,7 @@ $ ->
     ele = $(@).find("a")
     link = ele.data("link")
     car_id = ele.attr("car_id")
-    type = URI().search(true)['type']
+    type = URI().search(true)['type'] || "bmt"
 
     if car_id?
       window.location.href = "#{link}?car_id=#{car_id}&type=#{type}"
