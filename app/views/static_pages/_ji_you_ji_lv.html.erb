@@ -1,6 +1,16 @@
 <div class="main">
   <div class="icon">
     <%= image_tag "static_pages/jiyoujilv/icon.png" %>
+    <div class="titles">
+      <div class="first-title">
+        机油机滤 + 32项全车安全检测
+      </div>
+      <div class='sub-title'>
+        发动机动力保证
+      </div>
+    </div>
+
+    <%= link_to "立即下单", new_car_select_orders_path(type: 'smt'), class: 'order-btn pull-right'%>
   </div>
 
   <div class="content jiyoujilv clearfix">

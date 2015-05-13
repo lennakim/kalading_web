@@ -1,5 +1,60 @@
+@import 'mixins/button';
+
 .main{
   padding: 66px 10% 20px;
+  position: relative;
+
+  .icon{
+    .titles{
+      position: absolute;
+      top: 95px;
+      left: 258px;
+      .first-title, .sub-title{
+        width: 400px;
+        color: #e94609;
+      }
+    }
+  }
+
+  .title{
+    font-size: 18px;
+    color: #e94609;
+
+    border-left: 5px solid #e94609;
+    padding-left: 10px;
+  }
+
+  .geng-huan{
+    .desc{
+      text-indent:30px;
+      margin-top: 10px;
+    }
+  }
+  .partners{
+    .icon-list{
+      margin-left: -30px;
+      margin-top: 20px;
+      img{
+        width: 100px;
+        margin-left: 30px;
+      }
+    }
+  }
+  .geng-huan, .partners{
+    margin-top: 15px;
+  }
+
+  .highlight{
+    font-size: 20px;
+    color: #e94609;
+  }
+
+  .order-btn{
+    @include button;
+    margin-right: 21px;
+    margin-top: 28px;
+  }
+
   .content{
     margin: -15px 0 0 35px;
     width: 95%;
@@ -7,6 +62,107 @@
     background: #eeeeee;
     padding: 40px;
     padding-bottom: 10px;
+    overflow: hidden;
+
+    &.jiyousanlv{
+      padding: 0;
+      padding-bottom: 50px;
+      .top{
+        width: 100%;
+        img{
+          width: 100%;
+          @include border-top-left-radius(5px);
+          @include border-top-right-radius(5px);
+        }
+      }
+
+      .middle-2{
+        .left-part, .right-part{
+          width: 50%;
+        }
+      }
+
+      .bottom{
+        border-top: 2px dashed #e94609;
+        margin: 40px;
+        margin-bottom: 0;
+        padding-top: 40px;
+        .left-part{
+          width: 60%;
+          ul li{
+            margin-top: 10px;
+
+            span.dot{
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              @include border-radius(50%);
+              background-color: #e94609;
+            }
+
+          }
+        }
+        .right-part{
+          img{
+            margin-left: 60px;
+            margin-top: 50px;
+          }
+        }
+
+        .pm25-content{
+          width: 70%;
+          margin-left: 20px;
+          margin-top: 10px;
+        }
+      }
+
+      .middle-1, .middle-2{
+        border-top: 2px dashed #e94609;
+        margin: 40px;
+        margin-bottom: 0;
+        padding-top: 40px;
+        .jiyou-desc, .jilv-desc, .konglv-desc{
+          .jiyou-content, .konglv-content{
+            width: 80%;
+            margin-left: 20px;
+            margin-top: 15px;
+          }
+
+          .jilv-content, .konglv-content{
+            width: 73%;
+            margin-top: 0;
+            margin-left: 20px;
+          }
+        }
+
+        .geng-huan, .partners{
+          width: 50%;
+          .desc{
+            line-height: 25px;
+          }
+          .icon-list{
+            margin-top: 10px;
+            margin-left: -20px;
+            img{
+              margin-left: 20px;
+            }
+          }
+        }
+
+        .jilv-desc .geng-huan .desc{
+          height: 43px;
+        }
+        .jilv-desc, .konglv-desc{
+          .geng-huan, .partners{
+            margin-top: 20px;
+            width: 100%;
+            .icon-list{
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
 
     &.fuwuliucheng{
       .item{
@@ -27,6 +183,8 @@
           .title  {
             font-size: 36px;
             font-weight: bold;
+            border-left: 0 none;
+            padding-left: 0px;
           }
           .desc{
             font-size: 16px;
@@ -67,36 +225,6 @@
           width: 423px;
           margin-left: 20px;
           font-size: 14px;
-          .highlight{
-            font-size: 20px;
-            color: #e94609;
-          }
-        }
-        .geng-huan{
-          .desc{
-            text-indent:30px;
-            margin-top: 10px;
-          }
-        }
-        .partners{
-          .icon-list{
-            margin-left: -30px;
-            margin-top: 20px;
-            img{
-              width: 100px;
-              margin-left: 30px;
-            }
-          }
-        }
-        .geng-huan, .partners{
-          margin-top: 15px;
-          .title{
-            font-size: 18px;
-            color: #e94609;
-
-            border-left: 5px solid #e94609;
-            padding-left: 10px;
-          }
         }
       }
 
@@ -116,6 +244,118 @@
         }
       }
 
+    }
+
+
+
+    &.huandianping{
+      padding-left: 30px;
+      padding-top: 40px;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      .zhouqi{
+        .img-content{
+          margin-left: 15px;
+          width: 88%;
+          .highlight{
+            font-size: 20px;
+            color: #e94609;
+          }
+        }
+      }
+      .description{
+        margin-top: 20px;
+        margin-bottom: 35px;
+        .highlight{
+          width: 100%;
+          font-size: 20px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .genghuan-content{
+          text-indent:25px;
+          margin-top: 20px;
+        }
+      }
+      .dianpingjieshao{
+        border-top: 2px dashed #e94609;
+        .jieshao{
+          width: 100%;
+          margin-top: 35px;
+          margin-bottom: 20px;
+          font-size: 20px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .boshis3, .boshis4, .boshis5{
+          width: 33%;
+          padding-left: 12px;
+          .desc{
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          .adapter{
+            color: #e94609;
+          }
+          .detail-desc{
+            font-size: small;
+            padding-right: 10%;
+            text-align: justify;
+          }
+          .img-content{
+            font-size: small;
+            margin-bottom: 3px;
+            margin-right: -7px;
+            .img-adapter{
+              margin-right: 150px;
+            }
+            .img{
+              width: 10px;
+              height: 10px;
+              margin-right: 3px;
+            }
+          }
+        }
+        .boshis3, .boshis4, .boshis5{
+          border-right: 2px solid lightgray;
+          .detail-desc{
+            margin-bottom: 20px;
+          }
+          .notice{
+            width: 50%;
+            background-color: #e94609;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            color: white;
+          }
+        }
+        .boshis5{
+          border-right: 0 none;
+          .notice{
+            width: 63%;
+          }
+        }
+      }
+    }
+  }
+  .icon-desc{
+    margin-left: 15px;
+    margin-top: 30px;
+    color: red;
+    font-weight: bold;
+    .first-desc{
+      margin-bottom: 2px;
+    }
+    .second-desc{
+      margin-top: 2px;
     }
   }
 }
