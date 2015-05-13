@@ -29,7 +29,9 @@ class UsersController < ApplicationController
     @orders = Order.get_orders_of('13501319000')['data']
   end
 
-  def order_detail
+  def orders_detail
+    id = params[:id]
+    @order = Order.origin_find(id)
   end
 
   def maintain_histories_list
