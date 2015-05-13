@@ -954,8 +954,32 @@ nav{
           }
         }
       }
+      .btns{
+        line-height: 35px;
+        margin: 10px 0 0 40%;
+        width: 60%;
+        li{
+          width: 100px;
+          margin: 0 5px;
+          text-align: center;
+          border-radius: 4px;
+          border: 1px solid #bfbfbf;
+          background: #eeeeee;
+          cursor: pointer;
+          cursor: hand;
+          &:hover{
+            background: $main-orange;
+            color: #fff;
+          }
+        }
+      }
+      .next-order{
+        display: block;
+        padding: 20px;
+        text-align: right;
+        color: #999999;
+      }
     }
-
   }
 }
 
