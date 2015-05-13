@@ -67,8 +67,10 @@
         </li>
         <li class="team">
           <a href="" class="cl-effect-1" class="cl-effect-1">城市团队</a>
+
           <div class="sub2 hide">
             <div class="subbac"></div>
+            <ul>
               <li>
                 <a href="">服务城市</a>
               </li>
@@ -77,6 +79,7 @@
               </li>
             </ul>
           </div>
+
         </li>
 
         <li class="about">
@@ -94,13 +97,12 @@
           <%= link_to "用车知识", slug_posts_path(20, 'knowledge'), class: 'cl-effect-1' %>
         </li>
 
-        <li class="log-btn">
+        <li class="log-btn <%= "active" if params[:action] == "orders" || params[:action] == "maintain_histories_list" %>">
           <% if !signed_in? %>
             <a href="#" id="login_btn" class="cl-effect-1">
               登陆
             </a>
           <% else %>
-
             <%= link_to "个人中心", orders_users_path, class: 'cl-effect-1' %>
             <div class="sub2 hide">
               <div class="subbac"></div>
