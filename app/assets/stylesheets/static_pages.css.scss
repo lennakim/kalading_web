@@ -344,6 +344,168 @@
         }
       }
     }
+
+    &.pm25{
+      .lvqingqi{
+        margin-left: -45px;
+        margin-top: -46px;
+        margin-right: -40px;
+        .img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .jiancezhongxin{
+        margin-top: 5px;
+        .left-part{
+          margin-top: 25px;
+          width: 30%;
+          .top-img, .bottom-img{
+            width: 90%;
+            height: 90%;
+          }
+          .top-img{
+            margin-bottom: 18px;
+          }
+          .bottom-img{
+            margin-top: 18px;
+          }
+        }
+        .right-part{
+          width: 70%;
+          .third, .fifth{
+            .baifenbi{
+              font-size: 20px;
+              color: #e94609;
+            }
+          }
+          .second{
+            margin-top: 30px;
+            margin-bottom: 13px;
+            .sec-font{
+              width: 34%;
+              height: 34%;
+            }
+          }
+          .third{
+            margin-bottom: 40px;
+          }
+          .fourth{
+            margin-bottom: 12px;
+            .fou-font{
+              width: 38%;
+              height: 38%;
+            }
+          }
+        }
+      }
+      .genghuanzhouqi, .pm25weihai, .cheneipm25, .kongtiaolvxin{
+        margin-top: 20px;
+        .biaoti{
+          width: 100%;
+          margin-bottom: 10px;
+          font-size: 17px;
+          .sub-biaoti{
+            color: #e94609;
+            border-left: 5px solid #e94609;
+            padding-left: 10px;
+          }
+        }
+        .desc{
+          width: 100%;
+          text-indent: 16px;
+          margin-bottom: 5px;
+          margin-left: 15px;
+          .sub-desc{
+            margin-top: 7px;
+            margin-right: 15px;
+            text-indent: 16px;
+          }
+        }
+      }
+      .genghuanzhouqi{
+        width: 91%;
+        margin-bottom: -10px;
+        .desc{
+          text-indent: 0px;
+        }
+        .dash{
+          width: 100%;
+          margin-top: 10px;
+          margin-left: 37px;
+          border-top: 2px dashed #e94609;
+        }
+      }
+      .kongtiaolvxin{
+        .lvxin-item{
+          margin-left: 18px;
+          margin-bottom: 7px;
+          .lvxin-title{
+            width: 100%;
+            color: #e94609;
+            margin-bottom: 3px;
+            font-size: 15px;
+            .lvxin-sub-number{
+              margin-right: 18px;
+            }
+          }
+          .lvxin-content{
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+    .yanzhongwuranwu, .zhengzhuangjiwenti{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      .biaoti{
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 17px;
+        color: #e94609;
+        border-left: 5px solid #e94609;
+        padding-left: 10px;
+      }
+      .wuranwu-img, .wenti-img{
+        margin-left: 13.5%;
+        margin-bottom: 12px;
+      }
+    }
+    .shiyongwenda{
+      .biaoti{
+        margin-bottom: 13px;
+        font-size: 17px;
+        color: #e94609;
+        border-left: 5px solid #e94609;
+        padding-left: 10px;
+      }
+      .wenda-list{
+        margin-bottom: 10px;
+        .wenda-item{
+          margin-bottom: 12px;
+          margin-left: 15px;
+          .wenda-title{
+            width: 100%;
+            .wenda-icon{
+              margin-right: 5px;
+              background-color: #ee7800;
+              padding: 1.5px;
+              color: white;
+              text-align: center;
+            }
+            .wenda-sub-title{
+              color: #ee7800;
+              font-size: 15px;
+            }
+          }
+          .item-content{
+            margin-left: 27px;
+          }
+        }
+      }
+    }
+
   }
   .icon-desc{
     margin-left: 15px;
