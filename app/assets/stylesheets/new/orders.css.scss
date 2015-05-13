@@ -172,13 +172,22 @@ label{
 			float: right;
 			text-decoration: underline;
 		}
-		.cars-list{
-			overflow: hidden;
+		.flexslider{
+			width:100%;
 			margin: 20px 0;
+		}
+		.flex-direction-nav a{
+			background-image: image-url('new-order/arr.png'); 
+		}
+		.flex-prev{
+			left: -40px;
+		}
+		.flex-next{
+			right: -50px;
 		}
 		.car-item{
 			float: left;
-			width: 21%;
+			width: 92%;
 			height: 230px;
 			margin: 0 2%;
 			padding: 20px;
