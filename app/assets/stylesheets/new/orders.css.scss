@@ -178,6 +178,9 @@ label{
 		.flexslider{
 			width:100%;
 			margin: 20px 0;
+			.flex-viewport{
+				padding: 20px 0;
+			}
 		}
 		.flex-direction-nav a{
 			background-image: image-url('new-order/arr.png'); 

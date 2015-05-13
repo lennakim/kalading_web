@@ -22,7 +22,7 @@
         <li class="home <%= "active" if params[:action] == "new_index" %>">
           <a href="/" class="cl-effect-1">首页</a>
         </li>
-        <li class="products <%= "active" if params[:action] == "new_car_select" %>">
+        <li class="products <%= "active" if params[:action] == "new_car_select" || params[:action] == "new_service_select" || params[:action] == "new_info_submit" %>">
           <a href="/orders/new_car_select"  class="cl-effect-1">预约服务</a>
 
           <div class="sub2 hide">
