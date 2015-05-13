@@ -892,6 +892,60 @@ nav{
 
 .orders-detail{
   height: 1600px;
+  table{
+    width: 100%;
+    border-radius: 2px;
+  }
+  table,td{
+    border: 1px solid #ccc;
+    line-height: 30px;
+  }
+  td{
+    padding: 10px;
+    &:nth-child(odd){
+      width: 10%;
+    }
+  }
+  .order-info{
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    .item-price{
+      width: 60%;
+    }
+    .total-price{
+      width: 15%;
+      border: 0;
+      text-align: center;
+    }
+  }     
+  .btns{
+    line-height: 35px;
+    margin: 10px 0 0 40%;
+    width: 60%;
+    li{
+      width: 100px;
+      margin: 0 5px;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid #bfbfbf;
+      background: #eeeeee;
+      cursor: pointer;
+      cursor: hand;
+      &:hover{
+        background: $main-orange;
+        color: #fff;
+      }
+    }
+  }
+  .next-order{
+    display: block;
+    padding: 20px;
+    text-align: right;
+    color: #999999;
+  } 
+}
+.orders-detail,.know{
+  height: 1600px;
   background-image: image-url('new-order/bac.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -921,62 +975,40 @@ nav{
         h4{
           color: #333333;
         }
-        table{
-          width: 100%;
-          border-radius: 2px;
-        }
-        table,td{
-          border: 1px solid #ccc;
-          line-height: 30px;
-        }
-        td{
-          padding: 10px;
-          &:nth-child(odd){
-            width: 10%;
-          }
-        }
-        .order-info{
-          border: 1px solid #dbdbdb;
-          border-radius: 2px;
-          .item-price{
-            width: 60%;
-          }
-          .total-price{
-            width: 15%;
-            border: 0;
-            text-align: center;
-          }
-        }
-      }
-      .btns{
-        line-height: 35px;
-        margin: 10px 0 0 40%;
-        width: 60%;
-        li{
-          width: 100px;
-          margin: 0 5px;
-          text-align: center;
-          border-radius: 4px;
-          border: 1px solid #bfbfbf;
-          background: #eeeeee;
-          cursor: pointer;
-          cursor: hand;
-          &:hover{
-            background: $main-orange;
-            color: #fff;
-          }
-        }
-      }
-      .next-order{
-        display: block;
-        padding: 20px;
-        text-align: right;
-        color: #999999;
       }
     }
   }
 }
-
+.know{
+  li{
+    width: 48%;
+    line-height: 30px;
+    margin: 0 1%;
+    border-bottom: 1px solid #ccc;
+    &:before{
+      float: left;
+      content: '·';
+      width: 25px;
+      margin: 10px;
+      font-size: 100px;
+      color: #dddddd;
+    }
+    a{
+      float: left;
+      line-height: 60px;
+      color: #666666;
+      text-decoration: none;
+    }
+    &:hover{
+      &:before{
+        color: $main-orange;
+      }
+      a{
+        color: $main-orange;
+      }
+    }
+  }
+}
 
 
 

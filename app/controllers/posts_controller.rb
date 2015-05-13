@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def show
     @posts = Post.where slug: params[:slug]
+    pp @posts
   end
 
   def posts_list

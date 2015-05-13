@@ -1,10 +1,30 @@
 <% title @title %>
   <%#= @root_tag %>
   <%#= render "menu" %>
-  <div class="container">
+  <!-- <div class="container">
     <ul>
-      <%= render "posts_list", posts: @posts %>
+      <%#= render "posts_list", posts: @posts %>
     </ul>
-  </div>
+  </div> -->
   <%# end %>
+<div class="know special">
+	<div class="main">
+	    <%= image_tag("new-order/first.png", :class => 'tag2')%>
+	    <div class="content">
+	      	<div class="top wait clearfix">
+		        <a href=""><<返回我的订单</a>
+		    </div>
+		    <ul class="con clearfix">
+		    	<% @posts.each do |post| %>
+		      	<li class="pull-left">
+		      		<a href="/posts/<%= post.id %>/knowledge">
+		    			<%= post.title %>
+		      		</a>
+		      	</li>
+		      	<% end %>
+		    </ul>
+	    </div>
+    </div>
+</div>
+
 
