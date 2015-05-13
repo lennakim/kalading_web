@@ -233,7 +233,7 @@ nav{
 }
 .cb-slideshow:after {
     content: '';
-    background: transparent url(../images/pattern.png) repeat top left;
+    background: transparent image-url('/assets/pattern.png') repeat top left;
 }
 .cb-slideshow li span {
     width: 100%;
@@ -247,7 +247,7 @@ nav{
     background-repeat: none;
     opacity: 0;
     z-index: 0;
-  -webkit-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     -webkit-animation: imageAnimation 36s linear infinite 0s;
     -moz-animation: imageAnimation 36s linear infinite 0s;
     -o-animation: imageAnimation 36s linear infinite 0s;
@@ -275,85 +275,59 @@ nav{
     line-height: 200px;
   color: #e94609;
 }
+
 .cb-slideshow li:nth-child(1) span {
   background-image: image-url("new-index/banner.jpg");
 }
 
-.cb-slideshow li:nth-child(2) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 6s;
-    -moz-animation-delay: 6s;
-    -o-animation-delay: 6s;
-    -ms-animation-delay: 6s;
-    animation-delay: 6s;
+//  定義方法 animation-delay-n
+@mixin animation-delay-n($n){
+  -webkit-animation-delay:  #{$n*6}s;
+  -moz-animation-delay: #{$n*6}s;
+  -o-animation-delay: #{$n*6}s;
+  -ms-animation-delay: #{$n*6}s;
+  animation-delay: #{$n*6}s;
 }
+
+.cb-slideshow li:nth-child(2) span {
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(1) //調用 animation-delay-n
+}
+
 .cb-slideshow li:nth-child(3) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 12s;
-    -moz-animation-delay: 12s;
-    -o-animation-delay: 12s;
-    -ms-animation-delay: 12s;
-    animation-delay: 12s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(2)
 }
 .cb-slideshow li:nth-child(4) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 18s;
-    -moz-animation-delay: 18s;
-    -o-animation-delay: 18s;
-    -ms-animation-delay: 18s;
-    animation-delay: 18s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(3)
 }
 .cb-slideshow li:nth-child(5) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 24s;
-    -moz-animation-delay: 24s;
-    -o-animation-delay: 24s;
-    -ms-animation-delay: 24s;
-    animation-delay: 24s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(4)
 }
 .cb-slideshow li:nth-child(6) span {
-    background-image: image-url("new-index/banner.jpg");
-    -webkit-animation-delay: 30s;
-    -moz-animation-delay: 30s;
-    -o-animation-delay: 30s;
-    -ms-animation-delay: 30s;
-    animation-delay: 30s;
+  background-image: image-url("new-index/banner.jpg");
+  @include animation-delay-n(5)
 }
+
+//
 .cb-slideshow li:nth-child(2) div {
-    -webkit-animation-delay: 6s;
-    -moz-animation-delay: 6s;
-    -o-animation-delay: 6s;
-    -ms-animation-delay: 6s;
-    animation-delay: 6s;
+  @include animation-delay-n(1)
 }
 .cb-slideshow li:nth-child(3) div {
-    -webkit-animation-delay: 12s;
-    -moz-animation-delay: 12s;
-    -o-animation-delay: 12s;
-    -ms-animation-delay: 12s;
-    animation-delay: 12s;
+  @include animation-delay-n(2)
 }
 .cb-slideshow li:nth-child(4) div {
-    -webkit-animation-delay: 18s;
-    -moz-animation-delay: 18s;
-    -o-animation-delay: 18s;
-    -ms-animation-delay: 18s;
-    animation-delay: 18s;
+  @include animation-delay-n(3)
 }
 .cb-slideshow li:nth-child(5) div {
-    -webkit-animation-delay: 24s;
-    -moz-animation-delay: 24s;
-    -o-animation-delay: 24s;
-    -ms-animation-delay: 24s;
-    animation-delay: 24s;
+  @include animation-delay-n(4)
 }
 .cb-slideshow li:nth-child(6) div {
-    -webkit-animation-delay: 30s;
-    -moz-animation-delay: 30s;
-    -o-animation-delay: 30s;
-    -ms-animation-delay: 30s;
-    animation-delay: 30s;
+  @include animation-delay-n(5)
 }
+
 /* Animation for the slideshow images */
 @-webkit-keyframes imageAnimation {
   0% {
