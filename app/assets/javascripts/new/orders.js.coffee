@@ -4,10 +4,11 @@
 #= require_self
 
 $ ->
+  if $(".first").length > 0
+    car_select = new App.Views.CarSelect #调用Backbone
 
-  car_select = new App.Views.CarSelect #调用Backbone
-
-  service_select = new App.Views.ServiceSelect
+  if $(".second").length > 0
+    service_select = new App.Views.ServiceSelect
 
   #------选车型---------
 
@@ -95,7 +96,7 @@ $ ->
 
   # order form page
 
-  if $('.new-order-form').length > 0
+  if $('.new-order-form, .no_car_type').length > 0
 
     $("#place_order_form").on "ajax:before", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)
@@ -148,6 +149,7 @@ $ ->
           set_serve_date data
 
     set_serve_date = (date) ->
+
       activity_id = $("#activity_id").val()
 
       min = new Date(_.first(_.keys(date)))
@@ -212,12 +214,15 @@ $ ->
       close: "关闭"
     })
 
+    # 設定 服务时间
     set_serve_date $('#serve_date').data('cc')
 
     $.validator.addMethod "regx", (value, element, regexpr) ->
       regexpr.test(value)
     ,  "车牌号不合法"
 
+
+    ###### js validate ####
     $("#place_order_form").validate
 
       highlight: (element, errorClass, validClass) ->

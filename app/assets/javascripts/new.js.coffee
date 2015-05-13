@@ -97,6 +97,15 @@ $ ->
     $(@).find('.pic1').removeClass('hide')
 
 
+  if $('.user-info').length > 0 
+    if $('.status').hasClass('finish')
+      $('.status span').addClass('hide').next().removeClass('hide')
+
+    $('.technician').click ->
+      $('.phone').removeClass('hide')
+
+
+
   # 短信验证码
   if $("#login_modal").length > 0
 

@@ -6,7 +6,10 @@
           <p class="pull-left">下单时间:2014-4-6<%#= order["serve_datetime"] %></p> 
           <p class="pull-left">服务时间:2014-6-7<%#= order["serve_datetime"] %></p>
         </div>
-        <div class="status pull-right">等待分配<%#= order['status'] %></div>
+        <div class="status finish pull-right">
+          <span>等待分配<%#= order['status'] %></span>
+          <%= image_tag("new-user/finish.png", :class => 'finish-img hide')%>
+        </div>
       </div>
       <div class="con clearfix">
         <div class="logo pull-left">
@@ -33,7 +36,8 @@
         </div>
         <div class="more pull-left">
           <p>订单详情</p>
-          <p>技师信息</p>
+          <p class="technician">技师信息</p>
+          <p class="phone hide">王小明：18800191819</p>
         </div>
         <div class="operate pull-left">
           取消订单
