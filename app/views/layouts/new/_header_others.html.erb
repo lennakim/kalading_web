@@ -84,28 +84,32 @@
           </div>
         </li>
 
-        <li class="about <%= "active" if controller == "static_pages" && ['posts_list','show'].include?(action) && ['qi-ye-jie-shao','qi-ye-rong-yu','lian-xi-wo-men'].include?(id) %>">
+        <li class="about <%= "active" if controller == "static_pages" && ['posts_list','show'].include?(action) && ['qi-ye-jie-shao','qi-ye-rong-yu','lian-xi-wo-men'].include?(id) || params[:tag_id] == 15 %>">
           <a href="/static_pages/qi-ye-jie-shao" class="cl-effect-1">关于我们</a>
           <div class="sub2 hide">
             <div class="subbac"></div>
             <ul class="clearfix">
+
               <li class="<%= "active" if id == "qi-ye-jie-shao" %>">
                 <a href="/static_pages/qi-ye-jie-shao">企业介绍</a>
               </li>
+
               <li class="<%= "active" if id == "qi-ye-rong-yu" %>">
                 <a href="/static_pages/qi-ye-rong-yu">企业荣誉</a>
               </li>
               <li class="<%= "active" if id == "lian-xi-wo-men" %>">
                 <a href="/static_pages/lian-xi-wo-men">联系我们</a>
               </li>
-              <!-- <li>
-                <a href="">新闻动态</a> 
-              </li> -->
+
+              <li class="<%= "active" if params[:tag_id] == 15 %>">
+                <%= link_to "媒体报道", list_posts_path(tag_id: 15) %>
+              </li>
             </ul>
           </div>
         </li>
-        <li class="knowledge <%= "active" if controller == "posts" && ['posts_list','show'].include?(action) %> ">
-          <%= link_to "用车知识", slug_posts_path(20, 'knowledge'), class: 'cl-effect-1' %>
+
+        <li class="knowledge <%= "active" if controller == "posts" && ['posts_list','show'].include?(action) && params[:tag_id] == 23 %> ">
+          <%= link_to "用车知识", list_posts_path(tag_id: 23), class: 'cl-effect-1' %>
         </li>
 
         <li class="log-btn <%= "active" if controller == "users" %>">

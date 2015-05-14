@@ -7,46 +7,44 @@
     </ul>
   </div> -->
   <%# end %>
+
 <div class="know special">
-    <div class="main clearfix">
+  <div class="main clearfix">
+    <%= render "menu" %>
 
-      <%# @first_posts.each do |first| %>
-      	<%#= first %>
-      <%# end %>
+    <div class="cont">
+      <% if params[:action] == 'posts_list' %>
+        <div class="top wait clearfix">
+          <a href="javascript:history.go(-1);"><<返回</a>
+        </div>
+        <ul class="con clearfix">
+          <% @posts.each do |post| %>
+            <li class="item pull-left">
+              <a href="/posts/<%= post.id %>/<%= post.slug %>">
+                <%= post.title %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
 
-
-      <%= render "menu" %>
-	  <div class="cont">
-	    	<% if params[:action] == 'posts_list' %>
-		    	<div class="top wait clearfix">
-			        <a href="/users/orders"><<返回我的订单</a>
-			    </div>
-			    <ul class="con clearfix">
-			    	<% @posts.each do |post| %>
-			      	<li class="item pull-left">
-			      		<a href="/posts/<%= post.id %>/<%= post.slug %>">
-			      			<%= post.title %>
-			      		</a>
-			      	</li>
-			      	<% end %>
-			    </ul>
-		    <% end %>
-		    <% if params[:action] == 'show' %>
-		    	<% @posts.each do |post| %>
-		    		<div class="top wait clearfix">
-				        <a href="javascript:history.go(-1);"><<返回</a>
-				    </div>
-			    	<div class="detail">
-						<h4 class="title">
-		    				<%= post.title %>
-		    			</h4>
-	    				<div class="article">
-					    	<%= strip_tags(post.content) %>
-					    </div>
-					</div>
-				<% end %>
-		    <% end %>
-	  </div>
+      <% if params[:action] == 'show' %>
+        <% @posts.each do |post| %>
+          <div class="top wait clearfix">
+            <a href="javascript:history.go(-1);"><<返回</a>
+          </div>
+          <div class="detail">
+            <h4 class="title">
+              <%= post.title %>
+            </h4>
+            <div class="article">
+              <%= strip_tags(post.content) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+>>>>>>> b095e9a1a8de872d48e813d8170d032cef7376fc
   </div>
 </div>
 

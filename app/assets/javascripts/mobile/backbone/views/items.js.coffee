@@ -75,6 +75,12 @@ class Kalading.Views.Items extends Backbone.View
       brand: $(el).data('brand')
       number: $(el).data('number')
 
+    if $.trim($(".item-part:not(.disabled) .selected-part.selected[data-brand=卡拉丁] .part-name").text()) == "卡拉丁第四代空调滤清器"
+      $.cookie('version4', 1)
+    else
+      $.cookie('version4', 0)
+
+
     data_json = JSON.stringify(parts)
     $.cookie('parts', data_json)
 
