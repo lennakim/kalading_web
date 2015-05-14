@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def orders
     # @orders = Order.list(current_user.phone_number)
     @orders = Order.get_orders_of(current_user.phone_number)['data']
+    # @orders = Order.get_orders_of('13911616088')['data']
 
     if browser.mobile?
       render layout: "application"
