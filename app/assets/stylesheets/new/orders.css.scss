@@ -123,7 +123,7 @@ label{
 			}
 		}
 		.prev{
-		    margin-left: 36%;
+		    margin-left: 2%;
 		}
 		.next{
 			margin: 20px 47%;
@@ -147,7 +147,7 @@ label{
 		.prev{
   			a{
 				padding-top: 32px;
-				background-image: image-url('new-order/prevbtn.png');
+				//background-image: image-url('new-order/prevbtn.png');
   			}
 		}
 	}
@@ -405,9 +405,10 @@ label{
 	.second{
 		height: 1000px;
 		.maintain-items{
+			position: relative;
 		    .left,.right{
 				li{
-					border: 1px solid #ccc;
+					border: 1px solid #d6d6d6;
 					border-radius: 2px;
 					text-align: center;
 				}
@@ -415,11 +416,15 @@ label{
 		    .left{
 		    	width: 30%;
 		    	float: left;
+		    	margin: 0;
 		    	margin-right: 5%;
 		    	li{
 		    		height: 40px;
 		    		line-height: 40px;
-		    		margin: 20px 0;
+		    		margin: 30px 0;
+		    		&:last-child{
+		    			margin-bottom: 0;
+		    		}
 		    		img{
 		    			float: left;
 		    			margin: 10px;
@@ -441,18 +446,24 @@ label{
 		    		color: $main-orange;
 		    	}
 		    }
+		    .leftbtn{
+		    	position: absolute;
+				top: 125px;
+				left: 345px;
+		    }
 		    .right{
 		    	float: right;
 		    	width: 65%;
 				margin: 20px 0;
 				padding: 20px 30px;
+				border: 1px solid #d6d6d6;
 				background: #fff;
 		    	li{
 		    		float: left;
 					width: 42%;
 					height: 35px;
 					line-height: 35px;
-					margin: 5px 4%;
+					margin: 10px 4%;
 		    	}
 		    	.active{
 		    		color: $main-orange;

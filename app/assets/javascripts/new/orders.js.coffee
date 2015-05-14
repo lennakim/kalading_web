@@ -100,6 +100,14 @@ $ ->
   #-----服务选项切换------
   $('.service-items li:first-child').addClass('active')
 
+  $('.second .items-list,.second .items-list-small').height($('.second .left').height()-40)
+  $('.service-items').on 'click','li', ->
+    $('.second .leftbtn').css({'top':$(@).position().top+44})
+
+  if $('.second .items-list').length == 0
+    $('.leftbtn').addClass('hide')
+
+
   # order form page
 
   if $('.new-order-form, .no_car_type').length > 0

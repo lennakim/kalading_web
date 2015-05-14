@@ -18,10 +18,10 @@
           </a>
         </div>
       </div>
-      id:<% id = params[:id] %>
-      type:<% type = params[:type] %>
-      action:<% action = params[:action] %>
-      controller:<% controller = params[:controller] %>
+      <% id = params[:id] %>
+      <% type = params[:type] %>
+      <% action = params[:action] %>
+      <% controller = params[:controller] %>
       <ul class="kld-header-link">
         <li class="home <%= "active" if action == "new_index" %>">
           <a href="/" class="cl-effect-1">首页</a>
@@ -69,16 +69,16 @@
             </ul>
           </div>
         </li>
-        <li class="team">
-          <a href="" class="cl-effect-1" class="cl-effect-1">城市团队</a>
+        <li class="team <%= "active" if controller == "static_pages" && ['fu-wu-cheng-shi','tuan-dui-feng-cai'].include?(id) %>">
+          <a href="/static_pages/fu-wu-cheng-shi" class="cl-effect-1" class="cl-effect-1">城市团队</a>
           <div class="sub2 hide">
             <div class="subbac"></div>
             <ul>
-              <li>
-                <a href="">服务城市</a>
+              <li class="<%= "active" if id == 'fu-wu-cheng-shi' %>">
+                <a href="/static_pages/fu-wu-cheng-shi">服务城市</a>
               </li>
-              <li>
-                <a href="">团队风采</a>
+              <li class="<%= "active" if id == 'tuan-dui-feng-cai' %>">
+                <a href="static_pages/tuan-dui-feng-cai">团队风采</a>
               </li>
             </ul>
           </div>
