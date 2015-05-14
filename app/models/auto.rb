@@ -13,10 +13,18 @@ class Auto < ActiveRecord::Base
       Auto.new brand: data["brand"], series: data["model"], model_number: data["name"], system_id: data["_id"], logo: data['logo']
     end
 
-    def up_autos #更新 auto logo
+    def up_autos #更新 auto logo 数据迁移 可删除
       Auto.all.each do |auto|
-        data = Auto.get_auto_data(auto.system_id)
-        auto.update(logo: data['logo'])
+        if auto.logo.blank?
+          if auto.system_id
+            begin
+              data = Auto.get_auto_data(auto.system_id)
+              auto.update(logo: data['logo'])
+            rescue
+              next
+            end
+          end
+        end
       end
     end
   end
