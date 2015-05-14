@@ -43,9 +43,10 @@ $ ->
 
 
   #-----未找到车型------
-  # $('.undefined-car').click ->
-  #   $('.first,.second,.third').addClass('hide')
-  #   $('.no_car_type').removeClass('hide')
+  $(".back-select-car").on "click", ->
+    $(".no_car_type, .quick_select_car").addClass("hide")
+    $(".first").removeClass("hide")
+
 
   #-----返回上一步------
   $('.second .prev').click ->
