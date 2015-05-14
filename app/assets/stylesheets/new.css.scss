@@ -1039,6 +1039,10 @@ nav{
     }
     a{
       float: left;
+      width: 88%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       line-height: 60px;
       color: #666666;
       text-decoration: none;
