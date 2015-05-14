@@ -1,0 +1,24 @@
+<div class="main clearfix static-pages">
+  <div class="icon pull-left">
+    <%= image_tag "static_pages/fuwuchengshi/icon.png" %>
+  </div>
+  <div class="content fuwuchengshi pull-left" >
+    <div class="left-part pull-left">
+      <%= image_tag "static_pages/fuwuchengshi/city.jpg", :class=>"city-img" %>
+    </div>
+    <div class="right-part pull-left">
+      <div class="fuwuchengshi-list pull-left">
+        <% City.all.each do |city| %>
+          <div class="fuwuchengshi-item pull-left">
+            <div class="fuwuchengshi-name pull-left">
+              <%= city.name %>
+            </div>
+            <div class="fuwuchengshi-content pull-left">
+              <%= city.district_desc %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

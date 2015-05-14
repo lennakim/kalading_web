@@ -672,6 +672,29 @@
 
       }
     }
+    &.fuwuchengshi{
+      .left-part, .right-part{
+        width: 50%;
+        margin-bottom: 20px;
+      }
+      .right-part{
+        .fuwuchengshi-list{
+          width: 100%;
+          .fuwuchengshi-item{
+            width: 100%;
+            margin-bottom: 5px;
+            .fuwuchengshi-name{
+              width: 10%;
+              font-size: 15px;
+              color: #e94609;
+            }
+            .fuwuchengshi-content{
+              width: 90%;
+            }
+          }
+        }
+      }
+    }
   }
 
   .icon-desc{
