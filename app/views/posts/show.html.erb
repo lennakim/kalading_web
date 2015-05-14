@@ -20,8 +20,7 @@
         <ul class="con clearfix">
           <% @posts.each do |post| %>
             <li class="item pull-left">
-              <a href="/posts/<%= post.id %>/<%= post.slug %>">
-                <%= post.title %>
+              <%= link_to post.title, slug_posts_path(tag_id: 15, slug: post.slug) %>
               </a>
             </li>
           <% end %>
