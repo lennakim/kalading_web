@@ -35,12 +35,12 @@
           <tr>
             <td>技师信息</td>
             <td>
-              <% if @order['served_engineers'].length > 0 %>
-                姓名：<%= @order['served_engineers'][0]['name'] %>
-            手机号：<%= @order['served_engineers'][0]['phone_num'] %>
-          <% end %>
+              <%# if @order['served_engineers'].length > 0 %>
+                <!-- 姓名：<%#= @order['served_engineers'][0]['name'] %>
+                手机号：<%#= @order['served_engineers'][0]['phone_num'] %> -->
+              <%# end %>
             </td>
-          </tr>
+          </tr> 
           <tr>
             <td>支付方式</td>
             <td><%= @order['pay_type'] %></td>

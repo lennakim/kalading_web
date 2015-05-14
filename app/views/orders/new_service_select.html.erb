@@ -54,6 +54,8 @@
               </div>
           </ul>
 
+          <%= image_tag("new-order/leftbtn.png", class: 'leftbtn')%>
+
           <% array.each_with_index do |arr, inx| %>
             <ul data-part="<%= arr.keys[0] %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
               <% get_part(parts, arr.keys[0]).each do |part| %>

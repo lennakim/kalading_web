@@ -76,7 +76,7 @@
         </li>
 
         <li class="team">
-          <%= link_to "城市团队", static_page_path(id: 'fu-wu-cheng-shi'), class: 'cl-effect-1' %>
+          <%= link_to "城市团队", static_page_path(id: 'fu-wu-cheng-shi'), "target" => '_blank', class: 'cl-effect-1' %>
           <div class="sub hide">
             <div class="subbac"></div>
             <ul>
@@ -91,7 +91,7 @@
         </li>
 
         <li class="about">
-          <a href="" class="cl-effect-1">关于我们</a>
+          <a href="/static_pages/qi-ye-jie-shao" target="_blank" class="cl-effect-1">关于我们</a>
           <div class="sub hide">
             <div class="subbac"></div>
             <ul class="clearfix">
@@ -102,7 +102,7 @@
           </div>
         </li>
         <li class="knowledge">
-          <%= link_to "用车知识", slug_posts_path(20, 'knowledge'), class: 'cl-effect-1' %>
+          <%= link_to "用车知识", slug_posts_path(20, 'knowledge'), "target" => "_blank", class: 'cl-effect-1' %>
         </li>
         <li class="log-btn <%= "active" if params[:action] == "orders" || params[:action] == "maintain_histories_list" || params[:action] == "orders_detail" %>">
           <% if !signed_in? %>
