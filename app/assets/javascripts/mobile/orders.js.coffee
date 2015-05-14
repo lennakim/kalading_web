@@ -69,6 +69,7 @@ $ ->
           if data && !data['error']
             console.log data
             $("#name").val(data['name'])
+            $("#registration_date").val(data['auto_registration_date'])
             car_location = data['car_num'][0]
             car_num = data['car_num'][1 .. -1]
 

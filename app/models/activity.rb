@@ -1,4 +1,5 @@
 class Activity < ActiveRecord::Base
+  scope :recent, -> {order(created_at: :desc)}
   validates :name, presence: true
 
   is_impressionable counter_cache: true
