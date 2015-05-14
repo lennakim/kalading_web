@@ -29,29 +29,14 @@
   <div class="carousel slide flexslider">
     <ul class="slides">
       <li>
-        <a href="#">
-          <%= image_tag("phone-home/banner/kld.jpg")%>
-        </a>
+        <%= link_to select_car_item_orders_path(type: 'pm25') do %>
+          <%= image_tag("phone-home/banner/banner-1.jpg")%>
+        <% end %>
       </li>
       <li>
-        <a href="/activities/thousand_special_right" target="_blank">
-          <%= image_tag("phone-home/banner/thousand.jpg")%>
-        </a>
-      </li>
-      <li>
-        <a href="activities/papago" target="_blank">
-          <%= image_tag("phone-home/banner/papago.jpg")%>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <%= image_tag("phone-home/banner/battery.jpg")%>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <%= image_tag("activity/tiantian/mobile-banner.jpg")%>
-        </a>
+        <%= link_to select_car_item_orders_path(type: 'pm25') do %>
+          <%= image_tag("phone-home/banner/banner-2.jpg")%>
+        <% end %>
       </li>
     </ul>
   </div>
