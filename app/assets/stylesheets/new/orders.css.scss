@@ -420,6 +420,10 @@ label{
 		    		height: 40px;
 		    		line-height: 40px;
 		    		margin: 20px 0;
+		    		img{
+		    			float: left;
+		    			margin: 10px;
+		    		}
 		    	}
 		    	.active{
 		    		color: $main-orange;

@@ -19,7 +19,17 @@
             <% recommend_numbers = [] %>
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr.keys[0]) %>
-              <li data-part="<%= arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected">
+              <li data-part="<%= part=arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected clearfix">
+                
+                <% if part == "空气滤清器" %>
+                  <%= image_tag("new-order/air_cleaner.png")%>
+                <% elsif part == "机滤" %>
+                  <%= image_tag("new-order/oil_filter.png")%>
+                <% elsif part == "空调滤清器" %>
+                  <%= image_tag("new-order/air_filter.png")%>
+                <% elsif part == "机油" %>
+                  <%= image_tag("new-order/oil.png")%>
+                <% end %>
                 <%= display_item_name(arr, item["brand"], item['number']) %>
                 ￥<%= item['price'] %>
                 <% recommend_numbers << item['number'] %>
@@ -27,6 +37,7 @@
             <% end %>
               <div class="other">
                 <li data-part="service_price" class="cursor cto">
+                  <%= image_tag("new-order/service.png")%>
                   上门服务费
                   ￥ <b class="service_price"><%= @result['service_price'] %></b>
                 </li>
