@@ -8,7 +8,7 @@
     <div class="main">
       <%= image_tag("new-order/third.png", :class => 'tag2')%>
       <div class="prev cursor">
-        <%= link_to "上一步", new_service_select_orders_path %>
+        <%= link_to "上一步", new_service_select_orders_path(car_id: @car_id, type: @type) %>
       </div>
       <h4 class="tit">服务内容</h4>
       <div class="maintain-items">

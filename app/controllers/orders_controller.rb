@@ -78,26 +78,33 @@ class OrdersController < ApplicationController
 
   def new_info_submit
 
-    car_id = params["car_id"]
+    @car_id = params["car_id"]
     @parts = JSON.parse cookies["parts"]
-    @city_capacity = Order.city_capacity current_city_id
+    @type = params["type"]
+
+    if cookies[:version4] == "1"
+      @city_capacity = Order.city_capacity current_city_id, 1
+    else
+      @city_capacity = Order.city_capacity current_city_id
+    end
 
     if signed_in?
-      @user_info = Order.user_orders(current_user.phone_number, car_id).first
+      @user_info = Order.user_orders(current_user.phone_number, @car_id).first
     end
 
     activity = Activity.find_by id: params[:act]
 
-    type = params["type"]
+
     payload = {
       parts: @parts
     }
+
     if activity && activity.valid_activity?
       payload[:discount] = activity.preferential_code
     end
 
     @cities = Order.cities
-    @result = Order.refresh_price car_id, current_city_id, payload, type
+    @result = Order.refresh_price @car_id, current_city_id, payload, @type
 
     render layout: "new"
   end
