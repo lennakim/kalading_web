@@ -1012,6 +1012,9 @@ nav{
     color: #fff;
     cursor: pointer;
     cursor: hand;
+    li a{
+      color: white;
+    }
     li:hover{
       color: $main-orange;
       padding-left: 15px;

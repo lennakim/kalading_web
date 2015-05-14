@@ -1,7 +1,7 @@
 <ul class='menu-tag'>
-	<% @tag_list.each do |tag| %>
-	  <li class='<%#= @tag == tag ? "active" : '' %>'>
-	  	<%= tag %>
-	  </li>
-	<% end %>
+  <% @tag_list.each do |tag| %>
+    <li class='<%#= @tag == tag ? "active" : '' %>'>
+      <%= link_to tag, list_posts_path(tag) %>
+    </li>
+  <% end %>
 </ul>
