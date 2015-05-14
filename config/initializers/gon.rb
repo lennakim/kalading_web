@@ -1,2 +1,2 @@
-Gon.global.server_uri = Settings.server_uri
+Gon.global.server_uri = "http://intranet.kalading.com"
 Gon.global.v2 = "/api/v2"
