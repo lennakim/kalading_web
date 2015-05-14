@@ -36,8 +36,6 @@ class App.Views.ServiceSelect extends Backbone.View
     if ele.hasClass("hide")
       $("ul.right").addClass("hide")
       ele.removeClass("hide")
-    else
-      ele.addClass("hide")
 
   switchLeft: (e) =>
     # http://stackoverflow.com/a/5680837/1240067
@@ -45,31 +43,38 @@ class App.Views.ServiceSelect extends Backbone.View
     self = $(e.target)
     index = self.index()
     self.addClass('active').siblings().removeClass('active')
+    $(".all-undo").removeClass("active")
     @$('.items-list').addClass('hide').eq(index).removeClass('hide')
 
   switchRight: (e) =>
     self = $(e.target)
     self.addClass("active").siblings().removeClass('active')
+    self.siblings("div").find("li").removeClass('active')
     text = self.text()
     part = self.data('part')
     brand = self.attr('brand')
     number = self.attr('number')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").find("span:last").text(text)
+    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").find("span:last").removeClass("undo-text").text(text)
+
+    $(".all-undo").removeClass("active")
     @resetSelectItems()
 
   undoParts: (e) =>
     self = $(e.target)
+    self.addClass("active")
     self.parent(".other").siblings().removeClass("active")
     part = self.parents("ul.items-list").data('part')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.addClass('disabled').attr('brand', '').attr('number', '').find("span:last").html("未选择")
+    point.addClass('disabled').attr('brand', '').attr('number', '').find("span:last").addClass("undo-text").text("未选择")
 
     @resetSelectItems()
 
   undoAllParts: (e) =>
+    self = $(e.target)
+    self.addClass("active")
     $("ul.items-list > li").removeClass("active")
-    $("ul.service-items >li").addClass('disabled').attr('brand', '').attr('number', '').find("span:last").html("未选择")
+    $("ul.service-items >li").removeClass("active").addClass('disabled').attr('brand', '').attr('number', '').find("span:last").addClass("undo-text").text("未选择")
     @resetSelectItems()
 
   resetSelectItems: =>
