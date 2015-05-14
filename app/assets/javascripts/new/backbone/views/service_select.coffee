@@ -4,7 +4,7 @@ class App.Views.ServiceSelect extends Backbone.View
 
   events:
     "click .service-items > li": "switchLeft"
-    "click .items-list > li ": "switchRight"
+    "click .items-list > li": "switchRight"
     "click .undo ": "undoParts"
     "click .all-undo": "undoAllParts"
     "click .cto": "serviceType"
@@ -40,14 +40,18 @@ class App.Views.ServiceSelect extends Backbone.View
   switchLeft: (e) =>
     # http://stackoverflow.com/a/5680837/1240067
     $(".items-list-small").addClass("hide") unless $(".items-list-small").hasClass("hide")
-    self = $(e.target)
+
+    self = $(e.currentTarget)
+
+    # console.log self
+
     index = self.index()
     self.addClass('active').siblings().removeClass('active')
     $(".all-undo").removeClass("active")
     @$('.items-list').addClass('hide').eq(index).removeClass('hide')
 
   switchRight: (e) =>
-    self = $(e.target)
+    self = $(e.currentTarget)
     self.addClass("active").siblings().removeClass('active')
     self.siblings("div").find("li").removeClass('active')
     text = self.text()
@@ -61,7 +65,7 @@ class App.Views.ServiceSelect extends Backbone.View
     @resetSelectItems()
 
   undoParts: (e) =>
-    self = $(e.target)
+    self = $(e.currentTarget)
     self.addClass("active")
     self.parent(".other").siblings().removeClass("active")
     part = self.parents("ul.items-list").data('part')
@@ -71,7 +75,7 @@ class App.Views.ServiceSelect extends Backbone.View
     @resetSelectItems()
 
   undoAllParts: (e) =>
-    self = $(e.target)
+    self = $(e.currentTarget)
     self.addClass("active")
     $("ul.items-list > li").removeClass("active")
     $("ul.service-items >li").removeClass("active").addClass('disabled').attr('brand', '').attr('number', '').find("span:last").addClass("undo-text").text("未选择")
