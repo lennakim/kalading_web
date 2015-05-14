@@ -182,7 +182,7 @@ label{
 		}
 		.flexslider{
 			width:100%;
-			margin: 20px 0;
+			margin: 20px 0 40px;
 			.flex-viewport{
 				padding: 20px 0;
 			}
@@ -424,6 +424,14 @@ label{
 		    			float: left;
 		    			margin: 10px;
 		    		}
+		    		.item-tit{
+		    			float: left;
+		    			width: 60px;
+		    			color: #666666;
+		    			background-image: image-url('new-order/split.png');
+		    			background-repeat: no-repeat;
+		    			background-position: right center;
+		    		}
 		    	}
 		    	.active{
 		    		color: $main-orange;
@@ -566,7 +574,7 @@ label{
 		.left,.center,.right{
 			float: left;
 			width: 33%;
-			min-width: 326px;
+			min-width: 299px;
 			.info-group{
 				height: 60px;
 				padding: 5px 0;
@@ -595,10 +603,10 @@ label{
 					width: 54%;
 				}
 				#car_num{
-					width: 73%;
+					width: 71%;
 				}
 				#serve_date{
-					width: 76%;
+					width: 74%;
 				}
 				#get_code{
 					border: 0;
