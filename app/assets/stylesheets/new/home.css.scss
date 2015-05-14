@@ -20,8 +20,17 @@ $main-orange: #e94609;
   padding: 0 8%;
   .wrench{
     position: absolute;
-    top: -60px;
+    top: -20px;
     z-index: 999;
+    left: 200px;
+    width: 3%;
+  }
+  .erwei{
+    display: none;
+    position: absolute;
+    top: -160px;
+    left: 155px;
+    width: 10%;
   }
   .translate-wrench{
     animation:translate-wrench-animate 2s linear infinite;
