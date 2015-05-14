@@ -459,6 +459,9 @@ label{
 		    		padding-bottom: 20px;
 		    		border-bottom: 2px solid #e0e0e0;
 		    		li{
+              input{
+                width: 25px;
+              }
               &.selected{
                 background: #edddd7;
                 border: 1px solid $main-orange;

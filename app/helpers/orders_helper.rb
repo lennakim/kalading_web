@@ -68,6 +68,11 @@ module OrdersHelper
     ["服务完成", "已回访", "已交接"].include?(state_str) && !order["evaluated"]
   end
 
+  def finished? order
+    state_str = order["state"].split('-')[1]
+    ["服务完成", "已回访", "已交接"].include?(state_str)
+  end
+
   def state_name state_str
     mapping = {
       "未支付"   => %w-未支付-,
@@ -135,7 +140,6 @@ module OrdersHelper
     index = parts.map(&:keys).index([key])
     curr_parts = parts[index].values[0]
     curr_parts.index{ |part| part['number'] == recommend_part['number'] }
-
   end
 
   def filter_parts parts, type
