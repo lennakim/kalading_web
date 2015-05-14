@@ -107,7 +107,7 @@
         <li class="log-btn <%= "active" if params[:action] == "orders" || params[:action] == "maintain_histories_list" || params[:action] == "orders_detail" %>">
           <% if !signed_in? %>
             <a href="#" id="login_btn" class="cl-effect-1">
-              登陆
+              登录
             </a>
           <% else %>
             <%= link_to "个人中心", orders_users_path, class: 'cl-effect-1' %>
