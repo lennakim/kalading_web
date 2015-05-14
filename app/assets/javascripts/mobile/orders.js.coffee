@@ -64,7 +64,7 @@ $ ->
       code = $(@).val()
       phone_num = $("#phone_num").val()
       car_id = $("#car_id").val()
-      if code.length == 6
+      if code.length == 6 && phone_num.length == 11
         $.get "/users/get_user_info?phone_num=#{phone_num}&code=#{code}&car_id=#{car_id}", (data) ->
           if data && !data['error']
             console.log data

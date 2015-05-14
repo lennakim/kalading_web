@@ -57,11 +57,17 @@
           <%= label_tag(:name, "姓名：") %>
         </div>
         <div class="info-con form-inline">
-          <%= text_field_tag(:name, current_user.try(:username), :required => true, class: 'form-control', placeholder: "姓名") %>
+          <%= text_field_tag(:name, (@user_info ? @user_info['name'] : ""), :required => true, class: 'form-control', placeholder: "姓名") %>
         </div>
       </div>
 
       <div class="info-group clearfix">
+
+        <% if @user_info %>
+          <% car_l = @user_info['car_num'][0] %>
+          <% car_num = @user_info['car_num'][1 .. -1] %>
+        <% end %>
+
         <div class="info-title clearfix">
           <var class="star">*</var>
           <%= label_tag("车牌号：") %>
@@ -69,10 +75,10 @@
         <div class="info-con form-inline">
           <select name="car_location" class="form-control car_location">
             <% car_location.each do |location| %>
-              <option value="<%= location %>" <%= "selected" if location == @auto.try(:license_location) %>><%= location %></option>
+              <option value="<%= location %>" <%= "selected" if location == car_l %>><%= location %></option>
             <% end %>
           </select>
-          <%= text_field_tag(:car_num, @auto.try(:license_number), minlength: 6, maxlength: 6, required: true, placeholder: '车牌后六位', class: 'form-control') %>
+          <%= text_field_tag(:car_num, (car_num ? car_num : ""), minlength: 6, maxlength: 6, required: true, placeholder: '车牌后六位', class: 'form-control') %>
         </div>
       </div>
 
@@ -99,7 +105,7 @@
           <%= label_tag(:registration_date, "车辆注册时间：") %>
         </div>
         <div class="info-con form-inline">
-          <%= text_field_tag(:registration_date, '', required: true, class: 'form-control') %>
+          <%= text_field_tag(:registration_date, (@user_info ? @user_info['auto_registration_date'] : ''), required: true, class: 'form-control date-select', placeholder: '车辆注册日期') %>
         </div>
       </div>
 
