@@ -68,6 +68,7 @@ class App.Views.ServiceSelect extends Backbone.View
     @resetSelectItems()
 
   undoAllParts: (e) =>
+    $("ul.items-list > li").removeClass("active")
     $("ul.service-items >li").addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
     @resetSelectItems()
 
