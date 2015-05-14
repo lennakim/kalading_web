@@ -23,8 +23,9 @@ class PostsController < ApplicationController
   def set_tag_and_menu
     @tag = ActsAsTaggableOn::Tag.find params[:tag_id]
     @title = @tag.name
-    #@root_tag = Post.tagged_with(@title).first.tag_list.first
+    @root_tag = Post.tagged_with(@title).first.tag_list.first
     @tag_list = Post.tagged_with(@root_tag).map(&:tag_list).map{|e| e[1]}.uniq.map{ |name| ActsAsTaggableOn::Tag.find_by name: name }
+    
   end
 
 end

@@ -985,9 +985,9 @@ nav{
 }
 .know{
   .cont{
-    width: 85%;
-    margin: -230px 0 0 110px;
     float: left;
+    width: 85%;
+    margin: 70px 0 0 -20px;
     padding: 10px;
     border-radius: 5px;
     background: #eee;
@@ -995,7 +995,6 @@ nav{
   .menu-tag{
     float: left;
     width: 120px;
-    height: 300px;
     padding: 20px;
     line-height: 40px;
     background-image: image-url('new-user/border.png'); 
