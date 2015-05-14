@@ -60,7 +60,7 @@ $ ->
     $('.header .kld-header-wrap').addClass('toggle')
     $(@).find('.sub').stop().animate({'height':'100px'},500)
 
-    $('.logo').addClass('hide')
+    $('.header .logo').addClass('hide')
     $('.logored').removeClass('hide')
     $('.slogan1').addClass('hide')
     $('.slogan2').removeClass('hide')
@@ -68,7 +68,7 @@ $ ->
   $('.products').on 'mouseleave', ->
     $(@).find('.sub').stop().animate({'height':'0'},500, ->
       $('.header .kld-header-wrap').removeClass('toggle')
-      $('.logo').removeClass('hide')
+      $('.header .logo').removeClass('hide')
       $('.logored').addClass('hide')
       $('.slogan1').removeClass('hide')
       $('.slogan2').addClass('hide')

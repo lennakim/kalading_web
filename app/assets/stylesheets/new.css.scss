@@ -667,7 +667,7 @@ nav{
           ul{
             top: 0;
             min-width: 680px;
-            margin-left: 37%;
+            margin-left: 35%;
             li{
               padding: 5px 0;
               a{
@@ -678,6 +678,12 @@ nav{
                 a{
                   color: $main-orange;
                 }
+              }
+            }
+            .active{
+              background: #ccc;
+              a{
+                color: $main-orange;
               }
             }
           }
@@ -694,7 +700,7 @@ nav{
           .sub2{
             ul{
               min-width: 100px;
-              margin-left: 66%;
+              margin-left: 55%;
             }
           }
         }
@@ -717,7 +723,7 @@ nav{
 }
 
 .user-info{
-  height: 1000px;
+  height: 1100px;
   background-image: image-url('new-index/background.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
