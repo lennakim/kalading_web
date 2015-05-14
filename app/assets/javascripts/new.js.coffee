@@ -90,12 +90,10 @@ $ ->
     $(@).find('.key,.pic2').addClass('hide')
     $(@).find('.pic1').removeClass('hide')
 
-
   # 短信验证码
   if $("#login_modal").length > 0
 
     $('.get_code').click ->
-
       phone_num = $('#phone_num').val()
       $(this).addClass('disable').attr('disabled', 'disabled')
       seconds = 60

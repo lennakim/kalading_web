@@ -3,6 +3,9 @@ class HomeController < ApplicationController
   end
 
   def new_index
+    if browser.mobile?
+      return redirect_to action: :index
+    end
     render layout: "new"
   end
 end
