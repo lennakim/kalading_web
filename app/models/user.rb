@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+userclass User < ActiveRecord::Base
 
   scope :recent, -> {order(created_at: :desc)}
   has_many :user_authinfos
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
       registed_at:      order_info["registration_date"],
       engine_number:    order_info["engine_num"],
       vin:              order_info["vin"],
-      logo:             order_info["logo"] #logo
+      logo:             auto_hash["logo"] #logo
   end
 
   def set_default_address address
