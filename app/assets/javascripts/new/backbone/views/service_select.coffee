@@ -43,8 +43,6 @@ class App.Views.ServiceSelect extends Backbone.View
 
     self = $(e.currentTarget)
 
-    # console.log self
-
     index = self.index()
     self.addClass('active').siblings().removeClass('active')
     $(".all-undo").removeClass("active")
@@ -57,9 +55,10 @@ class App.Views.ServiceSelect extends Backbone.View
     text = self.text()
     part = self.data('part')
     brand = self.attr('brand')
+    version = self.attr('version')
     number = self.attr('number')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").find("span:last").removeClass("undo-text").text(text)
+    point.attr('version', version).attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").find("span:last").removeClass("undo-text").text(text)
 
     $(".all-undo").removeClass("active")
     @resetSelectItems()
@@ -70,7 +69,7 @@ class App.Views.ServiceSelect extends Backbone.View
     self.parent(".other").siblings().removeClass("active")
     part = self.parents("ul.items-list").data('part')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.addClass('disabled').attr('brand', '').attr('number', '').find("span:last").addClass("undo-text").text("未选择")
+    point.addClass('disabled').attr('brand', '').attr('number', '').attr('version', '').find("span:last").addClass("undo-text").text("未选择")
 
     @resetSelectItems()
 
@@ -82,9 +81,19 @@ class App.Views.ServiceSelect extends Backbone.View
     @resetSelectItems()
 
   resetSelectItems: =>
+
     parts = _.map $(".service-items > li:not(.disabled)"), (ele, index) ->
       brand: $(ele).attr('brand')
       number: $(ele).attr('number')
+
+    version = $(".service-items > li:not(.disabled)[brand='卡拉丁']").attr('version')
+
+    if version == "3"
+      $.cookie('version4', 0)
+    else if version == "4"
+      $.cookie('version4', 1)
+    else
+      $.cookie('version4', '')
 
     data_json = JSON.stringify(parts)
 
