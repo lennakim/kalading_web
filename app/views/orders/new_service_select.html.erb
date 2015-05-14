@@ -20,7 +20,7 @@
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr.keys[0]) %>
               <li data-part="<%= part=arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected clearfix">
-                
+
                 <% if part == "空气滤清器" %>
                   <%= image_tag("new-order/air_cleaner.png")%>
                   <span class="item-tit">空气滤</span>
@@ -37,8 +37,10 @@
                   <%= image_tag("new-order/battery.png")%>
                   <span class="item-tit">电瓶</span>
                 <% end %>
-                <%= display_item_name(arr, item["brand"], item['number']) %>
-                ￥<%= item['price'] %>
+                <span>
+                  <%= display_item_name(arr, item["brand"], item['number']) %>
+                  ￥<%= item['price'] %>
+                </span>
                 <% recommend_numbers << item['number'] %>
               </li>
             <% end %>
