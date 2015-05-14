@@ -37,8 +37,8 @@ $main-orange: #e94609;
     -webkit-animation:translate-wrench-animate 2s linear infinite;
   }
   .con{
-    width: 78%;
-    margin-left: 22%;
+    width: 80%;
+    margin: 0 auto;
     .product,.activity,.service{
       padding: 20px 0;
       .tit{
@@ -68,9 +68,12 @@ $main-orange: #e94609;
       ul{
         li{
           width: 11%;
-          margin: 20px 10% 0 0;
+          margin: 20px 13% 0 0;
           min-width: 110px;
           text-align: center;
+          &:last-child{
+            margin-right: 0;
+          }
           a{
             text-decoration: none;
           }
