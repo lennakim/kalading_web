@@ -6,8 +6,8 @@ class Order
       ServerApi.call "post", "auto_maintain_order2", { body: payload }
     end
 
-    def city_capacity city_id
-      ServerApi.call "get", "city_capacity", { entry_id: city_id }
+    def city_capacity city_id, tmp = nil
+      ServerApi.call "get", "city_capacity", { entry_id: city_id, tmp: tmp }
     end
 
     def comments

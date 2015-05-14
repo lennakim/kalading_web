@@ -174,9 +174,21 @@ module OrdersHelper
     selected ? "selected" : ""
   end
 
-  def display_item_name name, brand, number
+  def display_item_name name, brand, number, version = nil
     if name == "机油"
       "#{brand} #{number}"
+    elsif name == "空调滤清器"
+      if version
+        if version.to_i == 3
+          "卡拉丁第三代空调滤清器"
+        elsif version.to_i == 4
+          "卡拉丁第四代空调滤清器"
+        else
+          brand
+        end
+      else
+        brand
+      end
     else
       brand
     end

@@ -244,7 +244,12 @@ class OrdersController < ApplicationController
   def place_order_page
     car_id = params[:car_id]
     @parts = JSON.parse cookies["parts"]
-    @city_capacity = Order.city_capacity current_city_id
+
+    if cookies[:version4] == "1"
+      @city_capacity = Order.city_capacity current_city_id, 1
+    else
+      @city_capacity = Order.city_capacity current_city_id
+    end
 
     activity = Activity.find_by id: params[:act]
 
