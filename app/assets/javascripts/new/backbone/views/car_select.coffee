@@ -22,6 +22,7 @@ class App.Views.CarSelect extends Backbone.View
 
   selectModel: (e)=>
     self = $(e.target)
+    self.addClass("active").siblings().removeClass("active")
     car_id = self.data("car_id")
     @$(".next").find("a").attr("car_id", car_id)
 
