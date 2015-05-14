@@ -70,6 +70,7 @@ label{
 
 .static-page{
   background-image: image-url('new-index/background.jpg');
+  background-size: cover;
   min-height: 600px;
 }
 
@@ -645,7 +646,7 @@ label{
 					color: #fff;
 				}
 			}
-			
+
 		}
 	}
 }
