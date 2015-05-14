@@ -194,4 +194,19 @@ module OrdersHelper
     end
   end
 
+  def display_item_img name
+    case name
+    when "空气滤清器"
+      image_tag("new-order/air_cleaner.png")
+    when "机滤"
+      image_tag("new-order/oil_filter.png")
+    when "空调滤清器"
+      image_tag("new-order/air_filter.png")
+    when "机油"
+      image_tag("new-order/oil.png")
+    when "电瓶"
+      image_tag("new-order/battery.png")
+    end
+
+  end
 end
