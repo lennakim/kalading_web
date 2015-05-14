@@ -593,8 +593,53 @@
             margin-bottom: 30px;
         }
     }
+    &.fuwukehu{
+      .zhanlve, .huoban, .jituankehu{
+        .zhanlve-title, .huoban-title, .jituankehu-title{
+          width: 100%;
+          margin-bottom: 20px;
+          font-size: 17px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .zhanlve-img{
+          .hezuo{
+            margin-left: 38%;
+          }
+        }
 
+      }
+      .huoban{
+        .huoban-content{
+          margin-left: 15px;
+          .huoban-desc{
+            margin-top: 15px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .jituankehu{
+        .jituankehu-content{
+          margin-left: 15px;
+          margin-bottom: 20px;
+        }
+        .jituankehu-item{
+          margin-left: 15px;
+          margin-bottom: 45px;
+          .jituankehu-item-title{
+            color: #e94609;
+            font-size: 15px;
+            margin-bottom: 10px;
+          }
+          .jituankehu-item-content{
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
   }
+
   .icon-desc{
     margin-left: 15px;
     margin-top: 30px;

@@ -1,93 +1,100 @@
 <div class="orders-detail special">
-	<div class="main">
-	    <%= image_tag("new-order/first.png", :class => 'tag2')%>
-	    <div class="content">
-	      	<div class="top wait clearfix">
-		        <a href=""><<返回我的订单</a>
-		    </div>
-		    <div class="con clearfix">
-		      	<h4>订单信息</h4>
-		      	<table>
-		      		<tr>
-		      			<td>车主信息</td>
-		      			<td><%= @order['name'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>车牌号</td>
-		      			<td><%= @order['car_num'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>车辆型号</td>
-		      			<td><%= @order['auto_model'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>服务地址</td>
-		      			<td><%= @order['address'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>服务时间</td>
-		      			<td><%= @order['serve_datetime'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>订单状态</td>
-		      			<td><%= @order['state'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>技师信息</td>
-		      			<td>
-		      				姓名：<%= @order['served_engineers'][0]['name'] %>
-		      				手机号：<%= @order['served_engineers'][0]['phone_num'] %>
-		      			</td>
-		      		</tr>
-		      		<tr>
-		      			<td>支付方式</td>
-		      			<td><%= @order['pay_type'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>发票信息</td>
-		      			<td><%= @order['reciept_type'] %></td>
-		      		</tr>
-		      		<tr>
-		      			<td>优惠信息</td>
-		      			<td></td>
-		      		</tr>
-		      		<tr>
-		      			<td>备注信息</td>
-		      			<td></td>
-		      		</tr>
-		      	</table>
-		      	<h4>订单内容</h4>
-		      	<div class="order-info clearfix">
-			        <div class="logo pull-left">
-			          <%= image_tag("", :class => 'logoimg')%>
-			          <p><%= @order['auto_model'] %></p>
-			        </div>
-			        <ul class="item-price pull-left">
-			          <% @order["parts"].each do |part| %>
-			            <li class="item clearfix">
-			              <div class="type pull-left">
-			                [<%= part["type"] %>] <%= part["brand"] %>
-			              </div>
-			              <div class="price pull-right">
-			                ￥<%= part["price"] %>
-			              </div>
-			            </li>
-			          <% end %>
-			        </ul>
-			        <div class="total-price pull-left">
-			          <p class="origin <%= "over" if @order['balance_pay'] == 0.0 %>"><%= @order['price'] %></p>
-			          <p class="now"><%= @order['price'] %></p>
-			        </div>
-			    </div>
-		    </div>
-		    <ul class="btns clearfix">
-		    	<li class="cancel pull-left">取消订单</li>
-		    	<li class="remove pull-left">删除订单</li>
-		    	<li class="comment pull-left">评价订单</li>
-		    	<li class="report pull-left">检查报告</li>
-		    	<li class="again pull-left">再来一单</li>
-		    </ul>
-		    <a href="" class="next-order">查看下一订单</a>
-	    </div>
+  <div class="main">
+    <%= image_tag("new-user/order-icon.png", :class => 'tag2')%>
+    <div class="content">
+      <div class="top wait clearfix">
+        <%= link_to "<<返回我的订单", orders_users_path %>
+      </div>
+      <div class="con clearfix">
+        <h4>订单信息</h4>
+        <table>
+          <tr>
+            <td>车主信息</td>
+            <td><%= @order['name'] %></td>
+          </tr>
+          <tr>
+            <td>车牌号</td>
+            <td><%= @order['car_num'] %></td>
+          </tr>
+          <tr>
+            <td>车辆型号</td>
+            <td><%= @order['auto_model'] %></td>
+          </tr>
+          <tr>
+            <td>服务地址</td>
+            <td><%= @order['address'] %></td>
+          </tr>
+          <tr>
+            <td>服务时间</td>
+            <td><%= @order['serve_datetime'] %></td>
+          </tr>
+          <tr>
+            <td>订单状态</td>
+            <td><%= @order['state'] %></td>
+          </tr>
+          <tr>
+            <td>技师信息</td>
+            <td>
+              <% if @order['served_engineers'].length > 0 %>
+                姓名：<%= @order['served_engineers'][0]['name'] %>
+            手机号：<%= @order['served_engineers'][0]['phone_num'] %>
+          <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>支付方式</td>
+            <td><%= @order['pay_type'] %></td>
+          </tr>
+          <tr>
+            <td>发票信息</td>
+            <td><%= @order['reciept_type'] %></td>
+          </tr>
+          <tr>
+            <td>优惠信息</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>备注信息</td>
+            <td></td>
+          </tr>
+        </table>
+        <h4>订单内容</h4>
+        <div class="order-info clearfix">
+          <div class="logo pull-left">
+            <%= image_tag("", :class => 'logoimg')%>
+            <p><%= @order['auto_model'] %></p>
+          </div>
+          <ul class="item-price pull-left">
+            <% @order["parts"].each do |part| %>
+              <li class="item clearfix">
+            <div class="type pull-left">
+              [<%= part["type"] %>] <%= part["brand"] %>
+          </div>
+            <div class="price pull-right">
+              ￥ <%= part["price"] %>
+          </div>
+            </li>
+          <% end %>
+          </ul>
+          <div class="total-price pull-left">
+            <!-- <p class="origin <%= "over" if @order['balance_pay'] == 0.0 %>"><%= @order['price'] %></p> -->
+            <p class="now"><%= @order['price'] %></p>
+          </div>
+        </div>
+      </div>
+      <ul class="btns clearfix">
+        <% if can_cancel?(@order) %>
+          <li class="cancel pull-left">取消订单</li>
+        <% end %>
+        <!-- <li class="remove pull&#45;left">删除订单</li> -->
+        <% if can_comment?(@order) %>
+          <li class="comment pull-left">评价订单</li>
+        <% end %>
+
+        <!-- <li class="report pull&#45;left">检查报告</li> -->
+        <!-- <li class="again pull&#45;left">再来一单</li> -->
+      </ul>
+      <!-- <a href="" class="next&#45;order">查看下一订单</a> -->
     </div>
+  </div>
 </div>

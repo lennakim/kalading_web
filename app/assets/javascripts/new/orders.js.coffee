@@ -21,25 +21,25 @@ $ ->
 
   #------跳转到选 排量------
   $('.first .series-list').on 'click','li', ->
-  	#已选择的车系tag
-  	series_name = $(@).text()
-  	$('.selected-series').removeClass('hide').find('.series').text(series_name)
-  	#选择排量标签
-  	$('.select-model').addClass('active')
-  	#显示选择排量 隐藏其他两个
-  	$('.first .maintain-items .items').addClass('hide').eq(2).removeClass('hide')
+    #已选择的车系tag
+    series_name = $(@).text()
+    $('.selected-series').removeClass('hide').find('.series').text(series_name)
+    #选择排量标签
+    $('.select-model').addClass('active')
+    #显示选择排量 隐藏其他两个
+    $('.first .maintain-items .items').addClass('hide').eq(2).removeClass('hide')
 
 
   #------删除已选品牌 跳转回选品牌------
   $('.selected-name .remove').click ->
-  	$('.first .items').addClass('hide').eq(0).removeClass('hide')
-  	$('.select-series,.select-model').removeClass('active')
+    $('.first .items').addClass('hide').eq(0).removeClass('hide')
+    $('.select-series,.select-model').removeClass('active')
 
 
   #------删除已选车系 或 点击上一步 跳转回选车系------
   $('.selected-series-name .remove').click ->
-  	$('.first .items').addClass('hide').eq(1).removeClass('hide')
-  	$('.select-model').removeClass('active')
+    $('.first .items').addClass('hide').eq(1).removeClass('hide')
+    $('.select-model').removeClass('active')
 
 
   #-----未找到车型------
@@ -82,7 +82,6 @@ $ ->
     minItems: 2
     maxItems: 4
     slideshow: false
-
 
   # 添加车辆
   $("span.add-car").click ->

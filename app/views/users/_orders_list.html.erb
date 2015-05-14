@@ -1,15 +1,9 @@
 <div class="orders">
-
-  <!-- <%# if @orders.length > 0 %>
-
-    <%# @orders.each do |order| %>
-      <%#= render "order_item", order: order %>
-    <%# end %>
-
-  <%# else %>
-    <p>呀~您还没有预定过我们的服务呢~</p>
-    <p>赶紧去首页下单吧！</p>
-  <%# end %> -->
-  <%= render "order_item" %>
-
+  <% if @orders.length > 0 %>
+    <% @orders.each do |order| %>
+      <%= render "order_item", order: order %>
+    <% end %>
+  <% else %>
+    <div class="blank">您还没有预定过我们的服务</div>
+  <% end %>
 </div>
