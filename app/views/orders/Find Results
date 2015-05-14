@@ -1,0 +1,106 @@
+Searching 2283 files for "服务内容"
+
+/Users/j/kalading_web/app/views/layouts/new/_header.html.erb:
+   73  
+   74          <li class="service <%= "active" if params[:action] == "new_service_select" %>">
+   75:           <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1" target="_blank">服务内容</a>
+   76          </li>
+   77  
+
+/Users/j/kalading_web/app/views/layouts/new/_header_others.html.erb:
+   50          </li>
+   51          <li class="service <%= "active" if controller == "static_pages" && action == "show" && ['fu-wu-liu-cheng','ji-you-san-lv','ji-you-ji-lv','geng-huan-dian-ping'].include?(id) %>">
+   52:           <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1">服务内容</a>
+   53  
+   54            <div class="sub2 hide">
+
+/Users/j/kalading_web/app/views/orders/_no_car_type.html.erb:
+    2      <div class="main">
+    3        <%= image_tag("new-order/first.png", :class => 'tag2')%>
+    4:       <h4 class="tit">服务内容</h4>
+    5        <div class="maintain-items">
+    6          <%= form_tag(submit_no_car_order_orders_path) do |f| %>
+
+/Users/j/kalading_web/app/views/orders/_quick_select_car.html.erb:
+    3  		<div class="main">
+    4  			<%= image_tag("new-order/step-1.png", :class => 'tag2')%>
+    5: 			<h4 class="tit">服务内容</h4>
+    6  			<div class="maintain-items">
+    7  				<h4 class="title">
+
+/Users/j/kalading_web/app/views/orders/new_car_select.html.erb:
+    8      <div class="main">
+    9        <%= image_tag("new-order/step-1.png", :class => 'tag2')%>
+   10:       <a href="/static_pages/fu-wu-liu-cheng" class="tit">服务内容</a>
+   11        <div class="maintain-items">
+   12          <h4 class="title clearfix">
+
+/Users/j/kalading_web/app/views/orders/new_info_submit.html.erb:
+   11          <%= link_to "上一步", new_service_select_orders_path(car_id: @car_id, type: @type) %>
+   12        </div>
+   13:       <h4 class="tit">服务内容</h4>
+   14        <div class="maintain-items">
+   15  
+
+/Users/j/kalading_web/app/views/orders/new_service_select.html.erb:
+    7          <%= link_to "上一步", new_car_select_orders_path(type: @type) %>
+    8        </div>
+    9:       <h4 class="tit">服务内容</h4>
+   10        <div class="maintain-items">
+   11          <h4 class="title clearfix">
+
+7 matches across 7 files
+
+
+Searching 2283 files for "服务内容"
+
+/Users/j/kalading_web/app/views/layouts/new/_header.html.erb:
+   73  
+   74          <li class="service <%= "active" if params[:action] == "new_service_select" %>">
+   75:           <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1" target="_blank">服务内容</a>
+   76          </li>
+   77  
+
+/Users/j/kalading_web/app/views/layouts/new/_header_others.html.erb:
+   50          </li>
+   51          <li class="service <%= "active" if controller == "static_pages" && action == "show" && ['fu-wu-liu-cheng','ji-you-san-lv','ji-you-ji-lv','geng-huan-dian-ping'].include?(id) %>">
+   52:           <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1">服务内容</a>
+   53  
+   54            <div class="sub2 hide">
+
+/Users/j/kalading_web/app/views/orders/_no_car_type.html.erb:
+    2      <div class="main">
+    3        <%= image_tag("new-order/first.png", :class => 'tag2')%>
+    4:       <a href="/static_pages/fu-wu-liu-cheng" class="tit">服务内容</a>
+    5        <div class="maintain-items">
+    6          <%= form_tag(submit_no_car_order_orders_path) do |f| %>
+
+/Users/j/kalading_web/app/views/orders/_quick_select_car.html.erb:
+    3  		<div class="main">
+    4  			<%= image_tag("new-order/step-1.png", :class => 'tag2')%>
+    5: 			<h4 class="tit">服务内容</h4>
+    6  			<div class="maintain-items">
+    7  				<h4 class="title">
+
+/Users/j/kalading_web/app/views/orders/new_car_select.html.erb:
+    8      <div class="main">
+    9        <%= image_tag("new-order/step-1.png", :class => 'tag2')%>
+   10:       <a href="/static_pages/fu-wu-liu-cheng" class="tit">服务内容</a>
+   11        <div class="maintain-items">
+   12          <h4 class="title clearfix">
+
+/Users/j/kalading_web/app/views/orders/new_info_submit.html.erb:
+   11          <%= link_to "上一步", new_service_select_orders_path(car_id: @car_id, type: @type) %>
+   12        </div>
+   13:       <h4 class="tit">服务内容</h4>
+   14        <div class="maintain-items">
+   15  
+
+/Users/j/kalading_web/app/views/orders/new_service_select.html.erb:
+    7          <%= link_to "上一步", new_car_select_orders_path(type: @type) %>
+    8        </div>
+    9:       <h4 class="tit">服务内容</h4>
+   10        <div class="maintain-items">
+   11          <h4 class="title clearfix">
+
+7 matches across 7 files
