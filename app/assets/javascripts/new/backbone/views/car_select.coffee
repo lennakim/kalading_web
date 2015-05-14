@@ -10,7 +10,7 @@ class App.Views.CarSelect extends Backbone.View
 
   initialize: ->
     unless $.jStorage.get("autos")?
-      $.get ("#{API_Domain}#{V2}/autos.json"), (data)->
+      $.get ("#{API_Domain}#{V2}/two_level_autos.json"), (data)->
         console.log("load autos data")
         $.jStorage.set("autos", data['data'], {TTL: 1000*60*60*24*10}) #本地存储
         generateCarIndex($.jStorage.get("autos"))
