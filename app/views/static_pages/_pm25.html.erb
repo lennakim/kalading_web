@@ -1,16 +1,18 @@
 <div class="main clearfix static-pages">
-  <div class="icon pull-left">
+
+  <div class="icon">
     <%= image_tag "static_pages/pm25/icon.png" %>
-  </div>
-  <div class="icon-desc pull-left" >
-    <div class="first-desc pull-left" >
+    <div class="titles">
+      <div class="first-title">
       告别重度雾霾
-    </div>
-    <br/>
-    <div class="second-desc pull-left" >
+      </div>
+      <div class='sub-title'>
       坐享车内清新
+      </div>
     </div>
+    <%= link_to "立即下单", new_car_select_orders_path(type: 'bmt'), class: 'order-btn pull-right'%>
   </div>
+
   <div class="content pm25 pull-left" >
     <div class="lvqingqi pull-left">
       <%= image_tag "static_pages/pm25/lvqingqi.jpg", :class=>"img" %>
