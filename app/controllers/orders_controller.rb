@@ -50,7 +50,11 @@ class OrdersController < ApplicationController
     end
 
     if @last_select_car
-      @autos.unshift(@last_select_car) #放在第一個
+      if @autos
+        @autos.unshift(@last_select_car)
+      else
+        @autos = [@last_select_car]
+      end
     end
 
     render layout: "new"
