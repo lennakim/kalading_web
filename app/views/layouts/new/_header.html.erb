@@ -12,7 +12,7 @@
 
     <div class="kld-header-wrap">
       <div class="kld-header-logo">
-        <a href="http://www.kalading.com/new_index.html" class="kld-header-logo-img">
+        <a href="/" class="kld-header-logo-img">
           <%= image_tag("new-index/logo.png",:class => 'logo')%>
           <%= image_tag("new-index/logo-red.png",:class => 'logored hide')%>
         </a>
@@ -21,11 +21,12 @@
           <%= image_tag("new-index/slogan2.png",:class => 'slogan2 hide')%>
         </div>
         <div class="dropdown address" title="服务地址">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
-          <span class="val">
-            <span class="city"><%= current_city_name %></span>
-            <span class="caret"></span>
-          </span>
+          <a href="#">
+            <span class="val">
+              <span class="city"><%= current_city_name %></span>
+              <span class="caret"></span>
+            </span>
+          </a>
         </div>
       </div>
       <ul class="kld-header-link">
@@ -33,7 +34,7 @@
           <a href="/" target="_blank">首页</a>
         </li>
         <li class="products <%= "active" if params[:action] == "new_car_select" %>">
-          <a href="" class="" onclick="return false;">预约服务</a>
+          <a href="/orders/new_car_select?type=bmt" class="" onclick="return false;">预约服务</a>
 
           <div class="sub">
             <!-- <div class="bac"></div> -->
@@ -66,11 +67,6 @@
                   <%= image_tag("new-index/battery2.png",:class => 'pic2 hide')%>
                 </a>
               </li>
-              <li class="special">
-                <%= image_tag("new-index/customer-num.png",:class => 'customer-num')%>
-                <p class="rank"><span>第</span><span class="num">232323</span><span>位</span></p>
-                <p>感谢您的信赖</p>
-              </li>
             </ul>
           </div>
         </li>
@@ -80,8 +76,7 @@
         </li>
 
         <li class="team">
-          <a href="" class="cl-effect-1" class="cl-effect-1">城市团队</a>
-
+          <%= link_to "城市团队", static_page_path(id: 'fu-wu-cheng-shi'), class: 'cl-effect-1' %>
           <div class="sub hide">
             <div class="subbac"></div>
             <ul>

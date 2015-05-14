@@ -212,7 +212,7 @@ label{
 			.img{
 				line-height: 135px;
 				.car-logo{
-					height: 150px;
+					min-height: 120px;
 				}
 			}
 			.brand-series-model{
@@ -420,6 +420,10 @@ label{
 		    		height: 40px;
 		    		line-height: 40px;
 		    		margin: 20px 0;
+		    		img{
+		    			float: left;
+		    			margin: 10px;
+		    		}
 		    	}
 		    	.active{
 		    		color: $main-orange;

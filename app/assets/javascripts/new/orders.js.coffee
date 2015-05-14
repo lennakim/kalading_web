@@ -104,6 +104,39 @@ $ ->
 
   if $('.new-order-form, .no_car_type').length > 0
 
+
+    $('#verification_code').on 'blur', (e) ->
+      code = $(@).val()
+      phone_num = $("#phone_num").val()
+      car_id = $("#car_id").val()
+      if phone_num.length == 11 && code.length == 6
+        console.log 1
+        $.get "/users/get_user_info?phone_num=#{phone_num}&code=#{code}&car_id=#{car_id}", (data) ->
+          if data && !data['error']
+            console.log data
+            $("#name").val(data['name'])
+            $("#registration_date").val(data['auto_registration_date'])
+            car_location = data['car_num'][0]
+            car_num = data['car_num'][1 .. -1]
+
+            $("select.car_location option[value=#{car_location}]").attr('selected', true)
+            $("#car_num").val(car_num)
+            if $(".service-address-detail").length == 0
+              service_location = data['address']
+              $("#selected_address").val(service_location)
+              $.cookie('address', service_location)
+              $(".current_addresses").html """
+                <li class="service-address-item selected">
+                  <label>
+                    <input type="radio" name="address" value="#{data['address']}" checked>
+                    <span class='address-name'>
+                      #{ data['address'] }
+                    </span>
+                  </label>
+                </li>
+              """
+
+
     $("#place_order_form").on "ajax:before", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)
 

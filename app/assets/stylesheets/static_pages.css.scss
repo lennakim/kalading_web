@@ -74,7 +74,8 @@
       .top{
         width: 100%;
         img{
-          width: 100%;
+          width: 92%;
+          margin: 20px 4%;
           @include border-top-left-radius(5px);
           @include border-top-right-radius(5px);
         }
@@ -258,7 +259,7 @@
       .zhouqi{
         .img-content{
           margin-left: 15px;
-          width: 86%;
+          width: 86%; 
           .highlight{
             font-size: 20px;
             color: #e94609;
@@ -313,14 +314,15 @@
             margin-bottom: 3px;
             margin-right: -7px;
             width: 100%;
-            .img{
-              width: 10px;
-              height: 10px;
-              margin-right: 3px;
-            }
+            padding-left: 20px;
+            background-image: image-url('static_pages/huandianping/xingzhuang.png'); 
+            background-repeat: no-repeat;
+            background-size: 4%;
+            background-position: 4px 3px;
           }
         }
         .boshis3, .boshis4, .boshis5{
+          height: 465px;
           border-right: 2px solid lightgray;
           .detail-desc{
             margin-bottom: 20px;

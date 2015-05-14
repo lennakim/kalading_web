@@ -82,6 +82,10 @@ class OrdersController < ApplicationController
     @parts = JSON.parse cookies["parts"]
     @city_capacity = Order.city_capacity current_city_id
 
+    if signed_in?
+      @user_info = Order.user_orders(current_user.phone_number, car_id).first
+    end
+
     activity = Activity.find_by id: params[:act]
 
     type = params["type"]

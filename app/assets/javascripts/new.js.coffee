@@ -60,7 +60,7 @@ $ ->
     $('.header .kld-header-wrap').addClass('toggle')
     $(@).find('.sub').stop().animate({'height':'100px'},500)
 
-    $('.logo').addClass('hide')
+    $('.header .logo').addClass('hide')
     $('.logored').removeClass('hide')
     $('.slogan1').addClass('hide')
     $('.slogan2').removeClass('hide')
@@ -68,7 +68,7 @@ $ ->
   $('.products').on 'mouseleave', ->
     $(@).find('.sub').stop().animate({'height':'0'},500, ->
       $('.header .kld-header-wrap').removeClass('toggle')
-      $('.logo').removeClass('hide')
+      $('.header .logo').removeClass('hide')
       $('.logored').addClass('hide')
       $('.slogan1').removeClass('hide')
       $('.slogan2').addClass('hide')
@@ -90,12 +90,10 @@ $ ->
     $(@).find('.key,.pic2').addClass('hide')
     $(@).find('.pic1').removeClass('hide')
 
-
   # 短信验证码
   if $("#login_modal").length > 0
 
     $('.get_code').click ->
-
       phone_num = $('#phone_num').val()
       $(this).addClass('disable').attr('disabled', 'disabled')
       seconds = 60
