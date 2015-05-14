@@ -54,7 +54,7 @@ input.form-control, select.form-control, textarea.form-control{
 
 a#get_code, a#validate_preferential, a#no_preferential{
   @include border-radius(0px);
-  background: #eebf8f;
+  background: #e94609;
   border: 0 none;
   color: white;
   width: 85px;
@@ -300,7 +300,7 @@ label{
 		    	}
 		    }
 		    .brand-list{
-		    	max-height: 260px;
+		    	max-height: 210px;
 		    	overflow: auto;
 		    }
 		    .brand-list,.series-list,.model-list{
@@ -438,6 +438,13 @@ label{
 		    			background-repeat: no-repeat;
 		    			background-position: right center;
 		    		}
+		    		.item-con{
+		    			float: right;
+						width: 60%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+		    		}
 		    	}
 		    	.active{
 		    		color: $main-orange;
@@ -461,10 +468,10 @@ label{
 				background: #fff;
 		    	li{
 		    		float: left;
-					width: 42%;
+					width: 48%;
 					height: 35px;
 					line-height: 35px;
-					margin: 10px 4%;
+					margin: 10px 1%;
 		    	}
 		    	.active{
 		    		color: $main-orange;
@@ -626,7 +633,7 @@ label{
 				}
 				#get_code{
 					border: 0;
-					background: #eebf8f;
+					background: #e94609;
 					color: #fff;
 				}
 				.submit{
