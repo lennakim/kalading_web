@@ -25,7 +25,7 @@ class Auto < ActiveRecord::Base
             end
           end
         end
-      end
+      end;nil #取消返回值
     end
   end
 
