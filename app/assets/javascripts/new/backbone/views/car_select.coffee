@@ -73,7 +73,12 @@ class App.Views.CarSelect extends Backbone.View
     $("ul.model-list").html("")
     _.each submodels, (submodel)->
       _.each submodel['submodels'], (sub)->
-        $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']} - #{sub['engine_displacement']}</li>")
+        eng = sub['engine_displacement']
+
+        if _.isEmpty(eng)
+          $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']}</li>")
+        else
+          $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']} - #{eng}</li>")
 
   generateCarModel = (letter, brname)-> #生成车系
     brands = $.jStorage.get("auto-#{letter}")
