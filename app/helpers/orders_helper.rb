@@ -199,23 +199,16 @@ module OrdersHelper
 
     url = case name
     when "空气滤清器"
-      part = "空气滤"
-      "/assets/new-order/air_cleaner.png"
+      image_tag("new-order/air_cleaner.png")
     when "机滤"
-      part = "机滤"
-      "/assets/new-order/oil_filter.png"
+      image_tag("new-order/oil_filter.png")
     when "空调滤清器"
-      part = "空调滤"
-      "/assets/new-order/air_filter.png"
+      image_tag("new-order/air_filter.png")
     when "机油"
-      part = "机油"
-      "/assets/new-order/oil.png"
+      image_tag("new-order/oil.png")
     when "电瓶"
-      part = "电瓶"
-      "/assets/new-order/battery.png"
+      image_tag("new-order/battery.png")
     end
-
-    "<img src='#{url}' /> <span class='item-tit'>#{part}</span>"
   end
 
 end
