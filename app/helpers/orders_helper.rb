@@ -195,7 +195,6 @@ module OrdersHelper
   end
 
   def display_item_img name
-    part = ""
 
     url = case name
     when "空气滤清器"
