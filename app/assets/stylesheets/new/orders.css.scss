@@ -634,3 +634,46 @@ label{
 	}
 }
 
+
+.success-page{
+  .maintain-items{
+    padding-bottom: 75px !important;
+  }
+  .big-icon{
+    width: 30%;
+    text-align: right;
+    margin-top: 100px;
+  }
+  .title{
+    color: #e94609;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .words{
+    margin-top: 100px;
+    margin-left: 30px;
+    width: 50%;
+    .title{
+      padding: 0 !important;
+      border-bottom: 0 none !important;
+    }
+    p{
+      color: #666666;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .back{
+      margin-top: 55px;
+      margin-left: 55px;
+      font-weight: bold;
+      li.right{
+        margin-left: 50px;
+      }
+
+      a{
+        color: #e94609;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -326,7 +326,7 @@ class OrdersController < ApplicationController
         sign_in user
       end
 
-      render "success"
+      render "success", layout: 'new'
     else
       render "fail"
     end
@@ -434,6 +434,7 @@ class OrdersController < ApplicationController
   end
 
   def success
+    render layout: 'new'
   end
 
   def order_status
