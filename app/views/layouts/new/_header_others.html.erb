@@ -84,7 +84,7 @@
           </div>
         </li>
 
-        <li class="about <%= "active" if ['static_pages','posts'].include?(controller) && ['posts_list','show'].include?(action) && (['qi-ye-jie-shao','qi-ye-rong-yu','lian-xi-wo-men'].include?(id) || params[:tag_id] == '15') %>">
+        <li class="about <%= "active" if ['static_pages','posts'].include?(controller) && ['posts_list','show'].include?(action) && (['qi-ye-jie-shao','fu-wu-ke-hu','qi-ye-rong-yu','lian-xi-wo-men'].include?(id) || params[:tag_id] == '15') %>">
           <a href="/static_pages/qi-ye-jie-shao" class="cl-effect-1">关于我们</a>
           <div class="sub2 hide">
             <div class="subbac"></div>
@@ -93,7 +93,9 @@
               <li class="<%= "active" if id == "qi-ye-jie-shao" %>">
                 <a href="/static_pages/qi-ye-jie-shao">企业介绍</a>
               </li>
-
+              <li class="<%= "active" if id == "fu-wu-ke-hu" %>">
+                <a href="/static_pages/fu-wu-ke-hu">服务客户</a>
+              </li>
               <li class="<%= "active" if id == "qi-ye-rong-yu" %>">
                 <a href="/static_pages/qi-ye-rong-yu">企业荣誉</a>
               </li>
