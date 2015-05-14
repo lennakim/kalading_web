@@ -4,7 +4,6 @@ class App.Views.CarSelect extends Backbone.View
 
   events:
     "click ul.crumbs > li":      "selectBrandByLetter"
-    "click ul.crumbs > li > a":  "triggerByLetter"
     "click ul.brand-list > li":  "viewBrandName"
     "click ul.series-list > li": "viewSubModelName"
     "click ul.model-list > li":  "selectModel"
@@ -34,15 +33,10 @@ class App.Views.CarSelect extends Backbone.View
     @$(".next").find("a").attr("car_id", car_id)
 
   selectBrandByLetter: (e)=>
-    self = $(e.target)
-    self.find("a").trigger("click")
-
-  triggerByLetter: (e)=>
     $(".brand-list").html("")
-    self = $(e.target)
-    letter = self.html()
-    ele = self.parent("li")
-    ele.addClass('active').siblings().removeClass('active')
+    self = $(e.currentTarget)
+    letter = self.find("a").html()
+    self.addClass('active').siblings().removeClass('active')
     generateCarBrand(letter)
 
   viewSubModelName: (e)=>
