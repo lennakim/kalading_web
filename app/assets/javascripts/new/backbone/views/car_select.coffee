@@ -19,7 +19,7 @@ class App.Views.CarSelect extends Backbone.View
 
     if $.jStorage.get("auto-A")
       # initialize完成后 触发 viewFirstCar Event
-      _.defer(_.bind(@viewFirstCar, this));
+      _.defer(_.bind(@viewFirstCar, this))
 
   render: ->
 
