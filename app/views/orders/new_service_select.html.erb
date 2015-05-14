@@ -20,8 +20,7 @@
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr.keys[0]) %>
               <li version="<%= item['version'] %>" data-part="<%= part=arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected clearfix">
-                <%= display_item_img(part) %>
-                <span class="item-tit"><%= part %></span>
+                <%= raw display_item_img(part) %>
                 <span>
                   <%= display_item_name(part, item["brand"], item['number'], item['version']) %>
                   ￥<%= item['price'] %>
