@@ -46,10 +46,13 @@ class OrdersController < ApplicationController
     @city_capacity = Order.city_capacity current_city_id
 
     if signed_in?
-      @autos = current_user.autos.recent.unshift(@last_select_car) #放在第一個
-    else
-      @autos = [@last_select_car]
+      @autos = current_user.autos.recent
     end
+
+    if @last_select_car
+      @autos.unshift(@last_select_car) #放在第一個
+    end
+
     render layout: "new"
   end
 
