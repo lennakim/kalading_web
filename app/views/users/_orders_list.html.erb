@@ -1,7 +1,11 @@
 <div class="orders">
   <% if @orders.length > 0 %>
     <% @orders.each do |order| %>
-      <%= render "order_item", order: order %>
+
+      <% if order['model_engine_displacement'] %>
+        <%= render "order_item", order: order %>
+      <% end %>
+
     <% end %>
   <% else %>
     <div class="blank">您还没有预定过我们的服务</div>
