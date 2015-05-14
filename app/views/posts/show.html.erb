@@ -14,9 +14,6 @@
 
     <div class="cont">
       <% if params[:action] == 'posts_list' %>
-        <div class="top wait clearfix">
-          <a href="javascript:history.go(-1);"><<返回</a>
-        </div>
         <ul class="con clearfix">
           <% @posts.each do |post| %>
             <li class="item pull-left">
