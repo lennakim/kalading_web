@@ -18,7 +18,14 @@ class App.Views.CarSelect extends Backbone.View
     else
       generateCarIndex($.jStorage.get("autos"))
 
+    if $.jStorage.get("auto-A")
+      # initialize完成后 触发 viewFirstCar Event
+      _.defer(_.bind(@viewFirstCar, this));
+
   render: ->
+
+  viewFirstCar: ->
+    $("ul.crumbs > li:first").trigger("click")
 
   selectModel: (e)=>
     self = $(e.target)
