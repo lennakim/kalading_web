@@ -16,15 +16,15 @@
           <ul class="left service-items">
             <% parts = @result['applicable_parts'] %>
             <% array = filter_parts(parts, @type)%>
+            <% recommend_numbers = [] %>
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr.keys[0]) %>
-
               <li data-part="<%= arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected">
                 <%= display_item_name(arr, item["brand"], item['number']) %>
                 ￥<%= item['price'] %>
+                <% recommend_numbers << item['number'] %>
               </li>
             <% end %>
-
               <div class="other">
                 <li data-part="service_price" class="cursor cto">
                   上门服务费
@@ -36,7 +36,7 @@
           <% array.each_with_index do |arr, inx| %>
             <ul data-part="<%= arr.keys[0] %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
               <% get_part(parts, arr.keys[0]).each do |part| %>
-                <li data-part="<%= arr.keys[0] %>" brand="<%=part['brand']%>" number="<%=part['number']%>" class="cursor">
+                <li data-part="<%= arr.keys[0] %>" brand="<%=part['brand']%>" number="<%=part['number']%>" class="cursor <%= recommend_numbers.include?(part['number']) ? 'active' : ''%>">
                   <%= display_item_name(arr, part['brand'], part['number']) %>
                   ￥<%= part["price"] %>
                 </li>

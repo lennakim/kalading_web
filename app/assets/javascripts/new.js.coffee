@@ -14,6 +14,7 @@
 #= require URI
 #= require nprogress
 #= require nprogress-turbolinks
+#= require gauge
 
 #= require jstorage
 #= require jquery.flexslider-min
@@ -100,7 +101,7 @@ $ ->
   # 短信验证码
   if $("#login_modal").length > 0
 
-    $('#get_code').click ->
+    $('.get_code').click ->
 
       phone_num = $('#phone_num').val()
       $(this).addClass('disable').attr('disabled', 'disabled')
@@ -138,3 +139,21 @@ $ ->
       data = { phone_num: phone_num, code: verification_code, authenticity_token: csrf_token }
 
       $.form('/sessions', data).submit()
+
+  if $('.maintain-report').length > 0
+    opts =
+      lines: 12
+      angle: 0.21
+      lineWidth: 0.06
+      limitMax: 'false'
+      colorStart: '#FAB671'
+      colorStop: '#EB613C'
+      strokeColor: '#fff7f0'
+      generateGradient: true
+
+    target = document.getElementById('chart')
+    gauge = new Donut(target).setOptions(opts)
+    gauge.maxValue = 100
+    gauge.animationSpeed = 32
+    score = $('#chart').data('data')
+    gauge.set(score)

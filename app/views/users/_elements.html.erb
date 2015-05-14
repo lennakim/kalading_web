@@ -1,114 +1,194 @@
-<p>
-  备胎：
-  <span class='<%= status_class report['spare_tire_desc'] %>'>
-    <%= spare_tire_desc_mapper report['spare_tire_desc'] %>
-  </span>
-</p>
-<p>
-  机油尺标注：
-  <span class='<%= status_class report['oil_position'] %>'>
-    <%= oil_position_mapper report['oil_position'] %>
-  </span>
-</p>
-<p>
-  旧机油判断：
-  <span class='<%= status_class report['oil_desc'] %>'>
-    <%= oil_desc_mapper report['oil_desc'] %>
-  </span>
-</p>
-<p>
-  空气滤芯：
-  <span class='<%= status_class report['air_filter_desc'] %>'>
-    <%= air_filter_desc_mapper report['air_filter_desc'] %>
-  </span>
-</p>
-<p>
-  空调滤芯：
-  <span class='<%= status_class report['cabin_filter_desc'] %>'>
-    <%= cabin_filter_desc_mapper report['cabin_filter_desc'] %>
-  </span>
-</p>
-<p>
-  防冻液冰点：
-  <span class='<%= status_class report['antifreeze_freezing_point'] %>'>
-    <%= report['antifreeze_freezing_point'] %>
-  </span>
-</p>
-<p>
-  防冻液目测：
-  <span class='<%= status_class report['antifreeze_desc'] %>'>
-    <%= antifreeze_desc_mapper report['antifreeze_desc'] %>
-  </span>
-</p>
-<p>
-  防冻液位：
-  <span class='<%= status_class report['antifreeze_position'] %>'>
-    <%= antifreeze_position_mapper report['antifreeze_position'] %>
-  </span>
-</p>
-<p>
-  转向助力油目测：
-  <span class='<%= status_class report['steering_oil_desc'] %>'>
-    <%= steering_oil_desc_mapper report['steering_oil_desc'] %>
-  </span>
-</p>
-<p>
-  转向助力油位：
-  <span class='<%= status_class report['steering_oil_position'] %>'>
-    <%= steering_oil_position_mapper report['steering_oil_position'] %>
-  </span>
-</p>
-<p>
-  变速箱油目测：
-  <span class='<%= status_class report['gearbox_oil_desc'] %>'>
-    <%= gearbox_oil_desc_mapper report['gearbox_oil_desc'] %>
-  </span>
-</p>
-<p>
-  变速箱油位：
-  <span class='<%= status_class report['gearbox_oil_position'] %>'>
-    <%= gearbox_oil_position_mapper report['gearbox_oil_position'] %>
-  </span>
-</p>
-<p>
-  玻璃水：
-  <span class='<%= status_class report['glass_water_desc'] %>'>
-    <%= glass_water_desc_mapper report['glass_water_desc'] %>
-  </span>
-</p>
-<p>
-  电瓶外观：
-  <span class='<%= status_class report['battery_desc'] %>'>
-    <%= battery_desc_mapper report['battery_desc'] %>
-  </span>
-</p>
-<p>
-  电瓶充电程度：
-  <span class='<%= status_class report['battery_charge'] %>'>
-    <%= report['battery_charge'] %>
-  </span>
-</p>
-<p>
-  电瓶健康指数：
-  <span class='<%= status_class report['battery_health'] %>'>
-    <%= report['battery_health'] %>
-  </span>
-</p>
-<p>
-  电瓶桩头：
-  <span class='<%= status_class report['battery_head_desc'] %>'>
-    <%= battery_head_desc_mapper report['battery_head_desc'] %>
-  </span>
-</p>
-<p>
-  电瓶指示灯颜色：
-  <span class='on'>
-    <%= report['battery_light_color'] %>
-  </span>
-</p>
-<p>
-  车内软管和线路：
-  <span class='<%= status_class report['engine_hose_and_line_desc'] %>'>
-    <%= engine_hose_and_line_desc_mapper report['engine_hose_and_line_desc'] %>
-  </span>
-</p>
+<div class="elements">
+  <ul>
+    <li class='clearfix'>
+      <div class="name pull-left">
+        备胎
+      </div>
+
+      <div class="state pull-left <%= status_class report['spare_tire_desc'] %>">
+        <%= spare_tire_desc_mapper report['spare_tire_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        机油尺标注
+      </div>
+
+      <div class="state pull-left <%= status_class report['oil_position'] %>">
+        <%= oil_position_mapper report['oil_position'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        旧机油判断
+      </div>
+
+      <div class="state pull-left <%= status_class report['oil_desc'] %>">
+        <%= oil_desc_mapper report['oil_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        空气滤芯
+      </div>
+
+      <div class="state pull-left <%= status_class report['air_filter_desc'] %>">
+        <%= air_filter_desc_mapper report['air_filter_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        空调滤芯
+      </div>
+
+      <div class="state pull-left <%= status_class report['cabin_filter_desc'] %>">
+        <%= cabin_filter_desc_mapper report['cabin_filter_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        防冻液冰点
+      </div>
+
+      <div class="state pull-left <%= status_class report['antifreeze_freezing_point'] %>">
+        <%= report['antifreeze_freezing_point'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        防冻液目测
+      </div>
+
+      <div class="state pull-left <%= status_class report['antifreeze_desc'] %>">
+        <%= antifreeze_desc_mapper report['antifreeze_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        防冻液位
+      </div>
+
+      <div class="state pull-left <%= status_class report['antifreeze_position'] %>">
+        <%= antifreeze_position_mapper report['antifreeze_position'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        转向助力油目测
+      </div>
+
+      <div class="state pull-left <%= status_class report['steering_oil_desc'] %>">
+        <%= steering_oil_desc_mapper report['steering_oil_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        转向助力油位
+      </div>
+
+      <div class="state pull-left <%= status_class report['steering_oil_position'] %>">
+        <%= steering_oil_position_mapper report['steering_oil_position'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        变速箱油目测
+      </div>
+
+      <div class="state pull-left <%= status_class report['gearbox_oil_desc'] %>">
+        <%= gearbox_oil_desc_mapper report['gearbox_oil_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        变速箱油位
+      </div>
+
+      <div class="state pull-left <%= status_class report['gearbox_oil_position'] %>">
+        <%= gearbox_oil_position_mapper report['gearbox_oil_position'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        玻璃水
+      </div>
+
+      <div class="state pull-left <%= status_class report['glass_water_desc'] %>">
+        <%= glass_water_desc_mapper report['glass_water_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        电瓶外观
+      </div>
+
+      <div class="state pull-left <%= status_class report['battery_desc'] %>">
+      <%= battery_desc_mapper report['battery_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        电瓶充电程度
+      </div>
+
+      <div class="state pull-left on">
+        <%= report['battery_charge'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        电瓶健康指数
+      </div>
+
+      <div class="state pull-left on">
+        <%= report['battery_health'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        电瓶桩头
+      </div>
+
+      <div class="state pull-left <%= status_class report['battery_head_desc'] %>">
+        <%= battery_head_desc_mapper report['battery_head_desc'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        电瓶指示灯颜色
+      </div>
+
+      <div class="state pull-left on">
+        <%= report['battery_light_color'] %>
+      </div>
+    </li>
+
+    <li class='clearfix'>
+      <div class="name pull-left">
+        车内软管和线路
+      </div>
+
+      <div class="state pull-left <%= status_class report['engine_hose_and_line_desc'] %>">
+        <%= engine_hose_and_line_desc_mapper report['engine_hose_and_line_desc'] %>
+      </div>
+    </li>
+  </ul>
+
+</div>
