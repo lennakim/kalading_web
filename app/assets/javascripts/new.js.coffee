@@ -28,6 +28,7 @@
 
 #= require new/home
 #= require new/orders
+#= require users
 
 window.API_Domain = gon.global.server_uri
 window.V2 = gon.global.v2
@@ -90,19 +91,10 @@ $ ->
     $(@).find('.pic1').removeClass('hide')
 
 
-  if $('.user-info').length > 0
-    if $('.status').hasClass('finish')
-      $('.status span').addClass('hide').next().removeClass('hide')
-
-    $('.technician').click ->
-      $('.phone').removeClass('hide')
-
-
-
   # 短信验证码
   if $("#login_modal").length > 0
 
-    $('#get_code').click ->
+    $('.get_code').click ->
 
       phone_num = $('#phone_num').val()
       $(this).addClass('disable').attr('disabled', 'disabled')

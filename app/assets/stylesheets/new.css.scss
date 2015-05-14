@@ -279,9 +279,7 @@ nav{
   color: #e94609;
 }
 
-.cb-slideshow li:nth-child(1) span {
-  background-image: image-url("new-index/banner.jpg");
-}
+
 
 //  定義方法 animation-delay-n
 @mixin animation-delay-n($n){
@@ -291,26 +289,28 @@ nav{
   -ms-animation-delay: #{$n*6}s;
   animation-delay: #{$n*6}s;
 }
-
+.cb-slideshow li:nth-child(1) span {
+  background-image: image-url("new-index/banner1.jpg");
+}
 .cb-slideshow li:nth-child(2) span {
-  background-image: image-url("new-index/banner.jpg");
+  background-image: image-url("new-index/banner2.jpg");
   @include animation-delay-n(1) //調用 animation-delay-n
 }
 
 .cb-slideshow li:nth-child(3) span {
-  background-image: image-url("new-index/banner.jpg");
+  background-image: image-url("new-index/banner1.jpg");
   @include animation-delay-n(2)
 }
 .cb-slideshow li:nth-child(4) span {
-  background-image: image-url("new-index/banner.jpg");
+  background-image: image-url("new-index/banner2.jpg");
   @include animation-delay-n(3)
 }
 .cb-slideshow li:nth-child(5) span {
-  background-image: image-url("new-index/banner.jpg");
+  background-image: image-url("new-index/banner1.jpg");
   @include animation-delay-n(4)
 }
 .cb-slideshow li:nth-child(6) span {
-  background-image: image-url("new-index/banner.jpg");
+  background-image: image-url("new-index/banner2.jpg");
   @include animation-delay-n(5)
 }
 
@@ -854,6 +854,9 @@ nav{
   }
   .operate{
     padding: 20px;
+    a{
+      color: #666666;
+    }
   }
   .origin{
     color: #999999;
@@ -882,7 +885,7 @@ nav{
   }
   .now{
     padding-right: 20px;
-    background-image: image-url('new-user/privilege.png');
+    // background-image: image-url('new-user/privilege.png');
     background-position: right;
     background-repeat: no-repeat;
     font-size: 20px;
@@ -892,6 +895,12 @@ nav{
 
 .orders-detail{
   height: 1600px;
+  .content{
+    margin: -15px 40px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #eee;
+  }
   table{
     width: 100%;
     border-radius: 2px;
@@ -917,7 +926,7 @@ nav{
       border: 0;
       text-align: center;
     }
-  }     
+  }
   .btns{
     line-height: 35px;
     margin: 10px 0 0 40%;
@@ -942,7 +951,7 @@ nav{
     padding: 20px;
     text-align: right;
     color: #999999;
-  } 
+  }
 }
 .orders-detail,.know{
   height: 1600px;
@@ -952,16 +961,14 @@ nav{
   .main{
     width: 1030px;
     margin: 50px auto;
-    .content{
-      margin: -15px 40px;
-      padding: 10px;
-      border-radius: 5px;
-      background: #eee;
+    .content,.cont{
       .top{
         line-height: 50px;
         padding: 0 10px;
         border-radius: 3px 3px 0 0;
         border: 1px solid #dbdbdb;
+        border-bottom: 0;
+        background: #fff;
         a{
           color: #8c8c8c;
         }
@@ -970,8 +977,8 @@ nav{
         padding: 20px;
         background: #fff;
         border: 1px solid #dbdbdb;
-        border-top: 0;
         border-radius: 0 0 3px 3px;
+        background: #fff;
         h4{
           color: #333333;
         }
@@ -980,7 +987,32 @@ nav{
   }
 }
 .know{
-  li{
+  .cont{
+    width: 85%;
+    margin: -230px 0 0 110px;
+    float: left;
+    padding: 10px;
+    border-radius: 5px;
+    background: #eee;
+  }
+  .menu-tag{
+    float: left;
+    width: 120px;
+    height: 300px;
+    padding: 20px;
+    line-height: 40px;
+    background-image: image-url('new-user/border.png'); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+    cursor: pointer;
+    cursor: hand;
+    li:hover{
+      color: $main-orange;
+      padding-left: 15px;
+    }
+  }
+  .item{
     width: 48%;
     line-height: 30px;
     margin: 0 1%;
@@ -1006,6 +1038,22 @@ nav{
       a{
         color: $main-orange;
       }
+    }
+  }
+  .detail{
+    border: 1px solid #dbdbdb;
+    border-top: 0;
+    border-radius: 0 0 3px 3px;
+    background: #fff;
+    .title{
+      line-height: 40px;
+      margin: 0;
+      text-align: center;
+    }
+    .article{
+      margin: 30px 0;
+      padding: 0 20px;
+      text-indent: 2em;
     }
   }
 }
@@ -1230,3 +1278,133 @@ nav{
     }
   }
 }
+
+#cancel_modal{
+  // @include radio();
+
+  .modal-header{
+    padding: 0px 15px 0 15px;
+
+    .modal-title{
+      line-height: 57px;
+      font-size: 16px;
+      color: #ee7800;
+    }
+
+    height: 57px;
+    border-bottom: 0 none;
+  }
+
+  hr {
+    margin: 0;
+    border: 1px solid #ee7800;
+  }
+  .modal-body{
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 0 none;
+    .reasons{
+
+      .reason-content{
+        width: 80%;
+        label{
+          width: 100%;
+        }
+      }
+
+      .radio-btn{
+        width: 10%;
+        label{
+          width: 100%;
+        }
+        span{
+          margin:-2px 0px 0 9px;
+        }
+      }
+
+      li{
+        width: 100%;
+        height: 30px;
+        font-size: 15px;
+        line-height: 42px;
+        margin-top: 10px;
+      }
+    }
+    .textarea{
+      margin-top: 15px;
+      display: none;
+    }
+    hr {
+      margin-top: 15px;
+    }
+  }
+  .modal-footer{
+    border-top: 0 none;
+
+    .btn-done{
+      background-color: #ee7800;
+      color: white;
+    }
+  }
+}
+
+#comment_modal{
+  .comment-stars{
+    width: 160px;
+    margin: 20px auto;
+    img{
+      width: 16%;
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
+  #comment_con{
+    width: 100%;
+  }
+  .comment-tags{
+    // padding: 5px 50px;
+    .tags{
+      margin-bottom: 8px;
+      input[type='radio']{
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none;
+      }
+    }
+    .tag{
+      &.good{
+        width: 44%;
+        .btn{
+          color: $main-orange;
+          border-color: $main-orange;
+          font-size: 12px;
+          &:hover, &.active{
+            color: #ffffff;
+            background: $main-orange;
+          }
+        }
+      }
+      &.bad{
+        margin-left: 25px;
+        .btn{
+          color: #666666;
+          border-color: #666666;
+          font-size: 12px;
+          &:hover, &.active{
+            color: #ffffff;
+            background: #666666;
+          }
+        }
+      }
+    }
+  }
+
+  .submit-comment{
+    margin-top: 15px;
+    text-align: center;
+    .orange-btn{
+      @include button();
+    }
+  }
+}
+

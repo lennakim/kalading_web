@@ -1,58 +1,67 @@
-<div class="order" id="order_<%#= order["id"] %>">
+<div class="order" id="order_<%= order["id"] %>">
   <ul class="order-list">
     <li class="order-item">
       <div class="top wait clearfix">
         <div class="datetime pull-left">
-          <p class="pull-left">下单时间:2014-4-6<%#= order["serve_datetime"] %></p>
-          <p class="pull-left">服务时间:2014-6-7<%#= order["serve_datetime"] %></p>
+          <p class="pull-left">下单时间:<%= order["serve_datetime"] %></p>
+          <p class="pull-left">服务时间:<%= order["serve_datetime"] %></p>
         </div>
         <div class="status finish pull-right">
-          <span>等待分配<%#= order['status'] %></span>
-          <%= image_tag("new-user/finish.png", :class => 'finish-img hide')%>
+          <% if finished?(order) %>
+            <%= image_tag("new-user/finish.png", :class => 'finish-img')%>
+          <% else %>
+            <span>
+              <%= order['state'].split('-')[1] %>
+            </span>
+          <% end %>
         </div>
       </div>
       <div class="con clearfix">
         <div class="logo pull-left">
-          <%= image_tag("new-order/first.png", :class => 'logoimg')%>
-          <p>大众（一汽）CC 2.0T 2008-1010</p>
+
+          <%= image_tag(order['brand_logo'], :class => 'logoimg')%>
+
+          <p><%= order['model_engine_displacement'] %></p>
         </div>
         <ul class="item-price pull-left">
-          <%# order["parts"].each do |part| %>
+          <% order["parts"].each do |part| %>
             <li class="item clearfix">
               <div class="type pull-left">
-                [空气滤清器]汉格斯特 Hengst
-                <!-- [<%#= part["type"] %>] --> <%#= part["brand"] %>
+                [<%= part["type"] %>] <%= part["brand"] %>
               </div>
               <div class="price pull-right">
-                115.0元
-                <!-- ￥<%#= part["price"] %> -->
+                <%= part["price"] %> 元
               </div>
             </li>
-          <%# end %>
+          <% end %>
         </ul>
         <div class="total-price pull-left">
-          <p class="origin">1234元</p>
-          <p class="now">900元</p>
+          <!-- <p class="origin">1234元</p> -->
+          <p class="now"><%= order['total_price'] %>元</p>
         </div>
+
         <div class="more pull-left">
           <p>
-          <%= link_to "订单详情", orders_detail_users_path(id: "id") %>
+            <%= link_to "订单详情", orders_detail_users_path(id: order["id"]) %>
           </p>
-          <p class="technician">技师信息</p>
-          <p class="phone hide">王小明：18800191819</p>
+
+          <% if order['engineer'] %>
+            <p class="technician">技师信息</p>
+            <p class="phone hide">王小明：18800191819</p>
+          <% end %>
         </div>
-        <div class="operate pull-left">
-          取消订单
-          <!-- <%# if can_cancel?(order) %>
+
+        <div class="operate pull-left comment">
+          <% if can_cancel?(order) %>
             <div class="del">
-              <%#= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+              <%= link_to "取消订单", "#", class: "", "data-order" => order["id"] %>
             </div>
-          <%# end %>
-          <%# if can_comment?(order) %>
+          <% end %>
+          <% if can_comment?(order) %>
             <div class="cmt">
-              <%#= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
+              <%= link_to "评价订单", "#", class: "", "data-order" => order["id"] %>
             </div>
-          <%# end %>-->
+          <% end %>
         </div>
       </div>
     </li>
@@ -60,80 +69,3 @@
 </div>
 
 
-
-<!-- <div class="order" id="order_<%#= order["id"] %>">
-  <div class="top clearfix">
-    <div class="datetime pull-left">
-      <span>下单时间:<%#= order["serve_datetime"] %></span>
-      <span>服务时间:<%#= order["serve_datetime"] %></span>
-    </div>
-    <div class="number pull-left">
-      订单号: <%#= order['seq'] %>
-    </div>
-  </div>
-  <div class="order-detail clearfix">
-
-    <div class="pull-left">
-      <div class="order-title">
-        <%#= order["auto_model"] %> 上门保养
-      </div>
-
-      <div class="items">
-        <%# order["parts"].each do |part| %>
-          <div class="item">
-
-            <div class="type pull-left">
-              [<%#= part["type"] %>] <%#= part["brand"] %>
-            </div>
-            <div class="price pull-left">
-              ￥<%#= part["price"] %>
-            </div>
-
-          </div>
-        <%# end %>
-      </div>
-    </div>
-
-    <div class="order-price pull-left">
-      <%#= order["total_price"] %> 元
-    </div>
-
-    <div class="comment pull-left">
-      <%# if can_cancel?(order) %>
-        <div class="del">
-          <%#= link_to "取消订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
-        </div>
-      <%# end %>
-      <%# if can_comment?(order) %>
-        <div class="cmt">
-          <%#= link_to "评价订单", "#", class: "btn btn-default", "data-order" => order["id"] %>
-        </div>
-      <%# end %>
-      <div class="order-status">
-        <%#= link_to "订单状态", "#", class: "btn btn-default" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="status hidden clearfix">
-    <%# statuses = order_statuses(order) %>
-    <%# if statuses %>
-      <%# statuses.each_with_index do |status_hash, index| %>
-        <div class="col-sm-3">
-          <div class="content <%#= "highlight" if status_hash[1] %> clearfix">
-            <div class="number">
-              <%#= index + 1 %>
-            </div>
-            <div class="ct">
-              <%#= status_hash[0] %>
-            </div>
-          </div>
-        </div>
-      <%# end %>
-    <%# else %>
-      <div class="col-sm-12">
-        <%#= order["state"] %>
-      </div>
-    <%# end %>
-  </div>
-</div> -->

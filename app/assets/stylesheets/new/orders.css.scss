@@ -78,7 +78,7 @@ label{
 	.first, .second, .third, .no_car_type, .quick_select_car{
 		// background-image: image-url('new-order/bac.png');
 
-    background-image: image-url('new-index/background.jpg');
+    	background-image: image-url('new-index/background.jpg');
 
 		background-repeat: no-repeat;
 		.main{
@@ -459,6 +459,9 @@ label{
 		    		padding-bottom: 20px;
 		    		border-bottom: 2px solid #e0e0e0;
 		    		li{
+              input{
+                width: 25px;
+              }
               &.selected{
                 background: #edddd7;
                 border: 1px solid $main-orange;
