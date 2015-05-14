@@ -617,30 +617,35 @@ label{
 					width: 71%;
 				}
 				#serve_date{
-					width: 74%;
+					width: 60%;
+				}
+				#serve_period{
+					width: 37%;
+					overflow: hidden;
 				}
 				#get_code{
 					border: 0;
 					background: #eebf8f;
 					color: #fff;
 				}
+				.submit{
+					width: 170px;
+				    line-height: 35px;
+				    border-radius: 5px;
+				    border: 1px solid #ccc;
+				    margin-left: 50%;
+				    text-align: center;
+				    &:hover{
+				    	background: $main-orange;
+				    	color: $main-orange;
+				    }
+				}
+				.active{
+					background: $main-orange;
+					color: #fff;
+				}
 			}
-			.submit{
-				width: 170px;
-			    line-height: 35px;
-			    border-radius: 5px;
-			    border: 1px solid #ccc;
-			    margin-left: 50%;
-			    text-align: center;
-			    &:hover{
-			    	border: 1px solid $main-orange;
-			    	color: $main-orange;
-			    }
-			}
-			.active{
-				background: $main-orange;
-				color: #fff;
-			}
+			
 		}
 	}
 }
