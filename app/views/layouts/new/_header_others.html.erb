@@ -108,7 +108,7 @@
         <li class="log-btn <%= "active" if controller == "users" %>">
           <% if !signed_in? %>
             <a href="#" id="login_btn" class="cl-effect-1">
-              登陆
+              登录
             </a>
           <% else %>
             <%= link_to "个人中心", orders_users_path, class: 'cl-effect-1' %>
