@@ -55,7 +55,7 @@ class App.Views.ServiceSelect extends Backbone.View
     brand = self.attr('brand')
     number = self.attr('number')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").text(text)
+    point.attr('brand', brand).attr('number', number).addClass('selected').removeClass("disabled").find("span:last").text(text)
     @resetSelectItems()
 
   undoParts: (e) =>
@@ -63,13 +63,13 @@ class App.Views.ServiceSelect extends Backbone.View
     self.parent(".other").siblings().removeClass("active")
     part = self.parents("ul.items-list").data('part')
     point = $("ul.service-items>li[data-part='#{part}']")
-    point.addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
+    point.addClass('disabled').attr('brand', '').attr('number', '').find("span:last").html("未选择")
 
     @resetSelectItems()
 
   undoAllParts: (e) =>
     $("ul.items-list > li").removeClass("active")
-    $("ul.service-items >li").addClass('disabled').attr('brand', '').attr('number', '').html("未选择")
+    $("ul.service-items >li").addClass('disabled').attr('brand', '').attr('number', '').find("span:last").html("未选择")
     @resetSelectItems()
 
   resetSelectItems: =>
