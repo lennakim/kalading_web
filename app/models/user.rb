@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
 
       registed_at:      order_info["registration_date"],
       engine_number:    order_info["engine_num"],
-      vin:              order_info["vin"]
+      vin:              order_info["vin"],
+      logo:             order_info["logo"] #logo
   end
 
   def set_default_address address

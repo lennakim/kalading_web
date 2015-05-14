@@ -1,53 +1,59 @@
-<!--
-<% if @maintain_history %>
-  <div class="maintain-histories-phone phone-page">
-    <%= title "我的保养记录" %>
-    <div class="report-body">
-      <h3><%= @maintain_history['serve_datetime'] %>车辆体检报告</h3>
-        <%= render "report_body", report: @maintain_history %>
-    </div>
-  </div>
-<% else %>
-<% end %>
--->
-
-
 <div class="user-info">
   <div class="main">
 
     <div class="row user-info-main clearfix">
+
       <%= render "users/menu" %>
+
       <div class="col-md-10 content maintain-report">
         <div class="report">
-          <%= render "report_body", report: @maintain_history%>
-
-
-
-          <div role="tabpanel">
-
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-              <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-              <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="home">...</div>
-              <div role="tabpanel" class="tab-pane" id="profile">...</div>
-              <div role="tabpanel" class="tab-pane" id="messages">...</div>
-              <div role="tabpanel" class="tab-pane" id="settings">...</div>
-            </div>
+          <div class="head">
+            <%= link_to "<<返回保养报告", maintain_histories_list_users_path %>
 
           </div>
 
+          <div role="tabpanel" class='tab-panel'>
 
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#summary" aria-controls="home" role="tab" data-toggle="tab">保养总结</a>
+              </li>
+              <li role="presentation">
+                <a href="#lights" aria-controls="profile" role="tab" data-toggle="tab">外观/灯光</a>
+              </li>
+              <li role="presentation">
+                <a href="#tires" aria-controls="messages" role="tab" data-toggle="tab">轮胎/刹车</a>
+              </li>
+              <li role="presentation">
+                <a href="#oil" aria-controls="settings" role="tab" data-toggle="tab">油液/滤芯/电瓶</a>
+              </li>
+              <li role="presentation">
+                <a href="#others" aria-controls="settings" role="tab" data-toggle="tab">其他</a>
+              </li>
+            </ul>
 
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="summary">
+                <%= render "summary", report: @maintain_history %>
+              </div>
+
+              <div role="tabpanel" class="tab-pane fade" id="lights">
+                <%= render "appearance", report: @maintain_history %>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="tires">
+                <%= render "tire", report: @maintain_history %>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="oil">
+                <%= render "elements", report: @maintain_history %>
+              </div>
+
+              <div role="tabpanel" class="tab-pane fade" id="others">
+                <%= render "others", report: @maintain_history %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>

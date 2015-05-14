@@ -1,0 +1,79 @@
+<div class="summary clearfix">
+
+  <% score = @maintain_history['score'] %>
+
+  <div class="pull-left big-chart">
+    <canvas id="chart" data-data="<%= score['total'] %>"></canvas>
+    <div class="big-score">
+      <%= score['total'] %>
+    </div>
+
+    <div class="cheliang-score">
+      车辆得分
+    </div>
+  </div>
+
+  <div class="pull-left">
+    <ul class='scores'>
+      <li class='clearfix'>
+        <div class="name pull-left">
+          外观/灯光
+        </div>
+
+        <div class="progress pull-left">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= percentage_cal score['lights'] %>;">
+          </div>
+        </div>
+
+        <div class="score pull-left">
+          <%= score['lights'] %>
+        </div>
+      </li>
+
+      <li class='clearfix'>
+        <div class="name pull-left">
+          轮胎/刹车
+        </div>
+
+        <div class="progress pull-left">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= percentage_cal score['wheels'] %>;">
+          </div>
+        </div>
+
+        <div class="score pull-left">
+          <%= score['wheels'] %>
+        </div>
+      </li>
+
+      <li class='clearfix'>
+        <div class="name pull-left">
+          油液/滤芯/电瓶
+        </div>
+
+        <div class="progress pull-left">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= percentage_cal score['filter_oil_battery'] %>;">
+          </div>
+        </div>
+
+        <div class="score pull-left">
+          <%= score['filter_oil_battery'] %>
+        </div>
+      </li>
+
+      <li class='clearfix'>
+        <div class="name pull-left">
+          其他
+        </div>
+
+        <div class="progress pull-left">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= percentage_cal score['others'] %>;">
+          </div>
+        </div>
+
+        <div class="score pull-left">
+          <%= score['others'] %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

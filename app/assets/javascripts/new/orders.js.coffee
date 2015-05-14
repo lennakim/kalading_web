@@ -72,7 +72,7 @@ $ ->
     if car_id?
       window.location.href = "#{link}?car_id=#{car_id}&type=#{type}"
     else
-      alert("請選擇車輛")
+      alert("请选择车辆")
 
   $(".flexslider").flexslider
     animation: "slide",
