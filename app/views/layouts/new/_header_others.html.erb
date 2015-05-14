@@ -112,7 +112,7 @@
           </div>
         </li>
 
-        <li class="knowledge <%= "active" if controller == "posts" && ['posts_list','show'].include?(action) && params[:tag_id] == 23 %> ">
+        <li class="knowledge <%= "active" if controller == "posts" && ['posts_list','show'].include?(action) && params[:tag_id] == '23' %> ">
           <%= link_to "用车知识", list_posts_path(tag_id: 23), class: 'cl-effect-1' %>
         </li>
 
