@@ -20,33 +20,8 @@
             <% array.each do |arr| %>
               <% item = get_recommend_part(parts, arr.keys[0]) %>
               <li version="<%= item['version'] %>" data-part="<%= part=arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected clearfix">
-              
-                <% if part == "空气滤清器" %>
-                  <%= image_tag("new-order/air_cleaner.png")%>
-                  <span class="item-tit">空气滤</span>
-                <% elsif part == "机滤" %>
-                  <%= image_tag("new-order/oil_filter.png")%>
-                  <span class="item-tit">机滤</span>
-                <% elsif part == "空调滤清器" %>
-                  <%= image_tag("new-order/air_filter.png")%>
-                  <span class="item-tit">空调滤</span>
-                <% elsif part == "机油" %>
-                  <%= image_tag("new-order/oil.png")%>
-                  <span class="item-tit">机油</span>
-                <% elsif part == "电瓶" %>
-                  <%= image_tag("new-order/battery.png")%>
-                  <span class="item-tit">电瓶</span>
-                <% end %>
-
-
-                <span class="item-con">
-                  <%= display_item_img(part) %>
-
-                <span class="item-tit">
-                  <%= part %>
-                </span>
                 <%= raw display_item_img(part) %>
-                <span>
+                <span class='item-con'>
                   <%= display_item_name(part, item["brand"], item['number'], item['version']) %>
                   ￥<%= item['price'] %>
                 </span>
