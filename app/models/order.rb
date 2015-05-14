@@ -119,9 +119,13 @@ class Order
 
     ########################### 新交互使用的api  20150504 #####################
 
-    # 获取汽车信息
-    def autos
+
+    def autos # 获取汽车信息 有错误
       ServerApi.call "get", "api/v2/autos"
+    end
+
+    def two_level_autos
+      ServerApi.call "get", "api/v2/two_level_autos"
     end
 
     # 获取具体车型信息

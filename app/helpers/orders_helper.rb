@@ -195,18 +195,27 @@ module OrdersHelper
   end
 
   def display_item_img name
-    case name
+    part = ""
+
+    url = case name
     when "空气滤清器"
-      image_tag("new-order/air_cleaner.png")
+      part = "空气滤"
+      "/assets/new-order/air_cleaner.png"
     when "机滤"
-      image_tag("new-order/oil_filter.png")
+      part = "机滤"
+      "/assets/new-order/oil_filter.png"
     when "空调滤清器"
-      image_tag("new-order/air_filter.png")
+      part = "空调滤"
+      "/assets/new-order/air_filter.png"
     when "机油"
-      image_tag("new-order/oil.png")
+      part = "机油"
+      "/assets/new-order/oil.png"
     when "电瓶"
-      image_tag("new-order/battery.png")
+      part = "电瓶"
+      "/assets/new-order/battery.png"
     end
 
+    "<img src='#{url}' /> <span class='item-tit'>#{part}</span>"
   end
+
 end
