@@ -21,7 +21,7 @@
               <% item = get_recommend_part(parts, arr.keys[0]) %>
               <li version="<%= item['version'] %>" data-part="<%= part=arr.keys[0] %>" brand="<%= item['brand']%>" number="<%= item['number']%>" class="cursor selected clearfix">
                 <%= raw display_item_img(part) %>
-                <span>
+                <span class='item-con'>
                   <%= display_item_name(part, item["brand"], item['number'], item['version']) %>
                   ￥<%= item['price'] %>
                 </span>
