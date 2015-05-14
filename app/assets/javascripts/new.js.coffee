@@ -94,7 +94,7 @@ $ ->
   # 短信验证码
   if $("#login_modal").length > 0
 
-    $('#get_code').click ->
+    $('.get_code').click ->
 
       phone_num = $('#phone_num').val()
       $(this).addClass('disable').attr('disabled', 'disabled')

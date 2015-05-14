@@ -452,6 +452,13 @@
           }
           .lvxin-content{
             margin-left: 30px;
+            .lvxin-content-item{
+                .lvxin-content-sub-title{
+                    color: #e94609;
+                    margin-right: 20px;
+                    margin-bottom: 5px;
+                }
+            }
           }
         }
       }
@@ -505,6 +512,86 @@
           }
         }
       }
+    }
+
+    &.qiyejieshao{
+      .jieshao{
+        .left-img{
+          width: 20%;
+          .left-icon{
+              width: 100%;
+              height: 100%;
+          }
+        }
+        .right-content{
+          width: 75%;
+          margin-left: 30px;
+          margin-top: 30px;
+          text-indent: 30px;
+        }
+      }
+      .linian{
+        margin-top: 40px;
+        .linian-title{
+          margin-bottom: 20px;
+          font-size: 17px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .linian-content{
+          margin-left: 18px;
+          .linian-content-first, .linian-content-second{
+            margin-bottom: 10px;
+            text-indent: 30px;
+          }
+        }
+      }
+      .fuwubaozhang, .kaladingyuanjing, .kaladingfazhan{
+        margin-top: 10px;
+        .fuwubaozhang-title, .kaladingyuanjing-title, .kaladingfazhan-title{
+          width: 100%;
+          margin-bottom: 20px;
+          font-size: 17px;
+          color: #e94609;
+          border-left: 5px solid #e94609;
+          padding-left: 10px;
+        }
+        .gouzhuanye-img{
+          width: 100%;
+          margin-left: -10px;
+          margin-top: -10px;
+          text-align: center;
+        }
+      }
+      .kaladingyuanjing{
+        margin-top: 20px;
+        .youxiu-img{
+          margin-left: 15%;
+        }
+      }
+      .kaladingfazhan{
+        margin-bottom: 10px;
+        .kaladingfazhan-content{
+          margin-left: 15px;
+          .fazhan-first, .fazhan-second, .fazhan-third, .fazhan-fourth{
+            text-indent: 30px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .foot-image{
+        margin-bottom: 10px;
+      }
+    }
+
+    &.qiyerongyu{
+        margin-bottom: 100px;
+        .img{
+            width: 100%;
+            height: 100%;
+            margin-bottom: 30px;
+        }
     }
 
   }

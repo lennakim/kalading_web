@@ -1,10 +1,10 @@
 <div class="new-car-select">
-  <% if @autos.length > 0 %>
+  <% if @autos %>
     <%= render "quick_select_car", autos: @autos %>
   <% end %>
 
 <!-- select car -->
-  <div class="first special <%= @autos.length > 0 ? 'hide' : '' %>">
+  <div class="first special <%= @autos.present? ? 'hide' : '' %>">
     <div class="main">
       <%= image_tag("new-order/first.png", :class => 'tag2')%>
       <h4 class="tit">服务内容</h4>
