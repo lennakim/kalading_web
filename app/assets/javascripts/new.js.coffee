@@ -35,6 +35,9 @@ window.V2 = gon.global.v2
 
 $ ->
 
+  $("#wechat_qrcode").on 'click', (e) ->
+    $("#wechat_modal").modal()
+
   #header nav address
   $('nav .address a').click ->
     $("#select_city_modal").modal()
