@@ -961,9 +961,9 @@ nav{
 }
 .orders-detail,.know{
   height: 1600px;
-  background-image: image-url('new-order/bac.png');
+  background-image: image-url('new-index/background.jpg');
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   .main{
     width: 1030px;
     margin: 50px auto;
@@ -1006,7 +1006,7 @@ nav{
     width: 120px;
     padding: 20px;
     line-height: 40px;
-    background-image: image-url('new-user/border.png'); 
+    background-image: image-url('new-user/border.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     color: #fff;
