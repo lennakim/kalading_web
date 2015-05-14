@@ -17,6 +17,9 @@ class PostsController < ApplicationController
 
   def posts_list
     @posts = Post.tagged_with(@tag)
+
+    #@first_posts = Post.all.map{|p| p.tags.first }.uniq
+
     render "show"
   end
 
@@ -25,7 +28,6 @@ class PostsController < ApplicationController
     @title = @tag.name
     @root_tag = Post.tagged_with(@title).first.tag_list.first
     @tag_list = Post.tagged_with(@root_tag).map(&:tag_list).map{|e| e[1]}.uniq.map{ |name| ActsAsTaggableOn::Tag.find_by name: name }
-    
   end
 
 end
