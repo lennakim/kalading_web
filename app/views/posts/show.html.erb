@@ -8,23 +8,40 @@
   </div> -->
   <%# end %>
 <div class="know special">
-	<div class="main">
-	    <%= image_tag("new-order/first.png", :class => 'tag2')%>
-	    <div class="content">
-	      	<div class="top wait clearfix">
-		        <a href=""><<返回我的订单</a>
-		    </div>
-		    <ul class="con clearfix">
+    <div class="main clearfix">
+      <%= render "menu" %>
+	  <div class="cont">
+	    	<% if params[:action] == 'posts_list' %>
+		    	<div class="top wait clearfix">
+			        <a href="/users/orders"><<返回我的订单</a>
+			    </div>
+			    <ul class="con clearfix">
+			    	<% @posts.each do |post| %>
+			      	<li class="item pull-left">
+			      		<a href="/posts/<%= post.id %>/<%= post.slug %>">
+			      			<%= post.title %>
+			      		</a>
+			      	</li>
+			      	<% end %>
+			    </ul>
+		    <% end %>
+		    <% if params[:action] == 'show' %>
 		    	<% @posts.each do |post| %>
-		      	<li class="pull-left">
-		      		<a href="/posts/<%= post.id %>/knowledge">
-		    			<%= post.title %>
-		      		</a>
-		      	</li>
-		      	<% end %>
-		    </ul>
-	    </div>
-    </div>
+		    		<div class="top wait clearfix">
+				        <a href="javascript:history.go(-1);"><<返回</a>
+				    </div>
+			    	<div class="detail">
+						<h4 class="title">
+		    				<%= post.title %>
+		    			</h4>
+	    				<div class="article">
+					    	<%= strip_tags(post.content) %>
+					    </div>
+					</div>
+				<% end %>
+		    <% end %>
+	  </div>
+  </div>
 </div>
 
 

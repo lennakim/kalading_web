@@ -97,7 +97,6 @@ $ ->
       $('.phone').removeClass('hide')
 
 
-
   # 短信验证码
   if $("#login_modal").length > 0
 
