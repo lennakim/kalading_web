@@ -35,7 +35,7 @@ input.form-control, select.form-control, textarea.form-control{
     width: 121px;
   }
   &#client_comment{
-    width: 172px;
+    width: 196px;
   }
 }
 
@@ -57,7 +57,7 @@ a#get_code, a#validate_preferential, a#no_preferential{
   background: #e94609;
   border: 0 none;
   color: white;
-  width: 85px;
+  width: 110px;
   padding: 0;
   text-align: center;
   height: 34px;
@@ -549,6 +549,12 @@ label{
 				}
 				.info-con{
 					width: 300px;
+					.form-control{
+						width: 196px;
+					}
+					.car_location{
+						width: 24%;
+					}
 				}
 		    }
 		    .new-offer-table{
