@@ -38,7 +38,7 @@
                   <%= display_item_img(part) %>
                   <span class='item-tit'><%= part[0..2] %></span>
                   <span class="item-con">
-                    <%= display_item_name(part, item["brand"], item['number'], item['version']) %>
+                    <%=  raw display_item_name(part, item["brand"], item['number'], item['version']) %>
                     ￥<%= item['price'] %>
                   </span>
                   <% recommend_numbers << item['number'] %>
@@ -62,7 +62,7 @@
               <ul data-part="<%= arr.keys[0] %>" class="right items-list <%= inx.zero? ? "" : "hide" %>">
                 <% get_part(parts, arr.keys[0]).each do |part| %>
                   <li version="<%= part['version'] %>" data-part="<%= arr.keys[0] %>" brand="<%=part['brand']%>" number="<%=part['number']%>" class="cursor <%= recommend_numbers.include?(part['number']) ? 'active' : ''%>">
-                    <%= display_item_name(arr.keys[0], part['brand'], part['number'], part['version']) %>
+                    <%= raw display_item_name(arr.keys[0], part['brand'], part['number'], part['version']) %>
                     ￥<%= part["price"] %>
                   </li>
                 <% end %>
