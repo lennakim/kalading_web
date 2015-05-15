@@ -51,6 +51,9 @@ class UsersController < ApplicationController
 
   def maintain_history
     @maintain_history = Order.api_maintain_find params[:id]
+    if browser.mobile?
+      render layout: "application"
+    end
   end
 
   def settings
