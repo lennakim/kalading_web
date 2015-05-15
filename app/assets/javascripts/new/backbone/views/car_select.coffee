@@ -71,20 +71,28 @@ class App.Views.CarSelect extends Backbone.View
     generateCarModel(letter, brname)
 
   generateCarSubModel = (submodels)-> #生成子品牌
-    $("ul.model-list").html("")
+    $("ul.model-list .no-subname").html("")
+    $("ul.model-list .has-subname").html("")
+
     _.each submodels, (submodel)->
       _.each submodel['submodels'], (sub)->
         eng = sub['engine_displacement']
         subname = sub['name']
-        str = ""
 
-        unless _.isEmpty(subname)
-          str ="<div>#{subname}</div>"
-
-        if _.isEmpty(eng)
-          $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{str} #{str}-#{sub['year_range']}</li>")
+        if _.isEmpty(subname)
+          if _.isEmpty(eng)
+            $("ul.model-list .no-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']}</li>")
+          else
+            $("ul.model-list .no-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']} - #{eng}</li>")
         else
-          $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{str} #{sub['year_range']} - #{eng}</li>")
+          str = "<div>#{subname}</div>"
+
+          if _.isEmpty(eng)
+            $("ul.model-list .has-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{str} - #{sub['year_range']}</li>")
+          else
+            $("ul.model-list .has-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{str} - #{sub['year_range']} - #{eng}</li>")
+
+
 
   generateCarModel = (letter, brname)-> #生成车系
     brands = $.jStorage.get("auto-#{letter}")
