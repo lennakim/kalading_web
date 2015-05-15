@@ -1,0 +1,33 @@
+@import "activity/activity";
+
+@import "jquery.fullPage";
+
+.section1 { background: image-url("activity/515/k1.jpg") no-repeat top left;background-size:100% 100%;}
+.section2 { background: image-url("activity/515/k222.jpg") no-repeat top left;background-size:100% 100%;}
+.btn{
+  position: absolute;
+  cursor: pointer;
+  z-index: 9999;
+  left:50%;
+  top:76%;
+}
+.down{
+	position: absolute;
+	bottom:10px;
+	left:50%;
+	margin-left:-30px;
+}
+#lamp{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:9999;
+}
+.ww{
+	position: absolute;
+	z-index:99999;
+}
+@-webkit-keyframes upFade{0%{opacity:0;bottom:10px;} 16%{opacity:0.25;bottom:11px} 32%{opacity:0.5;bottom:12px} 48%{opacity:0.75;bottom:13px} 64%{opacity:1;bottom:14px} 80%{opacity:0.75;bottom:13px} 90%{opacity:0.5;bottom:12px} 100%{opacity:0.25;bottom:11px}}
+@keyframes upFade{0%{opacity:0;bottom:10px;} 16%{opacity:0.25;bottom:11px} 32%{opacity:0.5;bottom:12px} 48%{opacity:0.75;bottom:13px} 64%{opacity:1;bottom:14px} 80%{opacity:0.75;bottom:13px} 90%{opacity:0.5;bottom:12px} 100%{opacity:0.25;bottom:11px}}
+.up-fade{-webkit-animation-name:upFade;animation-name:upFade;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}
+
