@@ -1096,6 +1096,11 @@ nav{
 
 #select_city_modal{
 
+  #change_city{
+    background: white;
+    border: 1px solid #666666;
+  }
+
   .cities{
     padding: 20px;
     padding-bottom: 0;
@@ -1118,6 +1123,7 @@ nav{
       width: 100px;
       margin: 10px 0;
       background-color: #e6e6e6;
+      color: #666666;
     }
   }
 
