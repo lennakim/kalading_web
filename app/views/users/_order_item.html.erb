@@ -62,7 +62,10 @@
               <%= link_to "评价订单", "#", class: "", "data-order" => order["id"] %>
             </div>
           <% end %>
-        </div>
+
+          <div class='again'>
+            <%= link_to "再来一单", new_service_select_orders_path(car_id: order['car_id'], type: service_type_mapping(order['service_type'])) %>
+          </div>
       </div>
     </li>
   </ul>

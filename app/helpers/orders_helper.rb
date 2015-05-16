@@ -210,4 +210,12 @@ module OrdersHelper
     end
   end
 
+  def service_type_mapping type
+    {
+      0 => 'pm25',
+      1 => 'bmt',
+      2 => 'bty'
+    }[type.to_i]
+  end
 end
+
