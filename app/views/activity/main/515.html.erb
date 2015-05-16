@@ -1,11 +1,13 @@
 <%= title '全澄行动' %>
 
-<% cache "515" do %>
 
   <%= content_for :assets do %>
     <%= stylesheet_link_tag    'activity/515', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'activity/515', 'data-turbolinks-track' => true %>
   <% end %>
+
+<% cache ["515", 'new'] do %>
+
   <script>
   $(function(){
     $('#fullpage').fullpage();
