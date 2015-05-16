@@ -1,58 +1,59 @@
 <%= title '全澄行动' %>
 
-<%= content_for :assets do %>
-  <%= stylesheet_link_tag    'activity/515', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'activity/515', 'data-turbolinks-track' => true %>
+<% cache "515" do %>
+
+  <%= content_for :assets do %>
+    <%= stylesheet_link_tag    'activity/515', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'activity/515', 'data-turbolinks-track' => true %>
+  <% end %>
+  <script>
+  $(function(){
+    $('#fullpage').fullpage();
+
+    var h = $(window).height();
+    var w = $(window).width();
+    var p = w/640;
+    $(".btn").css({"width":(290*p)+"px","height":(90*p)+"px","margin-left":(-290*p/2)+"px"});
+
+    $(".ww").css({"top":(h*0.71)+"px","left":(w*0.13)+"px","width":170*p+"px"});
+
+    $(".btn").on("click",function(){
+      location.href = "http://www.kalading.com/orders/select_car_item?act=185&type=pm25";
+    });
+
+    $(".section1").on("touch touchstart click",function(){
+      $("#lamp").remove();
+    })
+  });
+
+  </script>
+  </head>
+
+  <body>
+
+  <div id="fullpage">
+    <div class="section section1">
+      <div class="down up-fade">
+        <%= image_tag "activity/515/d.png" %>
+      </div>
+    </div>
+    <div class="section section2">
+      <!--
+      <div>
+        <img class="ww" src="assets/image/w.jpg" />
+
+      </div>
+      -->
+      <div>
+        <%= image_tag "activity/515/d.jpg", class: 'btn' %>
+      </div>
+    </div>
+  </div>
+  <script>
+
+  </script>
+  </body>
+  </html>
+
+
 <% end %>
-<script>
-$(function(){
-	$('#fullpage').fullpage();
-
-	var h = $(window).height();
-	var w = $(window).width();
-	var p = w/640;
-	$(".btn").css({"width":(290*p)+"px","height":(90*p)+"px","margin-left":(-290*p/2)+"px"});
-
-	$(".ww").css({"top":(h*0.71)+"px","left":(w*0.13)+"px","width":170*p+"px"});
-
-	$(".btn").on("click",function(){
-		location.href = "http://www.kalading.com/orders/select_car_item?act=185&type=pm25";
-	});
-
-	$(".section1").on("touch touchstart click",function(){
-		$("#lamp").remove();
-	})
-});
-
-</script>
-</head>
-
-<body>
-
-<div id="fullpage">
-	<div class="section section1">
-		<div class="down up-fade">
-      <%= image_tag "activity/515/d.png" %>
-		</div>
-	</div>
-	<div class="section section2">
-		<!--
-		<div>
-			<img class="ww" src="assets/image/w.jpg" />
-
-		</div>
-		-->
-		<div>
-      <%= image_tag "activity/515/d.jpg", class: 'btn' %>
-		</div>
-	</div>
-</div>
-<script>
-
-</script>
-</body>
-</html>
-
-
-
-
