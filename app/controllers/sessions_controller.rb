@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     if user
       sign_in user
 
-      if path = session[:from_path]
+      if path = session.delete(:from_path)
         redirect_to path
       else
         redirect_to orders_users_path
