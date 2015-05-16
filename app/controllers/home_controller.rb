@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def index
+    unless browser.mobile?
+      return redirect_to '/'
+    end
   end
 
   def new_index
