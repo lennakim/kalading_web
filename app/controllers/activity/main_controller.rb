@@ -1,6 +1,6 @@
 class Activity::MainController < ActionController::Base
   layout "activity"
-  impressionist
+  # impressionist
 
   before_action :find_activity, only: ['show']
 
