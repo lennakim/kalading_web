@@ -6,7 +6,7 @@ class App.Views.CarSelect extends Backbone.View
     "click ul.crumbs > li":      "selectBrandByLetter"
     "click ul.brand-list > li":  "viewBrandName"
     "click ul.series-list > li": "viewSubModelName"
-    "click ul.model-list > li":  "selectModel"
+    "click ul.model-list li":  "selectModel" #结构改变 selector改变
 
   initialize: ->
     unless $.jStorage.get("autos")?
