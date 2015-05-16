@@ -38,7 +38,7 @@
                   <%= display_item_img(part) %>
                   <span class='item-tit'><%= part[0..2] %></span>
                   <span class="item-con">
-                    <%= display_item_name(part, item["brand"], item['number'], item['version']) %>
+                    <%=  display_item_name(part, item["brand"], item['number'], item['version']) %>
                     ￥<%= item['price'] %>
                   </span>
                   <% recommend_numbers << item['number'] %>
