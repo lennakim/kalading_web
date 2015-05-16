@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def save_last_select_car id
-    cookies[:last_select_car] = { value: id, expired: 365.days.from_now }
+    cookies[:last_select_car] = { value: id, expires: 365.days.from_now }
   end
 
   def last_select_car
