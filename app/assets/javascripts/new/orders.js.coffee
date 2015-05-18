@@ -175,7 +175,6 @@ $ ->
               self.removeClass('disable').removeAttr('disabled')
 
     $('#verification_code').on 'blur', (e) ->
-      alert 1
       code = $(@).val()
       phone_num = $("#phone_num").val()
       car_id = $("#car_id").val()
