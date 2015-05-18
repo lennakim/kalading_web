@@ -15,7 +15,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       message = account.recv_messages.new
       message.set_info msg
       message.save
-      Rails.logger.info("msg is #{message.content}")
+      Rails.logger.info("msg is #{message.content}, the save state is #{message.save}")
     end
 
     def auto_response(keyword, account_id)
