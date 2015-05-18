@@ -48,7 +48,7 @@
           </div>
 
         </li>
-        <li class="service <%= "active" if controller == "static_pages" && action == "show" && ['fu-wu-liu-cheng','ji-you-san-lv','ji-you-ji-lv','pm25','geng-huan-dian-ping'].include?(id) %>">
+        <li class="service <%= "active" if controller == "static_pages" && action == "show" && ['fu-wu-liu-cheng','ji-you-san-lv','ji-you-ji-lv','pm25','geng-huan-dian-ping','an-quan-32'].include?(id) %>">
           <a href="/static_pages/fu-wu-liu-cheng" class="cl-effect-1">服务内容</a>
 
           <div class="sub2 hide">
@@ -68,6 +68,9 @@
               </li>
               <li class="<%= "active" if id == 'geng-huan-dian-ping' %>">
                 <%= link_to "更换电瓶", static_page_path(id: 'geng-huan-dian-ping') %>
+              </li>
+              <li class="<%= "active" if id == 'an-quan-32' %>">
+                <%= link_to "32项安全检测", static_page_path(id: 'an-quan-32') %>
               </li>
             </ul>
           </div>
