@@ -40,7 +40,7 @@
                 手机号：<%#= @order['served_engineers'][0]['phone_num'] %> -->
               <%# end %>
             </td>
-          </tr> 
+          </tr>
           <tr>
             <td>支付方式</td>
             <td><%= @order['pay_type'] %></td>
@@ -92,7 +92,11 @@
         <% end %>
 
         <!-- <li class="report pull&#45;left">检查报告</li> -->
-        <!-- <li class="again pull&#45;left">再来一单</li> -->
+        <!--
+        <li class="again pull-left">
+            <%#= link_to "再来一单", new_service_select_orders_path(car_id: @order['auto_id'], type: service_type_mapping(@order['service_type'])) %>
+        </li>
+        -->
       </ul>
       <!-- <a href="" class="next&#45;order">查看下一订单</a> -->
     </div>

@@ -446,7 +446,11 @@ class OrdersController < ApplicationController
   end
 
   def success
-    render layout: 'new'
+    if browser.mobile?
+      render layout: "application"
+    else
+      render layout: 'new'
+    end
   end
 
   def order_status

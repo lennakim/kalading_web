@@ -53,6 +53,9 @@
         </div>
       <% end %>
 
+      <div class='again'>
+        <%= link_to "再来一单", select_car_item_orders_path(car_id: order['car_id'], type: service_type_mapping(order['service_type'])), class: 'btn btn-default' %>
+      </div>
     </div>
   </div>
 </div>

@@ -3,7 +3,7 @@
     <li class="order-item">
       <div class="top wait clearfix">
         <div class="datetime pull-left">
-          <p class="pull-left">下单时间:<%= order["serve_datetime"] %></p>
+          <p class="pull-left">下单时间:<%= order["created_at"] %></p>
           <p class="pull-left">服务时间:<%= order["serve_datetime"] %></p>
         </div>
         <div class="status finish pull-right">
@@ -62,7 +62,10 @@
               <%= link_to "评价订单", "#", class: "", "data-order" => order["id"] %>
             </div>
           <% end %>
-        </div>
+
+          <div class='again'>
+            <%= link_to "再来一单", new_service_select_orders_path(car_id: order['car_id'], type: service_type_mapping(order['service_type'])) %>
+          </div>
       </div>
     </li>
   </ul>

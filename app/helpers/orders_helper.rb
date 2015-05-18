@@ -76,10 +76,10 @@ module OrdersHelper
   def state_name state_str
     mapping = {
       "未支付"   => %w-未支付-,
-      "等待分配" => %w-未审核 已审核 未分配-,
+      "等待分配" => %w-未审核 已审核 未分配 未预约-,
       "等待服务" => %w-已预约-,
       "已完成"   => %w-已评价 未评价 服务完成 已交接 已回访-,
-      "已取消"   => %w-已取消-
+      "已取消"   => %w-已取消 审核失败-
     }
     index = mapping.values.index{|arr| arr.include?(state_str)}
     mapping.keys[index]
@@ -210,4 +210,12 @@ module OrdersHelper
     end
   end
 
+  def service_type_mapping type
+    {
+      0 => 'pm25',
+      1 => 'bmt',
+      2 => 'bty'
+    }[type.to_i]
+  end
 end
+

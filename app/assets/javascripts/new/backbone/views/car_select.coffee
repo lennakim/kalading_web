@@ -6,7 +6,7 @@ class App.Views.CarSelect extends Backbone.View
     "click ul.crumbs > li":      "selectBrandByLetter"
     "click ul.brand-list > li":  "viewBrandName"
     "click ul.series-list > li": "viewSubModelName"
-    "click ul.model-list > li":  "selectModel"
+    "click ul.model-list li":  "selectModel" #结构改变 selector改变
 
   initialize: ->
     unless $.jStorage.get("autos")?
@@ -27,7 +27,7 @@ class App.Views.CarSelect extends Backbone.View
     $("ul.crumbs > li:first").trigger("click")
 
   selectModel: (e)=>
-    self = $(e.target)
+    self = $(e.currentTarget)
     self.addClass("active").siblings().removeClass("active")
     car_id = self.data("car_id")
     @$(".next").find("a").attr("car_id", car_id)
@@ -71,15 +71,28 @@ class App.Views.CarSelect extends Backbone.View
     generateCarModel(letter, brname)
 
   generateCarSubModel = (submodels)-> #生成子品牌
-    $("ul.model-list").html("")
+    $("ul.model-list .no-subname").html("")
+    $("ul.model-list .has-subname").html("")
+
     _.each submodels, (submodel)->
       _.each submodel['submodels'], (sub)->
         eng = sub['engine_displacement']
+        subname = sub['name']
 
-        if _.isEmpty(eng)
-          $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']}</li>")
+        if _.isEmpty(subname)
+          if _.isEmpty(eng)
+            $("ul.model-list .no-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']}</li>")
+          else
+            $("ul.model-list .no-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']} - #{eng}</li>")
         else
-          $("ul.model-list").append("<li data-car_id=#{sub['id']} class='cursor'>#{sub['year_range']} - #{eng}</li>")
+          str = "<div>#{subname}</div>"
+
+          if _.isEmpty(eng)
+            $("ul.model-list .has-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{str} - #{sub['year_range']}</li>")
+          else
+            $("ul.model-list .has-subname").append("<li data-car_id=#{sub['id']} class='cursor'>#{str} - #{sub['year_range']} - #{eng}</li>")
+
+
 
   generateCarModel = (letter, brname)-> #生成车系
     brands = $.jStorage.get("auto-#{letter}")

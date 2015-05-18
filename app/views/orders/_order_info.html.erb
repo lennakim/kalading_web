@@ -97,22 +97,25 @@
     </div>
   <% end %>
 
-  <% if can_cancel?(@order) || can_comment?(@order) %>
 
-    <div class="section controls">
-      <div class="cell comment">
-        <% if can_cancel?(@order) %>
-          <div class="del">
-            <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
-          </div>
-        <% end %>
+  <div class="section controls">
+    <div class="cell comment">
+      <% if can_cancel?(@order) %>
+        <div class="del">
+          <%= link_to "取消订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
+        </div>
+      <% end %>
 
-        <% if can_comment?(@order) %>
-          <div class="cmt">
-            <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
-          </div>
-        <% end %>
-      </div>
+      <% if can_comment?(@order) %>
+        <div class="cmt">
+          <%= link_to "评价订单", "#", class: "btn btn-default", "data-order" => @order["id"] %>
+        </div>
+      <% end %>
+
+    <div class='again'>
+      <%= link_to "再来一单", select_car_item_orders_path(car_id: @order['car_id'], type: service_type_mapping(@order['service_type'])), class: 'btn btn-default' %>
     </div>
-  <% end %>
+
+    </div>
+  </div>
 </div>

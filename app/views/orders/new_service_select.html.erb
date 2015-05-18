@@ -6,7 +6,18 @@
       <div class="prev cursor">
         <%= link_to "上一步", new_car_select_orders_path(type: @type) %>
       </div>
-      <a href="/static_pages/fu-wu-liu-cheng" class="tit">服务内容</a>
+
+      <% case params[:type] %>
+      <% when 'pm25' %>
+        <%= link_to "服务介绍", static_page_path(id: 'pm25'), class: 'tit' %>
+      <% when 'bmt' %>
+        <%= link_to "服务介绍", static_page_path(id: 'ji-you-san-lv'), class: 'tit' %>
+      <% when 'smt' %>
+        <%= link_to "服务介绍", static_page_path(id: 'ji-you-ji-lv'), class: 'tit' %>
+      <% when 'bty' %>
+        <%= link_to "服务介绍", static_page_path(id: 'geng-huan-dian-ping'), class: 'tit' %>
+      <% end %>
+
       <div class="maintain-items">
         <h4 class="title clearfix">
           <span class="name"> <%= @result['name'] %></span>
@@ -27,7 +38,7 @@
                   <%= display_item_img(part) %>
                   <span class='item-tit'><%= part[0..2] %></span>
                   <span class="item-con">
-                    <%= display_item_name(part, item["brand"], item['number'], item['version']) %>
+                    <%=  display_item_name(part, item["brand"], item['number'], item['version']) %>
                     ￥<%= item['price'] %>
                   </span>
                   <% recommend_numbers << item['number'] %>
