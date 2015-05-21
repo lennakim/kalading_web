@@ -40,8 +40,9 @@ class UsersController < ApplicationController
   end
 
   def maintain_histories_list
-    @maintain_orders = Order.maintain_histories_of current_user.phone_number
+    # @maintain_orders = Order.maintain_histories_of current_user.phone_number
     # @maintain_orders = Order.maintain_histories_of 15901003277
+    @maintain_orders = Order.maintain_histories_of 13810869775
     # TODO
 
     if browser.mobile?

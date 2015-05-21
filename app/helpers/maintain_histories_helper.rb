@@ -21,6 +21,9 @@ module MaintainHistoriesHelper
   end
 
   def light_desc_mapper keys
+
+    keys = keys.map(&:to_i)
+
     hash = {
       '0' => '亮',
       '1' => '无法检测',
@@ -176,6 +179,7 @@ module MaintainHistoriesHelper
 
   def status_class_arr values
     if values
+      values = values.map &:to_i
       values.map(&:to_s).include?('0') ? 'on' : 'off'
     else
       'on'
