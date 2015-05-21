@@ -33,16 +33,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  def notify
-    Rails.logger.info("+"*100)
-    result = Hash.from_xml(request.body.read)["xml"]
-     if WxPay::Sign.verify?(result)
-       render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
-     else
-       render :xml => { return_code: "SUCCESS", return_msg: "签名失败" }.to_xml(root: 'xml', dasherize: false)
-     end
-  end
-
   def callback
     # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
     # Here got four params: params[:code], params[:state], params[:name], params[:go]
@@ -80,7 +70,7 @@ class SessionsController < ApplicationController
 
     go = params[:go]
 
-    return redirect_to root_path(login: 1) unless go
+    return redirect_to root_path unless go
 
     share_openid = params[:share_openid]
 
