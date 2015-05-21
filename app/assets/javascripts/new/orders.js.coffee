@@ -143,7 +143,8 @@ $ ->
               alert('请输入正确手机号')
               self.removeClass('disable').removeAttr('disabled')
 
-  if $('.new-order-form').length > 0 #订单页面 new_info_submit
+  if $('.new-order-form, .no_car_type').length > 0
+    #订单页面 new_info_submit no_car_type也页面需要选择服务时间
 
     $(".get_code[mark='submitOrder']").click ->
       self = $(@)
@@ -203,7 +204,6 @@ $ ->
                   </label>
                 </li>
               """
-
 
     $("#place_order_form").on "ajax:before", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)
