@@ -180,9 +180,9 @@ module OrdersHelper
     elsif name == "空调滤清器"
       if version
         if version.to_i == 3
-          "卡拉丁第三代空调滤清器"
+          "卡拉丁三效空调滤清器"
         elsif version.to_i == 4
-          "卡拉丁第四代空调滤清器"
+          "卡拉丁四效空调滤清器"
         else
           brand
         end
