@@ -98,16 +98,18 @@
         </div>
       </div>
 
-      <div class="info-group clearfix">
-        <div id="registed_date_picker"></div>
-        <div class="info-title clearfix">
-          <var class="star">*</var>
-          <%= label_tag(:registration_date, "车辆注册时间：") %>
+      <% if result['variants'].to_i > 1 %>
+        <div class="info-group clearfix">
+          <div id="registed_date_picker"></div>
+          <div class="info-title clearfix">
+            <var class="star">*</var>
+            <%= label_tag(:registration_date, "车辆注册时间：") %>
+          </div>
+          <div class="info-con form-inline">
+            <%= text_field_tag(:registration_date, (@user_info ? @user_info['auto_registration_date'] : ''), required: true, class: 'form-control date-select', placeholder: '车辆注册日期') %>
+          </div>
         </div>
-        <div class="info-con form-inline">
-          <%= text_field_tag(:registration_date, (@user_info ? @user_info['auto_registration_date'] : ''), required: true, class: 'form-control date-select', placeholder: '车辆注册日期') %>
-        </div>
-      </div>
+      <% end %>
 
       <div class="info-group clearfix">
         <div class="info-title">
