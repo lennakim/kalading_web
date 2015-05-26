@@ -155,6 +155,22 @@
             <%= label_tag("优惠券：") %>
           </div>
           <div class="form-inline">
+            <select id="preferential_code_select" name="discount" class='form-control'>
+              <option value="8:00">9.9空调滤芯器</option>
+              <option value="12:00">50元优惠券</option>
+              <option value="17:00">不使用优惠券</option>
+              <option value="17:00">无可用优惠券</option>
+            </select>
+            <%= link_to "?", "#", class: "btn btn-default", id: "validate_preferential" %>
+
+            <div class="discount-info hide">
+              优惠券说明：
+            </div>
+          </div>
+          <div class="form-inline to-validate">
+            有优惠券兑换码
+          </div>
+          <div class="form-inline preferential_code_input hide">
             <input type="text" name="discount" class='form-control' placeholder="优惠码" id="preferential_code">
             <%= link_to "验证", "#", class: "btn btn-default", id: "validate_preferential" %>
             <%= link_to "取消", "#", class: "btn btn-default hidden", id: "no_preferential" %>

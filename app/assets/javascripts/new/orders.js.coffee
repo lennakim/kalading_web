@@ -208,6 +208,20 @@ $ ->
 
       $.post "/service_addresses/#{ id }/set_default"
 
+    key = 1
+    $('.to-validate').click ->
+      if key == 1
+        $('.preferential_code_input').removeClass('hide')
+        key = 0
+      else
+        $('.preferential_code_input').addClass('hide')
+        key = 1
+
+    $('#validate_preferential').mouseover ->
+      $('.discount-info').removeClass('hide')
+    $('#validate_preferential').mouseout ->
+      $('.discount-info').addClass('hide')
+
     $("#validate_preferential").on "click", (e) ->
       e.preventDefault()
       e.stopPropagation()
