@@ -6,7 +6,7 @@ stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
 
 listen "/tmp/unicorn.kalading.sock"
-worker_processes 8
+worker_processes 15
 timeout 30
 
 # Force the bundler gemfile environment variable to

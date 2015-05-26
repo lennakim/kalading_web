@@ -96,14 +96,14 @@ $ ->
   # 短信验证码
   if $("#login_modal").length > 0
 
-    $('.get_code').click ->
-      phone_num = $('#phone_num').val()
-      $(this).addClass('disable').attr('disabled', 'disabled')
+    $(".get_code[mark='login']").click ->
+      phone_num = $(@).siblings(".phone_num").val()
+      $(@).addClass('disable').attr('disabled', 'disabled')
       seconds = 60
 
       if phone_num == ''
         alert('请输入手机号')
-        $('.get_code').removeClass('disable').removeAttr('disabled')
+        $(@).removeClass('disable').removeAttr('disabled')
       else
         $.ajax
           type: 'POST',

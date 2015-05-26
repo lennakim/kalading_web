@@ -369,6 +369,7 @@ DEPENDENCIES
   ckeditor!
   cocoon
   coffee-rails (~> 4.0.0)
+  colorize
   compass-rails
   exception_notification
   gon

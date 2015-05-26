@@ -1,11 +1,11 @@
 class Activity::MainController < ActionController::Base
   layout "activity"
-  impressionist
+  # impressionist
 
   before_action :find_activity, only: ['show']
 
   def show
-    impressionist(@activity, params[:from])
+    # impressionist(@activity, params[:from])
 
     if @activity && @activity.valid_activity?
       render "#{@activity.name}"

@@ -112,16 +112,74 @@ $ ->
 
 
   # order form page
+  if (".no_car_type").length > 0 #未找到车型
+
+    $(".no_car_type .get_code").click -> # _no_car_type 发送验证码
+      self = $(@)
+      phone_num = $(".no_car_type .phone_num").val()
+      $(@).addClass('disable').attr('disabled', "disabled")
+      seconds = 60
+
+      if phone_num == ''
+        alert('请输入手机号码')
+        self.removeClass('disable').removeAttr('disabled')
+      else
+        $.ajax
+          type: 'POST',
+          url: '/phones/send_verification_code',
+          data: { phone_num: phone_num },
+          success: (data) ->
+            if data.success
+              timer = setInterval ->
+                if seconds > 0
+                  seconds -= 1
+                  self.text("#{seconds}秒后重新获取")
+                if seconds == 0
+                  self.removeClass('disable').removeAttr('disabled').text('重新获取')
+                  clearInterval(timer)
+              , 1000
+
+            else
+              alert('请输入正确手机号')
+              self.removeClass('disable').removeAttr('disabled')
 
   if $('.new-order-form, .no_car_type').length > 0
+    #订单页面 new_info_submit no_car_type也页面需要选择服务时间
 
+    $(".get_code[mark='submitOrder']").click ->
+      self = $(@)
+      phone_num = $(".new-order-form .phone_num").val()
+      self.addClass('disable').attr('disabled', 'disabled')
+      seconds = 60
+
+      if phone_num == ''
+        alert('请输入手机号')
+        self.removeClass('disable').removeAttr('disabled')
+      else
+        $.ajax
+          type: 'POST',
+          url: '/phones/send_verification_code',
+          data: { phone_num: phone_num },
+          success: (data) ->
+            if data.success
+              timer = setInterval ->
+                if seconds > 0
+                  seconds -= 1
+                  self.text("#{seconds}秒后重新获取")
+                if seconds == 0
+                  self.removeClass('disable').removeAttr('disabled').text('重新获取')
+                  clearInterval(timer)
+              , 1000
+
+            else
+              alert('请输入正确手机号')
+              self.removeClass('disable').removeAttr('disabled')
 
     $('#verification_code').on 'blur', (e) ->
       code = $(@).val()
       phone_num = $("#phone_num").val()
       car_id = $("#car_id").val()
       if phone_num.length == 11 && code.length == 6
-        console.log 1
         $.get "/users/get_user_info?phone_num=#{phone_num}&code=#{code}&car_id=#{car_id}", (data) ->
           if data && !data['error']
             console.log data
@@ -146,7 +204,6 @@ $ ->
                   </label>
                 </li>
               """
-
 
     $("#place_order_form").on "ajax:before", (xhr, settings)->
       $("#submit_form_button").attr('disabled', true)

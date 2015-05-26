@@ -367,13 +367,13 @@ class OrdersController < ApplicationController
       parts = []
     end
 
-    if !params[:serve_date].present?
-      return render js: "alert('请填写正确的服务日期')"
-    end
+    # if !params[:serve_date].present?
+    #   return render js: "alert('请填写正确的服务日期')"
+    # end
 
-    if !params[:registration_date].present?
-      return render js: "alert('请填写正确的车辆注册日期')"
-    end
+    # if !params[:registration_date].present?
+    #   return render js: "alert('请填写正确的车辆注册日期')"
+    # end
 
     if !(params[:serve_date] && params[:serve_period])
       return render js: "alert('请选择正确的服务时间')"
@@ -427,6 +427,17 @@ class OrdersController < ApplicationController
       unless signed_in?
         user = User.find_or_create_by(phone_number: vcode.phone_num)
         sign_in user
+
+        account = PublicAccount.find_by(name: "kaladingcom")
+        authinfo = account.auth_infos.find_by \
+          provider: "weixin",
+          uid: cookies[:USERAUTH]
+
+        if authinfo
+          unless current_user.auth_infos.include? authinfo
+            current_user.auth_infos << authinfo
+          end
+        end
       end
 
       # add this car to user , TODO this api is not done
