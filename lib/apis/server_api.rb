@@ -26,15 +26,20 @@ module ServerApi
         "#{Settings.server_uri}/#{api_name}.json"
       url = append_query_string base_url, args.except(:body)
 
-      Rails.logger.info '-' * 30
-      Rails.logger.info url
+      Rails.logger.info(('-' * 50).colorize(:blue))
+      Rails.logger.info(url.colorize(:green))
 
       result = method == "get" ? \
         RestClient.get(url, content_type: 'json') :
         RestClient.send(method, url, args[:body].to_json, content_type: 'json')
 
-        JSON.parse result
+      Rails.logger.info("http status code is #{result.code}".colorize(:yellow))
+      JSON.parse result
     rescue Exception => e
+      Rails.logger.info(('*' * 50).colorize(:red))
+      Rails.logger.error("#{url}".colorize(:red))
+      Rails.logger.error("Api error".colorize(:red))
+
       fail.call e
     end
 
