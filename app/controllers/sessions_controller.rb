@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:code])
 
     if vcode && !vcode.expired?
@@ -20,16 +19,20 @@ class SessionsController < ApplicationController
       end
     end
 
-    if user
-      sign_in user
+    if !request.xhr?
+      if user
+        sign_in user
 
-      if path = session.delete(:from_path)
-        redirect_to path
+        if path = session.delete(:from_path)
+          redirect_to path
+        else
+          redirect_to orders_users_path
+        end
       else
-        redirect_to orders_users_path
+        redirect_to root_path(login: 1)
       end
     else
-      redirect_to root_path(login: 1)
+      sign_in user if user
     end
   end
 
