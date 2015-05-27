@@ -107,6 +107,10 @@ class Order
       ServerApi.call "get", "maintains", { entry_id: id }
     end
 
+    def discount_list_find telephone, page = 1
+      ServerApi.call "get", "interface/discounts", { telephone: telephone, page: page }
+    end
+
     def submit_special_order payload
       ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
     end

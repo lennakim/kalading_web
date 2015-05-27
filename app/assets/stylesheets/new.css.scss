@@ -708,7 +708,7 @@ nav{
           .sub2{
             ul{
               min-width: 300px;
-              margin-left: 62%;
+              margin-left: 49%;
             }
           }
         }
@@ -1074,6 +1074,59 @@ nav{
   }
 }
 
+.discount-list{
+  height: 1100px;
+  background-image: image-url('new-index/background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  .main{
+    width: 1030px;
+    margin: 0 auto;
+    padding: 50px 0;
+    border-radius: 5px;
+    background: #fff;
+    li{
+      float: left;
+      width: 42%;
+      height: 120px;
+      margin: 0 5% 10px;
+      &:nth-child(even){
+        margin-left: 0;
+      }
+    }
+    .now,.pass{
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .now{
+      background-image: image-url('new-user/now.png');
+    }
+    .pass{
+      background-image: image-url('new-user/pass.png');
+      .left,.right{
+        color: #cccccc;
+      }
+    }
+    .left{
+      width: 50%;
+      line-height: 110px;
+      text-align: center;
+      font-size: 20px;
+      color: $main-orange;
+      .price{
+        font-size: 40px;
+      }
+    }
+    .right{
+      padding: 25px 0;
+      color: #666666;
+      p{
+        margin: 0;
+        line-height: 30px;
+      }
+    }
+  }
+}
 
 
 

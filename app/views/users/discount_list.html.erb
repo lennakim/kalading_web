@@ -1,0 +1,23 @@
+<%= title "优惠券" %>
+<div class="discount-list special">
+  <div class="main">
+    <% discounts = @discount_list['data'] %>
+    <ul class="list clearfix">
+      <% discounts.each do |discount| %>
+
+        <li class="<%= 'now' if discount['used'] == false %> <%= 'pass' if discount['used'] == true %> clearfix">
+          <div class="left pull-left">￥<span class="price">
+            <%= discount['amount'] %></span>
+          </div>
+          <div class="right pull-left">
+            <% discount['use_conditions'].each do |condition| %>
+              <p><%= condition %></p>
+            <% end %>
+            <p>有效期至<%= discount['expire_date'] %></p>
+          </div>
+        </li>
+
+      <% end %>
+    </ul>
+  </div>
+</div>
