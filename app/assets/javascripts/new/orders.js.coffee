@@ -265,6 +265,17 @@ $ ->
 
       $.post "/service_addresses/#{ id }/set_default"
 
+    $('.to-validate').click ->
+      if $('.preferential_code_input').hasClass("hide")
+        $('.preferential_code_input').removeClass('hide')
+      else
+        $('.preferential_code_input').addClass('hide')
+
+    $('#validate_preferential').mouseover ->
+      $('.discount-info').removeClass('hide')
+    $('#validate_preferential').mouseout ->
+      $('.discount-info').addClass('hide')
+
     $("#validate_preferential").on "click", (e) ->
       e.preventDefault()
       e.stopPropagation()
