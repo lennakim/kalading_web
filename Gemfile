@@ -60,6 +60,7 @@ gem 'impressionist'
 
 gem 'kaminari' # paginator
 gem 'gon' # Your Rails variables in your JS
+gem 'colorize'
 
 group :development, :test do
   gem 'http_logger'

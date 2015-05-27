@@ -73,7 +73,7 @@ class SessionsController < ApplicationController
 
     go = params[:go]
 
-    return redirect_to root_path unless go
+    return redirect_to root_path if !go.present?
 
     share_openid = params[:share_openid]
 

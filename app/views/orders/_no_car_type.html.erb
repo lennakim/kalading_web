@@ -15,40 +15,50 @@
                 <div class="info-group clearfix">
                   <div class="info-title clearfix">
                     <var class="star">*</var>
-                    <%= label_tag(:name, "车辆品牌：") %>
+                    <%= label_tag(:brand, "车辆品牌：") %>
                   </div>
                   <div class="info-con form-inline">
-                    <%= text_field_tag(:name, "", required: true, class: 'form-control') %>
+                    <%= text_field_tag(:brand, "", required: true, class: 'form-control') %>
                   </div>
                 </div>
 
                 <div class="info-group clearfix">
                   <div class="info-title clearfix">
                     <var class="star">*</var>
-                    <%= label_tag(:name, "车辆年款：") %>
+                    <%= label_tag(:year, "车辆年款：") %>
                   </div>
                   <div class="info-con form-inline">
-                    <%= text_field_tag(:name, "", required: true, class: 'form-control') %>
+                    <%= text_field_tag(:year, "", required: true, class: 'form-control') %>
                   </div>
                 </div>
 
                 <div class="info-group clearfix">
                   <div class="info-title clearfix">
                     <var class="star">*</var>
-                    <%= label_tag(:name, "车辆排量：") %>
+                    <%= label_tag(:car_pl, "车辆排量：") %>
                   </div>
                   <div class="info-con form-inline">
-                    <%= text_field_tag(:name, "", required: true, class: 'form-control') %>
+                    <%= text_field_tag(:car_pl, "", required: true, class: 'form-control') %>
                   </div>
                 </div>
-
+              <!--
                 <div class="info-group clearfix">
                   <div class="info-title clearfix">
                     <var class="star">*</var>
-                    <%= label_tag(:name, "VIN号：") %>
+                    <%= label_tag(:registration_date, "注册日期：") %>
                   </div>
                   <div class="info-con form-inline">
-                    <%= text_field_tag(:name, "", required: true, class: 'form-control') %>
+                    <%= text_field_tag(:registration_date, "", required: true, class: 'form-control') %>
+                  </div>
+                </div>
+              -->
+                <div class="info-group clearfix">
+                  <div class="info-title clearfix">
+                    <var class="star">*</var>
+                    <%= label_tag(:vin, "VIN号：") %>
+                  </div>
+                  <div class="info-con form-inline">
+                    <%= text_field_tag(:vin_num, "", required: true, class: 'form-control') %>
                   </div>
                 </div>
               </div>
@@ -115,7 +125,7 @@
                 <div class="info-group clearfix">
                   <div class="info-title clearfix">
                     <var class="star">*</var>
-                    <%= label_tag(:name, "地址") %>
+                    <%= label_tag(:address, "地址") %>
                   </div>
                   <div class="info-con form-inline">
                     <%= text_field_tag(:address, "", required: true, class: 'form-control') %>
