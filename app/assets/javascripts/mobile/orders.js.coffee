@@ -58,6 +58,7 @@ $ ->
       e.preventDefault()
       $(@).tab('show')
 
+
   if $('.place-order-phone').length > 0
 
     $('#verification_code').on 'blur', (e) ->

@@ -123,7 +123,6 @@ class Order
 
     ########################### 新交互使用的api  20150504 #####################
 
-
     def autos # 获取汽车信息 有错误
       ServerApi.call "get", "api/v2/autos"
     end
@@ -141,6 +140,15 @@ class Order
       ServerApi.call "get", "api/v2/haiwanshiyou_remain_capacity", {}
     end
 
+    ########################### 优惠券 20150527 #####################
+
+    def discounts phone, page=1
+      ServerApi.call "get", "/interface/discounts", {telephone: phone, page: page}
+    end
+
+    def bind_discount(phone, discount_code)
+      ServerApi.call "post", "/interface/discounts/#{discount_code}/bind", {telephone: phone }
+    end
   end
 
 end

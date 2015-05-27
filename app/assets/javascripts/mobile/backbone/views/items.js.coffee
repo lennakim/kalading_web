@@ -143,7 +143,12 @@ class Kalading.Views.Items extends Backbone.View
       e.preventDefault()
       e.stopPropagation()
     else
-      $('.order_button').addClass('disabled')
+      if window.current_user_id != -1
+        $('.order_button').addClass('disabled')
+      else
+        e.preventDefault()
+        e.stopPropagation()
+        $("#login_modal").modal()
 
   errorHandler: ->
     # alert '服务器错误...请稍后再试'
