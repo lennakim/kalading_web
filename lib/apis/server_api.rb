@@ -38,7 +38,7 @@ module ServerApi
     rescue Exception => e
       Rails.logger.info(('*' * 50).colorize(:red))
       Rails.logger.error("#{url}".colorize(:red))
-      Rails.logger.error("Api error".colorize(:red))
+      Rails.logger.error("http status code is #{result.code}".colorize(:red))
 
       fail.call e
     end
