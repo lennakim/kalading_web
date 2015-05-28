@@ -38,13 +38,7 @@
     <script src="http://s19.cnzz.com/z_stat.php?id=1252972288&web_id=1252972288" language="JavaScript"></script>
   <% end %>
 
-  <script>
-    <% if signed_in? %>
-      var current_user_id = <%= current_user.id %>;
-    <% else %>
-      var current_user_id = -1;
-    <% end %>
-  </script>
+  <%= render "shared/scripts" %>
 
 </body>
 </html>
