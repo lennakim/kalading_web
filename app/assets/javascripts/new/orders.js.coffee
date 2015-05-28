@@ -271,9 +271,9 @@ $ ->
       else
         $('.preferential_code_input').addClass('hide')
 
-    $('#validate_preferential').mouseover ->
+    $('#ask_preferential').mouseover ->
       $('.discount-info').removeClass('hide')
-    $('#validate_preferential').mouseout ->
+    $('#ask_preferential').mouseout ->
       $('.discount-info').addClass('hide')
 
     $("#validate_preferential").on "click", (e) ->

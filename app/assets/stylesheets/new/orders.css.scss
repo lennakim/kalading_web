@@ -54,15 +54,28 @@ input.form-control, select.form-control, textarea.form-control{
 
 a#get_code, a#preferential_code_select, a#no_preferential{
   @include border-radius(4px);
-  background: #bbbbbb;
   border: 0 none;
   color: white;
-  width: 30px;
+  background: $main-orange;
+  width: 100px;
   padding: 0;
   text-align: center;
   height: 34px;
   line-height: 34px;
 }
+
+a#validate_preferential {
+  @include border-radius(4px);
+  border: 0 none;
+  color: white;
+  background: $main-orange;
+  width: 50px;
+  padding: 0;
+  text-align: center;
+  height: 34px;
+  line-height: 34px;
+ }
+
 #preferential_code{
   @include border-radius(0px);
   width: 138px;
@@ -71,7 +84,10 @@ a#get_code, a#preferential_code_select, a#no_preferential{
   height: 34px;
   line-height: 34px;
 }
-#validate_preferential{
+#ask_preferential{
+	text-align: center;
+  height: 34px;
+  width: 30px;
 	border: 0;
 	background: #bbbbbb;
 	color: #fff;
@@ -94,7 +110,7 @@ a#get_code, a#preferential_code_select, a#no_preferential{
   padding-left: 20px;
   background-image: image-url('new-order/discount.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%; 
+  background-size: 100% 100%;
 }
 
 label{
