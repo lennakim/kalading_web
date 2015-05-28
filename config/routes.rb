@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     collection do
       get 'orders'
       get 'orders_detail'
+      get 'discount_list'
       get 'maintain_histories_list'
       get 'maintain_history'
       get 'cars'

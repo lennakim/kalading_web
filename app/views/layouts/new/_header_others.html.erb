@@ -135,6 +135,9 @@
                 <li class="<%= "active" if controller == "users" && ['maintain_histories_list','maintain_history'].include?(action) %>">
                   <%= link_to "保养记录", maintain_histories_list_users_path %>
                 </li>
+                <li class="<%= "active" if controller == "users" && action == "discount" %>">
+                  <%= link_to "优惠券", discount_list_users_path(telephone:current_user.phone_number) %>
+                </li>
                 <li>
                   <%= link_to '登出', sessions_path, method: :delete %>
                 </li>

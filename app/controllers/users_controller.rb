@@ -57,6 +57,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def discount_list
+    @discount_list = Order.discount_list_find params[:telephone]
+  end
+
   def settings
     @cities = Order.cities
   end
