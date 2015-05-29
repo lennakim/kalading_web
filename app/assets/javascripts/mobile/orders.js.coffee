@@ -88,7 +88,7 @@ $ ->
                 </div>
               """
 
-    $(".place-order-phone").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
+    $(".place-order-phone, .no_car_type").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
       e.preventDefault()
       e.stopPropagation()
       id =  $(@).data('id')

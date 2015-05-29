@@ -128,13 +128,14 @@ class OrdersController < ApplicationController
     if code.present?
 
       type = params["type"]
-      car_id = params["car_id"]
+      car_id = params["car_id"] || "531f1fd2098e71b3f8003265"
 
       @parts = JSON.parse cookies['parts']
 
       payload = {
         parts: @parts,
-        discount: code
+        discount: code,
+        service_type: type
       }
 
       @result = Order.refresh_price car_id, current_city_id, payload, type
@@ -305,6 +306,12 @@ class OrdersController < ApplicationController
   def no_car_type
     @city_capacity = Order.city_capacity current_city_id
     @cities = Order.cities
+
+    ## 临时的 ####
+    payload = { parts: [], service_type: params[:type] }
+    @result = Order.refresh_price "531f1fd2098e71b3f8003265", current_city_id, payload
+    ##############
+
     if !browser.mobile?
       render layout: 'new'
     end
@@ -330,7 +337,8 @@ class OrdersController < ApplicationController
         "client_comment"    => "#{params[:brand]} #{params[:year]} #{params[:car_pl]}",
         "city_id"           => params[:city_id],
         "registration_date" => params[:registration_date],
-        "vin"               => params[:vin_num]
+        "vin"               => params[:vin_num],
+        "discount"          => params[:discount]
       }
     }
 
