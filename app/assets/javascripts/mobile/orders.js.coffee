@@ -58,7 +58,7 @@ $ ->
       e.preventDefault()
       $(@).tab('show')
 
-  if $('.place-order-phone').length > 0
+  if $('.place-order-phone, .no_car_type').length > 0
 
     $('#verification_code').on 'blur', (e) ->
       code = $(@).val()

@@ -26,22 +26,20 @@
     </div>
 
 
-  <div class="carousel slide flexslider">
-    <ul class="slides">
-      <li>
-        <%= link_to select_car_item_orders_path(type: 'pm25') do %>
-          <%= image_tag("phone-home/banner/banner-1.jpg")%>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to select_car_item_orders_path(type: 'pm25') do %>
-          <%= image_tag("phone-home/banner/banner-2.jpg")%>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-
-
+    <div class="carousel slide flexslider">
+      <ul class="slides">
+        <li>
+          <%= link_to select_car_item_orders_path(type: 'pm25') do %>
+            <%= image_tag("phone-home/banner/banner-1.jpg")%>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to select_car_item_orders_path(type: 'pm25') do %>
+            <%= image_tag("phone-home/banner/banner-2.jpg")%>
+          <% end %>
+        </li>
+      </ul>
+    </div>
 
     <div class="items clearfix">
       <div class="left">
@@ -79,6 +77,36 @@
           <% end %>
         </div>
       </div>
+
+
+      <div class="left">
+        <div class="item tmp" data-type="pm25">
+          <%= link_to no_car_type_orders_path(type: '3') do %>
+            <p >空调风道清洗</p>
+          <% end %>
+        </div>
+
+        <div class="item tmp" data-type="bty">
+          <%= link_to no_car_type_orders_path(type: '4') do %>
+            <p >发动机舱清洁</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="item tmp" data-type="smt">
+          <%= link_to no_car_type_orders_path(type: '5') do %>
+            <p >轮胎养护</p>
+          <% end %>
+        </div>
+
+        <div class="item tmp" data-type="bmt">
+          <%= link_to no_car_type_orders_path(type: '6') do %>
+            <p >车辆安全检测</p>
+          <% end %>
+        </div>
+      </div>
+
     </div>
 
     <%= render "shared/footer" %>

@@ -305,6 +305,9 @@ class OrdersController < ApplicationController
   def no_car_type
     @city_capacity = Order.city_capacity current_city_id
     @cities = Order.cities
+    if !browser.mobile?
+      render layout: 'new'
+    end
   end
 
   def submit_no_car_order
@@ -316,6 +319,7 @@ class OrdersController < ApplicationController
     end
 
     payload = {
+      service_type: params[:service_type],
       "info" => {
         "address"           => params[:address],
         "name"              => params[:name],
@@ -338,7 +342,7 @@ class OrdersController < ApplicationController
         sign_in user
       end
 
-      render "success", layout: 'new'
+      redirect_to action: :success
     else
       render "fail"
     end

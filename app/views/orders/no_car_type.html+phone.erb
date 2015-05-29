@@ -1,0 +1,155 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "mobile/orders", 'data-turbolinks-track' => true %>
+<% end %>
+<div class="no_car_type">
+  <div class="main">
+    <div class="maintain-items">
+      <%= form_tag(submit_no_car_order_orders_path) do |f| %>
+
+        <%= hidden_field_tag :city_id, current_city_id %>
+        <%= hidden_field_tag :service_type, params[:type] %>
+
+        <div class="order-info">
+          <div class="section">
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag(:brand, "车辆品牌：") %>
+              </div>
+              <div class="info-con form-inline">
+                <%= text_field_tag(:brand, "", required: true, class: 'form-control') %>
+              </div>
+            </div>
+
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag(:year, "车辆年款：") %>
+              </div>
+              <div class="info-con form-inline">
+                <%= text_field_tag(:year, "", required: true, class: 'form-control') %>
+              </div>
+            </div>
+
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag(:car_pl, "车辆排量：") %>
+              </div>
+              <div class="info-con form-inline">
+                <%= text_field_tag(:car_pl, "", required: true, class: 'form-control') %>
+              </div>
+            </div>
+
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag(:vin, "VIN号：") %>
+              </div>
+              <div class="info-con form-inline">
+                <%= text_field_tag(:vin_num, "", required: true, class: 'form-control') %>
+              </div>
+            </div>
+          </div>
+
+          <div id="date_picker"></div>
+          <div class="section">
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag("车牌号：") %>
+              </div>
+              <div class="info-con form-inline">
+                <select name="car_location" class="form-control car_location">
+                  <% car_location.each do |location| %>
+                    <option value="<%= location %>" <%= "selected" if location == @auto.try(:license_location) %>><%= location %></option>
+                  <% end %>
+                </select>
+                <%= text_field_tag(:car_num, @auto.try(:license_number), minlength: 6, maxlength: 6, required: true, class: 'form-control') %>
+              </div>
+            </div>
+            <% unless current_user %>
+              <div class="cell">
+                <div class="info-title clearfix">
+                  <var class="star">*</var>
+                  <%= label_tag(:phone_num, "手机号：") %>
+                </div>
+                <div class="info-con form-inline">
+                  <%= text_field_tag(:phone_num, "", required: true, class: 'form-control phone_num' ) %>
+                </div>
+              </div>
+
+              <div class="cell">
+                <div class="info-title clearfix">
+                  <var class="star">*</var>
+                  <%= label_tag(:verification_code, "验证手机：") %>
+                </div>
+                  <div class="info-con form-inline">
+                    <%= text_field_tag(:verification_code, "", required: true, maxlength: 6, minlength: 6, class: 'verification_code form-control' ) %>
+                    <a title="点击获取验证码" class='btn btn-default get_code' id="get_code">获取验证码</a>
+                  </div>
+              </div>
+            <% else %>
+
+              <div class="cell">
+                <div class="info-title clearfix">
+                  <var class="star">*</var>
+                  <%= label_tag(:phone_num, "手机号码：") %>
+                </div>
+                <div class="info-con form-inline">
+                  <input name="phone_num" class="phone_num form-control" value="<%= current_user.phone_number %>" readonly='true'>
+                </div>
+              </div>
+
+            <% end %>
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag(:name, "姓名：") %>
+              </div>
+              <div class="info-con form-inline">
+                <%= text_field_tag(:name, "", required: true, class: 'form-control') %>
+              </div>
+            </div>
+
+            <div class="cell">
+              <div class="info-title clearfix">
+                <var class="star">*</var>
+                <%= label_tag(:address, "地址") %>
+              </div>
+              <div class="info-con form-inline">
+                <%= text_field_tag(:address, "", required: true, class: 'form-control') %>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+              <div class="cell">
+                <div id="serve_date_picker"></div>
+                <div class="info-title clearfix">
+                  <var class="star">*</var>
+                  <%= label_tag(:serve_date, "服务时间：") %>
+                </div>
+                <div class="form-inline">
+                  <%= text_field_tag(:serve_date, "", required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
+                  <select id="serve_period" name="serve_period" class='form-control'>
+                    <option value="8:00">8:00 - 12:00</option>
+                    <option value="12:00">12:00 - 17:00</option>
+                    <option value="17:00">17:00 - 20:00</option>
+                  </select>
+                </div>
+              </div>
+              <div class="cell">
+                <div class="form-inline">
+                  <div class="submit cursor">
+                    <input type="submit" value="提交信息" class='btn btn-default'>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
