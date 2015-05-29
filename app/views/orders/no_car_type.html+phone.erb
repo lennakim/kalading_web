@@ -1,5 +1,7 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag "mobile/orders", 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=<%= Settings.baidu_ak %>"></script>
+  <%= javascript_include_tag "baidu_map", 'data-turbolinks-track' => true %>
 <% end %>
 
 <div class="no_car_type">
@@ -133,3 +135,4 @@
     </div>
   </div>
 </div>
+<%= render "shared/add_address_modal" %>
