@@ -321,9 +321,15 @@ class OrdersController < ApplicationController
 
     vcode = VerificationCode.find_by(phone_num: params[:phone_num], code: params[:verification_code])
 
+    if !params[:address].present?
+      return render js: "$('#add_address_modal').modal();"
+    end
+
+
     if !signed_in? && !(vcode && !vcode.expired?)
       return render "fail"
     end
+
 
     payload = {
       service_type: params[:service_type],
