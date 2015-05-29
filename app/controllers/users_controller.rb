@@ -36,7 +36,6 @@ class UsersController < ApplicationController
   def orders_detail
     id = params[:id]
     @order = Order.origin_find(id)
-    # pp @order
   end
 
   def maintain_histories_list
@@ -57,8 +56,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def discount_list
-    @discount_list = Order.discount_list_find params[:telephone]
+  def discounts
+    phone = current_user.phone_number
+
+    @discount_list = Order.discounts phone
   end
 
   def settings

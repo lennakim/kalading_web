@@ -107,19 +107,13 @@ class Order
       ServerApi.call "get", "maintains", { entry_id: id }
     end
 
-    def discount_list_find telephone, page = 1
-      ServerApi.call "get", "interface/discounts", { telephone: telephone, page: page }
-    end
-
     def submit_special_order payload
       ServerApi.call 'post', 'auto_special_order', { body: payload } {{}}
     end
 
     def comment order_id, desc, score
-      #ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
       ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
-
 
     ########################### 新交互使用的api  20150504 #####################
 
