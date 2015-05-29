@@ -130,7 +130,11 @@ class OrdersController < ApplicationController
       type = params["type"]
       car_id = params["car_id"] || "531f1fd2098e71b3f8003265"
 
-      @parts = JSON.parse cookies['parts']
+      if cookies['parts']
+        @parts = JSON.parse cookies['parts']
+      else
+        @parts = []
+      end
 
       payload = {
         parts: @parts,
