@@ -58,7 +58,7 @@ $ ->
       e.preventDefault()
       $(@).tab('show')
 
-  if $('.place-order-phone').length > 0
+  if $('.place-order-phone, .no_car_type').length > 0
 
     $('#verification_code').on 'blur', (e) ->
       code = $(@).val()
@@ -88,7 +88,7 @@ $ ->
                 </div>
               """
 
-    $(".place-order-phone").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
+    $(".place-order-phone, .no_car_type").on 'click', '.list-group-item > .address-item-detail > a', (e) ->
       e.preventDefault()
       e.stopPropagation()
       id =  $(@).data('id')

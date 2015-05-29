@@ -10,7 +10,7 @@ Rails.application.config.assets.precompile += %w( orders.js home.js admin/admin.
 
 Rails.application.config.assets.precompile += %w(api.js api.css)
 
-Rails.application.config.assets.precompile += %w(mobile.js mobile.css mobile/*)
+Rails.application.config.assets.precompile += %w(mobile.js mobile.css mobile/orders.js mobile/*)
 
 Rails.application.config.assets.precompile += %w(activity/515.css activity/515.js)
 
