@@ -308,7 +308,7 @@ class OrdersController < ApplicationController
   end
 
   def no_car_type
-    @city_capacity = Order.city_capacity current_city_id
+    @city_capacity = Order.city_capacity current_city_id, params[:type]
     @cities = Order.cities
 
     ## 临时的 ####
