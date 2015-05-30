@@ -77,6 +77,8 @@ class Order
         service_type = 1
       elsif type == 'bty'
         service_type = 2
+      else
+        service_type = type
       end
 
       ServerApi.call "post", "auto_maintain_price", { entry_id: car_id, city_id: city_id, body: payload, service_type: service_type }
