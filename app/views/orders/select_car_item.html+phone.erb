@@ -93,7 +93,7 @@
 
                   <% if !via_act || (via_act && types.length > 1) %>
                     <ul class="list-group">
-                      <% Product.all.each do |product| %>
+                      <% Product.first(4).each do |product| %>
                         <% if product_available? product %>
                           <% if !via_act || types.include?(product.slug) %>
                             <li class="list-group-item clearfix">
