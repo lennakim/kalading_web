@@ -32,6 +32,7 @@
 
 window.API_Domain = gon.global.server_uri
 window.V2 = gon.global.v2
+window.ApiV2 = gon.global.api_v2
 
 $ ->
 

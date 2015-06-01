@@ -10,15 +10,12 @@ class App.Views.CarSelect extends Backbone.View
 
   initialize: ->
     unless $.jStorage.get("autos")?
-      console.log('jStorage flush')
-      $.get ("#{API_Domain}#{V2}/two_level_autos.json"), (data)->
-        console.log("load autos data")
+      $.get ("#{ApiV2}/two_level_autos.json"), (data)->
         $.jStorage.set("autos", data['data'], {TTL: 1000*60*60*24*10})
         generateCarIndex($.jStorage.get("autos"))
     else
       generateCarIndex($.jStorage.get("autos"))
-      $.jStorage.flush()
-      console.log('cache overdue')
+      $.jStorage.setTTL("autos", 1000*60);
 
     if $.jStorage.get("auto-A")
       _.defer(_.bind(@viewFirstCar, this))
