@@ -10,15 +10,14 @@ class App.Views.CarSelect extends Backbone.View
 
   initialize: ->
     unless $.jStorage.get("autos")?
-      $.get ("#{API_Domain}#{V2}/two_level_autos.json"), (data)->
-        console.log("load autos data")
-        $.jStorage.set("autos", data['data'], {TTL: 1000*60*60*24*10}) #本地存储
+      $.get ("#{ApiV2}/two_level_autos.json"), (data)->
+        $.jStorage.set("autos", data['data'], {TTL: 1000*60*60*24*10})
         generateCarIndex($.jStorage.get("autos"))
     else
       generateCarIndex($.jStorage.get("autos"))
+      $.jStorage.setTTL("autos", 1000*60);
 
     if $.jStorage.get("auto-A")
-      # initialize完成后 触发 viewFirstCar Event
       _.defer(_.bind(@viewFirstCar, this))
 
   render: ->

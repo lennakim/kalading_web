@@ -30,8 +30,8 @@ class Order
       ServerApi.call 'get', 'latest_orders'
     end
 
-    def cities
-      ServerApi.call "get", "cities"
+    def cities tmp = nil
+      ServerApi.call "get", "cities", { tmp: tmp }
     end
 
     def cancel id, content
