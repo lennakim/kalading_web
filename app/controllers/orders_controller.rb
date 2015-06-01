@@ -278,7 +278,7 @@ class OrdersController < ApplicationController
       payload[:discount] = activity.preferential_code
     end
 
-    @cities = Order.cities
+    @cities = Order.cities params[:type]
     @result = Order.refresh_price car_id, current_city_id, payload, type
 
     render "place_order"
