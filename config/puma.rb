@@ -1,6 +1,6 @@
 #!/usr/bin/env puma
 
-environment "production"
+environment "staging"
 basedir = "/home/deployer/apps/kaladingcom/current"
 
 bind  "unix:///tmp/kalading.sock"
