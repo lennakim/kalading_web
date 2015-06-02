@@ -124,6 +124,8 @@ class OrdersController < ApplicationController
   end
 
   def validate_preferential_code
+    server_types = {"pm2.5" => 0, "bmt" => 1, "smt" => 1, "bty" => 2}
+
     code = params[:code]
     if code.present?
 
@@ -139,7 +141,7 @@ class OrdersController < ApplicationController
       payload = {
         parts: @parts,
         discount: code,
-        service_type: type
+        service_type: server_types[type]
       }
 
       @result = Order.refresh_price car_id, current_city_id, payload, type
