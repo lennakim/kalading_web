@@ -7,8 +7,8 @@ bind  "unix:///tmp/kalading.sock"
 pidfile  "#{basedir}/tmp/pids/puma.pid"
 state_path "#{basedir}/shared/tmp/pids/puma.state"
 
-workers 5
-threads 16, 128
+workers 8
+threads 16, 256
 daemonize true
 
 preload_app!
