@@ -8,7 +8,7 @@ pidfile  "#{basedir}/tmp/pids/puma.pid"
 state_path "#{basedir}/shared/tmp/pids/puma.state"
 
 workers 8
-threads 16, 256
+threads 32, 256
 daemonize true
 
 preload_app!
