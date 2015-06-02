@@ -29,19 +29,7 @@ set :unicorn_worker_count, 15
 # config file
 set :enable_ssl, false
 
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
-
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:legacy_restart'
-  end
-end
+after 'deploy:publishing', 'puma:restart'
 
 # Custom SSH Options
 # ==================
