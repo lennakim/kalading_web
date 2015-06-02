@@ -461,3 +461,13 @@ $ ->
 
         registration_date:
           required: "请选择车辆注册时间"
+
+  $("#preferential_code_select").change ->
+     token = $(@).find("option:selected").val()
+
+     if token?
+      uri = URI()
+      car_id = uri.search(true)['car_id']
+      type = uri.search(true)['type']
+      $.post "/orders/validate_preferential_code", { code: token, car_id: car_id, type: type }
+      #TODO
