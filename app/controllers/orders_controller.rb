@@ -124,12 +124,12 @@ class OrdersController < ApplicationController
   end
 
   def validate_preferential_code
-    server_types = {"pm2.5" => 0, "bmt" => 1, "smt" => 1, "bty" => 2}
+    server_types = {"pm2.5" => 0, "bmt" => 1, "smt" => 1, "bty" => 2, "3" => 3, "4" => 4, "5" =>5, "6" => 6}
 
     code = params[:code]
     if code.present?
 
-      type = params["type"]
+      type = params["type"].to_s
       car_id = params["car_id"] || "531f1fd2098e71b3f8003265"
 
       if cookies['parts']
