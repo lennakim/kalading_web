@@ -62,6 +62,10 @@ class ApplicationController < ActionController::Base
     City.find(current_user_city).system_id
   end
 
+  def global_server_types
+    {"pm2.5" => 0, "bmt" => 1, "smt" => 1, "bty" => 2, "3" => 3, "4" => 4, "5" =>5, "6" => 6}
+  end
+
   def aes128_encrypt(data)
     aes = OpenSSL::Cipher::AES.new(128, :CBC)
     aes.encrypt

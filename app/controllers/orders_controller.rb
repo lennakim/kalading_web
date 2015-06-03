@@ -80,7 +80,7 @@ class OrdersController < ApplicationController
 
     @car_id = params["car_id"]
     @parts = JSON.parse cookies["parts"]
-    @type = params["type"]
+    @type = params["type"].to_s
 
     if cookies[:version4] == "1"
       @city_capacity = Order.city_capacity current_city_id, 1
@@ -94,7 +94,6 @@ class OrdersController < ApplicationController
 
     activity = Activity.find_by id: params[:act]
 
-
     payload = {
       parts: @parts
     }
@@ -103,7 +102,7 @@ class OrdersController < ApplicationController
       payload[:discount] = activity.preferential_code
     end
 
-    @cities = Order.cities
+    @cities = Order.cities global_server_types[@type]
     @result = Order.refresh_price @car_id, current_city_id, payload, @type
 
     render layout: "new"
@@ -124,10 +123,11 @@ class OrdersController < ApplicationController
   end
 
   def validate_preferential_code
+
     code = params[:code]
     if code.present?
 
-      type = params["type"]
+      type = params["type"].to_s
       car_id = params["car_id"] || "531f1fd2098e71b3f8003265"
 
       if cookies['parts']
@@ -139,7 +139,7 @@ class OrdersController < ApplicationController
       payload = {
         parts: @parts,
         discount: code,
-        service_type: type
+        service_type: global_server_types[type]
       }
 
       @result = Order.refresh_price car_id, current_city_id, payload, type
