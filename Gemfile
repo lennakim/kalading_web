@@ -1,4 +1,5 @@
 source 'https://ruby.taobao.org'
+# source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
 
@@ -65,6 +66,7 @@ gem 'colorize'
 group :development, :test do
   gem 'http_logger'
   gem 'pry'
+  gem 'pry-nav'
   gem 'pry-rails'
   gem 'awesome_print'
   gem 'quiet_assets'
