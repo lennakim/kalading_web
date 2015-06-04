@@ -1,134 +1,134 @@
-<div class="new-index">
-	<%#= image_tag("new-index/wrench.png",:class => 'wrench translate-wrench')%>
-	<%#= image_tag("new-index/erwei.jpg",:class => 'erwei')%>
-	<div class="con">
-		<div class="product">
-			<h4 class="tit"><span>产品服务</span>
-        <!--
-          <p class="rank">
-            <span>第</span>
-            <span class="num">232323</span>
-            <span>位 感谢您的信赖</span>
-          </p>
+<% cache "new_home_index" do %>
+  <div class="new-index">
+    <%#= image_tag("new-index/wrench.png",:class => 'wrench translate-wrench')%>
+    <%#= image_tag("new-index/erwei.jpg",:class => 'erwei')%>
+    <div class="con">
+      <div class="product">
+        <h4 class="tit"><span>产品服务</span>
+          <!--
+            <p class="rank">
+              <span>第</span>
+              <span class="num">232323</span>
+              <span>位 感谢您的信赖</span>
+            </p>
+            -->
+        </h4>
+        <ul class="main clearfix">
+          <li>
+            <a href="/orders/new_car_select?type=bmt">
+              <p class="key hide">机油三滤</p>
+              <%= image_tag("new-index/bmt1.png",:class => 'pic1')%>
+              <%= image_tag("new-index/bmt2.png",:class => 'pic2 hide')%>
+            </a>
+          </li>
+          <li>
+            <a href="/orders/new_car_select?type=smt">
+              <p class="key hide">机油机滤</p>
+              <%= image_tag("new-index/smt1.png",:class => 'pic1')%>
+              <%= image_tag("new-index/smt2.png",:class => 'pic2 hide')%>
+            </a>
+          </li>
+          <li>
+            <a href="/orders/new_car_select?type=pm25">
+              <p class="key hide">空调滤清器</p>
+              <%= image_tag("new-index/pm25.png",:class => 'pic1')%>
+              <%= image_tag("new-index/pm252.png",:class => 'pic2 hide')%>
+            </a>
+          </li>
+          <li>
+            <a href="/orders/new_car_select?type=bty">
+              <p class="key hide">更换电瓶</p>
+              <%= image_tag("new-index/battery1.png",:class => 'pic1')%>
+              <%= image_tag("new-index/battery2.png",:class => 'pic2 hide')%>
+            </a>
+          </li>
+
+          <!--
+          <li class="spe">
+            <%#= image_tag("new-index/customer-num.png",:class => 'customer-num')%>
+            <p class="rank"><span>第</span><span class="num">232323</span><span>位</span></p>
+            <p>感谢您的信赖</p>
+          </li>
           -->
-			</h4>
-			<ul class="main clearfix">
-				<li>
-					<a href="/orders/new_car_select?type=bmt">
-						<p class="key hide">机油三滤</p>
-						<%= image_tag("new-index/bmt1.png",:class => 'pic1')%>
-						<%= image_tag("new-index/bmt2.png",:class => 'pic2 hide')%>
-					</a>
-				</li>
-				<li>
-					<a href="/orders/new_car_select?type=smt">
-						<p class="key hide">机油机滤</p>
-						<%= image_tag("new-index/smt1.png",:class => 'pic1')%>
-						<%= image_tag("new-index/smt2.png",:class => 'pic2 hide')%>
-					</a>
-				</li>
-				<li>
-					<a href="/orders/new_car_select?type=pm25">
-						<p class="key hide">空调滤清器</p>
-						<%= image_tag("new-index/pm25.png",:class => 'pic1')%>
-						<%= image_tag("new-index/pm252.png",:class => 'pic2 hide')%>
-					</a>
-				</li>
-				<li>
-					<a href="/orders/new_car_select?type=bty">
-						<p class="key hide">更换电瓶</p>
-						<%= image_tag("new-index/battery1.png",:class => 'pic1')%>
-						<%= image_tag("new-index/battery2.png",:class => 'pic2 hide')%>
-					</a>
-				</li>
-
-        <!--
-				<li class="spe">
-					<%#= image_tag("new-index/customer-num.png",:class => 'customer-num')%>
-					<p class="rank"><span>第</span><span class="num">232323</span><span>位</span></p>
-					<p>感谢您的信赖</p>
-				</li>
-        -->
-			</ul>
-		</div>
-		<!-- <div class="activity">
-			<h4 class="tit">活动专区</h4>
-			<ul class="main clearfix">
-				<li>
-					<%= image_tag("new-index/")%>
-					<p>天天用车活动</p>
-				</li>
-				<li>
-					<%= image_tag("new-index/")%>
-					<p>天天用车活动</p>
-				</li>
-				<li>
-					<%= image_tag("new-index/")%>
-					<p>天天用车活动</p>
-				</li>
-				<li>
-					<%= image_tag("new-index/")%>
-					<p>天天用车服务</p>
-				</li>
-			</ul>
-		</div> -->
-		<div class="service clearfix">
-			<ul>
-				<li class="tit">服务支持</li>
-				<li>
-					<%= link_to "售后政策", slug_posts_path(6, 'terms') %>
-				</li>
-				<li>
-					<%= link_to "产品保障", slug_posts_path(16, 'guarantee') %>
-				</li>
-				<li>
-					<%= link_to "服务说明", slug_posts_path(7, 'services') %>
-				</li>
-				<li>
-					<a href="/static_pages/lian-xi-wo-men">联系我们</a>
-				</li>
-			</ul>
-			<ul>
-				<li class="tit">关于我们</li>
-				<li>
-					<a href="/static_pages/qi-ye-jie-shao">企业介绍</a>
-				</li>
-				<li>
-					<a href="/static_pages/qi-ye-rong-yu">企业荣誉</a>
-				</li>
-				<li>
-					<%= link_to "新闻动态", list_posts_path(tag_id: 15) %>
-				</li>
-				<li>
-					<a href="/static_pages/fu-wu-ke-hu">服务客户</a>
-				</li>
-			</ul>
-			<ul>
-				<li class="tit">
-					<a href="/static_pages/qi-ye-jie-shao">关于我们</a>
-				</li>
-				<li>
-					<a href="http://weibo.com/u/2394482722" target="_blank">新浪微博</a>
-				</li>
-				<li id='wechat_qrcode'>官方微信</li>
-			</ul>
-			<ul>
-				<li class="tit">客服热线</li>
-				<li>400-006-8181</li>
-				<li>周一至周日8:00-18:00</li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="wechat_modal">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-body">
-        <%= image_tag "new-index/erwei.jpg" %>
+        </ul>
+      </div>
+      <!-- <div class="activity">
+        <h4 class="tit">活动专区</h4>
+        <ul class="main clearfix">
+          <li>
+            <%= image_tag("new-index/")%>
+            <p>天天用车活动</p>
+          </li>
+          <li>
+            <%= image_tag("new-index/")%>
+            <p>天天用车活动</p>
+          </li>
+          <li>
+            <%= image_tag("new-index/")%>
+            <p>天天用车活动</p>
+          </li>
+          <li>
+            <%= image_tag("new-index/")%>
+            <p>天天用车服务</p>
+          </li>
+        </ul>
+      </div> -->
+      <div class="service clearfix">
+        <ul>
+          <li class="tit">服务支持</li>
+          <li>
+            <%= link_to "售后政策", slug_posts_path(6, 'terms') %>
+          </li>
+          <li>
+            <%= link_to "产品保障", slug_posts_path(16, 'guarantee') %>
+          </li>
+          <li>
+            <%= link_to "服务说明", slug_posts_path(7, 'services') %>
+          </li>
+          <li>
+            <a href="/static_pages/lian-xi-wo-men">联系我们</a>
+          </li>
+        </ul>
+        <ul>
+          <li class="tit">关于我们</li>
+          <li>
+            <a href="/static_pages/qi-ye-jie-shao">企业介绍</a>
+          </li>
+          <li>
+            <a href="/static_pages/qi-ye-rong-yu">企业荣誉</a>
+          </li>
+          <li>
+            <%= link_to "新闻动态", list_posts_path(tag_id: 15) %>
+          </li>
+          <li>
+            <a href="/static_pages/fu-wu-ke-hu">服务客户</a>
+          </li>
+        </ul>
+        <ul>
+          <li class="tit">
+            <a href="/static_pages/qi-ye-jie-shao">关于我们</a>
+          </li>
+          <li>
+            <a href="http://weibo.com/u/2394482722" target="_blank">新浪微博</a>
+          </li>
+          <li id='wechat_qrcode'>官方微信</li>
+        </ul>
+        <ul>
+          <li class="tit">客服热线</li>
+          <li>400-006-8181</li>
+          <li>周一至周日8:00-18:00</li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
 
-
+  <div class="modal fade" id="wechat_modal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= image_tag "new-index/erwei.jpg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
