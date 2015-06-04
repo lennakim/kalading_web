@@ -308,11 +308,12 @@ class OrdersController < ApplicationController
   end
 
   def no_car_type
-    @city_capacity = Order.city_capacity current_city_id, params[:type]
-    @cities = Order.cities
+    type = params[:type].to_s
+    @city_capacity = Order.city_capacity current_city_id, type
+    @cities = Order.cities global_server_types[type]
 
     ## 临时的 ####
-    payload = { parts: [], service_type: params[:type] }
+    payload = { parts: [], service_type: global_server_types[type] }
     @result = Order.refresh_price "531f1fd2098e71b3f8003265", current_city_id, payload
     ##############
 
