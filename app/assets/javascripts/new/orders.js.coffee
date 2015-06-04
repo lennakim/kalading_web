@@ -277,6 +277,8 @@ $ ->
       $('.discount-info').addClass('hide')
 
     $("#validate_preferential").on "click", (e) ->
+      $("#preferential_code_select").val("")
+
       e.preventDefault()
       e.stopPropagation()
 

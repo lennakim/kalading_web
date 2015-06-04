@@ -91,8 +91,6 @@
         <div class="info-con form-inline">
           <%= text_field_tag(:serve_date, '', required: true, class: 'form-control', "data-cc" => @city_capacity.to_json) %>
           <select id="serve_period" name="serve_period" class='form-control'>
-            <!-- <option value="8:00">8:00 &#45; 12:00</option> -->
-            <!-- <option value="12:00">12:00 &#45; 17:00</option> -->
             <!-- <option value="17:00">17:00 &#45; 20:00</option> -->
           </select>
         </div>
@@ -159,13 +157,10 @@
           <div class="form-inline">
             <select id="preferential_code_select" name="discount" class='form-control'>
               <option value="">请选择</option>
-
               <%= raw view_discounts @discounts  %>
               <!--
-              <option value="zou">9.9空调滤芯器</option>
               <option value="qian">50元优惠券</option>
               <option value="wen">不使用优惠券</option>
-              <option value="no">无可用优惠券</option>
               -->
             </select>
             <%= link_to "?", "javascript:;", class: "btn btn-default", id: "ask_preferential" %>
