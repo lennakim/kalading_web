@@ -24,15 +24,20 @@ class SessionsController < ApplicationController
         sign_in user
 
         if path = session.delete(:from_path)
-          redirect_to path
-        else
-          redirect_to orders_users_path
+          redirect_to path and return
         end
+
+        if path = cookies[:from_path] #fuck cto 取不到
+          redirect_to path and return
+        end
+
+        redirect_to orders_users_path and return
       else
-        redirect_to root_path(login: 1)
+        redirect_to root_path(login: 1) and return
       end
     else
       sign_in user if user
+
     end
   end
 

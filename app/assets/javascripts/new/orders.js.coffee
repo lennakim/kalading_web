@@ -473,3 +473,13 @@ $ ->
       type = uri.search(true)['type']
       $.post "/orders/validate_preferential_code", { code: token, car_id: car_id, type: type }
       #TODO
+
+  $(".next[mark='new_service_select'] > a").click (e)->
+    if window.current_user_id == -1
+      e.preventDefault()
+      e.stopPropagation()
+      alert($(@).attr('href'))
+      $.cookie("from_path", $(@).attr('href'))
+      $("#login_modal").modal()
+    else
+
