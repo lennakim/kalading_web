@@ -478,8 +478,8 @@ $ ->
     if window.current_user_id == -1
       e.preventDefault()
       e.stopPropagation()
-      alert($(@).attr('href'))
-      $.cookie("from_path", $(@).attr('href'))
+      url = $(@).attr('href')
+      $.cookie("from_path", url, { expires: 1, path: '/' })
       $("#login_modal").modal()
     else
 

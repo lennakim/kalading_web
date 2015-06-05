@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
           redirect_to path and return
         end
 
-        if path = cookies[:from_path] #fuck cto 取不到
+        if path = cookies.delete(:from_path) # 前端设置路径 $.cookie("from_path", url, { path: '/' })
           redirect_to path and return
         end
 

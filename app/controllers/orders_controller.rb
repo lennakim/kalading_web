@@ -77,7 +77,11 @@ class OrdersController < ApplicationController
   end
 
   def new_info_submit
-    @discounts = Order.discounts('18612621540')['data']
+    redirect_to_back and return unless current_user
+
+    phone = current_user.phone_number
+
+    @discounts = Order.discounts(phone)['data']
     @car_id = params["car_id"]
     @parts = JSON.parse cookies["parts"]
     @type = params["type"].to_s
