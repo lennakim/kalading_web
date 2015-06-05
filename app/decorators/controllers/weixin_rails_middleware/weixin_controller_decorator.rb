@@ -152,7 +152,6 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
       # 点击菜单拉取消息时的事件推送
       def handle_click_event
-        Rails.logger.info("keyword:#{@keyword}, message:#{@weixin_message.ToUserName}")
         auto_response(@keyword, @weixin_message.ToUserName)
       end
 
