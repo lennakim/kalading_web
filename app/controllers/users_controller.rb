@@ -36,7 +36,6 @@ class UsersController < ApplicationController
   def orders_detail
     id = params[:id]
     @order = Order.origin_find(id)
-    # pp @order
   end
 
   def maintain_histories_list
@@ -55,6 +54,12 @@ class UsersController < ApplicationController
     if browser.mobile?
       render layout: "application"
     end
+  end
+
+  def discounts
+    phone = current_user.phone_number
+
+    @discount_list = Order.discounts phone
   end
 
   def settings

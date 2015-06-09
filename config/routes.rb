@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
   mount Ckeditor::Engine => '/ckeditor'
 
-  mount Base => '/api' #api
-
   resources :static_pages
 
   resources :home do
@@ -70,6 +68,7 @@ Rails.application.routes.draw do
     collection do
       get 'orders'
       get 'orders_detail'
+      get 'discounts'
       get 'maintain_histories_list'
       get 'maintain_history'
       get 'cars'

@@ -1,4 +1,5 @@
 source 'https://ruby.taobao.org'
+# source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
 
@@ -65,6 +66,7 @@ gem 'colorize'
 group :development, :test do
   gem 'http_logger'
   gem 'pry'
+  gem 'pry-nav'
   gem 'pry-rails'
   gem 'awesome_print'
   gem 'quiet_assets'
@@ -95,10 +97,4 @@ group :development do
   gem 'capistrano3-puma'
 end
 
-# api
-gem 'grape'
-gem 'grape-entity'
-gem 'grape-jbuilder'
-gem 'swagger-ui_rails'
-gem 'grape-swagger-rails'
 gem 'rack-cors'

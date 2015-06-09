@@ -265,7 +265,20 @@ $ ->
 
       $.post "/service_addresses/#{ id }/set_default"
 
+    $('.to-validate').click ->
+      if $('.preferential_code_input').hasClass("hide")
+        $('.preferential_code_input').removeClass('hide')
+      else
+        $('.preferential_code_input').addClass('hide')
+
+    $('#ask_preferential').mouseover ->
+      $('.discount-info').removeClass('hide')
+    $('#ask_preferential').mouseout ->
+      $('.discount-info').addClass('hide')
+
     $("#validate_preferential").on "click", (e) ->
+      $("#preferential_code_select").val("")
+
       e.preventDefault()
       e.stopPropagation()
 
@@ -450,3 +463,23 @@ $ ->
 
         registration_date:
           required: "请选择车辆注册时间"
+
+  $("#preferential_code_select").change ->
+     token = $(@).find("option:selected").val()
+
+     if token?
+      uri = URI()
+      car_id = uri.search(true)['car_id']
+      type = uri.search(true)['type']
+      $.post "/orders/validate_preferential_code", { code: token, car_id: car_id, type: type }
+      #TODO
+
+  $(".next[mark='new_service_select'] > a").click (e)->
+    if window.current_user_id == -1
+      e.preventDefault()
+      e.stopPropagation()
+      url = $(@).attr('href')
+      $.cookie("from_path", url, { expires: 1, path: '/' })
+      $("#login_modal").modal()
+    else
+

@@ -28,8 +28,8 @@ input.form-control, select.form-control, textarea.form-control{
   background: #eeeeee;
   @include box-shadow(0px 0px);
   @include border-radius(0px);
-  &#verification_code, &#preferential_code{
-    width: 83px;
+  &#verification_code, &#preferential_code_select{
+    width: 195px;
   }
   &#car_num{
     width: 121px;
@@ -52,16 +52,65 @@ input.form-control, select.form-control, textarea.form-control{
 }
 
 
-a#get_code, a#validate_preferential, a#no_preferential{
-  @include border-radius(0px);
-  background: #e94609;
+a#get_code, a#preferential_code_select, a#no_preferential{
+  @include border-radius(4px);
   border: 0 none;
   color: white;
-  width: 110px;
+  background: $main-orange;
+  width: 100px;
   padding: 0;
   text-align: center;
   height: 34px;
   line-height: 34px;
+}
+
+a#validate_preferential {
+  @include border-radius(4px);
+  border: 0 none;
+  color: white;
+  background: $main-orange;
+  width: 50px;
+  padding: 0;
+  text-align: center;
+  height: 34px;
+  line-height: 34px;
+ }
+
+#preferential_code{
+  @include border-radius(0px);
+  width: 138px;
+  margin-left: 110px;
+  text-align: center;
+  height: 34px;
+  line-height: 34px;
+}
+#ask_preferential{
+	text-align: center;
+  height: 34px;
+  width: 30px;
+	border: 0;
+	background: #bbbbbb;
+	color: #fff;
+	&:hover{
+	  background: $main-orange;
+	}
+}
+.to-validate{
+	padding-left: 23%;
+	text-decoration: underline;
+	cursor: pointer;
+	cursor: hand;
+}
+.discount-info{
+  position: absolute;
+  left: 45%;
+  top: 190%;
+  width: 300px;
+  min-height: 205px;
+  padding-left: 20px;
+  background-image: image-url('new-order/discount.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 label{

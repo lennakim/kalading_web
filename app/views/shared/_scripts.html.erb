@@ -1,0 +1,7 @@
+  <script>
+    <% if signed_in? %>
+      var current_user_id = <%= current_user.id %>;
+    <% else %>
+      var current_user_id = -1;
+    <% end %>
+  </script>

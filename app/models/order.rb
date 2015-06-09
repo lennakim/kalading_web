@@ -114,13 +114,10 @@ class Order
     end
 
     def comment order_id, desc, score
-      #ServerApi.call "put", "orders", { entry_id: order_id, body: payload }
       ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
 
-
     ########################### 新交互使用的api  20150504 #####################
-
 
     def autos # 获取汽车信息 有错误
       ServerApi.call "get", "api/v2/autos"
@@ -139,6 +136,15 @@ class Order
       ServerApi.call "get", "api/v2/haiwanshiyou_remain_capacity", {}
     end
 
+    ########################### 优惠券 20150527 #####################
+
+    def discounts phone, page=1
+      ServerApi.call "get", "/interface/discounts", {telephone: phone, page: page}
+    end
+
+    def bind_discount(phone, discount_code)
+      ServerApi.call "post", "/interface/discounts/#{discount_code}/bind", {telephone: phone }
+    end
   end
 
 end

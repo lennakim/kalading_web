@@ -217,5 +217,31 @@ module OrdersHelper
       2 => 'bty'
     }[type.to_i]
   end
+
+  def view_discounts discounts
+    str = ""
+    discounts.each do |dis|
+      name = generate_discount_name dis
+      str += "<option value='#{dis['token']}'>#{name}</option>"
+    end
+
+    str
+  end
+
+  def generate_discount_name dis
+
+     unless dis['used']
+      case dis['category']
+      when 'discount'
+        "优惠#{dis['amount']} 元"
+      when 'percent'
+        "优惠#{dis['amount']} %"
+      when 'final'
+        "定价#{dis['amount']} 元"
+      end
+     else
+      "已经使用"
+     end
+  end
 end
 
