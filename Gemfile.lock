@@ -200,8 +200,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-nav (0.2.4)
-      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     puma (2.11.1)
@@ -271,7 +269,6 @@ GEM
       activemodel (~> 4.0)
     slack-notifier (1.0.0)
     slop (3.6.0)
-    spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -328,7 +325,6 @@ DEPENDENCIES
   ckeditor!
   cocoon
   coffee-rails (~> 4.0.0)
-  colorize
   compass-rails
   exception_notification
   gon
@@ -346,7 +342,6 @@ DEPENDENCIES
   nprogress-rails
   phonelib
   pry
-  pry-nav
   pry-rails
   puma
   quiet_assets
@@ -360,7 +355,6 @@ DEPENDENCIES
   settingslogic
   simple_form
   slack-notifier
-  spring
   turbolinks
   uglifier (>= 1.3.0)
   unicorn

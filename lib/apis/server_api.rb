@@ -1,47 +1,28 @@
 require 'restclient'
 
 module ServerApi
-
   extend self
 
-  # ServerApi.call "get", "city_capacity", { entry_id: "123", start_date: '1990-01-01', end_date: '2014-06-12' }
-
-  # ServerApi.call "get", "auto_maintain_order"
-
-  # ServerApi.call "post", "auto_maintain_order", { entry_id: "123", body: {...} }
-
-  # ServerApi.call "post", "auto_maintain_price", { entry_id: "123", body: {...} }
-
-  # ServerApi.call "get", "orders", { login_phone_num: 19999999999, client_id: 123, page: 1, per: 1000  }
-
-  # ServerApi.call "put", "orders", { entry_id: "123", body: {...} }
-
-  # on Exception: ServerApi.call("get", "auto_maintain_order"){ |error| [] }
-
   def call method, api_name, args = {}, &fail
-
     begin
       base_url = args[:entry_id] ? \
         "#{Settings.server_uri}/#{api_name}/#{args.delete(:entry_id)}.json" :
         "#{Settings.server_uri}/#{api_name}.json"
       url = append_query_string base_url, args.except(:body)
 
-      Rails.logger.info(('-' * 50).colorize(:blue))
-      Rails.logger.info(url.colorize(:green))
+      Rails.logger.info '-' * 50
+      Rails.logger.info url
 
       result = method == "get" ? \
         RestClient.get(url, content_type: 'json') :
         RestClient.send(method, url, args[:body].to_json, content_type: 'json')
 
-      Rails.logger.info("http status code is #{result.code}".colorize(:yellow))
       JSON.parse result
     rescue Exception => e
-      Rails.logger.info(('*' * 50).colorize(:red))
-      Rails.logger.error("#{url}".colorize(:red))
+      Rails.logger.error("#{url}"
 
       fail.call e
     end
-
   end
 
   private

@@ -2,7 +2,6 @@ class AutosController < ApplicationController
   inherit_resources
 
   def create
-    # TODO
   end
 
   def permitted_params

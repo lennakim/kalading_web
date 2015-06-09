@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
           redirect_to path and return
         end
 
-        if path = cookies.delete(:from_path) # 前端设置路径 $.cookie("from_path", url, { path: '/' })
+        if path = cookies.delete(:from_path)
           redirect_to path and return
         end
 
@@ -42,8 +42,6 @@ class SessionsController < ApplicationController
   end
 
   def callback
-    # redirect_url = http://ohcoder.ngrok.com/sessions/callback?name=kaladingcom&go=xx_yy
-    # Here got four params: params[:code], params[:state], params[:name], params[:go]
 
     account = PublicAccount.find_by name: params[:name]
     client = account.weixin_client

@@ -6,19 +6,12 @@ class PostsController < ApplicationController
 
   inherit_resources
 
-  # def show
-  #   @post = Post.find_by slug: params[:slug]
-  #   show!
-  # end
-
   def show
     @posts = Post.where slug: params[:slug]
   end
 
   def posts_list
     @posts = Post.tagged_with(@tag)
-
-    #@first_posts = Post.all.map{|p| p.tags.first }.uniq
 
     render "show"
   end

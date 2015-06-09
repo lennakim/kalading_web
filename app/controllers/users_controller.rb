@@ -24,9 +24,7 @@ class UsersController < ApplicationController
   end
 
   def orders
-    # @orders = Order.list(current_user.phone_number)
     @orders = Order.get_orders_of(current_user.phone_number)['data']
-    # @orders = Order.get_orders_of('13911616088')['data']
 
     if browser.mobile?
       render layout: "application"
@@ -40,9 +38,6 @@ class UsersController < ApplicationController
 
   def maintain_histories_list
     @maintain_orders = Order.maintain_histories_of current_user.phone_number
-    # @maintain_orders = Order.maintain_histories_of 15901003277
-    # @maintain_orders = Order.maintain_histories_of 13810869775
-    # TODO
 
     if browser.mobile?
       render layout: "application"

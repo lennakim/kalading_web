@@ -46,7 +46,6 @@ class Order
     end
 
     def find id
-      # ServerApi.call "get", "orders", { entry_id: id }
       ServerApi.call "get", "api/v2/orders", { entry_id: id }
     end
 
@@ -89,7 +88,6 @@ class Order
     end
 
     def get_orders_of phone_num = nil, client_id = nil, page = 1, per = 1000
-      # ServerApi.call "get", "orders", { login_phone_num: phone_num, client_id: client_id, page: page, per: per  }
       ServerApi.call "get", "api/v2/orders", { phone: phone_num  }
     end
 
@@ -117,17 +115,10 @@ class Order
       ServerApi.call "post", "api/v2/evaluations", { body:{ order_id: order_id, desc: desc, score: score } }
     end
 
-    ########################### 新交互使用的api  20150504 #####################
-
-    def autos # 获取汽车信息 有错误
-      ServerApi.call "get", "api/v2/autos"
-    end
-
     def two_level_autos
       ServerApi.call "get", "api/v2/two_level_autos"
     end
 
-    # 获取具体车型信息
     def auto_models model_id
       ServerApi.call "get", "api/v2/auto_models/#{model_id}"
     end
@@ -135,8 +126,6 @@ class Order
     def haiwan_capacity
       ServerApi.call "get", "api/v2/haiwanshiyou_remain_capacity", {}
     end
-
-    ########################### 优惠券 20150527 #####################
 
     def discounts phone, page=1
       ServerApi.call "get", "/interface/discounts", {telephone: phone, page: page}
