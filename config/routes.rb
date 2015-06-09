@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   mount WeixinRailsMiddleware::Engine, at: "/"
   mount Ckeditor::Engine => '/ckeditor'
 
-  mount Base => '/api' #api
-
   resources :static_pages
 
   resources :home do
